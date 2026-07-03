@@ -1,0 +1,58 @@
+name: job-alert
+
+on:
+  schedule:
+    # Every 2 hours at :23 UTC (offset minute — :00 crons get delayed heavily).
+    # Quiet hours (23:00–06:00 Europe/Berlin) are enforced in Python, which
+    # keeps the window correct across DST changes.
+    - cron: "23 */2 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Run even during quiet hours"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write            # commit state/ back to the repo
+
+concurrency:
+  group: job-alert           # never two runs mutating state at once
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Run job alert
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          LINKEDIN_LI_AT: ${{ secrets.LINKEDIN_LI_AT }}
+          FORCE_RUN: ${{ inputs.force }}
+        run: python main.py
+
+      - name: Persist state
+        if: always()         # keep seen-jobs even if a later stage failed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update state [skip ci]"
+            git pull --rebase origin ${GITHUB_REF_NAME} || true
+            git push
+          fi

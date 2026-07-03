@@ -1,0 +1,130 @@
+# ============================================================
+#  CONFIGURATION (non-secret)
+#
+#  Secrets are NEVER stored here. They come from environment
+#  variables (locally: a .env file you source; on GitHub
+#  Actions: repository secrets):
+#    GROQ_API_KEY        - console.groq.com (free)
+#    TELEGRAM_BOT_TOKEN  - @BotFather
+#    TELEGRAM_CHAT_ID    - your chat id
+#    ADZUNA_APP_ID       - developer.adzuna.com (optional)
+#    ADZUNA_APP_KEY      - developer.adzuna.com (optional)
+#    LINKEDIN_LI_AT      - li_at cookie (optional, richer results)
+# ============================================================
+
+# ── AI scoring (stage 2; stage-1 rule pre-filter is always free) ──
+ai:
+  model: "llama-3.3-70b-versatile"
+  # Cap of AI-scored jobs per run. Jobs beyond the cap are tiered by
+  # their rule score instead (highest rule scores get the AI calls).
+  max_ai_calls_per_run: 60
+
+# ── Scheduler ─────────────────────────────────────────────────
+scheduler:
+  # How far back a run looks for "new" jobs. 240 min for a 2-hour
+  # cadence: GitHub cron can be delayed or skipped, and dedup makes
+  # the overlap harmless.
+  lookback_minutes: 240
+  quiet_hours:
+    start: 23        # no runs from 23:00 ...
+    end: 6           # ... until 06:00
+    tz: "Europe/Berlin"
+  # First run at/after this local hour sends the daily rejected-jobs
+  # summary to Telegram.
+  daily_summary_hour: 21
+
+# ── Telegram ──────────────────────────────────────────────────
+telegram:
+  # Send a summary message even when no strong/worth-look jobs were
+  # found this run. Off = silence means "nothing found".
+  always_send_summary: false
+
+# ── Search queries ────────────────────────────────────────────
+# Bilingual EN/DE queries — broader = more candidates for the
+# rule pre-filter and AI to choose from.
+search:
+  queries:
+    # English
+    - "Working Student Automotive"
+    - "Working Student ADAS"
+    - "Internship Automotive"
+    - "Internship Autonomous Driving"
+    - "Junior ADAS Engineer"
+    - "Junior Perception Engineer"
+    - "Sensor Data"
+    - "LiDAR"
+    - "Radar"
+    - "Radar Engineer"
+    - "Autonomous Driving"
+    # German
+    - "Werkstudent Automotive"
+    - "Werkstudent Fahrzeugtechnik"
+    - "Werkstudent Sensorik"
+    - "Werkstudent Fahrerassistenz"
+    - "Praktikum Automotive"
+    - "Praktikum ADAS"
+    - "Praktikum Autonomes Fahren"
+    - "Junior Ingenieur Automotive"
+    - "Testingenieur Fahrzeug"
+    - "Abschlussarbeit Automotive"
+    - "Audi"
+    - "BMW"
+    - "Porsche"
+  location: "Germany"
+  radius_km: 50
+  language: "any"
+
+# ── Platforms ─────────────────────────────────────────────────
+platforms:
+  arbeitnow:
+    enabled: true            # Free aggregator – no key needed
+
+  adzuna:
+    # FREE: 1000 calls/month. Sign up at https://developer.adzuna.com/signup
+    # Runs only if ADZUNA_APP_ID + ADZUNA_APP_KEY env vars are set.
+    enabled: true
+    country_code: "de"
+
+  linkedin:
+    enabled: true
+    # LINKEDIN_LI_AT env var is picked up automatically if set.
+    # On CI the per-job detail fetch is skipped (title/company/location
+    # from the search cards is enough for filtering).
+    fetch_details: false
+
+  xing:
+    # Disabled 2026-07: Xing moved search to /jobs/search/ki, a JS-rendered
+    # page with no JSON-LD or embedded state — nothing left to parse without
+    # a headless browser. Fetcher kept in case they restore structured data.
+    enabled: false
+
+  companies:
+    enabled: true            # Direct fetch from company career portals (ATS APIs)
+    # Leave `include` empty to fetch from ALL configured companies, or
+    # specify names to limit. See fetchers/companies.py for the list.
+    include: []
+
+  # ── SAP SuccessFactors ──────────────────────────────────────
+  # Used by BMW, Audi, parts of Volkswagen Group, Schaeffler, etc.
+  # No public API — uses the (well-known) /career?...&resultType=XML
+  # and /sitemal.xml endpoints. The fetcher tries both.
+  successfactors:
+    enabled: true
+    companies:
+      # ✅ Verified — BMW posts on career5.successfactors.eu with id 'bmwag'
+      - name: "BMW Group"
+        host: "career5.successfactors.eu"
+        id: "bmwag"
+      # 🟡 Best-guess IDs — adjust if BMW works but these don't.
+      # To verify: open the company's career page in your browser, look at
+      # the URL after clicking a job. The "company=XXX" parameter is what
+      # you want.
+      - name: "Audi"
+        host: "career5.successfactors.eu"
+        id: "audi"
+      - name: "CARIAD"
+        host: "career5.successfactors.eu"
+        id: "cariad"
+      - name: "Schaeffler"
+        host: "career5.successfactors.eu"
+        id: "schaefflerag"
