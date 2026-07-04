@@ -17,6 +17,15 @@ logger = logging.getLogger(__name__)
 VALID_CLASSES = {"core_auto", "auto_adjacent_in_company",
                  "tech_adjacent", "engineering_general", "out_of_domain"}
 
+DEFAULT_PERSONA = ("a master's student in International Automotive Engineering "
+                   "(sensor data specialty: LiDAR/Radar/Camera, Python, "
+                   "Grafana/InfluxDB)")
+
+
+def _persona(profile: Dict) -> str:
+    """One-line description of the candidate, configurable in profile.yaml."""
+    return profile.get("persona", DEFAULT_PERSONA)
+
 
 def score(job: Dict, profile: Dict, domain_class: str, api_key: str,
           cv_text: str = "", recent_decisions=None,
@@ -35,8 +44,7 @@ def score(job: Dict, profile: Dict, domain_class: str, api_key: str,
     memory_section = _build_memory_context(memory)
 
     prompt = f"""You are a strict but fair job-matching assistant. The candidate
-is a master's student in International Automotive Engineering (sensor data
-specialty: LiDAR/Radar/Camera, Python, Grafana/InfluxDB).
+is {_persona(profile)}.
 
 DOMAIN CLASSIFICATION (already done): {domain_class}
 
@@ -100,9 +108,8 @@ def classify_and_score(job: Dict, profile: Dict, cv_text: str, memory: Dict,
 
     memory_section = _build_memory_context(memory)
 
-    prompt = f"""You are a strict job-matching assistant for an automotive
-engineering master's student (sensor data specialty: LiDAR/Radar/Camera,
-Python, Grafana/InfluxDB).
+    prompt = f"""You are a strict job-matching assistant. The candidate is
+{_persona(profile)}.
 
 JOB POSTING:
 - Title: {job.get("title", "N/A")}

@@ -9,6 +9,9 @@ personal:
   name: "Meet Patel"               # ← change this (reference template profile)
   email: "meet.m.patel2905@gmail.com" # ← change this (informational only — alerts go to Telegram)
 
+# One-line description of you, used in the AI grading prompt.
+persona: "a master's student in International Automotive Engineering (sensor data specialty: LiDAR/Radar/Camera, Python, Grafana/InfluxDB)"
+
 # ── Your skills (bilingual – English & German keywords) ───────
 skills:
   - Python
