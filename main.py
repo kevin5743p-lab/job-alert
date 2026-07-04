@@ -375,6 +375,15 @@ def main() -> int:
     dry_run = args.dry_run or bool(args.source)
     no_ai = args.no_ai or bool(args.source)
 
+    # A real run with no way to deliver alerts must not proceed: it would mark
+    # every fetched job as seen while the user never hears about them.
+    if not dry_run and not (os.environ.get("TELEGRAM_BOT_TOKEN")
+                            and os.environ.get("TELEGRAM_CHAT_ID")):
+        logger.error("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not set — refusing "
+                     "to run. Add the secrets (repo Settings → Secrets and "
+                     "variables → Actions) or use --dry-run for testing.")
+        return 1
+
     force = args.force or os.environ.get("FORCE_RUN", "").lower() in ("1", "true", "yes")
     if not dry_run and not force:
         config = load_yaml(CONFIG_PATH)
