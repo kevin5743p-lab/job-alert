@@ -184,8 +184,11 @@ def _fetch_smartrecruiters(company, queries, location, cutoff, seen_jobs=None):
                     "company": company["name"],
                     "location": loc_str or "Germany",
                     "description": "",  # list endpoint has no description
+                    # jobs.smartrecruiters.com renders the posting directly;
+                    # careers.smartrecruiters.com bounces to the company's own
+                    # portal and loses the job (lands on a generic search page)
                     "url": (
-                        f"https://careers.smartrecruiters.com/"
+                        f"https://jobs.smartrecruiters.com/"
                         f"{company['id']}/{job_id}"
                     ),
                     "published": item.get("releasedDate"),

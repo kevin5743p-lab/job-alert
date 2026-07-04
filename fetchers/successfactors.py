@@ -142,12 +142,14 @@ def _parse_xml(xml_text: str, company: Dict, queries: List[str]) -> List[Dict]:
         if query_lower and not any(q in full_text for q in query_lower):
             continue
 
-        # Build apply URL — prefer the link if it's a real URL, otherwise build one
+        # Build posting URL — prefer the link if it's a real URL, otherwise
+        # build one. career_ns=job_listing shows the posting;
+        # career_ns=job_application lands on a Sign In page.
         if link and link.startswith("http"):
             url = link
         else:
             url = (f"https://{host}/career?company={cid}"
-                   f"&career_job_req_id={job_id}&career_ns=job_application")
+                   f"&career_job_req_id={job_id}&career_ns=job_listing")
 
         jobs.append({
             "id": f"sf_{cid}_{job_id}",
