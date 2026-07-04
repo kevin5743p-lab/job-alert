@@ -6775,6 +6775,307 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-04T09:04:44.747808",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 70,
+          "reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, LiDAR/Radar/Camera, and Python programming align with the job's requirements, but the role's focus on mechanical construction and CAD design is not directly matched by the candidate's CV.",
+          "domain_class": "auto_adjacent_in_company",
+          "ai_score": 70,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, LiDAR/Radar/Camera, and Python programming align with the job's requirements, but the role's focus on mechanical construction and CAD design is not directly matched by the candidate's CV.",
+          "unscored": false,
+          "job": {
+            "id": "smartr_BoschGroup_744000134169020",
+            "title": "Praktikum im Sondermaschinenbau - Bereich Konstruktion",
+            "company": "Bosch",
+            "location": "Stuttgart, BW, de",
+            "description": "Die Bosch&#xa0;Manufacturing&#xa0;Solutions&#xa0;GmbH ist&#xa0;ein globaler Anbieter im Bereich Sondermaschinenbau.&#xa0;Dieser&#xa0;bietet&#xa0;individuelle und&#xa0;intelligente&#xa0;Montage-&#xa0;und Prüflösungen einschließlich fortschrittlicher Fertigungsprozesse und -technologien, digitaler und",
+            "url": "https://careers.smartrecruiters.com/BoschGroup/744000134169020",
+            "published": "2026-06-25T04:12:24.398Z",
+            "source": "Bosch (Direct)"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000132152229",
+            "title": "Expert Corporate Accounting and Reporting Home Comfort – focus on IAS12/IFRS (f/m/div.)",
+            "company": "Bosch",
+            "location": "Wernau, de",
+            "description": "Do you want to contribute your IFRS expertise in an international environment and actively shape complex accounting issues? Then become part of our Home Comfort Finance team. In this role, you will take professional responsibility for selected IFRS topics with a focus on IAS 12 / income taxes and co",
+            "url": "https://careers.smartrecruiters.com/BoschGroup/744000132152229",
+            "published": "2026-06-15T09:16:04.578Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 2,
+          "reason": "keyword bonus: 1",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135250998",
+            "title": "Logistikfachkraft (w/m/div.)",
+            "company": "Bosch",
+            "location": "Salzgitter, Niedersachen, de",
+            "description": "• Sicherstellung einer störungsfreien Materialversorgung &#xa0;• Sie sind zuständig für die Einlagerung von Erzeugnissen &#xa0; &#xa0;inklusive Materialbereitstellung &#xa0; &#xa0; &#xa0;• Sie führen diverse Fahrzeuge im innerbetrieblichen &#xa0; &#xa0;Transport sowie eines Staplers/Schubmaststabler",
+            "url": "https://careers.smartrecruiters.com/BoschGroup/744000135250998",
+            "published": "2026-07-01T12:21:51.456Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000131400840",
+            "title": "Werkstudent im Bereich Human Resources (w/m/div.)",
+            "company": "Bosch",
+            "location": "Ludwigsburg, BW, de",
+            "description": "Als hundertprozentige Tochtergesellschaft mit Innovationshubs rund um den Globus finanziert und entwickelt die Bosch Business Innovations digitale, innovative Geschäftsmodelle. Mit internationalen Expertenteams arbeiten wir eng mit unseren Start-ups zusammen und bieten individuell auf deren Bedürfni",
+            "url": "https://careers.smartrecruiters.com/BoschGroup/744000131400840",
+            "published": "2026-06-10T08:49:58.423Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000124892539",
+            "title": "Werkstudent Projektmanagement und Automatisierung im Vertrieb (w/m/div.)",
+            "company": "Bosch",
+            "location": "Bietigheim-Bissingen, BW, de",
+            "description": "Während deiner Werkstudententätigkeit gestaltest du die Digitalisierung und Optimierung unserer Vertriebsprozesse aktiv mit. Du entwickelst smarte Automatisierungslösungen mit Power Automate, die unsere Vertriebsprozesse effizienter gestalten und neue Potenziale erschließen. Eigenständig führst du S",
+            "url": "https://careers.smartrecruiters.com/BoschGroup/744000124892539",
+            "published": "2026-05-06T12:47:54.168Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8578343002",
+            "title": "ADAS Feature Engineer",
+            "company": "Wayve",
+            "location": "Germany",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8578343002",
+            "published": "2026-06-17T10:12:56-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8602635002",
+            "title": "Automotive Product Security Lead",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8602635002",
+            "published": "2026-06-30T06:13:19-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8571217002",
+            "title": "Engineering Manager, App SW - Embedded ",
+            "company": "Wayve",
+            "location": "Detroit; Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8571217002",
+            "published": "2026-05-29T12:15:00-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8435254002",
+            "title": "Machine Learning Engineer, App SW",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8435254002",
+            "published": "2026-05-28T10:49:57-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8568364002",
+            "title": "Machine Learning Engineering Manager, App SW",
+            "company": "Wayve",
+            "location": "Detroit",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8568364002",
+            "published": "2026-05-29T12:04:33-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8552547002",
+            "title": "Research Scientist, Wayve Labs",
+            "company": "Wayve",
+            "location": "Vancouver",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8552547002",
+            "published": "2026-05-27T12:35:24-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8564863002",
+            "title": "Safety System Engineer",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8564863002",
+            "published": "2026-05-28T18:13:13-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8556913002",
+            "title": "System Architect - Robotaxi",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8556913002",
+            "published": "2026-05-28T18:07:15-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The job posting requires experience in IT-Mergers and Acquisitions, and proficiency in MS Office, which does not align with the candidate's background in International Automotive Engineering and sensor data specialty.",
+          "domain_class": "auto_adjacent_in_company",
+          "ai_score": 20,
+          "ai_reason": "The job posting requires experience in IT-Mergers and Acquisitions, and proficiency in MS Office, which does not align with the candidate's background in International Automotive Engineering and sensor data specialty.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "smartr_BoschGroup_744000134202966",
+            "title": "Praktikum im Bereich Projektmanagement IT-Mergers and Acquisitions ",
+            "company": "Bosch",
+            "location": "Stuttgart, BW, de",
+            "description": "In deinem Praktikum unterstützt du uns im Bereich Projektmanagement IT-Mergers & Acquisitions (M&A) aktiv beim Aufbau interner Kommunikationsplattformen (wie Viva Engage) sowie bei der&#xa0;zielgerichteten&#xa0;Begleitung unserer globalen IT-Projekte. Du unterstützt uns beim Aufbau und der Pflege un",
+            "url": "https://careers.smartrecruiters.com/BoschGroup/744000134202966",
+            "published": "2026-06-25T08:32:08.574Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "The role requires accounting skills and experience, which the candidate lacks, and the candidate's skills and experience are focused on automotive engineering and sensor data analysis.",
+          "domain_class": "auto_adjacent_in_company",
+          "ai_score": 0,
+          "ai_reason": "The role requires accounting skills and experience, which the candidate lacks, and the candidate's skills and experience are focused on automotive engineering and sensor data analysis.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "sf_bmwag_189401",
+            "title": "Accounting Intern (12 Months)",
+            "company": "BMW Group",
+            "location": "Germany",
+            "description": "A GOOD INTERNSHIP IS NEVER HANDS OFF. SHARE YOUR PASSION. We believe in creating an environment where our interns really can learn by doing and where they are given their own areas of responsibility right from the start of their time with us. That’s why our experts will treat you as part of the team",
+            "url": "https://career5.successfactors.eu/career?company=bmwag&career_job_req_id=189401&career_ns=job_application",
+            "published": "",
+            "source": "BMW Group (Direct)"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The job posting requires experience in Customer Supply Chain Management and fluent German, but the candidate's background is in International Automotive Engineering with a focus on sensor data and ADAS, and their German language skills are limited to B1 reading and A2 speaking.",
+          "domain_class": "core_auto",
+          "ai_score": 20,
+          "ai_reason": "The job posting requires experience in Customer Supply Chain Management and fluent German, but the candidate's background is in International Automotive Engineering with a focus on sensor data and ADAS, and their German language skills are limited to B1 reading and A2 speaking.",
+          "unscored": false,
+          "category": "fluent_german",
+          "job": {
+            "id": "smartr_BoschGroup_744000125109119",
+            "title": "Praktikum Customer Supply Chain Management",
+            "company": "Bosch",
+            "location": "Karlsruhe, BW, de",
+            "description": "Du suchst ein Praktikum, das dich direkt ins Herz der Automotive Supply Chain führt? Dann gestalte mit uns die reibungslose Lieferkette im Automotive Aftermarket und werde zum entscheidenden Bindeglied zwischen unseren Kunden und der Logistik. Während deines Praktikums übernimmst du eigenverantwortl",
+            "url": "https://careers.smartrecruiters.com/BoschGroup/744000125109119",
+            "published": "2026-05-07T11:18:44.526Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The role requires experience in Sales and Market Intelligence, which doesn't match the candidate's background in International Automotive Engineering and sensor data analysis, despite the candidate's skills in data analysis and visualization.",
+          "domain_class": "auto_adjacent_in_company",
+          "ai_score": 20,
+          "ai_reason": "The role requires experience in Sales and Market Intelligence, which doesn't match the candidate's background in International Automotive Engineering and sensor data analysis, despite the candidate's skills in data analysis and visualization.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "smartr_BoschGroup_744000135406429",
+            "title": "Praktikum im Bereich Sales & Market Intelligence ",
+            "company": "Bosch",
+            "location": "Lohr am Main, BY, de",
+            "description": "Wir, im Bereich Sales and Market Intelligence, schaffen durch globale Markt- und Sales-Insights eine tiefgehende Transparenz auf Basis Sales-KPIs. Mit strategischen Analysen liefern wir die Grundlage für zukunftsweisende, datenbasierte Entscheidungen auf Führungsebene. So gestalten wir aktiv und fak",
+            "url": "https://careers.smartrecruiters.com/BoschGroup/744000135406429",
+            "published": "2026-07-02T03:23:13.055Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The role requires experience in sales and market intelligence, but the candidate's background is in automotive engineering and sensor data analysis, with no direct experience in the required field, and the company is looking for someone with business German skills which the candidate lacks.",
+          "domain_class": "auto_adjacent_in_company",
+          "ai_score": 20,
+          "ai_reason": "The role requires experience in sales and market intelligence, but the candidate's background is in automotive engineering and sensor data analysis, with no direct experience in the required field, and the company is looking for someone with business German skills which the candidate lacks.",
+          "unscored": false,
+          "category": "fluent_german",
+          "job": {
+            "id": "smartr_BoschGroup_744000135406889",
+            "title": "Werkstudent für die Prozessdokumentation im Sales & Market Intelligence (w/m/div.)",
+            "company": "Bosch",
+            "location": "Lohr am Main, BY, de",
+            "description": "Wir, im Bereich Sales & Market Intelligence, schaffen durch globale Markt- und Sales-Insights eine tiefgehende Transparenz auf Basis Sales-KPIs. Mit strategischen Analysen liefern wir die Grundlage für zukunftsweisende, datenbasierte Entscheidungen auf Führungsebene. So gestalten wir aktiv und fakte",
+            "url": "https://careers.smartrecruiters.com/BoschGroup/744000135406889",
+            "published": "2026-07-02T03:31:34.402Z",
+            "source": "Bosch (Direct)"
+          }
+        }
+      ]
     }
   ]
 }
