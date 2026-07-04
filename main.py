@@ -169,7 +169,7 @@ def run_check(dry_run: bool = False, no_ai: bool = False,
         pattern_hit = memory_stub.has_been_rejected_pattern(memory, job)
         if pattern_hit:
             tier_name, score, reason = tier_router.route(
-                job, "core_auto", "", 0, "", profile, pattern_hit)
+                job, "core_field", "", 0, "", profile, pattern_hit)
             item = {"score": score, "reason": reason, "job": job,
                     "category": "memory_pattern"}
             rejected.append(item)
@@ -177,7 +177,8 @@ def run_check(dry_run: bool = False, no_ai: bool = False,
                         f"{job['title'][:50]} (memory pattern)")
             continue
 
-        klass, klass_reason = domain_classifier.classify_with_rules(job)
+        klass, klass_reason = domain_classifier.classify_with_rules(
+            job, domain_classifier.get_domain(profile))
         ai_score, ai_reason = None, ""
         unscored = False
         source = "rules"
@@ -224,7 +225,7 @@ def run_check(dry_run: bool = False, no_ai: bool = False,
                 score = (tier_router.apply_domain_cap(rule_score, klass)
                          if klass is not None else rule_score)
                 tier_name = tier_router.assign_tier(
-                    score, klass or "core_auto", profile.get("tier_thresholds"))
+                    score, klass or "core_field", profile.get("tier_thresholds"))
                 reason = f"{rule_reason} (rule-based)"
                 source = "rules-only"
 

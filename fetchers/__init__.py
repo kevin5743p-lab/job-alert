@@ -86,6 +86,7 @@ def fetch_all(config: Dict, lookback_minutes: int,
             max_age_minutes=lookback_minutes,
             companies=cc.get("include"),
             seen_jobs=seen_jobs,
+            targets=cc.get("targets"),
         ),
     ))
 

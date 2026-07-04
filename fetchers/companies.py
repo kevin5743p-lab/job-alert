@@ -67,11 +67,13 @@ MAX_POSTING_AGE_DAYS = 90
 def fetch(queries: List[str], location: str,
           max_age_minutes: int = 1440,
           companies: List[str] = None,
-          seen_jobs: set = None) -> List[Dict]:
+          seen_jobs: set = None,
+          targets: List[Dict] = None) -> List[Dict]:
     """
     Fetch jobs from company career pages.
-    `companies` is an optional filter — list of names to include
-    (None = all configured companies).
+    `targets` replaces the default company list entirely (each entry:
+    {name, ats, id}) — set it in config.yaml to track your own field's
+    employers. `companies` is an optional name filter on top of that.
     `seen_jobs` is a set of job IDs we've processed before. Skipping them
     here saves downstream work; more importantly, the per-company log lines
     show new-vs-seen so the user sees what's actually changing each run.
@@ -79,9 +81,9 @@ def fetch(queries: List[str], location: str,
     cutoff = datetime.now(timezone.utc) - timedelta(minutes=max_age_minutes)
     seen_jobs = seen_jobs or set()
     all_jobs = []
-    targets = COMPANIES
+    targets = targets or COMPANIES
     if companies:
-        targets = [c for c in COMPANIES if c["name"] in companies]
+        targets = [c for c in targets if c["name"] in companies]
 
     for company in targets:
         ats = company["ats"]

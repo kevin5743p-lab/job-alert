@@ -11,11 +11,11 @@ Thresholds are configurable via profile.yaml `tier_thresholds`.
 from typing import Dict, Optional
 
 DOMAIN_SCORE_CAP = {
-    "core_auto":                100,
-    "auto_adjacent_in_company": 100,   # trust AI's judgment
-    "tech_adjacent":            100,   # trust AI's judgment
-    "engineering_general":      100,   # trust AI's judgment
-    "out_of_domain":              0,   # only this is hard-rejected
+    "core_field":          100,
+    "adjacent_in_company": 100,   # trust AI's judgment
+    "skill_adjacent":      100,   # trust AI's judgment
+    "broader_field":       100,   # trust AI's judgment
+    "out_of_domain":         0,   # only this is hard-rejected
 }
 
 THRESHOLDS = {
@@ -69,8 +69,8 @@ def summarize_rejection(domain_class, reason, pattern_hit=None) -> str:
         return "memory_pattern"
     if domain_class == "out_of_domain":
         return "out_of_domain"
-    if domain_class == "engineering_general":
-        return "engineering_general"
+    if domain_class == "broader_field":
+        return "broader_field"
     r = (reason or "").lower()
     if "german" in r or "deutsch" in r:
         return "fluent_german"

@@ -8,6 +8,8 @@ import logging
 import re
 from typing import Dict, Tuple
 
+from matchers.domain_classifier import get_domain
+
 logger = logging.getLogger(__name__)
 
 
@@ -16,63 +18,26 @@ def score_job(job: Dict, profile: Dict, api_key: str = None) -> Tuple[int, str]:
     Score a job (0-100) against the profile using rules only.
     `api_key` is accepted but ignored (kept for compatibility).
     """
+    domain = get_domain(profile)
     title = (job.get("title") or "").lower()
     desc = (job.get("description") or "").lower()
     location = (job.get("location") or "").lower()
     text = f"{title} {desc}"
 
-    # ── HARD FILTER 0: Obvious out-of-domain titles ──────────────────────────
+    # ── HARD FILTER 0: Obvious out-of-field titles ───────────────────────────
     # Reject these instantly — no need to spend AI tokens classifying them.
-    # We only check the title (not description) and require a word boundary
-    # so "Marketing Manager" matches but "Marketing-Coordinator at BMW" still
-    # gets classified by the AI (because it's a different role).
-    OBVIOUS_NON_AUTO_TITLES = [
-        # Marketing & sales
-        "marketing manager", "marketing coordinator", "marketing specialist",
-        "sales manager", "sales executive", "account executive", "account manager",
-        "social media manager", "seo specialist", "copywriter", "content writer",
-        "growth manager", "brand manager",
-        # Legal
-        "legal engineer", "lawyer", "rechtsanwalt", "paralegal", "legal counsel",
-        "rechtsanwaltsfachangestellte", "syndikusanwalt",
-        # HR / recruiting
-        "recruiter", "talent acquisition", "hr manager", "personalreferent",
-        "personalmanager", "hr business partner",
-        # Finance / accounting (NOT financial engineering, just admin)
-        "accountant", "buchhalter", "tax", "steuerberater", "controller",
-        "buchhaltung", "lohnbuchhalter",
-        # Real estate
-        "real estate", "immobilien",
-        # Pure consulting (non-automotive)
-        "managementberatung",  # but only when company is clearly consulting
-        # Healthcare
-        "krankenpfleger", "krankenschwester", "altenpfleger", "physiotherapeut",
-        "arzt", "ärztin", "doctor", "nurse", "physician",
-        # Trades unrelated to auto
-        "barista", "kellner", "koch", "chef de cuisine", "verkäufer",
-        # Architecture / construction (TGA, BIM, etc. = building services, not auto)
-        "bim koord",   # BIM Koordinator/Koordination
-        "bim koordinator",
-        "bim manager",
-        "tga",         # Technische Gebäudeausrüstung
-        "architekt",   # standalone Architekt only — "Software Architect" is different
-    ]
+    # Title-only substring match ("marketing manager" catches "junior
+    # marketing manager"). The lists come from the profile's domain block.
     title_clean = title.strip()
     company_lower = (job.get("company") or "").lower()
-    for bad in OBVIOUS_NON_AUTO_TITLES:
-        # Substring match — "bim koord" matches "bim koordinator"
-        # and "marketing manager" matches "junior marketing manager"
-        if bad in title_clean:
-            # Exception: if at a clearly automotive company, still send to AI
-            # (e.g. "Marketing Manager" at BMW — auto-adjacent, AI may say "no" anyway)
-            auto_company_signals = [
-                "bmw", "mercedes", "daimler", "audi", "porsche", "volkswagen", "vw",
-                "bosch", "continental", "zf", "valeo", "schaeffler", "magna",
-                "wayve", "mobileye", "cariad",
-            ]
-            if any(c in company_lower for c in auto_company_signals):
-                break  # let it through to AI
-            return 0, f"Title contains out-of-domain term '{bad}'"
+    for bad in domain.get("reject_title_terms", []):
+        if bad.lower() in title_clean:
+            # Exception: at a company central to the field, let it through —
+            # the domain classifier will file it as adjacent_in_company.
+            if any(c.lower() in company_lower
+                   for c in domain.get("core_companies", [])):
+                break
+            return 0, f"Title contains out-of-field term '{bad}'"
 
     # ── HARD FILTER 1: Exclude keywords ────────────────────────────────────────
     for excl in profile.get("exclude_keywords", []):
@@ -159,11 +124,8 @@ def score_job(job: Dict, profile: Dict, api_key: str = None) -> Tuple[int, str]:
             score = max(0, score - 30)
             reasons.append("(seniority warning)")
 
-    # ── 6. Bonus for core strength keywords ───────────────────────────────────
-    bonus_terms = [
-        "lidar", "radar", "perception", "sensor fusion",
-        "adas", "autonomous", "self-driving", "grafana", "influxdb",
-    ]
+    # ── 6. Bonus for core strength keywords (from the domain block) ───────────
+    bonus_terms = [b.lower() for b in domain.get("bonus_terms", [])]
     bonus_hits = sum(1 for b in bonus_terms if b in text)
     if bonus_hits:
         score += min(15, bonus_hits * 3)

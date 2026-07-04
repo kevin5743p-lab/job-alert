@@ -11,11 +11,12 @@ import logging
 from typing import Dict, Optional, Tuple
 
 from matchers import groq_client
+from matchers.domain_classifier import get_domain
 
 logger = logging.getLogger(__name__)
 
-VALID_CLASSES = {"core_auto", "auto_adjacent_in_company",
-                 "tech_adjacent", "engineering_general", "out_of_domain"}
+VALID_CLASSES = {"core_field", "adjacent_in_company", "skill_adjacent",
+                 "broader_field", "out_of_domain"}
 
 DEFAULT_PERSONA = ("a master's student in International Automotive Engineering "
                    "(sensor data specialty: LiDAR/Radar/Camera, Python, "
@@ -102,6 +103,7 @@ def classify_and_score(job: Dict, profile: Dict, cv_text: str, memory: Dict,
     The rule layer should always try to classify first (free). Only call
     this function when the rules can't decide.
     """
+    field = get_domain(profile).get("name", "the candidate's field")
     cv_section = ""
     if cv_text and cv_text.strip():
         cv_section = f"\n\nCANDIDATE CV:\n{cv_text[:3000]}"
@@ -128,13 +130,15 @@ CANDIDATE PROFILE:
 
 DO TWO THINGS:
 
-(A) CLASSIFY the job's domain. Pick exactly ONE class:
-    - core_auto: direct automotive (OEM, Tier-1, ADAS, EV, vehicle SW,
-      embedded auto, BMS, vehicle dynamics, powertrain)
-    - auto_adjacent_in_company: non-auto-sounding role at clearly automotive company
-    - tech_adjacent: robotics, drones, aerospace, industrial sensors
-    - engineering_general: mech/elec engineering at non-auto company
-    - out_of_domain: web dev, finance, marketing, healthcare, consulting (non-auto)
+(A) CLASSIFY the job's domain relative to the candidate's field
+    ({field}). Pick exactly ONE class:
+    - core_field: directly in the candidate's field
+    - adjacent_in_company: different kind of role, but at a company central
+      to the field
+    - skill_adjacent: different industry with strong overlap with the
+      candidate's skills
+    - broader_field: same broad profession, different specialty
+    - out_of_domain: unrelated to the field and the candidate's skills
 
 (B) SCORE the candidate fit (0-100):
     - 90-100: outstanding fit

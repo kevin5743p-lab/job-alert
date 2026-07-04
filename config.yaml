@@ -102,8 +102,14 @@ platforms:
   companies:
     enabled: true            # Direct fetch from company career portals (ATS APIs)
     # Leave `include` empty to fetch from ALL configured companies, or
-    # specify names to limit. See fetchers/companies.py for the list.
+    # specify names to limit. See fetchers/companies.py for the default
+    # (automotive) list.
     include: []
+    # For other fields, replace the default list entirely with your own
+    # employers. Supported ATS values: smartrecruiters, greenhouse, lever.
+    # Find the id in the company's careers-page URL on that ATS.
+    # targets:
+    #   - {name: "Example Corp", ats: "greenhouse", id: "examplecorp"}
 
   # ── SAP SuccessFactors ──────────────────────────────────────
   # Used by BMW, Audi, parts of Volkswagen Group, Schaeffler, etc.
