@@ -7076,6 +7076,28 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-04T11:49:37.401451",
+      "strong": [],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8552567002",
+            "title": "Research Scientist, Wayve Labs",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8552567002",
+            "published": "2026-06-05T20:11:22-04:00",
+            "source": "Wayve (Direct)"
+          }
+        }
+      ]
     }
   ]
 }
