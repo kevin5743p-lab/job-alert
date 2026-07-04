@@ -21,10 +21,11 @@ ai:
 
 # ── Scheduler ─────────────────────────────────────────────────
 scheduler:
-  # How far back a run looks for "new" jobs. 240 min for a 2-hour
-  # cadence: GitHub cron can be delayed or skipped, and dedup makes
-  # the overlap harmless.
-  lookback_minutes: 240
+  # How far back a run looks for "new" jobs. 600 min so the first
+  # morning run (~06:23 Berlin) also covers jobs posted after the last
+  # evening run (~22:23) — quiet hours skip the runs in between. Dedup
+  # makes the overlap across runs harmless.
+  lookback_minutes: 600
   quiet_hours:
     start: 23        # no runs from 23:00 ...
     end: 6           # ... until 06:00
@@ -88,9 +89,9 @@ platforms:
   linkedin:
     enabled: true
     # LINKEDIN_LI_AT env var is picked up automatically if set.
-    # On CI the per-job detail fetch is skipped (title/company/location
-    # from the search cards is enough for filtering).
-    fetch_details: false
+    # Descriptions are fetched for NEW jobs only (capped at 25/run) so
+    # LinkedIn postings compete fairly with full-text sources.
+    fetch_details: true
 
   xing:
     # Disabled 2026-07: Xing moved search to /jobs/search/ki, a JS-rendered

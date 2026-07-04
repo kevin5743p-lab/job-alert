@@ -66,7 +66,8 @@ def fetch_all(config: Dict, lookback_minutes: int,
             queries, location,
             li_at_cookie=os.environ.get("LINKEDIN_LI_AT", ""),
             max_age_minutes=lookback_minutes,
-            fetch_details=li_cfg.get("fetch_details", False),
+            fetch_details=li_cfg.get("fetch_details", True),
+            seen_jobs=seen_jobs,
         ),
     ))
 

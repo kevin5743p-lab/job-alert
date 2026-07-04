@@ -26,15 +26,20 @@ _BLOCKED_STATUSES = {999, 429, 403}
 
 
 def fetch(queries: List[str], location: str, li_at_cookie: str = "",
-          max_age_minutes: int = 60, fetch_details: bool = True) -> List[Dict]:
+          max_age_minutes: int = 60, fetch_details: bool = True,
+          seen_jobs=None, max_detail_fetches: int = 25) -> List[Dict]:
     """
     Fetch recent LinkedIn jobs using the guest API.
 
-    fetch_details=False skips the per-job description request (halves request
-    volume — recommended on CI). Cards still yield title/company/location.
+    Descriptions are fetched per job but only for jobs not already in
+    seen_jobs, capped at max_detail_fetches per run. Without a description
+    the matchers can only score the title, which buries LinkedIn jobs
+    relative to sources that provide full text.
     """
     jobs = []
     seen_ids = set()
+    seen_jobs = seen_jobs or set()
+    detail_budget = max_detail_fetches
     cutoff = datetime.now(timezone.utc) - timedelta(minutes=max_age_minutes)
 
     headers = {
@@ -96,18 +101,22 @@ def fetch(queries: List[str], location: str, li_at_cookie: str = "",
                     except ValueError:
                         pass
 
-                # We're already filtering by f_TPR in the URL, so trust
-                # LinkedIn's filter rather than failing on date parse.
-                if published and published < cutoff:
+                # f_TPR already filters server-side. The card's datetime attr
+                # is date-only (midnight), so a strict client-side cutoff
+                # silently drops everything posted "today" once the cutoff
+                # passes midnight — only reject clearly stale cards.
+                if published and published < cutoff - timedelta(hours=24):
                     continue
 
+                full_id = f"linkedin_{job_id}"
                 description = ""
-                if fetch_details:
+                if fetch_details and detail_budget > 0 and full_id not in seen_jobs:
                     description = _fetch_description(job_id, headers, cookies)
+                    detail_budget -= 1
                     time.sleep(0.5)
 
                 jobs.append({
-                    "id": f"linkedin_{job_id}",
+                    "id": full_id,
                     "title": title_el.get_text(strip=True) if title_el else "Unknown",
                     "company": company_el.get_text(strip=True) if company_el else "Unknown",
                     "location": location_el.get_text(strip=True) if location_el else location,
