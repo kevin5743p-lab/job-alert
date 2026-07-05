@@ -4026,6 +4026,118 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-05T17:34:56.668169",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "The candidate's master's studies in International Automotive Engineering, experience with sensor data analysis, and skills in Python, Grafana, and InfluxDB align well with the job requirements, despite limited professional experience and German language proficiency.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate's master's studies in International Automotive Engineering, experience with sensor data analysis, and skills in Python, Grafana, and InfluxDB align well with the job requirements, despite limited professional experience and German language proficiency.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4385055745",
+            "title": "Praktikum Betriebsfestigkeit",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team …arbeiten an unterschiedlichen Teilaspekten zur Sicherstellung der Betriebsfestigkeit unserer Fahrzeuge. Dabei vereinen wir verschiedenste Expertisen bzgl. Prüfstandstechnik, Mehrkörpersimulation, Lastdatenermittlung, Datenanalyse und Betriebsfestigkeitsbewertung. Was erwartet dich? Dei",
+            "url": "https://www.linkedin.com/jobs/view/4385055745",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "The candidate's skills in Python, data analysis, and software engineering are relevant, but the job is not directly related to automotive engineering.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 60,
+          "ai_reason": "The candidate's skills in Python, data analysis, and software engineering are relevant, but the job is not directly related to automotive engineering.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4361522784",
+            "title": "Working Student Software Engineering Frontend (all genders)",
+            "company": "Avelios Medical",
+            "location": "Munich, Bavaria, Germany",
+            "description": "About Us Our mission at Avelios is to unlock clinical data to power seamless healthcare operations for better patient care. To do so, we have built a modular software platform that digitizes and optimizes workflows in hospitals with cutting-edge technology in a user-friendly way. With our software, ",
+            "url": "https://www.linkedin.com/jobs/view/4361522784",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate's skills in Python, data analysis, and AI are relevant, but the job's focus on KI engineering and Azure services is not directly related to their automotive engineering background.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 60,
+          "ai_reason": "The candidate's skills in Python, data analysis, and AI are relevant, but the job's focus on KI engineering and Azure services is not directly related to their automotive engineering background.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4436035385",
+            "title": "Werkstudent (m/w/d) KI Engineer",
+            "company": "CITTI Handelsgesellschaft mbH & Co. KG",
+            "location": "Kiel, Schleswig-Holstein, Germany",
+            "description": "Wir, die CITTI Handelsgesellschaft mbH & Co. KG, sind das Shared Service Center der gesamten Unternehmensgruppe, zu der ca. 10.000 Mitarbeitende gehören. Zur national wie auch international vertretenen Unternehmensgruppe zählen insbesondere Firmen und auch Marktführer im Lebensmittelgroßhandel wie C",
+            "url": "https://www.linkedin.com/jobs/view/4436035385",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Erfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437126010",
+            "title": "Systems Engineer (m/w/d)",
+            "company": "ETO GRUPPE",
+            "location": "Stockach, Baden-Württemberg, Germany",
+            "description": "Ihre Aufgaben Analyse, Bewertung und Abstimmung von Kundenanforderungen sowie Ableitung strukturierter, belastbarer Systemanforderungen Entwicklung und Ausgestaltung wettbewerbsfähiger, robuster Systemarchitekturen (funktional, logisch, physikalisch) für mechatronische Produkte Sicherstellung der Ko",
+            "url": "https://www.linkedin.com/jobs/view/4437126010",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4376912131",
+            "title": "Engine Control Engineer",
+            "company": "The Exploration Company",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Here at The Exploration Company, we are developing, producing, and operating Nyx, a modular and reusable space orbital vehicle that can eventually be refuelled in orbit and that can carry cargo - and potentially humans in the longer run. The heart of a spacecraft lies in its engine, and that's why w",
+            "url": "https://www.linkedin.com/jobs/view/4376912131",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "The candidate's skills are partially applicable, but the job's focus on energy and venture development is not directly related to their automotive engineering background.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 40,
+          "ai_reason": "The candidate's skills are partially applicable, but the job's focus on energy and venture development is not directly related to their automotive engineering background.",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4436030614",
+            "title": "Venture Development (Tech & Automation) Working Student (w/m/d) - Studentjob.de",
+            "company": "Jobster",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Unser Ziel ist eine Solaranlage auf jedem Dach, ein Speicher in jedem Haus und ein E-Auto in jeder Garage. Enpal macht das möglich mit einer integrierten Gesamtlösung für dezentrale Energie - von Unser Ziel ist eine Solaranlage auf jedem Dach, ein Speicher in jedem Haus und ein E-Auto in jeder Garag",
+            "url": "https://www.linkedin.com/jobs/view/4436030614",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
