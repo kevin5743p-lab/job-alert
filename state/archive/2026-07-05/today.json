@@ -3532,6 +3532,500 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-05T15:42:01.511539",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, LiDAR/Radar/Camera, and Python are relevant to the role, but the lack of professional experience and required C/C++ skills are notable gaps.",
+          "domain_class": "core_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, LiDAR/Radar/Camera, and Python are relevant to the role, but the lack of professional experience and required C/C++ skills are notable gaps.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4417516066",
+            "title": "Software Engineer – Autonomous Driving (Fixed Term)",
+            "company": "NVIDIA",
+            "location": "Munich, Bavaria, Germany",
+            "description": "NVIDIA is looking for a highly motivated Planning and Control Software Engineer to join its dynamic, collaborative and fast-paced customer delivery organization. In this role, you will become part of the organization’s efforts to extend the functionality of NVIDIA’s autonomous driving software stack",
+            "url": "https://www.linkedin.com/jobs/view/4417516066",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate's skills in Python, data analysis, and machine learning are relevant, but the job's focus on intraocular lenses is outside the candidate's core field of automotive engineering.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 60,
+          "ai_reason": "The candidate's skills in Python, data analysis, and machine learning are relevant, but the job's focus on intraocular lenses is outside the candidate's core field of automotive engineering.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4428369805",
+            "title": "Student*in /m/w/d) für ein mehrmonatiges Praxissemester/Pflichtpraktikum im Bereich Forschung und Entwicklung (Intraokularlinsen) - Image Processing & Machine Learning",
+            "company": "Alcon",
+            "location": "Großwallstadt, Bavaria, Germany",
+            "description": "Willkommen bei Alcon in Großwallstadt – einem der weltweit führenden Standorte für Kontaktlinsentechnologie. Als Teil der internationalen Alcon-Gruppe verbinden wir technologische Exzellenz mit sozialer Verantwortung und nachhaltigem Wirtschaften. Wir vereinen Forschung, Entwicklung, Produktion, Qua",
+            "url": "https://www.linkedin.com/jobs/view/4428369805",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, LiDAR/Radar/Camera, and Python are relevant to the role, but the job posting's emphasis on management consulting and strategy may not be the best fit for the candidate's technical skills and interests.",
+          "domain_class": "core_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, LiDAR/Radar/Camera, and Python are relevant to the role, but the job posting's emphasis on management consulting and strategy may not be the best fit for the candidate's technical skills and interests.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4378340479",
+            "title": "Praktikant (all genders) in der Managementberatung - Development & Technology",
+            "company": "Porsche Consulting",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Was erwartet dich? Wir sind offen für neue Ideen und schätzen Menschen, die mitdenken und einen eigenen Kopf haben. Je mehr Perspektiven wir einbeziehen, desto innovativer kann unsere Arbeit sein. Wir brauchen Menschen, die strategisch denken und pragmatisch handeln, die Zukunft gestalten wollen, di",
+            "url": "https://www.linkedin.com/jobs/view/4378340479",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Junior Engineer'; skills: Python, Linux; preferred location (rule-based; AI quota exhausted)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": true,
+          "job": {
+            "id": "linkedin_4376794508",
+            "title": "System Engineer Tracker (all genders)",
+            "company": "Frequentis",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "Job Introduction Even though we maintain our feet on the ground, our second home will always remain in the sky. As a medium-sized IT company situated in Karlsruhe Germany, developing tailored solutions for global air traffic control authorities is our forte. Our contribution to Flight security, can ",
+            "url": "https://www.linkedin.com/jobs/view/4376794508",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4433794685",
+            "title": "Senior Robotics Engineer (Autonomy)",
+            "company": "hexafarms",
+            "location": "Berlin, Berlin, Germany",
+            "description": "About The Role We are building robots from the ground up for the #ag industry. We already have some of them live out in the fields, but we want to nail down the autonomy part. We are planning to have hundreds of rovers scouting commercial production facilities soon, and you will be responsible for f",
+            "url": "https://www.linkedin.com/jobs/view/4433794685",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4348600710",
+            "title": "Senior Research Engineer, Data Engine",
+            "company": "Intrinsic",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Intrinsic is an AI robotics group at Google aiming to reimagine the potential of industrial robotics. Our team believes that advances in AI, perception and simulation will redefine what’s possible for industrial robotics in the near future – with software and data at the core. Our mission is to make",
+            "url": "https://www.linkedin.com/jobs/view/4348600710",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4369499674",
+            "title": "Softwareentwickler Bildverarbeitung | C#, FPGA, Vision | Inhouse, bis 100.000 € (mwd)",
+            "company": "Vesterling AG",
+            "location": "Darmstadt, Hesse, Germany",
+            "description": "Softwareentwickler Bildverarbeitung (mwd) Als Softwareentwickler Bildverarbeitung erstellen Sie Algorithmen und Applikationen für den industriellen Einsatz mit .Net, C# und MVTec Halcon. Standort: Darmstadt Vertragsart: Unbefristete Festanstellung durch unseren Klienten Aufgaben Als Softwareentwickl",
+            "url": "https://www.linkedin.com/jobs/view/4369499674",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4414360751",
+            "title": "Ground Stations & Telecommunication Engineer (d/m/w)",
+            "company": "Airbus Defence and Space",
+            "location": "Immenstaad am Bodensee, Baden-Württemberg, Germany",
+            "description": "Job Description: At Airbus, our purpose is to improve life on Earth and beyond through our cutting-edge space technologies. With every technological breakthrough, we bring people closer together, we navigate new frontiers and we discover new and unexplored destinations. And we don't just take innova",
+            "url": "https://www.linkedin.com/jobs/view/4414360751",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4378047063",
+            "title": "Principal Engineer-Analog Design RF",
+            "company": "Microchip Technology Inc.",
+            "location": "Greater Heilbronn Region",
+            "description": "Are you looking for a unique opportunity to be a part of something great? Want to join a 17,000-member team that works on the technology that powers the world around us? Looking for an atmosphere of trust, empowerment, respect, diversity, and communication? How about an opportunity to own a piece of",
+            "url": "https://www.linkedin.com/jobs/view/4378047063",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4427416689",
+            "title": "Braunschweig New Grad and Intern Applications",
+            "company": "Ciena",
+            "location": "Hannover-Braunschweig-Göttingen-Wolfsburg Region",
+            "description": "As the global leader in high-speed connectivity, Ciena is committed to a people-first approach. Our teams enjoy a culture focused on prioritizing a flexible work environment that empowers individual growth, well-being, and belonging. We’re a technology company that leads with our humanity—driving ou",
+            "url": "https://www.linkedin.com/jobs/view/4427416689",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4378014129",
+            "title": "Laborassistenz",
+            "company": "West Pharmaceutical Services",
+            "location": "Stolberg, North Rhine-Westphalia, Germany",
+            "description": "Description This is an onsite position requiring the team member to be onsite 5 days a week. At West, we’re a dedicated team that is connected by a purpose to improve patient lives that has been at the center of our Company for more than a century. Our story began when Herman O. West solved the prob",
+            "url": "https://www.linkedin.com/jobs/view/4378014129",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4433906007",
+            "title": "Projektingenieur Elektrotechnik (all genders)",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Voll/Teilzeit Sie begeistern sich für Umweltschutz und Nachhaltigkeit und sind auf der Suche nach einer abwechslungsreichen und vielseitigen neuen Aufgabe? Dann kommen Sie zu uns als Ingenieurin TGA (m/w/d) Elektrotechnik. Das Sachgebiet Bau-Projektmanagement betreut die Planung, Ausführung und Umse",
+            "url": "https://www.linkedin.com/jobs/view/4433906007",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'VP'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4433796550",
+            "title": "Project Engineer",
+            "company": "Haystack",
+            "location": "Essen, North Rhine-Westphalia, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Evaluate and track technical requirements Plan wind farm and SCADA cabinet concepts Clarify requirements for wind farm remote access (VPN, IPsec) Identify wind farm data interfaces (OPC XML-DA, OPC UA, SQL) Define VLAN interfaces to customer equ",
+            "url": "https://www.linkedin.com/jobs/view/4433796550",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4417173315",
+            "title": "Jr. Projektleiter TGA / Elektrotechnik München (m/w/d)",
+            "company": "Linking Talents Recruitment GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "– Top – Gehalt (65.000 € – 72.000 € p.a.) + Firmenwagen + individuelle Weiterbildung + Aufstiegsperspektive zum Projektleiter + innovativer Arbeitgeber Ihre Vorteile Attraktives Jahresgehalt bis zu 72.000 € zzgl. jährlichem Inflationsausgleich Geplanter Aufstieg zum Projektleiter ELT Premium-Firmenw",
+            "url": "https://www.linkedin.com/jobs/view/4417173315",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4406707279",
+            "title": "Lead Engineer Validation / Test (m/w/d) Power-To-X Hochdruckpumpe",
+            "company": "Woodward, Inc.",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Woodward L'Orange ist als Pionier modernster Technologie auf dem Weg zu nachhaltigen Lösungen: Komponenten und Systeme für die Energiewandlungssysteme der Zukunft. Mit unseren rund 1.300 Mitarbeitern an den Standorten Stuttgart, Glatten, Wolfratshausen und Rellingen entwickeln und produzieren wir ei",
+            "url": "https://www.linkedin.com/jobs/view/4406707279",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4433902344",
+            "title": "Senior Test Automation Engineer",
+            "company": "Haystack",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Develop and manage end-to-end test strategies across all levels (Unit, Integration, System, UI, Stress, Performance) for medical software products. Build and enhance test harnesses and CI pipelines for early regression detection, stability, and ",
+            "url": "https://www.linkedin.com/jobs/view/4433902344",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4417496741",
+            "title": "Quality Lead Auditor (m/w/d)",
+            "company": "Stanley Black & Decker, Inc.",
+            "location": "Gießen, Hesse, Germany",
+            "description": "Stanley Black & Decker steht als weltweit führender Anbieter für Werkzeuge und Zubehör sowie für Befestigungslösungen seit 1843 an der Spitze der Innovation. Unsere renommierten Marken DEWALT, BLACK+DECKER, CRAFTSMAN und STANLEY sind gleichbedeutend mit Qualität und Zuverlässigkeit. Unser Segment ST",
+            "url": "https://www.linkedin.com/jobs/view/4417496741",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4427927517",
+            "title": "Senior IT Consultant* / Senior Requirements Engineer*",
+            "company": "Instaffo",
+            "location": "Mainz, Rhineland-Palatinate, Germany",
+            "description": "Senior IT Consultant* / Senior Requirements Engineer* bei QAware GmbH Anforderungen Bitte beachte, dass für diese Stelle eine Arbeitserlaubnis für Deutschland erforderlich ist. Sprache: Deutsch - Muttersprachliches Niveau, Englisch - Fließend WAS DU MITBRINGEN SOLLTEST: gut oder sehr gut abgeschloss",
+            "url": "https://www.linkedin.com/jobs/view/4427927517",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Führungserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436997090",
+            "title": "Filialleiter (m/w/d) Großraum Naila",
+            "company": "Kaufland Dienstleistung Süd- Ost GmbH & Co. KG",
+            "location": "Naila, Bavaria, Germany",
+            "description": "Kaufland Filialleiter (m/w/d) Großraum Naila room Naila work Vollzeit, Verkauf, Führungskraft watch_later Vollzeit event Erschienen vor: 0 Stunden Filialleiter (m/w/d) Großraum Naila Du hast Lust, deinen Kunden mit unseren durchschnittlich 30.000 Artikeln alle Wünsche zu erfüllen? Dann bist du hier ",
+            "url": "https://www.linkedin.com/jobs/view/4436997090",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4378336538",
+            "title": "(Senior) Consultant (all genders) Aviation Strategy",
+            "company": "Porsche Consulting",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4378336538",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4378340599",
+            "title": "(Senior) Consultant (all genders) Organizational Design & Transformation",
+            "company": "Porsche Consulting",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4378340599",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4378334566",
+            "title": "(Senior) Consultant (all genders) Accelerating to Space",
+            "company": "Porsche Consulting",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4378334566",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4378337498",
+            "title": "(Senior) Consultant (all genders) Life Sciences",
+            "company": "Porsche Consulting",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4378337498",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4378355155",
+            "title": "(Senior) Consultant (all genders) Aerospace – OEM Strategy",
+            "company": "Porsche Consulting",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4378355155",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Werkstudent'; skills: Python; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4433795651",
+            "title": "Werkstudent (m/w/d) Neue Technologien & Business Development",
+            "company": "UKA – Der Energieparkentwickler",
+            "location": "Dresden, Saxony, Germany",
+            "description": "Die UKA-Gruppe gehört in Deutschland zu den führenden Projektentwicklern für erneuerbare Energien. Die Projektpipeline der Gruppe beträgt in all ihren Märkten aktuell mehr als 19 Gigawatt. Über ihre Betriebsführungsgesellschaft UKB übernimmt sie darüber hinaus die Betriebsführung für Wind- und PV-Pa",
+            "url": "https://www.linkedin.com/jobs/view/4433795651",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Werkstudent'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4359832543",
+            "title": "Werkstudent (d/m/w) im Bereich Plant Controlling",
+            "company": "Airbus Aircraft",
+            "location": "Stade, Lower Saxony, Germany",
+            "description": "Job Description: Zur Unterstützung im Plant Controlling, sucht Airbus Aerostructures einen Werkstudenten im Bereich Werkscontrolling (d/m/w) Du bist Vollzeitstudent, auf der Suche nach einer Werkstudentenstelle und möchtest die Arbeit eines Werkscontrollers kennenlernen? Dann bewirb dich jetzt! Wir ",
+            "url": "https://www.linkedin.com/jobs/view/4359832543",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Ingenieur'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4433793672",
+            "title": "Ingenieur (all genders) Tiefbau",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Voll/Teilzeit Sie möchten Ihre Expertise im Tiefbau in vielfältige Projekte einbringen, die das tägliche Leben der Stadt unmittelbar verbessern? Dann verstärken Sie unser Team als als Projektingenieur*in (m/w/d) Tiefbau im Sachgebiet Bau Projektmanagement der Stadtreinigung Hamburg. Bewerben Sie sic",
+            "url": "https://www.linkedin.com/jobs/view/4433793672",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4385478335",
+            "title": "System Engineer - Technical Safety & Regulatory Compliance (m/f/d)",
+            "company": "Alpitronic",
+            "location": "Ottobrunn, Bavaria, Germany",
+            "description": "Your Responsibilities Manage the technical safety and regulatory compliance framework for EV fast‑charging products across the full product lifecycle Define, interpret, and maintain applicable norms, standards, and regulatory requirements for products and equipment developed by R&D Perform system‑le",
+            "url": "https://www.linkedin.com/jobs/view/4385478335",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 24,
+          "reason": "skills: Automobil, Fahrzeugtechnik; keyword bonus: 2; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4317303815",
+            "title": "Prüfingenieur Fahrzeuge / Kfz Sachverständiger Wetteraukreis (m/w/d)",
+            "company": "DEKRA Germany",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Prüfingenieur Fahrzeuge / Kfz Sachverständiger Wetteraukreis (m/w/d) Frankfurt, DE, 60388 Einsatzbereich: Fahrzeugprüfung Einstiegslevel: Berufseinsteiger:innen Vertragsart: Unbefristeter Vertrag Vollzeit/Teilzeit: Vollzeit Mobiles Arbeiten: Anteilig Job ID: 3033 Veröffentlichungsdatum: 09.06.2026 D",
+            "url": "https://www.linkedin.com/jobs/view/4317303815",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 15,
+          "reason": "skills: Linux; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4433782960",
+            "title": "Software Tester",
+            "company": "Haystack",
+            "location": "Kassel, Hesse, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Specify and enhance scenario tests for various systems Develop and verify boundary conditions for components Create and maintain testing and acceptance documentation Define and oversee defect resolution and quality assurance processes Conduct so",
+            "url": "https://www.linkedin.com/jobs/view/4433782960",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
