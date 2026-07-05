@@ -33,6 +33,7 @@ import yaml
 import archive
 import fetchers
 import history
+import personalize
 import quiet_hours
 from matchers import ai as ai_scorer
 from matchers import domain_classifier, groq_client, memory_stub, rules
@@ -100,6 +101,22 @@ def run_check(dry_run: bool = False, no_ai: bool = False,
     ai_cfg = config.get("ai", {})
     model = ai_cfg.get("model", "llama-3.3-70b-versatile")
     max_ai_calls = ai_cfg.get("max_ai_calls_per_run", 60)
+
+    # One-file onboarding: while profile.yaml is still the factory template,
+    # a real run derives the whole profile (skills, titles, domain block,
+    # search queries) from cv.md.
+    if personalize.profile_is_template(profile):
+        if dry_run:
+            logger.warning("profile.yaml is still the factory template — a real "
+                           "run (or `python main.py --personalize`) generates "
+                           "it from cv.md.")
+        else:
+            profile = personalize.ensure_profile(cv_text, api_key, model,
+                                                 PROFILE_PATH)
+
+    # Generated profiles carry their own job-board queries
+    if profile.get("search_queries"):
+        config.setdefault("search", {})["queries"] = profile["search_queries"]
 
     ai_enabled = bool(api_key) and not no_ai
     if not ai_enabled:
@@ -359,9 +376,18 @@ def main() -> int:
                         help="Skip Groq; rule-based scoring only")
     parser.add_argument("--test-telegram", action="store_true",
                         help="Send a test Telegram message and exit")
+    parser.add_argument("--personalize", action="store_true",
+                        help="(Re)generate profile.yaml from cv.md and exit")
     args = parser.parse_args()
 
     check_no_secrets_in_config()
+
+    if args.personalize:
+        config = load_yaml(CONFIG_PATH)
+        model = config.get("ai", {}).get("model", "llama-3.3-70b-versatile")
+        personalize.ensure_profile(load_cv(), os.environ.get("GROQ_API_KEY", ""),
+                                   model, PROFILE_PATH)
+        return 0
 
     if args.test_telegram:
         token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
