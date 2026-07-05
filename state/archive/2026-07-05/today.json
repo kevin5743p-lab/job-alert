@@ -4138,6 +4138,337 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-05T19:48:07.022185",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 70,
+          "reason": "The candidate's experience in sensor data analysis, ADAS, and autonomous driving aligns with the job posting, but the role's focus on mechanical and product development is not directly matched by the candidate's background in International Automotive Engineering with a specialty in sensor data.",
+          "domain_class": "core_field",
+          "ai_score": 70,
+          "ai_reason": "The candidate's experience in sensor data analysis, ADAS, and autonomous driving aligns with the job posting, but the role's focus on mechanical and product development is not directly matched by the candidate's background in International Automotive Engineering with a specialty in sensor data.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4433911081",
+            "title": "Werkstudent im Bereich Technische Entwicklung (m/w/d)",
+            "company": "aft automotive GmbH",
+            "location": "Greven, North Rhine-Westphalia, Germany",
+            "description": "Was macht die aft automotive GmbH? Wir sind ein international tätiger mittelständischer Automobil-Systemlieferant mit Hauptsitz in Greven. Wir fertigen weltweit Leitungssysteme, Funktionsbauteile und Komponenten aus Kunststoff im Bereich der Medienführung für Fahrzeuge aller Art. Ihre Tätigkeit: Unt",
+            "url": "https://www.linkedin.com/jobs/view/4433911081",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate's skills in sensor data analysis and programming languages like Python are relevant, but the job requires experience in electrical engineering and sensor technology.",
+          "domain_class": "broader_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate's skills in sensor data analysis and programming languages like Python are relevant, but the job requires experience in electrical engineering and sensor technology.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4437111577",
+            "title": "Ingenieur Elektrotechnik und Sensorik (m/w/d)",
+            "company": "Analog Microelectronics GmbH",
+            "location": "Mainz, Rhineland-Palatinate, Germany",
+            "description": "\"Technologie ist unsere Leidenschaft\" Analog Microelectronics mit Sitz in Mainz, entwickelt und produziert seit 1994 hochwertige Produkte im Bereich der Sensorik und Signalauswertung. Als ein führender Spezialist für Drucksensoren und analoge integrierte Schaltungen beliefert unser Unternehmen weltw",
+            "url": "https://www.linkedin.com/jobs/view/4437111577",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 39,
+          "reason": "title fits 'Junior Engineer'; skills: Automobil; keyword bonus: 2; preferred location (rule-based; AI quota exhausted)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": true,
+          "job": {
+            "id": "linkedin_4433904514",
+            "title": "Resident Engineer (m/w/d) - Entwicklung und Konstruktion - Großraum München",
+            "company": "aft automotive GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Unsere Mission:  Mobilität neu denken Als mittelständischer Automobil-Systemlieferant entwickeln und fertigen wir mit hoher Expertise und modernsten Technologien Lösungen für die Mobilität der nächsten Generation. An sechs internationalen Standorten arbeiten rund 1000 Mitarbeitende an der Entwicklun",
+            "url": "https://www.linkedin.com/jobs/view/4433904514",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4377965060",
+            "title": "Lead Research Engineer (f/m/d) - Foundation and World Models on Structured Data",
+            "company": "SAP",
+            "location": "Garching, Bavaria, Germany",
+            "description": "We help the world run better At SAP, we keep it simple: you bring your best to us, and we'll bring out the best in you. We're builders touching over 20 industries and 80% of global commerce, and we need your unique talents to help shape what's next. The work is challenging – but it matters. You'll f",
+            "url": "https://www.linkedin.com/jobs/view/4377965060",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4418171884",
+            "title": "Systems Engineer, Managed Operations, Managed Operations",
+            "company": "Amazon Web Services (AWS)",
+            "location": "Berlin, Germany",
+            "description": "Description AWS has successfully launched the European Sovereign Cloud (ESC), marking a significant development in Utility Computing (UC). To spearhead this initiative, we are actively seeking experienced systems engineers with a strong background in automation and operations. As part of the AWS Man",
+            "url": "https://www.linkedin.com/jobs/view/4418171884",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436030946",
+            "title": "Head of Engineering",
+            "company": "Jobgether",
+            "location": "Germany",
+            "description": "This position is listed on behalf of a partner company, who manages all applications and next steps. Our partner is looking for a Head of Engineering based in Germany. This is an exceptional opportunity for an experienced engineering leader to drive the technical evolution of a mature, high-traffic ",
+            "url": "https://www.linkedin.com/jobs/view/4436030946",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4378354183",
+            "title": "(Senior) Consultant (All genders) Operations Footprint Strategy",
+            "company": "Porsche Consulting",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Was erwartet dich? Wir suchen Menschen, die strategisch denken, pragmatisch handeln und mit uns die Operations-Landschaften führender Unternehmen transformieren. Persönlichkeiten, die Verantwortung übernehmen, neue Perspektiven einbringen und gemeinsam im Team nachhaltige Lösungen gestalten. Bei uns",
+            "url": "https://www.linkedin.com/jobs/view/4378354183",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Out of domain: The job is in public relations and communications, unrelated to automotive engineering.",
+          "domain_class": "out_of_domain",
+          "ai_score": 0,
+          "ai_reason": "The role is unrelated to the field and the candidate's skills, with no overlap in job requirements and candidate's expertise.",
+          "unscored": false,
+          "category": "out_of_domain",
+          "job": {
+            "id": "linkedin_4433794705",
+            "title": "Praktikum | 3 oder bis zu 6 Monate",
+            "company": "agentur05 - BrandGalaxy Group",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Als Agentur für Kommunikation und Influencer Relations unterstützen wir sowohl mittelständische Unternehmen als auch Global Player bei der Umsetzung ihrer individuellen Kommunikationsziele. Ob strategische Beratung, klassische Pressearbeit, Produkt- oder Event-PR, Social Media oder Influencer Relati",
+            "url": "https://www.linkedin.com/jobs/view/4433794705",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "The role requires experience with dotNET development and Windows PowerShell, which the candidate lacks, and the job description does not align with the candidate's skills and experience.",
+          "domain_class": "broader_field",
+          "ai_score": 0,
+          "ai_reason": "The role requires experience with dotNET development and Windows PowerShell, which the candidate lacks, and the job description does not align with the candidate's skills and experience.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4433786985",
+            "title": "Praktikant*in Softwareentwicklung (m/w/d)",
+            "company": "Syxos GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Cloud - eine Wolke? Helpdesk - ein Schreibtisch? Exchange - ein Tauschgeschäft? PowerShell ein Schalentier? Wenn Du darunter mehr verstehst, dann solltest Du auf jeden Fall weiterlesen. Syxos GmbH ist ein IT Dienstleister, der die komplette Bandbreite von IT- und Telekommunikationsdienstleistungen a",
+            "url": "https://www.linkedin.com/jobs/view/4433786985",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Werkstudent'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4386895983",
+            "title": "Werkstudent Bereich Technischer Kundendienst (m/w/d)",
+            "company": "Liebherr Group",
+            "location": "Biberach an der Riß, Baden-Württemberg, Germany",
+            "description": "Sie haben erst mal genug in Vorlesungen gesessen und sind bereit, etwas zu bewegen? Dann wagen Sie Ihren ersten Schritt in die Arbeitswelt – mit Liebherr! Wir fördern Ihr technisches Talent nachhaltig: in einer erfolgreichen internationalen Firmengruppe mit sympathischen Kollegen und Kolleginnen. Da",
+            "url": "https://www.linkedin.com/jobs/view/4386895983",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 31,
+          "reason": "skills: Automotive, Automobil, Fahrzeugtechnik; keyword bonus: 3; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4433901693",
+            "title": "Entwicklungsingenieur (m/w/d)",
+            "company": "aft automotive GmbH",
+            "location": "Greven, North Rhine-Westphalia, Germany",
+            "description": "Was macht die aft automotive GmbH? Als mittelständischer Automobil-Systemlieferant sind wir stolz darauf, innovative Wege zu beschreiten. Wir entwickeln und produzieren mit rund 850 Mitarbeitern an weltweit vier Standorten Leitungssysteme, funktionale Bauteile und Kunststoffkomponenten im Bereich de",
+            "url": "https://www.linkedin.com/jobs/view/4433901693",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 26,
+          "reason": "skills: Automotive, Automobil; keyword bonus: 3; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4433799724",
+            "title": "Entwicklungsingenieur/in Mechatronik in der Technischen Entwicklung (m/w/d)",
+            "company": "aft automotive GmbH",
+            "location": "Greven, North Rhine-Westphalia, Germany",
+            "description": "Was macht die aft automotive GmbH? Als mittelständischer Automobil-Systemlieferant sind wir stolz darauf, innovative Wege zu beschreiten. Wir entwickeln und produzieren mit rund 850 Mitarbeitern an weltweit vier Standorten Leitungssysteme, funktionale Bauteile und Kunststoffkomponenten im Bereich de",
+            "url": "https://www.linkedin.com/jobs/view/4433799724",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 26,
+          "reason": "skills: Automotive, Automobil; keyword bonus: 3; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4433901695",
+            "title": "Duales Studium (m/w/d) (technisch, kaufmännisch, IT)",
+            "company": "aft automotive GmbH",
+            "location": "Greven, North Rhine-Westphalia, Germany",
+            "description": "Was macht die aft  automotive GmbH? Als mittelständischer Automobil-Systemlieferant sind wir stolz darauf, innovative Wege zu beschreiten. Wir entwickeln und produzieren mit rund 850 Mitarbeitern an weltweit vier Standorten Leitungssysteme, funktionale Bauteile und Kunststoffkomponenten im Bereich d",
+            "url": "https://www.linkedin.com/jobs/view/4433901695",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 24,
+          "reason": "skills: Automotive, Git; keyword bonus: 2; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4409285845",
+            "title": "Planer Software (m/w/d)",
+            "company": "Hirschvogel Group",
+            "location": "Schongau, Bavaria, Germany",
+            "description": "Job ID: 6812 Die Hirschvogel Group ist ein Unternehmen in Bewegung. Als technologieoffener Innovationspartner und Komponentenhersteller in der Automotive-Branche gestalten wir den Wandel im Mobilitätssektor mit. Wir sind in den wichtigen Marktregionen der Welt vor Ort. Unsere massivumgeformten und w",
+            "url": "https://www.linkedin.com/jobs/view/4409285845",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4437105827",
+            "title": "Test-/Prüfingenieur (m/w/d) - Automation",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "Test-/Prüfingenieur ? Automation (m/w/d) Einsatzort Nürnberg Vergütung bis zu 55.000 Eur p.a. Benefits Interessante Aufgaben in einem global aufgestellten Unternehmen Perspektivische Übernahme von Führungsaufgaben Offene Firmenkultur und flache Hierarchien Herzliches und hochprofessionelles Team Pro",
+            "url": "https://www.linkedin.com/jobs/view/4437105827",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "skills: Datenanalyse, Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4373457005",
+            "title": "Expert Digitalisierung - Datenanalyse & KI (m/w/d)",
+            "company": "BASF",
+            "location": "Schwarzheide, Brandenburg, Germany",
+            "description": "WILLKOMMEN BEI UNS Die BASF InfraService & Solutions Lausitz GmbH gestaltet aktiv die Strukturen und Abläufe im Industriepark Lausitz. Über 900 engagierte Mitarbeitende arbeiten hier täglich daran, Technik zu verstehen, Prozesse effizient zu gestalten und gemeinsam mit starken Partnern neue Maßstäbe",
+            "url": "https://www.linkedin.com/jobs/view/4373457005",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "skills: Radar; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4365090755",
+            "title": "Join Our Sales Talent Community - DACH (all genders)",
+            "company": "Shiftmove",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Join our Commercial & Sales Talent Community At Shiftmove , we're building the next generation of connected mobility products that help businesses across Europe make smarter, data-driven decisions. Our platform turns complex fleet and mobility operations into clear insights - empowering our customer",
+            "url": "https://www.linkedin.com/jobs/view/4365090755",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 15,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4433900147",
+            "title": "Interessierte AI-Enginer gesucht, der Bock hat die Bildungsbranche für immer zu verändern!",
+            "company": "Acadeo GmbH",
+            "location": "Mittelhof, Rhineland-Palatinate, Germany",
+            "description": "Interessierte AI-Enginer gesucht, der Bock hat die Bildungsbranche für immer zu verändern! 🚀 Wir suchen dich! **Das Wichtigste für die Arbeit bei uns sind: ** ➡️ Deine Auffassungsgabe ➡️ Dein Wille zu lernen ➡️ Du kannst bereits gut programmieren und es fällt dir leicht große Informationsmengen in A",
+            "url": "https://www.linkedin.com/jobs/view/4433900147",
+            "published": "2026-07-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
