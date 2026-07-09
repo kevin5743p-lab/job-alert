@@ -6405,6 +6405,375 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-09T20:10:55.002513",
+      "strong": [
+        {
+          "score": 90,
+          "reason": "The candidate's master's studies in International Automotive Engineering, experience with sensor data analysis (LiDAR/Radar/Camera), and proficiency in Python, Grafana, and InfluxDB closely match the job requirements, despite lacking professional experience and fluent German.",
+          "domain_class": "core_field",
+          "ai_score": 90,
+          "ai_reason": "The candidate's master's studies in International Automotive Engineering, experience with sensor data analysis (LiDAR/Radar/Camera), and proficiency in Python, Grafana, and InfluxDB closely match the job requirements, despite lacking professional experience and fluent German.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4438806383",
+            "title": "Praktikum/Praxissemester im Bereich Radarentwicklung",
+            "company": "InnoSenT GmbH",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Seit 1999 entwickelt und fertigt InnoSenT erfolgreich hochwertige Radarsensorik und gilt als Technologietreiber der Branche. Neben cleveren, industriellen Radaranwendungen entwickeln wir als zukunftsorientiertes Unternehmen Fahrerassistenzsysteme für den Bereich Automotive und stellen als EMS-Dienst",
+            "url": "https://www.linkedin.com/jobs/view/4438806383",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 70,
+          "reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, Python, and data visualization tools like Grafana and InfluxDB align well with the job requirements, but the role's focus on software development in logistics planning and the candidate's limited direct experience in this area are notable gaps.",
+          "domain_class": "core_field",
+          "ai_score": 70,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, Python, and data visualization tools like Grafana and InfluxDB align well with the job requirements, but the role's focus on software development in logistics planning and the candidate's limited direct experience in this area are notable gaps.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4417217867",
+            "title": "Praktikant Software Entwicklung in der Logistikplanung (w/m/x)",
+            "company": "BMW Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "DIE ZUKUNFT DER MOBILITÄT? DIGITAL. TEILE DEINE LEIDENSCHAFT. Mehr als 90 % aller Innovationen im Automobil basieren auf Elektronik und Software. Gerade hier sind große Freiräume und vernetztes Denken gefordert, um die Mobilität neu zu erfinden und ein völlig neues Fahrerlebnis zu ermöglichen. Desha",
+            "url": "https://www.linkedin.com/jobs/view/4417217867",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 49,
+          "reason": "title fits 'Masterarbeit Sensorik'; skills: Sensors, Sensorik, Git; keyword bonus: 2; preferred location (rule-based; AI quota exhausted)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": true,
+          "job": {
+            "id": "linkedin_4438805087",
+            "title": "Elektronik-Entwicklungsingenieur - Optische Sensorik & Spektrometrie",
+            "company": "Brunel",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Sie entwickeln und optimieren Elektronikbaugruppen für moderne Spektrometer- und Sensorsysteme. Darüber hinaus entwerfen Sie analoge und digitale Schaltungen für den Betrieb optischer Sensoren und Dioden-Arrays. Die Signalvorverarbeitung und Signalkonditionierung hochpräziser Messsysteme gehört eben",
+            "url": "https://www.linkedin.com/jobs/view/4438805087",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 5,
+          "reason": "skills: Git",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_projekt-manager-100-remote-hanover-403234",
+            "title": "Projekt Manager - 100% Remote (m/w/d)",
+            "company": "Digistore24",
+            "location": "Hanover",
+            "description": "Jobbeschreibung EINSTIEGSGEHALT: 45.000–60.000 € BRUTTO-JAHRESGEHALT (ABHÄNGIG VON BERUFSERFAHRUNG UND QUALIFIKATION) Du willst nicht einfach Projekte verwalten, sondern Dinge wirklich voranbringen? Bei Digistore24 EU steuerst du eigenständig Projekte quer durch alle Departments: Legal, HR, Operatio",
+            "url": "https://www.arbeitnow.com/jobs/companies/digistore24/projekt-manager-100-remote-hanover-403234",
+            "published": "2026-07-09T13:00:33+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Head of'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438691347",
+            "title": "Working Student Supply Chain",
+            "company": "STARK",
+            "location": "Munich, Bavaria, Germany",
+            "description": "About Us STARK is a new kind of defence technology company revolutionizing the way autonomous systems are deployed across multiple domains. We design, develop and manufacture high performance unmanned systems that are software-defined, mass-scalable, and cost effective. This provides our operators w",
+            "url": "https://www.linkedin.com/jobs/view/4438691347",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438679433",
+            "title": "Data Operations Engineer (F/M/D/)",
+            "company": "NavVis",
+            "location": "Munich, Bavaria, Germany",
+            "description": "OUR VISION When people use our technology to \"bridge the gap\" between the physical and digital worlds, they don't just capture reality - they create a new one. In this new reality, they are smarter, more productive, more streamlined, and more creative - because they have the digital foundation to bu",
+            "url": "https://www.linkedin.com/jobs/view/4438679433",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4435675738",
+            "title": "PhD Position (m/f/d) at the Technical University of Munich - Geodetic Observatory Wettzell",
+            "company": "Technical University of Munich",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "Join the Geodetic Observatory Wettzell at the Technical University of Munich and contribute to the operation and further development of the world-leading G ring laser. This PhD project combines laser optics, precision metrology, electronics, and advanced data analysis in close collaboration with the",
+            "url": "https://www.linkedin.com/jobs/view/4435675738",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437561841",
+            "title": "Technical Solutions Consultant Manager, Geo Auto",
+            "company": "Google",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Minimum qualifications: Bachelor’s degree in Science, Technology, Engineering, Mathematics, a related technical field, or equivalent practical experience. 7 years of experience working in the Automotive industry, leading new products from inception to launch. 5 years of experience managing a technic",
+            "url": "https://www.linkedin.com/jobs/view/4437561841",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4389255746",
+            "title": "Team Lead AI Engineering (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Aufgaben Du möchtest nicht nur an innovativen AI-Lösungen arbeiten, sondern auch ein Team führen und weiterentwickeln? Dann übernimm Verantwortung für ein Team sowie für die erfolgreiche Umsetzung datengetriebener und intelligenter Projekte. Dabei warten die folgenden Aufgaben auf dich: Du führst ei",
+            "url": "https://www.linkedin.com/jobs/view/4389255746",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437575581",
+            "title": "Applications Engineering Specialist",
+            "company": "Shenzhen Linquan Technology Co., LTD (深圳市林全科技有限公司)",
+            "location": "Bavaria, Germany",
+            "description": "Company Description Shenzhen Lin Quan Technology Co., LTD. founded in 2013, is a comprehensive intelligent manufacturing solution provider for integrating automation equipment and industrial software. Headquartered is in Shenzhen and has a production base in Shanghai. The company focuses on core tec",
+            "url": "https://www.linkedin.com/jobs/view/4437575581",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437526241",
+            "title": "Senior Software Validation Engineer (F/M/D)",
+            "company": "HCLTech Germany",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "About HCLTech We are HCLTech, one of the fastest-growing large tech companies in the world and home to 225,000+ people across 60 countries, supercharging progress through industry-leading capabilities centered around Digital, Engineering and Cloud. Our people are diverse, creative, and passionate, r",
+            "url": "https://www.linkedin.com/jobs/view/4437526241",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Führungserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4435674656",
+            "title": "Werkstattleiter (m/w/d) - Volkswagen Nutzfahrzeug Zentrum",
+            "company": "Tölke & Fischer Gruppe",
+            "location": "Krefeld, North Rhine-Westphalia, Germany",
+            "description": "Ihre Aufgaben Steuerung der Werkstattabläufe und Sicherstellung des Werkstattbetriebes Unterstützung/Hilfestellung bei Reparaturen sowie Gewährleistung einer hohen Reparaturqualität Administrative Aufgaben im Werkstattbereich Schnittstelle zwischen Werkstatt und Kundendienst Steuerung der Werkstattk",
+            "url": "https://www.linkedin.com/jobs/view/4435674656",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "The candidate's background in International Automotive Engineering and experience with ADAS, sensor data analysis, and time-series visualization are relevant, but the role requires more professional experience and the candidate's German language skills are not sufficient for the location.",
+          "domain_class": "core_field",
+          "ai_score": 40,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with ADAS, sensor data analysis, and time-series visualization are relevant, but the role requires more professional experience and the candidate's German language skills are not sufficient for the location.",
+          "unscored": false,
+          "category": "fluent_german",
+          "job": {
+            "id": "linkedin_4401779803",
+            "title": "Function Owner (m/f/d) - Infotainment/IVI & ADAS System",
+            "company": "Valeo",
+            "location": "Bietigheim-Bissingen, Baden-Württemberg, Germany",
+            "description": "Möchten Sie gemeinsam mit uns die Zukunft der intelligenten Mobilität gestalten? Werden Sie Teil unseres VALEO-Teams und revolutionieren Sie das Erlebnis des autonomen und vernetzten Fahrens. Wir suchen SIE als Function Owner (m/f/d) mit Erfahrung im Infotainment Umfeld für unseren Standort in Bieti",
+            "url": "https://www.linkedin.com/jobs/view/4401779803",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 41,
+          "reason": "title fits 'Werkstudent Data Analysis'; skills: Datenanalyse; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4408800880",
+            "title": "Werkstudent Data & Foresight (m/w/d)",
+            "company": "neoshare AG",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Deine Aufgaben Recherche, Bewertung und Beschaffung relevanter Datenquellen zu regionalökonomischen und immobilienwirtschaftlichen Themen Datenaufbereitung, -prüfung und -visualisierung Interesse (am Lernen von) an Programmiersprachen Enge Zusammenarbeit mit dem Data Engineering-Team bei Datenintegr",
+            "url": "https://www.linkedin.com/jobs/view/4408800880",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Werkstudent'; skills: Python; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4437570697",
+            "title": "Werkstudentin / Werkstudent Software Development Center (w/m/d)",
+            "company": "Volkswagen Group",
+            "location": "Wolfsburg, Lower Saxony, Germany",
+            "description": "Arbeitsumfeld Der Volkswagen Konzern gestaltet die Transformation zu nachhaltiger, softwaredefinierter Mobilität. Datengetriebene Entscheidungen sind dafür ein zentraler Erfolgsfaktor. In der Konzern-IT entwickelt unser Team moderne Decision-Intelligence-Lösungen auf Basis von Machine Learning, Opti",
+            "url": "https://www.linkedin.com/jobs/view/4437570697",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Praktikum'; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4416231356",
+            "title": "Praktikum im Bereich Content Marketing (f/m/d)",
+            "company": "MHP – A Porsche Company",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "Aufgaben Du bist auf der Suche nach einem Praktikum und möchtest dein theoretisches Wissen aus den Vorlesungen in die Praxis umsetzen? Kommunikation ist deine Leidenschaft und du bist hochmotiviert neue Wege einzuschlagen? Dann werde Teil unseres Teams und gestalte gemeinsam mit uns die erfolgreiche",
+            "url": "https://www.linkedin.com/jobs/view/4416231356",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Engineer'; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4426474751",
+            "title": "RF Power Electronics Engineer (all gender) – High-Frequency Systems 100",
+            "company": "ALTEN Germany",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Die ALTEN Consulting Services GmbH bietet mit über 20 Jahren Branchenerfahrung ihren namhaften Kunden aus Industrie und Wirtschaft hochspezialisierte Engineering- und IT-Dienstleistungen zur gemeinsamen Realisierung von branchen- und technologieübergreifenden Lösungen an. Kompetenz, Engagement und L",
+            "url": "https://www.linkedin.com/jobs/view/4426474751",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 25,
+          "reason": "title fits 'Junior Engineer'; skills: Python (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_voice-ai-engineer-all-genders-bremen-271406",
+            "title": "Voice AI Engineer (all genders)",
+            "company": "NFON",
+            "location": "Bremen",
+            "description": "Your new role Build voices that power real conversations. At botario, you'll develop the text-to-speech and speech-to-text systems behind our AI Voice Agents—from the underlying models to low-latency, production-ready deployment. You'll help create voice experiences that sound natural, respond in re",
+            "url": "https://www.arbeitnow.com/jobs/companies/nfon/voice-ai-engineer-all-genders-bremen-271406",
+            "published": "2026-07-09T16:00:42+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 25,
+          "reason": "title fits 'Junior Engineer'; skills: Python (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_machine-learning-engineer-all-genders-bremen-387333",
+            "title": "Machine Learning Engineer (all genders)",
+            "company": "NFON",
+            "location": "Bremen",
+            "description": "Your new role Build machine learning models that make it into production—not just notebooks. At botario, you'll develop the ML systems powering our AI Agents, taking ideas from initial experiments through training to reliable, scalable deployment. You'll work on cutting-edge AI use cases in a fast-m",
+            "url": "https://www.arbeitnow.com/jobs/companies/nfon/machine-learning-engineer-all-genders-bremen-387333",
+            "published": "2026-07-09T19:59:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 19,
+          "reason": "skills: Sensorik; keyword bonus: 2; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4422738127",
+            "title": "Entwicklungsingenieur MEMS - Gassensorik (m/w/d)",
+            "company": "Dräger",
+            "location": "Lübeck, Schleswig-Holstein, Germany",
+            "description": "Dafür suchen wir Sie Sie entwickeln technisch führende und wirtschaftlich effiziente Gassensoren für Arbeitssicherheit und Medizintechnik mit dem Fokus auf MEMS. Ihre zukünftigen Aufgaben: Screenen neuer Technologien und bewerten dieser für Anwendungen in der Medizin- und Sicherheitstechnik Planen u",
+            "url": "https://www.linkedin.com/jobs/view/4422738127",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 15,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4438615979",
+            "title": "(Associate) Consultant (all genders) Consumer Goods",
+            "company": "Porsche Consulting",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Was erwartet dich? Gemeinsam mit unseren Klienten gestaltest du die Zukunft der Konsumgüterindustrie. Du arbeitest an spannenden Projekten rund um Produktion, Supply Chain Management, Logistik, Digitalisierung, Industrie 4.0 und Operational Excellence . Dabei entwickelst du gemeinsam mit erfahrenen ",
+            "url": "https://www.linkedin.com/jobs/view/4438615979",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
