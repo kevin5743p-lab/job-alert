@@ -105,8 +105,12 @@ platforms:
     # specify names to limit. See fetchers/companies.py for the default
     # (automotive) list.
     include: []
-    # For other fields, replace the default list entirely with your own
-    # employers. Supported ATS values: smartrecruiters, greenhouse, lever.
+    # AUTO-POPULATED: on first run, personalize.py derives your field's real
+    # employers from cv.md, validates each against its ATS (dropping dead
+    # guesses), and stores the live ones as `company_targets` in profile.yaml —
+    # which overrides the default list below at runtime. No manual editing
+    # needed. To pin your own instead, set them explicitly here:
+    # Supported ATS values: smartrecruiters, greenhouse, lever.
     # Find the id in the company's careers-page URL on that ATS.
     # targets:
     #   - {name: "Example Corp", ats: "greenhouse", id: "examplecorp"}

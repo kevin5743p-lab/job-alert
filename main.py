@@ -118,6 +118,12 @@ def run_check(dry_run: bool = False, no_ai: bool = False,
     if profile.get("search_queries"):
         config.setdefault("search", {})["queries"] = profile["search_queries"]
 
+    # ...and their own validated direct-employer boards (replaces the
+    # automotive default company list with the candidate's real field).
+    if profile.get("company_targets"):
+        config.setdefault("platforms", {}).setdefault("companies", {})["targets"] = \
+            profile["company_targets"]
+
     ai_enabled = bool(api_key) and not no_ai
     if not ai_enabled:
         logger.warning("AI scoring disabled (%s) — falling back to rule-based scores.",

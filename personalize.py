@@ -14,13 +14,24 @@ overwritten unless placeholders reappear or --personalize is used.
 """
 import logging
 from pathlib import Path
-from typing import Dict
+from typing import Dict, List
 
+import requests
 import yaml
 
 from matchers import groq_client
 
 logger = logging.getLogger(__name__)
+
+# Liveness endpoints for the three ATSs the company fetcher supports. A
+# candidate board is kept only if its endpoint resolves (HTTP 200); this
+# drops slugs the LLM hallucinated instead of letting them 404 silently at
+# fetch time. Probes are plain public GETs — no API key, no Groq tokens.
+ATS_PROBE = {
+    "greenhouse": "https://boards-api.greenhouse.io/v1/boards/{id}/jobs?content=false",
+    "smartrecruiters": "https://api.smartrecruiters.com/v1/companies/{id}/postings?limit=1",
+    "lever": "https://api.lever.co/v0/postings/{id}?mode=json&limit=1",
+}
 
 # Keys the LLM must return; missing ones fail validation and abort generation.
 REQUIRED_KEYS = [
@@ -78,6 +89,16 @@ object with EXACTLY these keys:
     (e.g. for an engineer: "marketing manager", "nurse", "recruiter";
     for a lawyer: "software developer", "mechanical engineer")
   - "bonus_terms": 5-10 of the candidate's strongest specialty terms
+- "company_targets": 8-20 objects, each {{"name","ats","id"}}, for this
+  field's major employers that publish jobs on a public ATS so the system can
+  fetch their career page directly. "ats" is one of "smartrecruiters",
+  "greenhouse", "lever". "id" is the employer's board identifier on that ATS:
+  for greenhouse/lever it is usually the lowercase company name with no spaces
+  (e.g. "stripe", "wayve"); for smartrecruiters it is the board slug, often
+  CamelCase (e.g. "BoschGroup"). Only include employers you are fairly
+  confident use one of these three systems; omit government bodies, tiny
+  firms, and anyone likely on Workday, Taleo or SuccessFactors. Accuracy
+  matters more than length — return fewer solid entries, or [] if unsure.
 
 Target market: infer the country from the CV/additional info; if unclear,
 assume Germany and produce bilingual English+German terms throughout.
@@ -92,6 +113,40 @@ def profile_is_template(profile: Dict) -> bool:
     name = ((profile.get("personal") or {}).get("name") or "")
     persona = profile.get("persona") or ""
     return "[" in name or "[" in persona or not name.strip()
+
+
+def validate_targets(candidates: List[Dict], timeout: int = 10) -> List[Dict]:
+    """Keep only ATS boards that actually resolve — drops hallucinated slugs.
+
+    The LLM reliably names a field's employers but often guesses their ATS
+    `id` wrong (esp. SmartRecruiters CamelCase slugs). A wrong id 404s and
+    returns nothing at fetch time with no error, so we probe each candidate's
+    public board here and keep only live ones. Free HTTP, no Groq tokens,
+    runs once at personalization.
+    """
+    live: List[Dict] = []
+    for c in candidates or []:
+        if not isinstance(c, dict):
+            continue
+        name = str(c.get("name", "")).strip()
+        ats = str(c.get("ats", "")).strip().lower()
+        cid = str(c.get("id", "")).strip()
+        if not (name and cid and ats in ATS_PROBE):
+            continue
+        url = ATS_PROBE[ats].format(id=cid)
+        try:
+            r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"},
+                             timeout=timeout)
+            if r.status_code == 200:
+                live.append({"name": name, "ats": ats, "id": cid})
+                logger.info(f"   ✓ {name} ({ats}:{cid})")
+            else:
+                logger.info(f"   ✗ {name} ({ats}:{cid}) → HTTP "
+                            f"{r.status_code}, dropped")
+        except requests.RequestException as e:
+            logger.info(f"   ✗ {name} ({ats}:{cid}) → probe failed "
+                        f"({e.__class__.__name__}), dropped")
+    return live
 
 
 def generate(cv_text: str, api_key: str,
@@ -113,7 +168,12 @@ def generate(cv_text: str, api_key: str,
                                                  "no_german_required", "any"):
         result["language_preference"] = "no_german_required"
 
-    return {
+    logger.info("🔎 Validating candidate employer boards against their ATS...")
+    company_targets = validate_targets(result.get("company_targets"))
+    logger.info(f"🔎 {len(company_targets)} live employer board(s) kept for "
+                "direct fetching.")
+
+    profile = {
         "personal": {
             "name": result["name"],
             "email": result.get("email", ""),
@@ -132,6 +192,12 @@ def generate(cv_text: str, api_key: str,
         "prefilter_min_score": 15,
         "tier_thresholds": {"strong": 75, "worth_look": 50},
     }
+    # Only override the config's default company list when we actually
+    # validated at least one live board — otherwise leave the default so a
+    # user gets *some* direct-employer coverage rather than none.
+    if company_targets:
+        profile["company_targets"] = company_targets
+    return profile
 
 
 def write(profile: Dict, path: Path) -> None:
