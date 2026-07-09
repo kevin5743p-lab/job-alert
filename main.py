@@ -124,6 +124,17 @@ def run_check(dry_run: bool = False, no_ai: bool = False,
         config.setdefault("platforms", {}).setdefault("companies", {})["targets"] = \
             profile["company_targets"]
 
+    # ...and their own market: search geography, Adzuna country, and the
+    # timezone quiet hours are computed in (replaces the Germany defaults).
+    if profile.get("search_location"):
+        config.setdefault("search", {})["location"] = profile["search_location"]
+    if profile.get("country_code"):
+        config.setdefault("platforms", {}).setdefault("adzuna", {})["country_code"] = \
+            profile["country_code"]
+    if profile.get("timezone"):
+        config.setdefault("scheduler", {}).setdefault("quiet_hours", {})["tz"] = \
+            profile["timezone"]
+
     ai_enabled = bool(api_key) and not no_ai
     if not ai_enabled:
         logger.warning("AI scoring disabled (%s) — falling back to rule-based scores.",
@@ -424,6 +435,12 @@ def main() -> int:
     force = args.force or os.environ.get("FORCE_RUN", "").lower() in ("1", "true", "yes")
     if not dry_run and not force:
         config = load_yaml(CONFIG_PATH)
+        # A generated profile's timezone must gate quiet hours too, or a
+        # non-Germany user's entire run stays silenced on Berlin's clock.
+        profile = load_yaml(PROFILE_PATH)
+        if profile and profile.get("timezone"):
+            config.setdefault("scheduler", {}).setdefault("quiet_hours", {})["tz"] = \
+                profile["timezone"]
         if quiet_hours.is_quiet_now(config.get("scheduler", {})):
             logger.info("😴 Quiet hours — skipping this run.")
             return 0
