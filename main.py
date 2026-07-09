@@ -403,13 +403,17 @@ def main() -> int:
     no_ai = args.no_ai or bool(args.source)
 
     # A real run with no way to deliver alerts must not proceed: it would mark
-    # every fetched job as seen while the user never hears about them.
+    # every fetched job as seen while the user never hears about them. Exit
+    # cleanly (0) rather than failing (1) — a not-yet-configured repo (fresh
+    # from the template, secrets not added) should skip quietly, not send the
+    # owner a failure email every scheduled run. Backlog is still protected:
+    # we return before any fetching or state write.
     if not dry_run and not (os.environ.get("TELEGRAM_BOT_TOKEN")
                             and os.environ.get("TELEGRAM_CHAT_ID")):
-        logger.error("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not set — refusing "
-                     "to run. Add the secrets (repo Settings → Secrets and "
-                     "variables → Actions) or use --dry-run for testing.")
-        return 1
+        logger.warning("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not set — skipping "
+                       "this run. Add the secrets (repo Settings → Secrets and "
+                       "variables → Actions) to start receiving alerts.")
+        return 0
 
     force = args.force or os.environ.get("FORCE_RUN", "").lower() in ("1", "true", "yes")
     if not dry_run and not force:
