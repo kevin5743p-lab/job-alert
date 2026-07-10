@@ -38,14 +38,7 @@ REQUIRED_KEYS = [
     "name", "persona", "career_level", "years_of_experience",
     "skills", "target_titles", "must_have_keywords", "exclude_keywords",
     "preferred_locations", "language_preference", "search_queries", "domain",
-    "search_location", "country_code", "timezone",
 ]
-# ISO 3166-1 alpha-2 codes Adzuna actually covers (developer.adzuna.com);
-# an unsupported guess just means that optional source returns nothing.
-ADZUNA_COUNTRIES = {
-    "gb", "us", "at", "au", "be", "br", "ca", "de", "fr", "in", "it",
-    "mx", "nl", "nz", "pl", "sg", "za", "es", "ch",
-}
 REQUIRED_DOMAIN_KEYS = [
     "name", "core_terms", "supporting_terms", "adjacent_terms",
     "core_companies", "adjacent_companies", "reject_title_terms", "bonus_terms",
@@ -106,18 +99,9 @@ object with EXACTLY these keys:
   confident use one of these three systems; omit government bodies, tiny
   firms, and anyone likely on Workday, Taleo or SuccessFactors. Accuracy
   matters more than length — return fewer solid entries, or [] if unsure.
-- "search_location": the job-search geography as a plain string for job-board
-  queries, e.g. "Germany", "United States", "London, UK", "Remote"
-- "country_code": ISO 3166-1 alpha-2 code of the target job market, lowercase
-  (e.g. "de", "us", "gb", "in"). Best guess even if unsure.
-- "timezone": the candidate's IANA timezone, e.g. "Europe/Berlin",
-  "America/New_York", "Asia/Kolkata" — used to keep quiet hours (no alerts
-  23:00-06:00) in the candidate's actual local time, not a fixed city.
 
 Target market: infer the country from the CV/additional info; if unclear,
-assume Germany. If the target market is Germany, produce bilingual
-English+German terms throughout; otherwise use the target market's
-predominant language plus English.
+assume Germany and produce bilingual English+German terms throughout.
 
 Respond with ONLY the JSON object."""
 
@@ -165,24 +149,6 @@ def validate_targets(candidates: List[Dict], timeout: int = 10) -> List[Dict]:
     return live
 
 
-def _validate_timezone(tz: str) -> str:
-    """Falls back to Berlin only if the LLM's IANA name doesn't resolve."""
-    from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
-    try:
-        ZoneInfo(str(tz))
-        return str(tz)
-    except (ZoneInfoNotFoundError, ValueError, TypeError):
-        logger.warning(f"Generated timezone '{tz}' is not a valid IANA name — "
-                       "defaulting to Europe/Berlin.")
-        return "Europe/Berlin"
-
-
-def _validate_country_code(code: str) -> str:
-    """2-letter code for Adzuna; unsupported codes just skip that optional source."""
-    code = str(code or "").strip().lower()
-    return code if len(code) == 2 and code.isalpha() else "de"
-
-
 def generate(cv_text: str, api_key: str,
              model: str = "llama-3.3-70b-versatile") -> Dict:
     """Ask Groq for the personalization JSON and shape it into a profile dict."""
@@ -223,9 +189,6 @@ def generate(cv_text: str, api_key: str,
         "years_of_experience": int(result.get("years_of_experience", 0)),
         "career_level": result.get("career_level", "student"),
         "search_queries": result["search_queries"],
-        "search_location": str(result.get("search_location") or "Germany"),
-        "country_code": _validate_country_code(result.get("country_code")),
-        "timezone": _validate_timezone(result.get("timezone", "Europe/Berlin")),
         "prefilter_min_score": 15,
         "tier_thresholds": {"strong": 75, "worth_look": 50},
     }
