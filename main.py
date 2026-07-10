@@ -73,6 +73,31 @@ def load_cv() -> str:
     return text
 
 
+# Signals that a profile's field is automotive — used to decide whether the
+# automotive-only SuccessFactors fetcher is worth running.
+_AUTOMOTIVE_MARKERS = (
+    "automot", "automobil", "fahrzeug", "vehicle", "mobility",
+    "adas", "autonomous driving", "autonomes fahren",
+)
+
+
+def _field_is_automotive(profile: Dict) -> bool:
+    """True when the profile's EFFECTIVE domain is automotive.
+
+    Uses domain_classifier.get_domain() so a profile with no domain block
+    (which falls back to the automotive DEFAULT_DOMAIN — e.g. the original
+    hand-written profile) is correctly treated as automotive, while a
+    generated non-automotive profile (law, medicine, ...) is not.
+    """
+    dom = domain_classifier.get_domain(profile)
+    text = " ".join([
+        str(dom.get("name", "")),
+        " ".join(dom.get("core_terms", []) or []),
+        " ".join(dom.get("core_companies", []) or []),
+    ]).lower()
+    return any(m in text for m in _AUTOMOTIVE_MARKERS)
+
+
 def check_no_secrets_in_config() -> None:
     raw = CONFIG_PATH.read_text(encoding="utf-8")
     if SECRET_PATTERN.search(raw):
@@ -123,6 +148,13 @@ def run_check(dry_run: bool = False, no_ai: bool = False,
     if profile.get("company_targets"):
         config.setdefault("platforms", {}).setdefault("companies", {})["targets"] = \
             profile["company_targets"]
+
+    # The SuccessFactors fetcher has a FIXED automotive company list (BMW,
+    # Audi, ...) that can't be auto-derived per field (its host+tenant ids
+    # aren't LLM-guessable and have no liveness probe). Run it only when the
+    # candidate's field is actually automotive; otherwise it's pure waste.
+    if not _field_is_automotive(profile):
+        config.setdefault("platforms", {}).setdefault("successfactors", {})["enabled"] = False
 
     ai_enabled = bool(api_key) and not no_ai
     if not ai_enabled:

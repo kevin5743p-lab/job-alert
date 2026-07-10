@@ -119,6 +119,9 @@ platforms:
   # Used by BMW, Audi, parts of Volkswagen Group, Schaeffler, etc.
   # No public API — uses the (well-known) /career?...&resultType=XML
   # and /sitemal.xml endpoints. The fetcher tries both.
+  # NOTE: this is a FIXED automotive employer list (its host+tenant ids can't
+  # be auto-derived per field). main.py auto-disables it at runtime unless the
+  # profile's field is automotive, so non-automotive users don't waste fetches.
   successfactors:
     enabled: true
     companies:
