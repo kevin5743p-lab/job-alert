@@ -1258,6 +1258,963 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-10T07:57:21.222759",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "The candidate's skills and experience are relevant, but the job title implies a need for professional experience.",
+          "domain_class": "core_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate's skills and experience are relevant, but the job title implies a need for professional experience.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4438892460",
+            "title": "Qualitätsvorausplaner ? Automotive (m/w/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Bamberg, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438892460",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Praktikum'; preferred location (rule-based; AI quota exhausted)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": true,
+          "job": {
+            "id": "linkedin_4438895496",
+            "title": "Praktikum Funktions- und Softwaretest für Maschinensteuerungen (m/w/d)",
+            "company": "HYDRIVE Engineering GmbH",
+            "location": "Freital, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438895496",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438833859",
+            "title": "Coca-Cola Ignite Intern - Strategy",
+            "company": "The Coca-Cola Company",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Job Description Function Overview at Coca-Cola The Strategy function at Coca-Cola plays a pivotal role in setting the long-term direction of the company. We are responsible for identifying growth opportunities, navigating market trends, and building key strategies that enable Coca-Cola to remain the",
+            "url": "https://www.linkedin.com/jobs/view/4438833859",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439011291",
+            "title": "Internship Consulting (m/f/d)",
+            "company": "costdata GmbH",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "All vacancies Shape the future of cost engineering with us Internship Consulting (m/f/d) About Costdata As an international pioneer in cost engineering, costdata serves leading companies around the globe with the world's largest cost database. Our unique combination of data, software and consulting ",
+            "url": "https://www.linkedin.com/jobs/view/4439011291",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438899656",
+            "title": "Junior Sales Consultant (m/f/d)",
+            "company": "costdata GmbH",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "All vacancies Sales for technical solutions Junior Sales Consultant (m/f/d) About Costdata costdata is a leading international company in the field of cost engineering. With our unique combination of data, software and consulting, we help leading companies worldwide to optimize their cost structures",
+            "url": "https://www.linkedin.com/jobs/view/4438899656",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439001542",
+            "title": "Sales Consultant (m/f/d) - Start your career in technical sales now",
+            "company": "costdata GmbH",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "All vacancies Turn potential into successful partnerships Sales Consultant (m/f/d) - Start your career in technical sales now About Costdata As an international pioneer in cost engineering, costdata® serves leading companies around the globe with the world's largest cost database. Our unique combina",
+            "url": "https://www.linkedin.com/jobs/view/4439001542",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 12,
+          "reason": "keyword bonus: 1; preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439001425",
+            "title": "PhD Candidate in Computer Vision (m/f/d)",
+            "company": "Deutsches Primatenzentrum GmbH",
+            "location": "Göttingen, Lower Saxony, Germany",
+            "description": "Would you like to support scientific research by implementing innovative data science approaches? The German Primate Center GmbH (DPZ) – Leibniz Institute for Primate Research in Göttingen conducts basic research in primate biology, infectious disease research, and neuroscience. Would you like to be",
+            "url": "https://www.linkedin.com/jobs/view/4439001425",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438886847",
+            "title": "Programmierung, Simulation und KI-Datenauswertung",
+            "company": "Institute of Product Engineering at KIT",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "Unsere Vision Am Lehrstuhl für Gerätekonstruktion und Maschinenelemente widmen wir uns der datengetriebenen Produktentwicklung. Unser Ziel ist es, durch praxisorientierte Methoden die Konstruktion und das Testing von mechatronischen Systemen zu verbessern. In Zusammenarbeit mit Industriepartnern lös",
+            "url": "https://www.linkedin.com/jobs/view/4438886847",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438891478",
+            "title": "Lead Systems Engineer (m/w/d) Airborne Sensor Systems",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Für unseren Kunden besetzen wir ab sofort die Position: Aufgabenprofil End-to-End-Verantwortung für System Engineering, Integration, Test und Einsatzreife luftgestützter Sensorsysteme Übersetzung von Missionsszenarien und Bedrohungsprofilen in messbare technische Anforderungen, KPIs und Verifikation",
+            "url": "https://www.linkedin.com/jobs/view/4438891478",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438888758",
+            "title": "Werksstudent für den automatisierten Softwaretest von Maschinensteuerungen (m/w/d)",
+            "company": "HYDRIVE Engineering GmbH",
+            "location": "Freital, Saxony, Germany",
+            "description": "Jobbeschreibung Ihre Aufgaben Sie unterstützen unser Team bei der Implementierung von automatisiert ausführbaren Testfällen Wir Bieten Ihnen Aussicht auf Festanstellung und persönliche Perspektive attraktive Vergütung einen fachlichen Mentor zur Einarbeitung anspruchsvolle und vielseitige Themen int",
+            "url": "https://www.linkedin.com/jobs/view/4438888758",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439003558",
+            "title": "Studentische Beschäftigung mit 40 Monatsstunden",
+            "company": "Technische Universität Berlin",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Fakultät VII - Wirtschaft und Management, Technologie und Management – Management im Gesundheitswesen Studentische Beschäftigung mit 40 Monatsstunden Ihre Aufgaben Wir suchen Unterstützung für das EU Horizon Projekt \"PRUDENT\" (Prioritization, Incentives, and Resource use for sUstainable DENTistry). ",
+            "url": "https://www.linkedin.com/jobs/view/4439003558",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437922786",
+            "title": "EN",
+            "company": "HLRS",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Home Careers Student Assistant / Research Assistant (HiWi) (m/f/d) Careers As one of Europe's leading facilities for high-performance computing, HLRS is a diverse community of scientists, engineers, and other professionals focused on discovering and developing new applications of powerful digital te",
+            "url": "https://www.linkedin.com/jobs/view/4437922786",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439004029",
+            "title": "Hiwi Unterstützung - Mitarbeit im Sonderforschungsbereich Convide",
+            "company": "Institute of Product Engineering at KIT",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "Möchtest du einen Einblick in aktuelle Forschung gewinnen und aktiv an einem interdisziplinären Forschungsprojekt mitarbeiten? Wir suchen eine engagierte studentische Hilfskraft, die unser Team bei der wissenschaftlichen Arbeit im Sonderforschungsbereich (SFB Convide) unterstützt. Du hast die Möglic",
+            "url": "https://www.linkedin.com/jobs/view/4439004029",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439012262",
+            "title": "Praktikanten/ Masteranden in der Forschung",
+            "company": "Hengst Filtration",
+            "location": "Münster, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439012262",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4435940773",
+            "title": "Systemingenieur Main Battle Tank Chassis (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Kiel, Schleswig-Holstein, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4435940773",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4435954366",
+            "title": "Systemingenieur Modellbasierte Entwicklung (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Kiel, Schleswig-Holstein, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4435954366",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437950998",
+            "title": "International Trainee (m/w/d) Global Industrial Engineering",
+            "company": "CLAAS",
+            "location": "Harsewinkel, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437950998",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439018072",
+            "title": "Projektqualitätsingenieur (m/w/d)",
+            "company": "ingserv GmbH",
+            "location": "Augsburg, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439018072",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439004033",
+            "title": "Unterstützung im Bereich Bremsenprüfstandauslegung zum konsistenzorientierten Testen von Cyber-physischen System-Varianten und -Versionen",
+            "company": "Institute of Product Engineering at KIT",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439004033",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439010542",
+            "title": "Fachkraft für Qualitätssicherung",
+            "company": "Schnierle Seating Systems",
+            "location": "Gersthofen, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439010542",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437972409",
+            "title": "Mitarbeiter Objektmanagement (m/w/d)",
+            "company": "Audi Immobilien Solutions GmbH",
+            "location": "Ingolstadt, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437972409",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4435942798",
+            "title": "Quality Lead Auditor (m/w/d)",
+            "company": "STANLEY Engineered Fastening",
+            "location": "Giessen, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4435942798",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4412830077",
+            "title": "Außendiensttechniker, Münster (DE)",
+            "company": "Bang & Olufsen",
+            "location": "Münster, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4412830077",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437541747",
+            "title": "Internationaler Auditorenkoordinator (w/m/d)",
+            "company": "TÜV SÜD",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437541747",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4435960286",
+            "title": "Cabin Supplier Interface Manager (d/m/w)",
+            "company": "Airbus Aircraft",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4435960286",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437951495",
+            "title": "Senior IT Project Manager (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437951495",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437947794",
+            "title": "Microsoft 365 Consultant – Copilot & Collaboration (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437947794",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437953295",
+            "title": "IT Consultant Microsoft 365 (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437953295",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437949715",
+            "title": "Senior Consultant Endpoint Management (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437949715",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437949711",
+            "title": "Security Consultant – Customer Advisory & Integration (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437949711",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437947793",
+            "title": "Account Manager – Microsoft Azure (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437947793",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438872892",
+            "title": "PRODUKTIONSMEISTER - BEREICH SCHWEISSEN",
+            "company": "SBH Tiefbautechnik GmbH",
+            "location": "Heinsberg, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438872892",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438892033",
+            "title": "MASCHINEN- & ANLAGENFÜHRER",
+            "company": "SBH Tiefbautechnik GmbH",
+            "location": "Heinsberg, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438892033",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438886190",
+            "title": "STAPLERFAHRER",
+            "company": "SBH Tiefbautechnik GmbH",
+            "location": "Heinsberg, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438886190",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000137059224",
+            "title": "Pflichtpraktikum in der Werkslogistik – Logistikplanung",
+            "company": "Bosch",
+            "location": "Salzgitter, NI, de",
+            "description": "Logistik ist für dich mehr als nur Warenbewegung – es ist das Herzstück globaler Wertschöpfungsketten und der Schlüssel zu Effizienz und Innovation. Bist du bereit, bei einem der weltweit führenden Automobilzulieferer aktiv in der Werkslogistik mitzugestalten? Bei uns wirst du Teil eines erfahrenen ",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000137059224",
+            "published": "2026-07-10T07:25:07.716Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, LiDAR/Radar/Camera, and Python are relevant, but the role requires a strong physics background and professional experience, which the candidate lacks.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 40,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, LiDAR/Radar/Camera, and Python are relevant, but the role requires a strong physics background and professional experience, which the candidate lacks.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4439020132",
+            "title": "Ingenieur/in Physik (w/m/d) - Abteilung Aufklärung und Sicherheit",
+            "company": "German Aerospace Center (DLR)",
+            "location": "Oberpfaffenhofen, Bavaria, Germany",
+            "description": "Das Institut für Hochfrequenztechnik und Radarsysteme entwickelt mit seinem Know-how und seiner Gesamtsystem-Expertise über passive und aktive Mikrowellen innovative Sensoren, Algorithmen und Anwendungen für die boden-, flugzeug- und satellitengestützte Fernerkundung. Das erwartet dich Die Abteilung",
+            "url": "https://www.linkedin.com/jobs/view/4439020132",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The candidate's skills and experience are not directly applicable to the product marketing role, and the job requires a different set of skills and expertise.",
+          "domain_class": "broader_field",
+          "ai_score": 20,
+          "ai_reason": "The candidate's skills and experience are not directly applicable to the product marketing role, and the job requires a different set of skills and expertise.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4439000143",
+            "title": "Werkstudent - Produktmarketing (m/w/d)",
+            "company": "Hager Deutschland",
+            "location": "Blieskastel, Saarland, Germany",
+            "description": "Möchtest du deine Berufserfahrung als Teil eines engagierten und leidenschaftlichen Teams ausbauen? Suchst du ein internationales Unternehmen, das dir die Möglichkeit bietet, zu lernen und dich weiterzuentwickeln? Als führender Anbieter von elektrischen Lösungen und Dienstleistungen trägt Hager akti",
+            "url": "https://www.linkedin.com/jobs/view/4439000143",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The candidate lacks relevant experience and skills for the specific job requirements.",
+          "domain_class": "broader_field",
+          "ai_score": 20,
+          "ai_reason": "The candidate lacks relevant experience and skills for the specific job requirements.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4435944926",
+            "title": "Werkstudent Product Support Services – ILS/ISS (m/w/d)",
+            "company": "TKMS",
+            "location": "Kiel, Schleswig-Holstein, Germany",
+            "description": "Aufgaben Unterstützung der Gruppe Ersatzteil-Erstversorgung im Product Support für U-Boote und Überwassereinheiten bei allen anfallenden Tätigkeiten Bearbeitung, Administration und Verwaltung technischer sowie logistischer Unterlagen und Materialien Systemseitige Unterstützung bei der Vorbereitung v",
+            "url": "https://www.linkedin.com/jobs/view/4435944926",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Out of domain: The job is in the music industry, unrelated to automotive engineering.",
+          "domain_class": "out_of_domain",
+          "ai_score": 0,
+          "ai_reason": "The role requires no relevant technical skills from the candidate's field.",
+          "unscored": false,
+          "category": "out_of_domain",
+          "job": {
+            "id": "linkedin_4438881613",
+            "title": "Werkstudent:in Licensing (m/w/d)",
+            "company": "Warner Music Australia",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Wir lieben Musik und arbeiten unermüdlich daran, die Menschen zu unterstützen, die sie machen. Hört sich gut an? Werde Teil unseres Teams! Für unseren Standort in Berlin suchen wir zum frühestmöglichen Eintrittstermin einen:n Werkstudent:in Licensing (m/w/d) Das sind die Aufgaben Asset- & Metadaten-",
+            "url": "https://www.linkedin.com/jobs/view/4438881613",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "The candidate's skills in data analysis and sensor technology are partially applicable, but the job requires laboratory experience and knowledge of filtration systems.",
+          "domain_class": "broader_field",
+          "ai_score": 40,
+          "ai_reason": "The candidate's skills in data analysis and sensor technology are partially applicable, but the job requires laboratory experience and knowledge of filtration systems.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4438890843",
+            "title": "Werkstudent Labor",
+            "company": "Hengst Filtration",
+            "location": "Münster, North Rhine-Westphalia, Germany",
+            "description": "Mobilität, Gesundheit, Technologie & Nachhaltigkeit: Wir arbeiten täglich an den großen Themen unserer Zeit. Und das mit dem Ziel, den Planeten zu einem saubereren Ort zu machen. Als Familienunternehmen mit rund 3.500 Mitarbeitenden an über 20 Standorten stehen wir weltweit für inno­vative Filtratio",
+            "url": "https://www.linkedin.com/jobs/view/4438890843",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The candidate's skills and experience are not directly applicable to the job, and the company is not central to the automotive field.",
+          "domain_class": "broader_field",
+          "ai_score": 20,
+          "ai_reason": "The candidate's skills and experience are not directly applicable to the job, and the company is not central to the automotive field.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4438851151",
+            "title": "Abschlussarbeit/Praktikum im Bereich Produktion (m/w/d)",
+            "company": "WIKUS Sägenfabrik GmbH & Co. KG",
+            "location": "Spangenberg, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438851151",
+            "published": "2026-07-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 32,
+          "reason": "skills: Python, Zeitreihen, Sensordaten (+1); keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439019023",
+            "title": "Wiss. Mitarbeiter*in (d/m/w)",
+            "company": "Technische Universität Berlin",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Fakultät V - Verkehrs- und Maschinensysteme, Institut für Maschinenkonstruktion und Systemtechnik / FG Cyber-Physical Systems in Mechanical Engineering Wiss. Mitarbeiter*in (d/m/w) Teilzeitbeschäftigung ist ggf. möglich unter Vorbehalt der Mittelbewilligung Ihre Aufgaben Forschung zu Machine-Learnin",
+            "url": "https://www.linkedin.com/jobs/view/4439019023",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Working Student'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439013061",
+            "title": "Student:in",
+            "company": "German Aerospace Center (DLR)",
+            "location": "Brunswick, Lower Saxony, Germany",
+            "description": "Das erwartet Dich Rotorblätter von Windenergieanlagen sind während ihrer Lebensdauer extremen zyklischen Belastungen ausgesetzt und müssen Millionen von Lastwechseln sicher standhalten. In diesem Projekt untersuchst du, ob biobasierte Flachsfaserverbundwerkstoffe aufgrund ihrer hohen Ermüdungsbestän",
+            "url": "https://www.linkedin.com/jobs/view/4439013061",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Engineer'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4435926187",
+            "title": "Spacecraft Operations Engineer (d/m/f)",
+            "company": "Airbus Defence and Space",
+            "location": "Immenstaad am Bodensee, Baden-Württemberg, Germany",
+            "description": "Job Description: Zur Unterstützung der Raumfahrtprogramme sucht Airbus Defence and Space einen Spacecraft Operations Engineer (d/m/w) In dieser Rolle unterstützt du die Entwicklung und Spezifikation von Satelliten-Betriebskonzepten sowie FDIR-Konzepten. Du arbeitest eng mit multidisziplinären Projek",
+            "url": "https://www.linkedin.com/jobs/view/4435926187",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Engineer'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4438877867",
+            "title": "RF Engineer (m/w/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Für unseren Kunden besetzen wir ab sofort folgende Position: Aufgabenprofil Entwicklung und Design von RF-/HF-Leistungsverstärkern für VHF- und UHF-Kommunikations- und Broadcastsysteme Auslegung und Optimierung von RF Power Amplifiers, RF Front-Ends und Combiner Networks Durchführung von Simulatione",
+            "url": "https://www.linkedin.com/jobs/view/4438877867",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Working Student'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4435938843",
+            "title": "Master student  (d/f/m)  in the field of onboard AI/ML for 5G/6G Satellite Non-Terrestrial Networks",
+            "company": "Airbus Defence and Space",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4435938843",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439012182",
+            "title": "Safety Engineer (m/w/d)",
+            "company": "ACTRANS",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439012182",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439007426",
+            "title": "Systems Engineer – Functional Safety (m/w/d)",
+            "company": "ACTRANS",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439007426",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "keyword bonus: 2; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4435954495",
+            "title": "Key Account Manager Connected & Autonomous Mobility (w/m/d)",
+            "company": "TÜV SÜD Auto Service",
+            "location": "Garching, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4435954495",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4437942882",
+            "title": "Network Engineer (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437942882",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 29,
+          "reason": "skills: Python, Kamera, Sensorik; keyword bonus: 2; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4437953617",
+            "title": "Inbetriebnehmer / Automatisierungsingenieur Robotik (m/w/d)",
+            "company": "marco Systemanalyse und Entwicklung GmbH",
+            "location": "Dachau, Bavaria, Germany",
+            "description": "Wir sind Pioniere in der Dosiertechnik – mit Leidenschaft für Präzision und Fortschritt    Inbetriebnehmer / Automatisierungsingenieur Robotik (m/w/d) in Dachau Seit über 40 Jahren entwickeln und fertigen wir als international tätiges High-Tech-Unternehmen innovative Maschinen und Automatisierungslö",
+            "url": "https://www.linkedin.com/jobs/view/4437953617",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 21,
+          "reason": "skills: Automotive; keyword bonus: 3; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "sf_bmwag_189914",
+            "title": "Inspector Installer",
+            "company": "BMW Group",
+            "location": "Germany",
+            "description": "SPREAD ENTHUSIASM. SHAPE THE FUTURE. SHARE YOUR PASSION. Knowing the destination isn't enough: you need to know how to get there. Build up your own networks, exploit new ideas, consistently take the initiative. Inspire other people with your enthusiasm. That's the only way to give ideas the power th",
+            "url": "https://career5.successfactors.eu/career?company=bmwag&career_job_req_id=189914&career_ns=job_listing",
+            "published": "",
+            "source": "BMW Group (Direct)"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "skills: Python, MATLAB; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439011298",
+            "title": "Studentische Beschäftigung mit 80 Monatsstunden",
+            "company": "Technische Universität Berlin",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Fakultät V - Verkehrs- und Maschinensysteme, Institut für Luft- und Raumfahrt - FG Raumfahrttechnik Studentische Beschäftigung mit 80 Monatsstunden Ihre Aufgaben Die Stelle findet innerhalb des EU / EIC-Pathfinder Projekts gEICko statt, welches die Kompetenz von sechs europäischen Kooperationsintitu",
+            "url": "https://www.linkedin.com/jobs/view/4439011298",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 17,
+          "reason": "skills: Automobil; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4435956283",
+            "title": "Automobil Serviceberater Lamborghini (m/w/d)",
+            "company": "Penske Sportwagen Hamburg GmbH",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4435956283",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 17,
+          "reason": "skills: Automobil; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4438875523",
+            "title": "Großkundenverkäufer / Fuhrparkmanagementberater Automobilhandel (m/w/d)",
+            "company": "Scherer Automobil Holding GmbH & Co. KG",
+            "location": "Walldorf, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438875523",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 15,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439008560",
+            "title": "Abschlussarbeiten und Werkstudenten (w/m/d) - Forschungsaufgaben im Bereich Schiffszuverlässigkeit",
+            "company": "German Aerospace Center (DLR)",
+            "location": "Geesthacht, Schleswig-Holstein, Germany",
+            "description": "Am Institut für Maritime Technologien und Antriebssysteme liefern wir technologische Entwicklungen, um der maritimen Industrie Sicherheit für ihre Investitionsentscheidungen in neue Technologien zu geben und so den Wandel des Transportwesens auf dem Wasser zu beschleunigen. Zur Transformation mariti",
+            "url": "https://www.linkedin.com/jobs/view/4439008560",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 15,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4438618827",
+            "title": "People & Office Operations Manager (f/m/d) (50%- 70 % - Part Time - flexible arrangement)",
+            "company": "Allianz in Deutschland",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Allianz Digital Health (ADH) is a Munich, Germany based 100% subsidiary of Allianz SE aiming at the modernization and digitization of global Allianz health entities by providing technical excellence at scale. ADH offers these entities digital and data-based health services on a modern IT architectur",
+            "url": "https://www.linkedin.com/jobs/view/4438618827",
+            "published": "2026-07-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
