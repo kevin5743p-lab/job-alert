@@ -3628,6 +3628,615 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-11T15:28:08.308096",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 70,
+          "reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, LiDAR/Radar/Camera, and Python match the job requirements, but the role's preference for fluent German and more extensive experience in the field are notable gaps.",
+          "domain_class": "core_field",
+          "ai_score": 70,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, LiDAR/Radar/Camera, and Python match the job requirements, but the role's preference for fluent German and more extensive experience in the field are notable gaps.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4431115384",
+            "title": "Praktikum - Versuch e-Komponente (d/m/w)",
+            "company": "Schaeffler",
+            "location": "Bühl, Baden-Württemberg, Germany",
+            "description": "Schaeffler – das ist die Faszination eines internationalen Technologie-Konzerns, verbunden mit der Kultur eines Familienunternehmens. Als Partner aller bedeutenden Automobilhersteller sowie zahlreicher Kunden im Industriebereich bieten wir Ihnen viel Raum für Ihre persönliche Entfaltung. Grundvoraus",
+            "url": "https://www.linkedin.com/jobs/view/4431115384",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 70,
+          "reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, ADAS, and autonomous driving align with the job posting, but the role's focus on production planning and the candidate's limited experience in this area are notable gaps.",
+          "domain_class": "core_field",
+          "ai_score": 70,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, ADAS, and autonomous driving align with the job posting, but the role's focus on production planning and the candidate's limited experience in this area are notable gaps.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4362266369",
+            "title": "Praktikum Produktionsplanung Montage",
+            "company": "Porsche AG",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Wir als Team …sind verantwortlich für die praxisnahe Planung der Produktion von heute und morgen – Prozesse, Technik und IT. Dabei gestalten wir aktiv die Produktionslandschaft mit, indem wir zukünftige Anforderungen frühzeitig erkennen und in moderne, effiziente und nachhaltige Werksstrukturen über",
+            "url": "https://www.linkedin.com/jobs/view/4362266369",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, ADAS, and autonomous driving are relevant to the role, but the job posting requires a stronger focus on industrial engineering, production planning, and process optimization, which is not the candidate's primary expertise.",
+          "domain_class": "core_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, ADAS, and autonomous driving are relevant to the role, but the job posting requires a stronger focus on industrial engineering, production planning, and process optimization, which is not the candidate's primary expertise.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4380516008",
+            "title": "Praktikum - Industrial Engineering Montage (d/m/w)",
+            "company": "Schaeffler",
+            "location": "Bühl, Baden-Württemberg, Germany",
+            "description": "Schaeffler – das ist die Faszination eines internationalen Technologie-Konzerns, verbunden mit der Kultur eines Familienunternehmens. Als Partner aller bedeutenden Automobilhersteller sowie zahlreicher Kunden im Industriebereich bieten wir Ihnen viel Raum für Ihre persönliche Entfaltung. Grundvoraus",
+            "url": "https://www.linkedin.com/jobs/view/4380516008",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 42,
+          "reason": "title fits 'Praktikum'; skills: Automobil; keyword bonus: 1; preferred location (rule-based; AI quota exhausted)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": true,
+          "job": {
+            "id": "linkedin_4052034473",
+            "title": "Praktikum im Personalmanagement - HR (d/m/w)",
+            "company": "Schaeffler",
+            "location": "Bühl, Baden-Württemberg, Germany",
+            "description": "Schaeffler – das ist die Faszination eines internationalen Technologie-Konzerns, verbunden mit der Kultur eines Familienunternehmens. Als Partner aller bedeutenden Automobilhersteller sowie zahlreicher Kunden im Industriebereich bieten wir Ihnen viel Raum für Ihre persönliche Entfaltung. Du möchtest",
+            "url": "https://www.linkedin.com/jobs/view/4052034473",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4411378835",
+            "title": "Working Student Research (all genders) - Karlsruhe",
+            "company": "SEEBURGER",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "”Accelerating business to improve the lives of people”. This is our purpose statement and encapsulates what we enthusiastically do every day. We integrate our customers’ IT systems to make sure that the right data is at the right place at the right time when they digitalize their processes. Companie",
+            "url": "https://www.linkedin.com/jobs/view/4411378835",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4380012529",
+            "title": "Software Architect, Automotive Robotics",
+            "company": "Tenstorrent",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Tenstorrent is leading the industry on cutting-edge AI technology, revolutionizing performance expectations, ease of use, and cost efficiency. With AI redefining the computing paradigm, solutions must evolve to unify innovations in software models, compilers, platforms, networking, and semiconductor",
+            "url": "https://www.linkedin.com/jobs/view/4380012529",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4420473387",
+            "title": "Senior Machine Learning Engineer/ Research Scientist",
+            "company": "World",
+            "location": "Munich, Bavaria, Germany",
+            "description": "About The Company Tools for Humanity (TFH) designs and builds technology behind World. World is building a real human network designed to accelerate people in the age of AI. As bots and autonomous agents reshape the internet, people, institutions, and applications need a trusted way to confirm who i",
+            "url": "https://www.linkedin.com/jobs/view/4420473387",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436675600",
+            "title": "Silicon Test and validation Engineer",
+            "company": "PRACYVA",
+            "location": "Regensburg, Bavaria, Germany",
+            "description": "Job Description: Define, design and develop optical metrology solutions including hardware engineering, test software implementation, and instrument qualification Develop benchtop and production instrumentation to characterize complex optical modules and integrated systems (display and optics) Colle",
+            "url": "https://www.linkedin.com/jobs/view/4436675600",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436671738",
+            "title": "Vermessungsingenieur (m/w/d)",
+            "company": "RINAS Ingenieurgesellschaft mbH & Co. KG",
+            "location": "Monheim, North Rhine-Westphalia, Germany",
+            "description": "Du möchtest mit modernster Vermessungstechnik arbeiten, Verantwortung übernehmen und spannende Projekte betreuen? Dann bist du bei uns genau richtig. Zur Verstärkung unseres Teams suchen wir eine engagierte Persönlichkeit im Bereich Vermessung und Laserscanning, die ihr Know-how einbringt, Projekte ",
+            "url": "https://www.linkedin.com/jobs/view/4436671738",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4380785213",
+            "title": "SDV (Senior) Business Development Manager für Public & Defence (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Aufgaben Als SDV (Senior) Business Development Manager für Public & Defence bist du ein zentraler Treiber des SDV-Teams bei MHP. Du unterstützt dabei, neue Kunden zu gewinnen und strategische SDV-/SDD-Lösungen rund um ADAS, Connectivity und KI-gestützte Lösungen zu skalieren und gestalten gemeinsam ",
+            "url": "https://www.linkedin.com/jobs/view/4380785213",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439549906",
+            "title": "Schnupperpraktikum Instandhaltung",
+            "company": "Molkerei Gropper GmbH & Co. KG",
+            "location": "Bissingen, Bavaria, Germany",
+            "description": "Du möchtest nach der Schule eine Berufsausbildung beginnen, bist Dir aber nicht ganz sicher, welcher Beruf genau zu Dir passt? Eines weißt Du aber ganz genau: Du möchtest in einen technischen Beruf eintauchen, mit Deinen Händen arbeiten, Drähte löten, Schrauben drehen und dabei nahe an großen Indust",
+            "url": "https://www.linkedin.com/jobs/view/4439549906",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4366745409",
+            "title": "Tragwerksplaner Ingenieurbau (m/w/d)",
+            "company": "LEONHARD WEISS GmbH & Co. KG",
+            "location": "Satteldorf, Baden-Württemberg, Germany",
+            "description": "Standort: Satteldorf, Würzburg Ihre Aufgaben Sie entwickeln und verantworten Sondervorschläge im Ingenieurhochbau und Brückenbau – von der Konzeption bis zur Umsetzung im Team Sie führen die Bemessung und Beurteilung von Bauzuständen durch und stellen sicher, dass diese Aufgaben im Team fachgerecht ",
+            "url": "https://www.linkedin.com/jobs/view/4366745409",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438917466",
+            "title": "Projektingenieur*in",
+            "company": "Wupperverband",
+            "location": "Wuppertal, North Rhine-Westphalia, Germany",
+            "description": "Dein Job – wo Zukunft fließt. Im Wupperverband gestalten wir, rund 450 Kolleginnen und Kollegen, jeden Tag wirksamen Umweltschutz direkt vor unserer Haustür. Mit Leidenschaft schützen wir die wertvolle Ressource Wasser und erhalten Lebensräume für Pflanzen, Tiere und Menschen. Ob an unseren Gewässer",
+            "url": "https://www.linkedin.com/jobs/view/4438917466",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4370553453",
+            "title": "Projektingenieur (m/w/d)",
+            "company": "Exyte",
+            "location": "Eschau, Bavaria, Germany",
+            "description": "Entdecken Sie eine spannende Rolle Werden Sie Projektleiter (m/w/d) im technischen Rohrleitungsbau und gestalten Sie spannende Projekte für Prozess- und Reinstmediensysteme – als Teamleiter und erster Ansprechpartner unserer Kunden. Erfahren Sie mehr über Ihre neuen Aufgaben Erster Ansprechpartner (",
+            "url": "https://www.linkedin.com/jobs/view/4370553453",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436665686",
+            "title": "Bauingenieur (m/w/d) 4-Tage-Woche / Remote",
+            "company": "BEYER Ing.- Holzbau GmbH & Co KG",
+            "location": "Schleiz, Thuringia, Germany",
+            "description": "Du hast Erfahrung im Bereich Bauingenieurwesen oder Statik und wünschst Dir einen abwechslungsreichen Arbeitsalltag mit Projekten von klein bis groß? Du möchtest abends zu Hause sein und genug Zeit für die Familie haben? Wechsle jetzt zu Beyer nach Dittersdorf: Wir sind nicht nur für Privatkunden An",
+            "url": "https://www.linkedin.com/jobs/view/4436665686",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439545326",
+            "title": "Bauingenieur (m/w/d)",
+            "company": "Bezirksregierung Münster",
+            "location": "Münster, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439545326",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436673608",
+            "title": "Statiker / Tragwerksplaner / Bauingenieur (m/w/d)",
+            "company": "Schaffitzel Holzindustrie GmbH + Co. KG",
+            "location": "Schwäbisch Hall, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436673608",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4411877856",
+            "title": "Recruiter (f/m/d) - befristet für 2 Jahre in Wolfsburg",
+            "company": "MHP – A Porsche Company",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4411877856",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4429916438",
+            "title": "(Senior) Manager Data & AI Technology (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4429916438",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Werkstudent'; skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4436663806",
+            "title": "Werkstudent IT (w/m/d)",
+            "company": "openHandwerk GmbH",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Über uns Wir sind die openHandwerk GmbH, ein erfolgreiches SaaS-Unternehmen aus Berlin. openHandwerk ist eine prämierte Cloud-Lösung für Handwerksbetriebe, Bauunternehmen und Serviceunternehmen zur Digitalisierung von Arbeitsprozessen – von der Auftragsannahme über die Abwicklung bis hin zur Rechnun",
+            "url": "https://www.linkedin.com/jobs/view/4436663806",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 37,
+          "reason": "title fits 'Junior Engineer'; skills: Python; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4429677835",
+            "title": "Middle Systems Engineer",
+            "company": "TXT GROUP",
+            "location": "Bayern, Bavaria, Germany",
+            "description": "All’interno della divisione Aerospaziale e Difesa , la persona selezionata sarà coinvolta in attività avanzate di ingegneria dei sistemi, inclusi collaudo, validazione e verifica di sistemi aeronautici complessi, contribuendo a progetti ad elevato contenuto tecnologico in collaborazione con team mul",
+            "url": "https://www.linkedin.com/jobs/view/4429677835",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 36,
+          "reason": "title fits 'Praktikum Data Analysis'; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4361849453",
+            "title": "Praktikum Prozessmanagement Produktion: Data Science & Reporting",
+            "company": "Porsche AG",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4361849453",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 36,
+          "reason": "title fits 'Praktikum Data Analysis'; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4363034854",
+            "title": "Praktikum Logistik: Data Science & Process Mining",
+            "company": "Porsche AG",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4363034854",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Werkstudent'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4389582571",
+            "title": "Werkstudent Supply Chain Management / Arbeitsvorbereitung (w/m/d)",
+            "company": "EGGER D-A-CH",
+            "location": "Marienmünster, North Rhine-Westphalia, Germany",
+            "description": "Zur Verstärkung unseres Teams in Marienmünster suchen wir dich ab dem 01.09.2026. Die ersten Erfahrungen in der Arbeitswelt stellen oft schon die Weichen für die berufliche Zukunft. Setze dein theoretisches Wissen in der Praxis ein und lerne deinen zukünftigen Wunschberuf besser kennen. Standort: Ma",
+            "url": "https://www.linkedin.com/jobs/view/4389582571",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Werkstudent'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4429358108",
+            "title": "Werkstudent (w/m/d) Entwicklung Leistungselektronik",
+            "company": "Siemens",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Art der Anstellung: Befristet (10 - 15 Stunden / Woche) Tauche als Werkstudent (w/m/d) Entwicklung Leistungselektronik in Erlangen direkt ins Herz der Innovation ein und gestalte mit uns die Zukunft leistungsstarker Industrie-Umrichter – vom elektrischen Design bis zur praktischen Umsetzung im Labor",
+            "url": "https://www.linkedin.com/jobs/view/4429358108",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Praktikant'; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4400409782",
+            "title": "Praktikant Direkter Einkauf Himmel, Spritzguss Interieur (w/m/x)",
+            "company": "BMW Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4400409782",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Praktikum'; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4411360097",
+            "title": "Praktikum Sales & Marketing",
+            "company": "Porsche Financial Services GmbH",
+            "location": "Bietigheim-Bissingen, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4411360097",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Praktikum'; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4363091329",
+            "title": "Praktikum Corporate Finance & Treasury (Payments, Cash & Liquidity Management)",
+            "company": "Porsche AG",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4363091329",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4400427805",
+            "title": "Collaboration Systems Engineer (d/f/m)",
+            "company": "Personio",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Personio's intelligent HR platform helps small and medium-sized organizations unlock the power of people by making complicated, time-consuming tasks simple and efficient. Our team of 1,500 Personios is building user-friendly products that delight our 15,000+ customers and their 1.5 million employees",
+            "url": "https://www.linkedin.com/jobs/view/4400427805",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4325901037",
+            "title": "M365 System Engineer – Schwerpunkt Exchange Online (m/w/d)",
+            "company": "Ratiodata",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "WIR SIND Du suchst neue Herausforderungen und Karrieremöglichkeiten? Du willst deine Zukunft aktiv mitgestalten? Dann komm zu uns! Wir sind eins der größten Systemhäuser und Technologiepartner in Deutschland mit über 1.500 Kolleg:innen an 11 Standorten. Bewirb dich jetzt und zeig uns, aus welchen Bi",
+            "url": "https://www.linkedin.com/jobs/view/4325901037",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Ingenieur'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4436671076",
+            "title": "Ingenieur / Projektleiter (m/w/d) für die Betoninstandsetzung - Tragwerksplaner",
+            "company": "Thoch4 Ing. GmbH",
+            "location": "Hattersheim, Hesse, Germany",
+            "description": "Unternehmen: T4 Ingenieurgesellschaft mbH Standort: Hattersheim, Monheim Vertragsart: Vollzeit Beginn: ab sofort Die T4 Ingenieurgesellschaft mbH ist nicht einfach nur ein Planungsbüro. Wir sind Spezialisten für Bauwerksdiagnostik und Bauwerkserhaltung. Wir retten Bausubstanz, entwickeln smarte Inst",
+            "url": "https://www.linkedin.com/jobs/view/4436671076",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Ingenieur'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4408448209",
+            "title": "Ingenieur Produktzertifizierung & Zulassung (m/w/d)",
+            "company": "ifm",
+            "location": "Tettnang, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4408448209",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 19,
+          "reason": "skills: Automobil; keyword bonus: 2; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4436668744",
+            "title": "Wir bieten dir dein gelenktes Jahrespraktikum!",
+            "company": "Astoria Automobile",
+            "location": "Kaarst, North Rhine-Westphalia, Germany",
+            "description": "Zur Erlangung der Fachhochschulreife (FOS/BOS – Wirtschaft/Verwaltung) Du willst deine Fachhochschulreife machen und suchst einen Praktikumsplatz mit echtem Praxisbezug? Dann komm zu uns ins Autohaus! Aufgaben Was dich bei uns erwartet: Ein abwechslungsreicher Arbeitsalltag im kaufmännischen Bereich",
+            "url": "https://www.linkedin.com/jobs/view/4436668744",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 17,
+          "reason": "skills: Automobil; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4205335501",
+            "title": "Werkstudenten-Jobs / Praktika / Abschlußarbeiten",
+            "company": "Stanley Black & Decker, Inc.",
+            "location": "Linden, Lower Saxony, Germany",
+            "description": "Stanley Black & Decker ist mit über 54.000 Mitarbeitern der weltweit führende Anbieter für Werkzeuge und Zubehör, elektronische Sicherheitslösungen sowie Befestigungslösungen mit nachhaltigem profitablem Wachstum. Unser Segment Stanley Engineered Fastening ist Weltmarktführer für Konzeptlösungen für",
+            "url": "https://www.linkedin.com/jobs/view/4205335501",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 17,
+          "reason": "skills: Automotive; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439535759",
+            "title": "Projektleiter Elektrotechnik (m/w/d)",
+            "company": "megatec electronic GmbH",
+            "location": "Etzelwang, Bavaria, Germany",
+            "description": "Die megatec electronic GmbH ist ein weltweit agierendes Unternehmen im Bereich der Elektronikentwicklung und Fertigung. Unsere Kerngeschäftsfelder sind die Industrie / Automatisierung und der Motorsport / Automotive. Für unseren Standort in Lehenhammer suchen wir zum nächstmöglichen Zeitpunkt einen ",
+            "url": "https://www.linkedin.com/jobs/view/4439535759",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
