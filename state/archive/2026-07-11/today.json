@@ -4750,6 +4750,430 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-11T19:37:26.433779",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "The candidate's experience in ADAS, sensor data analysis, and time-series visualization, as well as their skills in Python, Grafana, and InfluxDB, make them a strong fit for the Praktikum Verfahrens- und Technologieentwicklung role at Deutsche Bahn, despite the role's location in Frankfurt am Main and Berlin, which is within the candidate's preferred locations.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate's experience in ADAS, sensor data analysis, and time-series visualization, as well as their skills in Python, Grafana, and InfluxDB, make them a strong fit for the Praktikum Verfahrens- und Technologieentwicklung role at Deutsche Bahn, despite the role's location in Frankfurt am Main and Berlin, which is within the candidate's preferred locations.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4431308636",
+            "title": "Praktikum Verfahrens- und Technologieentwicklung (w/m/d)",
+            "company": "Deutsche Bahn",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Die Deutsche Bahn bietet deutschlandweit über 500 Berufe und vielfältige Einstiegsmöglichkeiten für Student:innen und Absolvent:innen. Mehr als 1.400 Praktikant:innen, Werkstudent:innen, Direkteinsteiger:innen und Trainees lernen uns jährlich als dynamische und innovative Arbeitgeberin kennen. Sei d",
+            "url": "https://www.linkedin.com/jobs/view/4431308636",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 70,
+          "reason": "The candidate's background in International Automotive Engineering, experience with sensor data analysis, and skills in Python, Grafana, and InfluxDB align with the job requirements, but the role's focus on Schwingungskomfort and Rollgeräusch, and the candidate's limited experience in these areas, are notable gaps.",
+          "domain_class": "core_field",
+          "ai_score": 70,
+          "ai_reason": "The candidate's background in International Automotive Engineering, experience with sensor data analysis, and skills in Python, Grafana, and InfluxDB align with the job requirements, but the role's focus on Schwingungskomfort and Rollgeräusch, and the candidate's limited experience in these areas, are notable gaps.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4362276295",
+            "title": "Praktikum Fahrkomfort",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team entwickeln und validieren die Eigenschaften Schwingungskomfort und Rollgeräusch im Gesamtfahrzeug. Hierzu nutzen wir physische Fahrzeuge und digitale Zwillinge (MKS- und FE-Modelle). Im Fahrversuch werden die Eigenschaften sowohl auf realen Straßen als auch auf Prüfständen bewertet und ",
+            "url": "https://www.linkedin.com/jobs/view/4362276295",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 70,
+          "reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, ADAS, and autonomous driving align with the job requirements, but the role's emphasis on technical project management and Typisierungsplanung is not directly reflected in the candidate's CV.",
+          "domain_class": "core_field",
+          "ai_score": 70,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, ADAS, and autonomous driving align with the job requirements, but the role's emphasis on technical project management and Typisierungsplanung is not directly reflected in the candidate's CV.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4362295151",
+            "title": "Praktikum Antriebs- /Gesamtfahrzeugtypisierung",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team sind der letzte Arbeitsschritt in der Fahrzeugentwicklung. Wir sind verantwortlich für die Fahrzeug-Zulassungen des Gesamtfahrzeugs und des Antriebs unter Einhaltung der weltweiten Gesetzgebungen. In einem internationalen Team haben wir viele Schnittstellen in die Produktion, den Vertri",
+            "url": "https://www.linkedin.com/jobs/view/4362295151",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 42,
+          "reason": "title fits 'Praktikum'; skills: Fahrzeugtechnik; keyword bonus: 1; preferred location (rule-based; AI quota exhausted)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": true,
+          "job": {
+            "id": "linkedin_4361878417",
+            "title": "Praktikum Konstruktion Antriebsprüfstände",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team planen, koordinieren und verantworten die mechanische Hardwareintegration der Antriebs- und Verbundprüfstände für alle Antriebssysteme im Porsche Konzern. Dazu sind wir in sehr engem Austausch mit Motorsport sowie der Vor- und Serienentwicklung. Zudem verantworten wir aktiv die mechanis",
+            "url": "https://www.linkedin.com/jobs/view/4361878417",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4422053681",
+            "title": "Working Student (f/m/d) - AI-based Quality Evaluation for AI-Generated Code Changes (SAP HANA Cloud)",
+            "company": "SAP",
+            "location": "Walldorf, Baden-Württemberg, Germany",
+            "description": "We help the world run better At SAP, we enable you to bring out your best. Our company culture is focused on collaboration and a shared passion to help the world run better. How? We focus every day on building the foundation for tomorrow and creating a workplace that embraces differences, values fle",
+            "url": "https://www.linkedin.com/jobs/view/4422053681",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4402714633",
+            "title": "AV Systems Engineer",
+            "company": "FIRST",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Building a Brand Starts with a Story FIRST is a leading global brand experience agency providing Content, Creative, Digital Technology, Management & Delivery, and Data & Insights services. For 30 years, we have utilized three flexible delivery models: Embedded teams, Corporate Campus operations, and",
+            "url": "https://www.linkedin.com/jobs/view/4402714633",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439573450",
+            "title": "Systems Engineer (m/w/d) Hardware",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Für unseren Kunden besetzen wir ab sofort folgende Position: Aufgabenprofil Analyse, Strukturierung und kontinuierliche Weiterentwicklung von Systemanforderungen Konzeption und Definition von Systemarchitekturen auf Gesamt- und Teilsystemebene Entwicklung und konstruktive Auslegung mechanischer Baut",
+            "url": "https://www.linkedin.com/jobs/view/4439573450",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436671891",
+            "title": "System Engineer (m/w/d) Datacenter",
+            "company": "JAEGGI",
+            "location": "Fürstenfeldbruck, Bavaria, Germany",
+            "description": "Ihre Aufgaben Mitwirkung und Umsetzung von Konzepten eines Rechenzentrum-Betriebs Verantwortung für den Betrieb und die Weiterentwicklung der Rechenzentrumsumgebung Aufbau und die Installation von NetApp-Clustern/-Filern an zentralen und dezentralen Standorten Softwareseitige Installation und Konfig",
+            "url": "https://www.linkedin.com/jobs/view/4436671891",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436691001",
+            "title": "System Engineer (m/w/d) Microsoft Infrastruktur",
+            "company": "JAEGGI",
+            "location": "Fürstenfeldbruck, Bavaria, Germany",
+            "description": "Ihre Aufgaben Aufbau, Optimierung und die technologische Weiterentwicklung der Microsoft Systemlandschaft Pflege der Microsoft Systeminfrastruktur mit der einhergehenden Installation, Planung und Konfiguration Windows Servern Entwicklung und Betrieb von Lösungen in o365, Intune und Azure Unterstützu",
+            "url": "https://www.linkedin.com/jobs/view/4436691001",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4380787150",
+            "title": "SDV (Senior) Business Development Manager für Public & Defence (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Aufgaben Als SDV (Senior) Business Development Manager für Public & Defence bist du ein zentraler Treiber des SDV-Teams bei MHP. Du unterstützt dabei, neue Kunden zu gewinnen und strategische SDV-/SDD-Lösungen rund um ADAS, Connectivity und KI-gestützte Lösungen zu skalieren und gestalten gemeinsam ",
+            "url": "https://www.linkedin.com/jobs/view/4380787150",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436680770",
+            "title": "Bauingenieur / Wirtschaftsingenieur (Bau) für Abbruch- und Sanierungsmaßnahmen (m/w/d)",
+            "company": "Hubert Beyer Umwelt Consult GmbH",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "Die Hubert Beyer Umwelt Consult GmbH ist ein kompetentes Ingenieurbüro im Umweltbereich in Leipzig. Unser interdisziplinäres Team erarbeitet täglich zuverlässige Lösungen zu den individuellen Fragestellungen im Rahmen der zur Projektabwicklung erforderlichen Ingenieur- und Planungsleistungen. Unsere",
+            "url": "https://www.linkedin.com/jobs/view/4436680770",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436682437",
+            "title": "Projektingenieur (m/w/d) im Bereich Altlasten / Bodenschutz",
+            "company": "Hubert Beyer Umwelt Consult GmbH",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "Die Hubert Beyer Umwelt Consult GmbH ist ein kompetentes Ingenieurbüro im Umweltbereich in Leipzig. Unser interdisziplinäres Team erarbeitet täglich zuverlässige Lösungen zu den individuellen Fragestellungen im Rahmen der zur Projektabwicklung erforderlichen Ingenieur- und Planungsleistungen. Aufgab",
+            "url": "https://www.linkedin.com/jobs/view/4436682437",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436658833",
+            "title": "Bauingenieur:in",
+            "company": "BGR Beratende Ingenieure PartG mbB",
+            "location": "Bonn, North Rhine-Westphalia, Germany",
+            "description": "BGR Ingenieure hat sich in den letzten Jahren als erfolgreiches Ingenieurbüro etabliert und expandiert weiterhin. Mit den drei attraktiven Bürostandorten in Bonn, Köln und Overath sind wir lokal bestens verankert. Aber auch über die Grenzen des Rheinlands hinaus kommen wir zum Einsatz, beispielsweis",
+            "url": "https://www.linkedin.com/jobs/view/4436658833",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4311563942",
+            "title": "Abschlussarbeit im Bereich Öl-Entwicklung (m/w/d)",
+            "company": "Schaeffler",
+            "location": "Bühl, Baden-Württemberg, Germany",
+            "description": "Schaeffler – das ist die Faszination eines internationalen Technologie-Konzerns, verbunden mit der Kultur eines Familienunternehmens. Als Partner aller bedeutenden Automobilhersteller sowie zahlreicher Kunden im Industriebereich bieten wir Ihnen viel Raum für Ihre persönliche Entfaltung. Grundvoraus",
+            "url": "https://www.linkedin.com/jobs/view/4311563942",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 12,
+          "reason": "keyword bonus: 1; preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439581473",
+            "title": "Kfz-Mechatroniker (m/w/d) für die Marken VW und Audi",
+            "company": "Alphartis SE",
+            "location": "Tübingen, Baden-Württemberg, Germany",
+            "description": "Ihre Aufgaben Ordnungsgemäße Durchführung der anstehenden Kundenaufträge in den Bereich Wartung, Pflege und Inspektion an unserem VW/Audi Standort in Tübingen Durchführung der beauftragten Reparaturen an Fahrzeugen Einhaltung der Qualitätsstandards des Herstellers Ihre Qualifikation Eine entsprechen",
+            "url": "https://www.linkedin.com/jobs/view/4439581473",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Führungserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439570799",
+            "title": "Serviceleiter (m/w/d)",
+            "company": "Alphartis SE",
+            "location": "Kehl, Baden-Württemberg, Germany",
+            "description": "Ihre Aufgaben Serviceleitung der bhg Kehl Unterstützung des Filialleiter Aftersales in allen Belangen Führung und Entwicklung der Mitarbeiter im After Sales Steuerung und Überwachung der Aftersalesprozesse, -standards und übergreifende Filialprozesse Ihre Qualifikation Mehrjährige Berufs- und Führun",
+            "url": "https://www.linkedin.com/jobs/view/4439570799",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4371007675",
+            "title": "(Senior) Business Developer PTC Platforms (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4371007675",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4390320787",
+            "title": "(Senior) Consultant (all genders) – Manufacturing & Industrialization",
+            "company": "Porsche Consulting",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4390320787",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The job posting requires experience in customer experience and retail, which does not match the candidate's background in automotive engineering and sensor data analysis, with no relevant experience in the field of customer experience or retail.",
+          "domain_class": "core_field",
+          "ai_score": 20,
+          "ai_reason": "The job posting requires experience in customer experience and retail, which does not match the candidate's background in automotive engineering and sensor data analysis, with no relevant experience in the field of customer experience or retail.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4390004398",
+            "title": "Praktikum Clienteling & Customer Experience",
+            "company": "Porsche AG",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Wir als Team …gestalten kundenzentrierte Erlebnisse entlang der gesamten Customer Journey – von der Idee bis zur globalen Umsetzung im Handel. Dazu entwickeln wir innovative Retailformate weiter, analysieren deren Erfolg und steuern das weltweite Retail Experience Evaluation Programm (Mystery Shoppi",
+            "url": "https://www.linkedin.com/jobs/view/4390004398",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Junior Ingenieur'; skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4344006127",
+            "title": "Ingenieurin / Ingenieur / Elektrotechnikerin / Elektrotechniker / Informatikerin / Informatiker (m/w/d) als Software Entwickler C / C++",
+            "company": "Scheidt & Bachmann",
+            "location": "Mönchengladbach, North Rhine-Westphalia, Germany",
+            "description": "Scheidt & Bachmann - Mobilität, die verbindet Ob beim Bahnfahren, Parken, Tanken bzw. Laden oder bei der Nutzung des öffentlichen Nahverkehrs – mit großer Wahrscheinlichkeit hast Du dabei schon unsere Technik genutzt. Seit über 150 Jahren entwickeln wir innovative und nachhaltige Systeme für eine Mo",
+            "url": "https://www.linkedin.com/jobs/view/4344006127",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Engineer'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439559995",
+            "title": "System Engineer (m/w/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Für unseren Kunden im Defence Umfeld besetzen wir ab sofort folgende Position: Aufgabenprofil Entwicklung und Modellierung von System- und Subsystemarchitekturen sowie technischen Konzepten Analyse von Use Cases und Ableitung von Systemanforderungen im Requirements Management Verantwortung für die E",
+            "url": "https://www.linkedin.com/jobs/view/4439559995",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4422034058",
+            "title": "Forward Deployed Data Scientist Expert (f/m/d)",
+            "company": "SAP",
+            "location": "Garching, Bavaria, Germany",
+            "description": "We help the world run better At SAP, we keep it simple: you bring your best to us, and we'll bring out the best in you. We're builders touching over 20 industries and 80% of global commerce, and we need your unique talents to help shape what's next. The work is challenging – but it matters. You'll f",
+            "url": "https://www.linkedin.com/jobs/view/4422034058",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 19,
+          "reason": "skills: Automobil; keyword bonus: 2; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439587031",
+            "title": "Verkäufer (m/w/d) Neue Automobile Audi",
+            "company": "Alphartis SE",
+            "location": "Kehl, Baden-Württemberg, Germany",
+            "description": "Ihre Aufgaben Verkauf von Neufahrzeugen der Marke Audi Professionelle Beratung der Kunden Gewinnung neuer Kunden im Innen- und Außendienst Gestaltung und Pflege von vertrauensvollen und langfristigen Kundenbeziehungen Ihre Qualifikation Erfolgreich abgeschlossene Berufsausbildung Berufserfahrung im ",
+            "url": "https://www.linkedin.com/jobs/view/4439587031",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 17,
+          "reason": "skills: Sensors; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4436659944",
+            "title": "Embedded SW Developer (m/f/d)",
+            "company": "Electronic components by Würth Elektronik",
+            "location": "Munich, Bavaria, Germany",
+            "description": "German English Job offers Proactive application Career FAQ Application process Embedded SW Developer (m/f/d) Würth Elektronik eiSos GmbH & Co. KG München Junior, Career start Work experience Fulltime EMBEDDED SOFTWARE? YOU DEVELOP SECURE SOLUTIONS FOR THE PRODUCTS OF TOMORROW. At the Würth Elektroni",
+            "url": "https://www.linkedin.com/jobs/view/4436659944",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 15,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4438916861",
+            "title": "Architekt | Bauingenieur (m/w/d) als Planungskoordinator (m/w/d) im Fertighausbau",
+            "company": "ScanHaus Marlow",
+            "location": "Ribnitz-Damgarten, Mecklenburg-West Pomerania, Germany",
+            "description": "ScanHaus Marlow setzt seit der Fimengründung im Jahr 1992 Maßstäbe in der Fertighausbranche – Wir stehen für moderne Architektur, nachhaltige Bauweise und hohe Kundenzufriedenheit. Mit unserem Hauptsitz und Produktionsstandort im idyllischen Marlow, Mecklenburg-Vorpommern, beschäftigen wir über 500 ",
+            "url": "https://www.linkedin.com/jobs/view/4438916861",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
