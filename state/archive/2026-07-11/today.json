@@ -4237,6 +4237,519 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-11T17:20:39.244893",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 70,
+          "reason": "The candidate's background in International Automotive Engineering, experience with sensor data analysis (LiDAR/Radar/Camera), and proficiency in Python, Grafana, and InfluxDB align well with the job requirements, but the role's emphasis on project management, simulation, and system development in a professional setting may require more extensive experience.",
+          "domain_class": "core_field",
+          "ai_score": 70,
+          "ai_reason": "The candidate's background in International Automotive Engineering, experience with sensor data analysis (LiDAR/Radar/Camera), and proficiency in Python, Grafana, and InfluxDB align well with the job requirements, but the role's emphasis on project management, simulation, and system development in a professional setting may require more extensive experience.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4362276312",
+            "title": "Praktikum Fahrdynamiksysteme",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team integrieren das unverwechselbare Fahrerlebnis von Porsche in die Fahrzeuge der Zukunft! Im Bereich Entwicklung Fahrdynamiksysteme sind wir verantwortlich für die Konzeption und Umsetzung innovativer Systeme, die das typische Fahrverhalten der Marke prägen. Unsere Arbeit umfasst die Entw",
+            "url": "https://www.linkedin.com/jobs/view/4362276312",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 70,
+          "reason": "The candidate's background in International Automotive Engineering, experience with sensor data analysis, and skills in Python, Grafana, and InfluxDB align with the job's requirements, but the role's focus on Anforderungsmanagement and the candidate's limited professional experience are notable gaps.",
+          "domain_class": "core_field",
+          "ai_score": 70,
+          "ai_reason": "The candidate's background in International Automotive Engineering, experience with sensor data analysis, and skills in Python, Grafana, and InfluxDB align with the job's requirements, but the role's focus on Anforderungsmanagement and the candidate's limited professional experience are notable gaps.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4361849440",
+            "title": "Praktikum Anforderungsmanagement",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team formulieren die Anforderungen an den Porsche von Morgen. Dabei sind wir in der frühen Entwicklungsphase angesiedelt und stellen uns den Herausforderungen, die Branchen-Trends wie E-Mobility, Nachhaltigkeit, autonomes Fahren und zunehmende Digitalisierung mitbringen. Wir sorgen dafür, da",
+            "url": "https://www.linkedin.com/jobs/view/4361849440",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 70,
+          "reason": "The candidate's background in International Automotive Engineering, experience with sensor data analysis, and skills in Python, Grafana, and InfluxDB align with the job requirements, but the role's emphasis on MATLAB and Simulink experience is not fully matched by the candidate's skills.",
+          "domain_class": "core_field",
+          "ai_score": 70,
+          "ai_reason": "The candidate's background in International Automotive Engineering, experience with sensor data analysis, and skills in Python, Grafana, and InfluxDB align with the job requirements, but the role's emphasis on MATLAB and Simulink experience is not fully matched by the candidate's skills.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4363091350",
+            "title": "Praktikum virtuelle Gesamtfahrzeugvalidierung - Fahrsimulation",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team …verantworten die Umsetzung eines effektiven Verifikations-/Validierungs-Managements in den Fahrzeugprojekten und tragen die Gesamtverantwortung für eine wirksame Absicherung mit physischen und virtuellen Methoden in allen Phasen des Produkt Entstehungsprozesses. In der virtuellen Gesam",
+            "url": "https://www.linkedin.com/jobs/view/4363091350",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 52,
+          "reason": "title fits 'Praktikum'; skills: Python, Fahrzeugtechnik, MATLAB; keyword bonus: 1; preferred location (rule-based; AI quota exhausted)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": true,
+          "job": {
+            "id": "linkedin_4363053713",
+            "title": "Praktikum Fahrwerksprüfstände",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team kümmern uns um die Prüfstände, auf denen das sportliche Fahrverhalten unserer Fahrzeuge mitentwickelt wird. Wir sind ausgestattet mit Prüfständen, die jedes Teil des Fahrwerks unter die Lupe nehmen können. Hast du Lust, an der Entwicklung neuer Fahrwerke mitzuarbeiten und auf eine veran",
+            "url": "https://www.linkedin.com/jobs/view/4363053713",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Working Student'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4428284964",
+            "title": "Working Student (d/f/m) Operational Quality Management & Business Improvement Support",
+            "company": "Airbus Aircraft",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Job Description: In order to support Satair (100 % Airbus subsidiary) we are looking for a Working Student (d/f/m) Operational Quality Management & Business Improvement Support You are a full time student (d/f/m), looking for a working student position and want to get to know the work of a Quality B",
+            "url": "https://www.linkedin.com/jobs/view/4428284964",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4429683764",
+            "title": "Working Student— Talent Management & Career Development",
+            "company": "Boston Consulting Group (BCG)",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Who We Are Our strategy? To be anything but typical strategy consultants! Our unconventional nature is embedded deep in our DNA. 60 years ago, BCG shook up the world of strategy consulting. Now, it has grown to become one of the world leaders in the field. How do we manage to stay ahead of the pack?",
+            "url": "https://www.linkedin.com/jobs/view/4429683764",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4362276289",
+            "title": "Praktikum Eigenschaftsauslegung Performance",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team verantworten die Performance-Eigenschaften unserer Porschefahrzeuge und sorgen dafür, dass die Fahrzeugkonzepte in allen relevanten Entwicklungsbereichen zielgerichtet im Schwerpunkt Performance entwickelt werden. Dabei decken wir Themen wie Längsdynamik, Querdynamik, Rundstreckenbetrie",
+            "url": "https://www.linkedin.com/jobs/view/4362276289",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436675588",
+            "title": "Scientist / Tissue Clearing & 3D Image Analysis",
+            "company": "Deep Piction",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "We’re hiring at Deep Piction 🧠🔬 Deep Piction is a Munich-based biotechnology company developing advanced tissue-clearing, 3D imaging, spatial biology, and AI technologies to accelerate drug discovery and therapeutic development. We combine whole-organ and whole-body imaging at cellular resolution wi",
+            "url": "https://www.linkedin.com/jobs/view/4436675588",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4412463654",
+            "title": "Working Student - Public Relations - German Speaking (Werkstudent:innen)",
+            "company": "Audible",
+            "location": "Berlin, Germany",
+            "description": "Description At Audible, we believe stories have the power to transform lives. It’s why we work with some of the world’s leading creators to produce and share audio storytelling with our millions of global listeners. We are dreamers and inventors who come from a wide range of backgrounds and experien",
+            "url": "https://www.linkedin.com/jobs/view/4412463654",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 12,
+          "reason": "keyword bonus: 1; preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4300841200",
+            "title": "Scientist Sensory (m/w/d)",
+            "company": "ADM",
+            "location": "Heidelberg, Baden-Württemberg, Germany",
+            "description": "Job Description In the CD&D Beverages and Sweet Goods and Dairy team in Eppelheim/Heidelberg Fulltime Unlimited Your role You collaborate closely with the Consumer Insights Marketing team to deliver consumer-driven sensory data to customers and support key projects You conduct sensory-guided analysi",
+            "url": "https://www.linkedin.com/jobs/view/4300841200",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436683173",
+            "title": "Content Creator Gesundheitsbereich",
+            "company": "Nigela",
+            "location": "Bernhardswald, Bavaria, Germany",
+            "description": "Werkstudent oder Teilzeit | Remote / Hybrid Für unsere Marken zuerstGesund und Nigela suchen wir einen Content Creator im Gesundheitsbereich , der echtes Interesse an natürlicher Gesundheit , Healthy Lifestyle und ganzheitlichem Wohlbefinden mitbringt. Aufgaben Entwicklung von Content-Ideen rund um ",
+            "url": "https://www.linkedin.com/jobs/view/4436683173",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 12,
+          "reason": "keyword bonus: 1; preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439563506",
+            "title": "Systemtestingenieur (m/w/d)",
+            "company": "Crown Lift Trucks UK",
+            "location": "Feldkirchen, Bavaria, Germany",
+            "description": "Innovation für Ideen, die mehr bewegen Wir zählen zu den weltweit größten Familienunternehmen für Materialflusslösungen. Ausgezeichnet für Mitarbeiterfreundlichkeit und unter den 5 % der Top-Arbeitgeber, betreiben wir global über 500 Standorte in mehr als 84 Ländern. Unser Hauptsitz befindet sich in",
+            "url": "https://www.linkedin.com/jobs/view/4439563506",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Principal'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4429693490",
+            "title": "Middle Test Engineer",
+            "company": "TXT GROUP",
+            "location": "Bayern, Bavaria, Germany",
+            "description": "All’interno della divisione Aerospace & Defence , la persona selezionata sarà coinvolta in attività di test, validazione e verifica di sistemi aeronautici, contribuendo a progetti ad alto contenuto tecnologico in collaborazione con team multidisciplinari e clienti di rilievo. Il ruolo prevede un con",
+            "url": "https://www.linkedin.com/jobs/view/4429693490",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4409286069",
+            "title": "Prüfer (D/M/W) für Funktionstests Final Assembly Line",
+            "company": "Airbus Aircraft",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Job Description: Du bist begeistert von komplexen elektronischen Systemen und arbeitest gern in einem fertigen A320 Cockpit? Troubleshooting bzw. das Aufspüren von Fehlern in einem fertigen Flugzeug ist dein Ding? Du arbeitest strukturiert und liebst Qualität? Dann haben wir genau die richtige Herau",
+            "url": "https://www.linkedin.com/jobs/view/4409286069",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4409688607",
+            "title": "(Senior) Tax Manager (m/w/d)",
+            "company": "Porsche AG",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Wir als Team Wir sind die zentrale Steuerfunktion der Porsche AG und gestalten steuerliche Fragestellungen dort, wo unternehmerische Entscheidungen entstehen. Wir arbeiten eng mit dem Management und den Fachbereichen zusammen – von Finanzierung, M&A und Konzernrestrukturierungen bis hin zu Unternehm",
+            "url": "https://www.linkedin.com/jobs/view/4409688607",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4428259187",
+            "title": "Akquisiteur / Fuhrparkmanagement Berater (m/w/d)",
+            "company": "Volkswagen Automobile Rhein-Neckar GmbH",
+            "location": "Mannheim, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4428259187",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4390321738",
+            "title": "(Senior) Consultant (all genders) – Manufacturing & Industrialization",
+            "company": "Porsche Consulting",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4390321738",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4371002726",
+            "title": "(Senior) Business Developer PTC Platforms (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Ludwigsburg, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4371002726",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4409274311",
+            "title": "(Senior) Consultant (all genders) High Performance Lieferantenmanagement",
+            "company": "Porsche Consulting",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4409274311",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4371010706",
+            "title": "Manager mit Fokus auf Enterprise Architecture (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4371010706",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis are not directly applicable to the Junior OT Security Engineer role, and they lack the required IT-Security, Informatik, or comparable qualifications, as well as the necessary German language proficiency.",
+          "domain_class": "core_field",
+          "ai_score": 20,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis are not directly applicable to the Junior OT Security Engineer role, and they lack the required IT-Security, Informatik, or comparable qualifications, as well as the necessary German language proficiency.",
+          "unscored": false,
+          "category": "fluent_german",
+          "job": {
+            "id": "linkedin_4439564567",
+            "title": "Junior OT Security Engineer (m/w/d)",
+            "company": "Codewerk",
+            "location": "Murnau am Staffelsee, Bavaria, Germany",
+            "description": "Deine Aufgaben Du erstellst Security-Konzepte und Architekturen von Komponenten im Bahn- und Industriebereich zusammen mit einem erfahrenen Team. Du unterstützt bei der Umsetzung des Cyber Resilience Act und anderer regulatorischer Anforderungen. Du führst Risiko- und Bedrohungsanalysen durch und be",
+            "url": "https://www.linkedin.com/jobs/view/4439564567",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 44,
+          "reason": "title fits 'Werkstudent'; skills: Automobil; keyword bonus: 2; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4429688504",
+            "title": "Werkstudent (m/w/d) Vertragsverwaltung",
+            "company": "Toyota Kreditbank/ Toyota Financial Services Germany",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Aufgaben: Selbstständige Bearbeitung von Leasing‑ und Kreditumschreibungen (u.a. Taxi/ Uber) von Beginn bis Abschluss Erstellung manueller Bestätigungsschreiben von Sondertilgungen inkl. neuem Zahlungsplan Telefonische Beratung von Händlern und Kunden unter Einhaltung von Service‑Level und bankinter",
+            "url": "https://www.linkedin.com/jobs/view/4429688504",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 42,
+          "reason": "title fits 'Praktikum'; skills: Fahrzeugtechnik; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4431190777",
+            "title": "Praktikum Verfahrens- und Technologieentwicklung (w/m/d)",
+            "company": "Deutsche Bahn",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Die Deutsche Bahn bietet deutschlandweit über 500 Berufe und vielfältige Einstiegsmöglichkeiten für Student:innen und Absolvent:innen. Mehr als 1.400 Praktikant:innen, Werkstudent:innen, Direkteinsteiger:innen und Trainees lernen uns jährlich als dynamische und innovative Arbeitgeberin kennen. Sei d",
+            "url": "https://www.linkedin.com/jobs/view/4431190777",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Werkstudent'; skills: Datenanalyse; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4402236023",
+            "title": "Werkstudent:in Datenanalyse Infrastruktur & Baubetriebsplanung",
+            "company": "Deutsche Bahn",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Die Deutsche Bahn bietet deutschlandweit über 500 Berufe und vielfältige Einstiegsmöglichkeiten für Student:innen und Absolvent:innen. Mehr als 1.400 Praktikant:innen, Werkstudent:innen, Direkteinsteiger:innen und Trainees lernen uns jährlich als dynamische und innovative Arbeitgeberin kennen. Sei d",
+            "url": "https://www.linkedin.com/jobs/view/4402236023",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 37,
+          "reason": "title fits 'Internship Automotive'; skills: Automotive; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4436674599",
+            "title": "Data Intelligence Specialist - Automotive (M/W/D) - SYSTEMS",
+            "company": "VISPIRON GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Wir bringen die Mobilität der Zukunft schneller auf die Straße Mit unserer einzigartigen Kombination aus tiefem Systemverständnis, modernster Testinfrastruktur und intelligenten Automatisierungslösungen verkürzen wir Entwicklungszyklen radikal, reduzieren Risiken und schaffen Freiraum für Innovation",
+            "url": "https://www.linkedin.com/jobs/view/4436674599",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 36,
+          "reason": "title fits 'Sensor Data Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4429696422",
+            "title": "OT Applications & Data Engineer – Industrial IT / AVEVA PI & Alarm Management",
+            "company": "Quariq",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "What You’ll Be Doing As an OT Applications & Data Engineer at AG Solution Group, you will be responsible for the hands-on implementation, integration, and support of industrial IT and OT data systems for our process manufacturing customers. Working from our regional base near Cologne, you will suppo",
+            "url": "https://www.linkedin.com/jobs/view/4429696422",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 36,
+          "reason": "title fits 'Sensor Data Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4428291562",
+            "title": "OT Applications & Data Engineer – Industrial IT / AVEVA PI & Alarm Management",
+            "company": "AG Solution Group",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "What You’ll Be Doing As an OT Applications & Data Engineer at AG Solution Group, you will be responsible for the hands-on implementation, integration, and support of industrial IT and OT data systems for our process manufacturing customers. Working from our regional base near Cologne, you will suppo",
+            "url": "https://www.linkedin.com/jobs/view/4428291562",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Testingenieur'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4428255554",
+            "title": "Testingenieur Hochfrequenztechnik für Elektronik (w/m/d)",
+            "company": "Siemens Healthineers",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Wollen Sie die Zukunft des Gesundheitswesens mitgestalten? Wir bei Siemens Healthineers setzen auf Menschen, die ihre Energie und Leidenschaft diesem Ziel widmen – das sagt schon unser Unternehmensname. Siemens Healthineers steht für Pioniergeist unserer Mitarbeitenden, gepaart mit unserer langen Tr",
+            "url": "https://www.linkedin.com/jobs/view/4428255554",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Testingenieur'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4421205096",
+            "title": "Testingenieur (m/w/d)",
+            "company": "Panasonic Europe",
+            "location": "Ottobrunn, Bavaria, Germany",
+            "description": "Sind Sie auf der Suche nach einer neuen Herausforderung, die eine sinnvolle Aufgabe mit einem echten Ziel vereint? Dann möchten wir Sie in unserem multinationalen Team willkommen heißen! Ihr Wachstum ist unser Wachstum. Wir investieren in Ihre Zukunft, indem wir Ihre Fähigkeiten und Kompetenzen durc",
+            "url": "https://www.linkedin.com/jobs/view/4421205096",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Ingenieur'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439574352",
+            "title": "Ingenieur Netzanschluss Erneuerbare Energien (w/m/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Heilbronn, Baden-Württemberg, Germany",
+            "description": "Für unseren Kunden besetzen wir ab sofort folgende Position: Aufgabenprofil Sie verantworten die Bearbeitung von Einspeiseanfragen für dezentrale Erzeugungsanlagen. d.h. Anlagen mit Photovoltaik Unsere Kunden, Marktpartner und Installateur haben Sie im Fokus und begleiten diese aus der Rolle des Net",
+            "url": "https://www.linkedin.com/jobs/view/4439574352",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
