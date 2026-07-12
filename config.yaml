@@ -14,7 +14,11 @@
 
 # ── AI scoring (stage 2; stage-1 rule pre-filter is always free) ──
 ai:
-  model: "llama-3.3-70b-versatile"
+  # llama-3.1-8b-instant has a much larger free-tier daily token budget than
+  # llama-3.3-70b-versatile, so jobs rarely fall back to "unscored (AI quota)".
+  # Swap back to "llama-3.3-70b-versatile" for more nuanced scoring at the cost
+  # of hitting the daily quota sooner.
+  model: "llama-3.1-8b-instant"
   # Cap of AI-scored jobs per run. Jobs beyond the cap are tiered by
   # their rule score instead (highest rule scores get the AI calls).
   max_ai_calls_per_run: 60
