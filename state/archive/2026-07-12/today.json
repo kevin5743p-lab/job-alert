@@ -3914,6 +3914,678 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-12T15:32:25.404404",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "The candidate's skills in sensor data analysis, time-series visualization, and ADAS are highly relevant to the role. However, the lack of direct experience in robotics and automation is a notable gap.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 85,
+          "ai_reason": "The candidate's skills in sensor data analysis, time-series visualization, and ADAS are highly relevant to the role. However, the lack of direct experience in robotics and automation is a notable gap.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4417993318",
+            "title": "Working Student within Robotics and Automation (d/f/m)",
+            "company": "Airbus Defence and Space",
+            "location": "Bremen, Bremen, Germany",
+            "description": "Job Description: In order to support the Robotics team, Airbus Defence and Space is looking for a Working Student within Robotics and Automation (d/f/m) You are a full time student (d/f/m), looking for a working student position? Then apply now! We look forward to you supporting us in the Automation",
+            "url": "https://www.linkedin.com/jobs/view/4417993318",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "Strong match due to relevant education, experience in sensor data analysis, and skills in Python, Grafana, and InfluxDB. However, the candidate lacks direct experience in automotive engineering and the required German language proficiency is not explicitly stated in the CV.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "Strong match due to relevant education, experience in sensor data analysis, and skills in Python, Grafana, and InfluxDB. However, the candidate lacks direct experience in automotive engineering and the required German language proficiency is not explicitly stated in the CV.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4363063577",
+            "title": "Praktikum Antriebsapplikation Fahrzeug",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team erwecken Fahrzeuge zum Leben und sorgen dafür, dass unsere Kunden die Seele des Antriebs spüren. Egal welche Antriebsart (mit Verbrennungsmotor), bei uns laufen alle Fäden zusammen. Was erwartet dich? Deine Themenschwerpunkte sind... Abstimmung von Funktionsumfängen der Antriebssteuerge",
+            "url": "https://www.linkedin.com/jobs/view/4363063577",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has relevant skills in sensor data analysis, time-series visualization, and ADAS, and their experience in Python, Grafana, and InfluxDB is applicable to the job. However, the lack of direct experience in optics and the requirement for several years of experience in the field are drawbacks.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant skills in sensor data analysis, time-series visualization, and ADAS, and their experience in Python, Grafana, and InfluxDB is applicable to the job. However, the lack of direct experience in optics and the requirement for several years of experience in the field are drawbacks.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4437226326",
+            "title": "Innovation Engineer - Optical Systems (m/f/d)",
+            "company": "Opto",
+            "location": "Jena, Thuringia, Germany",
+            "description": "We, Opto GmbH, are an expanding medium-sized company that develops, manufactures, and distributes high-quality special applications for renowned companies in Germany and abroad. Our product range extends from classic stereo microscopes to automated digital fluorescence microscopes in the OEM sector ",
+            "url": "https://www.linkedin.com/jobs/view/4437226326",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in automotive engineering, sensor data analysis, and ADAS, with relevant skills in Python, Grafana, and InfluxDB, making them an excellent fit for this role",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in automotive engineering, sensor data analysis, and ADAS, with relevant skills in Python, Grafana, and InfluxDB, making them an excellent fit for this role",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4349581985",
+            "title": "Category Specialist – Automotive Semiconductors  (m/f/d)",
+            "company": "HARMAN International",
+            "location": "Garching, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4349581985",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has relevant skills and experience in automotive engineering, sensor data analysis, and ADAS, but lacks direct experience in technical support or quality management.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant skills and experience in automotive engineering, sensor data analysis, and ADAS, but lacks direct experience in technical support or quality management.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4410821843",
+            "title": "Manager Technical Support Unit (m/w/d) / Manager Quality & Technical Support / Quality Engineer / Supplier Quality Manager",
+            "company": "bilstein group",
+            "location": "Ennepetal, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4410821843",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has relevant skills and experience in sensor data analysis, time-series visualization, and ADAS, but lacks direct experience in solutions architecture and partner management.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant skills and experience in sensor data analysis, time-series visualization, and ADAS, but lacks direct experience in solutions architecture and partner management.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4402314652",
+            "title": "Partner Solutions Architect – DACH and CEE Region",
+            "company": "NVIDIA",
+            "location": "Berlin, Berlin, Germany",
+            "description": "We are looking for a Partner Solutions Architect for the DACH and CEE region. The EMEA Partner SA team is looking for a Solutions Architect to work with our partners. This includes our NPN partners (NVIDIA Partner Network), OEM partners and our Solution Provider and Solution Advisor partners. It is ",
+            "url": "https://www.linkedin.com/jobs/view/4402314652",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 83,
+          "reason": "The candidate has relevant skills in data analysis, visualization, and sensor data interpretation, but lacks direct experience in digital product development. Their experience in automotive engineering and ADAS can be transferred to this role, but they would need to learn about digital product development and sales funnels.",
+          "domain_class": "broader_field",
+          "ai_score": 83,
+          "ai_reason": "The candidate has relevant skills in data analysis, visualization, and sensor data interpretation, but lacks direct experience in digital product development. Their experience in automotive engineering and ADAS can be transferred to this role, but they would need to learn about digital product development and sales funnels.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4437218451",
+            "title": "Werkstudent:in Digitale Produktentwicklung Website & Sales Funnel (m/w/d)",
+            "company": "Cleos Welt",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Cleos Welt gehört zu den am schnellsten wachsenden Anbietern digitaler Versicherungslösungen für Haustiere und ihre Besitzer:innen. Als FinTech und digitaler Assekuradeur verbinden wir Versicherungsexpertise mit moderner Technologie und bieten Versicherungslösungen, so wie sie heute sein sollten: di",
+            "url": "https://www.linkedin.com/jobs/view/4437218451",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 82,
+          "reason": "The candidate has relevant skills in sensor data analysis, Python, and data visualization, but lacks direct experience in building technology and project management.",
+          "domain_class": "broader_field",
+          "ai_score": 82,
+          "ai_reason": "The candidate has relevant skills in sensor data analysis, Python, and data visualization, but lacks direct experience in building technology and project management.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4437214687",
+            "title": "Ingenieur (all genders) TGA - befristet bis 31.12.2026",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Voll/Teilzeit Planen Sie mit uns nachhaltige Gebäudetechnik für ein klimafreundliches Hamburg. Sie möchten Ihre technische Expertise in sinnstiftende Projekte einbringen und moderne, zukunftsorientierte Gebäudetechnik gestalten? Dann verstärken Sie unser Team als Projektingenieur*in (all genders) TG",
+            "url": "https://www.linkedin.com/jobs/view/4437214687",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "The candidate has relevant skills in sensor data analysis, time-series data handling, and data visualization. However, the role requires a strong interest in industrial processes, which is not explicitly mentioned in the CV. Additionally, the candidate's experience is mostly in academic projects, and there is no direct match with the company's production environment.",
+          "domain_class": "core_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate has relevant skills in sensor data analysis, time-series data handling, and data visualization. However, the role requires a strong interest in industrial processes, which is not explicitly mentioned in the CV. Additionally, the candidate's experience is mostly in academic projects, and there is no direct match with the company's production environment.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4289640533",
+            "title": "Schülerpraktikum (m/w/d)",
+            "company": "Mubea",
+            "location": "Weißensee, Thuringia, Germany",
+            "description": "In den vergangenen Jahrzehnten haben wir uns mit unseren Produkten für Fahrwerk, Karosserie und Antrieb zu einem Top-Automobilzulieferer entwickelt. Mit neuen Leichtbauprodukten, Werkstoffen und Fertigungstechnologien bieten wir in enger Zusammenarbeit mit unseren Kunden und wissenschaftlichen Insti",
+            "url": "https://www.linkedin.com/jobs/view/4289640533",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 5,
+          "reason": "skills: Git",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_projekt-office-management-remote-schrobenhausen-370909",
+            "title": "Projekt / Office - Management (m/w/d) - Remote",
+            "company": "Claudia Buhl",
+            "location": "Schrobenhausen",
+            "description": "Wir suchen im Auftrag unseres Klienten T. Eilers &#x26; Partner Unterstützung im Bereich Projekt / Office - Management und Organisation &#x26; Umsetzung Das Unternehmen berät Unternehmer mit dem Ziel, Einnahmen und Ausgaben strategisch zu optimieren. Damit aus Strategien konkrete Ergebnisse werden, ",
+            "url": "https://www.arbeitnow.com/jobs/companies/claudia-buhl/projekt-office-management-remote-schrobenhausen-370909",
+            "published": "2026-07-12T13:30:36+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4417993320",
+            "title": "Intern within Space Robotics System Development (d/f/m)",
+            "company": "Airbus Defence and Space",
+            "location": "Bremen, Bremen, Germany",
+            "description": "Job Description: In order to support the Robotics team, Airbus Defence and Space is looking for an Intern within Space Robotics System Development (d/f/m) Are you looking for an internship in the field of Space Robotics? Then apply now! We look forward to you supporting us in the Robotics & Automati",
+            "url": "https://www.linkedin.com/jobs/view/4417993320",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Erfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4435467402",
+            "title": "Produktmanager (m/w/d)",
+            "company": "Rohde & Schwarz",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Einleitung Du verbindest Technologie, Markt und Kunden – und machst aus Ideen erfolgreiche Produkte. Aufgaben Du übernimmst die strategische und operative Verantwortung für unsere photonischen Messsysteme und Komponenten und treibst deren Weiterentwicklung aktiv voran. Du analysierst Märkte, Trends ",
+            "url": "https://www.linkedin.com/jobs/view/4435467402",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4402680408",
+            "title": "CAD Bearbeiter:in Senior",
+            "company": "Deutsche Bahn",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "Für über 500 verschiedene Berufe suchen wir motivierte Mitarbeitende. Und das in ganz Deutschland. Ob erfahrene Profis oder Berufsstarter:innen - wir bieten zahlreiche Einstiegs- und Weiterbildungsmöglichkeiten. Zum nächstmöglichen Zeitpunkt suchen wir dich als CAD Bearbeiter:in Senior (w/m/d) für d",
+            "url": "https://www.linkedin.com/jobs/view/4402680408",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437221492",
+            "title": "Senior React Engineer - Full Stack & AI Products (m/w/d)",
+            "company": "yoummday",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Your mission You don't just want to build features - you want to build AI products that solve real problems for real users, with React as your primary tool and Python as a solid backend foundation? Then you're in the right place. We're a family-owned scale-up headquartered in Munich with over 400 em",
+            "url": "https://www.linkedin.com/jobs/view/4437221492",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437226207",
+            "title": "Systemingenieur Konstruktion elektronische Systeme E-CAD (m/w/d) militärischer Schiffbau",
+            "company": "ORANGE Engineering GmbH & Co. KG",
+            "location": "Wedel, Schleswig-Holstein, Germany",
+            "description": "Stellendetails Vollzeit 22880 Wedel Unser dynamisches Team sucht erfahrene Ingenieure zur Entwicklung und Koordination elektrotechnischer Systeme. Ihre Aufgaben Analyse von Kundenanforderungen an elektrotechnische Komponenten und Systeme Planung und Koordination der (Weiter-)Entwicklung und Auswahl ",
+            "url": "https://www.linkedin.com/jobs/view/4437226207",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437220342",
+            "title": "Systemingenieur Pumpenanlagen Behälter (m/w/d) militärischer Schiffbau",
+            "company": "ORANGE Engineering GmbH & Co. KG",
+            "location": "Rostock, Mecklenburg-West Pomerania, Germany",
+            "description": "Stellendetails Vollzeit 18069 Rostock Wir suchen einen erfahrenen Systemingenieur im Schiffbau zur Vergabe von Funktionsmodulen, speziell in den Bereichen Pumpenanlagen und Messgeräte. Fundierte Kenntnisse im technischen Systemverständnis sowie Verhandlungskompetenz in Deutsch und Englisch sind erfo",
+            "url": "https://www.linkedin.com/jobs/view/4437220342",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'VP'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437221317",
+            "title": "IPS Requirements and Verifikation Engineer / IPS Systems Engineer (m/w/d) militärischer Schiffbau",
+            "company": "ORANGE Engineering GmbH & Co. KG",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Stellendetails Vollzeit 20457 Hamburg Im Auftrag eines renommierten Unternehmens in Hamburg suchen wir zum nächstmöglichen Zeitpunkt einen IPS Requirements and Verifikation Engineer / IPS Systems Engineer (m/w/d) im militärischer Schiffbau. Ihre Aufgaben Analyse von Anforderungen im Bereich Integrat",
+            "url": "https://www.linkedin.com/jobs/view/4437221317",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Director'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439740573",
+            "title": "Systems Engineer - Data Center (w/m/d)",
+            "company": "MAIT for business",
+            "location": "Rottweil, Baden-Württemberg, Germany",
+            "description": "Was dich in deiner Rolle erwartet Windows-Infrastrukturen betreiben & weiterentwickeln: Du arbeitest mit zentralen Microsoft-Services in einer Private Cloud Lösung wie Active Directory, DNS, GPOs und Fileservices und bringst dein Know-how auch in Themen wie WSUS, Zertifikatsmanagement und standardis",
+            "url": "https://www.linkedin.com/jobs/view/4439740573",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437208784",
+            "title": "Werkstudent:in Customer Experience & Online-Marketing (m/w/d)",
+            "company": "Cleos Welt",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Cleos Welt gehört zu den am schnellsten wachsenden Anbietern digitaler Versicherungslösungen für Haustiere und ihre Besitzer:innen. Als FinTech und digitaler Assekuradeur verbinden wir Versicherungsexpertise mit moderner Technologie und bieten Versicherungslösungen, so wie sie heute sein sollten – d",
+            "url": "https://www.linkedin.com/jobs/view/4437208784",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437228377",
+            "title": "Projektingenieur Elektrotechnik (all genders)",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437228377",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4406709544",
+            "title": "Systemtester Vernetzte Systeme (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Bremen, Bremen, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4406709544",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4402140967",
+            "title": "Senior Test Engineer (Software- and Systemtest) (m/f/d)",
+            "company": "Liebherr Group",
+            "location": "Ulm, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4402140967",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437207864",
+            "title": "Serviceassistenz (m/w/d) im Autohaus",
+            "company": "Autohaus Scheller",
+            "location": "Bad Dürkheim, Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437207864",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4370992921",
+            "title": "Manager mit Fokus auf Enterprise Architecture (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4370992921",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4370998803",
+            "title": "(Senior) Business Developer PTC Platforms (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4370998803",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4370991855",
+            "title": "(Senior) Business Developer Dassault Platforms (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4370991855",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4411879731",
+            "title": "Recruiter (f/m/d) - befristet für 2 Jahre in Wolfsburg",
+            "company": "MHP – A Porsche Company",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4411879731",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4370990914",
+            "title": "Manager SAP Global Trade Services (GTS) (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4370990914",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4371440223",
+            "title": "(Senior) Manager SAP Business Process Management (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4371440223",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4371011313",
+            "title": "(Senior) Manager SAP PP (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Wolfsburg, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4371011313",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4371005784",
+            "title": "(Senior) Consultant SAP S/4HANA Service (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4371005784",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has experience in automotive engineering, but lacks direct experience with Altium Designer and PCB design principles. Their skills in data analysis and visualization are relevant, but not directly applicable to the job.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has experience in automotive engineering, but lacks direct experience with Altium Designer and PCB design principles. Their skills in data analysis and visualization are relevant, but not directly applicable to the job.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4319114861",
+            "title": "Working Student (m/f/d) – Altium Designer Library Management",
+            "company": "Axon",
+            "location": "Kassel, Hesse, Germany",
+            "description": "Join Axon and be a Force for Good. At Axon, we’re on a mission to Protect Life. We’re explorers, pursuing society’s most critical safety and justice issues with our ecosystem of devices and cloud software. Like our products, we work better together. We connect with candor and care, seeking out diver",
+            "url": "https://www.linkedin.com/jobs/view/4319114861",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The candidate has some relevant skills and experience, but lacks the required years of professional experience and fluent German language skills. Their CV shows some overlap with the job requirements, such as experience with sensor data analysis and time-series visualization, but it is not enough to qualify them for the role.",
+          "domain_class": "core_field",
+          "ai_score": 20,
+          "ai_reason": "The candidate has some relevant skills and experience, but lacks the required years of professional experience and fluent German language skills. Their CV shows some overlap with the job requirements, such as experience with sensor data analysis and time-series visualization, but it is not enough to qualify them for the role.",
+          "unscored": false,
+          "category": "fluent_german",
+          "job": {
+            "id": "linkedin_4372736097",
+            "title": "SDV Expert in für SDV ADAS/AD Homologation (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Dresden, Saxony, Germany",
+            "description": "Aufgaben Als SDV Expert in für SDV ADAS/AD Homologation bist du Trusted Advisor für OEMs und Zulieferer und führst Homologationsvorhaben für Assistenz- und Automatisierungsfunktionen zum Erfolg. Dabei warten die folgenden Aufgaben auf dich: Homologationsstrategie & Compliance-Roadmaps für ADAS/AD (E",
+            "url": "https://www.linkedin.com/jobs/view/4372736097",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Werkstudent'; skills: Python; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439742504",
+            "title": "Werkstudent (m/w/d) im Bereich Elektronik",
+            "company": "Kunststoffverarbeitung Hoffmann",
+            "location": "Heiligenhaus, North Rhine-Westphalia, Germany",
+            "description": "Mai 2, 2025 Werkstudent (m/w/d) im Bereich Elektronik mit Option auf anschließende Bachelor- oder Masterarbeit Wir Suchen Du möchtest Innovationen mitgestalten und deine Ideen in echten technischen Lösungen verwirklichen? Dann bist du bei uns genau richtig! Wir suchen einen engagierten Werkstudent*i",
+            "url": "https://www.linkedin.com/jobs/view/4439742504",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Werkstudent'; skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4420981018",
+            "title": "Werkstudent (m/w/d) Online Marketing",
+            "company": "Instaffo",
+            "location": "Dresden, Saxony, Germany",
+            "description": "Werkstudent (m/w/d) Online Marketing bei Uniwunder GmbH Anforderungen Bitte beachte, dass für diese Stelle eine Arbeitserlaubnis für Deutschland erforderlich ist. Sprache: Deutsch - Muttersprachliches Niveau Du sprichst Deutsch auf muttersprachlichem Niveau. Du studierst BWL, Marketing, Logistik ode",
+            "url": "https://www.linkedin.com/jobs/view/4420981018",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills and experience, but lacks direct experience in unified communication and IT services, and the job posting requires at least 3 years of professional experience, which the candidate does not have.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills and experience, but lacks direct experience in unified communication and IT services, and the job posting requires at least 3 years of professional experience, which the candidate does not have.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4412179620",
+            "title": "System Engineer - Planung Unified Communication (UC) Voice & Video (m/w/d)",
+            "company": "BWI GmbH",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Sorge gemeinsam mit uns für die digitale Zukunftsfähigkeit der Bundeswehr. Deine Aufgaben: Technische Planung, Koordination und Umsetzung von Changes mit dem Schwerpunkt Unified Communication (Voice & Video) in der verantworteten IT-Infrastruktur und Anwendung von Standard-Designs Dokumentation der ",
+            "url": "https://www.linkedin.com/jobs/view/4412179620",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 44,
+          "reason": "The candidate has some relevant skills like Python, Grafana, and InfluxDB, but the job posting requires a strong background in civil engineering, which the candidate does not have.",
+          "domain_class": "broader_field",
+          "ai_score": 44,
+          "ai_reason": "The candidate has some relevant skills like Python, Grafana, and InfluxDB, but the job posting requires a strong background in civil engineering, which the candidate does not have.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4439740505",
+            "title": "Ingenieur",
+            "company": "DSH Ingenieure GmbH",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "<zur Übersicht Als Ingenieur in der Tragswerksplanung im Bereich Hochbau bist du bei uns genau richtig. Erfahre hier mehr zur Stellenbeschreibung. Wir freuen uns auf deine Bewerbung. deine aufgaben Eigenständige Arbeit im Bereich der Tragwerksplanung von Hochbauten Erstellung von statischen Berechnu",
+            "url": "https://www.linkedin.com/jobs/view/4439740505",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Ingenieur'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4437213766",
+            "title": "Ingenieur (all genders) Tiefbau",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Voll/Teilzeit Sie möchten Ihre Expertise im Tiefbau in vielfältige Projekte einbringen, die das tägliche Leben der Stadt unmittelbar verbessern? Dann verstärken Sie unser Team als als Ingenieur (all genders) Tiefbau im Sachgebiet Bau Projektmanagement der Stadtreinigung Hamburg. Bewerben Sie sich be",
+            "url": "https://www.linkedin.com/jobs/view/4437213766",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4402986264",
+            "title": "SDV Architekt Test & vECU (Cloud, KI, QS-Strategie) (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Wolfsburg, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4402986264",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 15,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4437217409",
+            "title": "Systemingenieur Elektrotechnik (m/w/d)",
+            "company": "ORANGE Engineering GmbH & Co. KG",
+            "location": "Bremen, Bremen, Germany",
+            "description": "Stellendetails Vollzeit 28207 Bremen Im Auftrag unseres namhaften Kunden, einem international agierenden Konzern, suchen wir einen Systemingenieur für die Entwicklung von elektronischen Komponenten auf Produktebene. Ihre Aufgaben Ableitung technischer Lösungen aus Produkt- und Systemanforderungen in",
+            "url": "https://www.linkedin.com/jobs/view/4437217409",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
