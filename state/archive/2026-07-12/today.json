@@ -1,0 +1,993 @@
+{
+  "date": "2026-07-12",
+  "runs": [
+    {
+      "timestamp": "2026-07-12T04:06:09.014381",
+      "strong": [
+        {
+          "score": 80,
+          "reason": "The candidate's skills in Python, data analysis, and experience with sensor data from LiDAR, Radar, and Camera align well with the job requirements.",
+          "domain_class": "core_field",
+          "ai_score": 80,
+          "ai_reason": "The candidate's skills in Python, data analysis, and experience with sensor data from LiDAR, Radar, and Camera align well with the job requirements.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4438941711",
+            "title": "Werkstudent*in Data Engineering & Data Science (w/m/d)",
+            "company": "Otto Group",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438941711",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 80,
+          "reason": "The candidate's skills in Python, data analysis, and experience with sensor data from LiDAR, Radar, and Camera align well with the job requirements, despite the job title mentioning FE-Simulation which might not be a direct match to the candidate's experience.",
+          "domain_class": "core_field",
+          "ai_score": 80,
+          "ai_reason": "The candidate's skills in Python, data analysis, and experience with sensor data from LiDAR, Radar, and Camera align well with the job requirements, despite the job title mentioning FE-Simulation which might not be a direct match to the candidate's experience.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4436669925",
+            "title": "Werkstudent FE-Simulation (m/w/d)*",
+            "company": "JAEGGI",
+            "location": "Fürstenfeldbruck, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436669925",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "The candidate's skills in Python, data analysis, and sensor data are relevant, but the role requires more experience and expertise in AI software engineering.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 60,
+          "ai_reason": "The candidate's skills in Python, data analysis, and sensor data are relevant, but the role requires more experience and expertise in AI software engineering.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4438938576",
+            "title": "Graduate AI software engineer",
+            "company": "Bending Spoons",
+            "location": "Munich, Bavaria, Germany",
+            "description": "At Bending Spoons, we’re striving to build one of the all-time great companies. A company that serves a huge number of customers. A company where team members grow to their full potential. A company that functions at unparalleled levels of effectiveness and efficiency. A company that creates value f",
+            "url": "https://www.linkedin.com/jobs/view/4438938576",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate's skills and experience are relevant, but the job requires specific knowledge of axle production, which is not explicitly mentioned in the candidate's profile.",
+          "domain_class": "core_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate's skills and experience are relevant, but the job requires specific knowledge of axle production, which is not explicitly mentioned in the candidate's profile.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4416921594",
+            "title": "Praktikant im Bereich Engineering Achsproduktion (w/m/d)",
+            "company": "MAN Truck & Bus SE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Stellenbezeichnung: Praktikant im Bereich Engineering Achsproduktion (w/m/d) Startdatum der Ausschreibung: 19.05.26 Zu besetzen ab sofort Dein Arbeitsumfeld Wir bei MAN Truck & Bus sind Teil eines starken internationalen Teams und einer der führenden europäischen Nutzfahrzeughersteller und Anbieter ",
+            "url": "https://www.linkedin.com/jobs/view/4416921594",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate's skills in Python, data analysis, and sensor data are relevant, but the job requires experience with microcontrollers and embedded systems, which is not the candidate's primary focus.",
+          "domain_class": "broader_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate's skills in Python, data analysis, and sensor data are relevant, but the job requires experience with microcontrollers and embedded systems, which is not the candidate's primary focus.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4439589254",
+            "title": "Hardwarenaher Softwareentwickler (m/w/d)",
+            "company": "AXON Innovations",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "Jobspezifikationen Stellenbezeichnung: Hardwarenaher Softwareentwickler (m/w/d) Standort: Leipzig, Deutschland Wochenarbeitszeit: 40 Std./ Woche Befristung: unbefristet Home-Office / Remote: nein Jetzt online bewerben Ihre Aufgaben Wir entwickeln im Kundenauftrag eingebettete Systeme. Das beginnt be",
+            "url": "https://www.linkedin.com/jobs/view/4439589254",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439590215",
+            "title": "PRAKTIKANTEN FAHRLEHRER (M/W/D)",
+            "company": "Fahrschule die 3 GmbH, 5x in N",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "AUSBILDUNG ZUM FAHRLEHRER Voraussetzungen Für Den Beruf Fahrlehrer Um als Fahrlehrer der Klasse B / BE tätig werden zu dürfen, musst du die im Folgenden genannten gesetzlichen Voraussetzungen des 2 Fahrlehrergesetz erfüllen: Mindestalter 21 Jahre (Ausbildungsbeginn mit 20 Jahren möglich) Körperliche",
+            "url": "https://www.linkedin.com/jobs/view/4439590215",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438944782",
+            "title": "Sales Representative",
+            "company": "Lithia & Driveway",
+            "location": "Pretzfeld, Bavaria, Germany",
+            "description": "Dealership L0740 DCH Ford of Thousand Oaks DCH Ford of Thousand Oaks Sales Representative Looking to start a new career with unlimited earning potential? DCH Ford of Thousand Oaks is hiring Sales Representatives (Client Advisors) — no automotive or sales experience required! If you enjoy working wit",
+            "url": "https://www.linkedin.com/jobs/view/4438944782",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Erfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439576956",
+            "title": "Leiter Produktmanagement (m/w/d)",
+            "company": "WEGMANN automotive GmbH",
+            "location": "Würzburg, Bavaria, Germany",
+            "description": "WEGMANN automotive GmbH Leiter Produktmanagement (m/w/d) Veitshöchheim, Würzburg Aufgabe Fachliche und disziplinarische Führung sowie Weiterentwicklung unseres Produktmanagement-Teams im Headquarter Aufbau und Etablierung effektiver Strukturen, Prozesse und klarer Arbeitsinhalte in einer noch jungen",
+            "url": "https://www.linkedin.com/jobs/view/4439576956",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439581474",
+            "title": "Serviceberater (m/w/d)",
+            "company": "Alphartis SE",
+            "location": "Tübingen, Baden-Württemberg, Germany",
+            "description": "Ihre Aufgaben Serviceberater für die Marke KIA Schnittstelle zwischen dem Kunden, dem Service und unserem Unternehmen Reparaturempfehlungen aussprechen und unsere Kunden von unseren Dienstleistungen überzeugen Persönlicher Ansprechpartner für unsere Kunden Ihre Qualifikation Abgeschlossene Kfz-techn",
+            "url": "https://www.linkedin.com/jobs/view/4439581474",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'VP'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439586317",
+            "title": "Ingenieur Bordnetzentwicklung (m/w/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Affalterbach, Baden-Württemberg, Germany",
+            "description": "Für unseren Kunden besetzen wir ab sofort folgende Position: Aufgabenprofil Anpassung von 12V und 48V Bordnetzen an den Fahrzeugen unter Berücksichtigung softwarebasierter Fahrzeugarchitekturen. Verantwortung für die Einhaltung der Ruhestromgrenzwerte der Fahrzeuge und Durchführung von Ruhestrommess",
+            "url": "https://www.linkedin.com/jobs/view/4439586317",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 12,
+          "reason": "keyword bonus: 1; preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436692285",
+            "title": "Entwicklungsingenieur Elektrotechnik (m/w/d) Systeme & Fahrzeuge",
+            "company": "Boels Verleih GmbH",
+            "location": "Freilassing, Bavaria, Germany",
+            "description": "Über das Unternehmen Mehr als ein Jahrhundert an Gleisbautradition trifft auf Innovationskraft, modernste Technologien und den unbändigen Willen Lösungen für unsere Kunden rund um den Globus zu entwickeln und umzusetzen. Unser Planet braucht eine starke Schiene. Die Schiene braucht eine starke ROBEL",
+            "url": "https://www.linkedin.com/jobs/view/4436692285",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439578957",
+            "title": "Hardware Reliability Engineer (M/W/D)",
+            "company": "Videojet Technologies",
+            "location": "Lübeck, Schleswig-Holstein, Germany",
+            "description": "Imagine yourself… Doing meaningful work that makes an everyday impact on the world around you. Owning your ambition and fueling your career growth. Collaborating with a vibrant, diverse, global team. Joining a company with a proven track record of success and an exciting future. It’s all possible wi",
+            "url": "https://www.linkedin.com/jobs/view/4439578957",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436695268",
+            "title": "Technical Business Development Manager",
+            "company": "Necessary Ventures",
+            "location": "Cologne Bonn Region",
+            "description": "Skip to main content See more jobs Apply Now Apply for Technical Business Development Manager Leonberg, Germany Product & Strategy About Us Founded in 2017, Wayve is the leading developer of Embodied AI technology. Our advanced AI software and foundation models enable vehicles to perceive, understan",
+            "url": "https://www.linkedin.com/jobs/view/4436695268",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438936747",
+            "title": "Junior Interface Developer",
+            "company": "Alpine Business Consulting",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Alpine Business Consulting is a team of specialists focused on fixing enterprise systems that have lost their way. Many organizations invest heavily in complex planning and reporting tools only to find that poor implementation has left their finance teams with mismatched numbers and manual workaroun",
+            "url": "https://www.linkedin.com/jobs/view/4438936747",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438950974",
+            "title": "Hardware Lead | Zürich",
+            "company": "C&D Talent Advisory - Academy",
+            "location": "Berlin, Berlin, Germany",
+            "description": "About The Hiring Process When you apply, our AI-powered matching platform considers you not only for this opportunity, but also for other relevant roles across our network, so one application can unlock multiple career opportunities. We only work with real companies hiring for live positions. Every ",
+            "url": "https://www.linkedin.com/jobs/view/4438950974",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 12,
+          "reason": "keyword bonus: 1; preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436682758",
+            "title": "Systemingenieur Elektrotechnik (m/w/d)",
+            "company": "Boels Verleih GmbH",
+            "location": "Freilassing, Bavaria, Germany",
+            "description": "Über das Unternehmen Mehr als ein Jahrhundert an Gleisbautradition trifft auf Innovationskraft, modernste Technologien und den unbändigen Willen Lösungen für unsere Kunden rund um den Globus zu entwickeln und umzusetzen. Unser Planet braucht eine starke Schiene. Die Schiene braucht eine starke ROBEL",
+            "url": "https://www.linkedin.com/jobs/view/4436682758",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439583991",
+            "title": "Fachberater SE-Center (m/w/d) in Kerpen",
+            "company": "Heinrich Schmidt Holding GmbH & Co. KG",
+            "location": "Kerpen, North Rhine-Westphalia, Germany",
+            "description": "Sie kommunizieren gerne mit Kunden und haben Lust diese von der Angebotserstellung bis zum abgeschlossenen Auftrag zu unterstützen und zu betreuen? Unser Team freut sich auf Ihre Unterstützung! Fachberater Sanitär / Heizung (m/w/d) Ihr Profil Abgeschlossene Ausbildung im SHK Fachgroßhandel oder Ha",
+            "url": "https://www.linkedin.com/jobs/view/4439583991",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4380777420",
+            "title": "SDV (Senior) Business Development Manager für Public & Defence (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Aufgaben Als SDV (Senior) Business Development Manager für Public & Defence bist du ein zentraler Treiber des SDV-Teams bei MHP. Du unterstützt dabei, neue Kunden zu gewinnen und strategische SDV-/SDD-Lösungen rund um ADAS, Connectivity und KI-gestützte Lösungen zu skalieren und gestalten gemeinsam ",
+            "url": "https://www.linkedin.com/jobs/view/4380777420",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438933723",
+            "title": "Arbeitsvorbereiter (m/w/d)",
+            "company": "Spheros Group",
+            "location": "Neubrandenburg, Mecklenburg-West Pomerania, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438933723",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436687205",
+            "title": "Produktionsmitarbeiter (m/w/d)",
+            "company": "NOVUS",
+            "location": "Brunswick, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436687205",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436672894",
+            "title": "Hilfskraft (m/w/d) im Bereich Batteriezelltests in Wackersdorf - SYSTEMS",
+            "company": "VISPIRON GmbH",
+            "location": "Wackersdorf, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436672894",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439570798",
+            "title": "Teiledienstmitarbeiter (m/w/d)",
+            "company": "Alphartis SE",
+            "location": "Kehl, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439570798",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4427709665",
+            "title": "Mitarbeiterin / Mitarbeiter im Sicherheitsdienst zur Qualifizierung (w/m/d)",
+            "company": "Berliner Verkehrsbetriebe (BVG)",
+            "location": "Berlin Metropolitan Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4427709665",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438948369",
+            "title": "Delivery Driver",
+            "company": "Papa Johns",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438948369",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439577953",
+            "title": "DEIN JOB, DEINE FREIHEIT!",
+            "company": "Velotaxi Frankfurt GmbH",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439577953",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436687216",
+            "title": "Studentische Aushilfe (all genders) für Klimaschutz",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436687216",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439575965",
+            "title": "IT Support Retail (m/w/d)",
+            "company": "Tekkie Award",
+            "location": "Biebergemünd, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439575965",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436693066",
+            "title": "Kfz-Mechatroniker (all genders)",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436693066",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438934896",
+            "title": "BAUINGENIEUR:IN / BAUTECHNIKER:IN / BAULEITER:IN (w/m/d) - Abwassertechnik, per Sofort oder nach Vereinbarung",
+            "company": "HOLINGER Ingenieure GmbH",
+            "location": "Merklingen, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438934896",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439587485",
+            "title": "Bauingenieur Infrastrukturprojekte (m/w/d)",
+            "company": "Excellence AG IT B.V.",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439587485",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439597023",
+            "title": "Projektingenieur Mittel- und Hochspannungsanschlussanlagen (m/w/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439597023",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436693282",
+            "title": "Bauingenieur (m/w/d) für das Kanalbauamt",
+            "company": "Stadt Neumarkt I.d.OPf.",
+            "location": "Neumarkt in der Oberpfalz, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436693282",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439570962",
+            "title": "Technik",
+            "company": "AHORN Harz Hotel Braunlage",
+            "location": "Uckermark, Brandenburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439570962",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439589455",
+            "title": "Projektleiter Tiefbau (m/w/d)",
+            "company": "Excellence AG IT B.V.",
+            "location": "Ulm, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439589455",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438953892",
+            "title": "Senior IT Project Manager (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438953892",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438973391",
+            "title": "Pre Sales Consultant – Microsoft Security (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438973391",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438961626",
+            "title": "Microsoft 365 Consultant – Copilot & Collaboration (m/w/d)",
+            "company": "Skaylink",
+            "location": "Essen, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438961626",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438976117",
+            "title": "IT Consultant Microsoft 365 (m/w/d)",
+            "company": "Skaylink",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438976117",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438977096",
+            "title": "Security Consultant (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438977096",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4403460905",
+            "title": "SDV (Senior) Manager Connectivity Architect (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Ludwigsburg, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4403460905",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4371000845",
+            "title": "Manager mit Fokus auf Enterprise Architecture (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4371000845",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4411877857",
+            "title": "Recruiter (f/m/d) - befristet für 2 Jahre in Wolfsburg",
+            "company": "MHP – A Porsche Company",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4411877857",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4371011363",
+            "title": "SAP TM Lead (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Ludwigsburg, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4371011363",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4370994863",
+            "title": "(Senior) Manager SAP CO (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4370994863",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "The candidate lacks direct experience in the field of customer support and field services",
+          "domain_class": "skill_adjacent",
+          "ai_score": 40,
+          "ai_reason": "The candidate lacks direct experience in the field of customer support and field services",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4371883717",
+            "title": "Junior Field Services & Customer Support Engineer",
+            "company": "Motorola Solutions",
+            "location": "Germany",
+            "description": "Company Overview At Motorola Solutions, we believe that everything starts with our people. We’re a global close-knit community, united by the relentless pursuit to help keep people safer everywhere. We build and connect technologies to help protect people, property and places. Our solutions foster t",
+            "url": "https://www.linkedin.com/jobs/view/4371883717",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The candidate's skills and experience are not directly applicable to the job, and the role does not explicitly require automotive engineering expertise.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 20,
+          "ai_reason": "The candidate's skills and experience are not directly applicable to the job, and the role does not explicitly require automotive engineering expertise.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4438935668",
+            "title": "Praktikum im Bereich Digitale Projekte (m|w|d)",
+            "company": "Europa-Park Resort",
+            "location": "Rust, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438935668",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "The role requires specific experience with Veeam, Cloud-Backups, and PRTG, which the candidate lacks.",
+          "domain_class": "broader_field",
+          "ai_score": 0,
+          "ai_reason": "The role requires specific experience with Veeam, Cloud-Backups, and PRTG, which the candidate lacks.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4438962688",
+            "title": "System Engineer - Backup & Monitoring (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Ready to protect critical systems? 🔐📊 Dich erwartet ein modernes IT-Umfeld, in dem du in den Bereichen Backup, Monitoring und Automatisierung Verantwortung für geschäftskritische Systeme übernimmst. Mit Veeam, Cloud-Backups und professionellem Monitoring stellst du Stabilität, Verfügbarkeit und Tran",
+            "url": "https://www.linkedin.com/jobs/view/4438962688",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "The role requires specific experience with virtualization technologies and the candidate lacks relevant experience.",
+          "domain_class": "broader_field",
+          "ai_score": 0,
+          "ai_reason": "The role requires specific experience with virtualization technologies and the candidate lacks relevant experience.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4438965584",
+            "title": "System Engineer - Virtualisierung (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Ready to scale virtual platforms? 🚀 Dich erwartet eine moderne Virtualisierungslandschaft, in der du als Spezialist für Hyper-V und VMware stabile, performante und sichere Plattformen verantwortest. Du gestaltest und optimierst unsere Rechenzentrums-Infrastruktur im engen Austausch mit Storage-, Net",
+            "url": "https://www.linkedin.com/jobs/view/4438965584",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Werkstudent'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4436679727",
+            "title": "Werkstudent Betriebsplanung (w/m/d)",
+            "company": "VIAS Rail GmbH",
+            "location": "Hagen, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436679727",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "The candidate's skills in data analysis and visualization are relevant, but the job's focus on business intelligence and operations is not a direct match for their automotive engineering background.",
+          "domain_class": "broader_field",
+          "ai_score": 40,
+          "ai_reason": "The candidate's skills in data analysis and visualization are relevant, but the job's focus on business intelligence and operations is not a direct match for their automotive engineering background.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4436671874",
+            "title": "Werkstudent Business Intelligence Betrieb/Planung (w/m/d)",
+            "company": "VIAS Rail GmbH",
+            "location": "Duisburg, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436671874",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Werkstudent'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4436672889",
+            "title": "Werkstudent Sicherheitsmanagement (m/w/d) - befristet für 12 Monate",
+            "company": "VIAS Rail GmbH",
+            "location": "Duisburg, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436672889",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Out of domain: The job is in marketing, unrelated to automotive engineering.",
+          "domain_class": "out_of_domain",
+          "ai_score": 0,
+          "ai_reason": "The role is completely unrelated to the candidate's field and skills.",
+          "unscored": false,
+          "category": "out_of_domain",
+          "job": {
+            "id": "linkedin_4436690206",
+            "title": "Praktikum Marketing (m/w/d)",
+            "company": "BEARPAW PRODUCTS",
+            "location": "Bamberg, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436690206",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Out of domain: The job is for a photo and video assistant, unrelated to automotive engineering.",
+          "domain_class": "out_of_domain",
+          "ai_score": 0,
+          "ai_reason": "The role is unrelated to the candidate's field and skills.",
+          "unscored": false,
+          "category": "out_of_domain",
+          "job": {
+            "id": "linkedin_4439570895",
+            "title": "Student Assistant Photo & Video",
+            "company": "WHH Uganda - Welthungerhilfe",
+            "location": "Bonn, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439570895",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Out of domain: The company is a waste management service, unrelated to automotive engineering.",
+          "domain_class": "out_of_domain",
+          "ai_score": 0,
+          "ai_reason": "The role is unrelated to the candidate's field and skills.",
+          "unscored": false,
+          "category": "out_of_domain",
+          "job": {
+            "id": "linkedin_4436674971",
+            "title": "Ingenieur (all genders) TGA - befristet bis 31.12.2026",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436674971",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Out of domain: The job is in waste management, unrelated to automotive engineering.",
+          "domain_class": "out_of_domain",
+          "ai_score": 0,
+          "ai_reason": "The role is unrelated to the candidate's field and skills.",
+          "unscored": false,
+          "category": "out_of_domain",
+          "job": {
+            "id": "linkedin_4439583582",
+            "title": "Ingenieur (m/w/d) für das Abfallwirtschafts- und Energiezentrum in Kalbach für den Fachdienst 7300 – Abfallwirtschaft",
+            "company": "Tekkie Award",
+            "location": "Fulda, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439583582",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Out of domain: The job posting is for a civil engineering role unrelated to automotive engineering.",
+          "domain_class": "out_of_domain",
+          "ai_score": 0,
+          "ai_reason": "The role is unrelated to the candidate's field and skills.",
+          "unscored": false,
+          "category": "out_of_domain",
+          "job": {
+            "id": "linkedin_4436673945",
+            "title": "Ingenieur (all genders) Tiefbau",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436673945",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Out of domain: The job posting is for a Network Engineer, which is unrelated to the candidate's field of automotive engineering.",
+          "domain_class": "out_of_domain",
+          "ai_score": 0,
+          "ai_reason": "The role is out of domain and does not match the candidate's skills or experience.",
+          "unscored": false,
+          "category": "out_of_domain",
+          "job": {
+            "id": "linkedin_4438960689",
+            "title": "Network Engineer (m/w/d)",
+            "company": "Skaylink",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438960689",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The job posting requires a strong background in sales and customer service, whereas the candidate's experience and skills are focused on automotive engineering, sensor data analysis, and ADAS, with no direct overlap with the job requirements.",
+          "domain_class": "core_field",
+          "ai_score": 20,
+          "ai_reason": "The job posting requires a strong background in sales and customer service, whereas the candidate's experience and skills are focused on automotive engineering, sensor data analysis, and ADAS, with no direct overlap with the job requirements.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4438953549",
+            "title": "Ausbildung Automobilkaufmann/-frau (m/w/d)",
+            "company": "Vollmer Automobile",
+            "location": "Ebersbach an der Fils, Baden-Württemberg, Germany",
+            "description": "Automobilkaufmann/-frau (m/w/d) Unser Angebot einen sicheren Arbeitsplatz in einem erfolgreichen Unternehmen Interessante Tätigkeitsgebiete faire Entlohnung Erfahrene Ausbilder Moderne Arbeitsplätze Top qualifizierte und motivierte Kollegen Verantwortungsvolle Aufgaben Übernahme und Weiterentwicklun",
+            "url": "https://www.linkedin.com/jobs/view/4438953549",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "The role requires professional sales experience and fluent German, which the candidate lacks, and their technical background in automotive engineering does not align with the sales position.",
+          "domain_class": "core_field",
+          "ai_score": 0,
+          "ai_reason": "The role requires professional sales experience and fluent German, which the candidate lacks, and their technical background in automotive engineering does not align with the sales position.",
+          "unscored": false,
+          "category": "fluent_german",
+          "job": {
+            "id": "linkedin_4439576673",
+            "title": "Verkäufer (m/w/d) Neue Automobile Audi",
+            "company": "Alphartis SE",
+            "location": "Binzen, Baden-Württemberg, Germany",
+            "description": "Ihre Aufgaben Verkauf von Neufahrzeugen der Marke Audi Professionelle Beratung der Kunden Gewinnung neuer Kunden im Innen- und Außendienst Gestaltung und Pflege von vertrauensvollen und langfristigen Kundenbeziehungen Ihre Qualifikation Erfolgreich abgeschlossene Berufsausbildung Berufserfahrung im ",
+            "url": "https://www.linkedin.com/jobs/view/4439576673",
+            "published": "2026-07-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, ADAS, and autonomous driving are relevant, but the role requires professional experience and the candidate is still a student with no direct experience in mechanical engineering or system development.",
+          "domain_class": "core_field",
+          "ai_score": 40,
+          "ai_reason": "The candidate's background in International Automotive Engineering and experience with sensor data analysis, ADAS, and autonomous driving are relevant, but the role requires professional experience and the candidate is still a student with no direct experience in mechanical engineering or system development.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4436699189",
+            "title": "Entwicklungsingenieur Mechanik (m/w/d) Systeme & Fahrzeuge",
+            "company": "Boels Verleih GmbH",
+            "location": "Freilassing, Bavaria, Germany",
+            "description": "Über das Unternehmen Bei ROBEL gestaltest du die Zukunft von Gleisbau und -instandhaltung aktiv mit. Seit über 150 Jahren verbinden wir Tradition mit technischer Innovationskraft und entwickeln Lösungen, die weltweit im Einsatz sind. Die Bahn ist ein zentraler Baustein nachhaltiger Mobilität – und d",
+            "url": "https://www.linkedin.com/jobs/view/4436699189",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
+    }
+  ]
+}
