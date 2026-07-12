@@ -5007,6 +5007,345 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-12T19:39:06.655130",
+      "strong": [
+        {
+          "score": 92,
+          "reason": "The candidate has relevant experience in sensor data analysis, ADAS, and autonomous driving, and their skills in Python, Grafana, and InfluxDB are highly relevant to the job posting.",
+          "domain_class": "core_field",
+          "ai_score": 92,
+          "ai_reason": "The candidate has relevant experience in sensor data analysis, ADAS, and autonomous driving, and their skills in Python, Grafana, and InfluxDB are highly relevant to the job posting.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4439108025",
+            "title": "Werkstudent Digitalisierung Inbound Transport (w/m/d)",
+            "company": "MAN Truck & Bus SE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "MAN Truck & Bus Studienjob München Zu Besetzen Ab 01.10.2026 Ihr Arbeitsumfeld Wir bei MAN Truck & Bus sind Teil eines starken internationalen Teams und einer der führenden europäischen Nutzfahrzeughersteller und Anbieter von Transportlösungen. Zusammen mit den Marken Scania, Volkswagen Truck & Bus ",
+            "url": "https://www.linkedin.com/jobs/view/4439108025",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "Outstanding fit due to strong overlap in skills (Python, Grafana, InfluxDB, LiDAR/Radar/Camera) and experience (sensor data analysis, ADAS validation) with the job posting. However, the candidate's work experience is limited to 1.5 years, which is a notable gap.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "Outstanding fit due to strong overlap in skills (Python, Grafana, InfluxDB, LiDAR/Radar/Camera) and experience (sensor data analysis, ADAS validation) with the job posting. However, the candidate's work experience is limited to 1.5 years, which is a notable gap.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4363014957",
+            "title": "Praktikum IT & Softwareentwicklung Motorsport",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team entwickeln und betreiben hinter den Kulissen die IT-Systeme (Software, mobile Datencenter, Netzwerk-Infrastruktur) für die Werksteams in der Formula E, WEC und IMSA und leisten damit einen Beitrag zu den Rennerfolgen von Porsche Motorsport. Darüber hinaus unterstützen wir den Porsche Ku",
+            "url": "https://www.linkedin.com/jobs/view/4363014957",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has relevant skills in sensor data analysis, ADAS, and automotive engineering, and has experience in data organization, reporting, and workflow automation, which are transferable to the role.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant skills in sensor data analysis, ADAS, and automotive engineering, and has experience in data organization, reporting, and workflow automation, which are transferable to the role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4438990801",
+            "title": "Werkstudent Schraub- & Hebetechnik (w/m/d)",
+            "company": "MAN Truck & Bus SE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "MAN Truck & Bus Studienjob München Zu Besetzen Ab 01.09.2026 Ihr Arbeitsumfeld Wir bei MAN Truck & Bus sind Teil eines starken internationalen Teams und einer der führenden europäischen Nutzfahrzeughersteller und Anbieter von Transportlösungen. Zusammen mit den Marken Scania, Volkswagen Truck & Bus ",
+            "url": "https://www.linkedin.com/jobs/view/4438990801",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "Candidate has relevant skills in sensor data analysis and automotive engineering, but lacks direct experience in infrastructure planning and project management",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "Candidate has relevant skills in sensor data analysis and automotive engineering, but lacks direct experience in infrastructure planning and project management",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4387689169",
+            "title": "Werkstudent:in Investitionsplanung für Infrastrukturprojekte",
+            "company": "Deutsche Bahn",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "Die Deutsche Bahn bietet deutschlandweit über 500 Berufe und vielfältige Einstiegsmöglichkeiten für Student:innen und Absolvent:innen. Mehr als 1.400 Praktikant:innen, Werkstudent:innen, Direkteinsteiger:innen und Trainees lernen uns jährlich als dynamische und innovative Arbeitgeberin kennen. Sei d",
+            "url": "https://www.linkedin.com/jobs/view/4387689169",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in automotive engineering, sensor data analysis, and AI, which are highly relevant to the role. They also have experience with Python, Grafana, and InfluxDB, which are required tools for the position. However, the candidate's experience in agriculture is limited, and they may require additional training or support to adapt to the specific industry and company context.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in automotive engineering, sensor data analysis, and AI, which are highly relevant to the role. They also have experience with Python, Grafana, and InfluxDB, which are required tools for the position. However, the candidate's experience in agriculture is limited, and they may require additional training or support to adapt to the specific industry and company context.",
+          "unscored": false,
+          "job": {
+            "id": "arbeitnow_werkstudent-kunstliche-intelligenz-offenburg-304168",
+            "title": "Werkstudent (m/w/d) Künstliche Intelligenz",
+            "company": "Claudius Wurth Agrarberatung",
+            "location": "Offenburg",
+            "description": "Als Werkstudent (m/w/d) im Bereich Künstliche Intelligenz bei Claudius Wurth Agrarberatung haben Sie die einzigartige Gelegenheit, Ihre Fähigkeiten in einem dynamischen Umfeld zu entwickeln. Unser Unternehmen, spezialisiert auf betriebswirtschaftliche Beratung im landwirtschaftlichen Sektor, unterst",
+            "url": "https://www.arbeitnow.com/jobs/companies/claudius-wurth-agrarberatung/werkstudent-kunstliche-intelligenz-offenburg-304168",
+            "published": "2026-07-12T16:00:27+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in International Automotive Engineering, with experience in sensor data analysis, time-series data processing, and ADAS validation. Although they lack direct professional experience, their recent projects and skills match the job requirements, making them a strong fit for the role.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in International Automotive Engineering, with experience in sensor data analysis, time-series data processing, and ADAS validation. Although they lack direct professional experience, their recent projects and skills match the job requirements, making them a strong fit for the role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4437212887",
+            "title": "Softwareingenieur Sensorsimulation (all gender)",
+            "company": "ALTEN Germany",
+            "location": "Immenstaad am Bodensee, Baden-Württemberg, Germany",
+            "description": "Die ALTEN Consulting Services GmbH bietet mit über 20 Jahren Branchenerfahrung ihren namhaften Kunden aus Industrie und Wirtschaft hochspezialisierte Engineering- und IT-Dienstleistungen zur gemeinsamen Realisierung von branchen- und technologieübergreifenden Lösungen an. Kompetenz, Engagement und L",
+            "url": "https://www.linkedin.com/jobs/view/4437212887",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "The candidate has relevant education and skills in International Automotive Engineering, sensor data analysis, and Python. However, the role requires more experience and German language proficiency, which the candidate lacks. The candidate's experience as a Werkstudent and projects in ADAS and sensor data analysis show potential, but it's not enough to match the requirements of the role.",
+          "domain_class": "core_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate has relevant education and skills in International Automotive Engineering, sensor data analysis, and Python. However, the role requires more experience and German language proficiency, which the candidate lacks. The candidate's experience as a Werkstudent and projects in ADAS and sensor data analysis show potential, but it's not enough to match the requirements of the role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4401870710",
+            "title": "Ingenieur (m/w/d) Test & Inbetriebnahme - Schienenfahrzeuge",
+            "company": "CAF (Construcciones y Auxiliar de Ferrocarriles)",
+            "location": "Gelsenkirchen, North Rhine-Westphalia, Germany",
+            "description": "Du liebst Technik und willst direkt am Fahrzeug arbeiten? Dann bist Du bei uns genau richtig! Als Ingenieur (m/w/d) für unser Test- & Inbetriebnahme-Team wirst Du Teil eines internationalen Teams und begleitest unsere modernen Batterietriebzüge (BEMU) für unser Projekt mit dem Verkehrsverbund Rhein‑",
+            "url": "https://www.linkedin.com/jobs/view/4401870710",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_werkstudent-content-creation-offenburg-465803",
+            "title": "Werkstudent (m/w/d) Content Creation",
+            "company": "Claudius Wurth Agrarberatung",
+            "location": "Offenburg",
+            "description": "Als Werkstudent (m/w/d) im Bereich Content Creation bei Claudius Wurth Agrarberatung haben Sie die einzigartige Gelegenheit, Ihr Wissen und Ihre Kreativität in einem spezialisierten Beratungsunternehmen für die Landwirtschaft einzubringen. Unser Unternehmen, das sich auf betriebswirtschaftliche Bera",
+            "url": "https://www.arbeitnow.com/jobs/companies/claudius-wurth-agrarberatung/werkstudent-content-creation-offenburg-465803",
+            "published": "2026-07-12T17:30:31+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4411719566",
+            "title": "Senior Analyst – Data Platform (F/M/D)",
+            "company": "NavVis",
+            "location": "Munich, Bavaria, Germany",
+            "description": "OUR VISION When people use our technology to \"bridge the gap\" between the physical and digital worlds, they don't just capture reality - they create a new one. In this new reality, they are smarter, more productive, more streamlined, and more creative - because they have the digital foundation to bu",
+            "url": "https://www.linkedin.com/jobs/view/4411719566",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4422056643",
+            "title": "Forward Deployed Data and Applied Science Chief Expert (f/m/d)",
+            "company": "SAP",
+            "location": "Garching, Bavaria, Germany",
+            "description": "We help the world run better At SAP, we keep it simple: you bring your best to us, and we'll bring out the best in you. We're builders touching over 20 industries and 80% of global commerce, and we need your unique talents to help shape what's next. The work is challenging – but it matters. You'll f",
+            "url": "https://www.linkedin.com/jobs/view/4422056643",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4403186480",
+            "title": "Sicherheitsmitarbeiter:in / Security Mitarbeiter:in Streckennetz und Bahnanlagen",
+            "company": "Deutsche Bahn",
+            "location": "Magdeburg, Saxony-Anhalt, Germany",
+            "description": "Die DB Sicherheit GmbH gilt als Spezialistin, wenn es um Sicherheitsdienstleistungen in den Branchen Immobilien und Mobilität geht. Rund 3.000 qualifizierte Mitarbeitende in sechs Regionalbereichen sorgen bundesweit für Sicherheit in den Zügen, Bahnhöfen und Anlagen der Deutschen Bahn. Zum nächstmög",
+            "url": "https://www.linkedin.com/jobs/view/4403186480",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 12,
+          "reason": "keyword bonus: 1; preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4318234807",
+            "title": "Busfahrer:in",
+            "company": "Deutsche Bahn",
+            "location": "Heiligenhafen, Schleswig-Holstein, Germany",
+            "description": "Für über 500 verschiedene Berufe suchen wir motivierte Mitarbeitende. Und das in ganz Deutschland. Ob erfahrene Profis oder Berufsstarter:innen - wir bieten zahlreiche Einstiegs- und Weiterbildungsmöglichkeiten. Für die DB Regio Bus Busgesellschaften der Region Nord (namentlich: Autokraft GmbH, DB R",
+            "url": "https://www.linkedin.com/jobs/view/4318234807",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4412146214",
+            "title": "Hardware Engineer (EMC, Design Verification) - (m/f/d)",
+            "company": "HARMAN International",
+            "location": "Karlsbad, Baden-Württemberg, Germany",
+            "description": "About The Role As an EMC Test and Design Verification Engineer, you will be responsible for executing and analyzing electromagnetic compatibility (EMC) tests on telematic systems. Your responsibilities will include preparing test setups, configuring measurement equipment, performing tests in accorda",
+            "url": "https://www.linkedin.com/jobs/view/4412146214",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The candidate's skills and experience do not align well with the job posting. The job requires a strong background in Supply Chain Management, which is not mentioned in the candidate's CV. The candidate's experience is mostly in sensor data analysis and ADAS, which is not relevant to the job posting.",
+          "domain_class": "core_field",
+          "ai_score": 20,
+          "ai_reason": "The candidate's skills and experience do not align well with the job posting. The job requires a strong background in Supply Chain Management, which is not mentioned in the candidate's CV. The candidate's experience is mostly in sensor data analysis and ADAS, which is not relevant to the job posting.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4363053737",
+            "title": "Praktikum Vertrieb Supply Chain Management",
+            "company": "Porsche AG",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Wir als Team … sind verantwortlich für innovative Prozesse im Bereich Supply Chain Management. Im Mittelpunkt des Praktikums steht dabei, je nach Schwerpunkt des Studiums, die Mitwirkung im Aufgabengebiet Supply Chain Strategy & Development, Supply Chain Integration, Qualitäts- und Lieferantensteuer",
+            "url": "https://www.linkedin.com/jobs/view/4363053737",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 22,
+          "reason": "The candidate lacks 3+ years of professional experience and fluent German, and while their CV shows some relevant experience, it does not directly match the job requirements. They have some experience with ADAS and sensor data analysis, but it's mostly in academic projects and internships, and they do not have the necessary experience in regulatory engineering and homologation.",
+          "domain_class": "core_field",
+          "ai_score": 22,
+          "ai_reason": "The candidate lacks 3+ years of professional experience and fluent German, and while their CV shows some relevant experience, it does not directly match the job requirements. They have some experience with ADAS and sensor data analysis, but it's mostly in academic projects and internships, and they do not have the necessary experience in regulatory engineering and homologation.",
+          "unscored": false,
+          "category": "fluent_german",
+          "job": {
+            "id": "linkedin_4372719722",
+            "title": "SDV Expert in für SDV ADAS/AD Homologation (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Aufgaben Als SDV Expert in für SDV ADAS/AD Homologation bist du Trusted Advisor für OEMs und Zulieferer und führst Homologationsvorhaben für Assistenz- und Automatisierungsfunktionen zum Erfolg. Dabei warten die folgenden Aufgaben auf dich: Homologationsstrategie & Compliance-Roadmaps für ADAS/AD (E",
+            "url": "https://www.linkedin.com/jobs/view/4372719722",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 43,
+          "reason": "The candidate has some relevant skills like data analysis and visualization, but lacks experience in social media and marketing, and the job requires a strong focus on these areas.",
+          "domain_class": "broader_field",
+          "ai_score": 43,
+          "ai_reason": "The candidate has some relevant skills like data analysis and visualization, but lacks experience in social media and marketing, and the job requires a strong focus on these areas.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4389986626",
+            "title": "Werkstudent (m/w/d) Social Media (m/w/d)",
+            "company": "ECE",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Willkommen bei der ECE Group. Als Experte für komplexe und nachhaltig erfolgreiche Immobilien erschaffen wir Shopping-, Arbeits- und Wohnwelten am Puls der Zeit. Mit 3.200 Mitarbeiterinnen und Mitarbeitern sind wir in 12 Ländern aktiv und betreuen Immobilien im Wert von 31 Milliarden Euro. ECE Marke",
+            "url": "https://www.linkedin.com/jobs/view/4389986626",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 37,
+          "reason": "title fits 'Werkstudent'; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4403445731",
+            "title": "Fahrer in Teilzeit und als Werkstudent in Hamburg-Wandsbek (m_w_d)",
+            "company": "Enterprise Mobility",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Overview Du fährst gerne saubere Autos und freust dich über glückliche Kunden? Als weltgrößter Mobilitätsdienstleister triffst du bei Enterprise auf ein in Deutschland wachsendes internationales Unternehmen mit spannenden Herausforderungen und großartigen Aufstiegschancen. Der Hauptsitz unseres 1957",
+            "url": "https://www.linkedin.com/jobs/view/4403445731",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills like Python, Grafana, and InfluxDB, but lacks direct experience in unified communication and IT services, and the job requires a minimum of 3 years of experience which the candidate does not have.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills like Python, Grafana, and InfluxDB, but lacks direct experience in unified communication and IT services, and the job requires a minimum of 3 years of experience which the candidate does not have.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4412173898",
+            "title": "System Engineer - Planung Unified Communication (UC) Voice & Video (m/w/d)",
+            "company": "BWI GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Sorge gemeinsam mit uns für die digitale Zukunftsfähigkeit der Bundeswehr. Deine Aufgaben: Technische Planung, Koordination und Umsetzung von Changes mit dem Schwerpunkt Unified Communication (Voice & Video) in der verantworteten IT-Infrastruktur und Anwendung von Standard-Designs Dokumentation der ",
+            "url": "https://www.linkedin.com/jobs/view/4412173898",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills like Python, Grafana, and InfluxDB, but lacks direct experience in agrarberatung and business management. Their experience in automotive engineering is not directly applicable to this role.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills like Python, Grafana, and InfluxDB, but lacks direct experience in agrarberatung and business management. Their experience in automotive engineering is not directly applicable to this role.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "arbeitnow_werkstudent-agrarberatung-osnabruck-466440",
+            "title": "Werkstudent (m/w/d) Agrarberatung",
+            "company": "Claudius Wurth Agrarberatung",
+            "location": "Osnabrück",
+            "description": "Als Werkstudent (m/w/d) in der Agrarberatung bei Claudius Wurth Agrarberatung haben Sie die Möglichkeit, praktische Erfahrungen in einem dynamischen und spezialisierten Umfeld zu sammeln. Unser Unternehmen unterstützt landwirtschaftliche Betriebe bei betriebswirtschaftlichen Fragestellungen, einschl",
+            "url": "https://www.arbeitnow.com/jobs/companies/claudius-wurth-agrarberatung/werkstudent-agrarberatung-osnabruck-466440",
+            "published": "2026-07-12T16:00:26+00:00",
+            "source": "Arbeitnow"
+          }
+        }
+      ]
     }
   ]
 }
