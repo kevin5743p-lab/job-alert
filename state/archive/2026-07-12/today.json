@@ -3049,6 +3049,164 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-12T11:35:29.824242",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 35,
+          "reason": "title fits 'Abschlussarbeit'; preferred location (rule-based; AI quota exhausted)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": true,
+          "job": {
+            "id": "linkedin_4417225128",
+            "title": "Hochschulpraktikum/ Abschlussarbeit (w/m/d) im Bereich Project Engineering",
+            "company": "B. Braun Group",
+            "location": "Melsungen, Hesse, Germany",
+            "description": "Zum nächstmöglichen Zeitpunkt suchen wir im Bereich Project Engineering einen Praktikanten (w/m/d) mit Möglichkeit einer Abschlussarbeit. Die Abteilung Project Engineering innerhalb des BBraun Technology Centres projektiert und verbessert Produktionsequipment weltweit für die BBraun Produktionsstand",
+            "url": "https://www.linkedin.com/jobs/view/4417225128",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4391064359",
+            "title": "Senior Embedded AI Developer (f/m/x)",
+            "company": "BMW Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Innovation Is Imagining What No One Else Can. At the BMW Group, everything starts with passion. It turns a profession into a vocation. It drives us to keep reinventing mobility and bring innovative ideas onto the roads. Enthusiasm for joint projects turns a team into a strong unit where every opinio",
+            "url": "https://www.linkedin.com/jobs/view/4391064359",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4411657193",
+            "title": "Außendiensttechniker Analytik (m/w/d)",
+            "company": "Emerson",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Job Description Wir suchen einen engagierten Außendiensttechniker Analytik / Field Service Engineer Analytics (m/w/d) mit Standort in Deutschland und hoher Reisebereitschaft. Sie betreuen unsere Kunden hauptsächlich deutschlandweit, mit gelegentlichen Einsätzen in Österreich und der Schweiz, und bri",
+            "url": "https://www.linkedin.com/jobs/view/4411657193",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4412120031",
+            "title": "Business Development Account Manager for E-commerce - Qualcomm, flexible on location within Europe/Remote",
+            "company": "Qualcomm",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Company Qualcomm Europe, Inc. Italy Branch Office Job Area Sales, Business Development & Marketing Group, Sales, Business Development & Marketing Group > Sales - Sales Incentive Plan General Summary Job Description Arduino is now part of the Qualcomm organisation! PLEASE NOTE WE ARE FLEXIBLE ON LOCA",
+            "url": "https://www.linkedin.com/jobs/view/4412120031",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'barista'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437210541",
+            "title": "Barista | Guest Experience Team Member, Werkstudent | Aushilfe (m/w/d) 10-12h/Woche - ab sofort",
+            "company": "CUPS and CUBES",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Snacks und Drinks, die begeistern. Unsere fluffigen Croissant-Buns, kreative Flats, Matcha oder Kaffee – wir stehen auf natürliche Zutaten und richtig guten Geschmack. Wir sind ein junges Start-up mit einem erfahrenen Team und haben Anfang Dezember 2025 unseren ersten Shop in den Riem Arcaden eröffn",
+            "url": "https://www.linkedin.com/jobs/view/4437210541",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439730284",
+            "title": "Abschlussarbeit/Praktikum im Bereich Produktion (m/w/d)",
+            "company": "WIKUS Sägenfabrik GmbH & Co. KG",
+            "location": "Spangenberg, Hesse, Germany",
+            "description": "Spangenberg Wir sind Innovationstreiber und der größte Sägebandhersteller Europas. Unsere Sägen teilen Materialien. Wir teilen Werte, Leidenschaften und WI-sionen. Denn: Teilen verbindet . Deshalb leben wir Offenheit . In Kopf, Raum und Herz. Damit unsere Wurzel fest verankert bleibt. Mit WI-sionskr",
+            "url": "https://www.linkedin.com/jobs/view/4439730284",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "The role requires fluent German and has no direct relation to the candidate's technical skills and experience in automotive engineering.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 0,
+          "ai_reason": "The role requires fluent German and has no direct relation to the candidate's technical skills and experience in automotive engineering.",
+          "unscored": false,
+          "category": "fluent_german",
+          "job": {
+            "id": "linkedin_4420988245",
+            "title": "Werkstudent Autovermietung (m/w/d)",
+            "company": "SIXT",
+            "location": "Freiburg, Baden-Württemberg, Germany",
+            "description": "Bist Du ein Talent im Kundenservice und Verkauf? Bei SIXT kannst Du Deine Stärken richtig ausspielen. Du sorgst für zufriedene Kunden, verantwortest unsere Fahrzeugflotte und übernimmst vielseitige Aufgaben in der Filiale. Alles, was Du über unsere Fahrzeuge wissen musst, lernst Du bei uns. Profitie",
+            "url": "https://www.linkedin.com/jobs/view/4420988245",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 22,
+          "reason": "skills: Automobil, Git; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4417953786",
+            "title": "Analyst Kreditwürdigkeitsprüfung im Retailgeschäft - Privat & Gewerbe (w/m/x)",
+            "company": "BMW Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "DIE FREIHEIT, MEHR ZU BEWEGEN. MACHEN SIE AUS ZAHLEN REINE FREUDE. BMW BANK. In einem hochdynamischen Umfeld von Kundenfinanzierung und Leasing über Automobilversicherung, Händlerfinanzierung bis hin zum Vermögensmanagement bieten wir moderne Finanzprodukte und Lösungen an, um die Erwartungen unsere",
+            "url": "https://www.linkedin.com/jobs/view/4417953786",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 19,
+          "reason": "skills: Automobil; keyword bonus: 2; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4438997038",
+            "title": "Countermitarbeiter (m/w/d)",
+            "company": "AUTOKONTOR BAYERN GmbH",
+            "location": "Buch, Rhineland-Palatinate, Germany",
+            "description": "Logistik mit Substanz und Zukunft: Starte bei AUTOKONTOR BAYERN – und bring Bewegung in deine Karriere! Über Uns Beeindruckende Präsenz: Acht Standorte für Technik und Logistik sowie über eine Million Quadratmeter Lagerfläche in Deutschland. Großes Team: Ein engagiertes Team von über 600 Fachkräften",
+            "url": "https://www.linkedin.com/jobs/view/4438997038",
+            "published": "2026-07-12T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
