@@ -5555,6 +5555,344 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-14T17:39:39.399209",
+      "strong": [
+        {
+          "score": 92,
+          "reason": "Strong match due to relevant experience in sensor data analysis, time-series data handling, and ADAS validation. However, the candidate lacks direct experience with ETL pipelines and big data processing, which are key aspects of the job posting.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 92,
+          "ai_reason": "Strong match due to relevant experience in sensor data analysis, time-series data handling, and ADAS validation. However, the candidate lacks direct experience with ETL pipelines and big data processing, which are key aspects of the job posting.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4440582586",
+            "title": "Werkstudent/Masterand – Data Analytics  (m/w/d)",
+            "company": "Valeo",
+            "location": "Bietigheim-Bissingen, Baden-Württemberg, Germany",
+            "description": "Wir suchen SIE als Werkstudent/Masterand – Data Analytics (m/w/d) für unseren Standort in Bietigheim Diese Herausforderungen Erwarten Sie Kernaufgabe: \"Data Scout\" für Produktionsdaten. Systematische Beschaffung, Aufbau von Python ETL-Pipelines, Cleaning und statistische Auswertung großer Datensätze",
+            "url": "https://www.linkedin.com/jobs/view/4440582586",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in International Automotive Engineering, with experience in sensor data analysis, time-series data processing, and data visualization using Grafana and InfluxDB. Although they lack direct experience with GenAI and Mainframe-Migration, their skills in Python, data analysis, and sensor data interpretation make them a strong fit for the role. However, their lack of professional experience and limited German proficiency are notable gaps.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in International Automotive Engineering, with experience in sensor data analysis, time-series data processing, and data visualization using Grafana and InfluxDB. Although they lack direct experience with GenAI and Mainframe-Migration, their skills in Python, data analysis, and sensor data interpretation make them a strong fit for the role. However, their lack of professional experience and limited German proficiency are notable gaps.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4418754829",
+            "title": "Werkstudent GenAI@Mainframe-Migration (w/m/x)",
+            "company": "BMW Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "DIE ZUKUNFT DER MOBILITÄT? DIGITAL. TEILE DEINE LEIDENSCHAFT. Mehr als 90 % aller Innovationen im Automobil basieren auf Elektronik und Software. Gerade hier sind große Freiräume und vernetztes Denken gefordert, um die Mobilität neu zu erfinden und ein völlig neues Fahrerlebnis zu ermöglichen. Desha",
+            "url": "https://www.linkedin.com/jobs/view/4418754829",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in automotive engineering, sensor data analysis, and data visualization, which are relevant to the job posting. However, the lack of direct experience in aerospace engineering and the specific requirements of the job posting (e.g., AIT-Verfahren) reduce the score.",
+          "domain_class": "broader_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in automotive engineering, sensor data analysis, and data visualization, which are relevant to the job posting. However, the lack of direct experience in aerospace engineering and the specific requirements of the job posting (e.g., AIT-Verfahren) reduce the score.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4437698046",
+            "title": "Konstrukteur / Design Engineer (m/w/x) Space",
+            "company": "SII Germany",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Bei der SII Group Germany sind es nicht nur Ideen oder Technologien, die uns voranbringen – es sind vor allem die Menschen dahinter. Ihre Leidenschaft, ihr Know-how und ihr Mut, neue Wege zu gehen, machen den Unterschied. Deshalb suchen wir Persönlichkeiten, die nicht nur fachlich überzeugen, sonder",
+            "url": "https://www.linkedin.com/jobs/view/4437698046",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "Strong match due to relevant education, experience in sensor data analysis, and skills in Python, Grafana, and InfluxDB. However, the candidate lacks direct experience in automotive purchasing and contract management, which are key aspects of the role.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "Strong match due to relevant education, experience in sensor data analysis, and skills in Python, Grafana, and InfluxDB. However, the candidate lacks direct experience in automotive purchasing and contract management, which are key aspects of the role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4431218239",
+            "title": "Praktikant Einkauf Motorsport (w/m/x)",
+            "company": "BMW Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "EIN GUTES PRAKTIKUM IST PRAKTISCH NIE THEORETISCH. TEILE DEINE LEIDENSCHAFT. Erfolg ist Teamarbeit. Nur wenn Expert:innen ihr Fachwissen und ihre Begeisterung teilen, entsteht ein Workflow, in dem Ideen fließen. Das nennen wir Innovationskultur. Deshalb geben wir Studierenden bei uns nicht nur die G",
+            "url": "https://www.linkedin.com/jobs/view/4431218239",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in automotive engineering, with relevant skills and experience, but lacks direct experience in deep learning and audio processing.",
+          "domain_class": "broader_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in automotive engineering, with relevant skills and experience, but lacks direct experience in deep learning and audio processing.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4440800028",
+            "title": "Deep Learning Engineer (m/f/d) - Audatic",
+            "company": "Sonova Group",
+            "location": "Berlin, Berlin, Germany",
+            "description": "More About The Role Deep Learning Engineers form the core of our team at Audatic. If you are excited to develop novel deep learning algorithms for audio processing, we have a fantastic job opportunity for you! Your responsibilities will include: Training state-of-the-art deep learning models that pr",
+            "url": "https://www.linkedin.com/jobs/view/4440800028",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 83,
+          "reason": "The candidate has a strong background in automotive engineering and sensor data analysis, but lacks direct experience in trading and energy markets. However, their skills in Python, data visualization, and time-series analysis are highly relevant to the role, and their experience with real-time dashboards and sensor data fusion could be valuable in this context.",
+          "domain_class": "broader_field",
+          "ai_score": 83,
+          "ai_reason": "The candidate has a strong background in automotive engineering and sensor data analysis, but lacks direct experience in trading and energy markets. However, their skills in Python, data visualization, and time-series analysis are highly relevant to the role, and their experience with real-time dashboards and sensor data fusion could be valuable in this context.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4438004191",
+            "title": "Working Student, Trading Advisory",
+            "company": "Volue",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Volue is a technology company dedicated to powering those who power the world. We work with energy companies, grid operators, and infrastructure providers across 40+ countries — helping them forecast more accurately, trade with confidence, and operate critical infrastructure reliably. Our software, ",
+            "url": "https://www.linkedin.com/jobs/view/4438004191",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 62,
+          "reason": "The candidate has relevant skills in data analysis, sensor data interpretation, and time-series visualization, but lacks direct experience in acoustics and audio engineering.",
+          "domain_class": "broader_field",
+          "ai_score": 62,
+          "ai_reason": "The candidate has relevant skills in data analysis, sensor data interpretation, and time-series visualization, but lacks direct experience in acoustics and audio engineering.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4439881493",
+            "title": "Working Student (m/f/d) Acoustics",
+            "company": "Sennheiser",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Job Description Working Student (m/f/d) Acoustics Job Location: Germany-Berlin Since 1928, our legendary products habe made us one of the world`s best-known brands in the field of professional audio. Today, more than 80 percent of the world`s recording studios use Neumann microphones, loudspeakers, ",
+            "url": "https://www.linkedin.com/jobs/view/4439881493",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_performance-marketer-meta-ads-ai-creative-strategy-high-aov-e-commerce-cologne-164952",
+            "title": "Performance Marketer (m/w/d) - Meta Ads × AI × Creative Strategy | High-AOV E-Commerce",
+            "company": "Divinely",
+            "location": "Cologne",
+            "description": "Die meisten Performance Marketer können eines von dreien. Wir suchen jemanden, der alle drei verbindet. Erstens: Performance. Du führst Meta-Ads-Accounts für hochpreisigen E-Commerce - Produkte ab mehreren hundert Euro AOV, lange Kaufentscheidungen, komplexe Customer Journeys. Du steuerst nach Gesch",
+            "url": "https://www.arbeitnow.com/jobs/companies/divinely/performance-marketer-meta-ads-ai-creative-strategy-high-aov-e-commerce-cologne-164952",
+            "published": "2026-07-14T14:30:44+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_growth-marketer-meta-ads-fur-e-commerce-ai-native-boutique-agentur-online-marketing-cologne-241602",
+            "title": "Growth Marketer (m/w/d) Meta Ads für E-Commerce | AI-native Boutique-Agentur, Online Marketing",
+            "company": "Divinely",
+            "location": "Cologne",
+            "description": "Growth Marketer heißt bei uns nicht \"ein bisschen von allem\". Es heißt: Du treibst das Wachstum unserer Kunden über den Kanal, der es trägt - Meta Ads. Kein Kanal-Hopping, kein \"wir machen jetzt auch TikTok\". Wir sind eine Boutique-Agentur für hochpreisigen E-Commerce: Produkte ab mehreren hundert E",
+            "url": "https://www.arbeitnow.com/jobs/companies/divinely/growth-marketer-meta-ads-fur-e-commerce-ai-native-boutique-agentur-online-marketing-cologne-241602",
+            "published": "2026-07-14T14:30:44+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439872711",
+            "title": "Working Student - Learning & Development / Skill-Based Data Analytics (m/f/d)",
+            "company": "Volkswagen Group",
+            "location": "Ingolstadt, Bavaria, Germany",
+            "description": "We are CARIAD, the automotive software company of the Volkswagen Group. Our teams build automotive software platforms and digital customer functions for iconic brands like Audi, Volkswagen, and Porsche – supporting the Volkswagen Group in becoming the leading automotive technology company. With CARI",
+            "url": "https://www.linkedin.com/jobs/view/4439872711",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439865904",
+            "title": "Working Student - Integration Infrastructure & Services (m/f/d)",
+            "company": "Volkswagen Group",
+            "location": "Ingolstadt, Bavaria, Germany",
+            "description": "We are CARIAD, the automotive software company of the Volkswagen Group. Our teams build automotive software platforms and digital customer functions for iconic brands like Audi, Volkswagen, and Porsche – supporting the Volkswagen Group in becoming the leading automotive technology company. With CARI",
+            "url": "https://www.linkedin.com/jobs/view/4439865904",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4440576253",
+            "title": "Working Student (m/f/d) Data Science Computer Vision / IdentityCheck",
+            "company": "CHECK24 Vergleichsportal GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "About This Job CHECK24 is the comparison platform: We combine market leadership with the mindset of a dynamic startup. In agile teams, we make fast decisions and live flat hierarchies. Through the targeted use of cutting-edge tools and technologies as well as state-of-the-art AI methods , we drive d",
+            "url": "https://www.linkedin.com/jobs/view/4440576253",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431214139",
+            "title": "Working student - System Test Engineer (m/f/d)",
+            "company": "MOBIS Parts Europe N.V.",
+            "location": "Eschborn, Hesse, Germany",
+            "description": "About Us MOBIS Parts Europe N.V. is the European branch of Hyundai MOBIS, a worldwide leading supplier of genuine parts and accessories in the field of automotive. Together with Hyundai Motors and Kia Motors, Hyundai MOBIS is one of the biggest companies within the Hyundai group. In addition to rese",
+            "url": "https://www.linkedin.com/jobs/view/4431214139",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4430867760",
+            "title": "Senior Principal Applied Scientist (f/m/d)",
+            "company": "Siemens",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Transform the everyday Siemens builds the systems the physical world runs on: factories, power grids, buildings, trains, hospitals. Industrial and physical AI is a major opportunity in applied AI, and one of the harder ones to get right. There is a generation of AI-powered products to build. We are ",
+            "url": "https://www.linkedin.com/jobs/view/4430867760",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4440564428",
+            "title": "Teamlead Distributed Cooperative Systems (f/m/x) - Robotics, computer science",
+            "company": "German Aerospace Center (DLR)",
+            "location": "Bremerhaven, Bremen, Germany",
+            "description": "At the Institute for the Protection of Maritime Infrastructures in Bremerhaven, we research and develop innovative solutions to strengthen the resilience of maritime infrastructures and make them adaptable, safe and sustainable. In close cooperation with partners from research, industry and other ma",
+            "url": "https://www.linkedin.com/jobs/view/4440564428",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 12,
+          "reason": "keyword bonus: 1; preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439881252",
+            "title": "Counter-Unmanned Aircraft System (C-UAS) Operator",
+            "company": "Mission Essential",
+            "location": "Geilenkirchen, North Rhine-Westphalia, Germany",
+            "description": "Position: Counter-Unmanned Aircraft System (C-UAS) Operator Location: NATO Air Base Geilenkirchen (MOB GK), Germany Employment: Full-time, rotational shift (24 hours/day, 7 days/week) Clearance: NATO or National SECRET security clearance Salary Range: €60,000 - €80,000 per year (est. $68,000 - $91,0",
+            "url": "https://www.linkedin.com/jobs/view/4439881252",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4412664881",
+            "title": "Head of Marketing & Communications, Germany",
+            "company": "ICEYE",
+            "location": "Berlin Metropolitan Area",
+            "description": "Location: Berlin, Germany Department: ICEYE Marketing Reports to: CMO, dotted line to Germany CEO Employment type: Permanent Workplace model: Berlin Employment is subject to applicable security screening Why this role exists Germany is making major long-term decisions about sovereignty, resilience, ",
+            "url": "https://www.linkedin.com/jobs/view/4412664881",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4430553056",
+            "title": "Head of Product Management Confectionery",
+            "company": "Bühler Group",
+            "location": "Reichshof, North Rhine-Westphalia, Germany",
+            "description": "As the Head of Product Management, you are the strategic architect of our solution portfolio. You ensure our equipment to perfectly meet market demands while driving profitable growth. You will lead a high-performing team and act as the central hub between R&D, Sales, and Project Execution. Creating",
+            "url": "https://www.linkedin.com/jobs/view/4430553056",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 42,
+          "reason": "title fits 'Pflichtpraktikum'; skills: Automobil; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439880440",
+            "title": "Pflichtpraktikum: Projektabwicklung in der Automobilindustrie bei BMW  München",
+            "company": "Siemens",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Art der Anstellung: Befristet / Vollzeit (35 Stunden/Woche) Tauche ein in die spannende Projektabwicklung der Automobilindustrie – sichere dir dein Pflichtpraktikum bei BMW in München und gestalte innovative Lösungen von Anfang an mit! Nutze die Chance, dein Know-how in praxisnahen Projekten zu erwe",
+            "url": "https://www.linkedin.com/jobs/view/4439880440",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Ingenieur'; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4437677779",
+            "title": "Künstliche Intelligenz Ingenieur",
+            "company": "ALTEN Germany",
+            "location": "Hamburg, Germany",
+            "description": "Die ALTEN Consulting Services GmbH bietet mit über 20 Jahren Branchenerfahrung ihren namhaften Kunden aus Industrie und Wirtschaft hochspezialisierte Engineering- und IT-Dienstleistungen zur gemeinsamen Realisierung von branchen- und technologieübergreifenden Lösungen an. Kompetenz, Engagement und L",
+            "url": "https://www.linkedin.com/jobs/view/4437677779",
+            "published": "2026-07-14T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
