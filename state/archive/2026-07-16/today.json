@@ -5882,6 +5882,495 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-16T19:41:51.620413",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "The candidate has strong skills in Python, data visualization, and sensor data analysis, which are directly applicable to the job. Their experience with LiDAR, Radar, and Camera data is also relevant. However, the job requires more focus on image data analysis, which is not explicitly mentioned in the candidate's CV, but can be inferred from their experience with sensor data processing.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has strong skills in Python, data visualization, and sensor data analysis, which are directly applicable to the job. Their experience with LiDAR, Radar, and Camera data is also relevant. However, the job requires more focus on image data analysis, which is not explicitly mentioned in the candidate's CV, but can be inferred from their experience with sensor data processing.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4440718852",
+            "title": "Research Software Engineer (m/f/d) for image data analysis",
+            "company": "Max Delbrück Center",
+            "location": "List, Schleswig-Holstein, Germany",
+            "description": "The Max Delbrück Center for Molecular Medicine in the Helmholtz Association aims to transform tomorrow’s medicine through our discoveries of today. At locations in Berlin-Buch, Berlin-Mitte, Heidelberg and Mannheim, our researchers harness interdisciplinary collaboration to decipher the complexities",
+            "url": "https://www.linkedin.com/jobs/view/4440718852",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate's master's degree in International Automotive Engineering and experience with LiDAR/Radar/Camera sensor data, Python, Grafana/InfluxDB, and time-series data analysis align well with the job requirements. However, the lack of direct experience with Phased-Array-, MIMO-, and Imaging-Radarsystems and the requirement for fluent German are notable gaps.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate's master's degree in International Automotive Engineering and experience with LiDAR/Radar/Camera sensor data, Python, Grafana/InfluxDB, and time-series data analysis align well with the job requirements. However, the lack of direct experience with Phased-Array-, MIMO-, and Imaging-Radarsystems and the requirement for fluent German are notable gaps.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4440787344",
+            "title": "Wiss. Mitarbeiter*in - Signalverarbeitung für Phased-Array-, MIMO- und Imaging-Radarsysteme",
+            "company": "Fraunhofer FHR",
+            "location": "Wachtberg, North Rhine-Westphalia, Germany",
+            "description": "as Fraunhofer FHR in Wachtberg bei Bonn ist Teil der großen Fraunhofer-Gesellschaft und eines der führenden und größten europäischen Forschungsinstitute auf dem Gebiet der Hochfrequenzphysik und Radartechnik mit einem der weltweit leistungsfähigsten Weltraumbeobachtungsradare. Die Forschungsabteilun",
+            "url": "https://www.linkedin.com/jobs/view/4440787344",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "Strong match due to relevant experience in sensor data analysis, time-series data handling, and ADAS validation. However, the role requires German language proficiency, which is not explicitly mentioned in the candidate's CV, and the candidate's experience is mostly in mechanical and electrical components integration, which is not directly related to the role's focus on motorsport sales and marketing.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "Strong match due to relevant experience in sensor data analysis, time-series data handling, and ADAS validation. However, the role requires German language proficiency, which is not explicitly mentioned in the candidate's CV, and the candidate's experience is mostly in mechanical and electrical components integration, which is not directly related to the role's focus on motorsport sales and marketing.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4430220739",
+            "title": "Praktikum Motorsport Vertrieb, GT-Sport & Markenpokale",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4430220739",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 82,
+          "reason": "The candidate has a strong background in automotive engineering, with relevant skills in sensor data analysis, data visualization, and programming languages like Python. However, they lack direct experience in building technology and project management, which are key aspects of the job posting.",
+          "domain_class": "broader_field",
+          "ai_score": 82,
+          "ai_reason": "The candidate has a strong background in automotive engineering, with relevant skills in sensor data analysis, data visualization, and programming languages like Python. However, they lack direct experience in building technology and project management, which are key aspects of the job posting.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4438738109",
+            "title": "Ingenieur (all genders) TGA - befristet bis 31.12.2026",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Voll/Teilzeit Planen Sie mit uns nachhaltige Gebäudetechnik für ein klimafreundliches Hamburg. Sie möchten Ihre technische Expertise in sinnstiftende Projekte einbringen und moderne, zukunftsorientierte Gebäudetechnik gestalten? Dann verstärken Sie unser Team als Projektingenieur*in (all genders) TG",
+            "url": "https://www.linkedin.com/jobs/view/4438738109",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 82,
+          "reason": "The candidate has a strong background in automotive engineering, with relevant skills in sensor data analysis, Python, and data visualization, but lacks direct experience in energy consulting and building modeling.",
+          "domain_class": "broader_field",
+          "ai_score": 82,
+          "ai_reason": "The candidate has a strong background in automotive engineering, with relevant skills in sensor data analysis, Python, and data visualization, but lacks direct experience in energy consulting and building modeling.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4441436636",
+            "title": "Bauingenieur Energieberatung (m/w/d) Düsseldorf",
+            "company": "BODE Unternehmensgruppe",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Du bist Bauingenieur:in und willst Projekte eigenständig gestalten – nicht nur berechnen, sondern wirklich Verantwortung übernehmen? Bei BODE in Düsseldorf arbeitest du von Tag eins an ganzheitlich mit Kund:innen zusammen. Wer bei uns Engagement zeigt, wird schnell Projektleiter:in – und dann mehr. ",
+            "url": "https://www.linkedin.com/jobs/view/4441436636",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 74,
+          "reason": "The candidate's master's degree in International Automotive Engineering and experience with LiDAR/Radar/Camera sensor data analysis, Python, Grafana/InfluxDB, and data visualization align well with the job requirements. However, the lack of direct experience in system modeling and simulation, as well as the requirement for fluent German, prevents a higher score.",
+          "domain_class": "core_field",
+          "ai_score": 74,
+          "ai_reason": "The candidate's master's degree in International Automotive Engineering and experience with LiDAR/Radar/Camera sensor data analysis, Python, Grafana/InfluxDB, and data visualization align well with the job requirements. However, the lack of direct experience in system modeling and simulation, as well as the requirement for fluent German, prevents a higher score.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4438728943",
+            "title": "Systemingenieur Systemmodellierung Vorentwicklung (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Greater Kassel Area",
+            "description": "Die börsennotierte Rheinmetall AG mit Sitz in Düsseldorf steht als integrierter Technologiekonzern für ein ebenso substanzstarkes wie international erfolgreiches Unternehmen. Als domänenübergreifendes Systemhaus der Sicherheits- und Verteidigungsindustrie bieten wir ein innovatives Produkt- und Leis",
+            "url": "https://www.linkedin.com/jobs/view/4438728943",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate's experience and skills in sensor data analysis, time-series data, and ADAS are a good match for the role. However, the lack of direct experience in developing user interfaces and the requirement for 3+ years of professional experience are significant gaps.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 60,
+          "ai_reason": "The candidate's experience and skills in sensor data analysis, time-series data, and ADAS are a good match for the role. However, the lack of direct experience in developing user interfaces and the requirement for 3+ years of professional experience are significant gaps.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4401972389",
+            "title": "Fullstack Software Engineer, Perception Experience",
+            "company": "Intrinsic",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Intrinsic is an AI robotics group at Google aiming to reimagine the potential of industrial robotics. Our team believes that advances in AI, perception and simulation will redefine what’s possible for industrial robotics in the near future – with software and data at the core. Our mission is to make",
+            "url": "https://www.linkedin.com/jobs/view/4401972389",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate has relevant skills in Python, Grafana, and InfluxDB, and experience in sensor data analysis. However, the job posting requires a strong focus on marketing and partner management, which is not directly reflected in the candidate's CV. Additionally, the candidate's experience is mostly in automotive engineering, but not specifically in marketing or partner management.",
+          "domain_class": "core_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate has relevant skills in Python, Grafana, and InfluxDB, and experience in sensor data analysis. However, the job posting requires a strong focus on marketing and partner management, which is not directly reflected in the candidate's CV. Additionally, the candidate's experience is mostly in automotive engineering, but not specifically in marketing or partner management.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4438716819",
+            "title": "Praktikant BMW M Motorsport Vermarktung und Partner Management (w/m/x)",
+            "company": "BMW Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "EIN GUTES PRAKTIKUM IST PRAKTISCH NIE THEORETISCH. TEILE DEINE LEIDENSCHAFT. Erfolg ist Teamarbeit. Nur wenn Expert:innen ihr Fachwissen und ihre Begeisterung teilen, entsteht ein Workflow, in dem Ideen fließen. Das nennen wir Innovationskultur. Deshalb geben wir Studierenden bei uns nicht nur die G",
+            "url": "https://www.linkedin.com/jobs/view/4438716819",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441472228",
+            "title": "Programmer Robot & Vision m/f/d",
+            "company": "HAHN Automation Group",
+            "location": "Ruhr Region",
+            "description": "Position description Job title Programmer Robot & Vision m/f/d Employment type Full Time Job Description Independent integration of robotic and vision systems into our production lines Conducting feasibility analyses on customer parts to determine the appropriate vision system, lighting components, ",
+            "url": "https://www.linkedin.com/jobs/view/4441472228",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 12,
+          "reason": "keyword bonus: 1; preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441633859",
+            "title": "130/2026 Wissenschaftliche*r Mitarbeiter*in im Bereich Mensch-Roboter Interaktion // Research Associate (m/f/d) in the field of Human-Robot Interaction",
+            "company": "Otto-von-Guericke University Magdeburg",
+            "location": "Magdeburg, Saxony-Anhalt, Germany",
+            "description": "STELLEN­AUSSCHREI­BUNG 130/2026 Die Otto-von-Guericke- Universität Magdeburg (OVGU) ist eine forschungsstarke, regional vernetzte und international orientierte Profiluniversität. An der Fakultät für Informatik ist am Institut Simulation und Graphik in Abhängigkeit der finalen Mittelbewilligung eine ",
+            "url": "https://www.linkedin.com/jobs/view/4441633859",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438730911",
+            "title": "Senior Data Scientist (m/f/x)",
+            "company": "Capmont",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Search jobs Explore companies Join talent network Talent Senior Data Scientist (m/f/x) KONUX Data Science Munich, Germany Posted on Jul 16, 2026 Apply now About Us KONUX is a dynamic and fast-growing technology company that is transforming the way the railway industry works. Our AI-powered solutions",
+            "url": "https://www.linkedin.com/jobs/view/4438730911",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438491815",
+            "title": "Technical Product Owner - Space & Defence Simulation (m/f/d)",
+            "company": "OHB SE",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "At OHB  System AG you’ll join a leading European systems integrator driving the future of space-based defence. In this role you’ll lead the development of a state-of-the-art system of systems simulation platform, with elements interacting in real-time. Such simulation architecture will be the backbo",
+            "url": "https://www.linkedin.com/jobs/view/4438491815",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4440790501",
+            "title": "Careers with NATO — Join WLG's Talent Network (Ramstein)",
+            "company": "WLG",
+            "location": "Ramstein, Rhineland-Palatinate, Germany",
+            "description": "Ramstein is the beating heart of Allied air power in Europe — and the work behind it needs far more than pilots. It takes engineers and analysts, project and programme leaders, cyber and IT specialists, logisticians, linguists and many more. Perhaps you already know NATO is where you want to be; per",
+            "url": "https://www.linkedin.com/jobs/view/4440790501",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4346545656",
+            "title": "System Engineer OT (m/w/x)",
+            "company": "Valmet",
+            "location": "Dörpen, Lower Saxony, Germany",
+            "description": "Gestalten Sie mit uns die Zukunft der Automatisierung! Wir suchen System Engineer, die Lust auf spannende Aufgaben, technische Innovationen und ein großartiges Team haben. 📍 Standorte Region - Mittel- und Ostdeutschland Ihre Aufgaben Netzwerk und Systemwartung sowie Installation der OT Systeme in de",
+            "url": "https://www.linkedin.com/jobs/view/4346545656",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4440734110",
+            "title": "System Engineers – Germany | Airbus Projects",
+            "company": "Orbital Critical Systems (Grupo CAF)",
+            "location": "Manching, Bavaria, Germany",
+            "description": "Orbital Critical Systems (CAF Group) a leading company in safety‑critical software for aerospace, defence and transport , is looking for System Engineers to join our on‑site teams in Germany, supporting strategic projects with Airbus in Germany. 📍 Locations include Manching, Hamburg, Bremen , Ulm, D",
+            "url": "https://www.linkedin.com/jobs/view/4440734110",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438713618",
+            "title": "Vice President Software",
+            "company": "R3 Robotics",
+            "location": "Greater Karlsruhe Area",
+            "description": "Join us in solving one of industrial robotics' toughest challenges. R3 Robotics is developing the AI-powered dismantling platform that transforms end-of-life electric vehicle systems into strategic sources of critical materials. As global electrification accelerates, the surge in batteries and e-mot",
+            "url": "https://www.linkedin.com/jobs/view/4438713618",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441497645",
+            "title": "Wir suchen Projektingenieure im Bereich BESS, Energieverteilung, EMSR-Technik und Integration erneuerbarer Energien (m/w/d)",
+            "company": "PSvdL Engineering GmbH",
+            "location": "Essen, North Rhine-Westphalia, Germany",
+            "description": "Projektingenieur im Bereich Energieverteilung, EMSR-Technik und Integration erneuerbarer Energien (m/w/d) – auch Berufseinsteiger willkommen – Willkommen bei PSvdL Engineering – den Experten für ganzheitliche Energielösungen! Wir setzen uns leidenschaftlich für eine sichere, zukunftsfähige und nachh",
+            "url": "https://www.linkedin.com/jobs/view/4441497645",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441604272",
+            "title": "Online-Marketing- & Social-Media-Manager",
+            "company": "KÖTTER Services",
+            "location": "Essen, North Rhine-Westphalia, Germany",
+            "description": "Wir sind KÖTTER und arbeiten Hand in Hand. Machen Sie sich ein Bild von Ihrer Zukunft – im Team von KÖTTER Services! Wir sind rund 16.400 Persönlichkeiten, die sich miteinander verbunden fühlen. Echte Teamplayer, die für „KÖTTER UNITED“ stehen und täglich Hand in Hand arbeiten. Denn wir alle sind KÖ",
+            "url": "https://www.linkedin.com/jobs/view/4441604272",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4405405438",
+            "title": "SAP IBP Lead (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4405405438",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 44,
+          "reason": "title fits 'Junior Ingenieur'; skills: Sensorik, Git; keyword bonus: 2; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4440772475",
+            "title": "Ingenieur (w/m/d) für Automatisierung und Digitalisierung",
+            "company": "Siemens Energy",
+            "location": "Mülheim an der Ruhr, North Rhine-Westphalia, Germany",
+            "description": "Momentaufnahme von Ihrem Tag Die Fertigung unserer außergewöhnlichen Engineer-to-Order Produkte erfordert einen ebenso einzigartigen Maschinenpark, sowie Lösungen, die die Anforderungen des digitalen Zeitalters unterstützen. Als Teil unseres engagierten Teams gestalten Sie die Weiterentwicklung unse",
+            "url": "https://www.linkedin.com/jobs/view/4440772475",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The candidate lacks professional experience and direct relevance to the role, despite having some relevant projects and skills. The CV-based matching shows some potential, but the candidate's background is not a strong fit for the position.",
+          "domain_class": "core_field",
+          "ai_score": 20,
+          "ai_reason": "The candidate lacks professional experience and direct relevance to the role, despite having some relevant projects and skills. The CV-based matching shows some potential, but the candidate's background is not a strong fit for the position.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4438746164",
+            "title": "AIT Engineer – Embedded Systems & Satellite Communications - On-Board Computer (Relocation to Finland)",
+            "company": "Demexios",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Location : Espoo (Helsinki), Finland (On-site) Relocation : Relocation to Finland is required. Relocation support provided. Salary : €55,000 - €70,000 gross per year (depending on experience) We are recruiting an OBC & Communications AIT Engineer on behalf of a fast-growing international space techn",
+            "url": "https://www.linkedin.com/jobs/view/4438746164",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has relevant skills in Python, Grafana, and InfluxDB, but lacks direct experience in SATCOM and system engineering. Their experience in sensor data analysis and ADAS is not directly applicable to the role, and they have limited professional experience.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 45,
+          "ai_reason": "The candidate has relevant skills in Python, Grafana, and InfluxDB, but lacks direct experience in SATCOM and system engineering. Their experience in sensor data analysis and ADAS is not directly applicable to the role, and they have limited professional experience.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4438731359",
+            "title": "System Engineer - Satellitenkommunikation SATCOM (m/w/d)",
+            "company": "SPECTRUM AG",
+            "location": "Munich, Bavaria, Germany",
+            "description": "System Engineer - Satellitenkommunikation SATCOM (m/w/d) Standort: München Start: Ab sofort Unternehmensprofil Das Unternehmen mit Hauptsitz in München ist ein global agierender Anbieter von Lösungen in den Bereichen Elektro-, Test- und Messtechnik sowie Kommunikationstechnologie. Das Unternehmen bi",
+            "url": "https://www.linkedin.com/jobs/view/4438731359",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 37,
+          "reason": "title fits 'Werkstudent'; keyword bonus: 1; preferred location (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4431889433",
+            "title": "Werkstudent Entwicklung und Konstruktion (m/w/d)",
+            "company": "Knorr-Bremse AG",
+            "location": "Munich, Bavaria, Germany",
+            "description": "We believe that a change towards a better, more sustainable future of transportation is possible. That’s why we are so dedicated to developing safer, more efficient and innovative solutions that make our visions come to life. Who are we? More than 30,000 team-players from all around the world who dr",
+            "url": "https://www.linkedin.com/jobs/view/4431889433",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 42,
+          "reason": "The candidate has some relevant skills like data analysis and time-series data handling, but the job posting requires compliance expertise, which is not mentioned in the candidate's profile.",
+          "domain_class": "broader_field",
+          "ai_score": 42,
+          "ai_reason": "The candidate has some relevant skills like data analysis and time-series data handling, but the job posting requires compliance expertise, which is not mentioned in the candidate's profile.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4440770323",
+            "title": "Praktikant - Legal & Compliance (m/f/x)",
+            "company": "tesa",
+            "location": "Hamburg, Germany",
+            "description": "That's why an internship at tesa is worth it: Your benefits You are a full-fledged member of the team, which shows you trust and appreciation You will be given individual opportunities to shape and develop your career: We challenge and encourage you, coach you and give you feedback You have the oppo",
+            "url": "https://www.linkedin.com/jobs/view/4440770323",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "The role requires 3+ years of professional experience, which the candidate does not have. Additionally, the role is in the Rechtsabteilung (Legal Department) and does not match the candidate's skills and experience in sensor data analysis and automotive engineering.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 0,
+          "ai_reason": "The role requires 3+ years of professional experience, which the candidate does not have. Additionally, the role is in the Rechtsabteilung (Legal Department) and does not match the candidate's skills and experience in sensor data analysis and automotive engineering.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4286312762",
+            "title": "Praktikum Rechtsabteilung",
+            "company": "Porsche Financial Services GmbH",
+            "location": "Bietigheim-Bissingen, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4286312762",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Praktikant'; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4413424480",
+            "title": "Praktikant (all genders) in der Managementberatung - Konsumgüter",
+            "company": "Porsche Consulting",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4413424480",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "The role requires 3+ years of professional experience, which the candidate does not have. Additionally, the role requires fluent/business German, which the candidate only has a B1 reading level and A2 speaking level.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 0,
+          "ai_reason": "The role requires 3+ years of professional experience, which the candidate does not have. Additionally, the role requires fluent/business German, which the candidate only has a B1 reading level and A2 speaking level.",
+          "unscored": false,
+          "category": "fluent_german",
+          "job": {
+            "id": "linkedin_4438732853",
+            "title": "Systemingenieur (m/w/d) Leichtbau – Verbundmaterialien",
+            "company": "Diehl Metall",
+            "location": "Dresden, Saxony, Germany",
+            "description": "Digitale Trans­formation. Nach­haltig­keit. Friedens­sicherung. Spannende Aufgaben, an denen auch wir bei Diehl in unseren fünf Teil­konzernen Metall, Controls, Defence, Aviation und Metering und unsere über 16.000 Mit­arbeiter­innen und Mit­arbeiter mit Hochdruck arbeiten. Entdecken Sie faszinieren",
+            "url": "https://www.linkedin.com/jobs/view/4438732853",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 15,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4438737370",
+            "title": "Key Account Manager Neurologie (m/w/d) - München",
+            "company": "Merz Therapeutics",
+            "location": "Germany",
+            "description": "Als Key Account Manager (m/w/d) Neurologie nehmen Sie eine strategisch wichtige Rolle ein, die eine kundenorientierte Kultur im Außendienst vorantreibt und auf kreative, pragmatische und hybride Lösungen setzt. Gemeinsam mit Ihren KollegInnen im Außendienst und in enger Zusammenarbeit mit den Medica",
+            "url": "https://www.linkedin.com/jobs/view/4438737370",
+            "published": "2026-07-16T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
