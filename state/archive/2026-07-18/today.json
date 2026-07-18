@@ -4611,6 +4611,345 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-18T19:39:50.005863",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "Outstanding fit due to strong overlap in skills (Python, Grafana, InfluxDB, LiDAR/Radar/Camera) and experience (sensor data analysis, ADAS validation). However, the candidate lacks direct experience in the automotive industry, which is a key aspect of the job posting.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "Outstanding fit due to strong overlap in skills (Python, Grafana, InfluxDB, LiDAR/Radar/Camera) and experience (sensor data analysis, ADAS validation). However, the candidate lacks direct experience in the automotive industry, which is a key aspect of the job posting.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4441737720",
+            "title": "Werkstudent Erprobung Schiffsantriebssysteme (w/m/d)",
+            "company": "MAN Truck & Bus SE",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "MAN Truck & Bus Studienjob Nürnberg Zu besetzen: ab sofort Dein Arbeitsumfeld Wir bei MAN Truck & Bus sind Teil eines starken internationalen Teams und einer der führenden europäischen Nutzfahrzeughersteller und Anbieter von Transportlösungen. Zusammen mit den Marken Scania, Volkswagen Truck & Bus u",
+            "url": "https://www.linkedin.com/jobs/view/4441737720",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has strong skills in sensor data analysis, ADAS, and time-series data, which are highly relevant to the job. However, the job requires more focus on production and maintenance processes, which is not directly related to the candidate's field.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has strong skills in sensor data analysis, ADAS, and time-series data, which are highly relevant to the job. However, the job requires more focus on production and maintenance processes, which is not directly related to the candidate's field.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4441728966",
+            "title": "Werkstudent Schraub- & Hebetechnik (w/m/d)",
+            "company": "MAN Truck & Bus SE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "MAN Truck & Bus Studienjob München Zu Besetzen Ab 01.09.2026 Ihr Arbeitsumfeld Wir bei MAN Truck & Bus sind Teil eines starken internationalen Teams und einer der führenden europäischen Nutzfahrzeughersteller und Anbieter von Transportlösungen. Zusammen mit den Marken Scania, Volkswagen Truck & Bus ",
+            "url": "https://www.linkedin.com/jobs/view/4441728966",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has relevant skills and experience in automotive engineering, but the job requires procurement and supply chain management skills, which are not directly mentioned in the candidate's profile.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant skills and experience in automotive engineering, but the job requires procurement and supply chain management skills, which are not directly mentioned in the candidate's profile.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4441741515",
+            "title": "Werkstudent Beschaffung Produktionsmaterial (w/m/d)",
+            "company": "MAN Truck & Bus SE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "MAN Truck & Bus Studienjob München Zu besetzen: ab sofort Dein Arbeitsumfeld Wir bei MAN Truck & Bus sind Teil eines engagierten internationalen Teams und einer der führenden europäischen Nutzfahrzeughersteller und Anbieter von Transportlösungen. Zusammen mit den Marken Scania, Volkswagen Truck & Bu",
+            "url": "https://www.linkedin.com/jobs/view/4441741515",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in automotive engineering, with experience in sensor data analysis, ADAS, and time-series data analysis, which are highly relevant to the job. However, the job requires project management skills, which are not explicitly mentioned in the candidate's CV, but can be inferred from their experience in supporting data organization and workflow automation.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in automotive engineering, with experience in sensor data analysis, ADAS, and time-series data analysis, which are highly relevant to the job. However, the job requires project management skills, which are not explicitly mentioned in the candidate's CV, but can be inferred from their experience in supporting data organization and workflow automation.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4424961465",
+            "title": "Werkstudent:in Projektmanagement Verkehrsstationen",
+            "company": "Deutsche Bahn",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "Die Deutsche Bahn bietet deutschlandweit über 500 Berufe und vielfältige Einstiegsmöglichkeiten für Student:innen und Absolvent:innen. Mehr als 1.400 Praktikant:innen, Werkstudent:innen, Direkteinsteiger:innen und Trainees lernen uns jährlich als dynamische und innovative Arbeitgeberin kennen. Sei d",
+            "url": "https://www.linkedin.com/jobs/view/4424961465",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 83,
+          "reason": "The candidate has relevant skills in sensor data analysis, Python, and data visualization, but lacks direct experience in space exploration and orbital mechanics.",
+          "domain_class": "broader_field",
+          "ai_score": 83,
+          "ai_reason": "The candidate has relevant skills in sensor data analysis, Python, and data visualization, but lacks direct experience in space exploration and orbital mechanics.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4424481058",
+            "title": "Future Projects Mission Analysis Engineer",
+            "company": "The Exploration Company",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Here at The Exploration Company, we are developing, producing, and operating Nyx, a modular and reusable space orbital vehicle that can eventually be refuelled in orbit and that can carry cargo - and potentially humans in the longer run. Our Future Projects team is dedicated to expanding and complem",
+            "url": "https://www.linkedin.com/jobs/view/4424481058",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 82,
+          "reason": "The candidate has a strong background in sensor data analysis, programming, and data visualization, which are relevant to the job posting. However, the lack of direct experience in RF engineering and the requirement for 3+ years of professional experience are drawbacks.",
+          "domain_class": "broader_field",
+          "ai_score": 82,
+          "ai_reason": "The candidate has a strong background in sensor data analysis, programming, and data visualization, which are relevant to the job posting. However, the lack of direct experience in RF engineering and the requirement for 3+ years of professional experience are drawbacks.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4323014768",
+            "title": "Hochfrequenz / RF Engineer (m/f/d)",
+            "company": "WORK Microwave",
+            "location": "Holzkirchen, Bavaria, Germany",
+            "description": "WORK Microwave – weltweit führende Spitzentechnologie. Wir entwickeln und fertigen seit 40 Jahren Hightechprodukte in den Bereichen Satellitenkommunikation, Radarsysteme und Mikrowellen-Sensoren. Wir bieten die Vorteile eines mittelständischen Unternehmens: Rund 180 Kollegen, kurze Wege, flache Hier",
+            "url": "https://www.linkedin.com/jobs/view/4323014768",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 74,
+          "reason": "The candidate has relevant skills in Python, Grafana, and InfluxDB, and experience in sensor data analysis. However, the role requires more focus on production preparation and process implementation, which is not directly reflected in the candidate's CV. Additionally, the candidate's German language skills are not fluent, which is a requirement for the role.",
+          "domain_class": "core_field",
+          "ai_score": 74,
+          "ai_reason": "The candidate has relevant skills in Python, Grafana, and InfluxDB, and experience in sensor data analysis. However, the role requires more focus on production preparation and process implementation, which is not directly reflected in the candidate's CV. Additionally, the candidate's German language skills are not fluent, which is a requirement for the role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4434080672",
+            "title": "Werkstudent:in Produktionsvorbereitung",
+            "company": "Deutsche Bahn",
+            "location": "Husum, Schleswig-Holstein, Germany",
+            "description": "Die Deutsche Bahn bietet deutschlandweit über 500 Berufe und vielfältige Einstiegsmöglichkeiten für Studierende und Absolvent:innen. Ca. 2.000 Praktikant:innen, Werkstudent:innen, Direkteinsteiger:innen und Trainees lernen uns jährlich als dynamische und innovative Arbeitgeberin kennen. Sei dabei un",
+            "url": "https://www.linkedin.com/jobs/view/4434080672",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4405886429",
+            "title": "SOP Intern (Germany)",
+            "company": "Leggett & Platt",
+            "location": "Eschwege, Hesse, Germany",
+            "description": "Open The Door to Opportunity! At Leggett & Platt, we provide real-world experiences that shape the future of young professionals. Our Doors Internship Program is a paid opportunity for students to contribute to and learn from a global leader in manufacturing, design, and innovation. We offer interns",
+            "url": "https://www.linkedin.com/jobs/view/4405886429",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4366188249",
+            "title": "Senior System Engineer I",
+            "company": "Axon",
+            "location": "Kassel, Hesse, Germany",
+            "description": "Join Axon and be a Force for Good. At Axon, we’re on a mission to Protect Life. We’re explorers, pursuing society’s most critical safety and justice issues with our ecosystem of devices and cloud software. Like our products, we work better together. We connect with candor and care, seeking out diver",
+            "url": "https://www.linkedin.com/jobs/view/4366188249",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434074833",
+            "title": "Modeling and Simulation Systems Engineer",
+            "company": "SAIC",
+            "location": "Kaiserslautern, Rhineland-Palatinate, Germany",
+            "description": "Job ID 2614037 Location Kaiserslautern, Rhineland-Palatinate, DE Date Posted 2026-06-26 Category Engineering and Sciences Subcategory Systems Engineer Schedule Full-Time Shift Day Job Travel Yes - 10% of the time Minimum Clearance Required Secret Clearance Level Must Be Able to Obtain TS/SCI Potenti",
+            "url": "https://www.linkedin.com/jobs/view/4434074833",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Erfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434075833",
+            "title": "Sicherheitsfahrer:in autonome Fahrzeuge",
+            "company": "Deutsche Bahn",
+            "location": "Weiterstadt, Hesse, Germany",
+            "description": "Für über 500 verschiedene Berufe suchen wir motivierte Mitarbeitende. Und das in ganz Deutschland. Ob erfahrene Profis oder Berufsstarter:innen - wir bieten zahlreiche Einstiegs- und Weiterbildungsmöglichkeiten. Zum nächstmöglichen Zeitpunkt suchen wir dich als Sicherheitsfahrer:in autonome Fahrzeug",
+            "url": "https://www.linkedin.com/jobs/view/4434075833",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4424474571",
+            "title": "Senior Solutions Architect, Generative and Physical AI - NVAITC",
+            "company": "NVIDIA",
+            "location": "Munich, Bavaria, Germany",
+            "description": "NVIDIA is hiring a Solution Architect for the AI Technology Centre team in Bavaria, Germany. This role is ideal for scientists who can also clearly define and apply strong strategic capabilities. Applicants must have significant publication records, community recognition, and research credibility to",
+            "url": "https://www.linkedin.com/jobs/view/4424474571",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4402881460",
+            "title": "Project Functional Safety Manager (m/f/d)",
+            "company": "HARMAN International",
+            "location": "Garching, Bavaria, Germany",
+            "description": "About The Role This role reports to the Manager of Program Enablement within Product Trust Center of Excellence. As a Project Functional Safety Manager, you are responsible for ensuring that Functional Safety requirements are consistently planned, implemented, monitored, and assessed in accordance w",
+            "url": "https://www.linkedin.com/jobs/view/4402881460",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills like data analysis and visualization, but lacks experience in corporate communications and the job requires a strong focus on planning, coordination, and execution of internal communications.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills like data analysis and visualization, but lacks experience in corporate communications and the job requires a strong focus on planning, coordination, and execution of internal communications.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4395308759",
+            "title": "Working Student - Corporate Communications (f/m/div)",
+            "company": "Infineon Technologies",
+            "location": "Munich, Bavaria, Germany",
+            "description": "#WeAreIn to create tiny chips and big careers. The future won’t wait... why should you? Join us and make a difference. Whether you join as a student, intern, or trainee, you'll be part of something real - real projects, real impact, and real opportunities to grow. Are you in? Your Role The role invo",
+            "url": "https://www.linkedin.com/jobs/view/4395308759",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills like data analysis and Python, but the job requires strong knowledge of accounting and payroll, which is not mentioned in the candidate's CV.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills like data analysis and Python, but the job requires strong knowledge of accounting and payroll, which is not mentioned in the candidate's CV.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4433246155",
+            "title": "Accounting & Payroll Intern/Working student (m/f/d)",
+            "company": "Texas Instruments Europe",
+            "location": "Freising, Bavaria, Germany",
+            "description": "Job Description As an intern/ working student in the Germany Accounting & EMEA Payroll department, you will receive invaluable experience working in the fast-paced high-tech industry, with assignments exposure to financial close & reportings, control enhancements and business process review. Your Ta",
+            "url": "https://www.linkedin.com/jobs/view/4433246155",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 44,
+          "reason": "title fits 'Werkstudent'; skills: Git; keyword bonus: 2; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4441743318",
+            "title": "Werkstudent Digitalisierung Inbound Transport (w/m/d)",
+            "company": "MAN Truck & Bus SE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "MAN Truck & Bus Studienjob München Zu Besetzen Ab 01.10.2026 Ihr Arbeitsumfeld Wir bei MAN Truck & Bus sind Teil eines starken internationalen Teams und einer der führenden europäischen Nutzfahrzeughersteller und Anbieter von Transportlösungen. Zusammen mit den Marken Scania, Volkswagen Truck & Bus ",
+            "url": "https://www.linkedin.com/jobs/view/4441743318",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has relevant skills in Python, Grafana, and InfluxDB, but lacks direct experience in ergonomics and behavior analysis. Their experience in sensor data analysis and ADAS is not directly applicable to the role, but shows potential for transferable skills.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 45,
+          "ai_reason": "The candidate has relevant skills in Python, Grafana, and InfluxDB, but lacks direct experience in ergonomics and behavior analysis. Their experience in sensor data analysis and ADAS is not directly applicable to the role, but shows potential for transferable skills.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4402875601",
+            "title": "Praktikant im Bereich Verhaltensergonomie in der Lackierten Karosserie (w/m/x)",
+            "company": "BMW Group",
+            "location": "Regensburg, Bavaria, Germany",
+            "description": "EIN GUTES PRAKTIKUM IST PRAKTISCH NIE THEORETISCH. TEILE DEINE LEIDENSCHAFT. Erfolg ist Teamarbeit. Nur wenn Expert:innen ihr Fachwissen und ihre Begeisterung teilen, entsteht ein Workflow, in dem Ideen fließen. Das nennen wir Innovationskultur. Deshalb geben wir Studierenden bei uns nicht nur die G",
+            "url": "https://www.linkedin.com/jobs/view/4402875601",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Junior Engineer'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4356097412",
+            "title": "Network Systems Engineer (d/f/m)",
+            "company": "Airbus Defence and Space",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Job Description: Für Airbus Defence & Space in Taufkirchen suchen wir eine(n) Ground Segment Systems Engineer (d/f/m) zur Verstärkung des Teams „System Delivery Germany“. Die Abteilung entwickelt Satellitenkommunikationssysteme für zivile und militärische Kunden. Als Ground Segment Systems Engineer ",
+            "url": "https://www.linkedin.com/jobs/view/4356097412",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "The candidate has some relevant skills such as Python, Grafana, and InfluxDB, but lacks direct experience in stress engineering and airframe stress. Their experience in sensor data analysis and ADAS is not directly applicable to the role, and they do not have the required fluency in German.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 40,
+          "ai_reason": "The candidate has some relevant skills such as Python, Grafana, and InfluxDB, but lacks direct experience in stress engineering and airframe stress. Their experience in sensor data analysis and ADAS is not directly applicable to the role, and they do not have the required fluency in German.",
+          "unscored": false,
+          "category": "fluent_german",
+          "job": {
+            "id": "linkedin_4439622892",
+            "title": "VIE - Stress Engineer (d/f/m)",
+            "company": "Airbus Helicopters",
+            "location": "Donauwörth, Bavaria, Germany",
+            "description": "Job Description: In order to support the airframe stress department, Airbus Helicopters is looking for a VIE Stress Engineer (d/f/m) You are a highly motivated graduate and want to get to know the work of a stress engineer? Then apply now! We look forward to you supporting us in airframe stress as a",
+            "url": "https://www.linkedin.com/jobs/view/4439622892",
+            "published": "2026-07-18T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
