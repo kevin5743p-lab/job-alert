@@ -3507,6 +3507,290 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-19T16:40:31.189143",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "The candidate has strong skills in sensor data analysis, Python, and data visualization, which are highly relevant to the job. However, the lack of direct experience in the automotive industry and the requirement for a team leadership role may be a challenge.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has strong skills in sensor data analysis, Python, and data visualization, which are highly relevant to the job. However, the lack of direct experience in the automotive industry and the requirement for a team leadership role may be a challenge.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4434271069",
+            "title": "Teamleiter Produktion - Elektronik / Sensorik (m/w/d)",
+            "company": "Workwise",
+            "location": "Aachen, North Rhine-Westphalia, Germany",
+            "description": "Über indurad GmbH part of Hexagon Ursprünglich aus einem Forschungsprojekt entstanden, entwickelt unser Unternehmen nun seit 2008 innovative Sensorlösungen für die weltweit führende Rohstoffindustrie. Von unserem Headquarter in Aachen aus, sorgt unser Team aus 150 fantastischen Mitarbeitenden dafür,",
+            "url": "https://www.linkedin.com/jobs/view/4434271069",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in sensor data and engineering, and has experience with relevant tools like Python, Grafana, and InfluxDB. However, they lack direct experience in the automotive industry, and their education is in medical engineering rather than automotive engineering.",
+          "domain_class": "broader_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in sensor data and engineering, and has experience with relevant tools like Python, Grafana, and InfluxDB. However, they lack direct experience in the automotive industry, and their education is in medical engineering rather than automotive engineering.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442539411",
+            "title": "Hardwarenaher Softwareentwickler (m/w/d)",
+            "company": "AXON Innovations",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "Jobspezifikationen Stellenbezeichnung: Hardwarenaher Softwareentwickler (m/w/d) Standort: Leipzig, Deutschland Wochenarbeitszeit: 40 Std./ Woche Befristung: unbefristet Home-Office / Remote: nein Jetzt online bewerben Ihre Aufgaben Wir entwickeln im Kundenauftrag eingebettete Systeme. Das beginnt be",
+            "url": "https://www.linkedin.com/jobs/view/4442539411",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 82,
+          "reason": "The candidate has relevant skills in sensor data and automotive engineering, but lacks direct experience and German fluency.",
+          "domain_class": "broader_field",
+          "ai_score": 82,
+          "ai_reason": "The candidate has relevant skills in sensor data and automotive engineering, but lacks direct experience and German fluency.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442523955",
+            "title": "Testingenieur (w/m/d) Software / Systeme",
+            "company": "Valyue Consulting GmbH",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Ihre Aufgaben bei Valyue Sie sind verantwortlich für die Planung, Koordination und Durchführung von systematischen und automatisierten Tests Zu Ihren vielfältigen Aufgaben gehört das Erstellen von Testspezifikationen und Fehleranalysen ebenso wie die Auswertung und Aufbereitung von Testergebnissen S",
+            "url": "https://www.linkedin.com/jobs/view/4442523955",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "The candidate has relevant skills in Python, data analysis, and sensor data, but lacks direct experience in battery cell/module test automation and automotive engineering. Their CV highlights experience in mechanical and electrical departments, but it's unclear how directly applicable this is to the role.",
+          "domain_class": "core_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate has relevant skills in Python, data analysis, and sensor data, but lacks direct experience in battery cell/module test automation and automotive engineering. Their CV highlights experience in mechanical and electrical departments, but it's unclear how directly applicable this is to the role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4383162327",
+            "title": "WORKING STUDENT / INTERNSHIP BATTERY CELL-/MODULE TEST AUTOMATION (M/F/D)",
+            "company": "Hyundai Motor Europe Technical Center GmbH",
+            "location": "Rüsselsheim, Hesse, Germany",
+            "description": "We are currently seeking an WORKING STUDENT / INTERNSHIP - BATTERY CELL-/MODULE TEST AUTOMATION (M/F/D) You will be responsible for Development and optimization of battery cell and module test automation Transformation of existing test procedures into standardized, generic automated test scripts Har",
+            "url": "https://www.linkedin.com/jobs/view/4383162327",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate has a strong background in engineering and has experience with sensor data, but lacks direct experience in geospatial AI and machine learning for satellite imagery analysis.",
+          "domain_class": "broader_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate has a strong background in engineering and has experience with sensor data, but lacks direct experience in geospatial AI and machine learning for satellite imagery analysis.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442536505",
+            "title": "Machine Learning Engineer (m/f/x) - Geospatial AI",
+            "company": "osapiens",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Department: osapiens Terra Employment Type: Permanent Location: München Description About the role As a Machine Learning Engineer (m/f/x), you will work on the machine learning systems powering our geospatial analytics platform. You will contribute to the development, deployment, and improvement of ",
+            "url": "https://www.linkedin.com/jobs/view/4442536505",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4343854599",
+            "title": "Software Engineer",
+            "company": "Helsing",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Who We Are Helsing is a defence AI company. Our mission is to protect our democracies. We aim to achieve technological leadership, so that open societies can continue to make sovereign decisions and control their ethical standards. As democracies, we believe we have a special responsibility to be th",
+            "url": "https://www.linkedin.com/jobs/view/4343854599",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385580162",
+            "title": "Quantum Error Correction Experiment Engineer",
+            "company": "IQM Quantum Computers",
+            "location": "Munich, Bavaria, Germany",
+            "description": "IQM is a global leader in superconducting quantum computing. We design and build full-stack quantum computers and provide both on-premises systems and cloud access to our technology worldwide. Our customers include leading high-performance computing centers, research institutions, universities, and ",
+            "url": "https://www.linkedin.com/jobs/view/4385580162",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4424687563",
+            "title": "Forward Deployed AI Engineer, Germany & Austria - BCG X",
+            "company": "BCG X",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Locations : München | Berlin | Frankfurt | Hamburg | Köln | Düsseldorf | Stuttgart | Vienna Who We Are Boston Consulting Group partners with leaders in business and society to tackle their most important challenges and capture their greatest opportunities. BCG was the pioneer in business strategy wh",
+            "url": "https://www.linkedin.com/jobs/view/4424687563",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4355687376",
+            "title": "Senior EMV- und Funk-Projektingenieur (m/w/d)",
+            "company": "UL Solutions",
+            "location": "Neu-Isenburg, Hesse, Germany",
+            "description": "UL ist ein weltweit agierendes, unabhängiges Unternehmen, das seit mehr als 130 Jahren Produkte hinsichtlich ihrer Sicherheit untersucht und zertifiziert. Weltweit setzen sich über 14.000 Mitarbeiter dafür ein, sicherere Lebens- und Arbeitsbedingungen Wirklichkeit werden zu lassen. Bei UL haben Sie ",
+            "url": "https://www.linkedin.com/jobs/view/4355687376",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442543072",
+            "title": "Technical Product Consultant (m/w/d)",
+            "company": "DAT Deutsche Automobil Treuhand",
+            "location": "Ostfildern, Baden-Württemberg, Germany",
+            "description": "Als Innovator der Branche legen wir bei unseren Produkten kräftig vor und lassen bei unseren Mitarbeitern nicht nach ... spannende Aufgaben mit Anspruch im automobilen Umfeld multikulturelles Umfeld und familiäre Arbeitsatmosphäre Attraktive Sozialleistungen wie betriebliche Altersvorsorge und vermö",
+            "url": "https://www.linkedin.com/jobs/view/4442543072",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4405412124",
+            "title": "SAP IBP Lead (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Dresden, Saxony, Germany",
+            "description": "Aufgaben Gestalte als SAP IBP Topic Lead (all genders) die Zukunft unserer Planning‑Landschaft. Du verantwortest den fachlichen Ausbau von SAP Integrated Business Planning (IBP) und führst unsere Kunden durch anspruchsvolle End‑to‑End‑Planungsprozesse. In dieser Rolle übernimmst du Leadership im The",
+            "url": "https://www.linkedin.com/jobs/view/4405412124",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "The candidate's skills and experience do not match the job requirements. The job posting requires a strong background in administration and office management, which is not reflected in the candidate's CV. The candidate's expertise in sensor data and automotive engineering is not relevant to the job posting.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 0,
+          "ai_reason": "The candidate's skills and experience do not match the job requirements. The job posting requires a strong background in administration and office management, which is not reflected in the candidate's CV. The candidate's expertise in sensor data and automotive engineering is not relevant to the job posting.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4434229725",
+            "title": "Werkstudent (m/w/d) Team Assistenz",
+            "company": "Valeo",
+            "location": "Garching, Bavaria, Germany",
+            "description": "Wir suchen SIE als Werkstudent (m/w/d) Team Assistenz für unseren Standort in Garching Diese Herausforderungen Erwarten Sie Strukturierte Ablage sowie Verwaltung von Dokumenten und Dateien Übernahme administrativer Aufgaben zur Unterstützung des Büroalltags Professionelle Kommunikation mit internen ",
+            "url": "https://www.linkedin.com/jobs/view/4434229725",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills like Python, LiDAR, and Radar, but lacks direct experience in manufacturing engineering and the company's specific domain of satellite imaging.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills like Python, LiDAR, and Radar, but lacks direct experience in manufacturing engineering and the company's specific domain of satellite imaging.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4424752861",
+            "title": "Manufacturing Engineer",
+            "company": "Planet",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Welcome to Planet. We believe in using space to help life on Earth. Planet designs, builds, and operates the largest constellation of imaging satellites in history. This constellation delivers an unprecedented dataset of empirical information via a revolutionary cloud-based platform to authoritative",
+            "url": "https://www.linkedin.com/jobs/view/4424752861",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "The candidate's skills and experience are not closely aligned with the job requirements. Although they have experience with Python and CAD software, their background is in medical engineering, not aerospace or mechanical engineering. They also lack experience with aviation standards and composite structures, which are crucial for this role.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 20,
+          "ai_reason": "The candidate's skills and experience are not closely aligned with the job requirements. Although they have experience with Python and CAD software, their background is in medical engineering, not aerospace or mechanical engineering. They also lack experience with aviation standards and composite structures, which are crucial for this role.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4416205895",
+            "title": "Design Engineer - Mission Systems (m/f/x)",
+            "company": "Grob Aircraft",
+            "location": "Tussenhausen, Bavaria, Germany",
+            "description": "Join our Mission Systems Engineering team and shape the mechanical integration of mission equipment into our special mission aircraft. You will design brackets, fixtures, adapters and structural modifications for the integration of mission equipment and subsystems – with a strong focus on the CA-1 E",
+            "url": "https://www.linkedin.com/jobs/view/4416205895",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "The candidate's background in medical engineering and lack of direct experience in automotive software testing or high-voltage battery systems significantly reduces the fit for this role. Although they have relevant skills in Python and data analysis, their experience is mostly in medical equipment and not directly applicable to the job requirements.",
+          "domain_class": "core_field",
+          "ai_score": 30,
+          "ai_reason": "The candidate's background in medical engineering and lack of direct experience in automotive software testing or high-voltage battery systems significantly reduces the fit for this role. Although they have relevant skills in Python and data analysis, their experience is mostly in medical equipment and not directly applicable to the job requirements.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4405344214",
+            "title": "Versuchsingenieur (m/w/d) Hochvoltbatterie Software",
+            "company": "Bertrandt Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Wir sind Bertrandt. Ein eigenständiger und internationaler Engineering Dienstleister mit langjähriger Expertise. Mit branchenübergreifendem Know-how und einem ganzheitlichen System- und Produktverständnis schaffen wir technologische Lösungen entlang der gesamten Wertschöpfungskette. Wir beschäftigen",
+            "url": "https://www.linkedin.com/jobs/view/4405344214",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills, but lacks direct experience in automotive engineering and customer success management.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills, but lacks direct experience in automotive engineering and customer success management.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4335788383",
+            "title": "Customer Success Manager (m/w/d)",
+            "company": "Instaffo",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Customer Success Manager (m/w/d) bei Building Radar GmbH Anforderungen Bitte beachte, dass für diese Stelle eine Arbeitserlaubnis für Deutschland erforderlich ist. Sprache: Deutsch - Muttersprachliches Niveau, Englisch - Fließend Du hast bereits 2-3 Jahre Customer Success-Erfahrungen in einem SaaS U",
+            "url": "https://www.linkedin.com/jobs/view/4335788383",
+            "published": "2026-07-19T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
