@@ -4129,6 +4129,611 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-22T19:56:44.727928",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in sensor data, Python, and data analysis, which are relevant to the job posting. However, the job posting requires experience in production planning and control, which is not directly related to the candidate's field of study.",
+          "domain_class": "broader_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in sensor data, Python, and data analysis, which are relevant to the job posting. However, the job posting requires experience in production planning and control, which is not directly related to the candidate's field of study.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443131514",
+            "title": "Werkstudent Digitalisierung in der Produktionsplanung und -steuerung (all genders)",
+            "company": "Philips",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Job Title Werkstudent Digitalisierung in der Produktionsplanung und -steuerung (all genders) Job Description In dieser Rolle hast Du die Möglichkeit datenbasierte Lösungen eigenständig zu konzipieren und umzusetzen und dabei einen tiefen Einblick in die Fertigung von Röntgenstrahlern und -generatore",
+            "url": "https://www.linkedin.com/jobs/view/4443131514",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in sensor data and automotive engineering, and the job posting requires skills in data fusion, which is a relevant area of expertise. However, the candidate lacks direct experience in the maritime domain and the job posting's specific requirements.",
+          "domain_class": "broader_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in sensor data and automotive engineering, and the job posting requires skills in data fusion, which is a relevant area of expertise. However, the candidate lacks direct experience in the maritime domain and the job posting's specific requirements.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443980634",
+            "title": "Computer Scientist (f/m/x) - Real-time Data Fusion",
+            "company": "German Aerospace Center (DLR)",
+            "location": "Bremerhaven, Bremen, Germany",
+            "description": "At the Institute for the Protection of Maritime Infrastructure in Bremerhaven, we research and develop innovative solutions to strengthen the resilience of maritime infrastructure and make it adaptable, safe and sustainable. Working closely with partners from research, industry and other maritime sa",
+            "url": "https://www.linkedin.com/jobs/view/4443980634",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has relevant skills in sensor data analysis and programming languages like Python, which are applicable to the job posting. However, the lack of direct experience in automotive engineering and the specific tasks mentioned in the job posting (e.g., DSC, IR-Spektroskopie) reduces the score.",
+          "domain_class": "broader_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant skills in sensor data analysis and programming languages like Python, which are applicable to the job posting. However, the lack of direct experience in automotive engineering and the specific tasks mentioned in the job posting (e.g., DSC, IR-Spektroskopie) reduces the score.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443900525",
+            "title": "Werkstudent R&D Automotive (m/w/d)",
+            "company": "ROWA GROUP Holding GmbH",
+            "location": "Pinneberg, Schleswig-Holstein, Germany",
+            "description": "html Werkstudent R&D Automotive (m/w/d)(20h / Woche) Werden Sie ein Teil unseres Unternehmens und bereichern Sie unser Team im Bereich Forschung und Entwicklung. Sie können aktiv die Erfolgsgeschichte unseres Unternehmens mitgestalten. Die ROWA GROUP mit ihren spezialisierten Tochterunternehmen ist ",
+            "url": "https://www.linkedin.com/jobs/view/4443900525",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in automotive engineering, sensor data analysis, and data visualization, making them an excellent fit for the role, but they lack direct experience in social media monitoring and Japanese language skills.",
+          "domain_class": "broader_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in automotive engineering, sensor data analysis, and data visualization, making them an excellent fit for the role, but they lack direct experience in social media monitoring and Japanese language skills.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443774976",
+            "title": "Werkstudent (f/m/d)",
+            "company": "Consline AG",
+            "location": "Germany",
+            "description": "Working Student (f/m/d) for Social Media Monitoring Automotive Fluent in Japanese About Consline AG Consline AG is a pioneer in the field of AI aided corporate intelligence, benchmarking, data monitoring & analysis. Our customers are international top players especially from the automotive industry.",
+            "url": "https://www.linkedin.com/jobs/view/4443774976",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in sensor data and data analysis, which is highly relevant to the job posting. They also have experience with Python, Grafana, and InfluxDB, which are all mentioned in the job posting. However, the candidate's experience is mostly in medical engineering, so there is some gap in their direct experience in automotive engineering.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in sensor data and data analysis, which is highly relevant to the job posting. They also have experience with Python, Grafana, and InfluxDB, which are all mentioned in the job posting. However, the candidate's experience is mostly in medical engineering, so there is some gap in their direct experience in automotive engineering.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443179187",
+            "title": "Werkstudent (w/m/d) Zuverlässigkeit, Verfügbarkeit, Instandhaltbarkeit und Lebenszykluskosten für Vectouro-Personenwagen",
+            "company": "Siemens",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Gemeinsam machen wir den Unterschied Siemens Mobility ist ein eigenständig geführtes Unternehmen der Siemens AG und seit über 160 Jahren ein führender Anbieter im Bereich Mobilität. Zu unserem Kerngeschäft gehören Schienenfahrzeuge, Bahnautomatisierungs- und Elektrifizierungslösungen, schlüsselferti",
+            "url": "https://www.linkedin.com/jobs/view/4443179187",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in sensor data and automotive engineering, and the job posting involves AI engineering, which is a related field. However, the job posting does not specifically require experience in automotive engineering, and the candidate's experience is more focused on medical engineering.",
+          "domain_class": "broader_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in sensor data and automotive engineering, and the job posting involves AI engineering, which is a related field. However, the job posting does not specifically require experience in automotive engineering, and the candidate's experience is more focused on medical engineering.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443154843",
+            "title": "Werkstudent (w/m/d) - AI Engineering für Business-Anwendungen",
+            "company": "SAP",
+            "location": "Garching, Bavaria, Germany",
+            "description": "Wir helfen die Welt zu verbessern Bei SAP halten wir es einfach: Du bringst dein Bestes mit, und wir holen das Beste aus dir heraus. Wir sind Macher, die über 20 Branchen und 80 % des weltweiten Handels beeinflussen – und wir brauchen deine einzigartigen Talente, um die Zukunft mitzugestalten. Die A",
+            "url": "https://www.linkedin.com/jobs/view/4443154843",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 83,
+          "reason": "The candidate has a strong background in automotive engineering, sensor data, and data analysis, and the job requires similar skills, but the industry and specific role are different.",
+          "domain_class": "broader_field",
+          "ai_score": 83,
+          "ai_reason": "The candidate has a strong background in automotive engineering, sensor data, and data analysis, and the job requires similar skills, but the industry and specific role are different.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4434335764",
+            "title": "Werkstudent (m/w/d) Robotik-Entwicklung",
+            "company": "Bühler Group",
+            "location": "Alzenau in Unterfranken, Bavaria, Germany",
+            "description": "Bühler Leybold Optics steht für innovative Technologien und nachhaltiges Wachstum. Als Teil der Bühler Group, einem weltweit agierenden Technologiekonzern mit über 13.000 Mitarbeitenden, gehören wir zu den führenden Herstellern von Hightech-Dünnfilm-Vakuumbeschichtungsanlagen. Seit mehr als 150 Jahr",
+            "url": "https://www.linkedin.com/jobs/view/4434335764",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 83,
+          "reason": "The candidate has relevant skills in sensor data analysis and programming languages like Python, which are applicable to automotive engineering. However, the lack of direct experience in the automotive industry and the specific job requirements may hinder a perfect fit.",
+          "domain_class": "broader_field",
+          "ai_score": 83,
+          "ai_reason": "The candidate has relevant skills in sensor data analysis and programming languages like Python, which are applicable to automotive engineering. However, the lack of direct experience in the automotive industry and the specific job requirements may hinder a perfect fit.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443921226",
+            "title": "Werkstudent - Product Engineering (w/m/div)",
+            "company": "Infineon Technologies",
+            "location": "Warstein, North Rhine-Westphalia, Germany",
+            "description": "#WeAreIn to create tiny chips and big careers. Bereit Deinen nächsten Karriereschritt zu gehen? Werde Teil von etwas Echtem - mit echten Projekten, echtem Impact und echten Chancen, Dich weiterzuentwickeln. Egal ob Praktikum, Werkstudierendentätigkeit oder als Trainee - bei uns bist Du mittendrin st",
+            "url": "https://www.linkedin.com/jobs/view/4443921226",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 83,
+          "reason": "The candidate has a strong background in automotive engineering, sensor data, and data analysis, which are relevant to the job posting. However, the lack of direct experience in repairs and material management reduces the score.",
+          "domain_class": "broader_field",
+          "ai_score": 83,
+          "ai_reason": "The candidate has a strong background in automotive engineering, sensor data, and data analysis, which are relevant to the job posting. However, the lack of direct experience in repairs and material management reduces the score.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4441067097",
+            "title": "Werkstudent Repairservice & Material Management (m/w/d)",
+            "company": "Westfalen",
+            "location": "Münster, North Rhine-Westphalia, Germany",
+            "description": "Westfalen AG & Co. KG | Münster | Deutschland | Teilzeit | Befristet | Ab sofort Zukunft bei Westfalen lohnt sich! Angemessene Vergütung: Ihre verantwortungsvolle Tätigkeit belohnen wir mit einer attraktiven Vergütung Beruf & Familie: Westfalen wurde im März 2023 erneut als familienfreundlicher Arbe",
+            "url": "https://www.linkedin.com/jobs/view/4441067097",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 82,
+          "reason": "The candidate has a strong background in sensor data and automotive engineering, and the job posting requires skills in AI engineering, which is adjacent to the candidate's field. However, the lack of direct experience in AI engineering and the requirement for a working student position with 0 years of experience lowers the score.",
+          "domain_class": "broader_field",
+          "ai_score": 82,
+          "ai_reason": "The candidate has a strong background in sensor data and automotive engineering, and the job posting requires skills in AI engineering, which is adjacent to the candidate's field. However, the lack of direct experience in AI engineering and the requirement for a working student position with 0 years of experience lowers the score.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443170236",
+            "title": "Working Student (f/m/d) - AI Engineering for Business Applications",
+            "company": "SAP",
+            "location": "Garching, Bavaria, Germany",
+            "description": "We help the world run better At SAP, we keep it simple: you bring your best to us, and we'll bring out the best in you. We're builders touching over 20 industries and 80% of global commerce, and we need your unique talents to help shape what's next. The work is challenging – but it matters. You'll f",
+            "url": "https://www.linkedin.com/jobs/view/4443170236",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 82,
+          "reason": "The candidate has a strong background in sensor data, Python, and data analysis, which are highly relevant to the job posting. However, the job posting requires experience with Radar and LiDAR data fusion, which is not explicitly mentioned in the candidate's CV.",
+          "domain_class": "broader_field",
+          "ai_score": 82,
+          "ai_reason": "The candidate has a strong background in sensor data, Python, and data analysis, which are highly relevant to the job posting. However, the job posting requires experience with Radar and LiDAR data fusion, which is not explicitly mentioned in the candidate's CV.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443997092",
+            "title": "Informatiker/in (w/m/d) - Echtzeitdatenfusion",
+            "company": "German Aerospace Center (DLR)",
+            "location": "Bremerhaven, Bremen, Germany",
+            "description": "Am Institut für den Schutz maritimer Infrastrukturen in Bremerhaven erforschen und entwickeln wir innovative Lösungen, um die Resilienz maritimer Infrastrukturen zu stärken und diese anpassungsfähig, sicher und nachhaltig zu gestalten. In enger Zusammenarbeit mit Partnern aus Forschung, Wirtschaft u",
+            "url": "https://www.linkedin.com/jobs/view/4443997092",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 62,
+          "reason": "The candidate has relevant skills in Python, data analysis, and sensor data, but lacks direct experience in automotive engineering and the job posting requires enterprise integration focus, which is not explicitly mentioned in the candidate's CV.",
+          "domain_class": "broader_field",
+          "ai_score": 62,
+          "ai_reason": "The candidate has relevant skills in Python, data analysis, and sensor data, but lacks direct experience in automotive engineering and the job posting requires enterprise integration focus, which is not explicitly mentioned in the candidate's CV.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443920825",
+            "title": "Backend Engineer - Enterprise Integration Focus (f/m/x)",
+            "company": "SPARETECH",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4443920825",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate has relevant technical skills such as Python, LiDAR, Radar, and Camera, but lacks direct experience in robotics test automation and hardware integration. Their CV highlights experience in mechanical and electrical departments, but it's unclear how directly applicable this is to the role.",
+          "domain_class": "core_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate has relevant technical skills such as Python, LiDAR, Radar, and Camera, but lacks direct experience in robotics test automation and hardware integration. Their CV highlights experience in mechanical and electrical departments, but it's unclear how directly applicable this is to the role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443927867",
+            "title": "Working Student (gn) Robotics Test Automation & Hardware Integration",
+            "company": "Wandelbots",
+            "location": "Dresden, Saxony, Germany",
+            "description": "Your mission At Wandelbots, we are transforming the way people interact with industrial robots. Our software enables users to program and operate robots more easily, while our robotics platform connects modern software systems with real-world robotic hardware. As a Working Student in the Robotics De",
+            "url": "https://www.linkedin.com/jobs/view/4443927867",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_soc-automation-senior-consultant-frankfurt-am-main-369237",
+            "title": "SOC Automation (Senior) Consultant (m/w/d)",
+            "company": "NVISO",
+            "location": "Frankfurt am Main",
+            "description": "It all starts with the mission: NVISO is here to protect European society from potentially devastating cyber attacks! This means we offer cyber security services to private and governmental organizations to help them better prepare for, prevent, detect and respond to cyber security incidents. All of",
+            "url": "https://www.arbeitnow.com/jobs/companies/nviso/soc-automation-senior-consultant-frankfurt-am-main-369237",
+            "published": "2026-07-22T18:00:28+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434323925",
+            "title": "Werkstudent (m/w/d) Elektronik",
+            "company": "NewTec GmbH",
+            "location": "Neu Ulm, Bavaria, Germany",
+            "description": "Hilf uns, die Welt noch sicherer zu machen! Du bist Student im Bereich Elektronikentwicklung und möchtest praktische Erfahrungen in innovativen Projekten sammeln? Bei uns hast du die Möglichkeit, dein Wissen in einem dynamischen Team zu erweitern, spannende Herausforderungen zu meistern und wertvoll",
+            "url": "https://www.linkedin.com/jobs/view/4434323925",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441046753",
+            "title": "Working Student (f/m/d) Python & AI Automation for Market Intelligence",
+            "company": "Innomotics",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "Job ID: 6692 Location: Nürnberg, DE We are looking for a Working Student (f/m/d) Python & AI Automation for Market Intelligence to join our team at Innomotics. The Industry-Leader of Motors and Drives Innomotics is an industry-leading supplier of motors and large drive systems. With a trusted legacy",
+            "url": "https://www.linkedin.com/jobs/view/4441046753",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443056772",
+            "title": "Ingenieur für Machine Learning in der Bildverarbeitung (w/m/d)",
+            "company": "HENSOLDT",
+            "location": "Oberkochen, Baden-Württemberg, Germany",
+            "description": "Über den Bereich Für den Bereich \"Data Analysis & Fusion\" suchen wir zum nächstmöglichen Zeitpunkt einen \"Ingenieur für Machine Learning in der Bildverarbeitung (w/m/d)\" am Standort Oberkochen, Einsatzort Aalen. Um bestmöglichen Schutz von Menschen und Material zu ermöglichen, gehen aktuelle Entwick",
+            "url": "https://www.linkedin.com/jobs/view/4443056772",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443165465",
+            "title": "Senior Applied AI Engineer– Agentic Systems (m/f/x)",
+            "company": "nnamu",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Your tasks The One- Line Vision: We're looking for engineers who have taken AI systems from working demos to production systems that real users depend on. If you've only wired prompts together and called it AI engineering, this isn't your role. If you've fought hallucinations in production, built ev",
+            "url": "https://www.linkedin.com/jobs/view/4443165465",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443951940",
+            "title": "Senior Program Manager - Robotics Deployment and Experimentation, RME New Technology Integration",
+            "company": "Amazon",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Description As a Senior Deployment and Experimentation Lead of New Technology Introduction, you will be the primary point of contact for internal customers and partners. You will engage customers to understand and document business requirements, drive problems solution and manage implementation prog",
+            "url": "https://www.linkedin.com/jobs/view/4443951940",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443181710",
+            "title": "WERDE PATE/IN",
+            "company": "WORK FORce HEALTH & TOURISM (BA0100029)",
+            "location": "Oder-Spree, Brandenburg, Germany",
+            "description": "Der Career Service (THD, Raum B218/219) unterstützt dich gerne bei folgenden Punkten: Erstellung eines Leistungsprofils Identifikation potentieller Tätigkeiten und Angebote Entwicklung von Bewerbungsstrategien Bewerbungsunterlagen-Check Vorbereitung auf ein Vorstellungsgespräch Masterberatung Unters",
+            "url": "https://www.linkedin.com/jobs/view/4443181710",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 12,
+          "reason": "keyword bonus: 1; preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443157075",
+            "title": "Development Laboratory",
+            "company": "HeyJobs",
+            "location": "Kleinostheim, Bavaria, Germany",
+            "description": "Firma: YAGEO Nexensos - Development Laboratory Technician (m/w/d) Wir suchen ab sofort einen Development Laboratory Technician (m/w/d) für unser Produktentwicklungs-Team. Worauf du dich freuen kannst: Spannende Herausforderungen – wir bieten Aufgaben mit hoher Eigenverantwortung in einem ambitionier",
+            "url": "https://www.linkedin.com/jobs/view/4443157075",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Director'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4413589700",
+            "title": "Director of Product Management - Data Streaming",
+            "company": "HiveMQ",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4413589700",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434515332",
+            "title": "Senior Software Engineer",
+            "company": "Cerence AI",
+            "location": "Ulm, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4434515332",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443196011",
+            "title": "Sachbearbeiter Service (m/w/d) am Standort Aalen",
+            "company": "MAN Truck & Bus SE",
+            "location": "Aalen, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4443196011",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443107808",
+            "title": "Verkaufsberater (m/w/d) Seat & Cupra Gebrauchtwagen",
+            "company": "Tiemeyer Gruppe",
+            "location": "Hemer, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4443107808",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434773199",
+            "title": "Customer Success Manager",
+            "company": "Instaffo",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4434773199",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4435849089",
+            "title": "Strategic Early Engagement Manager (m/f/d)",
+            "company": "HARMAN International",
+            "location": "Karlsbad, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4435849089",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 44,
+          "reason": "The candidate has some relevant skills like Python and data analysis, but lacks direct experience in corporate law and governance, and their education is in medical engineering, not automotive engineering.",
+          "domain_class": "broader_field",
+          "ai_score": 44,
+          "ai_reason": "The candidate has some relevant skills like Python and data analysis, but lacks direct experience in corporate law and governance, and their education is in medical engineering, not automotive engineering.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4443959751",
+            "title": "Working Student Legal (all genders) - Corporate Affairs, Legal & Governance",
+            "company": "MOIA",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Unterstütze unser Legal Team als Werkstudent*in Legal & Legal Ops (all genders). Du interessierst dich für die Arbeit in einer Unternehmensrechtsabteilung? Dann bekommst du bei MOIA einen guten Einblick in die rechtliche Beratung eines Mobilitäts- und Technologieunternehmens. Unser Legal Team unters",
+            "url": "https://www.linkedin.com/jobs/view/4443959751",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "The candidate's skills and experience do not align with the job posting. The job requires a Führerschein der Klasse B or C1, C, CE, which is not mentioned in the candidate's CV. Additionally, the job posting emphasizes service and customer-facing skills, which are not highlighted in the candidate's CV.",
+          "domain_class": "core_field",
+          "ai_score": 0,
+          "ai_reason": "The candidate's skills and experience do not align with the job posting. The job requires a Führerschein der Klasse B or C1, C, CE, which is not mentioned in the candidate's CV. Additionally, the job posting emphasizes service and customer-facing skills, which are not highlighted in the candidate's CV.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4443171871",
+            "title": "Service Assistant mit Führerscheinklasse C/CE (m/w/d) (Minijob/Midijob/Werkstudent)",
+            "company": "Arndt Automobile GmbH",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "Deine Aufgaben Professionelle Fahrzeugübergabe und -rücknahme an unsere Kunden Aufbereitung und Qualitätskontrolle unserer hochwertigen Mietwagenflotte Durchführung von Transferfahrten zu Kunden und Werkstätten Fahrzeugüberführungen zwischen unseren Standorten Digitale Schadendokumentation per App M",
+            "url": "https://www.linkedin.com/jobs/view/4443171871",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 47,
+          "reason": "title fits 'Junior Ingenieur'; skills: Automotive; keyword bonus: 1 (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4443173950",
+            "title": "Junior Ingenieur / Berufseinsteiger (m/w/d) Automotive – Leipzig/ Sachsen",
+            "company": "Deutsche Nachrichten-🗞️",
+            "location": "Greater Leipzig Area",
+            "description": "Stadt Nürnberg Location : Nürnberg BY DE Stadt Nürnberg – Eine Arbeitgeberin, viele Möglichkeiten Die Stadtverwaltung Nürnberg ist eine moderne Dienstleisterin für mehr als eine halbe Million… More >> Show more Show less",
+            "url": "https://www.linkedin.com/jobs/view/4443173950",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills like Python and data analysis, but the job posting requires experience in construction engineering and planning, which is not directly related to the candidate's field.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills like Python and data analysis, but the job posting requires experience in construction engineering and planning, which is not directly related to the candidate's field.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4420978633",
+            "title": "Werkstudent (m/w/d) Terminplanung/Arbeitsvorbereitung",
+            "company": "HOCHTIEF",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Theorie und Praxis verknüpfen? Ihr Wissen und Engagement in einer international agierenden Ingenieurgesellschaft einbringen? Dann suchen wir Sie für HOCHTIEF Engineering GmbH, Standort Hamburg , ab sofort in befristeter Anstellung (in Teilzeit) als Werkstudent (m/w/d) Terminplanung/Arbeitsvorbereitu",
+            "url": "https://www.linkedin.com/jobs/view/4420978633",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 39,
+          "reason": "title fits 'Werkstudent'; keyword bonus: 2; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4443178600",
+            "title": "Werkstudent Recruiting (w/m/d)",
+            "company": "MAN Truck & Bus SE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "MAN Truck & Bus Studienjob München Zu besetzen ab: sofort Dein Arbeitsumfeld Wir bei MAN Truck & Bus sind Teil eines engagierten internationalen Teams und einer der führenden europäischen Nutzfahrzeughersteller und Anbieter von Transportlösungen. Zusammen mit den Marken Scania, Volkswagen Truck & Bu",
+            "url": "https://www.linkedin.com/jobs/view/4443178600",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "The candidate has relevant skills in Python, Data Visualization, and sensor data analysis, but lacks direct experience in automotive engineering and German language proficiency. The CV does not show any direct experience in LiDAR, Radar, or Camera sensor data analysis, which are key requirements for the job posting.",
+          "domain_class": "core_field",
+          "ai_score": 40,
+          "ai_reason": "The candidate has relevant skills in Python, Data Visualization, and sensor data analysis, but lacks direct experience in automotive engineering and German language proficiency. The CV does not show any direct experience in LiDAR, Radar, or Camera sensor data analysis, which are key requirements for the job posting.",
+          "unscored": false,
+          "category": "fluent_german",
+          "job": {
+            "id": "linkedin_4443132798",
+            "title": "Ingenieur Fahrzeugtechnik, Maschinenbau, Elektrotechnik für die Fahrzeugprüfung (w/m/d)",
+            "company": "TÜV SÜD",
+            "location": "Göppingen, Baden-Württemberg, Germany",
+            "description": "Innovationen bringen tiefgreifende Veränderungen mit sich und beeinflussen unser Leben in vielfältiger Weise. Bei der TÜV SÜD Gruppe sind wir in hohem Maße bestrebt, ein wichtiger Teil dieser Entwicklung und des Fortschritts zu sein. Wir sind von Anfang an dabei und begleiten diesen Prozess. Wir sor",
+            "url": "https://www.linkedin.com/jobs/view/4443132798",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Praktikant'; preferred location (rule-based)",
+          "domain_class": "adjacent_in_company",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4441043855",
+            "title": "Praktikant Produktmanagement Aftersales (w/m/x)",
+            "company": "BMW Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4441043855",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills like Python, LiDAR, and Radar, but lacks direct experience in automotive engineering and the role requires a Supplier Quality Engineer with specific knowledge of the automotive industry.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills like Python, LiDAR, and Radar, but lacks direct experience in automotive engineering and the role requires a Supplier Quality Engineer with specific knowledge of the automotive industry.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4434621074",
+            "title": "Supplier Quality Engineer (m/w/d)",
+            "company": "ETO GRUPPE",
+            "location": "Stockach, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4434621074",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
