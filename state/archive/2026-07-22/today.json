@@ -1222,6 +1222,313 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-22T10:38:42.540488",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in data analytics and sensor data, with experience in Python, Grafana, and InfluxDB. However, their previous experience is mostly in medical engineering, which is not directly related to the automotive industry, but their skills in sensor data and data analysis are transferable.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in data analytics and sensor data, with experience in Python, Grafana, and InfluxDB. However, their previous experience is mostly in medical engineering, which is not directly related to the automotive industry, but their skills in sensor data and data analysis are transferable.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4441022348",
+            "title": "Werkstudent Data Analytics & Management Support im Manufacturing Engineering Hamburg (d/m/w)",
+            "company": "Airbus Aircraft",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Job Description: Zur Unterstützung sucht Airbus Aerostructures einen Werkstudenten (d/m/w) Data Analytics & Management Support im Manufacturing Engineering Hamburg Du bist Vollzeitstudent, hast Lust auf Daten, digitale Tools und strategischen Management Support? Dann bewirb dich jetzt! Wir freuen un",
+            "url": "https://www.linkedin.com/jobs/view/4441022348",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in engineering, with relevant skills in Python, data analysis, and sensor data, but lacks direct experience in automotive engineering. However, their skills are transferable and they have a strong educational background in a related field.",
+          "domain_class": "broader_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in engineering, with relevant skills in Python, data analysis, and sensor data, but lacks direct experience in automotive engineering. However, their skills are transferable and they have a strong educational background in a related field.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443110547",
+            "title": "Werkstudent Product Management (gn)",
+            "company": "LichtBlick eMobility GmbH",
+            "location": "Hamburg, Germany",
+            "description": "Lade mit uns das Netzwerk der Zukunft auf! Wir haben eine Mission: Gemeinsam wollen wir die Mobilität von Morgen gestalten . Wir möchten elektrisches Fahren und Laden für alle möglich machen. Ja, genau: für alle. Dabei sind wir sehr ambitioniert. Unser Ziel: LichtBlick zum besten Anbieter von emissi",
+            "url": "https://www.linkedin.com/jobs/view/4443110547",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 64,
+          "reason": "The candidate has a strong background in engineering and data analysis, but the job posting requires more business and strategy skills, and the candidate's language skills are not a perfect match.",
+          "domain_class": "broader_field",
+          "ai_score": 64,
+          "ai_reason": "The candidate has a strong background in engineering and data analysis, but the job posting requires more business and strategy skills, and the candidate's language skills are not a perfect match.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443766778",
+            "title": "Working Student (m/f/d) Corporate Development & Strategy - Hamburg",
+            "company": "Nordex Group",
+            "location": "Hamburg, Germany",
+            "description": "As a Working Student (m/f/d) Corporate Development & Strategy, you support strategic initiatives through research, analysis, and management reporting. You work closely with stakeholders on market- and competition-related topics and contribute to informed decision-making. The position offers the oppo",
+            "url": "https://www.linkedin.com/jobs/view/4443766778",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "The candidate has relevant skills in sensor data and Python, but lacks direct experience in automotive engineering and German language proficiency. The CV highlights experience in medical engineering, which is not directly applicable to the job posting.",
+          "domain_class": "core_field",
+          "ai_score": 60,
+          "ai_reason": "The candidate has relevant skills in sensor data and Python, but lacks direct experience in automotive engineering and German language proficiency. The CV highlights experience in medical engineering, which is not directly applicable to the job posting.",
+          "unscored": false,
+          "job": {
+            "id": "smartr_BoschGroup_744000139010269",
+            "title": "Praktikum im Sondermaschinenbau mit Schwerpunkt Engineering, Wissensmanagement und KI",
+            "company": "Bosch",
+            "location": "Stuttgart, BW, de",
+            "description": "Die Bosch Manufacturing Solutions GmbH ist ein globaler Anbieter im Bereich Sondermaschinenbau. Dieser bietet individuelle und intelligente Montage- und Prüflösungen einschließlich fortschrittlicher Fertigungsprozesse und -technologien, digitaler und intelligenter Lösungen sowie Services entlang des",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000139010269",
+            "published": "2026-07-22T07:27:54.321Z",
+            "source": "Bosch (Direct)"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'VP'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_qualitatsmanager-ettlingen-168075",
+            "title": "Qualitätsmanager (m/w/d)",
+            "company": "Schneiderfilz Schneider GmbH & Co. KG",
+            "location": "Ettlingen",
+            "description": "Wir sind Schneiderfilz , ein familiengeführtes, mittelständisches Unternehmen in vierter Generation mit über 180 Mitarbeitenden . An unserem Standort in Ettlingen entwickeln und produzieren wir maßgeschneiderte Lösungen aus Vliesstoffen, Filz und Schaumstoff – für Kunden aus verschiedensten Industri",
+            "url": "https://www.arbeitnow.com/jobs/companies/schneiderfilz-schneider-gmbh-co-kg/qualitatsmanager-ettlingen-168075",
+            "published": "2026-07-22T08:30:35+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Head of'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_head-of-quality-unbefristete-direkteinstellung-beim-kunden-trossingen-123230",
+            "title": "Head of Quality (m/w/d) - unbefristete Direkteinstellung beim Kunden",
+            "company": "Bachmann-Executive",
+            "location": "Trossingen",
+            "description": "Für ein international erfolgreiches Unternehmen suchen wir eine erfahrene Führungspersönlichkeit zur Leitung des Bereichs Qualitätssicherung und Qualitätsmanagement mit Führungsverantwortung. Standort: Süddeutschland. Aufgaben Fachliche und organisatorische Leitung des Bereichs Qualitätssicherung un",
+            "url": "https://www.arbeitnow.com/jobs/companies/bachmann-executive/head-of-quality-unbefristete-direkteinstellung-beim-kunden-trossingen-123230",
+            "published": "2026-07-22T07:30:29+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Erfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_qualitatsmanagementbeauftragter-ref-nr-10621-kempten-369547",
+            "title": "Qualitätsmanagementbeauftragter (m/w/d)  |  Ref.-Nr. 10621",
+            "company": "GUGGENMOS Personalmanagement GmbH & Co. KG",
+            "location": "Kempten",
+            "description": "Wir sind ein gesundes, mittelständisches Maschinenbauunternehmen mit Sitz im Herzen des Allgäus . Im Zuge einer Nachfolgeregelung suchen wir Sie als Qualitätsmanagementbeauftragten (m/w/d) . Aufgaben Sicherstellung der Normkonformität sowie Integration und Abstimmung der Anforderungen aus den ISO No",
+            "url": "https://www.arbeitnow.com/jobs/companies/guggenmos-personalmanagement-gmbh-co-kg/qualitatsmanagementbeauftragter-ref-nr-10621-kempten-369547",
+            "published": "2026-07-22T06:30:33+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'tax'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4360831776",
+            "title": "Werkstudent Indirect Tax (d/m/w) - Fokus Deutschland",
+            "company": "AUTO1 Group",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Unsere Tax & Risk Management Abteilung der AUTO1 Group verantwortet die nationale und internationale Planung, Durchführung und Überwachung aller steuerlichen Angelegenheiten und unterstützt unser Top-Management in allen Fragen des Steuerrechts. Starte deine Karriere bei einem der führenden digitalen",
+            "url": "https://www.linkedin.com/jobs/view/4360831776",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442991954",
+            "title": "Werkstudent (m/f/x) - Vehicle Engineering & Integration",
+            "company": "Magna International",
+            "location": "Hösbach, Bavaria, Germany",
+            "description": "Job descriptions may display in multiple languages based on your language selection. What We Offer At Magna, you can expect an engaging and dynamic environment where you can help to develop industry-leading automotive technologies. We invest in our employees, providing them with the support and reso",
+            "url": "https://www.linkedin.com/jobs/view/4442991954",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000139036789",
+            "title": "ASIC Digital Design Expert (f/m/div)  ",
+            "company": "Bosch",
+            "location": "München, BY, de",
+            "description": "In our&#xa0;Munich development center, we design the next generation of ASICs&#xa0;driving&#xa0;leading-edge&#xa0;consumer applications worldwide. As part of our team, you will be at the heart of innovation, shaping the technology of tomorrow.&#xa0; We are&#xa0;seeking&#xa0;a highly skilled and moti",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000139036789",
+            "published": "2026-07-22T09:51:16.059Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000139035630",
+            "title": "Praktikum im Bereich Wirtschaftsinformatik",
+            "company": "Bosch",
+            "location": "Abstatt, BW, de",
+            "description": "Während deines Praktikums unterstützt du IT- und prozessseitig die Erstellung des monatlichen Berichtswesens für einen Geschäftsbereich der Robert Bosch GmbH. Zudem wirkst du engagiert bei der Weiterentwicklung bestehender IT-Tools sowie bei der Evaluierung disruptiver, innovativer AI-Tools für den ",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000139035630",
+            "published": "2026-07-22T09:43:16.791Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000139036738",
+            "title": "Digital ASIC Verification Engineer (f/m/div.)",
+            "company": "Bosch",
+            "location": "Dresden, SN, de",
+            "description": "In our Dresden ASIC development center, we develop ASICs for Bosch Sensortec. Your responsibility will be the dedicated verification of Mixed-Signal ASICs for consumer applications. Observe and think ahead:&#xa0; You develop reusable verification environments for our IC Designs &#xa0; and help us to",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000139036738",
+            "published": "2026-07-22T09:49:35.219Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Führungserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000139005013",
+            "title": "Engineer Testwafer Management (w/m/div.)",
+            "company": "Bosch",
+            "location": "Dresden, SN, de",
+            "description": "Als Engineer Testwafer Management betreuen Sie Geschäftsprozesse im Bereich Testwafer Management. Dazu gehören die Mengenplanung (inkl. FOUP und FOSB) sowie Verbrauchsanalyse von Testwafern bzw. Non-Productive Wafer (NPW). Dabei richten Sie den Fokus auf die Bearbeitung bereichsspezifischer Geschäft",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000139005013",
+            "published": "2026-07-22T07:05:05.537Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — fluent German required",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000139029329",
+            "title": "Werkstudent im Cost Engineering und Benchmarking (w/m/div.)",
+            "company": "Bosch",
+            "location": "Reutlingen, BW, de",
+            "description": "Gemeinsam mit anderen Bereichen entwickelst du zukunftsorientierte Datenmodelle für die Digitalisierung unserer Abteilung. Aktive Unterstützung leistest du bei der Analyse und kontinuierlichen Verbesserung unserer abteilungsinternen Prozesse. Du übernimmst die eigenverantwortliche Erstellung, Pflege",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000139029329",
+            "published": "2026-07-22T09:07:00.596Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills like data analysis and Python, but the job requires a strong focus on customs and logistics, which is not directly related to the candidate's field.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills like data analysis and Python, but the job requires a strong focus on customs and logistics, which is not directly related to the candidate's field.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4443791393",
+            "title": "Working Student Customs Operations (m/f/d) @MYTHERESA",
+            "company": "Mytheresa",
+            "location": "Aschheim, Bavaria, Germany",
+            "description": "Zur Unterstützung unseres Customs-Teams im Tagesgeschäft suchen wir ab sofort einen Werkstudenten (m/w/d) Was Du Tun Wirst Datenpflege: Du unterstützt uns im Daily Business durch die sorgfältige Pflege und Aktualisierung unserer Artikeldaten. Tickethandling & Support: Du arbeitest aktiv in unserem T",
+            "url": "https://www.linkedin.com/jobs/view/4443791393",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills such as data analysis and visualization, but the job requires supply chain management experience and knowledge, which is not directly related to the candidate's field.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills such as data analysis and visualization, but the job requires supply chain management experience and knowledge, which is not directly related to the candidate's field.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4443756258",
+            "title": "Working Student - Supply Chain Management (all genders)",
+            "company": "flaconi",
+            "location": "Berlin, Berlin, Germany",
+            "description": "At flaconi, we believe that diversity fuels creativity, innovation and growth. It thrives in all its forms of beauty. Our team is a mosaic of individuals from different backgrounds, cultures and life journeys, all united by a shared passion for beauty. Our commitment is grounded in our core values, ",
+            "url": "https://www.linkedin.com/jobs/view/4443756258",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "The candidate's background in medical engineering and lack of direct experience in automotive engineering and sensor data analysis lead to a moderate match. Although the candidate has skills in Python, Grafana, and InfluxDB, they are not explicitly mentioned in the job description, and the candidate's experience is mostly in medical equipment and not automotive.",
+          "domain_class": "core_field",
+          "ai_score": 40,
+          "ai_reason": "The candidate's background in medical engineering and lack of direct experience in automotive engineering and sensor data analysis lead to a moderate match. Although the candidate has skills in Python, Grafana, and InfluxDB, they are not explicitly mentioned in the job description, and the candidate's experience is mostly in medical equipment and not automotive.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4443115687",
+            "title": "Werkstudent Kfz Fahrzeugprüfung (m/w/d)",
+            "company": "DEKRA Germany",
+            "location": "Oranienburg, Brandenburg, Germany",
+            "description": "Werkstudent Kfz Fahrzeugprüfung (m/w/d) Oranienburg, DE, 16515 Einsatzbereich: Fahrzeugprüfung Einstiegslevel: Schüler:innen/Studierende Vertragsart: Befristeter Vertrag Vollzeit/Teilzeit: Vollzeit Wochenstunden: 40 Mobiles Arbeiten: Nein Job ID: 3384 Veröffentlichungsdatum: 22.07.2026 Beginn: nach ",
+            "url": "https://www.linkedin.com/jobs/view/4443115687",
+            "published": "2026-07-22T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 22,
+          "reason": "The candidate has some relevant technical skills like Python, but lacks direct experience in automotive engineering, sensor data analysis, and data visualization tools like Grafana/InfluxDB. Their work experience is mostly in medical engineering and equipment installation, which doesn't directly match the job requirements.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 22,
+          "ai_reason": "The candidate has some relevant technical skills like Python, but lacks direct experience in automotive engineering, sensor data analysis, and data visualization tools like Grafana/InfluxDB. Their work experience is mostly in medical engineering and equipment installation, which doesn't directly match the job requirements.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "smartr_BoschGroup_744000139006360",
+            "title": "Werkstudent für die Prozessdokumentation im Sales & Market Intelligence (w/m/div.)",
+            "company": "Bosch",
+            "location": "Lohr am Main, BY, de",
+            "description": "Wir, im Bereich Sales & Market Intelligence, schaffen durch globale Markt- und Sales-Insights eine tiefgehende Transparenz auf Basis Sales-KPIs. Mit strategischen Analysen liefern wir die Grundlage für zukunftsweisende, datenbasierte Entscheidungen auf Führungsebene. So gestalten wir aktiv und fakte",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000139006360",
+            "published": "2026-07-22T07:21:37.544Z",
+            "source": "Bosch (Direct)"
+          }
+        }
+      ]
     }
   ]
 }
