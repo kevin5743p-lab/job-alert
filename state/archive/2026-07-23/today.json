@@ -5855,6 +5855,135 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-23T19:52:35.091629",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in automotive engineering, with a master's degree in International Automotive Engineering and experience in sensor data analysis. They also have relevant skills such as Python, Grafana, and InfluxDB, which are mentioned in the job posting.",
+          "domain_class": "broader_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in automotive engineering, with a master's degree in International Automotive Engineering and experience in sensor data analysis. They also have relevant skills such as Python, Grafana, and InfluxDB, which are mentioned in the job posting.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4444471602",
+            "title": "Werkstudent*in IoT Engineer (m/w/d/x)",
+            "company": "Deutsche Telekom",
+            "location": "Dresden, Saxony, Germany",
+            "description": "Deutsche Telekom IoT GmbH Das Internet der Dinge (IoT) ist nicht nur ein Schlagwort. DAX-Konzerne und Mittelständler, alle Industrien und Branchen sind gleichermaßen angesprochen ihre Produktionsketten zu digitalisieren und daraus neue Geschäftsmodelle zu entwickeln. Weltweit werden derzeit rund 30 ",
+            "url": "https://www.linkedin.com/jobs/view/4444471602",
+            "published": "2026-07-23T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 83,
+          "reason": "The candidate has a strong background in medical engineering and has relevant skills in sensor data, Python, and data analysis, but lacks direct experience in automotive engineering.",
+          "domain_class": "broader_field",
+          "ai_score": 83,
+          "ai_reason": "The candidate has a strong background in medical engineering and has relevant skills in sensor data, Python, and data analysis, but lacks direct experience in automotive engineering.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4444488917",
+            "title": "Working Student – AI Data Management",
+            "company": "Snke",
+            "location": "Munich, Bavaria, Germany",
+            "description": "About Us Founded in 2020 and headquartered in Munich, Snke is transforming healthtech with scalable, data-driven innovation powered by AI and big data analytics. We're experts specializing in large platforms, digital health and software-driven medical technology. By delivering a trusted orchestratio",
+            "url": "https://www.linkedin.com/jobs/view/4444488917",
+            "published": "2026-07-23T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 82,
+          "reason": "The candidate has a strong background in sensor data analysis and Python programming, which are highly relevant to the job. However, the lack of direct experience in battery energy storage systems and the energy transition industry might be a slight drawback.",
+          "domain_class": "broader_field",
+          "ai_score": 82,
+          "ai_reason": "The candidate has a strong background in sensor data analysis and Python programming, which are highly relevant to the job. However, the lack of direct experience in battery energy storage systems and the energy transition industry might be a slight drawback.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4441528536",
+            "title": "Working Student | Customer Success Engineering (m/f/d)",
+            "company": "TWAICE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "About The Role The energy transition runs on batteries. As renewable energy reshapes the global power system, batteries are taking centre stage. Making them reliable, safe & scalable are the defining challenges of the energy transition. At TWAICE, we build software that turns battery data into insig",
+            "url": "https://www.linkedin.com/jobs/view/4441528536",
+            "published": "2026-07-23T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 82,
+          "reason": "The candidate has relevant skills in sensor data analysis, Python, and data visualization, but lacks direct experience in the automotive industry. However, their technical skills and education can be applied to this role.",
+          "domain_class": "broader_field",
+          "ai_score": 82,
+          "ai_reason": "The candidate has relevant skills in sensor data analysis, Python, and data visualization, but lacks direct experience in the automotive industry. However, their technical skills and education can be applied to this role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4443896659",
+            "title": "Werkstudent Beschaffung Produktionsmaterial (w/m/d)",
+            "company": "MAN Truck & Bus SE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "MAN Truck & Bus Studienjob München Zu besetzen: ab sofort Dein Arbeitsumfeld Wir bei MAN Truck & Bus sind Teil eines engagierten internationalen Teams und einer der führenden europäischen Nutzfahrzeughersteller und Anbieter von Transportlösungen. Zusammen mit den Marken Scania, Volkswagen Truck & Bu",
+            "url": "https://www.linkedin.com/jobs/view/4443896659",
+            "published": "2026-07-23T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444475071",
+            "title": "Working Student (m/f/d) Grid Compliance",
+            "company": "Fluence",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Fluence (Nasdaq: FLNC) is a global market leader delivering intelligent energy storage and optimization software for renewables and storage. Our solutions and operational services are helping to create a more resilient grid and unlock the full potential of renewable portfolios. With gigawatts of suc",
+            "url": "https://www.linkedin.com/jobs/view/4444475071",
+            "published": "2026-07-23T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443833569",
+            "title": "Working Student Innovation Management (m/f/d)",
+            "company": "BSH Home Appliances Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Tomorrow is our home. Start swiftly and grow fast at BSH Home Appliances Group: As a leading manufacturer of home appliances and solutions, we move things forward to make people’s lives easier. With our global brands Bosch, Siemens, Gaggenau and Neff as well as our local brands, there is a world of ",
+            "url": "https://www.linkedin.com/jobs/view/4443833569",
+            "published": "2026-07-23T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has relevant technical skills in Python, Grafana, and InfluxDB, but lacks direct experience in procurement and supply chain management. Their previous work experience is in medical engineering, which is not directly related to the job posting.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 45,
+          "ai_reason": "The candidate has relevant technical skills in Python, Grafana, and InfluxDB, but lacks direct experience in procurement and supply chain management. Their previous work experience is in medical engineering, which is not directly related to the job posting.",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "linkedin_4441548210",
+            "title": "Working Student Procurement",
+            "company": "Kuka Systems GMBH Branch Office Paris",
+            "location": "Dortmund, North Rhine-Westphalia, Germany",
+            "description": "Tätigkeitsbeschreibung Hier bewirkst du etwas Unterstützung bei der Bearbeitung von Purchase Requisitions (PRs) Durchführung und Dokumentation von Lieferantenprüfungen Kommunikation mit Fachabteilungen und Lieferanten Erstellung, Pflege und Auswertung von Excel-Reports sowie Sicherstellung einer hoh",
+            "url": "https://www.linkedin.com/jobs/view/4441548210",
+            "published": "2026-07-23T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
