@@ -11,47 +11,42 @@
 # ============================================================
 
 ## Education
-[M.Eng. in International Automotive Engineering - Technische Hochschule Ingolstadt, 2024–present]
-[Bachelor of Technology Automobile Engineering - Indus University, Ahmedabad, 2019 – 2022]
-
+MSC MEDICAL ENGINEERING-HMDA | FRIEDRICH-
+ALEXANDER-UNIVERSITÄT
+Curriculum: Pattern Recognition and Analysis, Magnetic Resonance Imaging, Deep Learning,
+Machine Learning, Medical Devices, Data Analytics, Entrepreneurship, Management and Innovation
+BACHELOR OF TECHNOLOGY BIOMEDICAL
+ENGINEERING | GANPAT UNIVERSITY
+Bachelor’s Project: Temperature & Humidity Controller for Infant Incubator
+Curriculum: Human Anatomy & Physiology, Transducer & Biosensors, Biomaterials & Implants,
+Biological Digital Signal & Image Processing, Ultrasonic Imaging & Radiology, Diagnostic and
+Therapeutic Techniques & Instrumentatio
 ## Experience
-[Werkstudent | MPM Micro Präzision Marx GmbH & CO. KG
-Erlangen, Germany | 07/2023 – 05/2025
-- Conducted integration and validation of mechanical and electrical components for balancing machine.
-- Supported data organization, reporting, and workflow automation to enhance efficiency.
-- Gained experience in database handling and structured data processing for quality improvement.
-- Documented results and optimized assembly processes.]
-
-[Projct: Degradation of Environmental Sensors for Autonomous Vehicle under Adverse Weather
-Condition
-Ingolstadt, Germany | 10/2024 – 01/2025
-- Developed Python-based models for time-series data analysis, focusing on sensor degradation detection,
-system optimization, and predictive maintenance.
-- Designed and implemented real-time dashboards (Grafana, InfluxDB) to monitor sensor health, system
-diagnostics, and performance trends.
-- Worked on ADAS multi-sensor data fusion, Analyse Radar, LiDAR, and Camera data using clustering
-algorithms and signal processing techniques to enhance predictive analytics for driver assistance in adverse
-weather conditions]
-
-[Project: Thermomechanical Analysis of Die-Top Systems with Copper Foil
-Ingolstadt, Germany | 03/2025 – 08/2025
-- Conducted a thermomechanical analysis of die-top systems using sintered copper foil to replace
-conventional wire bonds for improved thermal and mechanical performance.
-- Performed steady-state and transient simulations, including creep analysis and Design of Experiments
-(DOE), to evaluate system reliability under cyclic thermal loads.
-- Optimized copper foil dimensions to reduce peak temperatures and strain, enhancing heat dissipation
-and long-term structural stability for high-power applications.]
+WORKING STUDENT | MPM MICRO PRÄZISION MARX
+GMBH & CO. KG
+Designated in both Mechanical and Electrical departments, Trained for Apparatus pre-assembly and
+AE-GAP sensor fitting into Apparatus settings
+TRAINEE | VIRAL ENTERPRISE
+Skilled for Installation, Clinical demonstration and application of Medical equipment, Service and
+quality check, Machine breakdown maintenance, sales and marking tasks and site visits
+INTERN | MEDINNOVA SYSTEMS PVT. LTD.
+Hands on experience with MRI and CT machines, Diagnostic equipment, Pacemaker, Surgical
+Medical equipment, Cardiac assistance systems, trouble shoot in machine failure
 
 ## Skills
-- Programming: Python (intermediate), basic C++, MATLAB
-- Tools: Grafana, InfluxDB, Git, Linux, Docker (basic), AutoCAD, SolidWorks, Ansys, MS Office
-- Knowledge of: Time-series data, sensor data interpretation, structured data handling, NCAP & UNECE
-regulations for Active and Passive Safety, AUTOSAR principles
-- Domain: ADAS, sensor data analysis, time-series visualization, LiDAR/Radar/Camera
+ Technical Skills: Python, C, 3D Printing, LabView,
+Simulink, MATLAB, AutoCAD, Microsoft office and
+tools, Quality assurance and control
+• Interpersonal Skills: Dedicative to goal, Effective
+Communication ability, Seeking and Eager to learn
+always, Ambitious, confident, Leadership and
+initiative persona, Positive attitude with good sense of
+humor
 
 ## Languages
-- English: Fluent (working language)
-- German: B1 reading, A2 speaking
+• English: C2
+• German: B1
+• Hindi: Native
 
 ## Interests
-- Autonomous driving, perception systems, ADAS validation
+
