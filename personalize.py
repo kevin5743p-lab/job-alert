@@ -75,10 +75,11 @@ object with EXACTLY these keys:
   If the candidate's German is below C1 and the market is Germany, use
   "no_german_required" unless the additional info says otherwise.
 - "search_queries": 15-25 short search strings for job boards (1-3 words
-  each, bilingual, e.g. "Werkstudent Automotive", "Junior Perception Engineer")
+  each, bilingual). Build them from the candidate's OWN field — the shape is
+  "Werkstudent <field>", "Junior <role>", "Praktikum <field>", "<role> <field>"
 - "domain": an object describing the candidate's FIELD so rule-based filters
   can pre-sort jobs without AI:
-  - "name": the field, e.g. "automotive engineering", "corporate law"
+  - "name": the field, e.g. "corporate law", "clinical nursing", "data engineering"
   - "core_terms": 15-30 terms that strongly signal a job is in this field (bilingual)
   - "supporting_terms": 5-10 relevant but ambiguous terms
   - "adjacent_terms": 5-12 terms of neighboring industries with transferable skills
@@ -94,8 +95,9 @@ object with EXACTLY these keys:
   fetch their career page directly. "ats" is one of "smartrecruiters",
   "greenhouse", "lever". "id" is the employer's board identifier on that ATS:
   for greenhouse/lever it is usually the lowercase company name with no spaces
-  (e.g. "stripe", "wayve"); for smartrecruiters it is the board slug, often
-  CamelCase (e.g. "BoschGroup"). Only include employers you are fairly
+  (e.g. "stripe", "figma"); for smartrecruiters it is the board slug, often
+  CamelCase (the company name run together, e.g. "AcmeCorp"). Only include
+  employers you are fairly
   confident use one of these three systems; omit government bodies, tiny
   firms, and anyone likely on Workday, Taleo or SuccessFactors. Accuracy
   matters more than length — return fewer solid entries, or [] if unsure.
