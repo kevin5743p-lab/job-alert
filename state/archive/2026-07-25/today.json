@@ -2678,6 +2678,690 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-25T10:04:44.673368",
+      "strong": [
+        {
+          "score": 92,
+          "reason": "Outstanding fit due to exact match in job requirements (Kreditprüfung & Votierung, Bilanzanalyse, Besicherung & Risikomanagement) and strong overlap in skills (Financial modeling, Credit analysis, Python). However, the candidate lacks direct experience in corporate finance, which is a requirement for the Junior Kreditanalyst role.",
+          "domain_class": "core_field",
+          "ai_score": 92,
+          "ai_reason": "Outstanding fit due to exact match in job requirements (Kreditprüfung & Votierung, Bilanzanalyse, Besicherung & Risikomanagement) and strong overlap in skills (Financial modeling, Credit analysis, Python). However, the candidate lacks direct experience in corporate finance, which is a requirement for the Junior Kreditanalyst role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4445312817",
+            "title": "Junior Kreditanalyst",
+            "company": "Ford Credit",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Unser Kredit- und Risikomanagement spielt eine entscheidende Rolle dabei, das Wachstum unseres Geschäfts abzusichern, indem es Kreditrisiken analysiert, bewertet und aktiv steuert. Du bist ein motivierter Hochschulabsolvent mit analytischem Scharfsinn oder hast Deine Ausbildung im Bankensektor erfol",
+            "url": "https://www.linkedin.com/jobs/view/4445312817",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has relevant experience in Corporate Banking and Transaction Advisory, and their skills align closely with the job requirements.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant experience in Corporate Banking and Transaction Advisory, and their skills align closely with the job requirements.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4435424842",
+            "title": "Plant Finance Manager (m/w/d)",
+            "company": "Dauch",
+            "location": "Eisenach, Thuringia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4435424842",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in corporate finance, financial modeling, and Python, which are highly relevant to the role. They also have experience in working student roles and internships, which is a good fit for the Werkstudent position. However, the role requires some specific knowledge of German accounting standards and internal control systems, which the candidate may not have.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in corporate finance, financial modeling, and Python, which are highly relevant to the role. They also have experience in working student roles and internships, which is a good fit for the Werkstudent position. However, the role requires some specific knowledge of German accounting standards and internal control systems, which the candidate may not have.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4445307962",
+            "title": "Werkstudent im Bereich Bilanzierung (m/w/d)",
+            "company": "TenneT",
+            "location": "Bayreuth, Bavaria, Germany",
+            "description": "TenneT ist im Wachstum, um seine strategischen Ziele zu erreichen: Wir packen den Umbruch der Energieversorgung an. Wir machen Energiewende! Mach mit – durch einen Job, der wirklich etwas bewegt! Wir suchen einen Werkstudenten im Bereich Bilanzierung (m/w/d) am Standort Bayreuth und im Homeoffice , ",
+            "url": "https://www.linkedin.com/jobs/view/4445307962",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has strong skills in financial modeling, corporate finance, and Python, which are highly relevant to the role. However, the role's focus on procurement and supplier qualification is somewhat different from the candidate's field, and the candidate's German language skills are not explicitly mentioned as a requirement.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has strong skills in financial modeling, corporate finance, and Python, which are highly relevant to the role. However, the role's focus on procurement and supplier qualification is somewhat different from the candidate's field, and the candidate's German language skills are not explicitly mentioned as a requirement.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4435469681",
+            "title": "Werkstudent Strategischer Einkauf (all genders)",
+            "company": "Philips",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Job Title Werkstudent Strategischer Einkauf (all genders) Job Description In dieser Rolle hast Du die Möglichkeit aktiv zum Erfolg unserer medizintechnischen Produkte beizutragen, indem du unsere Einkaufs- und Zulieferprozesse im Bereich Supplier Qualification und Third Party Onboarding unterstützt.",
+            "url": "https://www.linkedin.com/jobs/view/4435469681",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "The candidate has relevant skills in financial modeling, DCF and multiples valuation, and risk management. However, the role requires 3+ years of professional experience, which the candidate lacks. Additionally, the job posting emphasizes the need for fluent/business German, which is not explicitly mentioned in the candidate's CV.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 60,
+          "ai_reason": "The candidate has relevant skills in financial modeling, DCF and multiples valuation, and risk management. However, the role requires 3+ years of professional experience, which the candidate lacks. Additionally, the job posting emphasizes the need for fluent/business German, which is not explicitly mentioned in the candidate's CV.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4445321493",
+            "title": "International Consumer Banking - Operational Risk Associate (all genders)",
+            "company": "JPMorganChase",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Job Description Join a team where your expertise in operational risk aids in protecting customers and strengthens one of the world's most trusted financial institutions — while advancing your own career in a dynamic, international environment. As an Operational Risk Manager within the International ",
+            "url": "https://www.linkedin.com/jobs/view/4445321493",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441894745",
+            "title": "Working Student Accounting & Finance (m/w/d)",
+            "company": "Maltego",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Why we need you Maltego is a leading provider of intelligence software used globally by security professionals, investigators, and analysts. Our all-in-one platform empowers users to discover, visualize, and analyze complex relationships in data, enabling faster and more accurate decision-making. Ou",
+            "url": "https://www.linkedin.com/jobs/view/4441894745",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441888487",
+            "title": "Intern – Private Equity (m/f/d)",
+            "company": "Merantix Capital",
+            "location": "Berlin, Berlin, Germany",
+            "description": "What We Do Merantix Capital invests in ambitious technology companies and entrepreneurs across Europe. Our roots lie in the Merantix Venture Studio, where we have built and supported AI-native companies since 2016, from initial idea validation through to scaling. Today, we combine this company-build",
+            "url": "https://www.linkedin.com/jobs/view/4441888487",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441896385",
+            "title": "Junior Financial Analyst",
+            "company": "Haystack",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Perform classic audits of annual and consolidated financial statements according to national and international standards Engage in audit-related consulting for diverse clients across various industries, including credit and financial institution",
+            "url": "https://www.linkedin.com/jobs/view/4441896385",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442303199",
+            "title": "VC Investment Intern (Munich or Remote) - 4-6 months from Jan 2027",
+            "company": "First Momentum Ventures",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Who are we? First Momentum is a Pre-Seed investor for Deep Tech & B2B Tech founders in Europe. We have made over 50 investments, from Quantum Computing to In-space Propulsion, with many startups raising follow-on rounds from international top VCs. As most of us are engineers at heart and investors b",
+            "url": "https://www.linkedin.com/jobs/view/4442303199",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444657886",
+            "title": "Junior Business Analyst",
+            "company": "Haystack",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role • Advise multinational corporations and medium-sized businesses on developing, implementing, and defending (tax) transfer pricing strategies. • Analyze value chains and support the tax implementation of changes. • Develop transfer pricing system",
+            "url": "https://www.linkedin.com/jobs/view/4444657886",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434829483",
+            "title": "Senior Analyst / Junior Associate – Investment Banking (Cross-Border M&A)",
+            "company": "Albert Cliff Limited",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Position: Senior Analyst / Junior Associate – Investment Banking (Cross-Border M&A) Firm: Premier Global Mid-Market Investment Bank Location: Munich, Germany Overview Our client is an elite, globally integrated investment banking advisory firm specializing in complex cross-border M&A and corporate f",
+            "url": "https://www.linkedin.com/jobs/view/4434829483",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4427991795",
+            "title": "Finance Manager (Retailer Accounts)",
+            "company": "Dyson",
+            "location": "Cologne Bonn Region",
+            "description": "About Us Dyson is a global technology company founded in 1993 with a unique philosophy - to solve problems that others ignore. The company is known for surprising new inventions that defy convention. From the world's first bagless vacuum cleaner, to air purifiers/fans without rotor blades, to our ha",
+            "url": "https://www.linkedin.com/jobs/view/4427991795",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4433184985",
+            "title": "Finance Manager (m/w/d) 1",
+            "company": "Eaton",
+            "location": "Gilching, Bavaria, Germany",
+            "description": "Would you like to work for a global player that values ethics, inclusion, diversity, and people? Our site in Gilching, Germany, is an agile hub for our aerospace expertise. As part of the Aerospace Group’s Fluid and Electrical Distribution Division, our Gilching location plays a key role in deliveri",
+            "url": "https://www.linkedin.com/jobs/view/4433184985",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442306039",
+            "title": "Strategy Consultant",
+            "company": "Anding & Company",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Wer wir sind: Wir sind professionelle Unternehmer und Business Builder, deren Fokus auf Wertgenerierung für bestehende und neue Geschäftsfelder liegt. Unser Ziel ist es, am Markt validierte Ergebnisse zu erzielen und die mit der geschäftlichen Wertgenerierung verbundene Unsicherheit zu minimieren. W",
+            "url": "https://www.linkedin.com/jobs/view/4442306039",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444644958",
+            "title": "Founder Associate (+ Equity) at VC-backed renewable energy platform",
+            "company": "Jack & Jill",
+            "location": "Germany",
+            "description": "This is a job that Jill, our AI Recruiter, is recruiting for on behalf of one of our customers. She will pick the best candidates from Jack's network. The next step is to speak to Jack. Job Title Founder Associate Salary Not Disclosed + Equity Company Description VC-backed renewable energy platform ",
+            "url": "https://www.linkedin.com/jobs/view/4444644958",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442301289",
+            "title": "Visiting Associate (Munich or Remote) - 6-12 months from January 2027",
+            "company": "First Momentum Ventures",
+            "location": "Munich, Bavaria, Germany",
+            "description": "About First Momentum Ventures We're engineers at heart and investors by choice. That's why, what started in 2019 as a campus spin-off, we've grown into one of Europe's leading pre-seed funds , backing 50+ deeply technical startups reshaping industries from new industrials to novel computing. With ou",
+            "url": "https://www.linkedin.com/jobs/view/4442301289",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444659881",
+            "title": "Controller",
+            "company": "HeyJobs",
+            "location": "Kerpen, North Rhine-Westphalia, Germany",
+            "description": "Firma: HÖLSCHER HOLDING GmbH - Controller (m/w/d) Produktionscontrolling | Hybrides ArbeitenStellenangebot Als mittelständische Unternehmensgruppe mit mehr als 800 Mitarbeitern gehören wir zu den Marktführern von Regalanlagen und Lagereinrichtungen in Europa mit Hauptsitz in Kerpen bei Köln. Zu unse",
+            "url": "https://www.linkedin.com/jobs/view/4444659881",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436704819",
+            "title": "Accountant (m/w/d)",
+            "company": "Lacoste",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Ordnungsgemäße Buchung der Konten und Kostenstellen in SAP Kreditorenbuchhaltung Anlagebuchhaltung Bankbuchhaltung Intercompany Finanzbuchhaltung Mitwirkung für die laufende Optimierung der Prozesse Projektarbeiten Mitwirkung und Durchführung der Monats-, Quartals- und Jahresabschlüsse Abgeschlossen",
+            "url": "https://www.linkedin.com/jobs/view/4436704819",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437251581",
+            "title": "Business Analyst",
+            "company": "Haystack",
+            "location": "Coblenz, Rhineland-Palatinate, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Be the central sparring partner for internal clients regarding comprehensive consulting and strategic development of SAP system landscape in Order Processing (S/4 HANA, CRM, ERP). Analyze complex business processes and actively shape the future ",
+            "url": "https://www.linkedin.com/jobs/view/4437251581",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4428196732",
+            "title": "Financial Controller (m/f/d)",
+            "company": "AMETEK",
+            "location": "Korntal-Münchingen, Baden-Württemberg, Germany",
+            "description": "FARO INSIGHT Exists to Turn Reality into Understanding. We believe the world is shaped by decisions and those decisions only hold up when they’re grounded in objective truth. Our solutions capture buildings, sites and scenes exactly as they are and transform that data into insight teams can use to p",
+            "url": "https://www.linkedin.com/jobs/view/4428196732",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4435447778",
+            "title": "Lead Finance Business Partner (m/w/d) R&I und V&I",
+            "company": "AstraZeneca",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "German Version below/Deutsche Version unten. Innovative, dynamic, and sustainable: As one of the world’s leading companies in the research-based pharmaceutical industry, we at AstraZeneca offer the best opportunities for your personal and professional development. Because one thing is certain for us",
+            "url": "https://www.linkedin.com/jobs/view/4435447778",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444667524",
+            "title": "Senior Specialist, AML",
+            "company": "Bitpanda LA",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Who We Are We simplify wealth creation. Founded in 2014 in Vienna, Austria by Eric Demuth, Paul Klanschek and Christian Trummer, we’re here to help people trust themselves enough to build their financial freedom — for now and the future. Our user-friendly, trade-everything platform empowers both fir",
+            "url": "https://www.linkedin.com/jobs/view/4444667524",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436767809",
+            "title": "Specialty Credit Mid Term - Credit Underwriter (m/w/d)",
+            "company": "Allianz Trade in Deutschland",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Du strebst eine Karriere mit Verantwortung und Gestaltungsspielraum in einem dynamischen und globalen Unternehmen an? Dann bist du bei uns genau richtig! Wo? Beim Weltmarktführer Allianz Trade. Wir sind führend im Kreditversicherungsgeschäft und anerkannter Spezialist für Bürgschaften und Garantien,",
+            "url": "https://www.linkedin.com/jobs/view/4436767809",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445323590",
+            "title": "Senior Consultant (m/w/d) Bereich Asset- und Risikomanagement",
+            "company": "Preyer GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445323590",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436722181",
+            "title": "Business Intelligence Expert (m/w/d)",
+            "company": "PAYONE",
+            "location": "Frankfurt Rhine-Main Metropolitan Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436722181",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443831332",
+            "title": "Underwriter Property",
+            "company": "QBE Insurance",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4443831332",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4369738569",
+            "title": "Compliance Spezialist (m/w/d) Schwerpunkt Geldwäsche-/ Betrugsprävention",
+            "company": "KINTO Deutschland",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4369738569",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4417493972",
+            "title": "Fachkraft für Arbeitssicherheit (all genders)",
+            "company": "HelloFresh",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4417493972",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4433075671",
+            "title": "Teamleiter Facility Management (job for all genders)",
+            "company": "Metabo",
+            "location": "Nurtingen, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4433075671",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436794411",
+            "title": "Group Accountant (m/w/d)",
+            "company": "Michael Page",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436794411",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385448182",
+            "title": "Supervisor, Accounting",
+            "company": "JBT Marel",
+            "location": "Oberlahr, Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4385448182",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4427939080",
+            "title": "Management Accountant",
+            "company": "Oxford Instruments plc",
+            "location": "Wiesbaden, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4427939080",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441843833",
+            "title": "German to English Interpreters",
+            "company": "AI Talent Hope",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4441843833",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444645304",
+            "title": "Join Our Team!",
+            "company": "Trisha Chaney Travel",
+            "location": "Sevenig (Our), Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4444645304",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441890433",
+            "title": "Deutsch + English? We're Hiring! Remote Customer Support Specialists",
+            "company": "TalentPop App",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4441890433",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445292384",
+            "title": "Quereinsteiger:in als Kundenbetreuer:in im Nahverkehr",
+            "company": "Deutsche Bahn",
+            "location": "Wittlich, Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445292384",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445297252",
+            "title": "Servicekraft (w/m/d)",
+            "company": "Deutsche Bahn",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445297252",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441892694",
+            "title": "German to English Interpreters",
+            "company": "AI Talent Hunt Cloud",
+            "location": "Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4441892694",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445210359",
+            "title": "Language Producer - German, Originals Localization, Originals Localization",
+            "company": "Amazon",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445210359",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437990249",
+            "title": "Experte / Koordinator (m/w/d) für Sprache und Migration",
+            "company": "Berufliche Fortbildungszentren der Bayerischen Wirtschaft (bfz) gGmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437990249",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441883454",
+            "title": "JOIN OUR TEAM",
+            "company": "Impact Rentals",
+            "location": "Sevenig (Our), Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4441883454",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4414008551",
+            "title": "Senior Applied Researcher",
+            "company": "eBay",
+            "location": "Aachen, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4414008551",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4398411431",
+            "title": "Applied Researcher 3 - Search Ads",
+            "company": "eBay",
+            "location": "Berlin Metropolitan Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4398411431",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385600153",
+            "title": "Consultants to Senior Consultants (m/w/d) - Commodity & Energy Trading",
+            "company": "Baringa",
+            "location": "Greater Dusseldorf Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4385600153",
+            "published": "2026-07-25T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
