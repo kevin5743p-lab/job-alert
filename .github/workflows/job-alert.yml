@@ -12,6 +12,10 @@ on:
         description: "Run even during quiet hours"
         type: boolean
         default: false
+      personalize:
+        description: "Regenerate profile.yaml from cv.md instead of hunting jobs"
+        type: boolean
+        default: false
 
 permissions:
   contents: write            # commit state/ back to the repo
@@ -34,7 +38,18 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      # Manual "Run workflow" with personalize=true: rebuild profile.yaml from
+      # cv.md and stop. Needs only GROQ_API_KEY — no Telegram secrets — so a
+      # freshly adopted repo can generate its profile before anything else is
+      # set up. The Persist state step commits the result.
+      - name: Regenerate profile from cv.md
+        if: inputs.personalize == true
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python main.py --personalize
+
       - name: Run job alert
+        if: inputs.personalize != true
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
