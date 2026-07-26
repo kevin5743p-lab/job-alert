@@ -2347,6 +2347,817 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-26T14:06:18.790393",
+      "strong": [
+        {
+          "score": 95,
+          "reason": "The candidate has strong skills in financial modeling, risk management, and corporate finance, and the job posting requires similar skills, making it an excellent fit.",
+          "domain_class": "core_field",
+          "ai_score": 95,
+          "ai_reason": "The candidate has strong skills in financial modeling, risk management, and corporate finance, and the job posting requires similar skills, making it an excellent fit.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4428147343",
+            "title": "Consultant IT- und Risikomanagement / Financial Services (m/w/d) in Leipzig",
+            "company": "Deloitte",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4428147343",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 95,
+          "reason": "The candidate has a strong background in Corporate Finance, with relevant coursework, work experience, and skills, making them an excellent fit for this role.",
+          "domain_class": "core_field",
+          "ai_score": 95,
+          "ai_reason": "The candidate has a strong background in Corporate Finance, with relevant coursework, work experience, and skills, making them an excellent fit for this role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4400503509",
+            "title": "Praktikum Deal Advisory mit Fokus Private Equity / Venture Capital (w/m/d)",
+            "company": "BDO Germany",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "We shape what matters! Wir gestalten gemeinsam. Für große Ziele. Bist du bereit, Teil eines Teams zu werden, das deine individuellen Stärken erkennt und deine Ideen wertschätzt? Wir glauben, dass wir nur durch gemeinsamen Einsatz Lösungen entwickeln, die wirklich etwas bewegen. Deshalb schaffen wir ",
+            "url": "https://www.linkedin.com/jobs/view/4400503509",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 92,
+          "reason": "Outstanding fit due to matching skills, education, and experience. The candidate's background in corporate finance, financial modeling, and Python aligns well with the Junior Financial Analyst role at Haystack. However, the candidate lacks direct experience in tax consulting, which is a key aspect of the job posting.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 92,
+          "ai_reason": "Outstanding fit due to matching skills, education, and experience. The candidate's background in corporate finance, financial modeling, and Python aligns well with the Junior Financial Analyst role at Haystack. However, the candidate lacks direct experience in tax consulting, which is a key aspect of the job posting.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442346782",
+            "title": "Junior Financial Analyst",
+            "company": "Haystack",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Support in tax consulting for national and international companies, public sector, or financial industry Assist in preparing tax returns and auditing tax assessments Conduct tax research and create statements and calculations Advise companies on",
+            "url": "https://www.linkedin.com/jobs/view/4442346782",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 92,
+          "reason": "The candidate has a strong background in Corporate Finance, with relevant coursework, work experience, and skills, making them an excellent fit for the role.",
+          "domain_class": "core_field",
+          "ai_score": 92,
+          "ai_reason": "The candidate has a strong background in Corporate Finance, with relevant coursework, work experience, and skills, making them an excellent fit for the role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442367147",
+            "title": "Financial Consultant Internship (m/f/d)",
+            "company": "Horbach Wirtschaftsberatung",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "HORBACH With over 35 years on the market HORBACH is an established household name in the German market for students and academics. We help our clients achieve their personal and financial goals through holistic planning. HORBACH provides consultancy services for expats living in Germany in over 10 l",
+            "url": "https://www.linkedin.com/jobs/view/4442367147",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 92,
+          "reason": "Strong match due to relevant experience in corporate banking and transaction advisory, as well as skills in financial modeling, Python, and Excel. However, the role requires fluent German, which is not explicitly mentioned in the candidate's CV.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 92,
+          "ai_reason": "Strong match due to relevant experience in corporate banking and transaction advisory, as well as skills in financial modeling, Python, and Excel. However, the role requires fluent German, which is not explicitly mentioned in the candidate's CV.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4407006995",
+            "title": "Praktikum Risk & Regulation Banken (w/m/d)",
+            "company": "PwC Deutschland",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Für unseren Geschäftsbereich Risk & Regulatory suchen wir dich zum nächstmöglichen Zeitpunkt als Praktikant Risk & Regulation Banken (w/m/d). Das erwartet dich Beratung – Im Bereich Riskmanagement unterstützt du bei mathematischen Fragestellungen sowie bei der Bewertung, der Quantifizierung und der ",
+            "url": "https://www.linkedin.com/jobs/view/4407006995",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has relevant experience in Corporate Banking, Transaction Advisory, and Financial Modeling, and their skills align with the job requirements.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant experience in Corporate Banking, Transaction Advisory, and Financial Modeling, and their skills align with the job requirements.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4385083861",
+            "title": "EY-Parthenon Manager Transactions & Corporate Finance - Strategy and Transactions (w/m/d)",
+            "company": "EY-Parthenon",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4385083861",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has strong skills in risk management, compliance, and financial modeling, and the job posting requires similar skills, but the role is not directly in corporate finance.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has strong skills in risk management, compliance, and financial modeling, and the job posting requires similar skills, but the role is not directly in corporate finance.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4445611312",
+            "title": "Chefjustiziar (m/w/d) - Selbstverwaltung, Risikomanagement und Compliance",
+            "company": "BECK Stellenmarkt",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445611312",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in corporate finance, financial modeling, and Python, which are highly relevant to the job's requirements. They also have experience with Excel, SQL, and other tools mentioned in the job posting. However, the job's focus on media regulation and administration is not directly related to the candidate's field, which is corporate finance.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in corporate finance, financial modeling, and Python, which are highly relevant to the job's requirements. They also have experience with Excel, SQL, and other tools mentioned in the job posting. However, the job's focus on media regulation and administration is not directly related to the candidate's field, which is corporate finance.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442374170",
+            "title": "Werkstudent (m/w/d) Finanzen und Personalverwaltung",
+            "company": "Bayerische Landeszentrale für neue Medien",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Staatsfern und unabhängig beaufsichtigt die Bayerische Landeszentrale für neue Medien (BLM) private Rundfunk- und Internetangebote in Bayern. Als moderner Regulierer begleiten wir sowohl die Anbieter als auch die Nutzerinnen und Nutzer kompetent in die Medienzukunft. Wir regulieren, wir fördern, wir",
+            "url": "https://www.linkedin.com/jobs/view/4442374170",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has relevant experience in Corporate Banking, Transaction Advisory, and Equity research, and possesses strong skills in financial modeling, DCF, and multiples valuation.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant experience in Corporate Banking, Transaction Advisory, and Equity research, and possesses strong skills in financial modeling, DCF, and multiples valuation.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4428130471",
+            "title": "Financial Controller",
+            "company": "Wilhelmsen group",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4428130471",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has relevant experience in corporate banking, transaction advisory, and financial modeling, and the job requires skills in financial modeling, risk management, and regulatory compliance, which the candidate possesses.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant experience in corporate banking, transaction advisory, and financial modeling, and the job requires skills in financial modeling, risk management, and regulatory compliance, which the candidate possesses.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4385076702",
+            "title": "EY-Parthenon Manager Risk & Regulatory - Transaction Diligence (Financial Services) (w/m/d)",
+            "company": "EY-Parthenon",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4385076702",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445622612",
+            "title": "Working Student (m/f/d) Finance",
+            "company": "Experian",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Company Description Experian is a global data and technology company that empowers people and businesses around the world. With our unique combination of data, analytics and software, we have established ourselves as one of the leading service providers for risk, fraud and identity management in the",
+            "url": "https://www.linkedin.com/jobs/view/4445622612",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4414313684",
+            "title": "Business Development Analyst  (m/w/d)",
+            "company": "AniCura",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Mars Veterinary Health (MVH) Europe Mars Veterinary Health (MVH) Europe is a family of leading veterinary care providers committed to creating a better world for pets. Our network includes trusted brands such as AniCura and Linnaeus, operating over 680 animal hospitals and clinics across 17 European",
+            "url": "https://www.linkedin.com/jobs/view/4414313684",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4407669942",
+            "title": "Working Student Project Management Go-To-Market (m/w/d)",
+            "company": "CYBEX",
+            "location": "Bayreuth, Bavaria, Germany",
+            "description": "Germany / Bayreuth CYBEX is a company that puts tomorrow’s people at the heart of its brand. Always questioning the status quo and not afraid of challenging the establishment, CYBEX has become not just a leader in child safety but is seen as an innovative lifestyle and fashion brand for parents. We ",
+            "url": "https://www.linkedin.com/jobs/view/4407669942",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4428312794",
+            "title": "(Associate) Consultant (all genders) – Strategy & Corporate Finance Practice",
+            "company": "Porsche Consulting",
+            "location": "Berlin, Germany",
+            "description": "Wir als Team Ein Team, das echte Wirkung schafft: Unsere Strategy & Corporate Finance Practice bietet exzellente Top-Management Beratung in strategischen und finanzwirtschaftlichen Themen, die führende Unternehmen langfristig und spürbar verändern. High-Impact Projekte: Wir betreuen einige der einfl",
+            "url": "https://www.linkedin.com/jobs/view/4428312794",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4361284857",
+            "title": "Consultant Finance Transformation - Performance Management (Controlling) (m/w/d) in Hannover",
+            "company": "Deloitte",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4361284857",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4427980971",
+            "title": "Consultant Deal Advisory - Power, Energy & Utilities (w/m/d)",
+            "company": "BDO Germany",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4427980971",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385092569",
+            "title": "EY-Parthenon (Senior) Consultant Financial & Business Modeling - Strategy and Transactions (w/m/d)",
+            "company": "EY-Parthenon",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4385092569",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385085269",
+            "title": "Berater Finance Strategy und Business Services - Business Consulting (w/m/d)",
+            "company": "EY",
+            "location": "Eschborn, Hesse, Germany",
+            "description": "Are you ready to shape your future with confidence? Gemeinsam die Welt jeden Tag ein bisschen besser machen. Für diesen Anspruch setzen wir bei EY alles in Bewegung und gehen als Team „all in“. Schließlich haben wir ein klares Ziel vor Augen: nachhaltigen Wert und Wachstum zu schaffen – für unsere M",
+            "url": "https://www.linkedin.com/jobs/view/4385085269",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385094179",
+            "title": "(Senior) Manager - Wealth & Asset Management - Consulting (Financial Services) (w/m/d)",
+            "company": "EY",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Are you ready to shape your future with confidence? Gemeinsam die Welt jeden Tag ein bisschen besser machen. Für diesen Anspruch setzen wir bei EY alles in Bewegung und gehen als Team „all in“. Schließlich haben wir ein klares Ziel vor Augen: nachhaltigen Wert und Wachstum zu schaffen – für unsere M",
+            "url": "https://www.linkedin.com/jobs/view/4385094179",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4407029009",
+            "title": "Praktikum Accounting- und Kapitalmarktberatung (w/m/d)",
+            "company": "PwC Deutschland",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Für unseren Geschäftsbereich Assurance Solutions suchen wir dich ab September 2026 als Praktikant Accounting- und Kapitalmarktberatung (w/m/d) . Das erwartet dich Einblicke - Du erlangst wertvolle Einblicke in die Arbeit unserer Accounting Berater:innen und kannst dabei dein theoretisches Wissen pra",
+            "url": "https://www.linkedin.com/jobs/view/4407029009",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442371131",
+            "title": "Team Assistant (m/w/d)",
+            "company": "Neilsoft GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442371131",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Erfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445619321",
+            "title": "Kaufmännische Sachbearbeitung (m/w/d)",
+            "company": "Willms Fleisch GmbH",
+            "location": "Loxstedt, Lower Saxony, Germany",
+            "description": "Willms Fleisch GmbH Ein starker Unternehmensverbund für starke Teams Mit über 1800 Mitarbeitern an fünf modernen Standorten in Deutschland produziert der Willms Unternehmensverbund hochwertige Fleisch-, Wurst- und Convenience-Produkte für den Einzelhandel, die verarbeitende Industrie und den SB-Bere",
+            "url": "https://www.linkedin.com/jobs/view/4445619321",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445626146",
+            "title": "Backoffice & Operations (m/w/d)",
+            "company": "Success4Log GmbH",
+            "location": "Overath, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445626146",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445604325",
+            "title": "Team-Assistent (m/w/d) mit Schwerpunkt Ausschreibungsmanagement",
+            "company": "FFR GmbH",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Team-Assistent (M/W/D) Vertrieb mit Schwerpunkt Ausschreibungsmanagement Den Job will ich Regional, nachhaltig, sicher – Ihr ausgezeichneter Job bei „Frankfurts attraktivstem Arbeitgeber“*. Entfalten Sie Ihr volles Potenzial bei der FES-Gruppe und profitieren Sie von einem kollegialen Arbeitsklima, ",
+            "url": "https://www.linkedin.com/jobs/view/4445604325",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442344682",
+            "title": "Business Analyst",
+            "company": "Haystack",
+            "location": "Coblenz, Rhineland-Palatinate, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Advise and support internal clients on all aspects of SAP systems in logistics (MM/SD). Responsible for adapting and customizing SAP systems. Design and conduct training programs and workshops. Ensure smooth and successful data migrations in the",
+            "url": "https://www.linkedin.com/jobs/view/4442344682",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445397753",
+            "title": "Business Analyst",
+            "company": "Torentify",
+            "location": "Essen, North Rhine-Westphalia, Germany",
+            "description": "About the Company Westnetz GmbH, a wholly owned subsidiary of Westenergie AG, is Germany's largest electricity distribution network operator. With more than 6,000 employees, the company ensures the reliable supply of energy to millions of customers while driving the country's energy transition. West",
+            "url": "https://www.linkedin.com/jobs/view/4445397753",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4376518596",
+            "title": "Account Executive – B2B Unternehmensfinanzierung (m/w/d)",
+            "company": "Instaffo",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Account Executive – B2B Unternehmensfinanzierung (m/w/d) bei FinMatch AG Anforderungen Bitte beachte, dass für diese Stelle eine Arbeitserlaubnis für Deutschland erforderlich ist. Sprache: Deutsch - Muttersprachliches Niveau Mind. 3 Jahre Berufserfahrung im Firmenkundenkreditgeschäft sowie nachweisl",
+            "url": "https://www.linkedin.com/jobs/view/4376518596",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385072910",
+            "title": "(Senior) Manager Digital Finance (w/m/d)",
+            "company": "EY",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Are you ready to shape your future with confidence? Gemeinsam die Welt jeden Tag ein bisschen besser machen. Für diesen Anspruch setzen wir bei EY alles in Bewegung und gehen als Team „all in“. Schließlich haben wir ein klares Ziel vor Augen: nachhaltigen Wert und Wachstum zu schaffen – für unsere M",
+            "url": "https://www.linkedin.com/jobs/view/4385072910",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4407027209",
+            "title": "Manager Valuation, Modeling & Analytics (w/m/d)",
+            "company": "PwC Deutschland",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4407027209",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4387427097",
+            "title": "(Senior) Solution Manager für die Bereiche Finance und Information (m/w/d)",
+            "company": "BWI GmbH",
+            "location": "Bonn, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4387427097",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4418143832",
+            "title": "Duales Studium (B.A. / B.Sc.) @ CHECK24 - digitales Produktmanagement mit KI-Fokus - FOM München",
+            "company": "CHECK24 Vergleichsportal GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4418143832",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4400501724",
+            "title": "Senior Consultant / Manager - Risk Management (Liquiditäts- oder Marktpreisrisiko) (w|m|d)",
+            "company": "zeb consulting",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4400501724",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4340328536",
+            "title": "Manager Third Party Management (m/w/d) in Düsseldorf",
+            "company": "Deloitte",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4340328536",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4362790413",
+            "title": "Mathematiker / Physiker als Softwareentwickler Quantitative Methoden (w|m|d)",
+            "company": "zeb consulting",
+            "location": "Münster, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4362790413",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4398834465",
+            "title": "Senior Consultant / Associate (all genders) Real Estate Valuation - Leipzig",
+            "company": "BNP Paribas Real Estate",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4398834465",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385096235",
+            "title": "Berater Risk Consulting Voll/Teilzeit (w/m/d)",
+            "company": "EY",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4385096235",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385083538",
+            "title": "(Senior) Manager Risk & Actuarial - Consulting (Financial Services) (w/m/d)",
+            "company": "EY",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4385083538",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4427984800",
+            "title": "Group Accountant (m/w/d)",
+            "company": "Michael Page",
+            "location": "Tübingen, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4427984800",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4407019792",
+            "title": "Manager Accounting - und Kapitalmarktberatung (w/m/d)",
+            "company": "PwC Deutschland",
+            "location": "Bielefeld, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4407019792",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4381619203",
+            "title": "TEAMLEAD ACCOUNTING (M/W/D)",
+            "company": "Jean&Len",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4381619203",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4406793173",
+            "title": "Senior Accountant I",
+            "company": "JBT Marel",
+            "location": "Oberlahr, Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4406793173",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385075872",
+            "title": "Berater Konsolidierung, Planung und Reporting - Business Consulting (w/m/d)",
+            "company": "EY",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4385075872",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4387692154",
+            "title": "Controlling Manager (m/w/d)",
+            "company": "ECE",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4387692154",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4414352896",
+            "title": "Commercial Controller (alle Geschlechter)",
+            "company": "GELITA",
+            "location": "Eberbach, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4414352896",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4341532051",
+            "title": "Consultant Global Mobility (m/w/d) in Hannover",
+            "company": "Deloitte",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4341532051",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442336540",
+            "title": "Deutsch + English? We're Hiring! Remote Customer Support Specialists",
+            "company": "TalentPop App",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442336540",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4341741635",
+            "title": "Consultant Global Mobility (m/w/d) in Hamburg",
+            "company": "Deloitte",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4341741635",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442376125",
+            "title": "Associate",
+            "company": "Prophet Media",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442376125",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444825720",
+            "title": "KAMERA / DOP (M/W/D) - ERFURT",
+            "company": "Very& Media GmbH",
+            "location": "Greater Erfurt Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4444825720",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Risikomanagement Spezialistin'; skills: Risikomanagement; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4407025577",
+            "title": "Consultant Risikomanagement Banken (w/m/d)",
+            "company": "PwC Deutschland",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4407025577",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Werkstudent Finanzanalyse' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4418120233",
+            "title": "Werkstudent Back Office (m/w/d)",
+            "company": "American Tower",
+            "location": "Ratingen, North Rhine-Westphalia, Germany",
+            "description": "Job Description Wir sind eine 100%-ige Tochtergesellschaft von American Tower, eines global tätigen Unternehmens aus dem Bereich der Telekommunikationsinfrastruktur. Weltweit gehören wir zu den größten Anbietern unserer Branche. American Tower Germany wurde im Jahr 2012 gegründet und betreibt als Ne",
+            "url": "https://www.linkedin.com/jobs/view/4418120233",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
