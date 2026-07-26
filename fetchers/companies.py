@@ -13,8 +13,12 @@ Supported ATSs:
 - SuccessFactors (BMW Group, Audi)
 - Greenhouse (many AV startups: Apex.AI, Wayve, etc.)
 - Lever (some startups)
+- Personio (German Mittelstand / mobility startups — public XML feed)
+- Ashby (modern AV / robotics startups — public no-auth JSON board)
+- Recruitee (EU / German startups — public no-auth JSON offers feed)
 """
 import requests
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
 from typing import List, Dict
 import logging
@@ -54,6 +58,18 @@ COMPANIES = [
     {"name": "Apex.AI",       "ats": "greenhouse",      "id": "apexai"},
     {"name": "Helm.ai",       "ats": "greenhouse",      "id": "helmai"},
     {"name": "Aurora",        "ats": "greenhouse",      "id": "aurora"},
+    # Personio (German AV / mobility startups). NOTE (2026-07): slugs are the
+    # companies' Personio subdomains ({id}.jobs.personio.de); on-domain for the
+    # automotive profile but their live job counts weren't re-confirmed at commit
+    # time (dev IP hit Personio's rate limit). A wrong slug fails safe → []. The
+    # fetcher itself is verified against real feeds.
+    {"name": "Kopernikus Automotive", "ats": "personio", "id": "kopernikusautomotive"},
+    {"name": "Fernride",      "ats": "personio",        "id": "fernride"},
+    {"name": "Vay",           "ats": "personio",        "id": "vay"},
+    # Ashby (public no-auth JSON board). Verified live 2026-07: helm-ai had 9
+    # open roles, oxa is a live AV org (0 open at check). Wrong slug → [].
+    {"name": "Helm.ai",       "ats": "ashby",           "id": "helm-ai"},
+    {"name": "Oxa",           "ats": "ashby",           "id": "oxa"},
 ]
 
 # ATS boards keep postings open for weeks — that's fine — but anything older
@@ -95,6 +111,12 @@ def fetch(queries: List[str], location: str,
                 jobs = _fetch_greenhouse(company, queries, location, cutoff)
             elif ats == "lever":
                 jobs = _fetch_lever(company, queries, location, cutoff)
+            elif ats == "personio":
+                jobs = _fetch_personio(company, queries, location, cutoff)
+            elif ats == "ashby":
+                jobs = _fetch_ashby(company, queries, location, cutoff)
+            elif ats == "recruitee":
+                jobs = _fetch_recruitee(company, queries, location, cutoff)
             else:
                 logger.warning(f"Unknown ATS '{ats}' for {company['name']}")
                 continue
@@ -339,6 +361,218 @@ def _fetch_lever(company, queries, location, cutoff):
 
 
 # ──────────────────────────────────────────────────────────────────────────
+# PERSONIO (German Mittelstand & mobility startups)
+# ──────────────────────────────────────────────────────────────────────────
+def _fetch_personio(company, queries, location, cutoff):
+    """
+    Personio publishes every open job at one public XML feed:
+        https://{id}.jobs.personio.de/xml
+    where `id` is the company's Personio subdomain (e.g. "kopernikusautomotive"
+    → kopernikusautomotive.jobs.personio.de). No auth, no HTML scraping — the
+    feed exists for companies to embed on their own site, so it's open by
+    design. This is the German mid-market's equivalent of Greenhouse's public
+    board.
+
+    No date filtering beyond the zombie cap — Personio postings stay open for
+    weeks and the history file handles dedup (same as Greenhouse).
+    """
+    url = f"https://{company['id']}.jobs.personio.de/xml"
+    jobs = []
+    try:
+        resp = requests.get(url, headers=DEFAULT_HEADERS, timeout=15)
+        if resp.status_code == 404:
+            logger.debug(f"Personio: {company['id']} not found")
+            return []
+        resp.raise_for_status()
+        try:
+            root = ET.fromstring(resp.content)
+        except ET.ParseError as e:
+            logger.debug(f"Personio {company['name']}: malformed XML ({e})")
+            return []
+
+        # Brand-name queries would match every posting on the company's own feed
+        query_lower = [q.lower() for q in (queries or [])
+                       if q.lower() not in company["name"].lower()]
+        stale_cutoff = datetime.now(timezone.utc) - timedelta(days=MAX_POSTING_AGE_DAYS)
+
+        for pos in root.findall("position"):
+            job_id = (pos.findtext("id") or "").strip()
+            if not job_id:
+                continue
+
+            created = _parse_date(pos.findtext("createdAt"))
+            if created and created < stale_cutoff:
+                continue
+
+            title = (pos.findtext("name") or "").strip()
+
+            # Description lives across several <jobDescription><value> blocks,
+            # each a CDATA HTML chunk ("Your profile", "Why us?", ...). Join
+            # them; fall back to itertext() if a feed nests real elements.
+            desc_parts = []
+            jd = pos.find("jobDescriptions")
+            if jd is not None:
+                for d in jd.findall("jobDescription"):
+                    val_el = d.find("value")
+                    if val_el is None:
+                        continue
+                    raw = val_el.text or "".join(val_el.itertext())
+                    if raw:
+                        desc_parts.append(raw)
+            content = _strip_html(" ".join(desc_parts))
+
+            full_text = f"{title} {content}".lower()
+            if query_lower and not any(q in full_text for q in query_lower):
+                continue
+
+            # A position may carry several <office> elements (multi-site roles)
+            offices = [o.text.strip() for o in pos.findall("office")
+                       if o is not None and o.text and o.text.strip()]
+            location_str = ", ".join(offices)
+
+            jobs.append({
+                "id": f"personio_{company['id']}_{job_id}",
+                "title": title or "Unknown",
+                "company": company["name"],
+                "location": location_str or "Germany",
+                "description": content[:2000],
+                "url": f"https://{company['id']}.jobs.personio.de/job/{job_id}",
+                "published": pos.findtext("createdAt"),
+                "source": f"{company['name']} (Direct)",
+            })
+    except Exception as e:
+        logger.debug(f"Personio {company['name']}: {e}")
+    return jobs
+
+
+# ──────────────────────────────────────────────────────────────────────────
+# ASHBY (modern AV / robotics startups)
+# ──────────────────────────────────────────────────────────────────────────
+def _fetch_ashby(company, queries, location, cutoff):
+    """
+    Ashby exposes every listed job at one public, no-auth JSON endpoint:
+        https://api.ashbyhq.com/posting-api/job-board/{id}
+    where `id` is the org slug (jobs.ashbyhq.com/{id}). Same open-by-design
+    model as Greenhouse. `descriptionPlain` is already plain text, so no HTML
+    strip is needed. History file handles dedup; only the zombie cap applies.
+    """
+    url = f"https://api.ashbyhq.com/posting-api/job-board/{company['id']}"
+    jobs = []
+    try:
+        resp = requests.get(url, headers=DEFAULT_HEADERS, timeout=15)
+        if resp.status_code == 404:
+            logger.debug(f"Ashby: {company['id']} not found")
+            return []
+        resp.raise_for_status()
+        data = resp.json()
+
+        # Brand-name queries would match every posting on the company's own board
+        query_lower = [q.lower() for q in (queries or [])
+                       if q.lower() not in company["name"].lower()]
+        stale_cutoff = datetime.now(timezone.utc) - timedelta(days=MAX_POSTING_AGE_DAYS)
+
+        for item in data.get("jobs", []):
+            if item.get("isListed") is False:
+                continue
+            job_id = str(item.get("id", ""))
+            if not job_id:
+                continue
+
+            published = _parse_date(item.get("publishedAt"))
+            if published and published < stale_cutoff:
+                continue
+
+            title = item.get("title", "") or ""
+            content = (item.get("descriptionPlain")
+                       or _strip_html(item.get("descriptionHtml", "")))
+            full_text = f"{title} {content}".lower()
+            if query_lower and not any(q in full_text for q in query_lower):
+                continue
+
+            loc = (item.get("location") or "").strip()
+            if item.get("isRemote") and "remote" not in loc.lower():
+                loc = f"{loc} (Remote)".strip()
+
+            jobs.append({
+                "id": f"ashby_{company['id']}_{job_id}",
+                "title": title or "Unknown",
+                "company": company["name"],
+                "location": loc or "Unknown",
+                "description": (content or "")[:2000],
+                "url": item.get("jobUrl", "") or item.get("applyUrl", ""),
+                "published": item.get("publishedAt"),
+                "source": f"{company['name']} (Direct)",
+            })
+    except Exception as e:
+        logger.debug(f"Ashby {company['name']}: {e}")
+    return jobs
+
+
+# ──────────────────────────────────────────────────────────────────────────
+# RECRUITEE (EU / German startups)
+# ──────────────────────────────────────────────────────────────────────────
+def _fetch_recruitee(company, queries, location, cutoff):
+    """
+    Recruitee publishes all open roles at one public, no-auth JSON endpoint:
+        https://{id}.recruitee.com/api/offers/
+    where `id` is the company subdomain on recruitee.com. Popular with EU /
+    German startups. History file handles dedup; only the zombie cap applies.
+    """
+    url = f"https://{company['id']}.recruitee.com/api/offers/"
+    jobs = []
+    try:
+        resp = requests.get(url, headers=DEFAULT_HEADERS, timeout=15)
+        if resp.status_code == 404:
+            logger.debug(f"Recruitee: {company['id']} not found")
+            return []
+        resp.raise_for_status()
+        data = resp.json()
+
+        query_lower = [q.lower() for q in (queries or [])
+                       if q.lower() not in company["name"].lower()]
+        stale_cutoff = datetime.now(timezone.utc) - timedelta(days=MAX_POSTING_AGE_DAYS)
+
+        for item in data.get("offers", []):
+            # Only surface live roles (drafts/closed carry a non-published status)
+            status = item.get("status")
+            if status and status != "published":
+                continue
+            job_id = str(item.get("id", ""))
+            if not job_id:
+                continue
+
+            published = _parse_date(item.get("published_at")
+                                    or item.get("created_at"))
+            if published and published < stale_cutoff:
+                continue
+
+            title = item.get("title", "") or ""
+            content = _strip_html(item.get("description", ""))
+            full_text = f"{title} {content}".lower()
+            if query_lower and not any(q in full_text for q in query_lower):
+                continue
+
+            loc = (item.get("location")
+                   or ", ".join(filter(None, [item.get("city"),
+                                              item.get("country")])))
+
+            jobs.append({
+                "id": f"recruitee_{company['id']}_{job_id}",
+                "title": title or "Unknown",
+                "company": company["name"],
+                "location": loc or "Unknown",
+                "description": content[:2000],
+                "url": (item.get("careers_url", "")
+                        or item.get("careers_apply_url", "")),
+                "published": item.get("published_at") or item.get("created_at"),
+                "source": f"{company['name']} (Direct)",
+            })
+    except Exception as e:
+        logger.debug(f"Recruitee {company['name']}: {e}")
+    return jobs
+
+
+# ──────────────────────────────────────────────────────────────────────────
 # HELPERS
 # ──────────────────────────────────────────────────────────────────────────
 def _parse_date(date_str):
@@ -352,7 +586,8 @@ def _parse_date(date_str):
         except (ValueError, OSError):
             return None
     for fmt in ("%Y-%m-%dT%H:%M:%S.%fZ", "%Y-%m-%dT%H:%M:%SZ",
-                "%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%d"):
+                "%Y-%m-%dT%H:%M:%S.%f%z", "%Y-%m-%dT%H:%M:%S%z",
+                "%Y-%m-%d %H:%M:%S UTC", "%Y-%m-%d"):
         try:
             dt = datetime.strptime(date_str, fmt)
             if dt.tzinfo is None:
