@@ -1135,6 +1135,488 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-26T10:16:17.325186",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "Strong match due to relevant experience in corporate banking and transaction advisory, as well as skills in financial modeling, Python, and Excel. However, the role requires fluent German, which is not explicitly mentioned in the candidate's CV, resulting in a 15-point deduction.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 85,
+          "ai_reason": "Strong match due to relevant experience in corporate banking and transaction advisory, as well as skills in financial modeling, Python, and Excel. However, the role requires fluent German, which is not explicitly mentioned in the candidate's CV, resulting in a 15-point deduction.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442332754",
+            "title": "Junior Associate",
+            "company": "Distrito de Inovação de São Paulo",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Job Title: Junior Associate Location: Germany Job Type: Full-Time Job Overview We are looking for a motivated and detail-oriented Junior Associate to join our team. In this role, you will provide operational and administrative support across various business functions while working closely with expe",
+            "url": "https://www.linkedin.com/jobs/view/4442332754",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in corporate finance, with relevant coursework, experience, and skills, making them an excellent fit for this role.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in corporate finance, with relevant coursework, experience, and skills, making them an excellent fit for this role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4445397631",
+            "title": "Controller Produktion / Finance & Performance Analyst (m/w/d)",
+            "company": "BORN Senf & Feinkost GmbH",
+            "location": "Ichtershausen, Thuringia, Germany",
+            "description": "Controller Produktion / Finance & Performance Analyst (m/w/d) Über uns: Wir sind ein regionales, traditionsreiches Lebensmittelunternehmen, das seit vielen Jahren für Qualität, Verlässlichkeit und echte Handwerkskompetenz steht. Mit viel Leidenschaft stellen wir Produkte her, die täglich in zahlreic",
+            "url": "https://www.linkedin.com/jobs/view/4445397631",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in financial modeling, Python, and corporate finance, and the role requires similar skills, but with a focus on property and real estate. The candidate's language skills and location preferences also match the job requirements.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in financial modeling, Python, and corporate finance, and the role requires similar skills, but with a focus on property and real estate. The candidate's language skills and location preferences also match the job requirements.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4418477160",
+            "title": "PPM Associate for Property Market",
+            "company": "Arup",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Gestalten Sie aktiv mit uns eine Zukunft mit Sinn bei Arup in München. Die enge und vertrauensvolle Zusammenarbeit mit unseren Auftraggebenden als „Trusted Advisor“ liegt uns am Herzen. Wir unterstützen und beraten in 'Advisory Services - Property' eine diverse Kundengruppe aus den Bereichen Corpora",
+            "url": "https://www.linkedin.com/jobs/view/4418477160",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442353686",
+            "title": "Junior Financial Analyst",
+            "company": "Haystack",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Perform classic audits of annual and consolidated financial statements according to national and international standards Engage in audit-related consulting for diverse clients across various industries, including credit and financial institution",
+            "url": "https://www.linkedin.com/jobs/view/4442353686",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445602436",
+            "title": "Administrative Assistant (Remote)",
+            "company": "Hired",
+            "location": "Germany",
+            "description": "Role: Administrative Assistant (Remote) Location: Remote (Work From Home) Compensation: Up to $29 USD/hr, paid weekly About the Role We are looking for fluent language professionals to help train and evaluate AI language models. This is a flexible, part-time contract role you can do entirely from ho",
+            "url": "https://www.linkedin.com/jobs/view/4445602436",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442348886",
+            "title": "Teamassistenz Abrechnung & Administration (m/w/d)",
+            "company": "Amacuro GmbH",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "📍 30–40 Stunden pro Woche 🕒 Ab sofort Organisationstalent gesucht – unterstütze unser Team im Gesundheitswesen. Die Europa Apotheke steht für moderne pharmazeutische Versorgung und innovative Gesundheitsdienstleistungen. In den Bereichen Sterilherstellung, Heimversorgung und patientenindividuelle Ve",
+            "url": "https://www.linkedin.com/jobs/view/4442348886",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444844070",
+            "title": "Team Assistenz (m/w/d) Produktionsbetrieb in Stuhr",
+            "company": "TeSo Specialist",
+            "location": "Stuhr, Lower Saxony, Germany",
+            "description": "Über uns: Die TeSo Specialist ist ein erfahrenes Unternehmen im Bereich Arbeitnehmerüberlassung. Wir verbinden Fachkräfte mit spannenden Projekten und langfristigen Karrieremöglichkeiten in zukunftsorientierten Branchen. Unser Fokus liegt auf einer persönlichen und professionellen Betreuung unserer ",
+            "url": "https://www.linkedin.com/jobs/view/4444844070",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4414355707",
+            "title": "Manager, Ads Finance & Strategy, EMEA",
+            "company": "Netflix",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Netflix is one of the world's leading entertainment services, with over 300 million paid memberships in over 190 countries enjoying TV series, films and games across a wide variety of genres and languages. Members can play, pause and resume watching as much as they want, anytime, anywhere, and can c",
+            "url": "https://www.linkedin.com/jobs/view/4414355707",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4417150612",
+            "title": "Senior Credit Analyst Structured Business (m/w/d)",
+            "company": "Zurich Insurance",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Bist du bereit, mit dem Besten zu rechnen ? Bei Zurich leben wir Versicherung neu. Um die Wünsche unserer Kunden noch besser zu erfüllen, gehen wir neue Wege, denken kreativ, arbeiten agil. Unsere Unternehmenskultur schenkt dir in jeder Hinsicht mehr Flexibilität – und viel Freiraum, dich optimal zu",
+            "url": "https://www.linkedin.com/jobs/view/4417150612",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444826425",
+            "title": "Founder Associate (+ Equity) at VC-backed renewable energy platform",
+            "company": "Jack & Jill",
+            "location": "Germany",
+            "description": "This is a job that Jill, our AI Recruiter, is recruiting for on behalf of one of our customers. She will pick the best candidates from Jack's network. The next step is to speak to Jack. Job Title Founder Associate Salary Not Disclosed + Equity Company Description VC-backed renewable energy platform ",
+            "url": "https://www.linkedin.com/jobs/view/4444826425",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445393580",
+            "title": "Kaufmännischer Leiter (m/w/d)",
+            "company": "Klöpferholz GmbH & Co. KG",
+            "location": "Wolnzach, Bavaria, Germany",
+            "description": "Die Klöpfer Gruppe ist ein Holzgroßhändler und -importeur in Deutschland. Wir sind ein Innovationsführer, der Handwerk, Handel, Industrie sowie Bau, Architektur und Design miteinander verbindet. Dabei legen wir besonderen Wert auf nachhaltige Produkte, modernste Logistiklösungen und die Kompetenz un",
+            "url": "https://www.linkedin.com/jobs/view/4445393580",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442355719",
+            "title": "Business Analyst",
+            "company": "Haystack",
+            "location": "Wiesbaden, Hesse, Germany",
+            "description": "IT Business Analyst We're working with a leading European bank specializing in the property industry, providing financing solutions and banking services to national and international clients. Join a team dedicated to innovation and excellence in the financial sector. The Role Act as a crucial link b",
+            "url": "https://www.linkedin.com/jobs/view/4442355719",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4366764547",
+            "title": "Kundenberater Baufinanzierung (w/m/d) Bremen",
+            "company": "TARGOBANK",
+            "location": "Bremen, Bremen, Germany",
+            "description": "TARGOBANK als Arbeitgeberin BANK.ECHT.ANDERS. Das ist unser Anspruch als Arbeitgeberin. Werden Sie Teil unseres Vertriebsteams und bringen Sie Ihre Persönlichkeit und Ihre Power ein. Wir von der TARGOBANK suchen Menschen, die unsere Kund*innen dabei unterstützen, ihre Chancen zu nutzen und ihre Zuku",
+            "url": "https://www.linkedin.com/jobs/view/4366764547",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4339372855",
+            "title": "Kundenberater Baufinanzierung (w/m/d) Leipzig",
+            "company": "TARGOBANK",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "TARGOBANK als Arbeitgeberin BANK.ECHT.ANDERS. Das ist unser Anspruch als Arbeitgeberin. Werden Sie Teil unseres Vertriebsteams und bringen Sie Ihre Persönlichkeit und Ihre Power ein. Wir von der TARGOBANK suchen Menschen, die unsere Kund*innen dabei unterstützen, ihre Chancen zu nutzen und ihre Zuku",
+            "url": "https://www.linkedin.com/jobs/view/4339372855",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4200833047",
+            "title": "Knowledge Consultant (m/w/d) – Insurance",
+            "company": "McKinsey & Company",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Who You'll Work With Nachhaltige Veränderung zu bewirken und langfristige Fähigkeiten bei unseren Klienten aufzubauen, ist keine einfache Aufgabe. Du fühlst dich in einem Umfeld wohl, das Leistung fordert und anerkennt. Du nimmst anspruchsvolle Herausforderungen an, lernst, wenn du stolperst und has",
+            "url": "https://www.linkedin.com/jobs/view/4200833047",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4440963506",
+            "title": "Alpha Operations External Manager Support - Officer",
+            "company": "State Street",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "Who We Are Looking For The State Street Alpha Operations team is comprised of various teams like Enterprise Business Solutions, Front Office Data Control, Front Office Support, Onboarding / Operational Readiness, Portfolio Control and Portfolio Admin functions. The teams are based in multiple locati",
+            "url": "https://www.linkedin.com/jobs/view/4440963506",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445394792",
+            "title": "Data Science Specialist (m/w/d)",
+            "company": "IT-P Information Technology-Partner GmbH",
+            "location": "Hannover-Braunschweig-Göttingen-Wolfsburg Region",
+            "description": "Wir bieten dir Flexibles Arbeiten: Mobiles Arbeiten mit vier gemeinsamen Präsenztagen im Monat. Und wenn du magst, bist du natürlich jederzeit öfter im Büro willkommen. So schaffen wir die perfekte Balance aus Freiheit und persönlichem Austausch. Individuelle Arbeitszeitmodelle, die sich an dein Leb",
+            "url": "https://www.linkedin.com/jobs/view/4445394792",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4369639693",
+            "title": "Vermögensberater (m/w/d)",
+            "company": "Sparkasse",
+            "location": "Freiburg, Baden-Württemberg, Germany",
+            "description": "in Voll- oder Teilzeit (min. 70%) Wir suchen für verschiedene Standorte in unserem Geschäftsgebiet engagierte und motivierte Mitarbeitende für die Funktion als Vermögensberater (m/w/d). DAS MACHT DIE TÄTIGKEIT AUS: Aktive qualifizierte ganzheitliche Beratung und Betreuung des zugeordneten Kundensegm",
+            "url": "https://www.linkedin.com/jobs/view/4369639693",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4378011681",
+            "title": "AI Specialist (m/w/d) – Öffentlicher Sektor",
+            "company": "CGI",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Stellenbeschreibung Digitale Services, intelligente Datenanalysen und smarte Bürgerportale – das ist die Zukunft der öffentlichen Verwaltung. CGI unterstützt Ministerien, Behörden und öffentliche Einrichtungen dabei, Prozesse zu digitalisieren, Daten sicher zu nutzen und innovative Technologien wie ",
+            "url": "https://www.linkedin.com/jobs/view/4378011681",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "skills: Risikomanagement; keyword bonus: 1; +1 core-strength terms",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445375014",
+            "title": "Auslagerungsbeauftragter (ZAB) und Prozess-/Projektmanager (m/w/d)",
+            "company": "Sparkasse Rhein-Nahe",
+            "location": "Bad Kreuznach, Rhineland-Palatinate, Germany",
+            "description": "Weil‘s um mehr als Geld geht Die Sparkasse Rhein-Nahe setzt sich dafür ein, was im Leben wirklich zählt. Für Dich, für die Gesellschaft, für die Unternehmen, für die Region Rhein-Nahe und Umland. Wichtig für Mensch und Wirtschaft Seit der Gründung im Jahr 1835 sind wir die S für alle Menschen im sch",
+            "url": "https://www.linkedin.com/jobs/view/4445375014",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "skills: Risikomanagement; keyword bonus: 1; +1 core-strength terms",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445359667",
+            "title": "Auslagerungsbeauftragter (ZAB) und Prozess-/Projektmanager (m/w/d)",
+            "company": "Sparkasse Höxter Filiale Willebadessen",
+            "location": "Rhein-Nahe, Rhineland-Palatinate, Germany",
+            "description": "Sparkasse Rhein-Nahe Auslagerungsbeauftragter (ZAB) und Prozess-/Projektmanager (m/w/d) Vollzeit Position mit Berufserfahrung Bad Kreuznach Jetzt bewerben Weil‘s um mehr als Geld geht Die Sparkasse Rhein-Nahe setzt sich dafür ein, was im Leben wirklich zählt. Für Dich, für die Gesellschaft, für die ",
+            "url": "https://www.linkedin.com/jobs/view/4445359667",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4395973199",
+            "title": "Lead Underwriting Governance and Technical Standards",
+            "company": "Sompo",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Are you looking for your next opportunity? Sompo has a unique opportunity for a Lead Underwriting Governance and Technical Standards in our newly established CUO Office team for Continental Europe . Reporting directly to the Chief Underwriting Officer (CUO) for Continental Europe, you will play an i",
+            "url": "https://www.linkedin.com/jobs/view/4395973199",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442335667",
+            "title": "Account-Manager",
+            "company": "HÖRTKORN",
+            "location": "Chemnitz, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442335667",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444845090",
+            "title": "Leitung Finanzbuchhaltung",
+            "company": "GP Günter Papenburg AG",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4444845090",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442336799",
+            "title": "Bilanzbuchhalter (m/w/d)",
+            "company": "Jobbusters®",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442336799",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445394632",
+            "title": "EIN VIELFACHES SUMMIERENDE PERSÖNLICHKEIT GESUCHT!",
+            "company": "Nordpack GmbH",
+            "location": "Isernhagen Farster Bauerschaft, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445394632",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445379827",
+            "title": "Werkscontroller (m/w/d)",
+            "company": "Molkerei Gropper GmbH & Co. KG",
+            "location": "Bissingen, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445379827",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445396573",
+            "title": "Mitarbeiter für die Kalkulationsentwicklung (m/w/d)",
+            "company": "KWD Automotive AG & Co. KG",
+            "location": "Radeberg, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445396573",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442352887",
+            "title": "Sales Development Representative (SDR) (m/w/d)",
+            "company": "Digital Trendteam Marketing GmbH",
+            "location": "Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442352887",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442336643",
+            "title": "Pädagoge (m/w/d)",
+            "company": "LOS-Verbund – Hilfe bei LRS und Legasthenie",
+            "location": "Freiburg, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442336643",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444832089",
+            "title": "Oberarzt Psychiatrie und Psychotherapie (m/w/d)",
+            "company": "FIND YOUR EXPERT - MEDICAL RECRUITING",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4444832089",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
