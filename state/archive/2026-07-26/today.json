@@ -3705,6 +3705,233 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-26T17:30:19.714065",
+      "strong": [
+        {
+          "score": 92,
+          "reason": "Outstanding fit due to relevant experience in corporate banking and transaction advisory, strong financial modeling skills, and preferred locations matching the job posting. However, the candidate lacks direct experience in capital markets and risk management, which are key aspects of the role.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 92,
+          "ai_reason": "Outstanding fit due to relevant experience in corporate banking and transaction advisory, strong financial modeling skills, and preferred locations matching the job posting. However, the candidate lacks direct experience in capital markets and risk management, which are key aspects of the role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4398108595",
+            "title": "Consultant Capital Markets & Risk Management (Financial Services) (w/m/d)",
+            "company": "EY",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Are you ready to shape your future with confidence? Gemeinsam die Welt jeden Tag ein bisschen besser machen. Für diesen Anspruch setzen wir bei EY alles in Bewegung und gehen als Team „all in“. Schließlich haben wir ein klares Ziel vor Augen: nachhaltigen Wert und Wachstum zu schaffen – für unsere M",
+            "url": "https://www.linkedin.com/jobs/view/4398108595",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in corporate finance, financial modeling, and Python, which are highly relevant to the job posting. However, the job posting requires more experience and fluency in German than the candidate has.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in corporate finance, financial modeling, and Python, which are highly relevant to the job posting. However, the job posting requires more experience and fluency in German than the candidate has.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4407021690",
+            "title": "Manager Transaktionsberatung Finance Excellence (w/m/d)",
+            "company": "PwC Deutschland",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Für unseren Geschäftsbereich Deals suchen wir dich zum nächstmöglichen Zeitpunkt als Manager Transaktionsberatung Finance Excellence (w/m/d) . Das erwartet dich Transaktionen – Du berätst unsere Mandanten bei Unternehmenstransaktionen verschiedenster Größenordnungen, nationale sowie international, u",
+            "url": "https://www.linkedin.com/jobs/view/4407021690",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in Corporate Finance, with relevant coursework, experience, and skills, making them an excellent fit for this role.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in Corporate Finance, with relevant coursework, experience, and skills, making them an excellent fit for this role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4340775553",
+            "title": "Mathematiker:in / Aktuar:in Privat",
+            "company": "HDI Group",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Deine Aufgaben Durchführung von Analysen und Risikobewertungen für die Kraftfahrtversicherung Erstellung multivariater Prognosemodelle und Ableitung von Tarifempfehlungen Unterstützung bei der Entwicklung und Steuerung der Produkte Überwachung der Profitabilität der Tarife und Identifizierung von Mö",
+            "url": "https://www.linkedin.com/jobs/view/4340775553",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445617956",
+            "title": "Melker",
+            "company": "AgroWijs",
+            "location": "Rottum, North Rhine-Westphalia, Germany",
+            "description": "Het grootste uitzendbureau in Groningen, Friesland en Drenthe Per regio Drenthe Friesland Groningen Laat ons je helpen Met tien uitzendbureaus in Groningen, Friesland en Drenthe is er altijd een vestiging bij jou in de buurt. Stap gerust eens bij één van onze vestigingen binnen. Onze vestigingen Laa",
+            "url": "https://www.linkedin.com/jobs/view/4445617956",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385070886",
+            "title": "(Senior) Manager Digital Finance (w/m/d)",
+            "company": "EY",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Are you ready to shape your future with confidence? Gemeinsam die Welt jeden Tag ein bisschen besser machen. Für diesen Anspruch setzen wir bei EY alles in Bewegung und gehen als Team „all in“. Schließlich haben wir ein klares Ziel vor Augen: nachhaltigen Wert und Wachstum zu schaffen – für unsere M",
+            "url": "https://www.linkedin.com/jobs/view/4385070886",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4427281638",
+            "title": "Consultant, Risk & Compliance – Market & Commodity Trading and Risk (Energy Trading)",
+            "company": "Boston Consulting Group (BCG)",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Locations : Germany | Austria Who We Are Boston Consulting Group partners with leaders in business and society to tackle their most important challenges and capture their greatest opportunities. BCG was the pioneer in business strategy when it was founded in 1963. Today, we help clients with total t",
+            "url": "https://www.linkedin.com/jobs/view/4427281638",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4369761196",
+            "title": "Business Analyst",
+            "company": "HDI Group",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Your Tasks Business Analysis: Analyze business requirements along the full value chain of a globally operating industrial insurer to support our international digitalization strategy Solution Design: Design and maintain solutions for the development and enhancement of a modern and future oriented so",
+            "url": "https://www.linkedin.com/jobs/view/4369761196",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4325248824",
+            "title": "Business Analyst - Outputmanagement (w/m/d)",
+            "company": "VHV Gruppe",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Position im Überblick Sie möchten die digitale und analoge Kommunikation eines modernen Versicherungsunternehmens aktiv mitgestalten? Dann sind Sie bei uns genau richtig. Als zentrale Schnittstelle im Output-Management der VHV-Gruppe entwickeln Sie kanalübergreifende Kommunikationslösungen weiter, a",
+            "url": "https://www.linkedin.com/jobs/view/4325248824",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4340755467",
+            "title": "Senior Mathematiker:in / Aktuar:in Privat",
+            "company": "HDI Group",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Deine Aufgaben Durchführung von Analysen und Risikobewertungen für die Kraftfahrtversicherung Erstellung multivariater Prognosemodelle und Ableitung von Tarifempfehlungen Unterstützung bei der Entwicklung und Steuerung der Produkte Überwachung der Profitabilität der Tarife und Identifizierung von Mö",
+            "url": "https://www.linkedin.com/jobs/view/4340755467",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'project manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444847004",
+            "title": "Senior Project Manager Operational Excellence(m/w/d)*",
+            "company": "SCHOTT",
+            "location": "Mainz, Rhineland-Palatinate, Germany",
+            "description": "Über uns Für unseres vorstandsnahes Team \"Operational Excellence and Projects\" suchen wir einen \"Senior Project Manager (m/w/d)\". In dieser Schlüsselrolle verantworten Sie die Definition, Umsetzung und Führung komplexer Projekte und beraten das Executive Management bei der Erreichung von Effizienz-,",
+            "url": "https://www.linkedin.com/jobs/view/4444847004",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "skills: Deutsche Sprache; keyword bonus: 1; +1 core-strength terms",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444841084",
+            "title": "Oberarzt Psychiatrie und Psychotherapie (m/w/d)",
+            "company": "FIND YOUR EXPERT - MEDICAL RECRUITING",
+            "location": "Markkleeberg, Saxony, Germany",
+            "description": "Wir suchen für eine moderne Akutklinik im Raum Leipzig einen Oberarzt Psychiatrie und Psychotherapie (m/w/d) . Die Klinik verfügt über ca. 160 Betten und bietet ein breites Spektrum an Behandlungsmöglichkeiten in der Psychiatrie und Psychotherapie. Sie erwartet eine verantwortungsvolle Position in e",
+            "url": "https://www.linkedin.com/jobs/view/4444841084",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4385075879",
+            "title": "Berater Konsolidierung, Planung und Reporting - Business Consulting (w/m/d)",
+            "company": "EY",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Are you ready to shape your future with confidence? Gemeinsam die Welt jeden Tag ein bisschen besser machen. Für diesen Anspruch setzen wir bei EY alles in Bewegung und gehen als Team „all in“. Schließlich haben wir ein klares Ziel vor Augen: nachhaltigen Wert und Wachstum zu schaffen – für unsere M",
+            "url": "https://www.linkedin.com/jobs/view/4385075879",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442379374",
+            "title": "Controller:in",
+            "company": "Schalke Locomotives GmbH",
+            "location": "Gelsenkirchen, North Rhine-Westphalia, Germany",
+            "description": "Die „Schalke Locomotives GmbH“ ist eine hundertprozentige Tochter der kanadischen „Nordic Minesteel Technologies Inc.“ (NMT) aus North Bay, Ontario. Diese hat 2018 das Geschäftsfeld Schienenfahrzeuge der „Schalker Eisenhütte Maschinenfabrik GmbH“ gekauft, die bereits in den vergangenen Jahren mit NM",
+            "url": "https://www.linkedin.com/jobs/view/4442379374",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444833748",
+            "title": "Business Controller (m/w/d)",
+            "company": "Nexus Leads Services",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "DELA Lebensversicherungen Düsseldorf, Regierungsbezirk Düsseldorf; Westfalen, Germany, 40589 Permanent Apply for job Job Description ÜBER UNS: Wir sind DELA Deutschland. Ein Team aus aktuell 60 Expert:innen für die Hinterbliebenenvorsorge. Unsere Vision ist es, allen Mitgliedern unserer Gemeinschaft",
+            "url": "https://www.linkedin.com/jobs/view/4444833748",
+            "published": "2026-07-26T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
