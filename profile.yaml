@@ -1,192 +1,261 @@
 # ============================================================
-#  YOUR PROFILE
-#  Tailored for: International Automotive Engineering student
-#  with LiDAR / Radar / Camera + Python + Grafana experience
-#  Language: B1 German reading, A2 speaking → can handle most posts
+#  YOUR PROFILE — auto-generated from cv.md
+#  Edit freely: this file is only regenerated if placeholders
+#  reappear or you run `python main.py --personalize`.
 # ============================================================
 
 personal:
-  name: "Meet Patel"               # ← change this (reference template profile)
-  email: "meet.m.patel2905@gmail.com" # ← change this (informational only — alerts go to Telegram)
-
-# One-line description of you, used in the AI grading prompt.
-persona: "a master's student in International Automotive Engineering (sensor data specialty: LiDAR/Radar/Camera, Python, Grafana/InfluxDB)"
-
-# ── Your skills (bilingual – English & German keywords) ───────
-skills:
+  name: unknown
+  email: ''
+persona: a master's student in Finance (corporate finance, financial modeling, Python)
+domain:
+  name: Corporate Finance
+  core_terms:
+  - corporate finance
+  - financial modeling
+  - investment banking
+  - asset management
+  - FP&A
+  - transaction advisory
+  - sustainable finance
+  - quantitative investment strategies
+  - Deutsche Sprache
+  - Finanzmodellierung
+  - Kreditanalyse
+  - Portfolio-Optimierung
+  - Risikomanagement
+  - IFRS und HGB-Grundlagen
+  - Budgetierung und Vorhersage
+  supporting_terms:
+  - finanzwirtschaft
+  - finanzanalyse
+  - finanzberatung
+  - finanzdienstleistung
+  - finanzmarkt
+  - finanzpolitik
+  - finanzrecht
+  - finanzwissenschaft
+  adjacent_terms:
+  - banking
+  - insurance
+  - accounting
+  - taxation
+  - law
+  - economics
+  - statistics
+  - mathematics
+  core_companies:
+  - commerzbank
+  - deutsche bank
+  - goldman sachs
+  - morgan stanley
+  - ubs
+  - credit suisse
+  - barclays
+  - morgan stanley
+  - jpmorgan
+  - citi
+  - bank of america
+  - wells fargo
+  - hsbc
+  - standard chartered
+  - scotiabank
+  - bnp paribas
+  - societe generale
+  - credit agricole
+  - unicredit
+  - intesa sanpaolo
+  - unione di banche italiane
+  adjacent_companies:
+  - allianz
+  - munich re
+  - deutsche telekom
+  - siemens
+  - bosch
+  - bayer
+  - merck
+  - siemens healthineers
+  - siemens gamesa
+  - siemens energy
+  - siemens mobility
+  - siemens smart infrastructure
+  - siemens healthineers
+  - siemens gamesa
+  - siemens energy
+  - siemens mobility
+  - siemens smart infrastructure
+  reject_title_terms:
+  - marketing manager
+  - nurse
+  - recruiter
+  - software developer
+  - mechanical engineer
+  - electrical engineer
+  - chemical engineer
+  - civil engineer
+  - aerospace engineer
+  - biomedical engineer
+  - chemical engineer
+  - civil engineer
+  - aerospace engineer
+  - biomedical engineer
+  - software engineer
+  - data scientist
+  - business analyst
+  - product manager
+  - project manager
+  - sales manager
+  - customer service representative
+  - human resources manager
+  - operations manager
+  - supply chain manager
+  - logistics manager
+  - quality control manager
+  - quality assurance manager
+  - research scientist
+  - academic researcher
+  - lecturer
+  - professor
+  - teacher
+  - educator
+  - instructor
+  - trainer
+  bonus_terms:
+  - financial modeling
   - Python
-  - Data Visualization
-  - Datenvisualisierung
-  - Grafana
-  - InfluxDB
-  - Time Series
-  - Zeitreihen
-  - Data Analysis
-  - Datenanalyse
-  - LiDAR
-  - Radar
-  - Camera
-  - Kamera
-  - Sensors
-  - Sensorik
-  - Sensor Fusion
-  - Sensor Data
-  - Sensordaten
-  - ADAS
-  - Autonomous Driving
-  - Autonomes Fahren
-  - Driver Assistance
-  - Fahrerassistenz
-  - Automotive
-  - Automobil
-  - Fahrzeugtechnik
-  - MATLAB
-  - Linux
-  - Git
-  - Data Analysis
-
-# ── Job titles you should target ──────────────────────────────
-# Mix English + German titles. As a student, focus on
-# Working Student / Werkstudent / Praktikum / Junior roles.
+  - investment banking
+  - asset management
+  - FP&A
+  - transaction advisory
+  - sustainable finance
+  - quantitative investment strategies
+  - Deutsche Sprache
+  - Finanzmodellierung
+  - Kreditanalyse
+  - Portfolio-Optimierung
+  - Risikomanagement
+  - IFRS und HGB-Grundlagen
+  - Budgetierung und Vorhersage
+skills:
+- Financial modeling
+- DCF and multiples valuation
+- Credit analysis
+- Three-statement modeling
+- M&A due diligence
+- Equity research
+- Portfolio optimization
+- Risk management
+- IFRS and HGB fundamentals
+- Budgeting and forecasting
+- Excel (advanced, VBA)
+- Python (pandas, NumPy)
+- SQL
+- Bloomberg Terminal
+- FactSet
+- Power BI
+- LaTeX
+- CFA Level I candidate
+- Deutsche Sprache
+- Finanzmodellierung
+- Kreditanalyse
+- Portfolio-Optimierung
+- Risikomanagement
+- IFRS und HGB-Grundlagen
+- Budgetierung und Vorhersage
 target_titles:
-  # English
-  - Working Student
-  - Working Student Automotive
-  - Working Student ADAS
-  - Working Student Autonomous Driving
-  - Working Student Data Analysis
-  - Intern
-  - Internship
-  - Internship Automotive
-  - Internship Autonomous Driving
-  - Internship ADAS
-  - Internship Data Analysis
-  - Junior Engineer
-  - Junior ADAS Engineer
-  - Junior Perception Engineer
-  - Junior Sensor Engineer
-  - Junior Test Engineer
-  - Junior Test Engineer Automotive
-  - Sensor Data Engineer
-  - Test Engineer Automotive
-  - Validation Engineer
-  - Junior Automotive Engineer
-  # German
-  - Werkstudent
-  - Werkstudentin
-  - Praktikant
-  - Praktikantin
-  - Praktikum
-  - Pflichtpraktikum
-  # Thesis roles — big channel at Bosch/BMW for masters students
-  - Masterarbeit
-  - Bachelorarbeit
-  - Thesis
-  - Thesis Automotive
-  - Thesis Autonomous Driving
-  - Masterarbeit ADAS
-  - Masterarbeit Sensorik
-  - Masterarbeit Automotive
-  - Abschlussarbeit Fahrzeugtechnik
-  - Junior Ingenieur
-  - Junior Entwickler
-  - Testingenieur
-  - Testfahrer
-  - Validierungsingenieur
-  - Datenanalyst Automotive
-  - Sensorentwickler
-  - Abschlussarbeit              # thesis / final project
-  - Werkstudent Sensorik
-  - Werkstudent Fahrerassistenz
-  - Werkstudent ADAS
-  - Werkstudent Autonomous Driving
-  - Werkstudent Data Analysis
-  - Praktikum Automotive
-  - Praktikum ADAS
-  - Praktikum Autonomous Driving
-  - Praktikum Data Analysis
-
-# ── At least ONE of these must appear ─────────────────────────
+- Werkstudent Corporate Finance
+- Intern Investment Banking
+- Masterarbeit Corporate Finance
+- Praktikum Asset Management
+- Junior Financial Analyst
+- Financial Analyst
+- Corporate Finance Manager
+- Asset Management Associate
+- Financial Modeling Analyst
+- Risk Management Specialist
+- Financial Analyst Corporate Finance
+- Werkstudent Finanzanalyse
+- Intern Finanzwirtschaft
+- Masterarbeit Finanzwirtschaft
+- Praktikum Corporate Finance
+- Junior Finanzanalyst
+- Finanzanalyst
+- Corporate Finance Managerin
+- Asset Management Assistentin
+- Finanzmodellierung Analystin
+- Risikomanagement Spezialistin
 must_have_keywords:
-  - automotive
-  - ADAS
-  - autonomous
-  - LiDAR
-  - Radar
-  - perception
-  - sensor
-  - vehicle
-  - driver assistance
-  - self-driving
-  - automobil
-  - fahrzeug
-  - autonom
-  - perzeption
-  - wahrnehmung
-  - sensorik
-  - vehicle
-  - driver assistance
-  - fahrerassistenz
-  - self-driving
-  - selbstfahrend
-
-# ── Skip jobs containing these (too senior / wrong domain) ────
+- corporate finance
+- financial modeling
+- Python
+- investment banking
+- asset management
+- FP&A
+- transaction advisory
+- sustainable finance
+- quantitative investment strategies
+- Deutsche Sprache
+- Finanzmodellierung
+- Kreditanalyse
+- Portfolio-Optimierung
+- Risikomanagement
+- IFRS und HGB-Grundlagen
+- Budgetierung und Vorhersage
 exclude_keywords:
-  - Senior
-  - Lead
-  - Principal
-  - Staff Engineer
-  - Director
-  - Head of
-  - VP
-  - "5+ years"
-  - "7+ years"
-  - "10+ years"
-  - mehrjährige Berufserfahrung
-  - mehrjährige Erfahrung
-  - Führungserfahrung
-
-# ── Where you'd like to work ──────────────────────────────────
+- Senior
+- Lead
+- Principal
+- 10+ Jahre
+- mehrjährige Berufserfahrung
+- mehrjährige Erfahrung
+- langjährige Erfahrung
+- langjährige Berufserfahrung
+- mehrjähriger Erfahrung
+- langjähriger Erfahrung
+- mehrjährige Erfahrung
+- langjährige Erfahrung
+- mehrjährige Berufserfahrung
+- langjährige Berufserfahrung
+- mehrjähriger Erfahrung
+- langjähriger Erfahrung
 preferred_locations:
-  - Germany
-  - Remote
-  - Hybrid
-  - Munich
-  - Stuttgart        # automotive hub (Mercedes, Porsche, Bosch)
-  - Wolfsburg        # VW
-  - Ingolstadt       # Audi
-  - Berlin
-  - Hamburg
-  - cologne
-  - Köln
-  - Erlangen
-  - Nuremberg
-  - Nürnberg
-  - München
-  - Fürth
-  - Frankfurt
-  - Deutschland
-  - Regensburg
-  - Bayern
-
-# ── Language preference ───────────────────────────────────────
-# Options:
-#   "english_only"     → reject ALL German postings (too strict for you)
-#   "no_german_required" → accept German posts unless German fluency required
-#   "any"              → accept everything
-language_preference: no_german_required
-
-# ── Experience level ──────────────────────────────────────────
+- Frankfurt
+- München
+- Berlin
+- Deutschland
+- Europa
+language_preference: any
 years_of_experience: 0
 career_level: student
-
-# ── Two-stage scoring thresholds ──────────────────────────────
-# Stage 1: cheap rule-based pre-filter — jobs below this are dropped before AI
+search_queries:
+- Werkstudent Corporate Finance
+- Intern Investment Banking
+- Masterarbeit Corporate Finance
+- Praktikum Asset Management
+- Junior Financial Analyst
+- Financial Analyst Corporate Finance
+- Corporate Finance Manager
+- Asset Management Associate
+- Financial Modeling Analyst
+- Risk Management Specialist
+- Finanzmodellierung Analyst
+- Kreditanalyse
+- Portfolio-Optimierung
+- Risikomanagement
+- IFRS und HGB-Grundlagen
+- Budgetierung und Vorhersage
+- Deutsche Sprache
+- Finanzmodellierung
+- Kreditanalyse
+- Portfolio-Optimierung
+- Risikomanagement
+- IFRS und HGB-Grundlagen
+- Budgetierung und Vorhersage
 prefilter_min_score: 15
-# Stage 2: tier boundaries on the 0-100 suitability score.
-#   score >= strong      → 🟢 strong match (Telegram alert)
-#   score >= worth_look  → 🟡 worth a look (Telegram alert)
-#   below worth_look     → 🔴 rejected (archived, daily summary)
 tier_thresholds:
   strong: 75
   worth_look: 50
+company_targets:
+- name: Commerzbank
+  ats: smartrecruiters
+  id: commerzbank
