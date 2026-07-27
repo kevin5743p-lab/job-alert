@@ -4676,6 +4676,547 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-27T20:02:22.023580",
+      "strong": [
+        {
+          "score": 92,
+          "reason": "The candidate has strong skills in corporate finance, financial modeling, and valuation, and has relevant work experience in corporate banking and transaction advisory.",
+          "domain_class": "core_field",
+          "ai_score": 92,
+          "ai_reason": "The candidate has strong skills in corporate finance, financial modeling, and valuation, and has relevant work experience in corporate banking and transaction advisory.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4446101334",
+            "title": "(Junior) Referent CFO / Corporate Finance & Governance (m/w/d)",
+            "company": "DIS AG",
+            "location": "Hahn, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446101334",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 92,
+          "reason": "Outstanding fit due to relevant experience in corporate banking and transaction advisory, strong skills in financial modeling, Python, and Excel, and preferred locations matching the job posting. However, the candidate is a student and lacks direct experience in trade finance, which is a key aspect of the job.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 92,
+          "ai_reason": "Outstanding fit due to relevant experience in corporate banking and transaction advisory, strong skills in financial modeling, Python, and Excel, and preferred locations matching the job posting. However, the candidate is a student and lacks direct experience in trade finance, which is a key aspect of the job.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4445177007",
+            "title": "GTBD, Trade Finance - 6 Months Internship (Frankfurt)",
+            "company": "Mizuho",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Trade Finance Intern (m/f/d) Location: Frankfurt am Main Term : 6 months, flexible starting date Profile Summary As a Trade Finance Intern, you will support Mizuho's Global Transaction Banking Department in delivering Trade Finance solutions to European corporate clients across Continental Europe. Y",
+            "url": "https://www.linkedin.com/jobs/view/4445177007",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 92,
+          "reason": "The candidate has relevant experience in corporate banking, transaction advisory, and financial modeling, and their skills align closely with the job requirements.",
+          "domain_class": "core_field",
+          "ai_score": 92,
+          "ai_reason": "The candidate has relevant experience in corporate banking, transaction advisory, and financial modeling, and their skills align closely with the job requirements.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4400511096",
+            "title": "Praktikum Deal Advisory mit Fokus Private Equity / Venture Capital (w/m/d)",
+            "company": "BDO Germany",
+            "location": "Munich, Bavaria, Germany",
+            "description": "We shape what matters! Wir gestalten gemeinsam. Für große Ziele. Bist du bereit, Teil eines Teams zu werden, das deine individuellen Stärken erkennt und deine Ideen wertschätzt? Wir glauben, dass wir nur durch gemeinsamen Einsatz Lösungen entwickeln, die wirklich etwas bewegen. Deshalb schaffen wir ",
+            "url": "https://www.linkedin.com/jobs/view/4400511096",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has strong skills in financial modeling, DCF, and multiples valuation, and has relevant work experience in corporate banking and transaction advisory.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has strong skills in financial modeling, DCF, and multiples valuation, and has relevant work experience in corporate banking and transaction advisory.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4437107910",
+            "title": "Manager Quantitative Analytics - Financial Services (m/w/d)",
+            "company": "Deloitte",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437107910",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in Corporate Finance, with relevant experience in financial modeling, DCF and multiples valuation, and credit analysis. They also have a good understanding of financial markets and instruments, as well as experience with financial software such as Excel and Bloomberg Terminal. However, the job posting requires a Finance Manager role, which may be more senior than the candidate's current level of experience.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in Corporate Finance, with relevant experience in financial modeling, DCF and multiples valuation, and credit analysis. They also have a good understanding of financial markets and instruments, as well as experience with financial software such as Excel and Bloomberg Terminal. However, the job posting requires a Finance Manager role, which may be more senior than the candidate's current level of experience.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4445945444",
+            "title": "Finance Manager",
+            "company": "Almetra",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445945444",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442871642",
+            "title": "Internship Mergers & Acquisitions Internship start: October 2026, duration: 3-6 months",
+            "company": "Lufthansa",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Join our dynamic team and gain invaluable experience in M&A projects! We're looking for a motivated intern to make a real impact on our exciting transactions. Tasks As an M&A Intern, you'll play a vital role in managing and shaping our projects. You'll collaborate with various departments and extern",
+            "url": "https://www.linkedin.com/jobs/view/4442871642",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442898089",
+            "title": "Junior Financial Analyst",
+            "company": "Haystack",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Perform classic audits of annual and consolidated financial statements according to national and international standards Engage in audit-related consulting for diverse clients across various industries, including credit and financial institution",
+            "url": "https://www.linkedin.com/jobs/view/4442898089",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445168913",
+            "title": "Remote Quantitative Analyst (Finance)",
+            "company": "Turing",
+            "location": "Germany",
+            "description": "About Turing: Based in San Francisco, California, Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports customers in two ways: first, by accelerating frontier research with high-quality data",
+            "url": "https://www.linkedin.com/jobs/view/4445168913",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446111824",
+            "title": "Senior Structured Finance Manager:in",
+            "company": "Ascory Bank",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Hamburg Präsenz / Mobil Vollzeit Publiziert: 29.06.2026 Was Du Über Uns Wissen Solltest Als e rfahrene:r Expert:in unterstützt du unsere Corporate Clients-Team im Bereich Structured Finance . Du strukturierst, verhandelst und verwaltest komplexe Kreditgeschäfte – von Verbriefungen bis hin zu anderen",
+            "url": "https://www.linkedin.com/jobs/view/4446111824",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445162823",
+            "title": "IT Asset Manager",
+            "company": "Peraton",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "About Peraton Peraton is a next-generation national security company that drives missions of consequence spanning the globe and extending to the farthest reaches of the galaxy. As the world's leading mission capability integrator and transformative enterprise IT provider, we deliver trusted, highly ",
+            "url": "https://www.linkedin.com/jobs/view/4445162823",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445139663",
+            "title": "Business Analyst (DRWN)",
+            "company": "Darwin Recruitment",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Requirements Engineer / Business Analyst (eCommerce) (DRWN) Job title - Requirements Engineer / Business Analyst (eCommerce) Client Location - Remote (Europe) Remote work offering - 100% Client Industry - eCommerce / Digital Commerce Contract Length - TBC (freelance, start August 2026) Contract type",
+            "url": "https://www.linkedin.com/jobs/view/4445139663",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442892136",
+            "title": "Business Analyst",
+            "company": "Haystack",
+            "location": "Coblenz, Rhineland-Palatinate, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Be the central sparring partner for internal clients regarding comprehensive consulting and strategic development of SAP system landscape in Order Processing (S/4 HANA, CRM, ERP). Analyze complex business processes and actively shape the future ",
+            "url": "https://www.linkedin.com/jobs/view/4442892136",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437150902",
+            "title": "Business Analyst (w/m/d) Test- und Releasemanagement im Projektumfeld",
+            "company": "DekaBank",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Standort: Frankfurt - Niederrad Besetzung zum: 01.09.2026 Zuständige Ansprechperson für die Position: Katharina Felsenstein (recruiting@deka.de) Wir sind die DekaBank – das Wertpapierhaus der Sparkassen und einer der größten Fondsanbieter in Deutschland. Wir entwickeln erstklassige Produkte und sind",
+            "url": "https://www.linkedin.com/jobs/view/4437150902",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445978449",
+            "title": "Business Analyst Personendaten (m/w/d)",
+            "company": "Atruvia AG",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Für unser Geschäftsfeld Data. Security and Identity im Tribe Personendaten (DSIPED) suchen wir dich in Voll- oder Teilzeit ab 30 Wochenstunden als Business Analyst Personendaten (m/w/d) in München bzw. Münster. Deine Aufgaben mit Perspektiven Du analysierst und strukturierst übergreifende fachliche ",
+            "url": "https://www.linkedin.com/jobs/view/4445978449",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "skills: Risikomanagement; keyword bonus: 1; +1 core-strength terms",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446108024",
+            "title": "Risiko Controller:in – Risikoarten, Modelle & Methoden (w/m/d)",
+            "company": "Mittelbrandenburgische Sparkasse",
+            "location": "Potsdam, Brandenburg, Germany",
+            "description": "Werden Sie Teil unseres #TeamMBS Gemeinsam mit über 1.400 Kolleginnen und Kollegen gestalten wir die Zukunft und eine gemeinsame Erfolgsgeschichte. Als größte Flächensparkasse Deutschlands und Hausbank Nr. 1 begleiten wir über 750.000 Kundinnen und Kunden in allen Lebensphasen. Getreu unserem Motto ",
+            "url": "https://www.linkedin.com/jobs/view/4446108024",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445999380",
+            "title": "Risiko Controller:in - Validierung von Risikoarten (w/m/d)",
+            "company": "Mittelbrandenburgische Sparkasse",
+            "location": "Potsdam, Brandenburg, Germany",
+            "description": "Werden Sie Teil unseres #TeamMBS Gemeinsam mit über 1.400 Kolleginnen und Kollegen gestalten wir die Zukunft und eine gemeinsame Erfolgsgeschichte. Als größte Flächensparkasse Deutschlands und Hausbank Nr. 1 begleiten wir über 750.000 Kundinnen und Kunden in allen Lebensphasen. Getreu unserem Motto ",
+            "url": "https://www.linkedin.com/jobs/view/4445999380",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446105898",
+            "title": "Senior Credit & Portfolio Analyst:in",
+            "company": "Ascory Bank",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Ascory Bank AG Hamburg Präsenz / Mobil Berufserfahrung Vollzeit Publiziert: 29.06.2026 Was Du Über Uns Wissen Solltest Als spezialisiertes Kreditinstitut mit Fokus auf strukturierte Finanzierungen und Corporate Clients unterstützen wir innovative Wachstumsunternehmen – insbesondere in den Bereichen ",
+            "url": "https://www.linkedin.com/jobs/view/4446105898",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442875782",
+            "title": "(Senior) Onsite Portfolio Manager (alle Geschlechter)",
+            "company": "OBI Group Holding",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Als (Senior) Onsite Portfolio Manager:in übernimmst du die kommerzielle und produktseitige Gesamtverantwortung für unser internationales Retail Media Onsite-Portfolio. Du steuerst unser AdServer-Ekosystem als zentrale Instanz für Sponsored Product Ads sowie Onsite-Banner auf Web und App und entwicke",
+            "url": "https://www.linkedin.com/jobs/view/4442875782",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445917829",
+            "title": "Lead Consultant SAP HCM (m/w/d/x)",
+            "company": "T-Systems International",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "T-Systems International GmbH Bei T-Systems bieten wir unseren Geschäftskunden die richtigen Systemlösungen für ihr digitales Business. Mit unserem Portfolio stellen wir sicher, dass digitale Transformation Komplexität reduziert, Kosten einspart und die alltägliche Arbeit erleichtert. Unsere Schwerpu",
+            "url": "https://www.linkedin.com/jobs/view/4445917829",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "skills: Risikomanagement; keyword bonus: 1; +1 core-strength terms",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434983542",
+            "title": "Internal Auditor (w|m|d)",
+            "company": "zeb consulting",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "zeb ist eine der führenden, auf den Finanzdienstleistungssektor spezialisierten Strategie-, Management und IT- Beratungen in Europa. Wir unterstützen Banken, Versicherungen und (Tech) Dienstleister bei allen Herausforderungen und Chancen, die sich aus dem Wandel der Branche ergeben. Deine Aufgaben: ",
+            "url": "https://www.linkedin.com/jobs/view/4434983542",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445929781",
+            "title": "CEO (m/w/d) – Scale-Up / Social Impact",
+            "company": "Talent Tree",
+            "location": "Berlin, Germany",
+            "description": "💡 Über die Organisation & die Position Für eine etablierte, wirkungsorientierte Non-Profit-Organisation / Foundation auf Wachstumskurs suchen wir eine erfahrene, strategische und umsetzungsstarke Führungspersönlichkeit als Chief Executive Officer (m/w/d) . Die Organisation bewegt sich an der Schnitt",
+            "url": "https://www.linkedin.com/jobs/view/4445929781",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "skills: Deutsche Sprache; keyword bonus: 1; +1 core-strength terms",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442834673",
+            "title": "Minijob in der Zeitungszustellung (m/w/d)",
+            "company": "MEDIA Logistik GmbH",
+            "location": "Bautzen, Saxony, Germany",
+            "description": "Media Logistik GmbH Bautzen Präsenz / Mobil Transport Ihr neuer Arbeitgeber Als Zustellpartner der DDV-Mediengruppe (u.a. Sächsische Zeitung, Morgenpost Sachsen) und Dienstleister für PostModern beliefern wir täglich fast alle Haushalte im gesamten Kreis. Für zielgerichtete Zustellleistungen von Zei",
+            "url": "https://www.linkedin.com/jobs/view/4442834673",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446107408",
+            "title": "159/2026 Studiengangmanager*in (m/w/d) bilingualer Bachelor (m/w/d)",
+            "company": "Otto-von-Guericke University Magdeburg",
+            "location": "Magdeburg, Saxony-Anhalt, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446107408",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445139053",
+            "title": "SAP Cloud Finance Consultant (m/w/d) - Jobbird.com",
+            "company": "Jobster",
+            "location": "Mannheim, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445139053",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445190180",
+            "title": "Bauleiter (m/w/d)",
+            "company": "Tomic TEC GmbH",
+            "location": "Greater Leipzig Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445190180",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445115208",
+            "title": "Lagerlogistik (m/w/d) - Jobbird.com",
+            "company": "Jobster",
+            "location": "Schwäbisch Gmünd, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445115208",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444888802",
+            "title": "Product Owner - Agent Facing AI (w/m/d)",
+            "company": "1&1",
+            "location": "Montabaur, Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4444888802",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446113020",
+            "title": "Firmenkundenberatung Intensivbetreuung (m/w/d)",
+            "company": "Sparkasse Neuss",
+            "location": "Neuss, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446113020",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445998625",
+            "title": "Gruppenleitung (m/w/d) Kreditmanagement Firmenkunden - Analyse rrG",
+            "company": "Sparkasse Neuss",
+            "location": "Neuss, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445998625",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446109018",
+            "title": "Mitarbeiter Sanierung & Kreditabwicklung (m/w/d)",
+            "company": "Sparkasse Markgräflerland",
+            "location": "Weil am Rhein, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446109018",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445957620",
+            "title": "Risikomanager (m/w/d)",
+            "company": "Amadeus Fire",
+            "location": "Stade, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445957620",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445154941",
+            "title": "Group Controller (m/w/d)",
+            "company": "Rocken®",
+            "location": "Villingen-Schwenningen, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445154941",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "The candidate has some relevant skills like Excel and Python, but the job posting requires a strong focus on online marketing and tourism, which is not directly related to the candidate's field of corporate finance.",
+          "domain_class": "broader_field",
+          "ai_score": 45,
+          "ai_reason": "The candidate has some relevant skills like Excel and Python, but the job posting requires a strong focus on online marketing and tourism, which is not directly related to the candidate's field of corporate finance.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4442858386",
+            "title": "Praktikum im - Online-Marketing (Tourismus) (m/w/d)",
+            "company": "Verwoehnwochenende.de Kurzreisen",
+            "location": "Germany",
+            "description": "Sie haben Interesse an Touristik und Internet? Unsere Hotel-Marketing Agentur ist als junger und dynamischer Reisevermittler seit dem Jahre 2001 erfolgreich auf den Internet-Vertrieb von Kurzreisen tätig. Als Online-Buchungsplattform sind wir auf Romantik & Wellness- Arrangements in Deutschland und ",
+            "url": "https://www.linkedin.com/jobs/view/4442858386",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Financial Analyst' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445967578",
+            "title": "Financial Controller (m/w/d)",
+            "company": "Amadeus Fire",
+            "location": "Rhein-Neckar Metropolitan Region",
+            "description": "Referenz 16-251979 Als spezialisierter Personaldienstleister bringt die Amadeus Fire AG täglich Fach- und Führungskräfte aus dem Finanz- und Rechnungswesen mit nationalen und internationalen Unternehmen zusammen. Unser Mandant, ein renommiertes mittelständisches Industrieunternehmen mit Sitz in der ",
+            "url": "https://www.linkedin.com/jobs/view/4445967578",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
