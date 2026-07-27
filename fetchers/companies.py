@@ -58,18 +58,14 @@ COMPANIES = [
     {"name": "Apex.AI",       "ats": "greenhouse",      "id": "apexai"},
     {"name": "Helm.ai",       "ats": "greenhouse",      "id": "helmai"},
     {"name": "Aurora",        "ats": "greenhouse",      "id": "aurora"},
-    # Personio (German AV / mobility startups). NOTE (2026-07): slugs are the
-    # companies' Personio subdomains ({id}.jobs.personio.de); on-domain for the
-    # automotive profile but their live job counts weren't re-confirmed at commit
-    # time (dev IP hit Personio's rate limit). A wrong slug fails safe → []. The
-    # fetcher itself is verified against real feeds.
-    {"name": "Kopernikus Automotive", "ats": "personio", "id": "kopernikusautomotive"},
-    {"name": "Fernride",      "ats": "personio",        "id": "fernride"},
-    {"name": "Vay",           "ats": "personio",        "id": "vay"},
     # Ashby (public no-auth JSON board). Verified live 2026-07: helm-ai had 9
     # open roles, oxa is a live AV org (0 open at check). Wrong slug → [].
     {"name": "Helm.ai",       "ats": "ashby",           "id": "helm-ai"},
     {"name": "Oxa",           "ats": "ashby",           "id": "oxa"},
+    # Personio: no automotive default — AV/OEM firms use other ATSes (Personio
+    # skews German Mittelstand). The fetcher is verified and reachable per-user
+    # via personalize.py; to pin one, add {name, ats: "personio", id: <subdomain>}
+    # where <subdomain> is {id}.jobs.personio.de. (Recruitee: same, ats "recruitee".)
 ]
 
 # ATS boards keep postings open for weeks — that's fine — but anything older
@@ -367,11 +363,11 @@ def _fetch_personio(company, queries, location, cutoff):
     """
     Personio publishes every open job at one public XML feed:
         https://{id}.jobs.personio.de/xml
-    where `id` is the company's Personio subdomain (e.g. "kopernikusautomotive"
-    → kopernikusautomotive.jobs.personio.de). No auth, no HTML scraping — the
-    feed exists for companies to embed on their own site, so it's open by
-    design. This is the German mid-market's equivalent of Greenhouse's public
-    board.
+    where `id` is the company's Personio subdomain (e.g. "acme" →
+    acme.jobs.personio.de). No auth, no HTML scraping — the feed exists for
+    companies to embed on their own site, so it's open by design. This is the
+    German mid-market's equivalent of Greenhouse's public board. Unknown
+    tenants 307-redirect to personio.com, so a wrong slug fails safe → [].
 
     No date filtering beyond the zombie cap — Personio postings stay open for
     weeks and the history file handles dedup (same as Greenhouse).

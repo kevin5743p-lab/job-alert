@@ -23,14 +23,20 @@ from matchers import groq_client
 
 logger = logging.getLogger(__name__)
 
-# Liveness endpoints for the three ATSs the company fetcher supports. A
-# candidate board is kept only if its endpoint resolves (HTTP 200); this
-# drops slugs the LLM hallucinated instead of letting them 404 silently at
-# fetch time. Probes are plain public GETs — no API key, no Groq tokens.
+# Liveness endpoints for the ATSs the company fetcher supports. A candidate
+# board is kept only if its endpoint resolves (HTTP 200); this drops slugs the
+# LLM hallucinated instead of letting them 404 silently at fetch time. Probes
+# are plain public GETs — no API key, no Groq tokens. Must mirror the ATS
+# branches in fetchers/companies.py.
 ATS_PROBE = {
     "greenhouse": "https://boards-api.greenhouse.io/v1/boards/{id}/jobs?content=false",
     "smartrecruiters": "https://api.smartrecruiters.com/v1/companies/{id}/postings?limit=1",
     "lever": "https://api.lever.co/v0/postings/{id}?mode=json&limit=1",
+    "ashby": "https://api.ashbyhq.com/posting-api/job-board/{id}",
+    "recruitee": "https://{id}.recruitee.com/api/offers/",
+    # Personio redirects unknown tenants (307 → personio.com); the
+    # allow_redirects=False probe below keeps only tenants that answer 200.
+    "personio": "https://{id}.jobs.personio.de/xml",
 }
 
 # Keys the LLM must return; missing ones fail validation and abort generation.
@@ -93,14 +99,20 @@ object with EXACTLY these keys:
 - "company_targets": 8-20 objects, each {{"name","ats","id"}}, for this
   field's major employers that publish jobs on a public ATS so the system can
   fetch their career page directly. "ats" is one of "smartrecruiters",
-  "greenhouse", "lever". "id" is the employer's board identifier on that ATS:
-  for greenhouse/lever it is usually the lowercase company name with no spaces
-  (e.g. "stripe", "figma"); for smartrecruiters it is the board slug, often
-  CamelCase (the company name run together, e.g. "AcmeCorp"). Only include
-  employers you are fairly
-  confident use one of these three systems; omit government bodies, tiny
-  firms, and anyone likely on Workday, Taleo or SuccessFactors. Accuracy
-  matters more than length — return fewer solid entries, or [] if unsure.
+  "greenhouse", "lever", "ashby", "recruitee", "personio". "id" is the
+  employer's board identifier on that ATS:
+    - greenhouse / lever / ashby: usually the lowercase company name with no
+      spaces (e.g. "stripe", "figma"); ashby may use a hyphen (e.g. "helm-ai").
+    - smartrecruiters: the board slug, often CamelCase (the company name run
+      together, e.g. "AcmeCorp").
+    - recruitee: the company's recruitee subdomain (lowercase, e.g. "acme" for
+      acme.recruitee.com).
+    - personio: the company's Personio subdomain (lowercase, e.g. "acme" for
+      acme.jobs.personio.de). Common for German "Mittelstand" and startups.
+  Only include employers you are fairly confident use one of these systems;
+  omit government bodies, tiny firms, and anyone likely on Workday, Taleo or
+  SuccessFactors. Accuracy matters more than length — return fewer solid
+  entries, or [] if unsure.
 
 Target market: infer the country from the CV/additional info; if unclear,
 assume Germany and produce bilingual English+German terms throughout.
@@ -137,8 +149,12 @@ def validate_targets(candidates: List[Dict], timeout: int = 10) -> List[Dict]:
             continue
         url = ATS_PROBE[ats].format(id=cid)
         try:
+            # allow_redirects=False: a live board answers 200 directly. Personio
+            # (and some others) 307-redirect unknown tenants to a marketing page
+            # that itself returns 200 — following that would falsely keep a dead
+            # slug. A valid board never needs a redirect here.
             r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"},
-                             timeout=timeout)
+                             timeout=timeout, allow_redirects=False)
             if r.status_code == 200:
                 live.append({"name": name, "ats": ats, "id": cid})
                 logger.info(f"   ✓ {name} ({ats}:{cid})")
