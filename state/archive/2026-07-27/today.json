@@ -972,6 +972,847 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-27T07:59:36.333691",
+      "strong": [
+        {
+          "score": 92,
+          "reason": "Outstanding fit due to matching education, skills, and experience in corporate finance. The candidate's working student experience at Commerzbank and internship at Kranz & Partner Advisory demonstrate relevant hands-on experience, and their Python skills are particularly relevant for the Junior Financial Analyst role.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 92,
+          "ai_reason": "Outstanding fit due to matching education, skills, and experience in corporate finance. The candidate's working student experience at Commerzbank and internship at Kranz & Partner Advisory demonstrate relevant hands-on experience, and their Python skills are particularly relevant for the Junior Financial Analyst role.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442809514",
+            "title": "Junior Financial Analyst",
+            "company": "Haystack",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Support in tax consulting for national and international companies, public sector, or financial industry Assist in preparing tax returns and auditing tax assessments Conduct tax research and create statements and calculations Advise companies on",
+            "url": "https://www.linkedin.com/jobs/view/4442809514",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has relevant experience in corporate banking, transaction advisory, and equity research, and their skills align well with the job requirements.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant experience in corporate banking, transaction advisory, and equity research, and their skills align well with the job requirements.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442028296",
+            "title": "FP&A Analyst (m/w/d)",
+            "company": "QualityHosting",
+            "location": "Frankfurt Rhine-Main Metropolitan Area",
+            "description": "Über Uns Seit unserer Gründung 1998, ist die QualityHosting auf Microsoft-Technologien für geschäftskritische IT-Anwendungen spezialisiert. Wir sind Microsoft Cloud Solution Provider (CSP) und Deutschlands Marktführer für Hosted Exchange. Unser Unternehmen bietet ein erweitertes Cloud-Portfolio inkl",
+            "url": "https://www.linkedin.com/jobs/view/4442028296",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in corporate finance, with experience in financial modeling, DCF and multiples valuation, and credit analysis. They also have a master's degree in finance and are a CFA Level I candidate. However, the job posting requires a more senior role, and the candidate has no direct experience in business development and portfolio management.",
+          "domain_class": "core_field",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in corporate finance, with experience in financial modeling, DCF and multiples valuation, and credit analysis. They also have a master's degree in finance and are a CFA Level I candidate. However, the job posting requires a more senior role, and the candidate has no direct experience in business development and portfolio management.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442803213",
+            "title": "Finance Business Partner (m/w/d) Produktportfolio & Business Development",
+            "company": "Aristo Pharma GmbH",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Präge unser Wachstum durch deine Kompetenz und deine Persönlichkeit. Die Aristo Pharma GmbH mit Sitz in Berlin wurde 2008 gegründet und gehört heute zu den wachstumsstarken Pharmaunternehmen in Europa. Unser Anspruch ist es, Gesundheit neu zu denken und pharmazeutische Lösungen kontinuierlich weiter",
+            "url": "https://www.linkedin.com/jobs/view/4442803213",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has strong skills in financial modeling, Python, and Excel, which are highly relevant to the job. They also have experience in working student roles and internships, which is a good fit for the job's requirements. However, the job requires fluent German, which is not explicitly mentioned in the candidate's profile, but it's likely they have it given their German education and language skills.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has strong skills in financial modeling, Python, and Excel, which are highly relevant to the job. They also have experience in working student roles and internships, which is a good fit for the job's requirements. However, the job requires fluent German, which is not explicitly mentioned in the candidate's profile, but it's likely they have it given their German education and language skills.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442399235",
+            "title": "Finance Systems & BI Specialist (m/w/d)",
+            "company": "Aristo Pharma GmbH",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Präge unser Wachstum durch deine Kompetenz und deine Persönlichkeit. Die Aristo Pharma GmbH mit Sitz in Berlin wurde 2008 gegründet und gehört heute zu den wachstumsstarken Pharmaunternehmen in Europa. Unser Anspruch ist es, Gesundheit neu zu denken und pharmazeutische Lösungen kontinuierlich weiter",
+            "url": "https://www.linkedin.com/jobs/view/4442399235",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has a strong background in corporate finance, with experience in financial modeling, credit analysis, and M&A due diligence. They also have skills in Python, which is relevant to the role. However, the role requires a strong understanding of the healthcare industry, which is not directly related to the candidate's field.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has a strong background in corporate finance, with experience in financial modeling, credit analysis, and M&A due diligence. They also have skills in Python, which is relevant to the role. However, the role requires a strong understanding of the healthcare industry, which is not directly related to the candidate's field.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442817149",
+            "title": "Strategy & Operations Intern (m/w/d)",
+            "company": "myScribe GmbH",
+            "location": "Mannheim, Baden-Württemberg, Germany",
+            "description": "Worum es geht Wir bauen myScribe – eine KI-gestützte Dokumentationslösung, die Ärztinnen und Ärzten den Rücken freihalten soll, damit sie sich wieder auf das konzentrieren können, wofür sie eigentlich Medizin studiert haben: Patientinnen und Patienten. Dazu kommt myScribe Connect, mit dem wir unsere",
+            "url": "https://www.linkedin.com/jobs/view/4442817149",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445683021",
+            "title": "Private Equity Operations - Praktikant (m/w/d)",
+            "company": "M-flows",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "Einleitung Die M-flows GmbH arbeitet an der Schnittstelle zwischen Unternehmensbeteiligungen und Beratung. Einerseits investieren wir Kapital in den Aufbau von Unternehmen sowie in Buy & Build-Konzepte in den Bereichen Handwerk und Industrie. Andererseits unterstützen wir auch Private Equity Fonds u",
+            "url": "https://www.linkedin.com/jobs/view/4445683021",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442812440",
+            "title": "Praktikant (m/w/d) Private Trading Office",
+            "company": "Bankhaus DONNER & REUSCHEL",
+            "location": "Germany",
+            "description": "Als Traditionshaus mit Sitz in Hamburg und München spezialisieren wir uns auf Bankdienstleistungen für private Kunden, Unternehmer und ihre inhabergeführten mittelständischen Unternehmen und institutionelle Anleger. DONNER & REUSCHEL setzt auf qualifizierte und umfassende Beratung. Der Unternehmerge",
+            "url": "https://www.linkedin.com/jobs/view/4442812440",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444884421",
+            "title": "Founder Associate (+ Equity) at VC-backed renewable energy platform",
+            "company": "Jack & Jill",
+            "location": "Germany",
+            "description": "This is a job that Jill, our AI Recruiter, is recruiting for on behalf of one of our customers. She will pick the best candidates from Jack's network. The next step is to speak to Jack. Job Title Founder Associate Salary Not Disclosed + Equity Company Description VC-backed renewable energy platform ",
+            "url": "https://www.linkedin.com/jobs/view/4444884421",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445678080",
+            "title": "Studentisches Praktikum Finanzberatung & Vertrieb",
+            "company": "Kevin Kehr",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Du studierst und willst nicht nur zuschauen, sondern echte Praxiserfahrung sammeln? Du möchtest Verantwortung übernehmen, klare Ziele haben und herausfinden, ob Beratung, Vertrieb und unternehmerisches Arbeiten zu dir passen? Dann ist dieses Praktikum dein Einstieg in die Finanzberatung – mit strukt",
+            "url": "https://www.linkedin.com/jobs/view/4445678080",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445673996",
+            "title": "Praktikum Rechnungswesen/Finanzdienstleistungen (6 Monate)",
+            "company": "TARGOBANK",
+            "location": "Duisburg, North Rhine-Westphalia, Germany",
+            "description": "TARGOBANK als Arbeitgeberin BANK.ECHT.ANDERS. Das ist unser Anspruch als Arbeitgeberin. Wir wollen zur besten Bank für alle unsere Kund*innen und Mitarbeiter*innen werden. Deshalb suchen wir Menschen, die Lösungsorientierung und Zusammenarbeit als Stärke verstehen. Als Teil unserer Hauptverwaltung s",
+            "url": "https://www.linkedin.com/jobs/view/4445673996",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445671970",
+            "title": "Data Analyst - Finance (Remote)",
+            "company": "Jobs Ai",
+            "location": "Germany",
+            "description": "Role : Data Analyst - Finance (Remote) Location : Remote (Work from Anywhere) Job Type : Contract Payout : $40 - $65/hour Role Overview: We are hiring for one of our clients, seeking a Financial Data Analyst to work on a contract basis. This role involves analyzing financial data to support decision",
+            "url": "https://www.linkedin.com/jobs/view/4445671970",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442825426",
+            "title": "Business Analyst",
+            "company": "Haystack",
+            "location": "Coblenz, Rhineland-Palatinate, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Be the central sparring partner for internal clients regarding comprehensive consulting and strategic development of SAP system landscape in Order Processing (S/4 HANA, CRM, ERP). Analyze complex business processes and actively shape the future ",
+            "url": "https://www.linkedin.com/jobs/view/4442825426",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442825413",
+            "title": "Business Analyst Outputmanagement (m/w/d) in Teilzeit",
+            "company": "DEVK Versicherungen",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Verantwortung zu tragen, liegt in unserer DNA – und die tragen wir als Versicherer auch für unsere Mitarbeitenden und Vertriebsfachleute. Werde Teil unserer starken Community und mach mit uns jeden Tag das Leben der Menschen sorgenfreier. Auch deins. In unserem Bereich Outputmanagement gestalten wir",
+            "url": "https://www.linkedin.com/jobs/view/4442825413",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444857971",
+            "title": "Business Analyst",
+            "company": "FetchJobs.co",
+            "location": "Germany",
+            "description": "About The Company LBBW Landesbank Baden-Württemberg is one of Germany's leading financial institutions, renowned for its stability, innovation, and comprehensive range of banking services. With a rich history spanning over a century, LBBW has established itself as a trusted partner for corporate cli",
+            "url": "https://www.linkedin.com/jobs/view/4444857971",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445913062",
+            "title": "Business Analyst",
+            "company": "AgileGrid Solutions",
+            "location": "Germany",
+            "description": "About The Company As one of the largest banking IT service providers and digitalization partners in Europe, we are at the forefront of driving digital transformation within the Sparkassen-Finanzgruppe. With a dedicated team of over 5,000 employees across three strategic locations, we enable modern d",
+            "url": "https://www.linkedin.com/jobs/view/4445913062",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445637983",
+            "title": "Business Analystinnen / Business Analysten (m/w/d) - Hauptabteilung IT",
+            "company": "Berufsgenossenschaft Handel und Warenlogistik (BGHW)",
+            "location": "Bonn, North Rhine-Westphalia, Germany",
+            "description": "Die Direktion sucht für die Hauptabteilung IT am Standort Bonn zum nächstmöglichen Zeitpunkt zwei Business Analystinnen / Business Analysten (m/w/d) Ihre Aufgaben Sie erkennen Optimierungspotenziale und sorgen für spürbare Verbesserungen im Arbeitsalltag Sie stellen stabile und zuverlässige Abläufe ",
+            "url": "https://www.linkedin.com/jobs/view/4445637983",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442811344",
+            "title": "Manager, Strategy & Corporate Development | CEO office",
+            "company": "sennder",
+            "location": "Berlin, Germany",
+            "description": "sennder is Europe’s leading digital freight forwarder. In a traditional industry, we are moving fast to digitize and automate all road logistics processes. We move trucks with courage and the power of data to unlock endless and sustainable capacity at exceptional quality. We are a growing team looki",
+            "url": "https://www.linkedin.com/jobs/view/4442811344",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4432368750",
+            "title": "Treasury & Financial Planning Manager (m/w/d)",
+            "company": "MEKRA Lang Group",
+            "location": "Ergersheim, Bavaria, Germany",
+            "description": "Ihre Aufgaben: Verantwortung für die Liquiditätsplanung, -steuerung und Sicherstellung der jederzeitigen Zahlungsfähigkeit auf Konzernebene Überwachung und Optimierung der Cashflows sowie Steuerung von Bankkonten, Kreditlinien und Finanzierungsinstrumenten Unterstützung und Mitwirkung bei Finanzieru",
+            "url": "https://www.linkedin.com/jobs/view/4432368750",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444883310",
+            "title": "Senior Berater oder Manager (m/w/d)",
+            "company": "CURACON GmbH",
+            "location": "Stuttgart Region",
+            "description": "Curacon zählt mit 550+ Expert:innen an 14 Standorten zu den Top 20 Wirtschaftsprüfungsgesellschaften in Deutschland – und Top 3 in der Gesundheits- & Sozialwirtschaft . Was uns besonders macht? Wir sind EIN TEAM. Für unser wachsendes Team der Unternehmensberatung suchen wir zum nächstmöglichen Zeitp",
+            "url": "https://www.linkedin.com/jobs/view/4444883310",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444893289",
+            "title": "Business Controller (m/f/d) IT and Research & Development",
+            "company": "Speira",
+            "location": "Grevenbroich, North Rhine-Westphalia, Germany",
+            "description": "Introduction To join our team, we are looking for a Business Controller (m/f/d) IT and Research & Development As Business Controller for IT and R&D, you will take on a key role, acting as the finance and strategic sparring partner to the IT and R&D leadership teams. In this role, you’ll go beyond re",
+            "url": "https://www.linkedin.com/jobs/view/4444893289",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443997410",
+            "title": "Controller - Projects & Corporate Functions (m/w/d)",
+            "company": "BRITA Group",
+            "location": "Taunusstein, Hesse, Germany",
+            "description": "BRITA wächst – und das mit großen Ambitionen. Für die kommenden Jahre haben wir uns viel vorgenommen. Dafür brauchen wir Menschen wie dich , die Verantwortung übernehmen, Ideen einbringen und wirklich etwas bewegen wollen. Freue dich auf ein Arbeitsumfeld mit viel Gestaltungsspielraum und tollen Men",
+            "url": "https://www.linkedin.com/jobs/view/4443997410",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4435579940",
+            "title": "Group Controller (TZ 30h) im produzierenden Sektor",
+            "company": "Hays",
+            "location": "Weilheim, Bavaria, Germany",
+            "description": "Aufgaben Zentraler Ansprechpartner der zu betreuenden Tochtergesellschaften hinsichtlich des monatlichen Berichtswesens (Budgetplan, Forecast, Performance Reviews, Liquidität, Kostenplanung, Risikoanalyse, u.v.m.) Erstellen von Soll-Ist-Vergleichen, Abweichungsanalysen, Wirtschaftlichkeits- und Mach",
+            "url": "https://www.linkedin.com/jobs/view/4435579940",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4414313072",
+            "title": "Senior Consultant, Advisory (m/f/d)",
+            "company": "EPAM Systems",
+            "location": "Berlin, Berlin, Germany",
+            "description": "We’re looking for a Senior Consultant, Advisory to join our team in Berlin, Frankfurt and Munich , Germany in a hybrid working mode. In this role, you will conduct structured analysis across complex client engagements and translate findings into strategic insights that directly inform executive deci",
+            "url": "https://www.linkedin.com/jobs/view/4414313072",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445695032",
+            "title": "Senior Referent/-in MaRisk Compliance (m/w/d) bei der Sparkasse KölnBonn",
+            "company": "Sparkasse KölnBonn",
+            "location": "Bonn, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445695032",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445912090",
+            "title": "Compliance Manager (w/m/d)",
+            "company": "GETEC ENERGIE",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445912090",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445659864",
+            "title": "Finance Specialist Controlling & Processes (m/w/d)",
+            "company": "STOPA Anlagenbau GmbH",
+            "location": "Achern, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445659864",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445672877",
+            "title": "GESCHÄFTSSTELLE (SÜDSTADT)",
+            "company": "AWO Region Hannover e.V.",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445672877",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445675405",
+            "title": "Werde Teil einer neuen Generation Finanzplaner – digital, leistungsorientiert, frei (German Speaking)",
+            "company": "Kevin Kehr",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445675405",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 3,
+          "reason": "title fits 'Praktikum Asset Management'; keyword bonus: 1; (seniority warning); +1 core-strength terms",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4418721200",
+            "title": "Director Asset Management (m/w/d)",
+            "company": "Motel One Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4418721200",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'data scientist'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442810325",
+            "title": "Data Scientist (m/w/d)",
+            "company": "MERKUR GROUP",
+            "location": "Espelkamp, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442810325",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4436703582",
+            "title": "Asset Manager (m/w/d) – C&I PV-Aufdachanlagen",
+            "company": "VODASUN® Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436703582",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445910272",
+            "title": "Controller (m/w/d)",
+            "company": "ACTEGA",
+            "location": "Lehrte, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445910272",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442379967",
+            "title": "Medienmanager (m/w/d)",
+            "company": "Wirtschaftsrat der CDU e.V.",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442379967",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445671372",
+            "title": "Finanzdienstleister (m/w/d) in Teilzeit",
+            "company": "NOVENTI Health SE",
+            "location": "Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445671372",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444860525",
+            "title": "Ingenieurin/ Ingenieur (w/m/d) der Elektrotechnik für die Museumsinsel Berlin (039.1-26)",
+            "company": "Bundesamt für Bauwesen und Raumordnung",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4444860525",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445669445",
+            "title": "Handelsvertreter (m/w/d)",
+            "company": "wattline GmbH",
+            "location": "Fulda, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445669445",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445657016",
+            "title": "Immobilienverkaufsberater (m/w/d)",
+            "company": "Garant Immobilien GmbH",
+            "location": "Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445657016",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445644967",
+            "title": "Vertriebsfachkraft im Immobilienbereich (m/w/d)",
+            "company": "Garant Immobilien GmbH",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445644967",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445643949",
+            "title": "Immobilienvermittler (m/w/d)",
+            "company": "Garant Immobilien GmbH",
+            "location": "Deggendorf, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445643949",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445640985",
+            "title": "Immobilienexperte (m/w/d)",
+            "company": "Garant Immobilien GmbH",
+            "location": "Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445640985",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444852546",
+            "title": "TGA-Referentin/ TGA-Referent (w/m/d) im Fachbereich Elektrotechnik für Kulturbauten des Bundes (109.5-25)",
+            "company": "Bundesamt für Bauwesen und Raumordnung",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4444852546",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445655760",
+            "title": "Warenverräumer (w/m/d) 6 Std./Wo. in 13405 Berlin",
+            "company": "dm-drogerie markt Deutschland",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445655760",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442387236",
+            "title": "Senior Controller (m/w/d)",
+            "company": "Ostfriesische Volksbank eG",
+            "location": "Leer (East Friesland), Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442387236",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445688037",
+            "title": "Votierer (m/w/d), Schwerpunkt Sonderfinanzierungen",
+            "company": "VR-Bank Ludwigsburg",
+            "location": "Ludwigsburg, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445688037",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445653491",
+            "title": "Kreditmitarbeiter (m/w/d)",
+            "company": "Volksbank eG Hildesheim-Lehrte-Pattensen",
+            "location": "Pattensen, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445653491",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443359686",
+            "title": "Mittelstands- und Gewerbekundenbetreuung (m/w/d)",
+            "company": "Freisinger Bank eG",
+            "location": "Eching, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4443359686",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445677171",
+            "title": "Referent/-in Meldewesen (m/w/d) bei der Sparkasse KölnBonn",
+            "company": "Sparkasse KölnBonn",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445677171",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4426485819",
+            "title": "Anlagenbuchhalter / Hauptbuchhalter / General Ledger Accountant (m/w/d)",
+            "company": "HSE - Home Shopping Europe GmbH",
+            "location": "Ismaning, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4426485819",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439061408",
+            "title": "Technical Accounting & IFRS Manager (m/w/d)",
+            "company": "Page Executive",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439061408",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442398200",
+            "title": "Referent Bilanzierung/ Abschlüsse (m|w|d)",
+            "company": "enviaM-Gruppe",
+            "location": "Chemnitz, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442398200",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "preferred location; (seniority warning)",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4425865236",
+            "title": "Head of Accounting (m/w/d)",
+            "company": "GALVANY",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4425865236",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442820251",
+            "title": "Head of Accounting / Senior Bilanzbuchhalter (m/w/d) | München | bis 100.000 €",
+            "company": "brainmatch.io",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442820251",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 22,
+          "reason": "title fits 'Financial Analyst'; keyword bonus: 1 (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4434827463",
+            "title": "Finance Integration Analyst (w/m/d)",
+            "company": "Harris D-A-CH",
+            "location": "Germany",
+            "description": "📍 Standort: Hybrid oder Remote (Mecklenburg-Vorpommern / Brandenburg) ⏱️ Anstellung: Vollzeit ⭐ Business Unit: Harris DACH Über uns Die Harris Computer Germany GmbH ist Teil der internationalen Harris Computer Gruppe, einem Unternehmen der Constellation Software Inc. Als einer der weltweit führenden",
+            "url": "https://www.linkedin.com/jobs/view/4434827463",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Financial Analyst' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4442827475",
+            "title": "Werkstudent Business Model Analyst (m/w/d) – Fokus (digitale) Geschäftsmodelle",
+            "company": "REMBE® GmbH Safety+Control",
+            "location": "Brilon, North Rhine-Westphalia, Germany",
+            "description": "Du kannst Business Model Canvas (BMC) und Value Proposition Canvas (VPC) für neue Geschäftsideen und Startups entwickeln und ausarbeiten weitere potenzielle Geschäftsmodelle identifizieren und bewerten sowie entsprechende BMC und VPC erstellen Interviews mit internen und externen Stakeholdern zur Va",
+            "url": "https://www.linkedin.com/jobs/view/4442827475",
+            "published": "2026-07-27T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
