@@ -1,0 +1,102 @@
+/* content.css — styles for the floating button + slide-in panel.
+   IDs/classes are prefixed jobcopilot-/jc- to avoid clashing with LinkedIn. */
+
+#jobcopilot-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2147483646;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 22px;
+  background: #4f46e5;
+  color: #fff;
+  font: 600 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+#jobcopilot-fab:hover { background: #4338ca; }
+
+#jobcopilot-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 420px;
+  max-width: 92vw;
+  height: 100vh;
+  z-index: 2147483647;
+  background: #ffffff;
+  color: #1f2328;
+  box-shadow: -6px 0 24px rgba(0, 0, 0, 0.18);
+  transform: translateX(100%);
+  transition: transform 0.22s ease;
+  display: flex;
+  flex-direction: column;
+  font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+#jobcopilot-panel.open { transform: translateX(0); }
+
+#jobcopilot-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #4f46e5;
+  color: #fff;
+  flex: 0 0 auto;
+}
+#jobcopilot-panel-title { font-weight: 600; font-size: 15px; }
+#jobcopilot-close {
+  border: none; background: transparent; color: #fff;
+  font-size: 16px; cursor: pointer;
+}
+
+#jobcopilot-panel-body { padding: 16px; overflow-y: auto; }
+
+#jobcopilot-panel .jc-msg { color: #57606a; }
+#jobcopilot-panel .jc-dim { color: #8b949e; }
+
+#jobcopilot-panel .jc-section { margin-bottom: 16px; }
+#jobcopilot-panel h4 {
+  margin: 0 0 6px; font-size: 12px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: #6e7781;
+}
+#jobcopilot-panel .jc-fit {
+  background: #f0f0ff; border-left: 3px solid #4f46e5;
+  padding: 8px 10px; border-radius: 4px; font-weight: 500;
+}
+#jobcopilot-panel p { margin: 0 0 6px; }
+
+#jobcopilot-panel ul { margin: 0; padding-left: 0; list-style: none; }
+#jobcopilot-panel .jc-exp li { margin-bottom: 10px; }
+#jobcopilot-panel .jc-bullet { font-weight: 500; }
+#jobcopilot-panel .jc-source {
+  font-size: 12px; color: #57606a; margin-top: 2px; font-style: italic;
+}
+
+#jobcopilot-panel .jc-chip {
+  display: inline-block; margin: 0 4px 4px 0; padding: 2px 9px;
+  border-radius: 12px; font-size: 12px;
+}
+#jobcopilot-panel .jc-match { background: #e6f4ea; color: #1a7f37; }
+#jobcopilot-panel .jc-gap { background: #fff1e5; color: #bc4c00; }
+
+#jobcopilot-panel .jc-letter {
+  white-space: pre-wrap; background: #f6f8fa; border: 1px solid #eaeef2;
+  border-radius: 6px; padding: 10px; font-family: inherit; font-size: 13px;
+}
+#jobcopilot-panel .jc-copy {
+  margin-top: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer;
+  border: 1px solid #d0d7de; border-radius: 6px; background: #f6f8fa; color: #1f2328;
+}
+#jobcopilot-panel .jc-copy:hover { background: #eaeef2; }
+
+#jobcopilot-panel .jc-warn {
+  background: #fff8c5; border: 1px solid #eac54f; border-radius: 6px;
+  padding: 10px; font-size: 13px;
+}
+#jobcopilot-panel .jc-warn ul { list-style: disc; padding-left: 18px; margin-top: 6px; }
+#jobcopilot-panel .jc-okcheck {
+  background: #e6f4ea; border: 1px solid #4ac26b; border-radius: 6px;
+  padding: 10px; color: #1a7f37;
+}
