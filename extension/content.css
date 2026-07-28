@@ -53,6 +53,13 @@
 
 #jobcopilot-panel-body { padding: 16px; overflow-y: auto; }
 
+#jobcopilot-panel .jc-toolbar { margin-bottom: 14px; }
+#jobcopilot-panel .jc-toolbar #jc-download {
+  width: 100%; padding: 9px; border: none; border-radius: 6px;
+  background: #4f46e5; color: #fff; font-weight: 600; font-size: 13px; cursor: pointer;
+}
+#jobcopilot-panel .jc-toolbar #jc-download:hover { background: #4338ca; }
+
 #jobcopilot-panel .jc-msg { color: #57606a; }
 #jobcopilot-panel .jc-dim { color: #8b949e; }
 
