@@ -44,15 +44,35 @@
       ".jobs-unified-top-card__primary-description",
       ".topcard__flavor--bullet",
     ]);
-    const description = pickText([
-      "#job-details",
-      ".jobs-description__content .jobs-box__html-content",
-      ".jobs-description-content__text",
-      ".jobs-description__container",
-      ".jobs-description",
-      ".show-more-less-html__markup",
-    ]);
+    const description = readDescription();
     return { title, company, location, description };
+  }
+
+  // LinkedIn ships shifting, sometimes-hashed class names and two layouts, so
+  // instead of trusting one exact selector we gather every plausible container
+  // and keep the LONGEST text block. That survives most markup reshuffles: as
+  // long as ONE broad selector still wraps the description, we find it.
+  function readDescription() {
+    const broad = document.querySelectorAll(
+      "#job-details, " +
+      "[class*='jobs-description'], " +
+      "[class*='jobs-box__html-content'], " +
+      "[class*='description__text'], " +
+      ".show-more-less-html__markup, " +
+      "article"
+    );
+    let best = "";
+    broad.forEach((el) => {
+      const t = (el.innerText || el.textContent || "").trim();
+      if (t.length > best.length) best = t;
+    });
+    if (best.length >= 200) return best;
+
+    // Last resort: the main job column. Noisier (may include "Meet the hiring
+    // team" etc.) but the model tolerates it and it's better than nothing.
+    const main = document.querySelector("main") || document.body;
+    const mainText = (main.innerText || "").trim();
+    return mainText.length > best.length ? mainText.slice(0, 6000) : best;
   }
 
   // ── Floating button ──────────────────────────────────────────────────────
