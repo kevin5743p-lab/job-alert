@@ -21,6 +21,30 @@ function setStatus(el, text, ok = true) {
   el.style.color = ok ? "#1a7f37" : "#bc4c00";
 }
 
+// Check the fields before calling Supabase. Without this, an empty email makes
+// the API read the request as an anonymous sign-in and reply "Anonymous
+// sign-ins are disabled" — technically true, but baffling to the user.
+function credentials() {
+  const email = els.email.value.trim();
+  const password = els.password.value;
+  if (!email) {
+    setStatus(els.authStatus, "Enter your email address first.", false);
+    els.email.focus();
+    return null;
+  }
+  if (!password) {
+    setStatus(els.authStatus, "Enter a password first.", false);
+    els.password.focus();
+    return null;
+  }
+  if (password.length < 6) {
+    setStatus(els.authStatus, "Password must be at least 6 characters.", false);
+    els.password.focus();
+    return null;
+  }
+  return { email, password };
+}
+
 // ── initial paint ───────────────────────────────────────────────────────────
 async function refreshAuthUI() {
   const session = await sb.getSession();
@@ -54,9 +78,11 @@ async function init() {
 
 // ── auth actions ────────────────────────────────────────────────────────────
 els.signin.addEventListener("click", async () => {
+  const creds = credentials();
+  if (!creds) return;
   setStatus(els.authStatus, "Signing in…");
   try {
-    await sb.signIn(els.email.value.trim(), els.password.value);
+    await sb.signIn(creds.email, creds.password);
     await refreshAuthUI();
     setStatus(els.authStatus, "Signed in ✓");
     const profile = await sb.getProfile();
@@ -67,9 +93,11 @@ els.signin.addEventListener("click", async () => {
 });
 
 els.signup.addEventListener("click", async () => {
+  const creds = credentials();
+  if (!creds) return;
   setStatus(els.authStatus, "Creating account…");
   try {
-    const session = await sb.signUp(els.email.value.trim(), els.password.value);
+    const session = await sb.signUp(creds.email, creds.password);
     await refreshAuthUI();
     setStatus(els.authStatus, session
       ? "Account created ✓ — now add your CV below and Save."
