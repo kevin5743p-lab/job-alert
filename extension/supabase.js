@@ -152,7 +152,10 @@ export async function saveTailoredResult(job, packet, warnings) {
 // Track the job in the application pipeline. Upserts on (user_id, job_url) so
 // re-tailoring the same posting updates that row instead of duplicating it.
 export async function upsertApplication(job, tailoredResultId) {
-  if (!job.url) return null; // the unique index only covers non-empty URLs
+  // The URL is the dedup key. Without one we skip tracking entirely: job_url
+  // would be NULL, and NULLs are distinct in the unique index, so every re-tailor
+  // would pile up another row instead of updating one.
+  if (!job.url) return null;
   const rows = await rest("/applications?on_conflict=user_id,job_url", {
     method: "POST",
     body: {
