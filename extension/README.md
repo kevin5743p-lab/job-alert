@@ -14,15 +14,29 @@ LinkedIn job page
   └─ content.js      reads the job off the page, injects the button + panel
        │ (chrome message)
        ▼
-     background.js   reads your key + CV from local storage, calls Groq,
-       │             runs the no-fabrication grounding check
-       ▼
-     tailor_core.js  the shared "brain" — same prompt/logic as tailor.py
+     background.js   gets your CV (Supabase profile, or local fallback),
+       │             calls Groq, runs the no-fabrication grounding check,
+       │             saves the result + tracks the job
+       ├─ tailor_core.js  the shared "brain" — same prompt/logic as tailor.py
+       └─ supabase.js     auth + storage (REST/Auth, no SDK bundle)
 ```
 
-Your Groq key and CV live in `chrome.storage.local` (this browser only) and never
-touch the web page. The Groq call is made from the background worker, from your
-own machine and IP.
+**Where your data lives**
+
+| Thing | Where | Why |
+|---|---|---|
+| Groq API key | `chrome.storage.local` only | A secret — never leaves your machine |
+| CV | Supabase profile (+ local fallback) | Follows you across devices |
+| Tailored results & tracked jobs | Supabase | History + application pipeline |
+
+The Groq call runs from the background worker — your own machine and IP, never
+the page context. Every Supabase table has Row Level Security, so each account
+can only ever read or write its own rows.
+
+## Account (optional)
+
+Sign in from the popup to sync your CV and save results. Without an account the
+extension still works — the CV just stays local and nothing is saved.
 
 ## Install (load unpacked)
 
