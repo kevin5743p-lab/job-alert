@@ -26,22 +26,32 @@
   }
 
   function readJob() {
+    // Partial class matching, because LinkedIn's exact class names differ
+    // between the /jobs/view page and the search split-view (and change over
+    // time). The document.title fallback below is layout-independent.
+    const fromTitleTag = parseDocumentTitle();
+
     const title = pickText([
-      ".job-details-jobs-unified-top-card__job-title",
-      ".jobs-unified-top-card__job-title",
+      "[class*='job-details-jobs-unified-top-card__job-title']",
+      "[class*='jobs-unified-top-card__job-title']",
+      ".jobs-search__job-details h1",
       "h1.t-24",
       ".topcard__title",
       "h1",
-    ]);
+    ]) || fromTitleTag.title;
+
     const company = pickText([
-      ".job-details-jobs-unified-top-card__company-name a",
-      ".job-details-jobs-unified-top-card__company-name",
-      ".jobs-unified-top-card__company-name",
+      "[class*='job-details-jobs-unified-top-card__company-name'] a",
+      "[class*='job-details-jobs-unified-top-card__company-name']",
+      "[class*='jobs-unified-top-card__company-name']",
       ".topcard__org-name-link",
-    ]);
+      "[class*='company-name']",
+    ]) || fromTitleTag.company;
+
     const location = pickText([
-      ".job-details-jobs-unified-top-card__primary-description-container",
-      ".jobs-unified-top-card__primary-description",
+      "[class*='job-details-jobs-unified-top-card__primary-description']",
+      "[class*='jobs-unified-top-card__primary-description']",
+      "[class*='top-card__tertiary-description']",
       ".topcard__flavor--bullet",
     ]);
     const description = readDescription();
@@ -49,6 +59,17 @@
     // applications table, so the same posting must always produce the same URL.
     const url = location_url();
     return { title, company, location, description, url, source: "linkedin" };
+  }
+
+  // LinkedIn sets the tab title to "<job> | <company> | LinkedIn" on both
+  // layouts, so it's a reliable last resort when the DOM classes have moved.
+  function parseDocumentTitle() {
+    const parts = (document.title || "")
+      .split("|").map((p) => p.trim())
+      .filter((p) => p && !/^linkedin$/i.test(p));
+    if (parts.length >= 2) return { title: parts[0], company: parts[1] };
+    if (parts.length === 1) return { title: parts[0], company: "" };
+    return { title: "", company: "" };
   }
 
   function location_url() {
