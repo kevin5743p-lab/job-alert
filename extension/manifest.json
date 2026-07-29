@@ -6,8 +6,7 @@
   "permissions": ["storage"],
   "host_permissions": [
     "https://api.groq.com/*",
-    "https://jiryqdcmukmbflahtptv.supabase.co/*",
-    "https://*.linkedin.com/*"
+    "https://jiryqdcmukmbflahtptv.supabase.co/*"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -19,7 +18,20 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://*.linkedin.com/jobs/*"],
+      "matches": [
+        "https://*.linkedin.com/jobs/*",
+        "https://*.indeed.com/*",
+        "https://*.myworkdayjobs.com/*",
+        "https://*.myworkdaysite.com/*",
+        "https://boards.greenhouse.io/*",
+        "https://job-boards.greenhouse.io/*",
+        "https://jobs.ashbyhq.com/*",
+        "https://jobs.lever.co/*",
+        "https://*.jobs.personio.de/*",
+        "https://*.recruitee.com/*",
+        "https://jobs.smartrecruiters.com/*",
+        "https://careers.smartrecruiters.com/*"
+      ],
       "js": ["content.js"],
       "css": ["content.css"],
       "run_at": "document_idle"

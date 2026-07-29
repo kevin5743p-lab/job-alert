@@ -25,76 +25,160 @@
     return "";
   }
 
-  function readJob() {
-    // Partial class matching, because LinkedIn's exact class names differ
-    // between the /jobs/view page and the search split-view (and change over
-    // time). The document.title fallback below is layout-independent.
-    const fromTitleTag = parseDocumentTitle();
+  // ── Per-site readers ──────────────────────────────────────────────────────
+  // Each entry only needs to say where the metadata lives; the description
+  // falls back to the generic longest-block heuristic, and missing title/company
+  // fall back to parsing document.title. Selectors use partial class matching
+  // ([class*=...]) because these sites hash or version their class names.
+  const SITES = {
+    linkedin: {
+      match: (h) => h.endsWith("linkedin.com"),
+      title: ["[class*='job-details-jobs-unified-top-card__job-title']",
+              "[class*='jobs-unified-top-card__job-title']",
+              ".jobs-search__job-details h1", "h1.t-24", ".topcard__title"],
+      company: ["[class*='job-details-jobs-unified-top-card__company-name'] a",
+                "[class*='job-details-jobs-unified-top-card__company-name']",
+                "[class*='jobs-unified-top-card__company-name']",
+                ".topcard__org-name-link"],
+      location: ["[class*='job-details-jobs-unified-top-card__primary-description']",
+                 "[class*='jobs-unified-top-card__primary-description']",
+                 ".topcard__flavor--bullet"],
+      description: ["#job-details", "[class*='jobs-description']",
+                    "[class*='jobs-box__html-content']", ".show-more-less-html__markup"],
+      canonicalUrl: () => {
+        const m = window.location.pathname.match(/\/jobs\/view\/(\d+)/);
+        if (m) return `https://www.linkedin.com/jobs/view/${m[1]}/`;
+        const id = new URLSearchParams(window.location.search).get("currentJobId");
+        return id ? `https://www.linkedin.com/jobs/view/${id}/` : null;
+      },
+    },
+    workday: {
+      // Workday renders the posting inside a data-automation-id scaffold, which
+      // is far more stable than its generated class names.
+      match: (h) => h.includes("myworkdayjobs.com") || h.includes("myworkdaysite.com"),
+      title: ["[data-automation-id='jobPostingHeader']", "h1", "h2"],
+      company: [],   // not in the DOM — comes from document.title / the tenant
+      location: ["[data-automation-id='locations']",
+                 "[data-automation-id='jobPostingLocation']"],
+      description: ["[data-automation-id='jobPostingDescription']",
+                    "[data-automation-id='job-posting-details']"],
+    },
+    indeed: {
+      match: (h) => h.includes("indeed."),
+      title: ["[data-testid='jobsearch-JobInfoHeader-title']",
+              ".jobsearch-JobInfoHeader-title", "h1"],
+      company: ["[data-testid='inlineHeader-companyName']",
+                "[data-company-name='true']", "[class*='JobInfoHeader-companyName']"],
+      location: ["[data-testid='inlineHeader-companyLocation']",
+                 "[data-testid='job-location']"],
+      description: ["#jobDescriptionText", "[class*='jobsearch-JobComponent-description']"],
+      canonicalUrl: () => {
+        const jk = new URLSearchParams(window.location.search).get("jk");
+        return jk ? `${window.location.origin}/viewjob?jk=${jk}` : null;
+      },
+    },
+    greenhouse: {
+      match: (h) => h.includes("greenhouse.io"),
+      title: [".app-title", "h1.section-header", "h1"],
+      company: [".company-name", "[class*='company-name']"],
+      location: [".location", "[class*='location']"],
+      description: ["#content", ".job__description", "[class*='job-post']"],
+    },
+    ashby: {
+      match: (h) => h.includes("ashbyhq.com"),
+      title: ["h1", "[class*='JobPostHeader'] h1"],
+      company: ["[class*='CompanyName']", "header a"],
+      location: ["[class*='JobPostHeader'] [class*='location']"],
+      description: ["[class*='JobPostDescription']", "[class*='ashby-job-posting']", "main"],
+    },
+    lever: {
+      match: (h) => h.includes("lever.co"),
+      title: [".posting-headline h2", "h2"],
+      company: [".main-header-logo img", "[class*='company']"],
+      location: [".posting-categories .location", ".location"],
+      description: [".section-wrapper.page-full-width", "[class*='section-wrapper']"],
+    },
+    personio: {
+      match: (h) => h.includes("jobs.personio.de"),
+      title: ["h1", "[class*='job-title']"],
+      company: ["[class*='company']"],
+      location: ["[class*='office']", "[class*='location']"],
+      description: ["[class*='job-description']", "main", "article"],
+    },
+    recruitee: {
+      match: (h) => h.includes("recruitee.com"),
+      title: ["h1", "[class*='job-title']"],
+      company: ["[class*='company-name']"],
+      location: ["[class*='job-location']", "[class*='location']"],
+      description: ["[class*='job-description']", "main", "article"],
+    },
+    smartrecruiters: {
+      match: (h) => h.includes("smartrecruiters.com"),
+      title: ["h1", "[class*='job-title']"],
+      company: ["[class*='company-name']", "[itemprop='hiringOrganization']"],
+      location: ["[class*='job-location']", "[itemprop='jobLocation']"],
+      description: ["[itemprop='description']", "[class*='job-sections']", "main"],
+    },
+  };
 
-    const title = pickText([
-      "[class*='job-details-jobs-unified-top-card__job-title']",
-      "[class*='jobs-unified-top-card__job-title']",
-      ".jobs-search__job-details h1",
-      "h1.t-24",
-      ".topcard__title",
-      "h1",
-    ]) || fromTitleTag.title;
-
-    const company = pickText([
-      "[class*='job-details-jobs-unified-top-card__company-name'] a",
-      "[class*='job-details-jobs-unified-top-card__company-name']",
-      "[class*='jobs-unified-top-card__company-name']",
-      ".topcard__org-name-link",
-      "[class*='company-name']",
-    ]) || fromTitleTag.company;
-
-    const location = pickText([
-      "[class*='job-details-jobs-unified-top-card__primary-description']",
-      "[class*='jobs-unified-top-card__primary-description']",
-      "[class*='top-card__tertiary-description']",
-      ".topcard__flavor--bullet",
-    ]);
-    const description = readDescription();
-    // Canonical job URL (strip tracking params) — it's the dedup key for the
-    // applications table, so the same posting must always produce the same URL.
-    const url = location_url();
-    return { title, company, location, description, url, source: "linkedin" };
+  function currentSite() {
+    const host = window.location.hostname;
+    for (const [name, cfg] of Object.entries(SITES)) {
+      if (cfg.match(host)) return [name, cfg];
+    }
+    return ["generic", {}];
   }
 
-  // LinkedIn sets the tab title to "<job> | <company> | LinkedIn" on both
-  // layouts, so it's a reliable last resort when the DOM classes have moved.
+  function readJob() {
+    const [name, cfg] = currentSite();
+    // document.title is "<job> | <company> | <site>" on nearly every job board,
+    // so it's a layout-independent backstop when selectors miss.
+    const fromTitleTag = parseDocumentTitle();
+
+    const title = pickText(cfg.title || []) || fromTitleTag.title;
+    const company = pickText(cfg.company || []) || fromTitleTag.company;
+    const location = pickText(cfg.location || []);
+    const description = readDescription(cfg.description || []);
+    // Canonical URL is the dedup key for the applications table: the same
+    // posting must always produce the same URL. Sites without a rule fall back
+    // to the path (query strings are usually tracking noise).
+    const url = (cfg.canonicalUrl && cfg.canonicalUrl()) ||
+                (window.location.origin + window.location.pathname);
+    return { title, company, location, description, url, source: name };
+  }
+
+  // Job boards title their tabs "<job> | <company> | <site>", so this is a
+  // reliable last resort when the DOM classes have moved. The site name is
+  // dropped so it can't be mistaken for the employer.
+  const SITE_WORDS = /^(linkedin|indeed|greenhouse|ashby|lever|personio|recruitee|smartrecruiters|workday|jobs?|careers?)$/i;
+
   function parseDocumentTitle() {
     const parts = (document.title || "")
-      .split("|").map((p) => p.trim())
-      .filter((p) => p && !/^linkedin$/i.test(p));
+      .split(/[|–—]|\sat\s/).map((p) => p.trim())
+      .filter((p) => p && !SITE_WORDS.test(p));
     if (parts.length >= 2) return { title: parts[0], company: parts[1] };
     if (parts.length === 1) return { title: parts[0], company: "" };
     return { title: "", company: "" };
   }
 
-  function location_url() {
-    const m = window.location.pathname.match(/\/jobs\/view\/(\d+)/);
-    if (m) return `https://www.linkedin.com/jobs/view/${m[1]}/`;
-    const id = new URLSearchParams(window.location.search).get("currentJobId");
-    return id ? `https://www.linkedin.com/jobs/view/${id}/`
-              : window.location.origin + window.location.pathname;
-  }
+  // Job boards hash and reshuffle their class names, so rather than trusting one
+  // exact selector we gather every plausible container — the site's own hints
+  // plus generic ones — and keep the LONGEST text block. As long as ONE of them
+  // still wraps the description, we find it.
+  function readDescription(siteSelectors) {
+    const selectors = [
+      ...(siteSelectors || []),
+      "#job-details",
+      "[class*='jobs-description']",
+      "[class*='job-description']",
+      "[class*='description__text']",
+      "[data-automation-id='jobPostingDescription']",
+      "#jobDescriptionText",
+      "article",
+    ].join(", ");
 
-  // LinkedIn ships shifting, sometimes-hashed class names and two layouts, so
-  // instead of trusting one exact selector we gather every plausible container
-  // and keep the LONGEST text block. That survives most markup reshuffles: as
-  // long as ONE broad selector still wraps the description, we find it.
-  function readDescription() {
-    const broad = document.querySelectorAll(
-      "#job-details, " +
-      "[class*='jobs-description'], " +
-      "[class*='jobs-box__html-content'], " +
-      "[class*='description__text'], " +
-      ".show-more-less-html__markup, " +
-      "article"
-    );
     let best = "";
-    broad.forEach((el) => {
+    document.querySelectorAll(selectors).forEach((el) => {
       const t = (el.innerText || el.textContent || "").trim();
       if (t.length > best.length) best = t;
     });
