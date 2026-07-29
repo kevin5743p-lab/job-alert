@@ -45,7 +45,18 @@
       ".topcard__flavor--bullet",
     ]);
     const description = readDescription();
-    return { title, company, location, description };
+    // Canonical job URL (strip tracking params) — it's the dedup key for the
+    // applications table, so the same posting must always produce the same URL.
+    const url = location_url();
+    return { title, company, location, description, url, source: "linkedin" };
+  }
+
+  function location_url() {
+    const m = window.location.pathname.match(/\/jobs\/view\/(\d+)/);
+    if (m) return `https://www.linkedin.com/jobs/view/${m[1]}/`;
+    const id = new URLSearchParams(window.location.search).get("currentJobId");
+    return id ? `https://www.linkedin.com/jobs/view/${id}/`
+              : window.location.origin + window.location.pathname;
   }
 
   // LinkedIn ships shifting, sometimes-hashed class names and two layouts, so
@@ -143,7 +154,7 @@
         }
         return;
       }
-      renderResult(job, resp.result, resp.warnings || []);
+      renderResult(job, resp.result, resp.warnings || [], resp);
     });
   }
 
@@ -206,7 +217,7 @@
     w.document.close();
   }
 
-  function renderResult(job, r, warnings) {
+  function renderResult(job, r, warnings, meta = {}) {
     const chips = (arr, cls) =>
       (arr || []).map((x) => `<span class="jc-chip ${cls}">${esc(x)}</span>`).join("") || "<span class='jc-dim'>—</span>";
 
@@ -221,8 +232,16 @@
          supported by your CV — review before using:<ul>${warnings.map((w) => `<li>${esc(w)}</li>`).join("")}</ul></div>`
       : `<div class="jc-okcheck">✅ Grounding check passed — every point traces to your CV.</div>`;
 
+    const savedNote = meta.saved
+      ? `<div class="jc-saved">☁️ Saved to your account &amp; tracked as <b>tailored</b>.</div>`
+      : meta.signedIn
+        ? `<div class="jc-saved jc-saved-warn">⚠️ Couldn't save to your account (result still shown).</div>`
+        : `<div class="jc-saved jc-saved-warn">Not signed in — this result isn't saved.
+           Sign in from the extension icon to keep a history.</div>`;
+
     openPanel(`
       <div class="jc-toolbar"><button id="jc-download" type="button">⬇ Download as PDF</button></div>
+      ${savedNote}
 
       <div class="jc-section"><div class="jc-fit">${esc(r.fit_summary)}</div></div>
 

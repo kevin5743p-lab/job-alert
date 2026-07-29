@@ -15,22 +15,49 @@
       width: 100%; box-sizing: border-box; padding: 7px 8px;
       border: 1px solid #d0d7de; border-radius: 6px; font: inherit;
     }
-    textarea { height: 150px; resize: vertical; font-size: 12px; }
+    textarea { height: 130px; resize: vertical; font-size: 12px; }
     .row { display: flex; gap: 8px; }
     .row > div { flex: 1; }
     button {
-      margin-top: 12px; width: 100%; padding: 8px; border: none; border-radius: 6px;
+      margin-top: 10px; width: 100%; padding: 8px; border: none; border-radius: 6px;
       background: #4f46e5; color: #fff; font-weight: 600; cursor: pointer;
     }
     button:hover { background: #4338ca; }
-    #status { margin-top: 8px; font-size: 12px; color: #1a7f37; min-height: 16px; }
+    button.secondary { background: #f6f8fa; color: #1f2328; border: 1px solid #d0d7de; }
+    button.secondary:hover { background: #eaeef2; }
+    .status { margin-top: 8px; font-size: 12px; min-height: 16px; }
     .hint { font-size: 11px; color: #8b949e; margin-top: 2px; }
-    a { color: #4f46e5; }
+    fieldset { border: 1px solid #eaeef2; border-radius: 8px; padding: 10px; margin: 0 0 14px; }
+    legend { font-size: 11px; color: #6e7781; text-transform: uppercase; letter-spacing: .04em; padding: 0 4px; }
+    .who { font-size: 12px; color: #1a7f37; }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
   <h1>JobCopilot — Tailor</h1>
-  <p class="sub">Runs locally. Your key and CV stay on this machine.</p>
+  <p class="sub">Your API key stays on this machine. Your CV syncs to your account.</p>
+
+  <fieldset>
+    <legend>Account</legend>
+
+    <div id="signed-out">
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="username" placeholder="you@example.com" />
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" placeholder="••••••••" />
+      <button id="signin">Sign in</button>
+      <button id="signup" class="secondary">Create account</button>
+      <div class="hint">Optional — without an account the extension still works,
+        but your CV stays local and results aren't saved.</div>
+    </div>
+
+    <div id="signed-in" class="hidden">
+      <div class="who">Signed in as <b id="who-email"></b></div>
+      <button id="signout" class="secondary">Sign out</button>
+    </div>
+
+    <div class="status" id="auth-status"></div>
+  </fieldset>
 
   <label for="key">Groq API key</label>
   <input id="key" type="password" placeholder="gsk_..." autocomplete="off" />
@@ -54,8 +81,8 @@
   <textarea id="cv" placeholder="Paste your CV here…"></textarea>
 
   <button id="save">Save</button>
-  <div id="status"></div>
+  <div class="status" id="status"></div>
 
-  <script src="popup.js"></script>
+  <script type="module" src="popup.js"></script>
 </body>
 </html>

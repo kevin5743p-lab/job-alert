@@ -60,6 +60,12 @@
 }
 #jobcopilot-panel .jc-toolbar #jc-download:hover { background: #4338ca; }
 
+#jobcopilot-panel .jc-saved {
+  background: #e6f4ea; color: #1a7f37; border-radius: 6px;
+  padding: 7px 10px; font-size: 12px; margin-bottom: 14px;
+}
+#jobcopilot-panel .jc-saved-warn { background: #fff8c5; color: #7d4e00; }
+
 #jobcopilot-panel .jc-msg { color: #57606a; }
 #jobcopilot-panel .jc-dim { color: #8b949e; }
 

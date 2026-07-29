@@ -6,6 +6,7 @@
 // key never touches the page context.
 
 import { buildPrompt, normalize, groundingWarnings, DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
+import * as sb from "./supabase.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -54,12 +55,44 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         await chrome.storage.local.get(["groqApiKey", "cvText", "language", "model"]);
 
       if (!groqApiKey) throw new Error("NO_KEY");
-      if (!cvText || !cvText.trim()) throw new Error("NO_CV");
 
-      const result = await callGroq(msg.job, cvText, groqApiKey,
-                                    model, language || "en");
-      const warnings = groundingWarnings(result, cvText);
-      sendResponse({ ok: true, result, warnings });
+      // The CV comes from Supabase when signed in (so it follows the user
+      // across devices); the locally-stored copy is the offline/signed-out
+      // fallback so the extension keeps working without an account.
+      let cv = cvText;
+      let lang = language;
+      let signedIn = false;
+      try {
+        if (await sb.getSession()) {
+          signedIn = true;
+          const profile = await sb.getProfile();
+          if (profile?.cv_text?.trim()) cv = profile.cv_text;
+          if (profile?.language) lang = profile.language;
+        }
+      } catch (e) {
+        // Never let a backend hiccup block tailoring — fall back to local.
+        console.warn("Supabase profile fetch failed, using local CV:", e);
+      }
+
+      if (!cv || !cv.trim()) throw new Error("NO_CV");
+
+      const result = await callGroq(msg.job, cv, groqApiKey, model, lang || "en");
+      const warnings = groundingWarnings(result, cv);
+
+      // Persist the run + track the job. Best-effort: a save failure must not
+      // lose the result the user is waiting for.
+      let saved = false;
+      if (signedIn) {
+        try {
+          const row = await sb.saveTailoredResult(msg.job, result, warnings);
+          await sb.upsertApplication(msg.job, row?.id);
+          saved = true;
+        } catch (e) {
+          console.warn("Supabase save failed:", e);
+        }
+      }
+
+      sendResponse({ ok: true, result, warnings, saved, signedIn });
     } catch (e) {
       sendResponse({ ok: false, error: String(e.message || e) });
     }

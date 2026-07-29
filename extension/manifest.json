@@ -6,6 +6,7 @@
   "permissions": ["storage"],
   "host_permissions": [
     "https://api.groq.com/*",
+    "https://jiryqdcmukmbflahtptv.supabase.co/*",
     "https://*.linkedin.com/*"
   ],
   "action": {
