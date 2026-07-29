@@ -3943,6 +3943,409 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-29T19:51:34.322285",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "The candidate has relevant skills and experience in financial modeling, budgeting, and forecasting, and the job requires similar tasks, but the industry and specific requirements are different.",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has relevant skills and experience in financial modeling, budgeting, and forecasting, and the job requires similar tasks, but the industry and specific requirements are different.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4437818641",
+            "title": "Interim Financial Controller (m/w/d) mit Immobilienkenntnissen",
+            "company": "Amadeus Fire",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Referenz 16-250683 Für unseren Kunden suchen wir kurzfristig eine Persönlichkeit mit Financial-Controlling-Erfahrung, idealerweise im Immobilienumfeld, sehr guten Excel-Kenntnissen sowie einer strukturierten und analytischen Arbeitsweise für ein Projekt mit einer Laufzeit von ca. 3 Monaten. Sie über",
+            "url": "https://www.linkedin.com/jobs/view/4437818641",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate's experience in corporate banking, transaction advisory, and equity research aligns well with the job requirements. However, the lack of direct experience in financial communication and storytelling is a notable gap.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 85,
+          "ai_reason": "The candidate's experience in corporate banking, transaction advisory, and equity research aligns well with the job requirements. However, the lack of direct experience in financial communication and storytelling is a notable gap.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4446404307",
+            "title": "Investment Strategist / Financial Communicator (w/m/d)",
+            "company": "ING Deutschland",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Du kannst komplexe Finanzmarkt-Themen verständlich erklären und begeisterst Menschen fürs Investieren? Du verbindest analytische Tiefe mit einer starken kommunikativen Präsenz und weißt, wie aus Markteinschätzungen relevante Geschichten für eine digitale Kundschaft werden? Bei uns treffen hohe Anspr",
+            "url": "https://www.linkedin.com/jobs/view/4446404307",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate has strong skills in corporate finance, credit analysis, and financial modeling, and the job posting requires a Credit Specialist with similar skills",
+          "domain_class": "adjacent_in_company",
+          "ai_score": 85,
+          "ai_reason": "The candidate has strong skills in corporate finance, credit analysis, and financial modeling, and the job posting requires a Credit Specialist with similar skills",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4436579959",
+            "title": "Credit Specialist (m/w/d) Call Center (Vollzeit- und Teilzeitoptionen sind möglich), Frankfurt am Main",
+            "company": "American Express",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4436579959",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 85,
+          "reason": "The candidate's master's degree in Finance, experience in corporate banking, and skills in financial modeling, Python, and Excel make them a strong fit for the Financial Services role at EY. However, the role requires fluent German, which is not explicitly mentioned in the CV, and the candidate's language skills are only listed as C1 in German, which might not be sufficient for a role requiring 'verhandlungssicheres Deutsch'.",
+          "domain_class": "skill_adjacent",
+          "ai_score": 85,
+          "ai_reason": "The candidate's master's degree in Finance, experience in corporate banking, and skills in financial modeling, Python, and Excel make them a strong fit for the Financial Services role at EY. However, the role requires fluent German, which is not explicitly mentioned in the CV, and the candidate's language skills are only listed as C1 in German, which might not be sufficient for a role requiring 'verhandlungssicheres Deutsch'.",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4378285227",
+            "title": "Karrierestart als Mathematiker, Physiker und Wirtschaftswissenschaftler (Financial Services) (w/m/d)",
+            "company": "EY",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Are you ready to shape your future with confidence? Gemeinsam die Welt jeden Tag ein bisschen besser machen. Für diesen Anspruch setzen wir bei EY alles in Bewegung und gehen als Team „all in“. Schließlich haben wir ein klares Ziel vor Augen: nachhaltigen Wert und Wachstum zu schaffen – für unsere M",
+            "url": "https://www.linkedin.com/jobs/view/4378285227",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446428153",
+            "title": "Eurex Corporate Strategy Specialist (f/m/d)",
+            "company": "Deutsche Börse Group",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Your career at Deutsche Börse Group Your area of work The Strategy and Executive Office team acts as an internal strategy consultancy, advising senior leadership on key strategic opportunities, market developments, and competitive positioning. The team is responsible for the development and implemen",
+            "url": "https://www.linkedin.com/jobs/view/4446428153",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446406611",
+            "title": "Finance Partner (f/m/d) Global Vertical Services",
+            "company": "Siemens",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "Are you passionate about taking over financial responsibility for our Global Vertical Services? Join our team and play a key role. What We Offer You Attractive remuneration package Variety of flexible working models that allow time off for yourself and your family Share matching programs to become a",
+            "url": "https://www.linkedin.com/jobs/view/4446406611",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446422532",
+            "title": "Remote Finance & Research Analyst",
+            "company": "Turing",
+            "location": "Germany",
+            "description": "About Turing: Based in San Francisco, California, Turing is the world’s leading research accelerator for frontier AI labs and a trusted partner for global enterprises deploying advanced AI systems. Turing supports customers in two ways: first, by accelerating frontier research with high-quality data",
+            "url": "https://www.linkedin.com/jobs/view/4446422532",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'business analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446820899",
+            "title": "Senior Financial and Business Analyst",
+            "company": "Bose Corporation",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "At Bose Corporation, we believe sound is the most powerful force on earth — and for over 60 years, we have been a company built on innovation, excellence, and independence. Privately owned, fiercely customer-focused, and driven by our values, we continue to lead industries and transform lives throug",
+            "url": "https://www.linkedin.com/jobs/view/4446820899",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446041877",
+            "title": "Juniorassistent:in",
+            "company": "Alike Consulting",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Teamassistenz (m/w/d) | Internationale Wirtschaftskanzlei | München Sie haben bereits erste Berufserfahrung gesammelt und möchten den nächsten Karriereschritt in einem internationalen Business-Umfeld gehen? Ganz gleich, ob Sie aktuell in der gehobenen Hotellerie, einem internationalen dienstleistung",
+            "url": "https://www.linkedin.com/jobs/view/4446041877",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446584164",
+            "title": "Finance Consultant - Reporting & FP&A",
+            "company": "Axazure",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "At Axazure, we're rewriting the playbook on consulting, and we're on the hunt for people who want to help us make history 🎯 We're a specialized Microsoft Dynamics and Power Platform partner, and yes, we've got our own in-house AI CoE too. And we're not just talking a big game: we've got 2 MVPs and 2",
+            "url": "https://www.linkedin.com/jobs/view/4446584164",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446592237",
+            "title": "Functional Controlling Professional (d/m/w)",
+            "company": "Schaeffler",
+            "location": "Herzogenaurach, Bavaria, Germany",
+            "description": "Schaeffler – das ist die Faszination eines internationalen Technologie-Konzerns, verbunden mit der Kultur eines Familienunternehmens. Als Partner aller bedeutenden Automobilhersteller sowie zahlreicher Kunden im Industriebereich bieten wir Ihnen viel Raum für Ihre persönliche Entfaltung. Ihre Aufgab",
+            "url": "https://www.linkedin.com/jobs/view/4446592237",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4308461137",
+            "title": "Business Controller (m/w/d)",
+            "company": "GXO Logistics, Inc.",
+            "location": "Bremen, Bremen, Germany",
+            "description": "GXO ist ein führender Anbieter von Supply-Chain Lösungen für einige der bekanntesten und erfolgreichsten Unternehmen der Welt. Wir sind Vorreiter darin, die Waren unserer Kunden mit Hilfe unserer Technologien und Dienstleistungen so effizient wie möglich zu verwalten. Unsere größte Stärke ist unser ",
+            "url": "https://www.linkedin.com/jobs/view/4308461137",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4399744700",
+            "title": "Senior-/Manager für Finance & Lucanet Solutions (m/w/d)",
+            "company": "RSM Ebner Stolz",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Für unsere Standorte Hamburg , Köln , Frankfurt , Stuttgart und München suchen wir dich als Worüber freuen wir uns? Darüber Freuen Wir Uns Ein abgeschlossenes Studium im Bereich Finance, Accounting oder einem vergleichbaren Studiengang – idealerweise mit Masterabschluss. Mehrjährige Berufserfahrung ",
+            "url": "https://www.linkedin.com/jobs/view/4399744700",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434487768",
+            "title": "Manager Finance Transformation & Controlling",
+            "company": "IS4IT",
+            "location": "Oberhaching, Bavaria, Germany",
+            "description": "Wir sind digitale Macher der ersten Stunde. Als unabhängiges IT-Unternehmen bieten wir unseren Kunden durchgängige Komplettlösungen für ihre gesamte IT- und Prozesslandschaft. Dabei sind wir Teamplayer, Partner, Entwickler und Antreiber für unsere Kunden. Wir verbinden Expertenwissen mit digitalen L",
+            "url": "https://www.linkedin.com/jobs/view/4434487768",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446823819",
+            "title": "Risk Methodology Senior Specialist (f/m/x)",
+            "company": "Deutsche Bank",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Position Overview Overview: Group Strategic Analytics (GSA) is Deutsche Bank’s department that combines expertise in quantitative analytics, modeling, pricing, and risk management, with a deep understanding of platform architecture and coding standards. The department also develops firm-wide risk va",
+            "url": "https://www.linkedin.com/jobs/view/4446823819",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4421864792",
+            "title": "Controller Cost Control (w/m/d)",
+            "company": "Santander Deutschland",
+            "location": "Mönchengladbach, North Rhine-Westphalia, Germany",
+            "description": "Country: Germany Deine Aufgaben Kostenallokation in der EPM Cloud: Du definierst, pflegst und optimierst Allokationsregeln im Oracle EPM Cloud-Tool und führst die regelmäßigen Allokationen (Monatsabschluss, Forecast, Mehrjahresplanung, Budget) eigenständig durch. Modellierung komplexer Zusammenhänge",
+            "url": "https://www.linkedin.com/jobs/view/4421864792",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 5,
+          "reason": "keyword bonus: 1; +1 core-strength terms",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438695364",
+            "title": "Berater (d/m/w) Portfolioberatung",
+            "company": "Deutsche Bank",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Position Overview Über den Bereich In der Privatkundenbank bündelt die Deutsche Bank ihre Expertise im Privatkundengeschäft in einem Geschäftsbereich – mit den Marken Deutsche Bank und Postbank als Marktführer in Deutschland und einem globalen Netzwerk, die das Geschäft der Bank mit vermögenden Kund",
+            "url": "https://www.linkedin.com/jobs/view/4438695364",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4389003501",
+            "title": "Munich Re Service GmbH - Risk Analytics Consultant (m/f/d)*",
+            "company": "Munich Re",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Passion is at the heart of everything we do – whether it’s our dedication to family, friends, the arts, sports, or, most importantly, our profession. At Munich Re Risk Management Partners (RMP), the climate change and risk management solutions unit of the world’s leading reinsurer, our passion drive",
+            "url": "https://www.linkedin.com/jobs/view/4389003501",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4238980504",
+            "title": "(Senior) Manager Quality & Risk Management (m/w/d) in Hannover",
+            "company": "Deloitte",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4238980504",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4318240494",
+            "title": "Busfahrer:in",
+            "company": "Deutsche Bahn",
+            "location": "Schleswig, Schleswig-Holstein, Germany",
+            "description": "Für über 500 verschiedene Berufe suchen wir motivierte Mitarbeitende. Und das in ganz Deutschland. Ob erfahrene Profis oder Berufsstarter:innen - wir bieten zahlreiche Einstiegs- und Weiterbildungsmöglichkeiten. Für die DB Regio Bus Busgesellschaften der Region Nord (namentlich: Autokraft GmbH, DB R",
+            "url": "https://www.linkedin.com/jobs/view/4318240494",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4113503481",
+            "title": "Quereinsteiger:in als Fachkraft für Baustellensicherung (w/m/d)",
+            "company": "Deutsche Bahn",
+            "location": "Gera, Thuringia, Germany",
+            "description": "Wir haben eine Vielzahl wichtiger Berufe, für die spezielles Wissen notwendig ist. Deswegen setzen wir auf Menschen, die sich beruflich neu orientieren und entwickeln möchten, z. B. nach einer Elternzeit. Bereits während der Umschulung bekommst du ein attraktives Gehalt. Am Ende deiner Einarbeitungs",
+            "url": "https://www.linkedin.com/jobs/view/4113503481",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446584802",
+            "title": "Lehrkraft (w/m/d) für Deutsch",
+            "company": "Schulwerk der Diözese Augsburg",
+            "location": "Dillingen an der Donau, Bavaria, Germany",
+            "description": "VOM VORRANG DES MENSCHEN Das Schulwerk der Diözese Augsburg, kirchliche Stiftung des öffentlichen Rechts, sucht eine Lehrkraft (w/m/d) für Deutsch für die St.-Bonaventura-Fachoberschule Dillingen des Schulwerks der Diözese Augsburg. Werden Sie Lehrkraft an einer staatlich anerkannten katholischen Sc",
+            "url": "https://www.linkedin.com/jobs/view/4446584802",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446838155",
+            "title": "Senior Berater Portfolioberatung (d/m/w)",
+            "company": "Deutsche Bank",
+            "location": "Würzburg, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446838155",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 43,
+          "reason": "The candidate has some relevant skills such as Excel and Python, but lacks experience in quality management and the job posting requires a deep understanding of quality management tools and processes.",
+          "domain_class": "broader_field",
+          "ai_score": 43,
+          "ai_reason": "The candidate has some relevant skills such as Excel and Python, but lacks experience in quality management and the job posting requires a deep understanding of quality management tools and processes.",
+          "unscored": false,
+          "category": "broader_field",
+          "job": {
+            "id": "linkedin_4446099481",
+            "title": "Quality Manager (m/w/d) für den Bereich Systemrealisierung",
+            "company": "Rohde & Schwarz",
+            "location": "Teisnach, Bavaria, Germany",
+            "description": "Einleitung Karrierestart bei Rohde & Schwarz – einem sicheren und globalen Familienunternehmen mit über 90 Jahren Erfahrung. Eine attraktive Vergütung nach dem Tarifvertrag der bayerischen Metall- und Elektroindustrie, langfristige Jobsicherheit, vielfältige Weiterbildungsmöglichkeiten sowie ein mod",
+            "url": "https://www.linkedin.com/jobs/view/4446099481",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 18,
+          "reason": "skills: Power BI (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4446827868",
+            "title": "Performance Management & Reporting (m/w/d) 80-100%",
+            "company": "JobRad® | Deutschland",
+            "location": "Freiburg, Baden-Württemberg, Germany",
+            "description": "Benötigtes Sprachniveau: Deutsch Fließend (C2 oder höher), Englisch Grundkenntnisse (B2) Arbeitszeit: Voll-/Teilzeit Das erwartet dich Du möchtest Finanzsteuerung, Reporting und Business Intelligence aktiv weiterentwickeln? Dann werde Teil unseres Teams Strategy & Performance Management. Gemeinsam g",
+            "url": "https://www.linkedin.com/jobs/view/4446827868",
+            "published": "2026-07-29T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
