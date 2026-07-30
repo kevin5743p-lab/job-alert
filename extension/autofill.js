@@ -48,9 +48,20 @@
     { key: "github_url", patterns: [/git ?hub/] },
     { key: "work_authorization", patterns: [/work (authoriz|authoris|permit)/, /arbeitserlaubnis/,
                                             /legally authorized|right to work|visa status/] },
+    // Sponsorship is asked separately from authorisation and often inverted
+    // ("do you require sponsorship?"), so it gets its own answer.
+    { key: "requires_sponsorship", patterns: [/sponsorship|sponsor(ing)?\b/, /visa support/,
+                                              /visum|arbeitsvisum benötigt/] },
     { key: "notice_period", patterns: [/notice period/, /kündigungsfrist/,
-                                       /availability|verfügbar|start date|eintrittsdatum/] },
+                                       /availability|verfügbar|start date|eintrittsdatum|earliest start/] },
     { key: "salary_expectation", patterns: [/salary|gehalt|compensation|vergütung/] },
+    { key: "languages", patterns: [/languages?( spoken| skills)?/, /sprachkenntnisse|sprachen/] },
+    { key: "remote_preference", patterns: [/remote|hybrid|on-?site|work setup|arbeitsmodell/] },
+    { key: "willing_to_relocate", patterns: [/relocat|umzug|umziehen/] },
+    { key: "hours_per_week", patterns: [/hours per week|wochenstunden|stunden pro woche|weekly hours/] },
+    { key: "driving_licence", patterns: [/driv(er'?s|ing) licen[cs]e/, /führerschein/] },
+    { key: "how_heard", patterns: [/how did you (hear|find)/, /wie haben sie von uns erfahren/,
+                                   /source|referral source/] },
   ];
 
   const norm = (s) => (s || "").toLowerCase().replace(/\s+/g, " ").trim();

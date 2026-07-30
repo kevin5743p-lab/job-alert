@@ -14,29 +14,31 @@ const els = {
   whoEmail: $("who-email"), authStatus: $("auth-status"),
   key: $("key"), lang: $("lang"), model: $("model"), cv: $("cv"),
   save: $("save"), status: $("status"), apps: $("apps"),
+  onboard: $("onboard"), profileState: $("profile-state"),
 };
 
-// Application-detail inputs -> keys in the saved application profile.
-const APP_FIELDS = {
-  first_name: "f_first", last_name: "f_last", email: "f_email",
-  phone: "f_phone", city: "f_city", country: "f_country",
-  linkedin_url: "f_linkedin", website_url: "f_website",
-  work_authorization: "f_work", notice_period: "f_notice",
-};
-
-function readAppProfile() {
-  const out = {};
-  for (const [key, id] of Object.entries(APP_FIELDS)) {
-    const v = $(id).value.trim();
-    if (v) out[key] = v;
-  }
-  return out;
+// The application questions live on their own page (too many for this popup).
+function openOnboarding() {
+  chrome.tabs.create({ url: chrome.runtime.getURL("onboarding.html") });
 }
+els.onboard.addEventListener("click", openOnboarding);
 
-function writeAppProfile(profile) {
-  for (const [key, id] of Object.entries(APP_FIELDS)) {
-    if (profile && profile[key]) $(id).value = profile[key];
+// Key answers worth having before autofill is much use.
+const KEY_ANSWERS = ["first_name", "last_name", "email", "phone",
+                     "work_authorization", "notice_period"];
+
+function showProfileState(profile) {
+  const answered = Object.keys(profile || {}).length;
+  if (!answered) {
+    els.profileState.textContent = "Not filled in yet — autofill needs this.";
+    els.profileState.style.color = "#bc4c00";
+    return;
   }
+  const missing = KEY_ANSWERS.filter((k) => !profile[k]).length;
+  els.profileState.textContent = missing
+    ? `${answered} answers saved · ${missing} key question${missing === 1 ? "" : "s"} still open`
+    : `${answered} answers saved ✓`;
+  els.profileState.style.color = missing ? "#bc4c00" : "#1a7f37";
 }
 
 els.apps.addEventListener("click", () => {
@@ -89,7 +91,7 @@ async function init() {
   if (local.language) els.lang.value = local.language;
   if (local.model) els.model.value = local.model;
   if (local.cvText) els.cv.value = local.cvText;
-  writeAppProfile(local.applicationProfile);
+  showProfileState(local.applicationProfile);
 
   const signedIn = await refreshAuthUI();
   if (!signedIn) return;
@@ -99,7 +101,7 @@ async function init() {
     const profile = await sb.getProfile();
     if (profile?.cv_text?.trim()) els.cv.value = profile.cv_text;
     if (profile?.language) els.lang.value = profile.language;
-    writeAppProfile(profile?.application_profile);
+    showProfileState(profile?.application_profile);
   } catch (e) {
     setStatus(els.authStatus, `Couldn't load your profile: ${e.message}`, false);
   }
@@ -116,6 +118,9 @@ els.signin.addEventListener("click", async () => {
     setStatus(els.authStatus, "Signed in ✓");
     const profile = await sb.getProfile();
     if (profile?.cv_text?.trim()) els.cv.value = profile.cv_text;
+    showProfileState(profile?.application_profile);
+    // A signed-in account with no answers yet can't autofill — prompt now.
+    if (!Object.keys(profile?.application_profile || {}).length) openOnboarding();
   } catch (e) {
     setStatus(els.authStatus, e.message, false);
   }
@@ -128,9 +133,15 @@ els.signup.addEventListener("click", async () => {
   try {
     const session = await sb.signUp(creds.email, creds.password);
     await refreshAuthUI();
-    setStatus(els.authStatus, session
-      ? "Account created ✓ — now add your CV below and Save."
-      : "Account created — check your email to confirm, then sign in.");
+    if (session) {
+      // Straight into the questionnaire — it's the one thing a new account
+      // can't work without, and it's easy to forget it exists.
+      setStatus(els.authStatus, "Account created ✓ — let's fill in your details.");
+      openOnboarding();
+    } else {
+      setStatus(els.authStatus,
+        "Account created — check your email to confirm, then sign in.");
+    }
   } catch (e) {
     setStatus(els.authStatus, e.message, false);
   }
@@ -148,18 +159,17 @@ els.save.addEventListener("click", async () => {
   const cvText = els.cv.value.trim();
   const language = els.lang.value;
 
-  const applicationProfile = readAppProfile();
-
   // Always keep a local copy: it's the offline / signed-out fallback.
+  // The application answers are owned by the onboarding page, so they're not
+  // touched here — writing {} would wipe them.
   await chrome.storage.local.set(
-    { groqApiKey, cvText, language, model: els.model.value, applicationProfile });
+    { groqApiKey, cvText, language, model: els.model.value });
 
   let msg = "Saved locally ✓";
   let ok = true;
   if (await sb.getSession()) {
     try {
-      await sb.saveProfile({ cv_text: cvText, language,
-                             application_profile: applicationProfile });
+      await sb.saveProfile({ cv_text: cvText, language });
       msg = "Saved to your account ✓";
     } catch (e) {
       msg = `Saved locally, but syncing failed: ${e.message}`;

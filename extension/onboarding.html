@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Complete your profile — JobCopilot</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      margin: 0; padding: 28px 24px 80px;
+      font: 14px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1f2328; background: #f6f8fa;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    h1 { font-size: 20px; margin: 0 0 4px; }
+    .sub { color: #57606a; font-size: 13px; margin: 0 0 24px; }
+
+    fieldset {
+      background: #fff; border: 1px solid #d8dee4; border-radius: 10px;
+      padding: 18px 20px; margin: 0 0 16px;
+    }
+    legend { font-size: 12px; font-weight: 600; text-transform: uppercase;
+             letter-spacing: .04em; color: #4f46e5; padding: 0 6px; }
+    .why { color: #57606a; font-size: 12px; margin: -4px 0 14px; }
+
+    label { display: block; font-weight: 600; margin: 12px 0 4px; font-size: 13px; }
+    label .opt { font-weight: 400; color: #8b949e; font-size: 12px; }
+    input, select, textarea {
+      width: 100%; box-sizing: border-box; padding: 8px 9px;
+      border: 1px solid #d0d7de; border-radius: 6px; font: inherit; background: #fff;
+    }
+    textarea { height: 70px; resize: vertical; }
+    .row { display: flex; gap: 12px; }
+    .row > div { flex: 1; }
+    .hint { font-size: 12px; color: #8b949e; margin-top: 3px; }
+
+    .bar {
+      position: sticky; bottom: 0; background: #f6f8fa; padding: 14px 0 0;
+      display: flex; align-items: center; gap: 12px;
+    }
+    button {
+      padding: 10px 20px; border: none; border-radius: 8px;
+      background: #4f46e5; color: #fff; font-weight: 600; font-size: 14px; cursor: pointer;
+    }
+    button:hover { background: #4338ca; }
+    button.secondary { background: #fff; color: #1f2328; border: 1px solid #d0d7de; }
+    #status { font-size: 13px; }
+    .note { background: #fff8c5; border: 1px solid #eac54f; color: #7d4e00;
+            border-radius: 8px; padding: 10px 12px; font-size: 12.5px; margin-bottom: 18px; }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #0d1117; color: #e6edf3; }
+      fieldset { background: #161b22; border-color: #30363d; }
+      input, select, textarea { background: #0d1117; color: #e6edf3; border-color: #30363d; }
+      .bar { background: #0d1117; }
+      button.secondary { background: #21262d; color: #e6edf3; border-color: #30363d; }
+      .sub, .why, .hint { color: #8b949e; }
+      .note { background: #2d2611; border-color: #6b5a1f; color: #e3b341; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Complete your profile</h1>
+  <p class="sub">These are the things your CV doesn't say, but every application form asks.
+    Answer once — JobCopilot fills them in from now on.</p>
+
+  <div class="note">
+    Only ordinary application-form answers belong here. Never enter ID numbers,
+    bank details or passwords — JobCopilot refuses to fill those fields anyway.
+  </div>
+
+  <fieldset>
+    <legend>Contact</legend>
+    <div class="row">
+      <div><label for="first_name">First name</label><input id="first_name" /></div>
+      <div><label for="last_name">Last name</label><input id="last_name" /></div>
+    </div>
+    <label for="email">Email</label><input id="email" type="email" />
+    <label for="phone">Phone <span class="opt">— with country code</span></label>
+    <input id="phone" placeholder="+49 …" />
+    <div class="row">
+      <div><label for="city">City</label><input id="city" /></div>
+      <div><label for="country">Country</label><input id="country" /></div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Links</legend>
+    <label for="linkedin_url">LinkedIn</label><input id="linkedin_url" placeholder="https://linkedin.com/in/…" />
+    <label for="website_url">Website / portfolio <span class="opt">— optional</span></label><input id="website_url" />
+    <label for="github_url">GitHub <span class="opt">— optional</span></label><input id="github_url" />
+  </fieldset>
+
+  <fieldset>
+    <legend>Eligibility</legend>
+    <p class="why">The most-asked questions that never appear on a CV.</p>
+
+    <label for="work_authorization">Work authorisation</label>
+    <select id="work_authorization">
+      <option value="">Select…</option>
+      <option>EU/EEA citizen — no permit needed</option>
+      <option>Citizen of this country</option>
+      <option>Valid work permit / visa</option>
+      <option>Student visa (limited hours)</option>
+      <option>Blue Card holder</option>
+      <option>Will require sponsorship</option>
+    </select>
+
+    <label for="requires_sponsorship">Do you need visa sponsorship?</label>
+    <select id="requires_sponsorship">
+      <option value="">Select…</option><option>No</option><option>Yes</option>
+    </select>
+
+    <label for="notice_period">Availability / earliest start</label>
+    <input id="notice_period" placeholder="e.g. immediately, or from 1 October" />
+
+    <label for="languages">Languages &amp; levels</label>
+    <input id="languages" placeholder="e.g. English C1, German B1, Hindi native" />
+    <div class="hint">German level matters a lot for the German market — be specific.</div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Preferences</legend>
+    <label for="remote_preference">Work setup</label>
+    <select id="remote_preference">
+      <option value="">Select…</option>
+      <option>On-site</option><option>Hybrid</option><option>Remote</option><option>Flexible / any</option>
+    </select>
+
+    <label for="willing_to_relocate">Willing to relocate?</label>
+    <select id="willing_to_relocate">
+      <option value="">Select…</option><option>Yes</option><option>No</option><option>Within the country</option>
+    </select>
+
+    <label for="salary_expectation">Salary expectation <span class="opt">— optional</span></label>
+    <input id="salary_expectation" placeholder="e.g. €55,000 / year, or negotiable" />
+
+    <label for="hours_per_week">Hours per week <span class="opt">— for working-student roles</span></label>
+    <input id="hours_per_week" placeholder="e.g. 20" />
+
+    <label for="driving_licence">Driving licence <span class="opt">— optional</span></label>
+    <input id="driving_licence" placeholder="e.g. Class B" />
+
+    <label for="how_heard">"How did you hear about us?"</label>
+    <input id="how_heard" placeholder="e.g. LinkedIn" />
+  </fieldset>
+
+  <div class="bar">
+    <button id="save">Save profile</button>
+    <button id="skip" class="secondary">Close</button>
+    <span id="status"></span>
+  </div>
+</div>
+
+<script type="module" src="onboarding.js"></script>
+</body>
+</html>
