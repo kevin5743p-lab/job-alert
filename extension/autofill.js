@@ -31,37 +31,87 @@
     /date of birth|geburtsdatum|\bdob\b/,
   ];
 
-  // key: the field in the saved application profile
-  // patterns: what the form calls it (English + German)
+  // key    : the field in the saved application profile
+  // patterns: unambiguous keywords ("city", "Ort") — checked first
+  // loose   : natural-language phrasings ("where do you currently live?")
+  //
+  // The two tiers exist because forms ask questions, not keywords, but a loose
+  // phrase can collide with a stronger one: "In which country do you live?"
+  // contains both "country" and "…do you live". Matching every strong pattern
+  // before any loose one lets the explicit word win.
   const FIELD_SPECS = [
-    { key: "first_name", patterns: [/first ?name/, /vorname/, /given name/] },
-    { key: "last_name", patterns: [/last ?name/, /nachname/, /surname/, /family name/] },
-    { key: "full_name", patterns: [/full ?name/, /^name$/, /your name/, /vollständiger name/] },
-    { key: "email", patterns: [/e-?mail/, /email address/] },
-    { key: "phone", patterns: [/phone/, /telefon/, /mobile/, /handy/, /telephone/] },
-    { key: "city", patterns: [/\bcity\b/, /\bort\b/, /wohnort/, /\bstadt\b/] },
-    { key: "country", patterns: [/country/, /\bland\b/] },
-    { key: "address", patterns: [/street|address|adresse|anschrift/] },
-    { key: "postal_code", patterns: [/post(al)? ?code/, /\bzip\b/, /plz|postleitzahl/] },
+    { key: "first_name",
+      patterns: [/first ?name/, /vorname/, /given name/, /forename/],
+      loose: [/^name.{0,12}$/] },
+    { key: "last_name",
+      patterns: [/last ?name/, /nachname/, /surname/, /family name/, /familienname/] },
+    { key: "full_name",
+      patterns: [/full ?name/, /^name$/, /your name/, /vollständiger name/],
+      loose: [/what.{0,12}(is|s) your name/, /wie hei(ß|ss)en sie/] },
+    { key: "email",
+      patterns: [/e-?mail/],
+      loose: [/where can we (reach|contact|email) you/] },
+    { key: "phone",
+      patterns: [/phone/, /telefon/, /\bmobile\b/, /handy/, /\bmobil\b/],
+      loose: [/(contact|best|reach).{0,15}number/, /rufnummer/,
+              /how can we (best )?reach you/] },
+    { key: "postal_code",
+      patterns: [/post(al)? ?code/, /\bzip\b/, /\bplz\b|postleitzahl/] },
+    { key: "country",
+      patterns: [/country/, /\bland\b(?!es)/, /staat\b/],
+      loose: [/which country/, /in welchem land/] },
+    { key: "city",
+      patterns: [/\bcity\b/, /\btown\b/, /\bort\b/, /wohnort/, /\bstadt\b/, /standort/],
+      // The phrasings that were being missed.
+      loose: [/where .{0,20}(do you |are you )?(currently )?(live|living|based|located|reside)/,
+              /current (city|location|residence)/, /place of residence/,
+              /where are you (from|based)/, /wo (wohnen|leben) sie/, /wohnhaft/] },
+    { key: "address",
+      patterns: [/street|address|adresse|anschrift|stra(ß|ss)e/],
+      loose: [/where do you live.{0,10}(street|address)/] },
     { key: "linkedin_url", patterns: [/linked ?in/] },
-    { key: "website_url", patterns: [/website|portfolio|personal site|homepage/] },
+    { key: "website_url",
+      patterns: [/website|portfolio|personal site|homepage|webseite/],
+      loose: [/link to your work/] },
     { key: "github_url", patterns: [/git ?hub/] },
-    { key: "work_authorization", patterns: [/work (authoriz|authoris|permit)/, /arbeitserlaubnis/,
-                                            /legally authorized|right to work|visa status/] },
+    { key: "work_authorization",
+      patterns: [/work (authoriz|authoris|permit)/, /arbeitserlaubnis|aufenthaltstitel/,
+                 /right to work|visa status/],
+      loose: [/(legally )?(authorized|authorised|eligible|entitled|permitted) to work/,
+              /do you have .{0,25}(work permit|working visa)/,
+              /dürfen sie .{0,20}arbeiten/] },
     // Sponsorship is asked separately from authorisation and often inverted
     // ("do you require sponsorship?"), so it gets its own answer.
-    { key: "requires_sponsorship", patterns: [/sponsorship|sponsor(ing)?\b/, /visa support/,
-                                              /visum|arbeitsvisum benötigt/] },
-    { key: "notice_period", patterns: [/notice period/, /kündigungsfrist/,
-                                       /availability|verfügbar|start date|eintrittsdatum|earliest start/] },
-    { key: "salary_expectation", patterns: [/salary|gehalt|compensation|vergütung/] },
-    { key: "languages", patterns: [/languages?( spoken| skills)?/, /sprachkenntnisse|sprachen/] },
-    { key: "remote_preference", patterns: [/remote|hybrid|on-?site|work setup|arbeitsmodell/] },
-    { key: "willing_to_relocate", patterns: [/relocat|umzug|umziehen/] },
-    { key: "hours_per_week", patterns: [/hours per week|wochenstunden|stunden pro woche|weekly hours/] },
-    { key: "driving_licence", patterns: [/driv(er'?s|ing) licen[cs]e/, /führerschein/] },
-    { key: "how_heard", patterns: [/how did you (hear|find)/, /wie haben sie von uns erfahren/,
-                                   /source|referral source/] },
+    { key: "requires_sponsorship",
+      patterns: [/sponsorship|sponsor(ing)?\b/, /visa support/, /visum|arbeitsvisum/],
+      loose: [/will you (now or in the future )?(require|need)/,
+              /do you (require|need) .{0,20}(visa|sponsor)/] },
+    { key: "notice_period",
+      patterns: [/notice period/, /kündigungsfrist/, /availability|verfügbar/,
+                 /start date|eintrittsdatum|eintrittstermin|earliest start/],
+      loose: [/when (can|could|would) you (start|begin|join)/, /how soon can you start/,
+              /earliest possible/, /ab wann (können|könnten) sie/] },
+    { key: "salary_expectation",
+      patterns: [/salary|gehalt|compensation|vergütung|gehaltsvorstellung/],
+      loose: [/what are your .{0,15}expectations/, /expected (pay|remuneration)/] },
+    { key: "languages",
+      patterns: [/languages?( spoken| skills)?/, /sprachkenntnisse|sprachen/],
+      loose: [/which languages do you speak/, /welche sprachen/] },
+    { key: "remote_preference",
+      patterns: [/remote|hybrid|on-?site|work setup|arbeitsmodell|working model/],
+      loose: [/where would you (like to|prefer to) work/] },
+    { key: "willing_to_relocate",
+      patterns: [/relocat|umzug|umziehen|umzugsbereit/],
+      loose: [/willing to move/, /would you move/] },
+    { key: "hours_per_week",
+      patterns: [/hours per week|wochenstunden|stunden pro woche|weekly hours/],
+      loose: [/how many hours/, /wie viele stunden/] },
+    { key: "driving_licence",
+      patterns: [/driv(er'?s|ing) licen[cs]e/, /führerschein|fahrerlaubnis/] },
+    { key: "how_heard",
+      patterns: [/how did you (hear|find|learn)/, /wie haben sie von uns erfahren/,
+                 /referral source/, /\bsource\b/],
+      loose: [/where did you (hear|find|see)/, /wie sind sie auf uns/] },
   ];
 
   const norm = (s) => (s || "").toLowerCase().replace(/\s+/g, " ").trim();
@@ -91,9 +141,14 @@
     return BLOCKED.some((re) => re.test(hay));
   }
 
+  // Two passes: every unambiguous keyword first, then the natural-language
+  // phrasings. See the note on FIELD_SPECS for why the order matters.
   function specFor(hay) {
     for (const spec of FIELD_SPECS) {
       if (spec.patterns.some((re) => re.test(hay))) return spec;
+    }
+    for (const spec of FIELD_SPECS) {
+      if (spec.loose && spec.loose.some((re) => re.test(hay))) return spec;
     }
     return null;
   }
