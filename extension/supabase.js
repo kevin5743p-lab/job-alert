@@ -173,6 +173,29 @@ export async function upsertApplication(job, tailoredResultId) {
   return rows && rows[0] ? rows[0] : null;
 }
 
-export async function listApplications(limit = 50) {
+export async function listApplications(limit = 100) {
   return rest(`/applications?select=*&order=updated_at.desc&limit=${limit}`);
+}
+
+export const APPLICATION_STATUSES =
+  ["saved", "tailored", "applied", "interview", "offer", "rejected"];
+
+export async function updateApplicationStatus(id, status) {
+  const rows = await rest(`/applications?id=eq.${encodeURIComponent(id)}`, {
+    method: "PATCH",
+    body: { status },
+    headers: { Prefer: "return=representation" },
+  });
+  return rows && rows[0] ? rows[0] : null;
+}
+
+export async function deleteApplication(id) {
+  return rest(`/applications?id=eq.${encodeURIComponent(id)}`, { method: "DELETE" });
+}
+
+// The full tailored packet for one application (used to re-open / re-print it).
+export async function getTailoredResult(id) {
+  const rows = await rest(
+    `/tailored_results?id=eq.${encodeURIComponent(id)}&select=*&limit=1`);
+  return rows && rows[0] ? rows[0] : null;
 }

@@ -13,8 +13,12 @@ const els = {
   signedIn: $("signed-in"), signedOut: $("signed-out"),
   whoEmail: $("who-email"), authStatus: $("auth-status"),
   key: $("key"), lang: $("lang"), model: $("model"), cv: $("cv"),
-  save: $("save"), status: $("status"),
+  save: $("save"), status: $("status"), apps: $("apps"),
 };
+
+els.apps.addEventListener("click", () => {
+  chrome.tabs.create({ url: chrome.runtime.getURL("dashboard.html") });
+});
 
 function setStatus(el, text, ok = true) {
   el.textContent = text;
