@@ -45,6 +45,39 @@ async function callGroq(job, cvText, apiKey, model, language) {
   return normalize(JSON.parse(content));
 }
 
+// Autofill data: the saved application details plus, if this job was tailored
+// before, its packet (so the cover-letter box can be filled too).
+chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+  if (msg?.type !== "GET_FILL_DATA") return;
+
+  (async () => {
+    try {
+      const { applicationProfile: local } =
+        await chrome.storage.local.get("applicationProfile");
+      let applicationProfile = local || {};
+      let packet = null;
+
+      if (await sb.getSession()) {
+        try {
+          const profile = await sb.getProfile();
+          if (profile?.application_profile &&
+              Object.keys(profile.application_profile).length) {
+            applicationProfile = profile.application_profile;
+          }
+          if (msg.url) packet = await sb.latestPacketForUrl(msg.url);
+        } catch (e) {
+          console.warn("Supabase fetch failed, using local details:", e);
+        }
+      }
+      sendResponse({ ok: true, applicationProfile, packet });
+    } catch (e) {
+      sendResponse({ ok: false, error: String(e.message || e) });
+    }
+  })();
+
+  return true;
+});
+
 // Content script asks us to tailor; we answer with {ok, result} or {ok:false, error}.
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg?.type !== "TAILOR") return;

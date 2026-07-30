@@ -17,6 +17,30 @@
 }
 #jobcopilot-fab:hover { background: #4338ca; }
 
+/* Autofill: make every touched field obvious, so nothing is filled invisibly. */
+.jobcopilot-filled {
+  outline: 2px solid #4f46e5 !important;
+  outline-offset: 1px;
+  background-color: #eef2ff !important;
+  transition: outline-color 1s ease, background-color 1s ease;
+}
+
+#jobcopilot-fill {
+  position: fixed;
+  right: 20px;
+  bottom: 68px;
+  z-index: 2147483646;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 22px;
+  background: #0f766e;
+  color: #fff;
+  font: 600 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+#jobcopilot-fill:hover { background: #115e59; }
+
 #jobcopilot-panel {
   position: fixed;
   top: 0;
@@ -86,6 +110,12 @@
 #jobcopilot-panel .jc-source {
   font-size: 12px; color: #57606a; margin-top: 2px; font-style: italic;
 }
+
+#jobcopilot-panel .jc-fill-list { list-style: none; padding: 0; margin: 0; }
+#jobcopilot-panel .jc-fill-list li {
+  padding: 3px 0; border-bottom: 1px solid #f0f2f5; font-size: 13px;
+}
+#jobcopilot-panel .jc-fill-list li:last-child { border-bottom: none; }
 
 #jobcopilot-panel .jc-chip {
   display: inline-block; margin: 0 4px 4px 0; padding: 2px 9px;

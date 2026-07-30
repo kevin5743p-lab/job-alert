@@ -191,15 +191,82 @@
     return mainText.length > best.length ? mainText.slice(0, 6000) : best;
   }
 
-  // ── Floating button ──────────────────────────────────────────────────────
+  // ── Floating buttons ─────────────────────────────────────────────────────
   function injectButton() {
-    if ($("#jobcopilot-fab")) return;
-    const btn = document.createElement("button");
-    btn.id = "jobcopilot-fab";
-    btn.type = "button";
-    btn.textContent = "✦ Tailor this job";
-    btn.addEventListener("click", onTailorClick);
-    document.body.appendChild(btn);
+    if (!$("#jobcopilot-fab")) {
+      const btn = document.createElement("button");
+      btn.id = "jobcopilot-fab";
+      btn.type = "button";
+      btn.textContent = "✦ Tailor this job";
+      btn.addEventListener("click", onTailorClick);
+      document.body.appendChild(btn);
+    }
+    // The fill button only appears once the page actually looks like an
+    // application form, so it stays out of the way while browsing listings.
+    const isForm = window.JobCopilotAutofill.findForm();
+    const fill = $("#jobcopilot-fill");
+    if (isForm && !fill) {
+      const b = document.createElement("button");
+      b.id = "jobcopilot-fill";
+      b.type = "button";
+      b.textContent = "📝 Fill application";
+      b.addEventListener("click", onFillClick);
+      document.body.appendChild(b);
+    } else if (!isForm && fill) {
+      fill.remove();
+    }
+  }
+
+  // Fill the form from the saved details. Never submits — the person reviews
+  // what was filled and presses the site's own button.
+  function onFillClick() {
+    chrome.runtime.sendMessage({ type: "GET_FILL_DATA", url: readJob().url }, (resp) => {
+      if (chrome.runtime.lastError || !resp) {
+        openPanel(`<p class="jc-msg">Extension error — try reloading the page.</p>`);
+        return;
+      }
+      if (!resp.ok) {
+        openPanel(`<p class="jc-msg">${resp.error === "NOT_SIGNED_IN"
+          ? "Sign in from the JobCopilot toolbar icon to use autofill."
+          : esc(resp.error)}</p>`);
+        return;
+      }
+      const profile = resp.applicationProfile || {};
+      if (!Object.keys(profile).length) {
+        openPanel(`<p class="jc-msg">No application details saved yet. Click the
+          JobCopilot icon and fill in <b>Application details</b> (name, email,
+          phone…), then try again.</p>`);
+        return;
+      }
+      const report = window.JobCopilotAutofill.fill(profile, resp.packet);
+      renderFillReport(report, Boolean(resp.packet));
+    });
+  }
+
+  function renderFillReport(report, hadPacket) {
+    const list = (items, fmt) =>
+      items.length ? `<ul class="jc-fill-list">${items.map(fmt).join("")}</ul>`
+                   : `<p class="jc-dim">None.</p>`;
+
+    openPanel(`
+      <div class="jc-section">
+        <div class="jc-fit">Filled ${report.filled.length} field${report.filled.length === 1 ? "" : "s"}.
+        Review everything, then submit using the site's own button.</div>
+      </div>
+
+      <div class="jc-section"><h4>Filled</h4>
+        ${list(report.filled, (f) => `<li>${esc(f.label)} <span class="jc-dim">(${esc(f.key)})</span></li>`)}
+      </div>
+
+      ${report.skipped.length ? `<div class="jc-section"><h4>Left for you</h4>
+        ${list(report.skipped, (s) => `<li>${esc(s.label)} — <span class="jc-dim">${esc(s.reason)}</span></li>`)}
+      </div>` : ""}
+
+      ${!hadPacket ? `<div class="jc-saved jc-saved-warn">Tip: tailor this job first
+        and the cover-letter box gets filled too.</div>` : ""}
+
+      <div class="jc-saved jc-saved-warn">JobCopilot never submits the form and never
+      fills passwords or ID/financial fields — that's always yours to do.</div>`);
   }
 
   // ── Panel ────────────────────────────────────────────────────────────────

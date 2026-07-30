@@ -81,6 +81,28 @@
   <label for="cv">Your CV (plain text / markdown)</label>
   <textarea id="cv" placeholder="Paste your CV here…"></textarea>
 
+  <fieldset style="margin-top:14px">
+    <legend>Application details (for autofill)</legend>
+    <div class="row">
+      <div><label for="f_first">First name</label><input id="f_first" /></div>
+      <div><label for="f_last">Last name</label><input id="f_last" /></div>
+    </div>
+    <label for="f_email">Email</label><input id="f_email" type="email" />
+    <label for="f_phone">Phone</label><input id="f_phone" />
+    <div class="row">
+      <div><label for="f_city">City</label><input id="f_city" /></div>
+      <div><label for="f_country">Country</label><input id="f_country" /></div>
+    </div>
+    <label for="f_linkedin">LinkedIn URL</label><input id="f_linkedin" />
+    <label for="f_website">Website / portfolio</label><input id="f_website" />
+    <label for="f_work">Work authorisation</label>
+    <input id="f_work" placeholder="e.g. EU citizen / student visa" />
+    <label for="f_notice">Availability / notice period</label>
+    <input id="f_notice" placeholder="e.g. from 1 October" />
+    <div class="hint">Used to fill ordinary form fields. Never store ID numbers,
+      bank details or passwords here — autofill refuses those fields anyway.</div>
+  </fieldset>
+
   <button id="save">Save</button>
   <div class="status" id="status"></div>
 

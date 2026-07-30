@@ -114,11 +114,15 @@ export async function getProfile() {
   return rows && rows[0] ? rows[0] : null;
 }
 
-export async function saveProfile({ cv_text, language, full_name }) {
+export async function saveProfile({ cv_text, language, full_name,
+                                    application_profile }) {
   const payload = { id: await currentUserId() };
   if (cv_text !== undefined) payload.cv_text = cv_text;
   if (language !== undefined) payload.language = language;
   if (full_name !== undefined) payload.full_name = full_name;
+  if (application_profile !== undefined) {
+    payload.application_profile = application_profile;
+  }
 
   // Upsert: the signup trigger normally creates the row, but this keeps the
   // popup working even if that row is somehow missing.
@@ -191,6 +195,15 @@ export async function updateApplicationStatus(id, status) {
 
 export async function deleteApplication(id) {
   return rest(`/applications?id=eq.${encodeURIComponent(id)}`, { method: "DELETE" });
+}
+
+// The most recent tailored packet for a posting — used to fill a cover-letter
+// box on that job's application form.
+export async function latestPacketForUrl(url) {
+  const rows = await rest(
+    `/tailored_results?job_url=eq.${encodeURIComponent(url)}` +
+    `&select=packet&order=created_at.desc&limit=1`);
+  return rows && rows[0] ? rows[0].packet : null;
 }
 
 // The full tailored packet for one application (used to re-open / re-print it).

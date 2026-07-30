@@ -16,6 +16,29 @@ const els = {
   save: $("save"), status: $("status"), apps: $("apps"),
 };
 
+// Application-detail inputs -> keys in the saved application profile.
+const APP_FIELDS = {
+  first_name: "f_first", last_name: "f_last", email: "f_email",
+  phone: "f_phone", city: "f_city", country: "f_country",
+  linkedin_url: "f_linkedin", website_url: "f_website",
+  work_authorization: "f_work", notice_period: "f_notice",
+};
+
+function readAppProfile() {
+  const out = {};
+  for (const [key, id] of Object.entries(APP_FIELDS)) {
+    const v = $(id).value.trim();
+    if (v) out[key] = v;
+  }
+  return out;
+}
+
+function writeAppProfile(profile) {
+  for (const [key, id] of Object.entries(APP_FIELDS)) {
+    if (profile && profile[key]) $(id).value = profile[key];
+  }
+}
+
 els.apps.addEventListener("click", () => {
   chrome.tabs.create({ url: chrome.runtime.getURL("dashboard.html") });
 });
@@ -61,11 +84,12 @@ async function refreshAuthUI() {
 
 async function init() {
   const local = await chrome.storage.local.get(
-    ["groqApiKey", "language", "model", "cvText"]);
+    ["groqApiKey", "language", "model", "cvText", "applicationProfile"]);
   if (local.groqApiKey) els.key.value = local.groqApiKey;
   if (local.language) els.lang.value = local.language;
   if (local.model) els.model.value = local.model;
   if (local.cvText) els.cv.value = local.cvText;
+  writeAppProfile(local.applicationProfile);
 
   const signedIn = await refreshAuthUI();
   if (!signedIn) return;
@@ -75,6 +99,7 @@ async function init() {
     const profile = await sb.getProfile();
     if (profile?.cv_text?.trim()) els.cv.value = profile.cv_text;
     if (profile?.language) els.lang.value = profile.language;
+    writeAppProfile(profile?.application_profile);
   } catch (e) {
     setStatus(els.authStatus, `Couldn't load your profile: ${e.message}`, false);
   }
@@ -123,15 +148,18 @@ els.save.addEventListener("click", async () => {
   const cvText = els.cv.value.trim();
   const language = els.lang.value;
 
+  const applicationProfile = readAppProfile();
+
   // Always keep a local copy: it's the offline / signed-out fallback.
   await chrome.storage.local.set(
-    { groqApiKey, cvText, language, model: els.model.value });
+    { groqApiKey, cvText, language, model: els.model.value, applicationProfile });
 
   let msg = "Saved locally ✓";
   let ok = true;
   if (await sb.getSession()) {
     try {
-      await sb.saveProfile({ cv_text: cvText, language });
+      await sb.saveProfile({ cv_text: cvText, language,
+                             application_profile: applicationProfile });
       msg = "Saved to your account ✓";
     } catch (e) {
       msg = `Saved locally, but syncing failed: ${e.message}`;
