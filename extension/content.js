@@ -220,8 +220,8 @@
   // Fill the form from the saved details. Never submits — the person reviews
   // what was filled and presses the site's own button.
   function onFillClick() {
-    chrome.runtime.sendMessage({ type: "GET_FILL_DATA", url: readJob().url }, (resp) => {
-      if (chrome.runtime.lastError || !resp) {
+    sendMessage({ type: "GET_FILL_DATA", url: readJob().url }, (resp, err) => {
+      if (err || !resp) {
         openPanel(`<p class="jc-msg">Extension error — try reloading the page.</p>`);
         return;
       }
@@ -248,10 +248,10 @@
       const unmatched = report.unmatched || [];
       if (!unmatched.length) return;
 
-      chrome.runtime.sendMessage(
+      sendMessage(
         { type: "MAP_FIELDS", fields: unmatched, keys: AF.PROFILE_KEYS },
-        (m) => {
-          if (chrome.runtime.lastError || !m || !m.ok) return;
+        (m, err) => {
+          if (err || !m || !m.ok) return;
           const n = AF.applyFieldMap(m.map, profile, report);
           if (n) renderFillReport(report, Boolean(resp.packet), {
             extra: n, learned: m.learned, asked: m.asked,
@@ -307,12 +307,12 @@
   function onDraftAnswers(questions, btn) {
     btn.disabled = true;
     btn.textContent = "Drafting…";
-    chrome.runtime.sendMessage(
+    sendMessage(
       { type: "DRAFT_ANSWERS", questions, job: readJob() },
-      (resp) => {
+      (resp, err) => {
         btn.disabled = false;
         btn.textContent = "✨ Draft answers from my CV";
-        if (chrome.runtime.lastError || !resp) {
+        if (err || !resp) {
           btn.insertAdjacentHTML("afterend",
             `<div class="jc-dim">Extension error — reload the page and retry.</div>`);
           return;
@@ -359,6 +359,31 @@
     String(s || "").replace(/[&<>"]/g, (c) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+  // Reloading the extension orphans the content script already running in open
+  // tabs: its chrome.runtime is dead and sendMessage THROWS synchronously
+  // rather than reporting via lastError. Every call goes through here so that
+  // surfaces as "refresh the page", not an uncaught error.
+  function sendMessage(msg, onReply, onDead) {
+    const dead = () => {
+      if (onDead) return onDead();
+      openPanel(`<p class="jc-msg">JobCopilot was updated since this page loaded.
+        <b>Refresh the page</b> (⌘R) and try again.</p>`);
+    };
+    try {
+      chrome.runtime.sendMessage(msg, (resp) => {
+        if (chrome.runtime.lastError) {
+          // Same situation, reported asynchronously.
+          if (/context invalidated|receiving end does not exist/i
+                .test(chrome.runtime.lastError.message || "")) return dead();
+          return onReply(null, chrome.runtime.lastError.message);
+        }
+        onReply(resp, null);
+      });
+    } catch (e) {
+      dead();
+    }
+  }
+
   function onTailorClick() {
     const job = readJob();
     if (!job.description || job.description.length < 60) {
@@ -369,9 +394,9 @@
     openPanel(`<p class="jc-msg">✦ Tailoring your application for
       <b>${esc(job.title || "this role")}</b>…<br/><span class="jc-dim">This takes a few seconds.</span></p>`);
 
-    chrome.runtime.sendMessage({ type: "TAILOR", job }, (resp) => {
-      if (chrome.runtime.lastError) {
-        openPanel(`<p class="jc-msg">Extension error: ${esc(chrome.runtime.lastError.message)}</p>`);
+    sendMessage({ type: "TAILOR", job }, (resp, err) => {
+      if (err) {
+        openPanel(`<p class="jc-msg">Extension error: ${esc(err)}</p>`);
         return;
       }
       if (!resp) {
@@ -464,7 +489,7 @@
     const cover = document.querySelector("#jobcopilot-panel #jc-cover");
     if (cover) {
       cover.addEventListener("click", () => {
-        chrome.runtime.sendMessage({ type: "GET_FILL_DATA", url: job.url }, (resp) => {
+        sendMessage({ type: "GET_FILL_DATA", url: job.url }, (resp) => {
           const profile = (resp && resp.ok && resp.applicationProfile) || {};
           window.JobCopilotCoverTemplates.openCoverLetter(
             job, r, profile, resp && resp.language);
