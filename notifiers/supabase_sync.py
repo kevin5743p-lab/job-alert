@@ -89,6 +89,23 @@ class SupabaseSync:
             "Prefer": "resolution=merge-duplicates,return=minimal",
         }
 
+    # ── reading ─────────────────────────────────────────────────────────────
+    def fetch_cv(self) -> str:
+        """The CV stored on the account, or '' if there isn't one."""
+        try:
+            resp = requests.get(
+                f"{self.url}/rest/v1/profiles?select=cv_text&limit=1",
+                headers={"apikey": self.anon_key,
+                         "Authorization": f"Bearer {self.token}"},
+                timeout=TIMEOUT,
+            )
+            if resp.status_code != 200:
+                return ""
+            rows = resp.json()
+            return (rows[0].get("cv_text") or "").strip() if rows else ""
+        except (requests.RequestException, ValueError, KeyError, IndexError):
+            return ""
+
     # ── writing ─────────────────────────────────────────────────────────────
     def _row(self, item: Dict, tier: str) -> Optional[Dict]:
         job = item.get("job") or {}
@@ -144,6 +161,36 @@ class SupabaseSync:
         return sent
 
 
+def _client() -> Optional["SupabaseSync"]:
+    """A signed-in client, or None when not configured / sign-in failed."""
+    email = os.environ.get("SUPABASE_EMAIL", "").strip()
+    password = os.environ.get("SUPABASE_PASSWORD", "")
+    if not (email and password):
+        return None
+    client = SupabaseSync(
+        os.environ.get("SUPABASE_URL", "").strip() or DEFAULT_URL,
+        os.environ.get("SUPABASE_ANON_KEY", "").strip() or DEFAULT_ANON_KEY,
+        email, password,
+    )
+    return client if client.sign_in() else None
+
+
+def fetch_cv() -> str:
+    """The CV saved from the extension, so both halves match the same person.
+
+    Keeping the CV in one place matters: if the bot hunts from cv.md while the
+    extension tailors from the account's CV, the two disagree about the
+    candidate's field and the scan looks for the wrong jobs entirely.
+    """
+    client = _client()
+    if not client:
+        return ""
+    cv = client.fetch_cv()
+    if cv:
+        logger.info(f"📄 Using the CV from your JobCopilot account ({len(cv)} chars).")
+    return cv
+
+
 def sync_jobs(strong: List[Dict], worth_look: List[Dict]) -> int:
     """Entry point for main.py.
 
@@ -161,7 +208,6 @@ def sync_jobs(strong: List[Dict], worth_look: List[Dict]) -> int:
     client = SupabaseSync(url, anon, email, password)
     if not client.sign_in():
         return 0
-
     sent = client.upsert_jobs(strong, worth_look)
     if sent:
         logger.info(f"☁️  Synced {sent} job(s) to the tracker.")

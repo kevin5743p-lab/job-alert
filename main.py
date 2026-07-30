@@ -64,6 +64,20 @@ def load_yaml(path: Path) -> Dict:
 
 
 def load_cv() -> str:
+    """The candidate's CV.
+
+    Prefers the one saved in the JobCopilot account, so the bot hunts for the
+    same person the browser extension tailors for — otherwise the two halves can
+    drift apart and the scan searches an entirely wrong field. Falls back to
+    cv.md when no account is configured.
+    """
+    try:
+        remote = supabase_sync.fetch_cv()
+        if remote:
+            return remote
+    except Exception as e:                       # never block a run on this
+        logger.debug(f"Could not fetch the account CV: {e}")
+
     if not CV_PATH.exists():
         return ""
     text = CV_PATH.read_text(encoding="utf-8")
