@@ -64,6 +64,16 @@ the `SITES` registry in `content.js`. Even without one, the generic reader
 Fills your saved answers into text fields, dropdowns and multiple-choice
 questions (English and German), and drafts free-text answers from your CV.
 
+**How fields are recognised.** Rules first: each profile field knows the
+keywords ("city", "Ort") and the phrasings forms actually use ("where do you
+currently live?"). Anything left over is sent to the model to *classify* — it
+picks which of your saved answers belongs in the box. It is never asked to
+produce a value, so it cannot invent personal data; the worst a wrong guess can
+do is put the wrong saved answer somewhere, which you'll see highlighted.
+
+Each new label costs one AI call and is then remembered, so repeat forms fill
+instantly and for free — the tool gets better the more forms you use it on.
+
 It deliberately refuses to:
 
 - **submit anything** — you review and press the site's own button;

@@ -5,8 +5,8 @@
 // here, not in the content script — so the page's CSP can't block it and the
 // key never touches the page context.
 
-import { buildPrompt, buildAnswersPrompt, normalize, groundingWarnings,
-         DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
+import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, normalize,
+         groundingWarnings, DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
 import * as sb from "./supabase.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
@@ -72,6 +72,67 @@ async function loadKeyAndCv() {
   if (!cv || !cv.trim()) throw new Error("NO_CV");
   return { groqApiKey, cv, lang: lang || "en", model, signedIn };
 }
+
+// Classify form fields the rules missed.
+//
+// Answers are cached by label text: the same wording means the same thing on any
+// site, so a label only ever costs one AI call — after that it fills instantly
+// and for free. That also means the tool quietly gets better the more forms it
+// sees.
+const LEARNED_KEY = "learnedFieldMap";
+const LEARNED_MAX = 400;
+
+const labelKey = (s) => String(s || "").toLowerCase().replace(/\s+/g, " ").trim().slice(0, 90);
+
+chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+  if (msg?.type !== "MAP_FIELDS") return;
+
+  (async () => {
+    try {
+      const fields = msg.fields || [];
+      if (!fields.length) { sendResponse({ ok: true, map: {}, learned: 0, asked: 0 }); return; }
+
+      const store = await chrome.storage.local.get(LEARNED_KEY);
+      const learned = store[LEARNED_KEY] || {};
+
+      const map = {};
+      const unknown = [];
+      for (const f of fields) {
+        const hit = learned[labelKey(f.label)];
+        if (hit) map[f.id] = hit; else unknown.push(f);
+      }
+      const fromCache = Object.keys(map).length;
+
+      if (unknown.length) {
+        const { groqApiKey, model } = await chrome.storage.local.get(["groqApiKey", "model"]);
+        if (groqApiKey) {
+          const raw = await groqJson(
+            buildFieldMapPrompt(unknown, msg.keys || []), groqApiKey, model, 700);
+          const allowed = new Set(msg.keys || []);
+          const asked = new Map(unknown.map((f) => [f.id, f.label]));
+          for (const [id, key] of Object.entries(raw.map || raw || {})) {
+            // Only ids we asked about, only keys we offered.
+            if (!asked.has(id) || !allowed.has(key)) continue;
+            map[id] = key;
+            learned[labelKey(asked.get(id))] = key;
+          }
+          // Keep the cache from growing without bound.
+          const keys = Object.keys(learned);
+          if (keys.length > LEARNED_MAX) {
+            for (const k of keys.slice(0, keys.length - LEARNED_MAX)) delete learned[k];
+          }
+          await chrome.storage.local.set({ [LEARNED_KEY]: learned });
+        }
+      }
+
+      sendResponse({ ok: true, map, learned: fromCache, asked: unknown.length });
+    } catch (e) {
+      sendResponse({ ok: false, error: String(e.message || e) });
+    }
+  })();
+
+  return true;
+});
 
 // Draft answers to a form's free-text questions.
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {

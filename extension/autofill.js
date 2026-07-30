@@ -285,6 +285,67 @@
     });
   }
 
+  // ── Fields the rules didn't recognise ────────────────────────────────────
+  // Rules can't anticipate every wording an ATS invents. These are handed to
+  // the model to CLASSIFY (which profile field is this?) — never to invent a
+  // value. The value always comes from the user's saved profile, so a wrong
+  // guess can only put the wrong saved answer in a box, not fabricate data.
+  function collectUnmatched() {
+    const out = [];
+    document.querySelectorAll("input, select").forEach((el, i) => {
+      const type = (el.type || "").toLowerCase();
+      if (["hidden", "submit", "button", "image", "reset", "file",
+           "checkbox", "radio"].includes(type)) return;
+      if (!visible(el)) return;
+      if (el.value && el.value.trim()) return;
+
+      const hay = haystack(el);
+      if (isBlocked(hay, el)) return;      // never offer sensitive fields up
+      if (specFor(hay)) return;            // a rule already covers it
+
+      // The visible label is what the model should reason about.
+      let label = "";
+      if (el.labels && el.labels[0]) label = (el.labels[0].innerText || "").trim();
+      if (!label) label = (el.placeholder || el.getAttribute("aria-label") || el.name || "").trim();
+      if (!label || label.length > 120) return;
+
+      el.dataset.jcFieldId = `f${i}`;
+      out.push({
+        id: `f${i}`,
+        label,
+        type: el.tagName === "SELECT" ? "select" : type || "text",
+        options: el.tagName === "SELECT"
+          ? Array.from(el.options).map((o) => o.textContent.trim()).filter(Boolean).slice(0, 12)
+          : undefined,
+      });
+    });
+    return out;
+  }
+
+  // Apply a {fieldId: profileKey} mapping. Every safety rule is re-checked
+  // here: the mapping comes from outside, so it is treated as a suggestion.
+  function applyFieldMap(map, profile, report) {
+    let n = 0;
+    Object.entries(map || {}).forEach(([id, key]) => {
+      if (!key || !profile[key]) return;
+      const el = document.querySelector(`[data-jc-field-id="${id}"]`);
+      if (!el || !visible(el) || (el.value && el.value.trim())) return;
+      if (isBlocked(haystack(el), el)) return;
+
+      const label = ((el.labels && el.labels[0] && el.labels[0].innerText) ||
+                     el.name || "").trim().slice(0, 48);
+      if (el.tagName === "SELECT") {
+        if (!setSelect(el, profile[key])) return;
+      } else {
+        setValue(el, profile[key]);
+      }
+      highlight(el);
+      n++;
+      if (report) report.filled.push({ label, key: `${key} (AI)` });
+    });
+    return n;
+  }
+
   // ── Free-text questions ──────────────────────────────────────────────────
   // Long-answer boxes the profile can't answer ("Why do you want to work
   // here?"). Collected so the model can draft them; nothing is filled here.
@@ -387,6 +448,7 @@
 
     fillChoices(profile, report);
     report.openQuestions = collectOpenQuestions();
+    report.unmatched = collectUnmatched();
     return report;
   }
 
@@ -398,7 +460,12 @@
     return inputs.length >= 3;
   }
 
+  // Keys the model is allowed to choose from — exactly the profile fields we
+  // know how to fill, so it can never map a field to something invented.
+  const PROFILE_KEYS = FIELD_SPECS.map((s) => s.key);
+
   window.JobCopilotAutofill = {
-    fill, findForm, FIELD_SPECS, collectOpenQuestions, applyAnswers,
+    fill, findForm, FIELD_SPECS, PROFILE_KEYS,
+    collectOpenQuestions, applyAnswers, collectUnmatched, applyFieldMap,
   };
 })();

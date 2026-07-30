@@ -123,6 +123,43 @@ Return a JSON object mapping each id to its answer, and nothing else:
 {"answers": {"q0": "…", "q1": "…"}}`;
 }
 
+// Classify form fields the rule-based matcher didn't recognise.
+//
+// Deliberately a CLASSIFICATION task, not a generation one: the model maps each
+// field to one of our known profile keys, and the value is then taken from the
+// user's own saved profile. It is never asked to produce a value, so it cannot
+// invent personal data.
+export function buildFieldMapPrompt(fields, keys) {
+  const list = fields.map((f) => {
+    const opts = f.options && f.options.length
+      ? `, "options": ${JSON.stringify(f.options)}` : "";
+    return `  {"id": "${f.id}", "label": ${JSON.stringify(f.label)}, "type": "${f.type}"${opts}}`;
+  }).join(",\n");
+
+  return `You are mapping fields on a job-application form to a candidate's \
+stored profile.
+
+FORM FIELDS:
+[
+${list}
+]
+
+AVAILABLE PROFILE KEYS (the only allowed values):
+${keys.join(", ")}
+
+For each field, decide which profile key it is asking for. Rules:
+- Use ONLY the keys listed above.
+- If a field matches none of them, or you are unsure, OMIT it entirely.
+  Leaving a field blank is always better than filling it wrongly.
+- Never map anything asking for a password, government ID (passport, national
+  id, social security), bank/card details, tax number or date of birth — omit
+  those, they are handled elsewhere.
+- Labels may be in English or German.
+
+Return only a JSON object mapping field id to profile key, e.g.:
+{"map": {"f3": "city", "f7": "notice_period"}}`;
+}
+
 // Coerce the model's output into the stable shape the UI expects. Mirrors
 // tailor.py's _normalize: tolerates a string where a list is expected and
 // fills every key so the renderer never trips on a missing field.

@@ -238,22 +238,44 @@
           phone…), then try again.</p>`);
         return;
       }
-      const report = window.JobCopilotAutofill.fill(profile, resp.packet);
+      const AF = window.JobCopilotAutofill;
+      const report = AF.fill(profile, resp.packet);
       renderFillReport(report, Boolean(resp.packet));
+
+      // Anything the rules didn't recognise goes to the model to classify.
+      // It only chooses WHICH saved answer belongs in the box — values always
+      // come from the profile, so it can't invent anything.
+      const unmatched = report.unmatched || [];
+      if (!unmatched.length) return;
+
+      chrome.runtime.sendMessage(
+        { type: "MAP_FIELDS", fields: unmatched, keys: AF.PROFILE_KEYS },
+        (m) => {
+          if (chrome.runtime.lastError || !m || !m.ok) return;
+          const n = AF.applyFieldMap(m.map, profile, report);
+          if (n) renderFillReport(report, Boolean(resp.packet), {
+            extra: n, learned: m.learned, asked: m.asked,
+          });
+        });
     });
   }
 
-  function renderFillReport(report, hadPacket) {
+  function renderFillReport(report, hadPacket, ai) {
     const list = (items, fmt) =>
       items.length ? `<ul class="jc-fill-list">${items.map(fmt).join("")}</ul>`
                    : `<p class="jc-dim">None.</p>`;
     const open = report.openQuestions || [];
+    const aiNote = ai
+      ? `<div class="jc-saved">✨ Recognised ${ai.extra} more field${ai.extra === 1 ? "" : "s"}
+         the rules didn't know${ai.learned ? ` (${ai.learned} from memory)` : ""} — double-check these.</div>`
+      : "";
 
     openPanel(`
       <div class="jc-section">
         <div class="jc-fit">Filled ${report.filled.length} field${report.filled.length === 1 ? "" : "s"}.
         Review everything, then submit using the site's own button.</div>
       </div>
+      ${aiNote}
 
       ${open.length ? `<div class="jc-section">
         <h4>Open questions (${open.length})</h4>
