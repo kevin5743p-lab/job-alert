@@ -5,257 +5,199 @@
 # ============================================================
 
 personal:
-  name: unknown
-  email: ''
-persona: a master's student in Finance (corporate finance, financial modeling, Python)
+  name: Meet Patel
+  email: pmeet2905@gmail.com
+persona: a master's student in Automotive Engineering (Python, Machine Learning, Simulation & Data Tools)
 domain:
-  name: Corporate Finance
+  name: Automotive Engineering
   core_terms:
-  - corporate finance
-  - financial modeling
-  - investment banking
-  - asset management
-  - FP&A
-  - transaction advisory
-  - sustainable finance
-  - quantitative investment strategies
-  - Deutsche Sprache
-  - Finanzmodellierung
-  - Kreditanalyse
-  - Portfolio-Optimierung
-  - Risikomanagement
-  - IFRS und HGB-Grundlagen
-  - Budgetierung und Vorhersage
-  supporting_terms:
-  - finanzwirtschaft
-  - finanzanalyse
-  - finanzberatung
-  - finanzdienstleistung
-  - finanzmarkt
-  - finanzpolitik
-  - finanzrecht
-  - finanzwissenschaft
-  adjacent_terms:
-  - banking
-  - insurance
-  - accounting
-  - taxation
-  - law
-  - economics
-  - statistics
-  - mathematics
-  core_companies:
-  - commerzbank
-  - deutsche bank
-  - goldman sachs
-  - morgan stanley
-  - ubs
-  - credit suisse
-  - barclays
-  - morgan stanley
-  - jpmorgan
-  - citi
-  - bank of america
-  - wells fargo
-  - hsbc
-  - standard chartered
-  - scotiabank
-  - bnp paribas
-  - societe generale
-  - credit agricole
-  - unicredit
-  - intesa sanpaolo
-  - unione di banche italiane
-  adjacent_companies:
-  - allianz
-  - munich re
-  - deutsche telekom
-  - siemens
-  - bosch
-  - bayer
-  - merck
-  - siemens healthineers
-  - siemens gamesa
-  - siemens energy
-  - siemens mobility
-  - siemens smart infrastructure
-  - siemens healthineers
-  - siemens gamesa
-  - siemens energy
-  - siemens mobility
-  - siemens smart infrastructure
-  reject_title_terms:
-  - marketing manager
-  - nurse
-  - recruiter
-  - software developer
-  - mechanical engineer
-  - electrical engineer
-  - chemical engineer
-  - civil engineer
-  - aerospace engineer
-  - biomedical engineer
-  - chemical engineer
-  - civil engineer
-  - aerospace engineer
-  - biomedical engineer
-  - software engineer
-  - data scientist
-  - business analyst
-  - product manager
-  - project manager
-  - sales manager
-  - customer service representative
-  - human resources manager
-  - operations manager
-  - supply chain manager
-  - logistics manager
-  - quality control manager
-  - quality assurance manager
-  - research scientist
-  - academic researcher
-  - lecturer
-  - professor
-  - teacher
-  - educator
-  - instructor
-  - trainer
-  bonus_terms:
-  - financial modeling
+  - Automotive Engineering
+  - Machine Learning
+  - Simulation & Data Tools
   - Python
-  - investment banking
-  - asset management
-  - FP&A
-  - transaction advisory
-  - sustainable finance
-  - quantitative investment strategies
-  - Deutsche Sprache
-  - Finanzmodellierung
-  - Kreditanalyse
-  - Portfolio-Optimierung
-  - Risikomanagement
-  - IFRS und HGB-Grundlagen
-  - Budgetierung und Vorhersage
+  - Data Analysis
+  - Workflow Automation
+  - Automated Data Pipelines
+  - Time-series Analysis
+  - Clustering
+  - Signal Processing
+  - Anomaly Detection
+  - Automobiltechnik
+  - Datenanalyse
+  - Produktentwicklung
+  - Fahrzeugentwicklung
+  - Automobilindustrie
+  supporting_terms:
+  - Data Science
+  - Data Engineering
+  - Artificial Intelligence
+  - Machine Learning
+  - Data Analysis
+  - Business Intelligence
+  - Data Visualization
+  - Data Mining
+  - Predictive Analytics
+  adjacent_terms:
+  - Aerospace Engineering
+  - Mechanical Engineering
+  - Electrical Engineering
+  - Computer Science
+  - Software Engineering
+  - Data Analytics
+  - Business Analytics
+  - Operations Research
+  core_companies:
+  - BMW
+  - Volkswagen
+  - Daimler
+  - Mercedes-Benz
+  - Audi
+  - Porsche
+  - BMW Group
+  - Volkswagen Group
+  - Daimler AG
+  - Mercedes-Benz Group
+  - Audi AG
+  - Porsche AG
+  adjacent_companies:
+  - Siemens
+  - Bosch
+  - Robert Bosch GmbH
+  - Siemens AG
+  - Continental AG
+  - ZF Friedrichshafen AG
+  - Bosch Rexroth
+  - Schaeffler AG
+  reject_title_terms:
+  - Marketing Manager
+  - Nurse
+  - Recruiter
+  - Software Developer
+  - Mechanical Engineer
+  - Electrical Engineer
+  - Computer Scientist
+  - Data Analyst
+  - Business Analyst
+  - Product Manager
+  bonus_terms:
+  - Automotive Engineering
+  - Machine Learning
+  - Simulation & Data Tools
+  - Python
+  - Data Analysis
+  - Workflow Automation
+  - Automated Data Pipelines
+  - Time-series Analysis
+  - Clustering
+  - Signal Processing
+  - Anomaly Detection
 skills:
-- Financial modeling
-- DCF and multiples valuation
-- Credit analysis
-- Three-statement modeling
-- M&A due diligence
-- Equity research
-- Portfolio optimization
-- Risk management
-- IFRS and HGB fundamentals
-- Budgeting and forecasting
-- Excel (advanced, VBA)
-- Python (pandas, NumPy)
-- SQL
-- Bloomberg Terminal
-- FactSet
-- Power BI
-- LaTeX
-- CFA Level I candidate
-- Deutsche Sprache
-- Finanzmodellierung
-- Kreditanalyse
-- Portfolio-Optimierung
-- Risikomanagement
-- IFRS und HGB-Grundlagen
-- Budgetierung und Vorhersage
-target_titles:
-- Werkstudent Corporate Finance
-- Intern Investment Banking
-- Masterarbeit Corporate Finance
-- Praktikum Asset Management
-- Junior Financial Analyst
-- Financial Analyst
-- Corporate Finance Manager
-- Asset Management Associate
-- Financial Modeling Analyst
-- Risk Management Specialist
-- Financial Analyst Corporate Finance
-- Werkstudent Finanzanalyse
-- Intern Finanzwirtschaft
-- Masterarbeit Finanzwirtschaft
-- Praktikum Corporate Finance
-- Junior Finanzanalyst
-- Finanzanalyst
-- Corporate Finance Managerin
-- Asset Management Assistentin
-- Finanzmodellierung Analystin
-- Risikomanagement Spezialistin
-must_have_keywords:
-- corporate finance
-- financial modeling
 - Python
-- investment banking
-- asset management
-- FP&A
-- transaction advisory
-- sustainable finance
-- quantitative investment strategies
-- Deutsche Sprache
-- Finanzmodellierung
-- Kreditanalyse
-- Portfolio-Optimierung
-- Risikomanagement
-- IFRS und HGB-Grundlagen
-- Budgetierung und Vorhersage
+- Machine Learning
+- Simulation & Data Tools
+- Automotive Engineering
+- FEM simulation
+- ANSYS
+- Grafana
+- InfluxDB
+- Power BI
+- Interactive dashboards
+- AI/LLM tools
+- Data analysis
+- Workflow automation
+- Automated data pipelines
+- Time-series analysis
+- Clustering
+- Signal processing
+- Anomaly detection
+- Design of Experiments
+- SolidWorks
+- CATIA
+- Git
+- GitHub/GitLab
+- VS Code
+- Jupyter
+- Ubuntu/Linux
+- C++
+- MATLAB/Simulink
+- German (B1+)
+- English (C1)
+- Hindi (Native)
+- Gujarati (Native)
+target_titles:
+- Werkstudent Automotive Engineering
+- Junior Data Engineer
+- Praktikum Automotive Engineering
+- Automotive Engineer
+- Data Scientist
+- Machine Learning Engineer
+- Simulation Engineer
+- Data Analyst
+- Business Analyst
+- Product Manager
+- Automobiltechniker
+- Datenanalytiker
+- Maschinelles Lernen
+- Simulationstechniker
+- Datenwissenschaftler
+- Automobilingenieur
+- Dateningenieur
+- Automobiltechnik
+- Datenanalyse
+- Produktmanager
+must_have_keywords:
+- Automotive Engineering
+- Machine Learning
+- Simulation & Data Tools
+- Python
+- Data Analysis
+- Workflow Automation
+- Automated Data Pipelines
+- Time-series Analysis
+- Clustering
+- Signal Processing
+- Anomaly Detection
 exclude_keywords:
 - Senior
 - Lead
 - Principal
-- 10+ Jahre
+- 10+ years
 - mehrjährige Berufserfahrung
-- mehrjährige Erfahrung
-- langjährige Erfahrung
-- langjährige Berufserfahrung
-- mehrjähriger Erfahrung
-- langjähriger Erfahrung
-- mehrjährige Erfahrung
-- langjährige Erfahrung
-- mehrjährige Berufserfahrung
-- langjährige Berufserfahrung
-- mehrjähriger Erfahrung
-- langjähriger Erfahrung
+- Führungskraft
+- Leitung
+- Chef
+- Hochschulabschluss
+- Promotion
 preferred_locations:
-- Frankfurt
-- München
-- Berlin
-- Deutschland
-- Europa
-language_preference: any
+- Ingolstadt
+- Erlangen
+- Germany
+- Europe
+language_preference: english_only
 years_of_experience: 0
 career_level: student
 search_queries:
-- Werkstudent Corporate Finance
-- Intern Investment Banking
-- Masterarbeit Corporate Finance
-- Praktikum Asset Management
-- Junior Financial Analyst
-- Financial Analyst Corporate Finance
-- Corporate Finance Manager
-- Asset Management Associate
-- Financial Modeling Analyst
-- Risk Management Specialist
-- Finanzmodellierung Analyst
-- Kreditanalyse
-- Portfolio-Optimierung
-- Risikomanagement
-- IFRS und HGB-Grundlagen
-- Budgetierung und Vorhersage
-- Deutsche Sprache
-- Finanzmodellierung
-- Kreditanalyse
-- Portfolio-Optimierung
-- Risikomanagement
-- IFRS und HGB-Grundlagen
-- Budgetierung und Vorhersage
+- Werkstudent Automotive Engineering
+- Junior Data Engineer
+- Praktikum Automotive Engineering
+- Automotive Engineer
+- Data Scientist
+- Machine Learning Engineer
+- Simulation Engineer
+- Data Analyst
+- Business Analyst
+- Product Manager
+- Automobiltechniker
+- Datenanalytiker
+- Maschinelles Lernen
+- Simulationstechniker
+- Datenwissenschaftler
+- Automobilingenieur
+- Dateningenieur
+- Automobiltechnik
+- Datenanalyse
+- Produktmanager
 prefilter_min_score: 15
 tier_thresholds:
   strong: 75
   worth_look: 50
-company_targets:
-- name: Commerzbank
-  ats: smartrecruiters
-  id: commerzbank

@@ -215,5 +215,50 @@ async function load() {
   }
 }
 
+// ── Find jobs ──────────────────────────────────────────────────────────────
+// The scan runs in the background worker and streams progress here, so a long
+// wait shows what it's doing rather than looking frozen.
+function setScan(text, sub = "", isError = false) {
+  const el = $("scan");
+  el.className = `scan${isError ? " err" : ""}`;
+  el.innerHTML = `<div>${esc(text)}</div>${sub ? `<div class="sub">${esc(sub)}</div>` : ""}`;
+  el.classList.remove("hidden");
+}
+
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg?.type !== "SCAN_PROGRESS") return;
+  setScan(msg.text, (msg.stats || []).join(" · "), Boolean(msg.error));
+  if (msg.done) {
+    $("find").disabled = false;
+    $("find").textContent = "🔍 Find jobs";
+    if (!msg.error) load();          // pull in whatever the scan saved
+  }
+});
+
+$("find").addEventListener("click", async () => {
+  const btn = $("find");
+  btn.disabled = true;
+  btn.textContent = "Searching…";
+  setScan("Starting…");
+  try {
+    const resp = await chrome.runtime.sendMessage({ type: "FIND_JOBS" });
+    if (resp && !resp.ok) {
+      const msg = resp.error === "NO_KEY"
+        ? "Add your Groq API key from the JobCopilot toolbar icon first."
+        : resp.error === "NO_CV"
+          ? "Add your CV from the JobCopilot toolbar icon first."
+          : resp.error === "NOT_SIGNED_IN"
+            ? "Sign in from the JobCopilot toolbar icon first."
+            : resp.error;
+      setScan("Scan failed", msg, true);
+    }
+  } catch (e) {
+    setScan("Scan failed", String(e.message || e), true);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "🔍 Find jobs";
+  }
+});
+
 $("refresh").addEventListener("click", load);
 load();

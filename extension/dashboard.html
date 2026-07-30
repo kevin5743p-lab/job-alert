@@ -50,6 +50,17 @@
     .msg.err { background: #ffebe9; color: #82071e; }
     .hidden { display: none; }
 
+    button.primary { background: #4f46e5; color: #fff; border-color: #4f46e5; font-weight: 600; }
+    button.primary:hover { background: #4338ca; }
+    button:disabled { opacity: .6; cursor: default; }
+
+    .scan {
+      background: #eef2ff; border: 1px solid #c7d2fe; color: #3730a3;
+      border-radius: 8px; padding: 10px 12px; font-size: 13px; margin-bottom: 16px;
+    }
+    .scan.err { background: #ffebe9; border-color: #ffc1bc; color: #82071e; }
+    .scan .sub { color: #6366f1; font-size: 12px; margin-top: 3px; }
+
     .stat[data-filter] { cursor: pointer; user-select: none; }
     .stat[data-filter]:hover { border-color: #a5b4fc; }
     .stat.on { border-color: #4f46e5; background: #eef2ff; }
@@ -78,6 +89,9 @@
     @media (prefers-color-scheme: dark) {
       body { background: #0d1117; color: #e6edf3; }
       .stat, table, .empty { background: #161b22; border-color: #30363d; }
+      .scan { background: #1c1b2e; border-color: #3730a3; color: #c7d2fe; }
+      .scan.err { background: #2d1214; border-color: #6b2226; color: #ffa198; }
+      .stat.on { background: #1c1b2e; }
       th { background: #0d1117; color: #8b949e; }
       th, td { border-color: #21262d; }
       .sub, .co, .muted { color: #8b949e; }
@@ -93,8 +107,12 @@
         <h1>My applications</h1>
         <p class="sub" id="who">Loading…</p>
       </div>
-      <button id="refresh">Refresh</button>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button id="find" class="primary">🔍 Find jobs</button>
+        <button id="refresh">Refresh</button>
+      </div>
     </header>
+    <div id="scan" class="scan hidden"></div>
 
     <div id="message" class="msg hidden"></div>
     <div class="stats" id="stats"></div>

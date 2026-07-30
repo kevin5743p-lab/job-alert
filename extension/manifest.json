@@ -6,7 +6,14 @@
   "permissions": ["storage"],
   "host_permissions": [
     "https://api.groq.com/*",
-    "https://jiryqdcmukmbflahtptv.supabase.co/*"
+    "https://jiryqdcmukmbflahtptv.supabase.co/*",
+    "https://www.arbeitnow.com/*",
+    "https://boards-api.greenhouse.io/*",
+    "https://api.ashbyhq.com/*",
+    "https://api.lever.co/*",
+    "https://api.smartrecruiters.com/*",
+    "https://*.recruitee.com/*",
+    "https://*.jobs.personio.de/*"
   ],
   "action": {
     "default_popup": "popup.html",

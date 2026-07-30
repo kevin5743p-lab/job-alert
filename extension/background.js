@@ -5,9 +5,11 @@
 // here, not in the content script — so the page's CSP can't block it and the
 // key never touches the page context.
 
-import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, normalize,
+import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt,
+         buildSearchProfilePrompt, buildBatchScorePrompt, normalize,
          groundingWarnings, DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
 import * as sb from "./supabase.js";
+import { fetchAll, prefilter } from "./finder.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -72,6 +74,102 @@ async function loadKeyAndCv() {
   if (!cv || !cv.trim()) throw new Error("NO_CV");
   return { groqApiKey, cv, lang: lang || "en", model, signedIn };
 }
+
+// ── Find jobs ──────────────────────────────────────────────────────────────
+// The whole "find" half, on demand, from the user's own browser. Progress is
+// pushed to the dashboard as it goes, because a scan takes a while and silence
+// looks like a hang.
+const SCORE_BATCH = 8;        // postings per Groq call
+const MAX_SCORED = 80;        // ceiling per scan, to protect a free-tier key
+
+function progress(text, done = false, extra = {}) {
+  chrome.runtime.sendMessage({ type: "SCAN_PROGRESS", text, done, ...extra })
+    .catch(() => {});          // nobody listening (dashboard closed) is fine
+}
+
+async function ensureSearchProfile(cv, apiKey, model, force) {
+  const profile = await sb.getProfile();
+  const existing = profile && profile.search_profile;
+  if (!force && existing && (existing.search_queries || []).length) return existing;
+
+  progress("Working out what to search for, from your CV…");
+  const sp = await groqJson(buildSearchProfilePrompt(cv), apiKey, model, 1800);
+  if (!sp || !(sp.search_queries || []).length) {
+    throw new Error("Couldn't derive a search profile from your CV.");
+  }
+  await sb.saveSearchProfile(sp);
+  return sp;
+}
+
+async function scoreJobs(jobs, cv, field, apiKey, model, language) {
+  const scored = [];
+  const batches = [];
+  for (let i = 0; i < jobs.length; i += SCORE_BATCH) {
+    batches.push(jobs.slice(i, i + SCORE_BATCH));
+  }
+  let n = 0;
+  for (const batch of batches) {
+    n++;
+    progress(`Scoring matches… (${Math.min(n * SCORE_BATCH, jobs.length)}/${jobs.length})`);
+    let raw;
+    try {
+      raw = await groqJson(
+        buildBatchScorePrompt(batch, cv, field, language), apiKey, model, 1600);
+    } catch (e) {
+      // Out of quota or rate-limited: keep what we have rather than losing the scan.
+      if (/quota|rate limit/i.test(e.message)) break;
+      continue;
+    }
+    for (const s of (raw && raw.scores) || []) {
+      const job = batch[s.i];
+      if (!job) continue;
+      const score = Math.max(0, Math.min(100, parseInt(s.score, 10) || 0));
+      scored.push({ job, score, reason: String(s.reason || "").slice(0, 400) });
+    }
+  }
+  return scored;
+}
+
+chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+  if (msg?.type !== "FIND_JOBS") return;
+
+  (async () => {
+    try {
+      const { groqApiKey, cv, lang, model } = await loadKeyAndCv();
+      if (!(await sb.getSession())) throw new Error("NOT_SIGNED_IN");
+
+      const sp = await ensureSearchProfile(cv, groqApiKey, model, msg.rebuildProfile);
+
+      const { jobs, stats } = await fetchAll(sp, (t) => progress(t));
+      progress(`Found ${jobs.length} postings — filtering…`);
+
+      const survivors = prefilter(jobs, sp).slice(0, MAX_SCORED);
+      if (!survivors.length) {
+        progress("No matching postings this time.", true, { added: 0, stats });
+        sendResponse({ ok: true, added: 0, fetched: jobs.length, stats });
+        return;
+      }
+
+      const scored = await scoreJobs(survivors, cv, sp.field, groqApiKey, model, lang);
+      const keep = scored.filter((s) => s.score >= 50);
+
+      progress(`Saving ${keep.length} match${keep.length === 1 ? "" : "es"}…`);
+      const saved = await sb.upsertFoundJobs(keep);
+      await sb.touchLastScan();
+
+      progress(`Done — ${saved} job${saved === 1 ? "" : "s"} in your tracker.`, true,
+               { added: saved, stats });
+      sendResponse({ ok: true, added: saved, fetched: jobs.length,
+                     considered: survivors.length, stats });
+    } catch (e) {
+      const m = String(e.message || e);
+      progress(`Scan failed: ${m}`, true, { error: m });
+      sendResponse({ ok: false, error: m });
+    }
+  })();
+
+  return true;
+});
 
 // Classify form fields the rules missed.
 //

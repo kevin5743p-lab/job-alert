@@ -123,6 +123,82 @@ Return a JSON object mapping each id to its answer, and nothing else:
 {"answers": {"q0": "…", "q1": "…"}}`;
 }
 
+// Work out what to hunt for, from the CV alone. Runs once per user (and again
+// whenever they rewrite their CV), so the search is theirs rather than a
+// hard-coded field. Mirrors personalize.py's prompt on the Python side.
+export function buildSearchProfilePrompt(cvText) {
+  return `You are configuring an automated job search for the candidate whose CV \
+follows.
+
+=== CV ===
+${(cvText || "").slice(0, CV_LIMIT)}
+=== END ===
+
+Infer their field, level and target market, then return a JSON object with
+EXACTLY these keys:
+
+- "field": one short phrase for their field, e.g. "corporate finance",
+  "automotive sensor engineering", "clinical nursing"
+- "search_queries": 10-18 short strings (1-3 words) to search job boards with,
+  built from THEIR field. Mix English and German if the market is Germany.
+  Shapes that work: "Werkstudent <field>", "Junior <role>", "Praktikum <field>".
+- "target_titles": 15-30 job titles worth targeting, English and German. If the
+  CV shows a student, include Working Student / Werkstudent / Intern / Praktikum
+  / Masterarbeit / Thesis variants.
+- "must_have_keywords": 10-20 words, at least one of which should appear in a
+  genuinely relevant posting (bilingual).
+- "exclude_keywords": 8-15 seniority or mismatch terms that make a posting wrong
+  for them, e.g. Senior, Lead, Principal, "10+ years", mehrjährige Berufserfahrung.
+- "company_targets": 6-16 objects {"name","ats","id"} for real employers in this
+  field that publish on a public ATS. "ats" is one of: greenhouse, ashby, lever,
+  recruitee, personio, smartrecruiters. "id" is their board identifier —
+  usually the lowercase company name with no spaces (ashby may hyphenate,
+  smartrecruiters is often CamelCase). Only include employers you are fairly
+  confident use one of these systems; omit anyone likely on Workday, Taleo or
+  SuccessFactors. Accuracy matters far more than length — return few solid
+  entries, or [] if unsure.
+
+Respond with ONLY the JSON object.`;
+}
+
+// Score a batch of postings in one call. Batching matters: scoring each job
+// individually would exhaust a free-tier key in a single scan.
+export function buildBatchScorePrompt(jobs, cvText, field, language = "en") {
+  const list = jobs.map((j, i) =>
+    `  {"i": ${i}, "title": ${JSON.stringify(j.title || "")}, ` +
+    `"company": ${JSON.stringify(j.company || "")}, ` +
+    `"location": ${JSON.stringify(j.location || "")}, ` +
+    `"description": ${JSON.stringify((j.description || "").slice(0, 700))}}`
+  ).join(",\n");
+
+  return `You are a strict but fair job-matching assistant. Score how well each \
+posting fits the candidate.
+
+=== CANDIDATE CV ===
+${(cvText || "").slice(0, 2500)}
+
+Their field: ${field || "as shown in the CV"}
+
+=== POSTINGS ===
+[
+${list}
+]
+
+For each posting give a score from 0 to 100 and one short, specific reason.
+- 85-100 outstanding fit · 70-84 strong · 50-69 worth a look · below 50 poor.
+- Be strict. Most postings are not a good fit; say so.
+- SCORE 0 if the role requires several years of professional experience the CV
+  doesn't show, if it demands fluent/business German (C1/C2, "verhandlungssicher")
+  and the CV doesn't have it, or if it is simply a different profession.
+  ("Grundkenntnisse", B1/B2 or "von Vorteil" are fine.)
+- Judge on real overlap of skills and experience, not keyword coincidence.
+- The reason must cite something concrete from the CV or the posting, in one
+  sentence, written in ${LANG_NAME[language] || "English"}.
+
+Return only:
+{"scores": [{"i": 0, "score": 82, "reason": "…"}, …]}`;
+}
+
 // Classify form fields the rule-based matcher didn't recognise.
 //
 // Deliberately a CLASSIFICATION task, not a generation one: the model maps each

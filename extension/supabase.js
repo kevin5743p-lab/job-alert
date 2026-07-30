@@ -205,6 +205,63 @@ export async function deleteApplication(id) {
   return rest(`/applications?id=eq.${encodeURIComponent(id)}`, { method: "DELETE" });
 }
 
+export async function saveSearchProfile(searchProfile) {
+  return rest("/profiles", {
+    method: "POST",
+    body: { id: await currentUserId(), search_profile: searchProfile },
+    headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+  });
+}
+
+export async function touchLastScan() {
+  return rest("/profiles", {
+    method: "POST",
+    body: { id: await currentUserId(), last_scan_at: new Date().toISOString() },
+    headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+  });
+}
+
+// Write a scan's results into the tracker. Upserting on (user_id, job_url)
+// means a re-scan refreshes a posting rather than duplicating it — and because
+// status is only set on insert, a job already marked applied stays applied.
+export async function upsertFoundJobs(scored) {
+  const rows = scored
+    .filter((s) => s.job && s.job.url)
+    .map((s) => ({
+      user_id: null,                       // filled in below
+      job_title: (s.job.title || "").slice(0, 300),
+      job_company: (s.job.company || "").slice(0, 200),
+      job_location: (s.job.location || "").slice(0, 200),
+      job_url: s.job.url,
+      job_source: (s.job.source || "").slice(0, 100),
+      description: (s.job.description || "").slice(0, 4000),
+      posted_at: s.job.published || null,
+      score: s.score,
+      tier: s.score >= 75 ? "strong" : "worth_look",
+      reason: s.reason || "",
+    }));
+  if (!rows.length) return 0;
+
+  const uid = await currentUserId();
+  rows.forEach((r) => { r.user_id = uid; });
+
+  let saved = 0;
+  for (let i = 0; i < rows.length; i += 50) {
+    const chunk = rows.slice(i, i + 50);
+    try {
+      await rest("/applications?on_conflict=user_id,job_url", {
+        method: "POST",
+        body: chunk,
+        headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+      });
+      saved += chunk.length;
+    } catch (e) {
+      console.warn("Saving a batch of found jobs failed:", e);
+    }
+  }
+  return saved;
+}
+
 // The most recent tailored packet for a posting — used to fill a cover-letter
 // box on that job's application form.
 export async function latestPacketForUrl(url) {
