@@ -247,12 +247,20 @@
     const list = (items, fmt) =>
       items.length ? `<ul class="jc-fill-list">${items.map(fmt).join("")}</ul>`
                    : `<p class="jc-dim">None.</p>`;
+    const open = report.openQuestions || [];
 
     openPanel(`
       <div class="jc-section">
         <div class="jc-fit">Filled ${report.filled.length} field${report.filled.length === 1 ? "" : "s"}.
         Review everything, then submit using the site's own button.</div>
       </div>
+
+      ${open.length ? `<div class="jc-section">
+        <h4>Open questions (${open.length})</h4>
+        ${list(open, (q) => `<li>${esc(q.question.slice(0, 90))}</li>`)}
+        <button id="jc-draft" class="jc-copy" style="margin-top:8px">✨ Draft answers from my CV</button>
+        <div class="jc-dim" style="margin-top:4px">Drafts only — read and edit before submitting.</div>
+      </div>` : ""}
 
       <div class="jc-section"><h4>Filled</h4>
         ${list(report.filled, (f) => `<li>${esc(f.label)} <span class="jc-dim">(${esc(f.key)})</span></li>`)}
@@ -265,8 +273,40 @@
       ${!hadPacket ? `<div class="jc-saved jc-saved-warn">Tip: tailor this job first
         and the cover-letter box gets filled too.</div>` : ""}
 
-      <div class="jc-saved jc-saved-warn">JobCopilot never submits the form and never
-      fills passwords or ID/financial fields — that's always yours to do.</div>`);
+      <div class="jc-saved jc-saved-warn">JobCopilot never submits the form, never ticks
+      consent boxes, and never fills passwords or ID/financial fields.</div>`);
+
+    const draftBtn = document.querySelector("#jobcopilot-panel #jc-draft");
+    if (draftBtn) {
+      draftBtn.addEventListener("click", () => onDraftAnswers(open, draftBtn));
+    }
+  }
+
+  function onDraftAnswers(questions, btn) {
+    btn.disabled = true;
+    btn.textContent = "Drafting…";
+    chrome.runtime.sendMessage(
+      { type: "DRAFT_ANSWERS", questions, job: readJob() },
+      (resp) => {
+        btn.disabled = false;
+        btn.textContent = "✨ Draft answers from my CV";
+        if (chrome.runtime.lastError || !resp) {
+          btn.insertAdjacentHTML("afterend",
+            `<div class="jc-dim">Extension error — reload the page and retry.</div>`);
+          return;
+        }
+        if (!resp.ok) {
+          btn.insertAdjacentHTML("afterend",
+            `<div class="jc-dim">Couldn't draft: ${esc(resp.error)}</div>`);
+          return;
+        }
+        const n = window.JobCopilotAutofill.applyAnswers(resp.answers);
+        const skipped = questions.length - n;
+        btn.insertAdjacentHTML("afterend",
+          `<div class="jc-dim">Drafted ${n} answer${n === 1 ? "" : "s"}` +
+          (skipped > 0 ? ` · ${skipped} left blank (your CV didn't cover it)` : "") +
+          ` — review before submitting.</div>`);
+      });
   }
 
   // ── Panel ────────────────────────────────────────────────────────────────

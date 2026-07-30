@@ -61,6 +61,47 @@ Return a JSON object in EXACTLY this shape:
 Aim for 4-7 items in "relevant_experience". Respond with ONLY the JSON object.`;
 }
 
+// Draft answers to an application form's free-text questions ("Why do you want
+// to work here?", "Describe a relevant project"). Same no-fabrication rule as
+// the tailoring prompt: only facts from the CV, and say so when there are none.
+export function buildAnswersPrompt(questions, job, cvText, packet, language = "en") {
+  const langName = LANG_NAME[language] || "English";
+  const list = questions
+    .map((q) => `  {"id": "${q.id}", "question": ${JSON.stringify(q.question)}}`)
+    .join(",\n");
+  const tailored = packet && packet.tailored_summary
+    ? `\n\nALREADY-TAILORED SUMMARY FOR THIS ROLE (reuse its angle):\n${packet.tailored_summary}`
+    : "";
+
+  return `You are helping a candidate answer the free-text questions on a job \
+application form. Write in ${langName}.
+
+=== JOB ===
+Title: ${job.title || "N/A"}
+Company: ${job.company || "N/A"}
+Description:
+${(job.description || "").slice(0, 1500)}
+
+=== CANDIDATE CV (the ONLY source of truth) ===
+${(cvText || "").slice(0, CV_LIMIT)}${tailored}
+
+=== QUESTIONS ===
+[
+${list}
+]
+
+RULES:
+- Answer ONLY from the CV. Never invent employers, tools, degrees or results.
+- First person, specific, no filler and no flattery. 40-120 words per answer
+  unless the question clearly wants one line (then one line).
+- If the CV genuinely offers nothing for a question, return "" for it rather
+  than inventing something — a human will write that one.
+- Do not repeat the cover letter verbatim.
+
+Return a JSON object mapping each id to its answer, and nothing else:
+{"answers": {"q0": "…", "q1": "…"}}`;
+}
+
 // Coerce the model's output into the stable shape the UI expects. Mirrors
 // tailor.py's _normalize: tolerates a string where a list is expected and
 // fills every key so the renderer never trips on a missing field.

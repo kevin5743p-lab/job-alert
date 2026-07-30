@@ -127,6 +127,143 @@
     setTimeout(() => el.classList.remove("jobcopilot-filled"), 4000);
   }
 
+  // ── Multiple choice (radios / checkboxes) ────────────────────────────────
+  // Consent-style boxes are never ticked automatically: agreeing to terms,
+  // privacy policies or background checks is a decision, not data entry.
+  const CONSENT = new RegExp([
+    "consent", "agree", "terms", "privacy", "policy",
+    "datenschutz", "einwillig", "zustimm", "akzeptier",
+    "accept", "acknowledg", "background check", "gdpr", "dsgvo",
+    "subscribe", "newsletter",
+  ].join("|"));
+
+  // Equivalent answers, so a stored "No" still ticks "Nein" / "No, I don't".
+  const SYNONYMS = [
+    [/^(yes|ja|true|y)\b/, /^(yes|ja|true|y)\b/],
+    [/^(no|nein|false|n)\b/, /^(no|nein|false|n)\b/],
+  ];
+
+  function labelTextFor(input) {
+    const bits = [];
+    if (input.labels) for (const l of input.labels) bits.push(l.innerText || l.textContent);
+    if (input.id) {
+      const lab = document.querySelector(`label[for="${CSS.escape(input.id)}"]`);
+      if (lab) bits.push(lab.innerText || lab.textContent);
+    }
+    const wrap = input.closest("label");
+    if (wrap) bits.push(wrap.innerText || wrap.textContent);
+    if (!bits.length) bits.push(input.value);
+    return norm(bits.filter(Boolean)[0] || "");
+  }
+
+  // The question a radio group is asking: its fieldset legend, or the nearest
+  // preceding heading/label text above the group.
+  function groupQuestion(input) {
+    const fs = input.closest("fieldset");
+    const legend = fs && fs.querySelector("legend");
+    if (legend) return norm(legend.innerText || legend.textContent);
+
+    const group = input.closest("[role='radiogroup'], .field, [class*='field'], [class*='question'], div");
+    if (group) {
+      // Take the group's text minus the option labels themselves.
+      const optionText = Array.from(
+        group.querySelectorAll("input[type=radio], input[type=checkbox]"))
+        .map(labelTextFor).join(" ");
+      const all = norm(group.innerText || "");
+      const q = all.replace(new RegExp(optionText.split(/\s+/).filter(w => w.length > 2)
+        .map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"), "g"), "").trim();
+      if (q) return q.slice(0, 160);
+    }
+    return norm(input.name || "");
+  }
+
+  function optionMatches(optLabel, want) {
+    const o = norm(optLabel), w = norm(want);
+    if (!o || !w) return false;
+    if (o === w) return true;
+    for (const [a, b] of SYNONYMS) if (a.test(w) && b.test(o)) return true;
+    return o.includes(w) || (w.length > 3 && w.includes(o));
+  }
+
+  function fillChoices(profile, report) {
+    const groups = new Map();
+    document.querySelectorAll("input[type=radio]").forEach((el) => {
+      if (!visible(el)) return;
+      const key = el.name || el.closest("fieldset, [role='radiogroup']");
+      if (!key) return;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(el);
+    });
+
+    groups.forEach((inputs) => {
+      if (inputs.some((el) => el.checked)) return;      // already answered
+      const question = groupQuestion(inputs[0]);
+      const label = question.slice(0, 48);
+
+      if (isBlocked(question, inputs[0]) || CONSENT.test(question)) {
+        report.skipped.push({ label, reason: "your decision — answer this yourself" });
+        return;
+      }
+      const spec = specFor(question);
+      const value = spec && profile[spec.key];
+      if (!value) return;
+
+      const hit = inputs.find((el) => optionMatches(labelTextFor(el), value));
+      if (!hit) {
+        report.skipped.push({ label, reason: `no option matching "${value}"` });
+        return;
+      }
+      hit.checked = true;
+      hit.dispatchEvent(new Event("click", { bubbles: true }));
+      hit.dispatchEvent(new Event("change", { bubbles: true }));
+      highlight(hit.closest("label") || hit);
+      report.filled.push({ label, key: spec.key });
+    });
+
+    // Standalone checkboxes are almost always consent/marketing — never auto-tick.
+    document.querySelectorAll("input[type=checkbox]").forEach((el) => {
+      if (!visible(el) || el.checked) return;
+      const q = labelTextFor(el) || groupQuestion(el);
+      if (CONSENT.test(q)) {
+        report.skipped.push({ label: q.slice(0, 48), reason: "consent — tick it yourself" });
+      }
+    });
+  }
+
+  // ── Free-text questions ──────────────────────────────────────────────────
+  // Long-answer boxes the profile can't answer ("Why do you want to work
+  // here?"). Collected so the model can draft them; nothing is filled here.
+  function collectOpenQuestions() {
+    const out = [];
+    document.querySelectorAll("textarea").forEach((el, i) => {
+      if (!visible(el) || (el.value && el.value.trim())) return;
+      const hay = haystack(el);
+      if (isBlocked(hay, el)) return;
+      if (specFor(hay)) return;              // a profile field covers it
+      const q = (el.labels && el.labels[0]
+        ? (el.labels[0].innerText || "") : "").trim() || groupQuestion(el);
+      if (!q) return;
+      el.dataset.jcQuestionId = `q${i}`;
+      out.push({ id: `q${i}`, question: q.slice(0, 300) });
+    });
+    return out;
+  }
+
+  // Write drafted answers back. Answers are keyed by the ids from
+  // collectOpenQuestions().
+  function applyAnswers(answers) {
+    let n = 0;
+    Object.entries(answers || {}).forEach(([id, text]) => {
+      if (!text) return;
+      const el = document.querySelector(`[data-jc-question-id="${id}"]`);
+      if (!el || (el.value && el.value.trim())) return;
+      setValue(el, text);
+      highlight(el);
+      n++;
+    });
+    return n;
+  }
+
   function visible(el) {
     if (el.disabled || el.readOnly) return false;
     const r = el.getBoundingClientRect();
@@ -193,6 +330,8 @@
       report.filled.push({ label, key: spec.key });
     });
 
+    fillChoices(profile, report);
+    report.openQuestions = collectOpenQuestions();
     return report;
   }
 
@@ -204,5 +343,7 @@
     return inputs.length >= 3;
   }
 
-  window.JobCopilotAutofill = { fill, findForm, FIELD_SPECS };
+  window.JobCopilotAutofill = {
+    fill, findForm, FIELD_SPECS, collectOpenQuestions, applyAnswers,
+  };
 })();

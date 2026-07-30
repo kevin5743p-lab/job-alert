@@ -38,6 +38,44 @@ can only ever read or write its own rows.
 Sign in from the popup to sync your CV and save results. Without an account the
 extension still works — the CV just stays local and nothing is saved.
 
+## Supported sites
+
+"Tailor" needs a job description on the page; "Fill" needs an application form.
+Anywhere else, the buttons simply don't appear.
+
+| Site | Tailor | Fill | Notes |
+|---|:--:|:--:|---|
+| LinkedIn | ✅ | ✅ | both the job page and the search split-view |
+| Indeed | ✅ | ✅ | |
+| Workday (`myworkdayjobs`, `myworkdaysite`) | ✅ | ✅ | most German corporates apply here |
+| Greenhouse | ✅ | ✅ | |
+| Ashby | ✅ | ✅ | |
+| Lever | ✅ | ✅ | |
+| Personio | ✅ | ✅ | German Mittelstand |
+| Recruitee | ✅ | ✅ | |
+| SmartRecruiters | ✅ | ✅ | |
+
+Adding a site is a few lines: a match pattern in `manifest.json` and an entry in
+the `SITES` registry in `content.js`. Even without one, the generic reader
+(longest text block + `document.title`) often works.
+
+## What autofill will and won't do
+
+Fills your saved answers into text fields, dropdowns and multiple-choice
+questions (English and German), and drafts free-text answers from your CV.
+
+It deliberately refuses to:
+
+- **submit anything** — you review and press the site's own button;
+- **tick consent boxes** — terms, privacy, background checks, newsletters are
+  decisions, not data entry;
+- **fill passwords or ID/financial fields** — SSN, passport, IBAN, card, tax id,
+  date of birth. Those belong in your password manager.
+
+It also never overwrites a value you already typed, and highlights every field
+it changes so nothing happens invisibly. Drafted free-text answers are drafts:
+read them before submitting.
+
 ## Install (load unpacked)
 
 1. Open `chrome://extensions`.
