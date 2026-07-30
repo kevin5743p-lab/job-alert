@@ -47,6 +47,30 @@
     .note { background: #fff8c5; border: 1px solid #eac54f; color: #7d4e00;
             border-radius: 8px; padding: 10px 12px; font-size: 12.5px; margin-bottom: 18px; }
 
+    .tpl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+    .tpl {
+      border: 2px solid #d0d7de; border-radius: 10px; padding: 10px;
+      cursor: pointer; background: #fff; transition: border-color .12s;
+    }
+    .tpl:hover { border-color: #a5b4fc; }
+    .tpl.sel { border-color: #4f46e5; background: #f5f4ff; }
+    .tpl h3 { margin: 0 0 3px; font-size: 14px; }
+    .tpl p { margin: 0 0 8px; font-size: 11.5px; color: #57606a; line-height: 1.45; }
+    .tpl .thumb {
+      height: 120px; border: 1px solid #e6e9ee; border-radius: 6px; overflow: hidden;
+      background: #fff; position: relative;
+    }
+    .tpl .thumb iframe {
+      width: 620px; height: 800px; border: 0; transform: scale(.29);
+      transform-origin: top left; pointer-events: none; position: absolute; top: 0; left: 0;
+    }
+    .tpl .preview-link { font-size: 11.5px; color: #4f46e5; margin-top: 6px; display: inline-block; }
+    @media (prefers-color-scheme: dark) {
+      .tpl { background: #161b22; border-color: #30363d; }
+      .tpl.sel { border-color: #6366f1; background: #1c1b2e; }
+      .tpl p { color: #8b949e; }
+    }
+
     @media (prefers-color-scheme: dark) {
       body { background: #0d1117; color: #e6edf3; }
       fieldset { background: #161b22; border-color: #30363d; }
@@ -145,6 +169,12 @@
     <input id="how_heard" placeholder="e.g. LinkedIn" />
   </fieldset>
 
+  <fieldset>
+    <legend>Cover letter style</legend>
+    <p class="why">Pick the layout for your exported cover letters. You can change it any time.</p>
+    <div id="templates" class="tpl-grid"></div>
+  </fieldset>
+
   <div class="bar">
     <button id="save">Save profile</button>
     <button id="skip" class="secondary">Close</button>
@@ -152,6 +182,7 @@
   </div>
 </div>
 
+<script src="cover_templates.js"></script>
 <script type="module" src="onboarding.js"></script>
 </body>
 </html>

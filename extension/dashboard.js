@@ -75,6 +75,10 @@ function renderTable(rows) {
     b.addEventListener("click", () => openPacket(b.dataset.open, b));
   });
 
+  document.querySelectorAll("button[data-cover]").forEach((b) => {
+    b.addEventListener("click", () => openCover(b.dataset.cover, b));
+  });
+
   document.querySelectorAll("button[data-del]").forEach((b) => {
     b.addEventListener("click", async () => {
       if (!confirm("Remove this job from your list? The tailored result is kept.")) return;
@@ -108,7 +112,8 @@ function rowHtml(r) {
     <td class="muted">${esc(fmtDate(r.updated_at))}</td>
     <td style="white-space:nowrap">
       ${r.tailored_result_id
-        ? `<button data-open="${esc(r.tailored_result_id)}">Open packet</button>`
+        ? `<button data-cover="${esc(r.tailored_result_id)}">Cover letter</button>
+           <button data-open="${esc(r.tailored_result_id)}">Packet</button>`
         : `<span class="muted">—</span>`}
       <button class="danger" data-del="${esc(r.id)}">Delete</button>
     </td>
@@ -127,6 +132,27 @@ async function openPacket(resultId, btn) {
     showMessage("");
   } catch (e) {
     showMessage(`Couldn't open the packet: ${e.message}`, true);
+  } finally {
+    btn.textContent = original;
+  }
+}
+
+// Re-export a saved letter through the user's chosen template.
+async function openCover(resultId, btn) {
+  const original = btn.textContent;
+  btn.textContent = "Loading…";
+  try {
+    const [row, profile] = await Promise.all([
+      sb.getTailoredResult(resultId), sb.getProfile(),
+    ]);
+    if (!row) { showMessage("That tailored result no longer exists.", true); return; }
+    window.JobCopilotCoverTemplates.openCoverLetter(
+      { title: row.job_title, company: row.job_company },
+      row.packet || {}, profile?.application_profile || {},
+      profile?.language || "en");
+    showMessage("");
+  } catch (e) {
+    showMessage(`Couldn't open the cover letter: ${e.message}`, true);
   } finally {
     btn.textContent = original;
   }

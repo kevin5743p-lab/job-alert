@@ -77,12 +77,16 @@
 
 #jobcopilot-panel-body { padding: 16px; overflow-y: auto; }
 
-#jobcopilot-panel .jc-toolbar { margin-bottom: 14px; }
-#jobcopilot-panel .jc-toolbar #jc-download {
-  width: 100%; padding: 9px; border: none; border-radius: 6px;
+#jobcopilot-panel .jc-toolbar { margin-bottom: 14px; display: flex; gap: 6px; }
+#jobcopilot-panel .jc-toolbar button {
+  flex: 1; padding: 9px 6px; border: none; border-radius: 6px;
   background: #4f46e5; color: #fff; font-weight: 600; font-size: 13px; cursor: pointer;
 }
-#jobcopilot-panel .jc-toolbar #jc-download:hover { background: #4338ca; }
+#jobcopilot-panel .jc-toolbar button:hover { background: #4338ca; }
+#jobcopilot-panel .jc-toolbar button.jc-secondary {
+  background: #f6f8fa; color: #1f2328; border: 1px solid #d0d7de; font-weight: 500;
+}
+#jobcopilot-panel .jc-toolbar button.jc-secondary:hover { background: #eaeef2; }
 
 #jobcopilot-panel .jc-saved {
   background: #e6f4ea; color: #1a7f37; border-radius: 6px;

@@ -32,7 +32,7 @@
         "https://jobs.smartrecruiters.com/*",
         "https://careers.smartrecruiters.com/*"
       ],
-      "js": ["print_doc.js", "autofill.js", "content.js"],
+      "js": ["print_doc.js", "cover_templates.js", "autofill.js", "content.js"],
       "css": ["content.css"],
       "run_at": "document_idle"
     }

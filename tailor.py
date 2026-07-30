@@ -116,8 +116,29 @@ Return a JSON object in EXACTLY this shape:
   "matched_keywords": ["<job requirement the CV genuinely supports>", "..."],
   "missing_keywords": ["<job requirement the CV does NOT support>", "..."],
   "suggestions": ["<honest positioning tip or gap-mitigation>", "..."],
-  "cover_letter": "<a tailored cover letter, 200-300 words, grounded only in CV facts, addressed to the company>"
+  "cover_letter": "<the BODY of the cover letter — see rules below>"
 }}
+
+COVER LETTER — this is the part candidates are judged on, so make it specific:
+- Write the BODY ONLY: no letterhead, no date, no subject line, no "Dear ...",
+  no sign-off and no name. Those are added around it by the letter template.
+- 4 to 6 paragraphs, 300-450 words, separated by blank lines.
+- Follow this arc:
+  1. Who the candidate is right now (course/role and institution/employer) and
+     what they are applying for.
+  2. What specifically draws them to THIS role and company — tie it to the
+     posting's actual responsibilities, not generic praise.
+  3. One or two concrete projects or achievements from the CV, naming the real
+     tools, methods and outcomes.
+  4. Current or most recent experience and what it taught them.
+  5. Working style plus language levels exactly as the CV states them.
+  6. Practical close: availability/start date if the CV says, and an invitation
+     to talk.
+- Name real tools, methods and numbers from the CV. Specifics are what make it
+  credible; adjectives are not.
+- Never invent anything. No flattery ("your esteemed company"), no clichés
+  ("I am a hard worker"), no repeating the job ad back.
+- First person, warm but professional, plain language.
 
 Aim for 4-7 items in "relevant_experience". Respond with ONLY the JSON object."""
 

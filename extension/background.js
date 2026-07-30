@@ -127,7 +127,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
           console.warn("Supabase fetch failed, using local details:", e);
         }
       }
-      sendResponse({ ok: true, applicationProfile, packet });
+      const { language } = await chrome.storage.local.get("language");
+      sendResponse({ ok: true, applicationProfile, packet, language: language || "en" });
     } catch (e) {
       sendResponse({ ok: false, error: String(e.message || e) });
     }

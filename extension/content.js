@@ -399,7 +399,10 @@
            Sign in from the extension icon to keep a history.</div>`;
 
     openPanel(`
-      <div class="jc-toolbar"><button id="jc-download" type="button">⬇ Download as PDF</button></div>
+      <div class="jc-toolbar">
+        <button id="jc-cover" type="button">✉️ Cover letter PDF</button>
+        <button id="jc-download" type="button" class="jc-secondary">⬇ Highlights + letter</button>
+      </div>
       ${savedNote}
 
       <div class="jc-section"><div class="jc-fit">${esc(r.fit_summary)}</div></div>
@@ -430,9 +433,22 @@
       });
     });
 
-    // wire the PDF download
+    // wire the PDF downloads
     const dl = document.querySelector("#jobcopilot-panel #jc-download");
     if (dl) dl.addEventListener("click", () => openPrintDoc(job, r));
+
+    // The cover letter renders through the user's chosen template, so it needs
+    // their contact details — fetched from the background rather than assumed.
+    const cover = document.querySelector("#jobcopilot-panel #jc-cover");
+    if (cover) {
+      cover.addEventListener("click", () => {
+        chrome.runtime.sendMessage({ type: "GET_FILL_DATA", url: job.url }, (resp) => {
+          const profile = (resp && resp.ok && resp.applicationProfile) || {};
+          window.JobCopilotCoverTemplates.openCoverLetter(
+            job, r, profile, resp && resp.language);
+        });
+      });
+    }
   }
 
   // LinkedIn is a single-page app; the button can get wiped on navigation.

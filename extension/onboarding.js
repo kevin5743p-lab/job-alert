@@ -17,6 +17,78 @@ const KEYS = [
 
 const $ = (id) => document.getElementById(id);
 
+// ── Cover-letter template picker ────────────────────────────────────────────
+// Each card previews the real template rendered with the user's own details and
+// sample letter text, so the choice is made on what it actually looks like.
+let selectedTemplate = "modern";
+
+const SAMPLE_LETTER = [
+  "I am currently completing my Master's degree and am writing to express my",
+  "interest in this role, where I can build on the analysis and simulation work",
+  "that has shaped my studies so far.",
+  "",
+  "In a recent project I analysed sensor degradation under adverse weather,",
+  "using Python for the time-series work and Grafana for the dashboards. That",
+  "work taught me how much careful data handling matters to a reliable result.",
+  "",
+  "I work comfortably both independently and in cross-functional teams, and I",
+  "would be glad to discuss how I could contribute to yours.",
+].join("\n");
+
+function previewProfile() {
+  const p = {};
+  for (const k of KEYS) {
+    const el = $(k);
+    if (el && el.value.trim()) p[k] = el.value.trim();
+  }
+  // Placeholders so an empty form still previews as a real letter.
+  p.first_name = p.first_name || "Your";
+  p.last_name = p.last_name || "Name";
+  p.email = p.email || "you@example.com";
+  p.phone = p.phone || "+49 000 000000";
+  p.city = p.city || "Munich";
+  p.country = p.country || "Germany";
+  return p;
+}
+
+function templateHtml(id) {
+  const T = window.JobCopilotCoverTemplates;
+  const profile = { ...previewProfile(), cover_template: id };
+  return T.buildCoverLetter(
+    { title: "Finance Analyst", company: "Example GmbH" },
+    { cover_letter: SAMPLE_LETTER }, profile, "en");
+}
+
+function renderTemplates() {
+  const T = window.JobCopilotCoverTemplates;
+  $("templates").innerHTML = T.TEMPLATES.map((t) => `
+    <div class="tpl${t.id === selectedTemplate ? " sel" : ""}" data-tpl="${t.id}">
+      <h3>${t.name}</h3>
+      <p>${t.blurb}</p>
+      <div class="thumb"><iframe data-frame="${t.id}" sandbox=""></iframe></div>
+      <span class="preview-link" data-full="${t.id}">Open full preview →</span>
+    </div>`).join("");
+
+  // srcdoc rather than innerHTML: the preview is a whole document, and the
+  // sandboxed frame keeps its styles from leaking into this page.
+  T.TEMPLATES.forEach((t) => {
+    const f = document.querySelector(`iframe[data-frame="${t.id}"]`);
+    if (f) f.srcdoc = templateHtml(t.id);
+  });
+
+  document.querySelectorAll(".tpl").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      if (e.target.dataset.full) {
+        const w = window.open("", "_blank");
+        if (w) { w.document.open(); w.document.write(templateHtml(e.target.dataset.full)); w.document.close(); }
+        return;
+      }
+      selectedTemplate = card.dataset.tpl;
+      document.querySelectorAll(".tpl").forEach((c) => c.classList.toggle("sel", c === card));
+    });
+  });
+}
+
 function setStatus(text, ok = true) {
   const el = $("status");
   el.textContent = text;
@@ -24,7 +96,7 @@ function setStatus(text, ok = true) {
 }
 
 function read() {
-  const out = {};
+  const out = { cover_template: selectedTemplate };
   for (const k of KEYS) {
     const v = ($(k).value || "").trim();
     if (v) out[k] = v;
@@ -37,6 +109,7 @@ function write(profile) {
   for (const k of KEYS) {
     if (profile[k] !== undefined && profile[k] !== null) $(k).value = profile[k];
   }
+  if (profile.cover_template) selectedTemplate = profile.cover_template;
 }
 
 async function load() {
@@ -53,6 +126,9 @@ async function load() {
     }
   } catch (e) {
     setStatus(`Couldn't load your saved answers: ${e.message}`, false);
+  } finally {
+    // Render after loading so previews use the user's real name and contact.
+    renderTemplates();
   }
 }
 
