@@ -38,6 +38,28 @@ can only ever read or write its own rows.
 Sign in from the popup to sync your CV and save results. Without an account the
 extension still works — the CV just stays local and nothing is saved.
 
+**You do not need a Supabase account.** Everyone shares one hosted project, and
+you simply sign up inside the extension with an email and password. Your rows
+live under your own user id; row-level security means an account can only ever
+read or write its own data — verified by trying: a second account cannot list,
+query by id, insert as, or update another account's rows.
+
+What stays on your machine regardless: your **Groq API key** (a secret, never
+uploaded) and a local copy of your CV for offline use.
+
+### Connecting the job-alert bot to your tracker
+
+If you also run the Python job-alert bot, add two repository secrets and its
+scans will populate the same tracker:
+
+| Secret | Value |
+|---|---|
+| `SUPABASE_EMAIL` | the email you signed up with |
+| `SUPABASE_PASSWORD` | your password |
+
+The project URL and anon key are already built in. (Set `SUPABASE_URL` and
+`SUPABASE_ANON_KEY` only if you want to point at a different project.)
+
 ## Supported sites
 
 "Tailor" needs a job description on the page; "Fill" needs an application form.

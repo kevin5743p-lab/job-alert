@@ -12,11 +12,16 @@ their own credentials in their own repo's secrets, writes land under their own
 user id, and row-level security keeps every account's rows separate. A leaked
 anon key on its own grants nothing.
 
-Environment (all optional — sync is skipped unless the first three are set):
-  SUPABASE_URL       e.g. https://xxxx.supabase.co
-  SUPABASE_ANON_KEY  the publishable/anon key
-  SUPABASE_EMAIL     the account's email
-  SUPABASE_PASSWORD  the account's password
+Everyone shares ONE hosted project, so an adopter does not need a Supabase
+account of their own: they sign up inside the extension, and their rows live
+under their own user id in the shared database. The project URL and anon key are
+therefore build-time defaults — only the two personal values must be supplied.
+
+Environment:
+  SUPABASE_EMAIL     required — the account's email  (repo secret)
+  SUPABASE_PASSWORD  required — the account's password (repo secret)
+  SUPABASE_URL       optional — override the shared project
+  SUPABASE_ANON_KEY  optional — override the shared project's anon key
 """
 import logging
 import os
@@ -25,6 +30,12 @@ from typing import Dict, List, Optional
 import requests
 
 logger = logging.getLogger(__name__)
+
+# The shared JobCopilot project. Safe to ship: the anon key is a *publishable*
+# key and grants nothing on its own — every table has row-level security, so a
+# request only ever reads or writes the signed-in user's own rows.
+DEFAULT_URL = "https://jiryqdcmukmbflahtptv.supabase.co"
+DEFAULT_ANON_KEY = "sb_publishable_G1Mf9PySGYmp2YLqfj4FWg_BzdAnHJ_"
 
 TIMEOUT = 30
 # Postgres rejects a whole batch if one row is bad, so keep batches modest and
@@ -134,13 +145,17 @@ class SupabaseSync:
 
 
 def sync_jobs(strong: List[Dict], worth_look: List[Dict]) -> int:
-    """Entry point for main.py. Silently does nothing unless configured."""
-    url = os.environ.get("SUPABASE_URL", "").strip()
-    anon = os.environ.get("SUPABASE_ANON_KEY", "").strip()
+    """Entry point for main.py.
+
+    Does nothing unless SUPABASE_EMAIL / SUPABASE_PASSWORD are set, so a repo
+    that only wants Telegram alerts is unaffected.
+    """
+    url = os.environ.get("SUPABASE_URL", "").strip() or DEFAULT_URL
+    anon = os.environ.get("SUPABASE_ANON_KEY", "").strip() or DEFAULT_ANON_KEY
     email = os.environ.get("SUPABASE_EMAIL", "").strip()
     password = os.environ.get("SUPABASE_PASSWORD", "")
 
-    if not (url and anon and email and password):
+    if not (email and password):
         return 0
 
     client = SupabaseSync(url, anon, email, password)
