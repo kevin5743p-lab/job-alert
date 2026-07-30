@@ -38,7 +38,7 @@ import quiet_hours
 from matchers import ai as ai_scorer
 from matchers import domain_classifier, groq_client, memory_stub, rules
 from matchers import tier as tier_router
-from notifiers import telegram
+from notifiers import supabase_sync, telegram
 
 logging.basicConfig(
     level=logging.INFO,
@@ -339,6 +339,16 @@ def _finish(dry_run: bool, config: Dict, source_stats: Dict,
     if strong or worth_look or rejected:
         today_dir = archive.append_run(STATE_DIR, strong, worth_look, rejected)
         logger.info(f"📁 Archived to {today_dir.relative_to(ROOT)}/")
+
+    # Push the good jobs into the Supabase tracker, so they appear in the
+    # browser extension's dashboard alongside everything the user has already
+    # tailored or applied to. No-op unless SUPABASE_* env vars are configured;
+    # a failure here must never cost the user their Telegram alert.
+    if strong or worth_look:
+        try:
+            supabase_sync.sync_jobs(strong, worth_look)
+        except Exception as e:
+            logger.warning(f"Tracker sync failed (alerts unaffected): {e}")
 
     token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")

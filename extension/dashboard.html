@@ -50,7 +50,24 @@
     .msg.err { background: #ffebe9; color: #82071e; }
     .hidden { display: none; }
 
+    .stat[data-filter] { cursor: pointer; user-select: none; }
+    .stat[data-filter]:hover { border-color: #a5b4fc; }
+    .stat.on { border-color: #4f46e5; background: #eef2ff; }
+
+    .why { color: #6e7781; font-size: 12px; margin-top: 2px; }
+    .score { font-weight: 600; font-size: 14px; }
+    .s-hi { color: #1a7f37; }
+    .s-mid { color: #9a6700; }
+    .s-lo { color: #8b949e; }
+    .btnlink {
+      display: inline-block; padding: 4px 10px; font-size: 12px; margin-right: 4px;
+      border: 1px solid #4f46e5; border-radius: 6px; background: #4f46e5; color: #fff;
+    }
+    .btnlink:hover { background: #4338ca; text-decoration: none; }
+
     .st { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; }
+    .st-new { background: #eef2ff; color: #4338ca; }
+    .st-dismissed { background: #eaeef2; color: #8b949e; }
     .st-saved { background: #eaeef2; color: #57606a; }
     .st-tailored { background: #eef2ff; color: #4338ca; }
     .st-applied { background: #fff8c5; color: #7d4e00; }

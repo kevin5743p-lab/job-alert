@@ -181,8 +181,16 @@ export async function listApplications(limit = 100) {
   return rest(`/applications?select=*&order=updated_at.desc&limit=${limit}`);
 }
 
+// The tracker view: newly-found jobs ranked by fit first, then everything the
+// user has already acted on, most recent first.
+export async function listTrackedJobs(limit = 300) {
+  return rest(`/applications?select=*` +
+              `&order=status.asc,score.desc.nullslast,updated_at.desc` +
+              `&limit=${limit}`);
+}
+
 export const APPLICATION_STATUSES =
-  ["saved", "tailored", "applied", "interview", "offer", "rejected"];
+  ["new", "saved", "tailored", "applied", "interview", "offer", "rejected", "dismissed"];
 
 export async function updateApplicationStatus(id, status) {
   const rows = await rest(`/applications?id=eq.${encodeURIComponent(id)}`, {
