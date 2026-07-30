@@ -53,11 +53,23 @@ function setStatus(el, text, ok = true) {
 // Check the fields before calling Supabase. Without this, an empty email makes
 // the API read the request as an anonymous sign-in and reply "Anonymous
 // sign-ins are disabled" — technically true, but baffling to the user.
+// Rejects the near-misses that actually happen — "name@gmai", a missing dot,
+// a stray space. A typo here silently creates a SECOND account, and the user
+// then can't sign in with the address they think they used.
+const EMAIL_RE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
+
 function credentials() {
   const email = els.email.value.trim();
   const password = els.password.value;
   if (!email) {
     setStatus(els.authStatus, "Enter your email address first.", false);
+    els.email.focus();
+    return null;
+  }
+  if (!EMAIL_RE.test(email)) {
+    setStatus(els.authStatus,
+      `"${email}" doesn't look like a complete email address — check for a typo.`,
+      false);
     els.email.focus();
     return null;
   }
