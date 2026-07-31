@@ -8305,6 +8305,419 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-31T19:59:02.932026",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "title fits 'Automotive Engineer'; skills: Python, Data analysis, Git (+1); keyword bonus: 2; preferred location; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4444974509",
+            "title": "MATERIALS AND PROCESS ENGINEER (D/M/F)",
+            "company": "Airbus Protect",
+            "location": "Donauwörth, Bavaria, Germany",
+            "description": "Job Description This position is part of the Sustainability Business Unit of Airbus Protect which aims to empower businesses to build a sustainable future. Task description Assist in the qualification of elastomers, adhesives, sealants, and composites for applications in the aerospace industry Inter",
+            "url": "https://www.linkedin.com/jobs/view/4444974509",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-software-engineer-java-berlin-bavaria-431257",
+            "title": "Senior Software Engineer – Java (f/m/d)",
+            "company": "Idnow",
+            "location": "Berlin,  Bavaria",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;span class=&quot;fabric-text-color-mark&quot; data-renderer-mark=&quot;true&quot; data-text-custom-color=&quot;#36b37e&quot;&gt;IDnow is a&lt;strong&gt; leader in digital identity and fraud prevention in Europe&lt;/strong&gt; with a mission to ",
+            "url": "https://www.arbeitnow.com/jobs/companies/idnow/senior-software-engineer-java-berlin-bavaria-431257",
+            "published": "2026-07-31T17:55:29+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447102051",
+            "title": "Werkstudentin / Werkstudent Hardware-Test Elektroantriebe (w/m/d)",
+            "company": "Volkswagen Group",
+            "location": "Baunatal, Hesse, Germany",
+            "description": "Arbeitsumfeld Werden Sie Teil unseres Teams und gestalten Sie die Zukunft der Elektromobilität mit! In unserem Bereich „Entwicklung E-Antriebe, Leistungselektronik und Getriebe“ übernehmen wir die Konzernverantwortung für die Entwicklung aller zukünftigen Pulswechselrichter (PWR) für Elektroantriebe",
+            "url": "https://www.linkedin.com/jobs/view/4447102051",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445517092",
+            "title": "Werkstudent (m/w/d) im Bereich Entwicklung Fahrzeuggetriebe",
+            "company": "RENK Group",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "Ihre Aufgaben Organisation der Pflege des internen Expertensystems (Themen aufnehmen und Abarbeitung verfolgen, Aufbereitung der Einträge) Unterstützung beim Aufbau und Pflege von Listen und Informationssammmlungen (u.a. IT-Listen, Bauteillisten) Unterstützung bei der Bereitstellung von Daten an ang",
+            "url": "https://www.linkedin.com/jobs/view/4445517092",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447143606",
+            "title": "Werkstudent (m/w/d) im Bereich Sales Engineering",
+            "company": "Toyota Automated Logistics",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Auf einen Blick Du möchtest dein Studium mit spannenden Praxiserfahrungen verbinden und dabei an zukunftsorientierten Themen wie Digitalisierung, KI und technischen Lösungen mitarbeiten? Bei uns erhältst Du die Möglichkeit, eigene Ideen einzubringen und aktiv an der Weiterentwicklung unseres Sales E",
+            "url": "https://www.linkedin.com/jobs/view/4447143606",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447518122",
+            "title": "Werkstudent (w/m/d) Messtechnik und Qualitätslabor",
+            "company": "Vibracoustic",
+            "location": "Hamburg, Germany",
+            "description": "Vibracoustic ist ein weltweit führender Automobilzulieferer und bietet maßgeschneiderte Lösungen für mehr Komfort und weniger Geräusche und Vibrationen in Fahrzeugen. Als Teil der Freudenberg Gruppe fördern wir innovatives und zukunftsorientiertes Denken. Wir suchen proaktive und unternehmerisch den",
+            "url": "https://www.linkedin.com/jobs/view/4447518122",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447567746",
+            "title": "Data Engineer, Sr.",
+            "company": "Torentify",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Über das Unternehmen CGM (CompuGroup Medical) ist ein führender Anbieter von Softwarelösungen im Gesundheitswesen, der in 19 Ländern mit mehr als 9.000 Mitarbeitern weltweit tätig ist. Das Unternehmen entwickelt innovative digitale Gesundheitstechnologien, die die Gesundheitsversorgung und die Patie",
+            "url": "https://www.linkedin.com/jobs/view/4447567746",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447534909",
+            "title": "Senior Data Engineer - HR (m/f/d)",
+            "company": "Amer Sports",
+            "location": "Garching, Bavaria, Germany",
+            "description": "Hybrid/ Garching near Munich We’re looking for Senior Data Engineer - HR for Amer Sports’ office in Garching near Munich. Amer Sports is a global collective of iconic sports and outdoor brands, powered by a community of people who share a passion for authenticity, impact, and excellence. We bring to",
+            "url": "https://www.linkedin.com/jobs/view/4447534909",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4430476453",
+            "title": "(Senior) Data & AI Engineer (m/f/d) - Tieto Tech Consulting",
+            "company": "Tieto",
+            "location": "Regensburg, Bavaria, Germany",
+            "description": "Job Description Do you turn raw data into real impact? Do you see patterns where others see chaos, and opportunities where others see complexity? As a (Senior) Data & AI Engineer, you know that data is more than numbers - it’s the foundation for smarter decisions and real business value. If you’re d",
+            "url": "https://www.linkedin.com/jobs/view/4430476453",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445521600",
+            "title": "Senior Data Engineer Azure & Databricks (m/w/d)",
+            "company": "Optipack GmbH",
+            "location": "Neufahrn bei Freising, Bavaria, Germany",
+            "description": "Arbeiten bei der Unternehmensgruppe Theo Müller bedeutet, Teil eines regional verwurzelten Familienunternehmens und international wachsenden Konzerns im Bereich Food und Logistics zu sein. Mit bekannten Marken in den Geschäftsbereichen Molkerei, Fisch & Feinkost, Saucen und Dressings, einem eigenen ",
+            "url": "https://www.linkedin.com/jobs/view/4445521600",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4363014956",
+            "title": "Praktikum Entwicklung Karosseriesystem Fahrzeugsicherheit",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team setzen auf den höchsten Maßstab - auch in der Sicherheit. Wir vereinen dabei die porschetypischen Werte Sportlichkeit, Performance und Exklusivität mit der optimalen Sicherheit im und um´s Fahrzeug. Unser Fokus ist dabei die passive Sicherheit, die Insassen bei einem unvermeidbaren Unfa",
+            "url": "https://www.linkedin.com/jobs/view/4363014956",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447564406",
+            "title": "Praktikum Motorische Vorentwicklung",
+            "company": "STIHL",
+            "location": "Waiblingen, Baden-Württemberg, Germany",
+            "description": "Arbeiten bei STIHL heißt, von Anfang an etwas zu bewegen. Wir suchen Menschen, die Verantwortung übernehmen, ihre Ideen einbringen und gemeinsam wachsen wollen. Ob innovative Technologien, starke Produkte oder zukunftsweisende Projekte – bei uns findest du Raum, um Wirkung zu entfalten. Denn jeder B",
+            "url": "https://www.linkedin.com/jobs/view/4447564406",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445526107",
+            "title": "Praktikant Feldanalyse und Analyse Special Cases in Werkstoff- und Verfahrensanalytik (w/m/x)",
+            "company": "BMW Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "THEORETISCH DIE BESTE ENTSCHEIDUNG. PRAKTISCH AUCH. TEILE DEINE LEIDENSCHAFT. Nur hochprofessionelle Abläufe in dynamischen Teams produzieren innovative Spitzentechnologie. Aber Fahrfreude wird bei uns von der Entwicklung bis zur Fertigung vor allem auch mit Spaß an der Arbeit und Begeisterung für d",
+            "url": "https://www.linkedin.com/jobs/view/4445526107",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445526239",
+            "title": "Safety Engineer Automotive Seating",
+            "company": "Guldberg GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Aufgaben: Schnittstelle zwischen der Entwicklungsabteilung, der internen Testabteilung und der technischen Abteilung des Kunden Koordination von Tests und Testbedingungen mit der technischen Abteilung des Kunden von der Akquise bis zum EOP (End of Production) in Zusammenarbeit mit der internen Testa",
+            "url": "https://www.linkedin.com/jobs/view/4445526239",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447552310",
+            "title": "Decision Scientist, Marketing Operations Intelligence, Marketing DSA",
+            "company": "Vinted",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Brief Info About Vinted Our mission is to make second-hand the first choice, and we're looking for people who want to help us get there. Every day, we work together to help our members buy and sell pre-loved clothing and lifestyle items, giving each piece a second life – or even a third. The Vinted ",
+            "url": "https://www.linkedin.com/jobs/view/4447552310",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4429951574",
+            "title": "Senior Consultant Data Science & ML Engineering (m/w/d) in Hannover",
+            "company": "Deloitte",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4429951574",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4429951576",
+            "title": "Senior Consultant Data Science & ML Engineering (m/w/d) in Köln",
+            "company": "Deloitte",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4429951576",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4430921646",
+            "title": "Machine Learning Engineer*",
+            "company": "TOMRA",
+            "location": "Mülheim, Rhineland-Palatinate, Germany",
+            "description": "Imagine a place where your contributions lead to real impact. Welcome to TOMRA, where innovation and sustainability are at the core of our mission. From all corners of the world, we transform how we obtain, use, and reuse the planet’s resources. With innovation at our core, we develop and manufactur",
+            "url": "https://www.linkedin.com/jobs/view/4430921646",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445758225",
+            "title": "Junior AI Software Engineer (all genders)",
+            "company": "apoprojekt",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "WAS DU VON UNS ERWARTEN KANNST apoprojekt ist Partner für jeden Transformationsbedarf im Bestand und eines der dynamischsten Unternehmen der Bau- und Immobilienbranche. Seit unserer Gründung 2007 sind wir von einem Zwei-Mann-Unternehmen zu einer Größe von mehr als 600 Mitarbeitenden gewachsen. Wir w",
+            "url": "https://www.linkedin.com/jobs/view/4445758225",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4420976192",
+            "title": "Principal Machine Learning Engineer - Applied AI & LLMs (x/f/m)",
+            "company": "Doctolib",
+            "location": "Berlin, Berlin, Germany",
+            "description": "What you’ll do We are looking for a Principal Machine Learning Engineer to join the DS & AI organization at Doctolib. This is a transversal force multiplier role operating across all AI teams: Clinical, Productivity, Phone Assistant and ASR. Rather than working within a single feature team, you will",
+            "url": "https://www.linkedin.com/jobs/view/4420976192",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438693695",
+            "title": "Process Engineer (m/w/d) Combustion, Boiler & BoP",
+            "company": "Kanadevia Inova",
+            "location": "Gummersbach, North Rhine-Westphalia, Germany",
+            "description": "Unternehmensbeschreibung Als Tochtergesellschaft der Kanadevia Corporation ist das Green-Tech-Unternehmen Kanadevia Inova eine weltweit führende Anbieterin von integrierten Lösungen für die Energiewende und die Kreislaufwirtschaft mit Fokus auf Waste-to-X (WtX) und Renewable-Gas (RG). Ihren Hauptsit",
+            "url": "https://www.linkedin.com/jobs/view/4438693695",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447518232",
+            "title": "Projektingenieur Automatisierungstechnik & Anlagenbau (m/w/d)",
+            "company": "MeKo MedTech Inc",
+            "location": "Lower Saxony, Germany",
+            "description": "Präzision macht den Unterschied Medizintechnik verbessert Leben – wir sorgen dafür, dass sie präzise, sicher und bezahlbar bleibt. Als familiengeführtes Unternehmen mit über 400 Mitarbeitenden entwickeln und produzieren wir in Sarstedt bei Hannover hochpräzise Komponenten für internationale Kunden –",
+            "url": "https://www.linkedin.com/jobs/view/4447518232",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447528083",
+            "title": "Projektingenieur (m/w/d) Medizintechnik",
+            "company": "MeKo MedTech Inc",
+            "location": "Lower Saxony, Germany",
+            "description": "Präzision macht den Unterschied Medizintechnik ermöglicht Menschen mit gesundheitlichen Einschränkungen ein menschenwürdigeres Leben. Wir setzen uns dafür ein, dass mehr Menschen Zugang zu bezahlbaren und sicheren medizintechnischen Komponenten erhalten. Ein kollegiales und freundliches Miteinander ",
+            "url": "https://www.linkedin.com/jobs/view/4447528083",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445501999",
+            "title": "Working Student - System Test Engineer (m/f/d)",
+            "company": "EcoG",
+            "location": "Munich, Bavaria, Germany",
+            "description": "About The Role As our Working Student - Systems Test Engineer (m/f/d), you will be responsible for the following topics: Work with EV charging systems with an understanding of the charger architecture, key components, automation control, and application software Support in testing charging systems w",
+            "url": "https://www.linkedin.com/jobs/view/4445501999",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4370255281",
+            "title": "Project Engineer (m/f/d)",
+            "company": "Exyte",
+            "location": "Eschau, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4370255281",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Automotive Engineer' (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445504274",
+            "title": "Software Engineer AI (m/f/d) - Frankfurt",
+            "company": "Code Compass 🧭",
+            "location": "Frankfurt Rhine-Main Metropolitan Area",
+            "description": "🧭 Software Engineer AI (m/f/d) - Frankfurt 📍Frankfurt | 💶 €60,000 - €85,000 + Bonus + Benefits! | 🌍 Remote Working Join our client, a fast-scaling AI SaaS company headquartered in Frankfurt, on a mission to transform how enterprises manage their partners. Backed by top-tier investors and driven by c",
+            "url": "https://www.linkedin.com/jobs/view/4445504274",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
