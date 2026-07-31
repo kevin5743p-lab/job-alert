@@ -7727,6 +7727,584 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-31T17:59:11.783379",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 55,
+          "reason": "title fits 'Automotive Engineer'; skills: Python, Data analysis, Git; keyword bonus: 2; preferred location; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4430960039",
+            "title": "Analytics Engineer",
+            "company": "Almedia",
+            "location": "Berlin, Germany",
+            "description": "This isn’t your regular job. Almedia is a place where those who want to push harder can accelerate their careers faster than anywhere else. We’re aiming to become Germany’s second bootstrapped unicorn. Almedia is already Europe’s #3 fastest-growing company in 2025 (FT1000). We are building the futur",
+            "url": "https://www.linkedin.com/jobs/view/4430960039",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Simulation Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4445511952",
+            "title": "Robotics Simulation Engineer (m/f/d)",
+            "company": "Idealworks",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445511952",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_it-projektmanager-softwareentwicklung-munich-440902",
+            "title": "IT Projektmanager Softwareentwicklung (m/w/d)",
+            "company": "MY Humancapital GmbH",
+            "location": "Munich",
+            "description": "IT Projektmanager Softwareentwicklung (m/w/d) - Vollzeit | München | Unbefristet | Homeoffice-Möglichkeit Im Auftrag unseres Partnerunternehmens in München suchen wir Sie zum nächstmöglichen Zeitpunkt als „ IT Projektmanager Softwareentwicklung (m/w/d) “. Aufgaben Sie leiten IT-Projekte zur Weiteren",
+            "url": "https://www.arbeitnow.com/jobs/companies/my-humancapital-gmbh/it-projektmanager-softwareentwicklung-munich-440902",
+            "published": "2026-07-31T17:00:40+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_sachbearbeiter-controlling-und-finanzen-munich-411540",
+            "title": "Sachbearbeiter Controlling und Finanzen (m/w/d)",
+            "company": "MY Humancapital GmbH",
+            "location": "Munich",
+            "description": "Sachbearbeiter Controlling und Finanzen (m/w/d) gesucht – Vollzeit | München Im Auftrag unseres Partnerunternehmens in München suchen wir Sie zum nächstmöglichen Zeitpunkt als „Sachbearbeiter im Bereich Controlling und Finanzen (m/w/d)“ Aufgaben Sie prüfen, pflegen und bereinigen Stammdaten und stel",
+            "url": "https://www.arbeitnow.com/jobs/companies/my-humancapital-gmbh/sachbearbeiter-controlling-und-finanzen-munich-411540",
+            "published": "2026-07-31T17:00:36+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_vertriebscontroller-im-bankenumfeld-munich-474826",
+            "title": "Vertriebscontroller im Bankenumfeld (m/w/d)",
+            "company": "MY Humancapital GmbH",
+            "location": "Munich",
+            "description": "Im Auftrag unseres Partnerunternehmens in München suchen wir Sie zum nächstmöglichen Zeitpunkt als „Vertriebscontroller im Bankenumfeld (m/w/d)“. Aufgaben Als Vertriebscontroller im Bankenumfeld (m/w/d) erstellen Sie datenbasierte Reports, Kundenpotenzial-Analysen und Forecasts, um die Vertriebsstra",
+            "url": "https://www.arbeitnow.com/jobs/companies/my-humancapital-gmbh/vertriebscontroller-im-bankenumfeld-munich-474826",
+            "published": "2026-07-31T16:30:36+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_machine-learning-engineer-dingolfing-478273",
+            "title": "Machine Learning Engineer (m/w/d)",
+            "company": "Agentur Philipp GmbH",
+            "location": "Dingolfing",
+            "description": "Deine Mission Du bringst Machine-Learning- und KI-Systeme aus dem Prototypen in eine saubere, robuste Produktion. Bei Agentur Philipp bauen wir KI-Lösungen für den Mittelstand, die messbar Arbeit abnehmen: Computer Vision, intelligente Dokumentenverarbeitung, RAG-Systeme, Sprach- und Automatisierung",
+            "url": "https://www.arbeitnow.com/jobs/companies/agentur-philipp-gmbh/machine-learning-engineer-dingolfing-478273",
+            "published": "2026-07-31T16:00:37+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_data-scientist-dingolfing-413488",
+            "title": "Data Scientist (m/w/d)",
+            "company": "Agentur Philipp GmbH",
+            "location": "Dingolfing",
+            "description": "Deine Mission Du sorgst dafür, dass aus Daten belastbare Entscheidungen und funktionierende KI-Lösungen werden. Bei Agentur Philipp entwickeln wir KI-Systeme für den Mittelstand, die echten Aufwand reduzieren: intelligente Dokumentenverarbeitung, Datenextraktion, RAG-Systeme, Prognosen und KI-Kolleg",
+            "url": "https://www.arbeitnow.com/jobs/companies/agentur-philipp-gmbh/data-scientist-dingolfing-413488",
+            "published": "2026-07-31T16:00:37+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_product-manager-fintech-for-social-care-hamburg-127332",
+            "title": "Product Manager (f/m/d) - FinTech for Social Care",
+            "company": "Parto Group GmbH",
+            "location": "Hamburg",
+            "description": "You will build payment infrastructure for a sector that is running out of capacity and we are all depending on. By 2050, 38 million people across the EU will need long-term care, and the sector already lacks the workforce to deliver it. Care organisations need technology that gives professionals mor",
+            "url": "https://www.arbeitnow.com/jobs/companies/parto-group-gmbh/product-manager-fintech-for-social-care-hamburg-127332",
+            "published": "2026-07-31T16:00:36+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-manager-us-b2c-experience-berlin-202330",
+            "title": "Senior Product Manager - US B2C Experience (m/f/d)",
+            "company": "raisin",
+            "location": "Berlin",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p class=&quot;sc-gEkIjz cjtSrT MuiTypography-root MuiTypography-body1 sc-hoLEA&quot;&gt;Raisin is the world’s leading platform for savings and investment products. Founded in 2012, the&amp;nbsp;&lt;strong&gt;FinTech&lt;/strong&gt; connects consumers wit",
+            "url": "https://www.arbeitnow.com/jobs/companies/raisin/senior-product-manager-us-b2c-experience-berlin-202330",
+            "published": "2026-07-31T14:55:41+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_sps-programmierer-automatisierungstechniker-germany-bad-oldesloe-89808",
+            "title": "SPS-Programmierer / Automatisierungstechniker (m/w/d)",
+            "company": "Lindalgroup",
+            "location": "Germany   (Bad Oldesloe)",
+            "description": "Deine Rolle In dieser Schlüsselrolle verantwortest du die Programmierung, Weiterentwicklung und Optimierung von Steuerungssystemen für anspruchsvolle Sondermaschinen. Du begleitest unsere Anlagen von der Konzeption bis zur weltweiten Inbetriebnahme und arbeitest eng mit Konstruktion, Elektrotechnik ",
+            "url": "https://www.arbeitnow.com/jobs/companies/lindalgroup/sps-programmierer-automatisierungstechniker-germany-bad-oldesloe-89808",
+            "published": "2026-07-31T14:09:06+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-staff-machine-learning-engineer-berlin-459797",
+            "title": "Senior/Staff Machine Learning Engineer",
+            "company": "Vestiairecollective",
+            "location": "Berlin",
+            "description": "Vestiaire Collective is the leading global online marketplace for desirable pre-loved fashion. Our mission is to transform the fashion industry for a more sustainable future by empowering our community to promote the circular fashion movement. Vestiaire was founded in 2009 and is headquartered in Pa",
+            "url": "https://www.arbeitnow.com/jobs/companies/vestiairecollective/senior-staff-machine-learning-engineer-berlin-459797",
+            "published": "2026-07-31T14:04:05+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-analytics-engineer-berlin-255697",
+            "title": "(Senior) Analytics Engineer (m/f/d)",
+            "company": "1KOMMA5˚",
+            "location": "Berlin",
+            "description": "1KOMMA5° At 1KOMMA5° , we pursue a clear vision: Living on wind and sunlight forever for free . To make this a reality, we are building the energy system of the future with Heartbeat AI. Want to be part of it? We bring together regional craftsmanship and scalable software: We don't think of solar, b",
+            "url": "https://www.arbeitnow.com/jobs/companies/1komma50/senior-analytics-engineer-berlin-255697",
+            "published": "2026-07-31T14:00:40+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-data-scientist-berlin-442899",
+            "title": "Senior Data Scientist (m/f/d)",
+            "company": "Flix",
+            "location": "Berlin,  Germany",
+            "description": "At Flix, we offer a tech-driven environment where innovation meets real-world impact, with competitive pay, strong growth opportunities, and a culture of collaboration and ownership. &nbsp; We're&nbsp;looking for a motivated and skilled&nbsp; Senior Data Scientist &nbsp; to join our&nbsp; Team&nbsp;",
+            "url": "https://www.arbeitnow.com/jobs/companies/flix/senior-data-scientist-berlin-442899",
+            "published": "2026-07-31T13:45:24+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-data-modeler-data-vault-munich-187539",
+            "title": "Senior Data Modeler (Data Vault)",
+            "company": "Visium",
+            "location": "Munich,  Germany",
+            "description": "Visium combines strategy, frontier AI, and deep regulated-industry expertise to build and deploy AI-native systems that reinvent how businesses operate - unlocking the value of AI at scale. We're not a strategy firm that ships slide decks and walks away. Not a tech consultancy that builds what won't",
+            "url": "https://www.arbeitnow.com/jobs/companies/visium/senior-data-modeler-data-vault-munich-187539",
+            "published": "2026-07-31T11:40:09+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447528876",
+            "title": "(Junior) Data Engineer (m/w/d) Logistics Business Analysis",
+            "company": "Dirk Rossmann GmbH",
+            "location": "Burgwedel, Lower Saxony, Germany",
+            "description": "Unsere Unternehmenszentrale in Burgwedel bei Hannover – hier arbeiten rund 3.000 Mitarbeitende mit vollem Einsatz daran, die Zukunft von ROSSMANN zu gestalten. Wir in der Logistik-Verwaltung sind durch unsere Steuerung und Organisation des Warenflusses ein wichtiger vorbereitender Teil der Kette. Se",
+            "url": "https://www.linkedin.com/jobs/view/4447528876",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4435684797",
+            "title": "Data Engineer (m/w/d)",
+            "company": "XXXLdigital – Part of XXXL Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Wien, Linz, Wels (AT), Würzburg, München, Montabaur (DE) Vollzeit Willkommen bei XXXLdigital, wo digitale Innovation echte Wirkung zeigt. Als digitale Organisationseinheit der XXXL-Gruppe widmen wir uns allen Facetten des E-Commerce und stationärem Handel. Die Zusammenstellung von Produkten für die ",
+            "url": "https://www.linkedin.com/jobs/view/4435684797",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4410946271",
+            "title": "Consultant AI & Data Engineering (m/w/d) in Köln",
+            "company": "Deloitte",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4410946271",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4410951273",
+            "title": "Consultant AI & Data Engineering (m/w/d) in München",
+            "company": "Deloitte",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4410951273",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445089703",
+            "title": "Project Engineer (m/f/d) for the sales and design of exhaust air purification systems",
+            "company": "Evoran Umwelttechnik GmbH",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Process Engineer Plant Engineering/Environmental Technology (m/f/d) evoran – Solutions for diverse projects Whether across Germany or in other European countries – expand your experience and expertise through diverse projects. Step by step. And for those seeking more perspectives, visions, and a hea",
+            "url": "https://www.linkedin.com/jobs/view/4445089703",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447506759",
+            "title": "Senior Mechanical Design Engineer (all genders)",
+            "company": "WEBER GmbH",
+            "location": "Regensburg, Bavaria, Germany",
+            "description": "html Senior Mechanical Design Engineer (all genders) Automotive Key Fobs / CATIA V5/6 25170 Werden Sie Teil der WEBER GmbH und unterstützen Sie uns bei der Realisierung unserer Kundenprojekte im Großrausm Regensburg als Senior Mechanical Design Engineer (all genders) Automotive Key Fobs / CATIA V5/6",
+            "url": "https://www.linkedin.com/jobs/view/4447506759",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447571021",
+            "title": "(Senior) Mechanical Design Engineer – Power Electronics (m/f/d)",
+            "company": "Tesla",
+            "location": "Freiburg, Baden-Württemberg, Germany",
+            "description": "What To Expect At Tesla Engineering Germany in Freiburg, we’re building the future of sustainable energy by developing innovative power electronics for energy storage and vehicle charging systems. Join our team to collaborate across different engineering areas, solve meaningful challenges creatively",
+            "url": "https://www.linkedin.com/jobs/view/4447571021",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447509065",
+            "title": "Maschinenbauingenieur (m/w/d)",
+            "company": "WEBER GmbH",
+            "location": "Regensburg, Bavaria, Germany",
+            "description": "html Senior Mechanical Design Engineer (all genders) Automotive Key Fobs / CATIA V5/6 25170 Werden Sie Teil der WEBER GmbH und unterstÃ¼tzen Sie uns bei der Realisierung unserer Kundenprojekte im GroÃrausm Regensburg als Senior Mechanical Design Engineer (all genders) Automotive Key Fobs / CATIA V5",
+            "url": "https://www.linkedin.com/jobs/view/4447509065",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446982781",
+            "title": "Development Design Engineer - Gearboxes (m/f/d)",
+            "company": "Atlas Copco",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Your role To support our team in the field of Gearboxes, we are looking for a motivated Development Design Engineer (m/f/d) . In this position, you will report to the Teamleader Gearbox Development. Essentially, The Position Includes The Following Challenges Prepare gearbox concepts and cost effecti",
+            "url": "https://www.linkedin.com/jobs/view/4446982781",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4409766094",
+            "title": "AI & Data Science Consultant (all genders)",
+            "company": "Accenture DACH",
+            "location": "Kronberg, Hesse, Germany",
+            "description": "Im AI & Data Team bei Accenture vereinen wir einzigartige Persönlichkeiten und zukunftsgerichtetes Know-How, um gemeinsam mit unseren Kunden datengetriebene Transformation voranzutreiben und die Zukunft durch KI (Künstliche Intelligenz) zu gestalten. Wir begleiten unsere Kunden Ende-zu-Ende – von de",
+            "url": "https://www.linkedin.com/jobs/view/4409766094",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447558110",
+            "title": "Senior Data Scientist",
+            "company": "Workato",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447558110",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4410029391",
+            "title": "Data Scientist (m/w/d) mit Schwerpunkt HR",
+            "company": "Dirk Rossmann GmbH",
+            "location": "Burgwedel, Lower Saxony, Germany",
+            "description": "Unsere Unternehmenszentrale in Burgwedel bei Hannover – Hier arbeiten rund 3.000 Mitarbeitende mit vollem Einsatz daran, die Zukunft von ROSSMANN zu gestalten. Heute wissen, was uns morgen verbindet! Unser Human Resources Fachbereich besteht aus engagierten Bereichen mit vielen fantastischen Experte",
+            "url": "https://www.linkedin.com/jobs/view/4410029391",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447171110",
+            "title": "Data Scientist & KI-Entwickler für digitale Prüfungsprozesse (w/m/d)",
+            "company": "KPMG Deutschland",
+            "location": "Kiel, Schleswig-Holstein, Germany",
+            "description": "Begleite KPMG bei den zukünftigen Herausforderungen unserer Kund:innen. Werde Teil eines interdisziplinären Teams, das innovative digitale Lösungen für die Wirtschaftsprüfung entwickelt und modernste Technologien aus den Bereichen Cloud Computing, Data Engineering und Künstliche Intelligenz einsetzt",
+            "url": "https://www.linkedin.com/jobs/view/4447171110",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Mechanical Engineer'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446992782",
+            "title": "Mechanical Engineer- Data Centers",
+            "company": "Jobgether",
+            "location": "Germany",
+            "description": "This position is listed on behalf of a partner company, who manages all applications and next steps. Our partner is looking for a Mechanical Engineer- Data Centers based in Germany. This role offers the opportunity to shape the mechanical foundation of next-generation AI infrastructure at global sca",
+            "url": "https://www.linkedin.com/jobs/view/4446992782",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447136951",
+            "title": "SAP iXp Intern (f/m/d) - Strategic Innovation Projects - Data Scientist",
+            "company": "SAP",
+            "location": "Potsdam, Brandenburg, Germany",
+            "description": "We help the world run better At SAP, we keep it simple: you bring your best to us, and we'll bring out the best in you. We're builders touching over 20 industries and 80% of global commerce, and we need your unique talents to help shape what's next. The work is challenging – but it matters. You'll f",
+            "url": "https://www.linkedin.com/jobs/view/4447136951",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445516370",
+            "title": "(Senior) Software Engineer (m/w/d) C#/.NET",
+            "company": "finanzen.net",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "Unternehmensbeschreibung Die Finanzen.net Gruppe ist ein innovatives FinTech-Unternehmen, das private und professionelle Anleger bei ihren Investitionsentscheidungen unterstützt. Zur Gruppe Gehören finanzen.net – eines der führenden Finanzinformationsportale in der DACH-Region finanzen.net ZERO – ei",
+            "url": "https://www.linkedin.com/jobs/view/4445516370",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 46,
+          "reason": "title fits 'Junior Data Engineer'; skills: Python; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4430950191",
+            "title": "Data Engineer",
+            "company": "Almedia",
+            "location": "Berlin, Germany",
+            "description": "This isn’t your regular job. Almedia is a place where those who want to push harder can accelerate their careers faster than anywhere else. We’re aiming to become Germany’s second bootstrapped unicorn. Almedia is already Europe’s #3 fastest-growing company in 2025 (FT1000). We are building the futur",
+            "url": "https://www.linkedin.com/jobs/view/4430950191",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 46,
+          "reason": "title fits 'Junior Data Engineer'; skills: Python; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445505317",
+            "title": "Databricks Data Engineer",
+            "company": "Multitude",
+            "location": "Berlin, Germany",
+            "description": "We are hiring a Databricks Data Engineer to design, build, and operate scalable data pipelines and curated data products on Databricks. You will work across ingestion, transformation, governance, and delivery layers—using SQL, Python, and PySpark - while applying strong data warehousing principles (",
+            "url": "https://www.linkedin.com/jobs/view/4445505317",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 36,
+          "reason": "title fits 'Junior Data Engineer'; skills: Python; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4446986372",
+            "title": "Data Engineer",
+            "company": "Haystack",
+            "location": "Greater Dusseldorf Area",
+            "description": "We're hiring on behalf of a Haystack partner! The Role • Synthesize large-scale operational data into actionable insights for automation design and improvement. • Develop and maintain key performance metrics, reports, and dashboards to track operational efficiency. • Collaborate with engineering tea",
+            "url": "https://www.linkedin.com/jobs/view/4446986372",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Automotive Engineer'; skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445507290",
+            "title": ".NET Software Engineer (m/f/d) - Munich",
+            "company": "Code Compass 🧭",
+            "location": "Munich, Bavaria, Germany",
+            "description": "🧭 .NET Software Engineer – Munich (E-Commerce) 📍Munich | 💶 €75,000 - €110,000 + Bonus! | 🌍 Remote Working A fast-growing e-commerce company based in Munich, is seeking an experienced .NET Software Engineer to join their engineering team. They are looking for a skilled .NET Software Engineer who enjo",
+            "url": "https://www.linkedin.com/jobs/view/4445507290",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4417245273",
+            "title": "Product Development Engineer (m,f,d)",
+            "company": "Molex",
+            "location": "Walldorf, Baden-Württemberg, Germany",
+            "description": "Your Job Are you looking to make a connection to your career? Come to Molex where we create connections for life. We use innovation, engineering excellence, commitment to quality and reliability and superior customer experience to improve communication, elevate experiences, and engage and inspire pe",
+            "url": "https://www.linkedin.com/jobs/view/4417245273",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4443856935",
+            "title": "Flying Fuel Cell Mechanical Design and Integration Engineer (all genders)",
+            "company": "MTU Aero Engines North America",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Over 13,000 people. 20 locations worldwide. One in three planes flies with our technology. Even more economical, lower in emissions and quieter. We shape the future of aviation. The only thing missing: You. Become part of our dedicated team as MTU Aero Engines AG Flying Fuel Cell Mechanical Design a",
+            "url": "https://www.linkedin.com/jobs/view/4443856935",
+            "published": "2026-07-31T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
