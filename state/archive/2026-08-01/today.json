@@ -5034,6 +5034,509 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-01T17:29:08.787246",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 50,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4439073755",
+            "title": "Product Development Country Manager (Crop Protection)  - Germany",
+            "company": "ADAMA Ltd.",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439073755",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_remote-working-student-product-designer-381487",
+            "title": "Working Student Product Designer (m/w/d)",
+            "company": "1Komma5Grad",
+            "location": "Remote",
+            "description": "1KOMMA5° At 1KOMMA5° , we pursue a clear vision: Living on wind and sunlight forever for free . To make this a reality, we are building the energy system of the future with Heartbeat AI. Want to be part of it? We bring together regional craftsmanship and scalable software: We don't think of solar, b",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/1komma5grad/remote-working-student-product-designer-381487",
+            "published": "2026-08-01T15:09:10+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_remote-senior-product-manager-procurement-portfolio-management-193041",
+            "title": "(Senior) Product Manager - Procurement & Portfolio Management (m/f/d)",
+            "company": "1Komma5Grad",
+            "location": "Remote",
+            "description": "1KOMMA5° At 1KOMMA5° , we pursue a clear vision: Living on wind and sunlight forever for free . To make this a reality, we are building the energy system of the future with Heartbeat AI. Want to be part of it? We bring together regional craftsmanship and scalable software: We don't think of solar, b",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/1komma5grad/remote-senior-product-manager-procurement-portfolio-management-193041",
+            "published": "2026-08-01T15:09:10+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_remote-senior-analytics-engineer-393648",
+            "title": "(Senior) Analytics Engineer (m/f/d)",
+            "company": "1Komma5Grad",
+            "location": "Remote",
+            "description": "1KOMMA5° At 1KOMMA5° , we pursue a clear vision: Living on wind and sunlight forever for free . To make this a reality, we are building the energy system of the future with Heartbeat AI. Want to be part of it? We bring together regional craftsmanship and scalable software: We don't think of solar, b",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/1komma5grad/remote-senior-analytics-engineer-393648",
+            "published": "2026-08-01T15:09:10+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_remote-lead-senior-technical-product-manager-platform-engineering-253789",
+            "title": "(Lead/Senior) Technical Product Manager - Platform Engineering (m/f/d)",
+            "company": "1Komma5Grad",
+            "location": "Remote",
+            "description": "1KOMMA5° At 1KOMMA5° , we pursue a clear vision: Living on wind and sunlight forever for free . To make this a reality, we are building the energy system of the future with Heartbeat AI. Want to be part of it? We bring together regional craftsmanship and scalable software: We don't think of solar, b",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/1komma5grad/remote-lead-senior-technical-product-manager-platform-engineering-253789",
+            "published": "2026-08-01T15:09:10+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Promotion'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4327949785",
+            "title": "Junior BI Consultant (all genders)",
+            "company": "Accenture DACH",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Du möchtest die digitale Transformation unserer Kunden begleiten? Unter Einsatz von state-of-the-art Big Data Plattformen wie Snowflake und Databricks, Cloud-Technologien, GenAI und Machine Learning realisierst du Lösungen zur intelligenten und automatisierten Auswertung größter Datenmengen. Möchtes",
+            "url": "https://www.linkedin.com/jobs/view/4327949785",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4343355220",
+            "title": "Data Scientist",
+            "company": "Almedia",
+            "location": "Berlin, Germany",
+            "description": "This isn’t your regular job. Almedia is a place where those who want to push harder can accelerate their careers faster than anywhere else. We’re aiming to become Germany’s second bootstrapped unicorn. Almedia is already Europe’s #3 fastest-growing company in 2025 (FT1000). We are building the futur",
+            "url": "https://www.linkedin.com/jobs/view/4343355220",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447815575",
+            "title": "AI-First Engineering Intern",
+            "company": "DevExplore",
+            "location": "Berlin, Berlin, Germany",
+            "description": "About Xsolla Xsolla is a global commerce company headquartered in Los Angeles, California, providing game developers—from indie creators to AAA studios—with tools and services to fund, distribute, market, and monetize their games. Operating as the merchant of record for over 1,500+ game developers ,",
+            "url": "https://www.linkedin.com/jobs/view/4447815575",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4362267345",
+            "title": "AI Research Engineer - ML Engineering",
+            "company": "Helsing",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Who We Are Helsing is a defence AI company. Our mission is to protect our democracies. We aim to achieve technological leadership, so that open societies can continue to make sovereign decisions and control their ethical standards. As democracies, we believe we have a special responsibility to be th",
+            "url": "https://www.linkedin.com/jobs/view/4362267345",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4387252828",
+            "title": "Lead Engineer Integrated Engine Design - Propulsion (m/f/d)",
+            "company": "Isar Aerospace",
+            "location": "Ottobrunn, Bavaria, Germany",
+            "description": "Mission Brief As Manager of Integrated Engine Design – Propulsion, you will lead the design of engine structures and piping, oversee structural analysis across propulsion systems, manage hardware budgets, and coordinate with suppliers to ensure quality and timely delivery. Your Role in Our Space Mis",
+            "url": "https://www.linkedin.com/jobs/view/4387252828",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445594779",
+            "title": "Project Engineer",
+            "company": "Haystack",
+            "location": "North Rhine-Westphalia, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Evaluate and track technical requirements Plan wind farm and SCADA cabinet concepts Clarify requirements for wind farm remote access (VPN, IPsec) Identify wind farm data interfaces (OPC XML-DA, OPC UA, SQL) Define VLAN interfaces to customer equ",
+            "url": "https://www.linkedin.com/jobs/view/4445594779",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447495649",
+            "title": "Business Intelligence Specialist (m/w/d)",
+            "company": "CHEFS CULINAR",
+            "location": "Weeze, North Rhine-Westphalia, Germany",
+            "description": "Deine Aufgaben Du implementierst und optimierst ETL-/ELT-Prozesse zur Integration verschiedener Datenquellen Du konzipierst und erstellst Datenmodelle Du entwickelst leistungsfähige Dashboards und Reports mit Power BI Du stellst Datenqualität, Performance und Governance (inkl. Berechtigungen) sicher",
+            "url": "https://www.linkedin.com/jobs/view/4447495649",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4430945680",
+            "title": "Business Analyst / AI Engineer",
+            "company": "HDI Group",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Your Tasks Your job is to make AI use cases work where it matters: in the day-to-day reality of complex industrial risk You are part of a cross functional delivery team with responsibility for AI use cases in mainly Industrial Underwriting and Claims across their full lifecycle: from initial discove",
+            "url": "https://www.linkedin.com/jobs/view/4430945680",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445595335",
+            "title": "Senior Product Manager - Core Banking Platform",
+            "company": "Avarda UK",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "About The Role Avarda runs a portfolio of core banking platforms, internally developed and licensed, that support consumer lending, credit cards, deposits and payments across multiple European markets. These platforms manage customer accounts, product configuration, financial processing, servicing w",
+            "url": "https://www.linkedin.com/jobs/view/4445595335",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4429319518",
+            "title": "(Senior) Technical Product Manager (all genders)",
+            "company": "Publicis Media Germany",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Unternehmensbeschreibung Publicis Media is the world's second largest media agency network and part of the French communications group Publicis Groupe. As a global holding company, Publicis Media lives through its global agency brands Zenith, Starcom and Spark, which manage and continuously develop ",
+            "url": "https://www.linkedin.com/jobs/view/4429319518",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4401781879",
+            "title": "Team Lead Product (all genders)",
+            "company": "Avelios Medical",
+            "location": "Munich, Bavaria, Germany",
+            "description": "About Us Our mission at Avelios is to unlock clinical data to power seamless healthcare operations for better patient care. To do so, we have built a modular software platform that digitizes and optimizes workflows in hospitals with cutting-edge technology in a user-friendly way. With our software, ",
+            "url": "https://www.linkedin.com/jobs/view/4401781879",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4401765439",
+            "title": "Senior Product Manager (w/m/d)",
+            "company": "Instaffo",
+            "location": "Essen, North Rhine-Westphalia, Germany",
+            "description": "Senior Product Manager (w/m/d) bei VALLONE GmbH Anforderungen Bitte beachte, dass für diese Stelle eine Arbeitserlaubnis für Deutschland erforderlich ist. Sprache: Deutsch - Fließend, Englisch - Konversationssicher Mehrjährige Erfahrung im Projektmanagement – idealerweise in der Produktentwicklung, ",
+            "url": "https://www.linkedin.com/jobs/view/4401765439",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4389248922",
+            "title": "Team Lead AI Engineering (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Aufgaben Du möchtest nicht nur an innovativen AI-Lösungen arbeiten, sondern auch ein Team führen und weiterentwickeln? Dann übernimm Verantwortung für ein Team sowie für die erfolgreiche Umsetzung datengetriebener und intelligenter Projekte. Dabei warten die folgenden Aufgaben auf dich: Du führst ei",
+            "url": "https://www.linkedin.com/jobs/view/4389248922",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447831009",
+            "title": "Projektingenieur (m/w/d) Kraftwerkstechnik / Anlagentechnik",
+            "company": "Dornier Group",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "Was Du Bei Uns Bewegen Kannst Im Zentrum Deiner Tätigkeit liegt die Entwicklung, Planung, Realisierung und Prüfung von Projekten in den Fachbereichen Anlagenplanung, Anlagenbau, Energietechnik und Kraftwerkstechnik Du nimmst aktiv an Projektbesprechungen, Verhandlungen sowie der Bewertung von Angebo",
+            "url": "https://www.linkedin.com/jobs/view/4447831009",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447812581",
+            "title": "Data Engineer, Senior",
+            "company": "Torentify",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "About the Company CGM (CompuGroup Medical) is a leading global healthcare technology company providing software solutions for the healthcare industry. Operating in 19 countries with over 9,000 employees, CGM develops innovative digital healthcare solutions that improve patient care, streamline clini",
+            "url": "https://www.linkedin.com/jobs/view/4447812581",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4402644609",
+            "title": "Software Engineer, Data Platform",
+            "company": "World",
+            "location": "Munich, Bavaria, Germany",
+            "description": "About The Company Tools for Humanity (TFH) designs and builds technology behind World. World is building a real human network designed to accelerate people in the age of AI. As bots and autonomous agents reshape the internet, people, institutions, and applications need a trusted way to confirm who i",
+            "url": "https://www.linkedin.com/jobs/view/4402644609",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4363043742",
+            "title": "Praktikum strategisches Produktmanagement",
+            "company": "Porsche AG",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Wir als Team …gestalten die Zukunft unserer Produktpalette. Wir analysieren Markttrends, entwickeln langfristige Produktstrategien und sorgen dafür, dass unsere Fahrzeuge den Bedürfnissen unserer Kunden und den Anforderungen des Marktes entsprechen. Bei uns erhältst du spannende Einblicke in die str",
+            "url": "https://www.linkedin.com/jobs/view/4363043742",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4398402333",
+            "title": "Assistenz des Regional Operations Managers (m/w/d)",
+            "company": "PreZero Deutschland",
+            "location": "Knittlingen, Baden-Württemberg, Germany",
+            "description": "Externe Stellenausschreibung Als Assistenz des Regional Operations Managers (m/w/d) bist du weit mehr als eine organisatorische Stütze. Gemeinsam mit unserem Regional Ops Manager hältst du die Fäden in der Hand und gestaltest die Zukunft der Kreislaufwirtschaft aktiv mit. Das wird dein Job Du bereit",
+            "url": "https://www.linkedin.com/jobs/view/4398402333",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441303015",
+            "title": "Senior Software Engineer Ruby on Rails 100 % remote (m/w/d)",
+            "company": "easybill GmbH",
+            "location": "Germany",
+            "description": "Nicht jede gute Software steht im Rampenlicht. Aber sie sorgt dafür, dass Unternehmen jeden Tag zuverlässig arbeiten können. Bei easybill bauen wir Software, die über 27.000 Unternehmen dabei unterstützt, Rechnungen, Prozesse und Integrationen einfacher, schneller und automatisierter zu steuern. E-R",
+            "url": "https://www.linkedin.com/jobs/view/4441303015",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4420443264",
+            "title": "Senior Director, Regional Sales",
+            "company": "SonicWall",
+            "location": "Munich, Bavaria, Germany",
+            "description": "SonicWall is a cybersecurity forerunner with more than 30 years of expertise and is recognized as a leading partner-first company, ensuring our partners and their customers are never alone in the fight against cybercrime. With the ability to build, scale and manage security across the cloud, hybrid ",
+            "url": "https://www.linkedin.com/jobs/view/4420443264",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4420919478",
+            "title": "Vice President Market Management (m/f/d)",
+            "company": "KARL STORZ",
+            "location": "Tuttlingen, Baden-Württemberg, Germany",
+            "description": "Your Mission Develop and lead the global downstream marketing strategy for all solutions and specialties in alignment with corporate objectives Own market performance, launch impact, and customer feedback to derive strategies, resource allocation, and investment decisions Ensure cross-functional ali",
+            "url": "https://www.linkedin.com/jobs/view/4420919478",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4420911892",
+            "title": "Vice President Market Management (m/w/d)",
+            "company": "KARL STORZ",
+            "location": "Tuttlingen, Baden-Württemberg, Germany",
+            "description": "Ihre Mission Entwicklung und Steuerung der globalen Downstream-Marketingstrategie für alle Lösungen und Fachbereiche im Einklang mit den Unternehmenszielen Verantwortung für Markterfolg, Launch-Performance und Kundenfeedback zur Ableitung von Strategien, Ressourcenallokation und Investitionsentschei",
+            "url": "https://www.linkedin.com/jobs/view/4420911892",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441314497",
+            "title": "Business Analyst / Junior Consultant (m/w/d)",
+            "company": "DataClue.ai",
+            "location": "Grünwald, Bavaria, Germany",
+            "description": "Dein Einstieg Du hast bereits Erfahrung in der Unternehmensberatung (Praktikum oder Festanstellung) gesammelt und begeisterst dich für Consulting, KI und datenbasierte Analysen? Dann ist DataClue als spezialisierte Unternehmensberatungs-Boutique genau das Richtige für dich. Als Business Analyst (Con",
+            "url": "https://www.linkedin.com/jobs/view/4441314497",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447484367",
+            "title": "Global Service Product Manager (m/w/d) - befristet für 2 Jahre",
+            "company": "Busch Vacuum Solutions",
+            "location": "Aßlar, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447484367",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447784844",
+            "title": "Produktmanager Datenkommunikation (m/w/d)",
+            "company": "binder Gruppe",
+            "location": "Neckarsulm, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447784844",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4430485638",
+            "title": "Innovation Manager EMEA (m/f/d)",
+            "company": "Aliaxis Deutschland",
+            "location": "Mannheim, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4430485638",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "skills: Machine Learning; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447823356",
+            "title": "Researchers",
+            "company": "Bovtenko.AI",
+            "location": "Germany",
+            "description": "Company Description Bovtenko.AI is an AI architecture, consulting, and engineering company focused on designing and delivering enterprise AI systems and AI-native product ecosystems built on Controlled Autonomy Architectures. The company’s methodology moves organizations beyond isolated AI assistant",
+            "url": "https://www.linkedin.com/jobs/view/4447823356",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
