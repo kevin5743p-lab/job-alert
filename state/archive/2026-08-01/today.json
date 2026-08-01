@@ -5537,6 +5537,449 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-01T19:40:53.746516",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 56,
+          "reason": "title fits 'Junior Data Engineer'; skills: Python, C++, MATLAB/Simulink; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4438339173",
+            "title": "Junior Flight Dynamics Modelling Engineer",
+            "company": "TXT GROUP",
+            "location": "Munich, Bavaria, Germany",
+            "description": "PACE Engineering and IT , a company of the TXT Group, is looking for a Flight Dynamics Modelling Engineer. An essential aspect of this role is the modeling and analysis of flight system dynamics to enable the rapid development and evaluation of advanced AI-based and control capabilities. As a member",
+            "url": "https://www.linkedin.com/jobs/view/4438339173",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_product-manager-director-gpu-ai-services-hamburg-410467",
+            "title": "Product Manager / Director – GPU & AI Services",
+            "company": "Impossible Cloud",
+            "location": "Hamburg",
+            "description": "ABOUT US: Impossible Cloud is a fast-growing B2B cloud company headquartered in Hamburg, Germany. We have built a cloud object storage solution comparable to AWS S3, purpose-built and optimised for AI and compute workloads. Our commercial hyper-growth speaks for itself, powered by our channel-first ",
+            "url": "https://www.arbeitnow.com/jobs/companies/impossible-cloud/product-manager-director-gpu-ai-services-hamburg-410467",
+            "published": "2026-08-01T17:26:41+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-engineering-manager-customer-agent-london-212634",
+            "title": "Senior Engineering Manager, Customer Agent",
+            "company": "intercom",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://fin.ai/&quot;&gt;Fin&lt;/a&gt; is the AI Customer Agent company on a mission to help businesses provide perfect customer experiences.&lt;/p&gt; &lt;p&gt;Our AI Agent Fin is the highest-performing AI Customer Agent on the ma",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/intercom/senior-engineering-manager-customer-agent-london-212634",
+            "published": "2026-08-01T16:15:06+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445806389",
+            "title": "(Senior) Data Engineer (Backend + APIs) (all genders welcome)",
+            "company": "aiomatic",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "aiomatic builds a digital maintenance assistant that reduces unplanned downtime through predictive maintenance. It continuously analyzes machine data, detects anomalies early, and notifies teams with clear, actionable context. As part of the Application Engineering team, you’ll take ownership of our",
+            "url": "https://www.linkedin.com/jobs/view/4445806389",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447809635",
+            "title": "Data Engineer, Senior",
+            "company": "Torentify",
+            "location": "Mayen-Koblenz, Rhineland-Palatinate, Germany",
+            "description": "About the Company CGM (CompuGroup Medical) is a leading global healthcare technology company providing software solutions for the healthcare industry. Operating in 19 countries with over 9,000 employees , CGM develops innovative digital healthcare solutions that improve patient care, streamline clin",
+            "url": "https://www.linkedin.com/jobs/view/4447809635",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4419063596",
+            "title": "Senior Data Engineer (m/w/d)",
+            "company": "CompuGroup Medical SE & Co. KGaA",
+            "location": "Coblenz, Rhineland-Palatinate, Germany",
+            "description": "Als führendes Unternehmen im Bereich Softwarelösungen für das Gesundheitswesen sind wir in 19 Ländern tätig und beschäftigen über 9.000 engagierte Mitarbeitende. Du wirst in einem dynamischen und innovativen Umfeld arbeiten, das voller Möglichkeiten steckt. Mit Deinem Einsatz und Deiner Leidenschaft",
+            "url": "https://www.linkedin.com/jobs/view/4419063596",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437331530",
+            "title": "Senior Data Engineer (m/w/d)",
+            "company": "APRIORI - business solutions AG",
+            "location": "Heidelberg, Baden-Württemberg, Germany",
+            "description": "Unser Mandant ist ein international tätiger Anbieter von Softwarelösungen im Gesundheitswesen und in zahlreichen Ländern aktiv. Mit mehreren tausend Mitarbeitenden entwickelt das Unternehmen digitale Anwendungen und Datenlösungen, die einen direkten Beitrag zur Verbesserung von Versorgungs- und Ents",
+            "url": "https://www.linkedin.com/jobs/view/4437331530",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4430461686",
+            "title": "Lead Data Engineer (m/f/d) - Tieto Tech Consulting",
+            "company": "Tieto",
+            "location": "Regensburg, Bavaria, Germany",
+            "description": "Job Description Do you turn raw data into real impact and take the lead in shaping how it’s done? Where others focus on implementation, you think in systems, architecture, and long-term value. You don’t just build data solutions, you define how they should be built, guide teams through complexity, a",
+            "url": "https://www.linkedin.com/jobs/view/4430461686",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4427862856",
+            "title": "Senior Analytics Engineer",
+            "company": "Shine",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Shine exists to help freelancers and small business owners reclaim the joy of working for themselves. Running a business shouldn't mean drowning in financial admin - it should be inspiring and rewarding. Our app brings banking, invoicing, accounting and admin together in one place, so entrepreneurs ",
+            "url": "https://www.linkedin.com/jobs/view/4427862856",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4429637775",
+            "title": "Senior Data Engineer - Data Integration & Analytics (all genders)",
+            "company": "adesso SE",
+            "location": "Essen, North Rhine-Westphalia, Germany",
+            "description": "Wir gehören zu den Top-Adressen in der IT-Welt und fokussieren uns auf die Optimierung der Kerngeschäfts­prozesse unserer Kunden. Durch den smarten Einsatz maßgeschneiderter IT-Lösungen unterstützen wir unsere Kunden dabei, das Beste aus ihrem Business und aktuellen Technologien herauszuholen. Unser",
+            "url": "https://www.linkedin.com/jobs/view/4429637775",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4346536140",
+            "title": "Consultant Data Leakage Prevention Engineer (m/w/d)",
+            "company": "Deloitte",
+            "location": "Berlin, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4346536140",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Mechanical Engineer'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447480202",
+            "title": "Mechanical Engineer for Helicopter Maintenance Design (d/m/w) for AIRBUS - Jobbird.com",
+            "company": "Jobster",
+            "location": "Donauwörth, Bavaria, Germany",
+            "description": "Our offer: Attractive and fair salary conditions Extensive employee benefit programme “Orizon PlusPoints” Training measures suiting your tasks and activities Up to 30 days of annual leave Personal support and qualified advice from the Aviation Unit offices, e.g. In Hamburg-Finkenwerder, Stade, Augsb",
+            "url": "https://www.linkedin.com/jobs/view/4447480202",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4388527019",
+            "title": "Staff Engineer, Field Applications",
+            "company": "Analog Devices",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "About Analog Devices Analog Devices, Inc. (NASDAQ: ADI ) is a global semiconductor leader that bridges the physical and digital worlds to enable breakthroughs at the Intelligent Edge. ADI combines analog, digital, and software technologies into solutions that help drive advancements in digitized fac",
+            "url": "https://www.linkedin.com/jobs/view/4388527019",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445806746",
+            "title": "Robotics Software Integration Engineer (m/f/d)",
+            "company": "MOTOR Ai",
+            "location": "Berlin, Berlin, Germany",
+            "description": "The future of mobility isn’t just coming; we’re building it. At the heart of our mission is the drive to bring Level 4 autonomous technology to Germany. Our in-house AI is paving the way for Europe’s first certifiable system, backed by a team of experts who have been innovating hand-in-hand since 20",
+            "url": "https://www.linkedin.com/jobs/view/4445806746",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445808322",
+            "title": "(Senior) Software Engineer (all genders welcome)",
+            "company": "aiomatic",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "aiomatic builds a digital maintenance assistant that reduces unplanned downtime through predictive maintenance. It continuously analyzes machine data, detects anomalies early, and notifies teams with clear, actionable context. As part of the Application Engineering team, you’ll take ownership of our",
+            "url": "https://www.linkedin.com/jobs/view/4445808322",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447497637",
+            "title": "Principal Engineer  LCC HVDC systems.",
+            "company": "Quest Global",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Job Requirements At Quest Global, it’s not just what we do but how and why we do it that makes us different. With over 25 years as an engineering services provider, we believe in the power of doing things differently to make the impossible possible. Our people are driven by the desire to make the wo",
+            "url": "https://www.linkedin.com/jobs/view/4447497637",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4370989962",
+            "title": "(Senior) Consultant in SAP Data Analytics (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Aufgaben Du begeisterst dich für technologische Fragestellungen rund um die Themen Data & Business Analytics? Dann werde Teil unseres Teams und gestalte gemeinsam mit uns die erfolgreiche digitale Zukunft unserer Kunden. Dabei warten folgende Aufgaben auf dich: Design und Implementierung von End-to-",
+            "url": "https://www.linkedin.com/jobs/view/4370989962",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4389737525",
+            "title": "AI PRODUCT OWNER (M/W/D)",
+            "company": "STRAUSS",
+            "location": "Biebergemünd, Hesse, Germany",
+            "description": "Wir sorgen für den Wow-Effekt in der workwear-Welt. Echte Innovationen, Kleidung nach Maß, peppige Konzepte – mit unseren Produkten ziehen wir ganze Branchen an. Stillstehen ist nicht unser Ding. Wir sind immer in Bewegung. In unserer Branche gibt es viel Potential. Es warten neue Trends und clevere",
+            "url": "https://www.linkedin.com/jobs/view/4389737525",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447610129",
+            "title": "Kfz-Mechatroniker (m/w/d)",
+            "company": "Lamborghini Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "17.07.2026 | Handwerk, Dienstleistung und Fertigung Kfz-Mechatroniker (m/w/d) Hamburg Feste Anstellung Vollzeit Als Kfz-Mechatroniker (m/w/d) sind Sie unser Spezialist für die Wartung, Reparatur und Diagnose hochwertiger Sportwagen. In Ihrem Beruf verbinden Sie fundiertes mechanisches Wissen mit mod",
+            "url": "https://www.linkedin.com/jobs/view/4447610129",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4365003879",
+            "title": "Kfz-Mechatroniker:in / Kfz-Elektroniker:in",
+            "company": "Deutsche Bahn",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "Für über 500 verschiedene Berufe suchen wir motivierte Mitarbeitende. Und das in ganz Deutschland. Ob erfahrene Profis oder Berufsstarter:innen - wir bieten zahlreiche Einstiegs- und Weiterbildungsmöglichkeiten. Zum nächstmöglichen Zeitpunkt suchen wir dich als Kfz-Mechatroniker:in / Kfz-Elektronike",
+            "url": "https://www.linkedin.com/jobs/view/4365003879",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447802742",
+            "title": "Projektmanager / Customer Success Manager",
+            "company": "Floy GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Werde Teil eines der spannendsten Start-ups Deutschlands. Wir entwickeln Künstliche Intelligenz, die als Zweitbetrachtung Radiologen auf schwierig zu erkennende Krankheiten aufmerksam macht. Gemeinsam können wir Menschenleben retten. DEINE AUFGABEN Als (Junior) Project Manager bei Floy bist du veran",
+            "url": "https://www.linkedin.com/jobs/view/4447802742",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4418608102",
+            "title": "Legal Counsel, EMEA",
+            "company": "Foxit",
+            "location": "Berlin, Germany",
+            "description": "Legal Counsel, EMEA (m/f/d) Berlin, Germany &mdash; Hybrid About Foxit Foxit is transforming the way the world works with documents through advanced PDF technology and digital document solutions. We are a leading global software provider delivering fast, affordable, and secure PDF tools used by mill",
+            "url": "https://www.linkedin.com/jobs/view/4418608102",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447822967",
+            "title": "Bauingenieur Straßen- und Tiefbau (m/w/d)",
+            "company": "Ingenieurbüro IBOS Görlitz",
+            "location": "Görlitz, Saxony, Germany",
+            "description": "Was Sie erwartet Sie planen anspruchsvolle Projekte im Bereich des kommunalen und klassifizierten Straßen- , Tief- und Ingenieurbaus. Als Planungsingenieur in der Fachrichtung Bauwesen arbeiten Sie im Wesentlichen an Projekten des Straßenausbaues, der baulichen Erhaltung und Wiederherstellung von St",
+            "url": "https://www.linkedin.com/jobs/view/4447822967",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4389258644",
+            "title": "Team Lead AI Engineering (all genders)",
+            "company": "MHP – A Porsche Company",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Aufgaben Du möchtest nicht nur an innovativen AI-Lösungen arbeiten, sondern auch ein Team führen und weiterentwickeln? Dann übernimm Verantwortung für ein Team sowie für die erfolgreiche Umsetzung datengetriebener und intelligenter Projekte. Dabei warten die folgenden Aufgaben auf dich: Du führst ei",
+            "url": "https://www.linkedin.com/jobs/view/4389258644",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4380316226",
+            "title": "Bauingenieur:in als Projektingenieur:in S-Bahn Frankfurt-Friedberg",
+            "company": "Deutsche Bahn",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Die Deutsche Bahn ist nicht nur einer der wichtigsten Mobilitätsdienstleister, sondern auch eines der größten Ingenieurbüros Deutschlands. Um neue Brücken, Tunnel, Bahnhöfe, Gleise und Signalanlagen zu realisieren und nachhaltig instand zu halten, arbeiten aktuell mehr als 10.000 Ingenieure bei uns ",
+            "url": "https://www.linkedin.com/jobs/view/4380316226",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Automotive Engineer'; skills: Signal processing; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447496962",
+            "title": "Systems Engineer (m/f/d) HF (ID: 22420)",
+            "company": "Da Vinci Engineering GmbH",
+            "location": "Bonn, North Rhine-Westphalia, Germany",
+            "description": "We are searching intelligent and innovative employees. If you are interested in working for a dynamic company with flat hierarchy, we look forward to receiving your application. Your tasks: Requirements Management & System Architecture: Elicit, analyze and prioritize customer requirements; derive, s",
+            "url": "https://www.linkedin.com/jobs/view/4447496962",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447843014",
+            "title": "Computer Vision Engineer",
+            "company": "Twentyfour Industries",
+            "location": "Munich, Bavaria, Germany",
+            "description": "What we’re looking for We're looking for a highly driven Computer Vision / ML Engineer to own the data, training, evaluation, and MLOps lifecycle for our camera-based perception models. In this role, you'll turn real and synthetic drone data into reproducible, validated model releases, building and ",
+            "url": "https://www.linkedin.com/jobs/view/4447843014",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 28,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445811683",
+            "title": "(JUNIOR) CONSULTANT -  DIGITAL TWINS & AI (M/W/D) für Logistik und Produktion",
+            "company": "Logivations",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445811683",
+            "published": "2026-08-01T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
