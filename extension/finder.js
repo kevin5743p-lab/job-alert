@@ -215,6 +215,58 @@ const ATS = {
   smartrecruiters: fetchSmartRecruiters,
 };
 
+// ── Board validation ───────────────────────────────────────────────────────
+// The model reliably names real employers but frequently guesses the wrong ATS
+// for them — large corporates in particular are usually on Workday or
+// SuccessFactors, not on the public boards we can read. An unvalidated list
+// therefore yields nothing at all, silently. So every candidate is probed once
+// and only the boards that actually answer are kept.
+const PROBE = {
+  greenhouse: (id) => `https://boards-api.greenhouse.io/v1/boards/${id}/jobs?content=false`,
+  ashby: (id) => `https://api.ashbyhq.com/posting-api/job-board/${id}`,
+  lever: (id) => `https://api.lever.co/v0/postings/${id}?mode=json`,
+  recruitee: (id) => `https://${id}.recruitee.com/api/offers/`,
+  smartrecruiters: (id) => `https://api.smartrecruiters.com/v1/companies/${id}/postings?limit=1`,
+  personio: (id) => `https://${id}.jobs.personio.de/xml`,
+};
+
+async function probe(c) {
+  const ats = String(c.ats || "").toLowerCase();
+  const build = PROBE[ats];
+  if (!build || !c.id) return false;
+  const url = build(encodeURIComponent(c.id));
+  try {
+    // No redirect following: Personio bounces unknown tenants to its marketing
+    // page, which would otherwise answer 200 and look alive.
+    const r = await fetch(url, { headers: UA_HEADERS, redirect: "error" });
+    if (!r.ok) return false;
+    if (ats === "personio") {
+      const t = await r.text();
+      return t.indexOf("<position>") !== -1;
+    }
+    const d = await r.json();
+    if (ats === "smartrecruiters") return Number(d.totalFound || 0) > 0;
+    if (ats === "greenhouse") return Array.isArray(d.jobs);
+    if (ats === "ashby") return Array.isArray(d.jobs);
+    if (ats === "lever") return Array.isArray(d);
+    if (ats === "recruitee") return Array.isArray(d.offers);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function validateTargets(candidates, onProgress = () => {}) {
+  const live = [];
+  const list = candidates || [];
+  for (let i = 0; i < list.length; i++) {
+    const c = list[i];
+    onProgress(`Checking employer boards… (${i + 1}/${list.length})`);
+    if (await probe(c)) live.push({ name: c.name, ats: c.ats, id: c.id });
+  }
+  return live;
+}
+
 /**
  * Fetch from every configured source. Each is isolated so one broken board
  * can't sink the scan. `onProgress(text)` drives the UI.

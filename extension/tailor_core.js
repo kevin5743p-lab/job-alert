@@ -149,14 +149,23 @@ EXACTLY these keys:
   genuinely relevant posting (bilingual).
 - "exclude_keywords": 8-15 seniority or mismatch terms that make a posting wrong
   for them, e.g. Senior, Lead, Principal, "10+ years", mehrjährige Berufserfahrung.
-- "company_targets": 6-16 objects {"name","ats","id"} for real employers in this
-  field that publish on a public ATS. "ats" is one of: greenhouse, ashby, lever,
-  recruitee, personio, smartrecruiters. "id" is their board identifier —
-  usually the lowercase company name with no spaces (ashby may hyphenate,
-  smartrecruiters is often CamelCase). Only include employers you are fairly
-  confident use one of these systems; omit anyone likely on Workday, Taleo or
-  SuccessFactors. Accuracy matters far more than length — return few solid
-  entries, or [] if unsure.
+- "company_targets": 15-30 objects {"name","ats","id"} for employers in this
+  field whose jobs can actually be read from a public board. "ats" is one of:
+  greenhouse, ashby, lever, recruitee, personio, smartrecruiters. "id" is their
+  board identifier — usually the lowercase company name with no spaces (ashby
+  often hyphenates; smartrecruiters is usually CamelCase).
+
+  Choose realistically, because a wrong guess yields nothing:
+  * These boards are used overwhelmingly by STARTUPS, SCALE-UPS and mid-sized
+    companies. Personio in particular is a German SME product.
+  * Large corporations and household-name manufacturers are almost always on
+    Workday or SuccessFactors, which cannot be read — do NOT list them, however
+    relevant they seem. Naming a famous employer with a guessed ATS is the most
+    common way this list ends up empty.
+  * Prefer smaller, specialised companies in the candidate's field, including
+    ones in their region.
+  Every entry is verified afterwards and dead ones are discarded, so offer a
+  generous list of plausible candidates rather than a short cautious one.
 
 Respond with ONLY the JSON object.`;
 }

@@ -9,7 +9,7 @@ import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt,
          buildSearchProfilePrompt, buildBatchScorePrompt, normalize,
          groundingWarnings, DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
 import * as sb from "./supabase.js";
-import { fetchAll, prefilter } from "./finder.js";
+import { fetchAll, prefilter, validateTargets } from "./finder.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -90,13 +90,26 @@ function progress(text, done = false, extra = {}) {
 async function ensureSearchProfile(cv, apiKey, model, force) {
   const profile = await sb.getProfile();
   const existing = profile && profile.search_profile;
-  if (!force && existing && (existing.search_queries || []).length) return existing;
+  // `validated` marks a profile whose employer boards were probed. Profiles
+  // built before that check existed are rebuilt once, otherwise they keep
+  // scanning boards that don't resolve and quietly return nothing.
+  const usable = existing && (existing.search_queries || []).length && existing.validated;
+  if (!force && usable) return existing;
 
   progress("Working out what to search for, from your CV…");
-  const sp = await groqJson(buildSearchProfilePrompt(cv), apiKey, model, 1800);
+  const sp = await groqJson(buildSearchProfilePrompt(cv), apiKey, model, 2400);
   if (!sp || !(sp.search_queries || []).length) {
     throw new Error("Couldn't derive a search profile from your CV.");
   }
+
+  // Verify the suggested boards before trusting them. The model names real
+  // employers but often guesses the wrong ATS, and an unchecked list fails
+  // silently — every board 404s and the scan simply finds nothing.
+  const candidates = sp.company_targets || [];
+  sp.company_targets = await validateTargets(candidates, (t) => progress(t));
+  sp.validated = true;
+  progress(`${sp.company_targets.length} of ${candidates.length} employer boards are live.`);
+
   await sb.saveSearchProfile(sp);
   return sp;
 }
