@@ -2266,6 +2266,1220 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-02T10:13:59.882700",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 55,
+          "reason": "title fits 'Data Scientist'; skills: Python, Power BI, Data analysis; keyword bonus: 2; preferred location; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4447643634",
+            "title": "Data Analys",
+            "company": "nexo humano",
+            "location": "Germany",
+            "description": "📊 We’re Hiring: Data Analyst (Entry / Junior Level) 📍 Remote (Germany) 🕒 Full-Time 💼 Level: Entry-Level / Junior We’re looking for a motivated and detail-oriented Data Analyst to join our growing team. This role is ideal for candidates who are passionate about data, enjoy solving business problems t",
+            "url": "https://www.linkedin.com/jobs/view/4447643634",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_founding-product-manager-cologne-442206",
+            "title": "Founding Product Manager",
+            "company": "Circonomit",
+            "location": "Cologne,  Germany",
+            "description": "We are building the world's decision infrastructure: the strategic twin of every industrial organization for complex combinatorial problems. We unlocked what wasn't possible before: mapping reality with its levers and constraints into a computer, then running n-dimensional optimization on critical v",
+            "url": "https://www.arbeitnow.com/jobs/companies/circonomit/founding-product-manager-cologne-442206",
+            "published": "2026-08-02T05:41:09+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-data-scientist-operational-research-london-287711",
+            "title": "Senior Data Scientist - Operational Research",
+            "company": "Relay",
+            "location": "London - Hybrid",
+            "description": "Relay is fundamentally reshaping how goods move in an online era. Backed by Europe’s largest-ever logistics Series A ($35M), led by deep-tech investors Plural (whose portfolio spans fusion energy and space exploration), Relay is scaling faster than 99.98% of venture-backed startups. We're assembling",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relay/senior-data-scientist-operational-research-london-287711",
+            "published": "2026-08-02T09:41:16+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-data-scientist-last-mile-pricing-london-423080",
+            "title": "Senior Data Scientist - Last Mile Pricing",
+            "company": "Relay",
+            "location": "London - Hybrid",
+            "description": "Relay is fundamentally reshaping how goods move in an online era. Backed by Europe’s largest-ever logistics Series A ($35M), led by deep-tech investors Plural (whose portfolio spans fusion energy and space exploration), Relay is scaling faster than 99.98% of venture-backed startups. We're assembling",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relay/senior-data-scientist-last-mile-pricing-london-423080",
+            "published": "2026-08-02T09:41:16+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_lead-data-analyst-network-london-101494",
+            "title": "Lead Data Analyst - Network",
+            "company": "Relay",
+            "location": "London - Hybrid",
+            "description": "Relay is fundamentally reshaping how goods move in an online era. Backed by Europe’s largest-ever logistics Series A ($35M), led by deep-tech investors Plural (whose portfolio spans fusion energy and space exploration), Relay is scaling faster than 99.98% of venture-backed startups. We're assembling",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relay/lead-data-analyst-network-london-101494",
+            "published": "2026-08-02T09:41:16+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_data-analyst-pitstops-london-342294",
+            "title": "Data Analyst - Pitstops",
+            "company": "Relay",
+            "location": "London - Hybrid",
+            "description": "Relay is fundamentally reshaping how goods move in an online era. Backed by Europe’s largest-ever logistics Series A ($35M), led by deep-tech investors Plural (whose portfolio spans fusion energy and space exploration), Relay is scaling faster than 99.98% of venture-backed startups. We're assembling",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relay/data-analyst-pitstops-london-342294",
+            "published": "2026-08-02T09:41:16+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-data-scientist-network-simulation-london-421222",
+            "title": "Senior Data Scientist - Network Simulation",
+            "company": "Relay",
+            "location": "London - Hybrid",
+            "description": "Relay is fundamentally reshaping how goods move in an online era. Backed by Europe’s largest-ever logistics Series A ($35M), led by deep-tech investors Plural (whose portfolio spans fusion energy and space exploration), Relay is scaling faster than 99.98% of venture-backed startups. We're assembling",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relay/senior-data-scientist-network-simulation-london-421222",
+            "published": "2026-08-02T09:41:16+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-machine-learning-engineer-london-373138",
+            "title": "Senior Machine Learning Engineer",
+            "company": "Relay",
+            "location": "London - Hybrid",
+            "description": "Relay is fundamentally reshaping how goods move in an online era. Backed by Europe’s largest-ever logistics Series A ($35M), led by deep-tech investors Plural (whose portfolio spans fusion energy and space exploration), Relay is scaling faster than 99.98% of venture-backed startups. We're assembling",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relay/senior-machine-learning-engineer-london-373138",
+            "published": "2026-08-02T09:41:16+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-data-analyst-last-mile-london-494905",
+            "title": "Senior Data Analyst - Last Mile",
+            "company": "Relay",
+            "location": "London - Hybrid",
+            "description": "Relay is fundamentally reshaping how goods move in an online era. Backed by Europe’s largest-ever logistics Series A ($35M), led by deep-tech investors Plural (whose portfolio spans fusion energy and space exploration), Relay is scaling faster than 99.98% of venture-backed startups. We're assembling",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relay/senior-data-analyst-last-mile-london-494905",
+            "published": "2026-08-02T09:41:16+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_business-analyst-12-month-ftc-london-378515",
+            "title": "Business Analyst - 12 month FTC",
+            "company": "Flagstone",
+            "location": "London Office",
+            "description": "What is Flagstone? Flagstone is many things. An online savings platform, reinventing how individuals, businesses, and charities manage, protect, and grow their cash. A diverse group of people, bound by a collaborative spirit, and shared purpose. And lastly, a thriving, profitable business – where sm",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/flagstone/business-analyst-12-month-ftc-london-378515",
+            "published": "2026-08-02T09:41:06+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_product-manager-london-199966",
+            "title": "Product Manager",
+            "company": "Flagstone",
+            "location": "London Office",
+            "description": "What is Flagstone? Flagstone is many things. An online savings platform, reinventing how individuals, businesses, and charities manage, protect, and grow their cash. A diverse group of people, bound by a collaborative spirit, and shared purpose. And lastly, a thriving, profitable business – where sm",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/flagstone/product-manager-london-199966",
+            "published": "2026-08-02T09:41:06+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_data-analytics-team-leader-london-179381",
+            "title": "Data Analytics Team Leader",
+            "company": "Flagstone",
+            "location": "London Office",
+            "description": "What is Flagstone? Flagstone is many things. An online savings platform, reinventing how individuals, businesses, and charities manage, protect, and grow their cash. A diverse group of people, bound by a collaborative spirit, and shared purpose. And lastly, a thriving, profitable business – where sm",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/flagstone/data-analytics-team-leader-london-179381",
+            "published": "2026-08-02T09:41:06+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_group-product-manager-12-month-ftc-london-298468",
+            "title": "Group Product Manager - 12 month FTC",
+            "company": "Flagstone",
+            "location": "London Office",
+            "description": "What is Flagstone? Flagstone is many things. An online savings platform, reinventing how individuals, businesses, and charities manage, protect, and grow their cash. A diverse group of people, bound by a collaborative spirit, and shared purpose. And lastly, a thriving, profitable business – where sm",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/flagstone/group-product-manager-12-month-ftc-london-298468",
+            "published": "2026-08-02T09:41:06+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_communications-europe-london-380174",
+            "title": "Communications, Europe",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/communications-europe-london-380174",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_enterprise-account-executive-benelux-london-291523",
+            "title": "Enterprise Account Executive, Benelux",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/enterprise-account-executive-benelux-london-291523",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_brand-visual-designer-london-100454",
+            "title": "Brand Visual Designer",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/brand-visual-designer-london-100454",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_pricing-strategy-operations-london-314688",
+            "title": "Pricing Strategy & Operations",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/pricing-strategy-operations-london-314688",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_gtm-operations-london-209624",
+            "title": "GTM Operations",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/gtm-operations-london-209624",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_strategist-agent-development-dutch-speaking-london-142057",
+            "title": "Strategist, Agent Development (Dutch speaking)",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/strategist-agent-development-dutch-speaking-london-142057",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_software-engineer-agent-dutch-speaking-london-266370",
+            "title": "Software Engineer, Agent (Dutch speaking)",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/software-engineer-agent-dutch-speaking-london-266370",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_people-partner-europe-london-157569",
+            "title": "People Partner, Europe",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/people-partner-europe-london-157569",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_ai-voice-designer-london-285581",
+            "title": "AI Voice Designer",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/ai-voice-designer-london-285581",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_executive-assistant-london-440766",
+            "title": "Executive Assistant",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/executive-assistant-london-440766",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Recruiter'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_business-recruiter-london-132020",
+            "title": "Business Recruiter",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/business-recruiter-london-132020",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_sales-engineer-london-262705",
+            "title": "Sales Engineer",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/sales-engineer-london-262705",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_technical-lead-london-390665",
+            "title": "Technical Lead",
+            "company": "Unmind",
+            "location": "London,  HQ",
+            "description": "Location: UK Based, Remote-first (with monthly travel to London) At Unmind, we're here to create better mental health. We believe mental health should be a source of strength, not struggle – for people, teams, and entire organisations. We combine science, technology, and human care to help companies",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/unmind/technical-lead-london-390665",
+            "published": "2026-08-02T09:40:47+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_remote-expert-part-time-hirehire-154942",
+            "title": "Expert (part-time) | hirehire",
+            "company": "Hirehire",
+            "location": "Remote",
+            "description": "hirehire agency is a small community of experienced PMs and Designers We have many years of experience working at Meta, Stripe, Intercom, Revolut, Deel, JetBrains, and other great companies. We have combined our professional networks. Our friends work at most tech companies you’ve heard of from big ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/hirehire/remote-expert-part-time-hirehire-154942",
+            "published": "2026-08-02T09:40:23+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447891340",
+            "title": "Werkstudent/in Bau und Erhaltung (w/m/d)",
+            "company": "Die Autobahn GmbH des Bundes",
+            "location": "Heilbronn, Baden-Württemberg, Germany",
+            "description": "Stellenbeschreibung: Wir bieten Ihnen zum nächstmöglichen Zeitpunkt befristet für ein Jahr eine Position als Werkstudent/in Bau und Erhaltung (w/m/d). Zu Ihren Aufgaben gehören insbesondere: Unterstützung bei der organisatorischen und fachlichen Begleitung von Projekten im Bereich Bau und Erhaltung ",
+            "url": "https://www.linkedin.com/jobs/view/4447891340",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447875567",
+            "title": "Internship Engineering (m/f/d)",
+            "company": "Collins Aerospace",
+            "location": "Heidelberg, Baden-Württemberg, Germany",
+            "description": "Date Posted: 2026-08-01 Country: Germany Location: DE-BW-HEIDELBERG-036-751 ~ Grenzhofer Weg 36 ~ BLDG 751 Position Role Type: Unspecified Keine passende Stelle gefunden? Wir freuen uns auf Deine Initiativbewerbung! Praktikant/ Werkstudent/ Bachelor/Master Thesis Student im Engineering (m/f/d) Colli",
+            "url": "https://www.linkedin.com/jobs/view/4447875567",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445855195",
+            "title": "Werkstudent*in Produktmanagement mit Fokus auf Photovoltaik",
+            "company": "Memodo GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Werde Teil unseres Teams Werkstudierende, befristet, Teil- oder Vollzeit (mind. 16 Std./Woche), ab sofort, München Übernimm von Anfang an Verantwortung, arbeite mit internationalen Herstellern zusammen und nutze AI, um Prozesse intelligenter und effizienter zu gestalten. Dabei sammelst du wertvolle ",
+            "url": "https://www.linkedin.com/jobs/view/4445855195",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445838379",
+            "title": "Werkstudent:in (m/w/d) - Schulungen, Webinare und CSM im Smart Energy Startup",
+            "company": "GreenPocket GmbH",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Werde zum:zur kreativen Energie-Entdecker:in in unserem Team! Als Werkstudent:in unterstützt Du uns bei der Akquise von Neukunden und der Betreuung von Bestandskunden. Hier ist Deine Chance theoretisches Wissen anzuwenden, um aktiv dazu beizutragen, (potenziellen) Kunden unsere Produkte näher zu bri",
+            "url": "https://www.linkedin.com/jobs/view/4445838379",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445837360",
+            "title": "Werkstudent Marketing - BauGPT (m/w/d)",
+            "company": "BauGPT",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Werkstudent Marketing (m/w/d) für AI / Marketplace-Startup gesucht! Wir sind BauGPT (ehem. Crafthunt) – Betreiber von Europas größter Karriereplattform für die Bauwirtschaft sowie des führenden KI-Assistenten für Bau und Handwerk. Unsere Mission: Menschen und Unternehmen im Bauwesen mit smarter Tech",
+            "url": "https://www.linkedin.com/jobs/view/4445837360",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4390148428",
+            "title": "Werkstudent (m/w/d) Projektmanagement / Tool-Migration",
+            "company": "dormakaba",
+            "location": "Hagnau am Bodensee, Baden-Württemberg, Germany",
+            "description": "Ein Job, der zählt: Ihre Aufgaben Planung und Organisation der Migration des aktuellen Tools (K2 Fabrity) zu Jira Aufnahme und Dokumentation bestehender Prozesse und Workflows Abstimmung mit Fachabteilungen, IT und ggf. externen Dienstleistern Unterstützung bei der Konfiguration von Jira (Workflows,",
+            "url": "https://www.linkedin.com/jobs/view/4390148428",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4380529247",
+            "title": "Junior Site Reliability & Security Engineer (m/w/d)",
+            "company": "CGI",
+            "location": "Berlin, Germany",
+            "description": "Stellenbeschreibung CGI ist einer der weltweit größten unabhängigen Anbieter von IT- und Geschäftsprozess-Dienstleistungen. In Deutschland sind wir an 25+ Standorten mit rund 4.700 Mitarbeiter:innen vertreten und bieten dir exzellente Bedingungen für deinen Berufseinstieg in der IT. Als innovatives ",
+            "url": "https://www.linkedin.com/jobs/view/4380529247",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447874415",
+            "title": "Senior Data Engineer (Azure)",
+            "company": "AgileGrid Solutions",
+            "location": "Germany",
+            "description": "About The Company Sedona Digital is a rapidly expanding technology scale-up dedicated to delivering innovative data solutions across various industries. With a focus on high-performance data platforms and cloud infrastructure, Sedona Digital aims to establish itself as one of Romania's leading techn",
+            "url": "https://www.linkedin.com/jobs/view/4447874415",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445857138",
+            "title": "Junior Business Analyst - Financial Services m/w/d - remote - deutschlandweit",
+            "company": "23DATA",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Über uns: Die 23FINANCE ist ein junges und wachsendes Beratungsunternehmen, deshalb suchen wir Dich, wenn Du motiviert, lernbereit und unternehmerisch bist. Als Business Analyst hilfst Du unseren Kunden fachliche Anforderungen zu erheben, zu analysieren und in umsetzbare Fragmente zu zerlegen. Du le",
+            "url": "https://www.linkedin.com/jobs/view/4445857138",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445850151",
+            "title": "System Integrator - Fahrzeugentwicklung (M/W/D) - VISPIRON SYSTEMS",
+            "company": "VISPIRON GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Wir bringen die Mobilität der Zukunft schneller auf die Straße Mit unserer einzigartigen Kombination aus tiefem Automotive Systemverständnis, modernster Testinfrastruktur und Projektmanagement-Know-how beschleunigen wir Entwicklungszyklen der Fahrzeugentwicklung und reduzieren Gewährleistungsrisi",
+            "url": "https://www.linkedin.com/jobs/view/4445850151",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447889434",
+            "title": "Computational Mechanics Master Thesis Internship",
+            "company": "Synopsys Inc",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Introduction We Are: Drive technology innovations that shape the way we live and connect. Our technology drives the Era of Pervasive Intelligence, where smart tech and AI are seamlessly woven into daily life. From self-driving cars and health-monitoring smartwatches to renewable energy systems that ",
+            "url": "https://www.linkedin.com/jobs/view/4447889434",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4419690589",
+            "title": "Konstrukteur Fahrzeugbau / Mechanical Design Engineer (all gender) 999",
+            "company": "ALTEN Germany",
+            "location": "Unterlüß, Lower Saxony, Germany",
+            "description": "Die ALTEN Consulting Services GmbH bietet mit über 20 Jahren Branchenerfahrung ihren namhaften Kunden aus Industrie und Wirtschaft hochspezialisierte Engineering- und IT-Dienstleistungen zur gemeinsamen Realisierung von branchen- und technologieübergreifenden Lösungen an. Kompetenz, Engagement und L",
+            "url": "https://www.linkedin.com/jobs/view/4419690589",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4391914319",
+            "title": "Elektrokonstrukteur / Electrical Design Engineer (m/w/d) - Herford",
+            "company": "Xylem",
+            "location": "Herford, North Rhine-Westphalia, Germany",
+            "description": "Xylem is a Fortune 500 global water solutions company dedicated to advancing sustainable impact and empowering the people who make water work every day. As a leading water technology company with 23,000 employees operating in over 150 countries, Xylem is at the forefront of addressing the world's mo",
+            "url": "https://www.linkedin.com/jobs/view/4391914319",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445848100",
+            "title": "Data Scientist (Freelance, Berlin)",
+            "company": "Zero to One Search | Recruitment Agency",
+            "location": "Berlin, Germany",
+            "description": "Data Scientist (Temporary Freelance Contract) Location: Berlin, Germany (Hybrid) About the Company Join an established international FinTech company that empowers private and professional investors with access to global financial markets through cutting-edge technology. With a strong presence across",
+            "url": "https://www.linkedin.com/jobs/view/4445848100",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447865956",
+            "title": "Machine Learning Engineer (Remote)",
+            "company": "Jobs Ai",
+            "location": "Germany",
+            "description": "Role : Machine Learning Engineer (Remote) Location : Remote (Work from Anywhere) Job Type : Contract Payout : $20 - $90/hour Role Overview: We are hiring for one of our clients, seeking a Machine Learning Engineer to work on a contract basis. The role involves designing, developing, and deploying ma",
+            "url": "https://www.linkedin.com/jobs/view/4447865956",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445849106",
+            "title": "Senior DataOps Engineer / Software Engineer",
+            "company": "Zero to One Search | Recruitment Agency",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Senior DataOps Engineer / Software Engineer Location: Munich, hybrid About the company: Our client is one of Europe's fastest-growing travel tech scale-ups, connecting millions of guests with holiday homes across the globe. With a team of 700+ people from 60+ countries, they move fast, think big, an",
+            "url": "https://www.linkedin.com/jobs/view/4445849106",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447866817",
+            "title": "University Researcher (Remote)",
+            "company": "Hired",
+            "location": "Germany",
+            "description": "Role: University Researcher (Remote) Location: Remote (Work From Home) Compensation: Up to $29 USD/hr, paid weekly About the Role We are looking for fluent language professionals to help train and evaluate AI language models. This is a flexible, part-time contract role you can do entirely from home,",
+            "url": "https://www.linkedin.com/jobs/view/4447866817",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447890057",
+            "title": "Rust Developer (Remote)",
+            "company": "Hired",
+            "location": "Germany",
+            "description": "Role : Rust Developer (Remote) Location : Remote (Work from Anywhere) Job Type : Contract Payout : $30 - $90/hour Role Overview: We are hiring for one of our clients, seeking a Rust Developer to work on a contract basis. The role involves building and optimizing high-performance systems using Rust, ",
+            "url": "https://www.linkedin.com/jobs/view/4447890057",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447873498",
+            "title": "Senior AI Software Engineer",
+            "company": "AgileGrid Solutions",
+            "location": "Germany",
+            "description": "About The Company CGM is a leading provider of software solutions in the healthcare sector, operating across 19 countries with a dedicated workforce of over 9,000 employees. The company specializes in developing innovative, reliable, and efficient digital tools that aim to transform the healthcare l",
+            "url": "https://www.linkedin.com/jobs/view/4447873498",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434520170",
+            "title": "Lead Software Engineer C++ / Software Architect (all gender) – Sensorfusion & High-Performance Software 999",
+            "company": "ALTEN Germany",
+            "location": "Bremen, Germany",
+            "description": "Die ALTEN Consulting Services GmbH bietet mit über 20 Jahren Branchenerfahrung ihren namhaften Kunden aus Industrie und Wirtschaft hochspezialisierte Engineering- und IT-Dienstleistungen zur gemeinsamen Realisierung von branchen- und technologieübergreifenden Lösungen an. Kompetenz, Engagement und L",
+            "url": "https://www.linkedin.com/jobs/view/4434520170",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445831992",
+            "title": "Senior Team Lead Data Analytics (Munich, hybrid)",
+            "company": "Zero to One Search | Recruitment Agency",
+            "location": "Munich, Bavaria, Germany",
+            "description": "(Senior) Team Lead Data Analytics | Munich | on-site 2 days/week One of Europe's fastest-growing travel tech scaleups is looking for a senior analytics leader to own one of their core BI teams. It's a real IC responsibility, strategic visibility, and a genuine seat at the table. The role: Lead a tea",
+            "url": "https://www.linkedin.com/jobs/view/4445831992",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445836451",
+            "title": "Sozialpädagogin*/ Sozialarbeiterin*/ Pädagogin*/ Erziehungswissenschaftlerin* (B.A.) für 20h/Wo gesucht (Frankfurt a.M.)",
+            "company": "Bundesverband Frauenberatungsstellen und Frauennotrufe - Frauen gegen Gewalt e.V.",
+            "location": "Frankfurt Rhine-Main Metropolitan Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445836451",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4361222977",
+            "title": "Market Intelligence & Supply Chain Strategy Specialist (m/f/d)",
+            "company": "Samsung Germany",
+            "location": "Eschborn, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4361222977",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443914673",
+            "title": "Research Analys",
+            "company": "Made Consultancy Group",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4443914673",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4417654361",
+            "title": "Product Manager, Search Ranking",
+            "company": "eBay",
+            "location": "Berlin Metropolitan Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4417654361",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445847252",
+            "title": "Product Manager (m/w/d) Strategic Supplier Relationships",
+            "company": "Memodo GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445847252",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447876550",
+            "title": "KFZ-Service-/ Diagnosetechniker PKW (m/w/d)",
+            "company": "Winter Automobilpartner GmbH & Co. KG",
+            "location": "Großröhrsdorf, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447876550",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4277629864",
+            "title": "Mechatroniker (m/w/d) Nutzfahrzeugtechnik",
+            "company": "Volvo Trucks",
+            "location": "Frechen, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4277629864",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445852185",
+            "title": "Kfz-Mechatroniker mit Schwerpunkt Diagnose in Berlin und Umland (m/w/d)",
+            "company": "AUTOHAUS WEGENER",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445852185",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445853100",
+            "title": "Kfz-Mechatroniker (m/w/d) für alle Betriebe",
+            "company": "Autohaus Walter Mulfinger GmbH",
+            "location": "Backnang, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445853100",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447620914",
+            "title": "Kfz-Mechatroniker (m/w/d)",
+            "company": "PSH Personal Service GmbH",
+            "location": "Emden, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447620914",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4400420666",
+            "title": "Systemtechniker Gebäudeautomation (m/w/d)",
+            "company": "Johnson Controls",
+            "location": "Essen, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4400420666",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4391067523",
+            "title": "Mitarbeiter Gebäudeautomation (m/w/d)",
+            "company": "Johnson Controls",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4391067523",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445837369",
+            "title": "Engineering Lead (Ref: 197449)",
+            "company": "Forsyth Barnes Consultancy",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445837369",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445822989",
+            "title": "Qualifizierung Kfz-Prüfingenieur/-in (m/w/d) bzw. Kfz-Sachverständige/-r (m/w/d)",
+            "company": "TÜV Hessen",
+            "location": "Korbach, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445822989",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4417227999",
+            "title": "Produktionsingenieur",
+            "company": "JBT Marel",
+            "location": "Glinde, Schleswig-Holstein, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4417227999",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447628738",
+            "title": "Vertriebscontroller (m/w/d)",
+            "company": "Schäfer Dein Bäcker GmbH",
+            "location": "Limburg an der Lahn, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447628738",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447638436",
+            "title": "Senior Product Manager (m/w/d) Presbyopia Workflow",
+            "company": "encontec GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447638436",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447626935",
+            "title": "Produktmanager Mobilfunk ECommerce",
+            "company": "HeyJobs",
+            "location": "Bochum, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447626935",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4421200026",
+            "title": "Produktmanager betriebliche Altersvorsorge (bAV) (m/w/d)",
+            "company": "AXA",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4421200026",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445850234",
+            "title": "Data Integration Specialist I IT Consultant (m/f/d)",
+            "company": "ivoflow",
+            "location": "Coblenz, Rhineland-Palatinate, Germany",
+            "description": "Save Your Power. Empower Your Savings — with ivoflow. At ivoflow, we’re on a mission: to enable global manufacturing enterprises to gain full transparency over their strategic spend and to uncover cost-saving opportunities—automatically and intelligently. As a forward-thinking, innovation-driven tec",
+            "url": "https://www.linkedin.com/jobs/view/4445850234",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Business Analyst'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447642605",
+            "title": "Business Analys",
+            "company": "NEXO Lubricantes S.A.",
+            "location": "Germany",
+            "description": "📈 We’re Hiring: Business Analyst (Entry / Junior Level) 📍 Remote (Germany) 🕒 Full-Time 💼 Level: Entry-Level / Junior We’re looking for a motivated and detail-oriented Business Analyst to join our growing team. This role is ideal for candidates who enjoy understanding business needs, analyzing proces",
+            "url": "https://www.linkedin.com/jobs/view/4447642605",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445849094",
+            "title": "Product Owner Endkunden‑App & Einzelraumregelung (w/m/d)",
+            "company": "STIEBEL ELTRON Group",
+            "location": "Holzminden, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445849094",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4335949540",
+            "title": "Duales Studium Data Science – in Kooperation mit der DHBW Stuttgart",
+            "company": "SIXT",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4335949540",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447797429",
+            "title": "Production Planning & Manufacturing Performance Analyst",
+            "company": "Iskra Autoelectric Iran JVC",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447797429",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445841321",
+            "title": "Platform Manager (m/w/d)",
+            "company": "neoLab Migge GmbH",
+            "location": "Heidelberg, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445841321",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447614966",
+            "title": "Systems Engineering Intern",
+            "company": "ProJMentor",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Company Description ProJMentor is a systems-first learning ecosystem that helps students and early-career professionals build deep technical and systems thinking capabilities. The organization focuses on domains such as FEA, CFD, HVAC, AI/ML, HPC, analytics, and system design, using applied and imme",
+            "url": "https://www.linkedin.com/jobs/view/4447614966",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Automotive Engineer' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_forward-deployed-infrastructure-engineer-london-395286",
+            "title": "Forward Deployed Infrastructure Engineer",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/forward-deployed-infrastructure-engineer-london-395286",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Product Manager' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_office-manager-london-451557",
+            "title": "Office Manager, London",
+            "company": "Sierra",
+            "location": "London",
+            "description": "About us At Sierra, we’re creating a platform to help businesses build better, more human customer experiences with AI. We are primarily an in-person company based in San Francisco, with growing offices in Atlanta, New York, London, Paris, Madrid, Munich, Singapore, Tokyo, and Sydney. We are guided ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sierra/office-manager-london-451557",
+            "published": "2026-08-02T09:41:03+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 15,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4342843044",
+            "title": "Consultant Digital Banking (m/w/d)",
+            "company": "CGI",
+            "location": "Eschborn, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4342843044",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
