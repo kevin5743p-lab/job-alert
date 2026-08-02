@@ -172,7 +172,8 @@ Respond with ONLY the JSON object.`;
 
 // Score a batch of postings in one call. Batching matters: scoring each job
 // individually would exhaust a free-tier key in a single scan.
-export function buildBatchScorePrompt(jobs, cvText, field, language = "en") {
+export function buildBatchScorePrompt(jobs, cvText, field, language = "en",
+                                      baseLocation = "") {
   const list = jobs.map((j, i) =>
     `  {"i": ${i}, "title": ${JSON.stringify(j.title || "")}, ` +
     `"company": ${JSON.stringify(j.company || "")}, ` +
@@ -187,6 +188,7 @@ posting fits the candidate.
 ${(cvText || "").slice(0, 2500)}
 
 Their field: ${field || "as shown in the CV"}
+${baseLocation ? `They are based in: ${baseLocation}` : ""}
 
 === POSTINGS ===
 [
@@ -200,6 +202,13 @@ For each posting give a score from 0 to 100 and one short, specific reason.
   doesn't show, if it demands fluent/business German (C1/C2, "verhandlungssicher")
   and the CV doesn't have it, or if it is simply a different profession.
   ("Grundkenntnisse", B1/B2 or "von Vorteil" are fine.)
+- LOCATION MATTERS. These boards are international, so many postings are on
+  another continent and are useless however well the skills line up:
+  * same city or country as the candidate, or genuinely remote → no penalty;
+  * elsewhere but plausibly commutable/relocatable within their region → cap 65;
+  * another continent, or requiring work authorisation the CV doesn't show
+    (e.g. a US role for a candidate based in Europe) → cap 30, and say so in
+    the reason.
 - Judge on real overlap of skills and experience, not keyword coincidence.
 - The reason must cite something concrete from the CV or the posting, in one
   sentence, written in ${LANG_NAME[language] || "English"}.

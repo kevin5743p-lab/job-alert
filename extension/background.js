@@ -114,7 +114,7 @@ async function ensureSearchProfile(cv, apiKey, model, force) {
   return sp;
 }
 
-async function scoreJobs(jobs, cv, field, apiKey, model, language) {
+async function scoreJobs(jobs, cv, field, apiKey, model, language, baseLocation) {
   const scored = [];
   const batches = [];
   for (let i = 0; i < jobs.length; i += SCORE_BATCH) {
@@ -127,7 +127,8 @@ async function scoreJobs(jobs, cv, field, apiKey, model, language) {
     let raw;
     try {
       raw = await groqJson(
-        buildBatchScorePrompt(batch, cv, field, language), apiKey, model, 1600);
+        buildBatchScorePrompt(batch, cv, field, language, baseLocation),
+        apiKey, model, 1600);
     } catch (e) {
       // Out of quota or rate-limited: keep what we have rather than losing the scan.
       if (/quota|rate limit/i.test(e.message)) break;
@@ -153,6 +154,12 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
       const sp = await ensureSearchProfile(cv, groqApiKey, model, msg.rebuildProfile);
 
+      // Where they live, so a role on another continent isn't scored as a
+      // great match. These boards are international; most postings aren't local.
+      const prof = await sb.getProfile();
+      const ap = (prof && prof.application_profile) || {};
+      const baseLocation = [ap.city, ap.country].filter(Boolean).join(", ");
+
       const { jobs, stats } = await fetchAll(sp, (t) => progress(t));
       progress(`Found ${jobs.length} postings — filtering…`);
 
@@ -163,7 +170,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         return;
       }
 
-      const scored = await scoreJobs(survivors, cv, sp.field, groqApiKey, model, lang);
+      const scored = await scoreJobs(survivors, cv, sp.field, groqApiKey, model,
+                                     lang, baseLocation);
       const keep = scored.filter((s) => s.score >= 50);
 
       progress(`Saving ${keep.length} match${keep.length === 1 ? "" : "es"}…`);
