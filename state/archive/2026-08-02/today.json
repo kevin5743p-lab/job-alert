@@ -3480,6 +3480,677 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-02T11:40:11.836923",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 55,
+          "reason": "title fits 'Data Scientist'; skills: Data analysis, Git; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "arbeitnow_data-scientist-payment-success-london-46740",
+            "title": "Data Scientist - Payment Success",
+            "company": "Checkout.com",
+            "location": "London",
+            "description": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billion transactions yearly for more than one",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/data-scientist-payment-success-london-46740",
+            "published": "2026-08-02T10:01:51+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 55,
+          "reason": "title fits 'Data Scientist'; skills: Python, Git; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "arbeitnow_data-scientist-london-375610",
+            "title": "Data Scientist",
+            "company": "Checkout.com",
+            "location": "London",
+            "description": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billion transactions yearly for more than one",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/data-scientist-london-375610",
+            "published": "2026-08-02T10:01:50+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4445837497",
+            "title": "PRODUCT & APPLICATION MANAGER(M/W/D)-COMPLEMENTARY PRODUCTS (D-A-CH)",
+            "company": "sera Group",
+            "location": "Immenhausen, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445837497",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-manager-fincrime-london-108920",
+            "title": "Senior Product Manager, Fincrime",
+            "company": "Checkout.com",
+            "location": "London",
+            "description": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billion transactions yearly for more than one",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/senior-product-manager-fincrime-london-108920",
+            "published": "2026-08-02T10:01:51+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-data-scientist-london-193305",
+            "title": "Senior Data Scientist",
+            "company": "Checkout.com",
+            "location": "London",
+            "description": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billion transactions yearly for more than one",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/senior-data-scientist-london-193305",
+            "published": "2026-08-02T10:01:51+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_manager-sales-engineering-london-421747",
+            "title": "Manager, Sales Engineering",
+            "company": "Checkout.com",
+            "location": "London",
+            "description": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billion transactions yearly for more than one",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/manager-sales-engineering-london-421747",
+            "published": "2026-08-02T10:01:51+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-software-engineer-ai-centre-of-excellence-london-101591",
+            "title": "Senior Software Engineer, AI Centre of Excellence",
+            "company": "Checkout.com",
+            "location": "London",
+            "description": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billion transactions yearly for more than one",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/senior-software-engineer-ai-centre-of-excellence-london-101591",
+            "published": "2026-08-02T10:01:51+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_product-data-scientist-london-9176",
+            "title": "Product Data Scientist",
+            "company": "Checkout.com",
+            "location": "London",
+            "description": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billion transactions yearly for more than one",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/product-data-scientist-london-9176",
+            "published": "2026-08-02T10:01:50+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-associate-liquidity-management-london-390560",
+            "title": "Senior Associate, Liquidity Management",
+            "company": "Checkout.com",
+            "location": "London",
+            "description": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billion transactions yearly for more than one",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/senior-associate-liquidity-management-london-390560",
+            "published": "2026-08-02T10:01:50+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-machine-learning-engineer-london-463490",
+            "title": "Senior Machine Learning Engineer",
+            "company": "Checkout.com",
+            "location": "London",
+            "description": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billion transactions yearly for more than one",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/senior-machine-learning-engineer-london-463490",
+            "published": "2026-08-02T10:01:50+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_product-manager-vault-forward-api-london-448608",
+            "title": "Product Manager, Vault & Forward API",
+            "company": "Checkout.com",
+            "location": "London",
+            "description": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billion transactions yearly for more than one",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/product-manager-vault-forward-api-london-448608",
+            "published": "2026-08-02T10:01:50+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447875698",
+            "title": "PRAKTIKUMSSTELLE / WERKSTUDENTENTÄTIGKEIT (W/M/D)",
+            "company": "Emch+Berger Deutschland",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "An unserem Standort in Karlsruhe bieten wir Studentinnen und Studenten die Möglichkeit ihr Pflichtpraktikum bei uns zu absolvieren oder als Werkstudent/in studienbegleitend tätig zu werden. Verkehrswegeplanung , Konstruktiver Ingenieurbau , Bauüberwachung Deine Qualifikation Interesse an der Planung",
+            "url": "https://www.linkedin.com/jobs/view/4447875698",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4380578264",
+            "title": "Data Engineer (all genders) Berlin",
+            "company": "Instaffo",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Data Engineer (all genders) Berlin bei PRODYNA SE Anforderungen Bitte beachte, dass für diese Stelle eine Arbeitserlaubnis für Deutschland erforderlich ist. Sprache: Deutsch - Muttersprachliches Niveau, Englisch - Konversationssicher Du verfügst über mehrjährige Berufserfahrung in der Softwareentwic",
+            "url": "https://www.linkedin.com/jobs/view/4380578264",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447633931",
+            "title": "Business Intelligence Specialist (m/w/d)",
+            "company": "CHEFS CULINAR",
+            "location": "Weeze, North Rhine-Westphalia, Germany",
+            "description": "Deine Aufgaben Du implementierst und optimierst ETL-/ELT-Prozesse zur Integration verschiedener Datenquellen Du konzipierst und erstellst Datenmodelle Du entwickelst leistungsfähige Dashboards und Reports mit Power BI Du stellst Datenqualität, Performance und Governance (inkl. Berechtigungen) sicher",
+            "url": "https://www.linkedin.com/jobs/view/4447633931",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Chef'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447628989",
+            "title": "Fachinformatiker (m/w/d) - Fachrichtung Daten- und Prozessanalyse",
+            "company": "CHEFS CULINAR",
+            "location": "Weeze, North Rhine-Westphalia, Germany",
+            "description": "Ausbildungsinhalte Dich erwartet ein technisch modernes und innovatives Arbeitsumfeld, auf Basis modernster Hard- und Software, sowie eine umfassende Betreuung durch kompetente Ausbilder, die Dir mit Rat und Tat zur Seite stehen. an 1-2 Tagen pro Woche besuchst Du das Berufskolleg in Kleve und erarb",
+            "url": "https://www.linkedin.com/jobs/view/4447628989",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447647665",
+            "title": "Berufsintegrierter Master – Data Engineering bei der Heel GmbH (m/w/d)",
+            "company": "Steinbeis Center of Management and Technology - SCMT GmbH",
+            "location": "Baden-Baden, Baden-Württemberg, Germany",
+            "description": "Partnerunternehmen Wir suchen starke Persönlichkeiten für unser Partnerunternehmen! Als Bachelorabsolvent*in bieten wir Dir eine herausfordernde Möglichkeit für Deinen Karriereeinstieg mit einem Masterstudium. Mit dem berufsintegrierten Projekt-Kompetenz-Studium® bieten wir Dir die perfekte Kombinat",
+            "url": "https://www.linkedin.com/jobs/view/4447647665",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4420458874",
+            "title": "Principal Engineer - Product Marketing",
+            "company": "Microchip Technology Inc.",
+            "location": "Garching, Bavaria, Germany",
+            "description": "Are you looking for a unique opportunity to be a part of something great? Want to join a 17,000-member team that works on the technology that powers the world around us? Looking for an atmosphere of trust, empowerment, respect, diversity, and communication? How about an opportunity to own a piece of",
+            "url": "https://www.linkedin.com/jobs/view/4420458874",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4421795884",
+            "title": "PCB Design Senior Engineer",
+            "company": "OPENCHIP & SOFTWARE TECHNOLOGIES",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "The Role We are looking for a Senior PCB Design Engineer with strong EDA library ownership and advanced high‑speed board design experience to drive the implementation of our next‑generation data center accelerator platforms . In this role, you will be responsible for the complete PCB design process ",
+            "url": "https://www.linkedin.com/jobs/view/4421795884",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447633949",
+            "title": "Data Scientist (m/w/d)",
+            "company": "CHEFS CULINAR",
+            "location": "Weeze, North Rhine-Westphalia, Germany",
+            "description": "Deine Aufgaben Du entwickelst Lösungen im Bereich Predictive Analytics, Machine Learning und Künstliche Intelligenz Du analysierst Prozesse, erarbeitest Optimierungspotentiale und erstellst Prototypen, um Lösungsansätze zu bestätigen Du berätst unsere Fachbereiche bei der Anwendung von datengetriebe",
+            "url": "https://www.linkedin.com/jobs/view/4447633949",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "title fits 'Automotive Engineer'; preferred location; (seniority warning)",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447887203",
+            "title": "AI Engineer",
+            "company": "AgileGrid Solutions",
+            "location": "Germany",
+            "description": "About The Company Fathom.video is dedicated to revolutionizing the way teams conduct and experience meetings by leveraging cutting-edge AI technology. Our mission is to eliminate the unnecessary overhead of traditional meetings by providing intelligent solutions that capture, summarize, and organize",
+            "url": "https://www.linkedin.com/jobs/view/4447887203",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445849210",
+            "title": "Senior AI Engineer (Ref: 197454)",
+            "company": "Forsyth Barnes Consultancy",
+            "location": "Berlin, Berlin, Germany",
+            "description": "about the role About Us Our client develops financial software for small and medium-sized enterprises, focusing on automating accounting, tax, and payroll processes across European markets. The product integrates transactional bookkeeping, compliance workflows, and reconciliation tools to reduce man",
+            "url": "https://www.linkedin.com/jobs/view/4445849210",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Führungskraft'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447885538",
+            "title": "Projektingenieur HGÜ-Modellierung & Simulation (m/w/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Für unseren Kunden besetzen wir ab sofort folgende Position: Aufgabenprofil Entwicklung und Weiterentwicklung von Modellen für HGÜ-Anlagen und Umrichtersysteme in MATLAB/Simulink. Implementierung und Validierung moderner spannungsbildender Regelungskonzepte wie Grid-Forming und direkte Spannungsrege",
+            "url": "https://www.linkedin.com/jobs/view/4447885538",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447884607",
+            "title": "PROJEKTINGENIEUR (M/W/D) ELEKTROTECHNIK",
+            "company": "Emch+Berger Deutschland",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "Für unser Team in Nürnberg suchen wir zum nächstmöglichen Zeitpunkt: Projektingenieur (m/w/d) für Elektrotechnik im Bereich Stromversorgung, Beleuchtung (50 Hz Planung) Ihre Aufgaben Eigenständige und effektive Bearbeitung von Projekten der Elektrotechnik in den HOAI Leistungsphasen 1-7 Planung von ",
+            "url": "https://www.linkedin.com/jobs/view/4447884607",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447881597",
+            "title": "PROJEKTINGENIEUR MIT LEITUNGSFUNKTION (M/W/D)",
+            "company": "Emch+Berger Deutschland",
+            "location": "Pforzheim, Baden-Württemberg, Germany",
+            "description": "Für unser Team suchen wir einen Projektingenieur mit Leitungsfunktion (m/w/d) für das Baumanagement im konstruktiven Ingenieurbau oder im Verkehrswegebau (m/w/d) in Profzheim (Vollzeit - feste Anstellung) Ihre Aufgaben Bauüberwachung von anspruchsvollen Projekten unter Beachtung der Qualität, Termin",
+            "url": "https://www.linkedin.com/jobs/view/4447881597",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447886531",
+            "title": "PROJEKTINGENIEUR IM BEREICH PROJEKTSTEUERUNG (M/W/D)",
+            "company": "Emch+Berger Deutschland",
+            "location": "Neustadt an der Weinstrasse, Rhineland-Palatinate, Germany",
+            "description": "Für unser Team in Neustadt a.d. Weinstraße suchen wir ab sofort in Vollzeit: Projektingenieur im Bereich Projektsteuerung (m/w/d) als Projektleitung oder Projektmitarbeiter/in Ihre Aufgabe Projektbearbeitung von Maßnahmen in den Bereichen DB / ÖPNV / Straßenplanung Unterstützung der Projektleitung i",
+            "url": "https://www.linkedin.com/jobs/view/4447886531",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447894381",
+            "title": "PROJEKTINGENIEUR/IN VERKEHRSANLAGENPLANUNG DIPL.- ING / DIPL.- ING (FH) / MASTER / BACHELOR (M/W/D)",
+            "company": "Emch+Berger Deutschland",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "Für unseren Standort in Karlsruhe suchen wir eine/n Projektingenieur/in Verkehrsanlagenplanung Dipl.- Ing / Dipl.- Ing (FH) / Master / Bachelor (m/w/d). Du bearbeitest Verkehrsinfrastrukturprojekte (Straße / Straßenbahn / Eisenbahn) vom Konzept bis zur Ausschreibung Deine Aufgaben Objektplanung Lph ",
+            "url": "https://www.linkedin.com/jobs/view/4447894381",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447887516",
+            "title": "PROJEKTLEITER / PROJEKTINGENIEUR (M/W/D) BAUMANAGEMENT",
+            "company": "Emch+Berger Deutschland",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Zur Unterstützung unseres Teams suchen wir für den Standort Hannover unbefristet zu sofort oder später jeweils einen Projektingenieur bzw. einen Projektleiter (m/w/d) für das Baumanagement im konstruktiven Ingenieurbau oder im Verkehrswegebau (unbefristet, TZ oder VZ). Ihre Aufgaben Bauüberwachung v",
+            "url": "https://www.linkedin.com/jobs/view/4447887516",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447881599",
+            "title": "BIM-PROJEKTINGENIEUR (M/W/D) FÜR VERKEHRSSTATIONEN / VERKEHRSANLAGENPLANUNG",
+            "company": "Emch+Berger Deutschland",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Zur Unterstützung unseres Teams in Hannover suchen wir zu sofort einen BIM-Projektingenieur (m/w/d) für Verkehrsstationen / Verkehrsanlagenplanung (unbefristet, TZ oder VZ). Ihre Aufgaben Planung von Vorhaben im Bereich der Verkehrsinfrastruktur / Verkehrsstationen in den Lph 1 bis 7 nach HOAI anhan",
+            "url": "https://www.linkedin.com/jobs/view/4447881599",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447878218",
+            "title": "Financial Data Analyst (Remote)",
+            "company": "Jobs Ai",
+            "location": "Germany",
+            "description": "Role: Financial Data Analyst (Remote) Location: Remote (Work from Anywhere) Job Type: Contract Payout: $14 - $36/hour Role Overview: We are hiring for one of our clients, seeking a Workflow Annotator — Finance & Data Analysis to work on a contract basis. You will analyze financial and data workflows",
+            "url": "https://www.linkedin.com/jobs/view/4447878218",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4368681688",
+            "title": "Senior Business Analyst (m/w/d)",
+            "company": "Instaffo",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Senior Business Analyst (m/w/d) bei ALL IN GROUP GmbH (myposter) Anforderungen Bitte beachte, dass für diese Stelle eine Arbeitserlaubnis für Deutschland erforderlich ist. Sprache: Deutsch - Fließend Du hast mehrere Jahre Erfahrung als Business Analyst oder Data Analyst Du bist sicher in SQL und Pyt",
+            "url": "https://www.linkedin.com/jobs/view/4368681688",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4186270602",
+            "title": "IT BUSINESS CONSULTANT* SUPPLY CHAIN MANAGEMENT",
+            "company": "NEW YORKER",
+            "location": "Brunswick, Lower Saxony, Germany",
+            "description": "IT BUSINESS CONSULTANT* SUPPLY CHAIN MANAGEMENT DU SUCHST EINEN JOB & WIR SUCHEN DICH DO WHAT YOU LOVE – als eines der größten internationalen Modeunternehmen, mit mehr als 1.300 Filialen weltweit, kreieren wir Mode für Erlebnismomente. NEW YORKER ist nicht nur ein Arbeitgeber, sondern auch ein Netz",
+            "url": "https://www.linkedin.com/jobs/view/4186270602",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447638782",
+            "title": "Junior Business Controller/ Business Analyst/ Sales and Logistics Analyst (m/w/d)",
+            "company": "CHEFS CULINAR",
+            "location": "Neubrandenburg, Mecklenburg-West Pomerania, Germany",
+            "description": "Unsere Unternehmensgruppe ist führend in der bundesweiten Belieferung von Großverbrauchern in der Gastronomie und Hotellerie sowie von Krankenhäusern, Senioreneinrichtungen und Betriebskantinen. Mit unserem Vollsortiment aus den Food- und Non Food-Segmenten, unserer Großküchentechnik von der Planung",
+            "url": "https://www.linkedin.com/jobs/view/4447638782",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447633943",
+            "title": "IT - SAP Process Owner Sales (m/w/d)",
+            "company": "CHEFS CULINAR",
+            "location": "Weeze, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447633943",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4411617996",
+            "title": "Senior Product Manager (m/f/x) Growth / E-Commerce",
+            "company": "FINN",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4411617996",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4365340394",
+            "title": "(Senior) Product Manager",
+            "company": "Tacto",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4365340394",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4429675862",
+            "title": "PhD Student Development AI‑Native Development Models & Virtual AI Agents (f/m/d)",
+            "company": "Volkswagen Group",
+            "location": "Wolfsburg, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4429675862",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "title fits 'Data Scientist'; skills: Git (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_commercial-data-scientist-london-113599",
+            "title": "Commercial Data Scientist",
+            "company": "Checkout.com",
+            "location": "London",
+            "description": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billion transactions yearly for more than one",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/commercial-data-scientist-london-113599",
+            "published": "2026-08-02T10:01:51+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "title fits 'Data Analyst'; skills: Power BI, Data analysis; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447648504",
+            "title": "Operations Analyst - Entry to Mid Level",
+            "company": "Nova Era Industria de Alimentos Ltda",
+            "location": "Berlin, Germany",
+            "description": "🗂 We’re Hiring: Operations Analyst 🕒 Employment Type: Full-Time 💼 Level: Entry-Level to Mid-Level We are seeking a detail-oriented and analytical Operations Analyst to support business operations through data analysis, process improvement, and performance monitoring. This role is responsible for ide",
+            "url": "https://www.linkedin.com/jobs/view/4447648504",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Business Analyst'; skills: Data analysis; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445843298",
+            "title": "Business Analys",
+            "company": "PT Hailiang Nova Material Indonesia",
+            "location": "Berlin, Germany",
+            "description": "🗂 We’re Hiring: Business Analyst 🕒 Employment Type: Full-Time 💼 Level: Entry-Level to Mid-Level We are seeking a highly analytical and detail-oriented Business Analyst to bridge the gap between business needs and technology solutions. This role is responsible for gathering requirements, analyzing bu",
+            "url": "https://www.linkedin.com/jobs/view/4445843298",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445853218",
+            "title": "Produktmanager (m/w/d) bei GRÜNSPECHT Naturprodukte",
+            "company": "GRÜNSPECHT Naturprodukte GmbH",
+            "location": "Karlskron, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445853218",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447895086",
+            "title": "AI/LLM Engineer",
+            "company": "AgileGrid Solutions",
+            "location": "Germany",
+            "description": "About The Company Mercura Technologies Inc. is a pioneering startup dedicated to transforming the manual industries that shape our world. As part of YC W25, we focus on helping companies in sectors such as healthcare, education, and energy operate with the agility and efficiency of modern software s",
+            "url": "https://www.linkedin.com/jobs/view/4447895086",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4371484039",
+            "title": "Strategy & Operations - Product Growth",
+            "company": "Tacto",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4371484039",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
