@@ -5652,6 +5652,644 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-02T15:33:56.880011",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 61,
+          "reason": "title fits 'Junior Data Engineer'; skills: Python, Power BI, Data analysis; keyword bonus: 2; preferred location; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4445852502",
+            "title": "Junior Data Analys",
+            "company": "COLÉGIO CRISTO REI - SP",
+            "location": "Berlin, Germany",
+            "description": "🗂 We’re Hiring: Junior Data Analyst 🕒 Employment Type: Full-Time 💼 Level: Entry-Level We are seeking a detail-oriented and analytical Junior Data Analyst to support data collection, reporting, and business intelligence initiatives. This role is ideal for recent graduates or early-career professional",
+            "url": "https://www.linkedin.com/jobs/view/4445852502",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4422019357",
+            "title": "Forward Deployed Data Scientist Expert (f/m/d)",
+            "company": "SAP",
+            "location": "Garching, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4422019357",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_director-of-product-management-data-streaming-berlin-408145",
+            "title": "Director of Product Management - Data Streaming",
+            "company": "HiveMQ GmbH",
+            "location": "Germany",
+            "description": "HiveMQ is the Industrial AI Platform helping enterprises move from connected devices to intelligent operations. Built on the MQTT standard and a distributed edge-to-cloud architecture, HiveMQ connects and governs industrial data in real time, enabling global leaders like Audi, BMW, Eli Lilly, and Si",
+            "url": "https://www.arbeitnow.com/jobs/companies/hivemq-gmbh/director-of-product-management-data-streaming-berlin-408145",
+            "published": "2026-08-02T14:41:14+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-legal-counsel-berlin-8833",
+            "title": "(Senior) Legal Counsel (f/m/d)",
+            "company": "Lemon Markets",
+            "location": "Berlin (Hybrid)",
+            "description": "About lemon.markets 🍋 We enable anyone to be an investor. Our mission is to grow investing opportunities for all European customers and businesses. By empowering FinTechs, banks, and wealth managers to offer investment products, we help create financial well-being for their customers. lemon.markets ",
+            "url": "https://www.arbeitnow.com/jobs/companies/lemon-markets/senior-legal-counsel-berlin-8833",
+            "published": "2026-08-02T14:41:02+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-manager-berlin-402032",
+            "title": "Senior Product Manager",
+            "company": "Kuro Technology",
+            "location": "Berlin",
+            "description": "tl;dr After 14 years in construction tech, Lea &amp; Jonas are building the intelligence layer for the construction industry. The largest construction enterprises in Europe — with a combined project volume of over €30bn annually — rely on Kuro every day to automate workflows and make faster, better ",
+            "url": "https://www.arbeitnow.com/jobs/companies/kuro-technology/senior-product-manager-berlin-402032",
+            "published": "2026-08-02T14:40:44+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_product-sales-manager-all-genders-munchen-326930",
+            "title": "Product Sales Manager (all genders)",
+            "company": "Wemolo",
+            "location": "Munich",
+            "description": "Bist du bereit, die Lücke zwischen Product und Markt zu schließen? Bei Wemolo leben wir #own(y)ourgrowth – mit einer klaren Vision, viel Gestaltungsspielraum und einem Umfeld, in dem Innovation und persönliche Entwicklung Hand in Hand gehen. Als eines der am schnellsten wachsenden Scale-ups in Deuts",
+            "url": "https://www.arbeitnow.com/jobs/companies/wemolo/product-sales-manager-all-genders-munchen-326930",
+            "published": "2026-08-02T14:40:32+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_product-manager-all-genders-iot-platform-munchen-94434",
+            "title": "Product Manager (all genders) - IoT Platform",
+            "company": "Wemolo",
+            "location": "Munich",
+            "description": "Wemolo is no ordinary company – we’re revolutionizing conservative parking management with cutting-edge technology 🚀 At Wemolo, we are product-focused. What you start, you also finish. We foster an environment where innovation and personal development go hand in hand. Are you ready to own (y)our gro",
+            "url": "https://www.arbeitnow.com/jobs/companies/wemolo/product-manager-all-genders-iot-platform-munchen-94434",
+            "published": "2026-08-02T14:40:32+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-manager-all-genders-new-venture-munchen-114706",
+            "title": "Senior Product Manager (all genders) - New Venture",
+            "company": "Wemolo",
+            "location": "Munich",
+            "description": "Wemolo ist kein gewöhnliches Unternehmen – wir revolutionieren das konservative Parkraummanagement mit modernster Technologie 🚀 Bei Wemolo sind wir stark produktfokussiert. Was du anfängst, bringst du auch zu Ende. Wir fördern ein Umfeld, in dem Innovation und persönliche Weiterentwicklung Hand in H",
+            "url": "https://www.arbeitnow.com/jobs/companies/wemolo/senior-product-manager-all-genders-new-venture-munchen-114706",
+            "published": "2026-08-02T14:40:32+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-business-product-manager-all-genders-munchen-275347",
+            "title": "Senior Business Product Manager (all genders)",
+            "company": "Wemolo",
+            "location": "Munich",
+            "description": "Bei Wemolo definieren wir neu, wie Menschen Parken erleben. 🅿️ Wir kombinieren smarte Infrastruktur, Daten und Software, um Barrieren in der alltäglichen Mobilität abzubauen – und machen Parken nahtlos, digital und fast unsichtbar. Als produktgetriebenes Unternehmen glauben wir an Eigenverantwortung",
+            "url": "https://www.arbeitnow.com/jobs/companies/wemolo/senior-business-product-manager-all-genders-munchen-275347",
+            "published": "2026-08-02T14:40:32+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_gtm-enablement-manager-all-genders-munchen-315691",
+            "title": "GTM Enablement Manager (all genders)",
+            "company": "Wemolo",
+            "location": "Munich",
+            "description": "Bist du bereit, die Lücke zwischen Product und Markt zu schließen? Bei Wemolo leben wir #own(y)ourgrowth – mit einer klaren Vision, viel Gestaltungsspielraum und einem Umfeld, in dem Innovation und persönliche Entwicklung Hand in Hand gehen. Als eines der am schnellsten wachsenden Scale-ups in Deuts",
+            "url": "https://www.arbeitnow.com/jobs/companies/wemolo/gtm-enablement-manager-all-genders-munchen-315691",
+            "published": "2026-08-02T14:40:32+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_forward-deployed-engineer-emea-munich-443927",
+            "title": "Forward Deployed Engineer - EMEA",
+            "company": "Tulip Interfaces",
+            "location": "Munich,  Bavaria,  Germany",
+            "description": "**This role is located 50% of the time at a client location within the assigned country** Tulip brings modern technology and AI into manufacturing. Manufacturing accounts for almost 20% of the global economy and one in every seven workers on Earth, yet remains among the least digitized. More than a ",
+            "url": "https://www.arbeitnow.com/jobs/companies/tulip-interfaces/forward-deployed-engineer-emea-munich-443927",
+            "published": "2026-08-02T13:45:38+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_remote-technical-writer-366202",
+            "title": "Technical Writer",
+            "company": "Camunda",
+            "location": "Remote",
+            "description": "Register Here! Camunda is the enterprise platform for agentic orchestration , enabling organizations to coordinate AI agents, people, and systems across complex, end-to-end business processes. With built-in governance, auditability, and human oversight, Camunda gives enterprises the control they nee",
+            "url": "https://www.arbeitnow.com/jobs/companies/camunda/remote-technical-writer-366202",
+            "published": "2026-08-02T11:41:08+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431143024",
+            "title": "Werkstudent Site Assessment and Modelling d/m/w",
+            "company": "RWE",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "RWE Renewables Europe & Australia GmbH Start zum nächstmöglichen Zeitpunkt, Teilzeit, befristet Über uns Im Team Site Assessment and Modelling sind wir für die technischen Bewertung von Windenergieprojekten in Deutschland mit Blick auf Ertrag, Schall sowie sonstige Verluste und die Lebensdauer zustä",
+            "url": "https://www.linkedin.com/jobs/view/4431143024",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445851263",
+            "title": "Junior Supply Chain Manager",
+            "company": "Campo Libre.",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Hey, Überblick-Behalter:in & Macher:in! Du behältst gerne den Überblick, denkst in Prozessen und hast Spaß daran, Dinge ins Rollen zu bringen? Du verstehst, wie Produkte ihren Weg von Lieferanten über Lager und Fulfillment bis zu unseren Kund:innen finden – und willst aktiv mitgestalten, statt nur z",
+            "url": "https://www.linkedin.com/jobs/view/4445851263",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445845409",
+            "title": "Technische Projektleitung (m/w/d)",
+            "company": "ZECH Sports GmbH",
+            "location": "Germany",
+            "description": "ZECH Sports Du bist Bauingenieur (m/w/d) und dein Herz schlägt für Sport, Konzerte und Events? Dann bau mit uns Orte, die Emotionen wecken! Bei der ZECH Sports verbinden wir Ingenieurskunst mit sportlicher Begeisterung. Ob Fußballstadion oder Multifunktionshalle – wir schaffen Räume, in denen große ",
+            "url": "https://www.linkedin.com/jobs/view/4445845409",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447635841",
+            "title": "Kaufmännischer Sachbearbeiter (m/w/d) Stammdatenmanagement",
+            "company": "CHEFS CULINAR",
+            "location": "Pilsach, Bavaria, Germany",
+            "description": "Deine Aufgaben Du behältst die Kunden- und Stammdaten sorgfältig im Blick und hältst die Datengrundlage stets aktuell. Auffälligkeiten bei Zahlungsverhalten oder Rechnungen gehst du proaktiv nach – immer im Austausch mit Kunden und internen Fachabteilungen. Deine relevanten Daten bereitest du auf un",
+            "url": "https://www.linkedin.com/jobs/view/4447635841",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4422040594",
+            "title": "Senior AI/ML Engineer (m/w/d)",
+            "company": "CompuGroup Medical SE & Co. KGaA",
+            "location": "Coblenz, Rhineland-Palatinate, Germany",
+            "description": "Deine Aufgabe bei CGM: Als führendes Unternehmen im Bereich Softwarelösungen für das Gesundheitswesen sind wir in 19 Ländern tätig und beschäftigen fast 9.000 engagierte Mitarbeitende. Du wirst in einem dynamischen und innovativen Umfeld arbeiten, das voller Möglichkeiten steckt. Mit Deinem Einsatz ",
+            "url": "https://www.linkedin.com/jobs/view/4422040594",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4377186851",
+            "title": "Senior AI Engineer (w/m/d)",
+            "company": "BWI GmbH",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Sorge gemeinsam mit uns für die digitale Zukunftsfähigkeit der Bundeswehr. Deine Aufgaben: Architektur und Entwicklung der zentralen KI-Plattform unter Verwendung von Techniken wie MCP, A2A und AG-UI Implementierung LLM-basierter Agenten mithilfe gängiger Python-Frameworks (z.B. LangGraph, CrewAI, P",
+            "url": "https://www.linkedin.com/jobs/view/4377186851",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445846312",
+            "title": "Business Development Manager  (M/W/D)",
+            "company": "Noah Labs",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Bei Noah Labs entwickeln wir eine innovative Softwarelösung, die die Behandlung und Prävention von Herz-Kreislauf-Erkrankungen verbessert. Unsere Telemonitoring-Plattform verbindet moderne Medizingeräte mit einer benutzerfreundlichen App für Patienten und einer intelligenten Monitoring-Plattform für",
+            "url": "https://www.linkedin.com/jobs/view/4445846312",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Promotion'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445825152",
+            "title": "Trainee Vertrieb & Marketing (m/w/d)",
+            "company": "ODE International GmbH",
+            "location": "Berlin, Germany",
+            "description": "Hi, wir sind ODE – der High-End-Aperitif aus Berlin. Wir entwickeln außergewöhnliche Geschmackserlebnisse und stehen für moderne Drinks mit Haltung. Good Taste meets Good Times – und du bist mittendrin. Als Trainee Vertrieb & Marketing bringst du deine Ideen ein, setzt Projekte um und bekommst Einbl",
+            "url": "https://www.linkedin.com/jobs/view/4445825152",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447651348",
+            "title": "Founding CTO / AI Engineer (€70k + Equity) at IRIS OS",
+            "company": "Jack & Jill",
+            "location": "Germany",
+            "description": "This is a job that Jill, our AI Recruiter, is recruiting for on behalf of one of our customers. She will pick the best candidates from Jack's network. The next step is to speak to Jack. Job Title Founding CTO / AI Engineer Salary €70k + Equity Company Description IRIS OS is a deep tech relationship ",
+            "url": "https://www.linkedin.com/jobs/view/4447651348",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445853101",
+            "title": "Online Marketing & Growth Lead B2B SaaS (m/w/d)",
+            "company": "CALIMA",
+            "location": "Berlin, Berlin, Germany",
+            "description": "CALIMA ist ein Berliner B2B-SaaS-Startup mit der Mission, Arbeitssicherheit durch digitale und innovative Lösungen einfacher, verlässlicher und wirksamer zu machen. Unsere Software unterstützt Unternehmen dabei, dass Alleinarbeitende im Notfall schnell Hilfe erhalten. CALIMA wird von zahlreichen Unt",
+            "url": "https://www.linkedin.com/jobs/view/4445853101",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442459927",
+            "title": "Geschäftsführung (m/w/d)",
+            "company": "IBAF - Institut für berufliche Aus- und Fortbildung gGmbH",
+            "location": "Rendsburg, Schleswig-Holstein, Germany",
+            "description": "Zum Hauptinhalt springen Wir suchen Sie... für die beste Bildung im Norden eine engagierte und verantwortungsbewusste Geschäftsführung (m/w/d) vorzugsweise in Vollzeit. In dieser Position übernehmen Sie die strategische, organisatorische und wirtschaftliche Leitung unserer Organisation und gestalten",
+            "url": "https://www.linkedin.com/jobs/view/4442459927",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4420945720",
+            "title": "Senior Commercial Manager (m/f/d)",
+            "company": "Limehome",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Let’s shoot for the stars: Limehome is building something rare in hospitality: a tech-enabled operator that treats revenue not as a spreadsheet exercise, but as a full-contact commercial sport. As we scale our portfolio toward 12,000+ units, we are transforming our commercial operations. In this new",
+            "url": "https://www.linkedin.com/jobs/view/4420945720",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4381194405",
+            "title": "Account Director, Public Sector (DACH)",
+            "company": "TRM Labs",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Build a Safer World. TRM Labs provides AI-powered intelligence solutions that help public and private sector agencies investigate and disrupt crime. TRM's platforms enable investigators to trace illicit activity, build cases, and construct operating pictures of threat networks. Leading agencies and ",
+            "url": "https://www.linkedin.com/jobs/view/4381194405",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Promotion'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447889943",
+            "title": "Data Engineer (remote)",
+            "company": "Torentify",
+            "location": "Waldems, Hesse, Germany",
+            "description": "About the Company Shoreside.Partners is a travel-focused company that helps clients plan memorable vacations, cruises, and special occasions through personalized customer support. The company offers flexible remote career opportunities, comprehensive training, and a collaborative team environment fo",
+            "url": "https://www.linkedin.com/jobs/view/4447889943",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445839754",
+            "title": "Business Strategy Analyst",
+            "company": "Y.S. Group Co. مجموعة شركات ياس عسكر",
+            "location": "Germany",
+            "description": "Role Description The Business Strategy Analyst at Y.S. Group Co. مجموعة شركات ياس عسكر will support leadership in evaluating business performance, identifying growth opportunities, and improving operational efficiency. This part-time, remote role involves collecting and analyzing quantitative and qu",
+            "url": "https://www.linkedin.com/jobs/view/4445839754",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4430984420",
+            "title": "Business Analyst (w/m/d)",
+            "company": "DekaBank",
+            "location": "Wiesbaden, Hesse, Germany",
+            "description": "Standort: Wiesbaden Besetzung zum: 01.09.2026 Zuständige Ansprechperson für die Position: Mario Ciapanna (recruiting@deka.de) Wir sind der S Broker und das Wertpapiergeschäft ist unsere Leidenschaft. Engagiert und motiviert unterstützen wir unsere Kundinnen und Kunden bei der Verfolgung ihrer finanz",
+            "url": "https://www.linkedin.com/jobs/view/4430984420",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4339197104",
+            "title": "Senior Agile Business Analyst Industrial Insurance Claims",
+            "company": "HDI Group",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Your Tasks Analyze business requirements and processes along the full value chain of a globally operating industrial insurer to support our international digitalization strategy Design and maintain solutions for the development and enhancement of a modern and future oriented software and system land",
+            "url": "https://www.linkedin.com/jobs/view/4339197104",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4326602083",
+            "title": "Product Manager (m/w/d) Atopic Dermatitis (AD)",
+            "company": "Almirall",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Wir kümmern uns. Durch pharmazeutische Innovation und ein starkes Engagement für globale Partnerschaften im Gesundheitswesen setzen wir uns für die Bereitstellung von Hilfsmitteln, Wissen und Wissenschaft ein, um die Gesundheit von Patient:innen weltweit zu verbessern. Wir erforschen, entwickeln, pr",
+            "url": "https://www.linkedin.com/jobs/view/4326602083",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447650410",
+            "title": "Global Product Manager - Network Interface Connectors",
+            "company": "HARTING Technology Group",
+            "location": "Espelkamp, North Rhine-Westphalia, Germany",
+            "description": "HARTING stands for strong connections – across the globe. As one of the leading international suppliers of industrial connectivity, we are connecting customers to their digital future. And as an employer? We connect around 6,000 people at our headquarter in Espelkamp and at locations worldwide. Here",
+            "url": "https://www.linkedin.com/jobs/view/4447650410",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447880707",
+            "title": "PROJEKTLEITER / PROJEKTINGENIEUR (M/W/D) BAUMANAGEMENT",
+            "company": "Emch+Berger Deutschland",
+            "location": "Pforzheim, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447880707",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445850402",
+            "title": "Projektleiter/Projektingenieur für HLS oder Elektro (m/w/d) in Halle (Saale)",
+            "company": "Exzellente Jobs",
+            "location": "Halle, Saxony-Anhalt, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445850402",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4301190075",
+            "title": "Projektingenieur Mechanik, all genders",
+            "company": "SALT AND PEPPER Group",
+            "location": "Osnabrück, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4301190075",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "title fits 'Data Analyst'; skills: Power BI, Data analysis; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447645915",
+            "title": "Operations Analyst - Entry to Mid Level",
+            "company": "Talent Hunt World",
+            "location": "Berlin, Germany",
+            "description": "🗂 We’re Hiring: Operations Analyst 🕒 Employment Type: Full-Time 💼 Level: Entry-Level to Mid-Level We are seeking a detail-oriented and analytical Operations Analyst to support business operations through data analysis, process improvement, and performance monitoring. This role is responsible for ide",
+            "url": "https://www.linkedin.com/jobs/view/4447645915",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Business Analyst'; skills: Data analysis; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447651466",
+            "title": "Business Analys",
+            "company": "COLÉGIO CRISTO REI - SP",
+            "location": "Berlin, Germany",
+            "description": "🗂 We’re Hiring: Business Analyst 🕒 Employment Type: Full-Time 💼 Level: Entry-Level to Mid-Level We are seeking a highly analytical and detail-oriented Business Analyst to bridge the gap between business needs and technology solutions. This role is responsible for gathering requirements, analyzing bu",
+            "url": "https://www.linkedin.com/jobs/view/4447651466",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "skills: Python, Power BI, Data analysis; keyword bonus: 2; preferred location; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448109049",
+            "title": "Research Analys",
+            "company": "Bright Future Technology (opc) Private Limited",
+            "location": "Berlin, Germany",
+            "description": "🗂 We’re Hiring: Research Analyst 🕒 Employment Type: Full-Time 💼 Level: Entry-Level to Mid-Level We are seeking a highly analytical and detail-oriented Research Analyst to conduct research, analyze data, identify trends, and generate insights that support strategic business decisions. This role is id",
+            "url": "https://www.linkedin.com/jobs/view/4448109049",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445854431",
+            "title": "Data Entr Analys",
+            "company": "Opal Medical Company",
+            "location": "Germany",
+            "description": "Role Description This is a part-time remote role at Opal Medical Group. The role involves supporting the organization’s healthcare operations through tasks such as coordinating communications, organizing information, and assisting with documentation and reporting. The team member will collaborate wi",
+            "url": "https://www.linkedin.com/jobs/view/4445854431",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4326574121",
+            "title": "AI Implementation Engineer (m/w/d)",
+            "company": "Liebherr Group",
+            "location": "Kirchdorf an der Iller, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4326574121",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4409274774",
+            "title": "Project Engineer – Hazardous Locations (m/f/d)",
+            "company": "UL Solutions",
+            "location": "Krefeld, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4409274774",
+            "published": "2026-08-02T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
