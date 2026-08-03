@@ -13,7 +13,10 @@
     "https://api.lever.co/*",
     "https://api.smartrecruiters.com/*",
     "https://*.recruitee.com/*",
-    "https://*.jobs.personio.de/*"
+    "https://*.jobs.personio.de/*",
+    "https://*.successfactors.eu/*",
+    "https://*.successfactors.com/*",
+    "https://*.linkedin.com/*"
   ],
   "action": {
     "default_popup": "popup.html",

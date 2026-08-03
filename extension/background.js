@@ -178,8 +178,9 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         (sp.company_targets || []).filter((c) => !seen.has(`${c.ats}:${c.id}`)));
 
       progress(`Scanning ${boards.length} employer boards + job feeds…`);
-      const { jobs, stats } = await fetchAll({ ...sp, company_targets: boards },
-                                             (t) => progress(t));
+      const { jobs, stats } = await fetchAll(
+        { ...sp, company_targets: boards, location: baseLocation || "Germany" },
+        (t) => progress(t));
       progress(`Found ${jobs.length} postings — filtering…`);
 
       // Prioritise before capping: several registry boards are US-based, and

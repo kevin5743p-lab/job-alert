@@ -72,6 +72,86 @@ async function fetchArbeitnow() {
   }));
 }
 
+// LinkedIn, via the public guest endpoint the site itself uses to page search
+// results — no login and no private API. Running it from the user's own browser
+// and residential IP is the least bot-like way to read it, which is the whole
+// reason this lives in the extension rather than on a server.
+//
+// Kept deliberately modest: a handful of queries per scan, spaced out, and no
+// per-posting detail requests. The card gives title, company, location and date,
+// which is enough to score; anything promising gets its full text read anyway
+// when the user opens it and hits "Tailor this job".
+const LINKEDIN_GUEST =
+  "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search";
+const LINKEDIN_MAX_QUERIES = 6;
+const LINKEDIN_PAUSE_MS = 900;
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// The value can sit inside a nested <a>, so stopping at the first "<" finds only
+// whitespace. Take a generous slice instead, drop complete tags, then cut at any
+// half-tag the slice ran through — otherwise markup bleeds into the value
+// ("BMW Group <div class="base-sea").
+function cardField(card, cls) {
+  const at = card.search(new RegExp(`class="[^"]*${cls}[^"]*"`));
+  if (at === -1) return "";
+  const after = card.slice(at);
+  const start = after.indexOf(">");
+  if (start === -1) return "";
+
+  let text = after.slice(start + 1, start + 400).replace(/<[^>]*>/g, " ");
+  text = text.split("<")[0];                       // trailing partial tag
+  // Sibling elements are separated by a run of whitespace in the markup, so the
+  // first chunk is this field's own text — without it the next element bleeds
+  // in ("Munich, Bavaria, Germany   Be an early applicant").
+  text = text.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").trim();
+  return (text.split(/\s{2,}|\n/)[0] || "").replace(/\s+/g, " ").trim();
+}
+
+async function fetchLinkedIn(queries, location) {
+  const out = [];
+  const seen = new Set();
+
+  for (const q of (queries || []).slice(0, LINKEDIN_MAX_QUERIES)) {
+    const url = `${LINKEDIN_GUEST}?keywords=${encodeURIComponent(q)}` +
+      `&location=${encodeURIComponent(location || "Germany")}` +
+      `&f_TPR=r604800&start=0`;                       // posted in the last week
+    const html = await getText(url);
+    if (!html) { await sleep(LINKEDIN_PAUSE_MS); continue; }
+
+    for (const m of html.matchAll(/<li>([\s\S]*?)<\/li>/g)) {
+      const card = m[1];
+      const href = (card.match(
+        /href="(https:\/\/[a-z]{2,3}\.linkedin\.com\/jobs\/view\/[^"?]+)/) || [])[1];
+      if (!href) continue;
+
+      // Canonicalise to the same shape content.js produces on a job page, so a
+      // posting found here and one tailored by hand are the same tracker row
+      // rather than two.
+      const id = (href.match(/-(\d{6,})$/) || href.match(/\/(\d{6,})(?:\/|$)/) || [])[1];
+      if (!id || seen.has(id)) continue;
+      seen.add(id);
+
+      const title = cardField(card, "base-search-card__title");
+      if (!title) continue;
+      const posted = (card.match(/datetime="([^"]+)"/) || [])[1] || null;
+
+      out.push({
+        id: `li_${id}`,
+        title,
+        company: cardField(card, "base-search-card__subtitle"),
+        location: cardField(card, "job-search-card__location"),
+        description: "",
+        url: `https://www.linkedin.com/jobs/view/${id}/`,
+        published: posted,
+        source: "LinkedIn",
+      });
+    }
+    await sleep(LINKEDIN_PAUSE_MS);
+  }
+  return out;
+}
+
 async function fetchGreenhouse(c) {
   const d = await getJson(
     `https://boards-api.greenhouse.io/v1/boards/${encodeURIComponent(c.id)}/jobs?content=true`);
@@ -177,6 +257,40 @@ async function fetchPersonio(c) {
   }).filter(Boolean);
 }
 
+// SuccessFactors — how the big German OEMs publish. There is no clean API, but
+// SAP exposes a documented XML summary feed (KBA 2428902) that lists every open
+// posting. This is the only way to reach BMW, Volkswagen and Schaeffler from the
+// browser; without it the extension misses exactly the employers a German
+// automotive candidate most wants.
+//
+// The feed is large (1-3 MB) and carries no location or date per posting, only
+// JobTitle, Job-Description and ReqId — so descriptions are truncated hard and
+// location is left for the scorer to infer from the text.
+async function fetchSuccessFactors(c) {
+  const host = c.host || "career5.successfactors.eu";
+  const xml = await getText(
+    `https://${host}/career?company=${encodeURIComponent(c.id)}` +
+    `&career_ns=job_listing_summary&resultType=XML`);
+  if (!xml || xml.indexOf("<Job>") === -1) return [];
+
+  return xmlTagAll(xml, "Job").map((block) => {
+    const reqId = xmlTag(block, "ReqId");
+    const title = stripHtml(xmlTag(block, "JobTitle"));
+    if (!reqId || !title) return null;
+    return {
+      id: `sf_${c.id}_${reqId}`,
+      title,
+      company: c.name,
+      location: "",                    // not in the feed; the scorer reads the text
+      description: stripHtml(xmlTag(block, "Job-Description")).slice(0, 2500),
+      url: `https://${host}/career?company=${encodeURIComponent(c.id)}` +
+           `&career_job_req_id=${reqId}&career_ns=job_listing`,
+      published: null,
+      source: `${c.name} (Direct)`,
+    };
+  }).filter(Boolean);
+}
+
 async function fetchSmartRecruiters(c, queries) {
   const jobs = [];
   const seen = new Set();
@@ -213,6 +327,7 @@ const ATS = {
   recruitee: fetchRecruitee,
   personio: fetchPersonio,
   smartrecruiters: fetchSmartRecruiters,
+  successfactors: fetchSuccessFactors,
 };
 
 // ── Known-good boards ──────────────────────────────────────────────────────
@@ -239,6 +354,15 @@ const KNOWN_BOARDS = [
   { name: "Blickfeld", ats: "personio", id: "blickfeld", tags: "automotive lidar sensors hardware" },
   { name: "Bosch", ats: "smartrecruiters", id: "BoschGroup", tags: "automotive engineering embedded industrial" },
   { name: "Continental", ats: "smartrecruiters", id: "ContinentalAG", tags: "automotive engineering" },
+  // The German OEMs. Verified live: BMW ~257 postings, Schaeffler ~429,
+  // Volkswagen ~170. These are the employers a German automotive candidate
+  // actually wants, and nothing else on this list reaches them.
+  { name: "BMW Group", ats: "successfactors", id: "bmwag",
+    host: "career5.successfactors.eu", tags: "automotive engineering vehicle fahrzeug" },
+  { name: "Schaeffler", ats: "successfactors", id: "schaeffler",
+    host: "career5.successfactors.eu", tags: "automotive engineering industrial mechanical" },
+  { name: "Volkswagen", ats: "successfactors", id: "VWAGLPPROD10",
+    host: "career5.successfactors.eu", tags: "automotive engineering vehicle fahrzeug" },
   // German engineering, robotics and hardware — where a Germany-based engineer
   // is most likely to find something they can actually take.
   { name: "NavVis", ats: "greenhouse", id: "navvis", tags: "engineering sensors lidar mapping software automotive" },
@@ -313,13 +437,16 @@ const PROBE = {
   recruitee: (id) => `https://${id}.recruitee.com/api/offers/`,
   smartrecruiters: (id) => `https://api.smartrecruiters.com/v1/companies/${id}/postings?limit=1`,
   personio: (id) => `https://${id}.jobs.personio.de/xml`,
+  successfactors: (id, host) =>
+    `https://${host || "career5.successfactors.eu"}/career?company=${id}` +
+    `&career_ns=job_listing_summary&resultType=XML`,
 };
 
 async function probe(c) {
   const ats = String(c.ats || "").toLowerCase();
   const build = PROBE[ats];
   if (!build || !c.id) return false;
-  const url = build(encodeURIComponent(c.id));
+  const url = build(encodeURIComponent(c.id), c.host);
   try {
     // No redirect following: Personio bounces unknown tenants to its marketing
     // page, which would otherwise answer 200 and look alive.
@@ -328,6 +455,12 @@ async function probe(c) {
     if (ats === "personio") {
       const t = await r.text();
       return t.indexOf("<position>") !== -1;
+    }
+    if (ats === "successfactors") {
+      // A wrong company id still answers 200, with a short error page rather
+      // than the feed — so check for actual postings.
+      const t = await r.text();
+      return t.indexOf("<Job>") !== -1;
     }
     const d = await r.json();
     if (ats === "smartrecruiters") return Number(d.totalFound || 0) > 0;
@@ -368,6 +501,13 @@ export async function fetchAll(searchProfile, onProgress = () => {}) {
     all.push(...jobs);
     stats.push(`arbeitnow ${jobs.length}`);
   } catch { stats.push("arbeitnow ⚠"); }
+
+  onProgress("Searching LinkedIn…");
+  try {
+    const jobs = await fetchLinkedIn(queries, searchProfile.location);
+    all.push(...jobs);
+    stats.push(`LinkedIn ${jobs.length}`);
+  } catch { stats.push("LinkedIn ⚠"); }
 
   let done = 0;
   for (const c of targets) {
