@@ -9,7 +9,7 @@ import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt,
          buildSearchProfilePrompt, buildBatchScorePrompt, normalize,
          groundingWarnings, DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
 import * as sb from "./supabase.js";
-import { fetchAll, prefilter, validateTargets } from "./finder.js";
+import { fetchAll, prefilter, validateTargets, pickKnownBoards } from "./finder.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -106,9 +106,17 @@ async function ensureSearchProfile(cv, apiKey, model, force) {
   // employers but often guesses the wrong ATS, and an unchecked list fails
   // silently — every board 404s and the scan simply finds nothing.
   const candidates = sp.company_targets || [];
-  sp.company_targets = await validateTargets(candidates, (t) => progress(t));
+  const checked = await validateTargets(candidates, (t) => progress(t));
+
+  // Start from the verified registry so a scan is never left with nothing to
+  // poll, and add whichever of the model's suggestions actually resolved.
+  const known = pickKnownBoards(sp);
+  const seen = new Set(known.map((b) => `${b.ats}:${b.id}`));
+  sp.company_targets = known.concat(
+    checked.filter((c) => !seen.has(`${c.ats}:${c.id}`)));
   sp.validated = true;
-  progress(`${sp.company_targets.length} of ${candidates.length} employer boards are live.`);
+  progress(`${sp.company_targets.length} employer boards to scan ` +
+           `(${known.length} known-good, ${checked.length} of ${candidates.length} suggested).`);
 
   await sb.saveSearchProfile(sp);
   return sp;

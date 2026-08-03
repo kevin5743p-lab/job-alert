@@ -215,6 +215,67 @@ const ATS = {
   smartrecruiters: fetchSmartRecruiters,
 };
 
+// ── Known-good boards ──────────────────────────────────────────────────────
+// Asking the model to name employers works; asking it to guess their ATS slug
+// does not — in practice roughly one suggestion in twenty resolves, and a scan
+// with no live boards finds nothing at all. So the search starts from a
+// hand-verified registry (every entry probed and returning open roles at the
+// time of writing) and the model's suggestions are added on top once validated.
+//
+// `tags` decide which boards are worth polling for a given candidate; they are
+// matched against their field and keywords.
+const KNOWN_BOARDS = [
+  // automotive / autonomous driving / mobility
+  { name: "Wayve", ats: "greenhouse", id: "wayve", tags: "automotive autonomous av perception ml" },
+  { name: "Waymo", ats: "greenhouse", id: "waymo", tags: "automotive autonomous av perception ml" },
+  { name: "Nuro", ats: "greenhouse", id: "nuro", tags: "automotive autonomous av robotics" },
+  { name: "Motional", ats: "greenhouse", id: "motional", tags: "automotive autonomous av" },
+  { name: "Torc Robotics", ats: "greenhouse", id: "torcrobotics", tags: "automotive autonomous av trucking" },
+  { name: "May Mobility", ats: "greenhouse", id: "maymobility", tags: "automotive autonomous av" },
+  { name: "Helm.ai", ats: "ashby", id: "helm-ai", tags: "automotive autonomous av ml perception" },
+  { name: "Lucid Motors", ats: "greenhouse", id: "lucidmotors", tags: "automotive ev vehicle" },
+  { name: "Scout Motors", ats: "greenhouse", id: "scoutmotors", tags: "automotive ev vehicle" },
+  { name: "Verkor", ats: "lever", id: "verkor", tags: "automotive battery energy manufacturing" },
+  { name: "Blickfeld", ats: "personio", id: "blickfeld", tags: "automotive lidar sensors hardware" },
+  { name: "Bosch", ats: "smartrecruiters", id: "BoschGroup", tags: "automotive engineering embedded industrial" },
+  // energy / industrial / deep tech
+  { name: "1KOMMA5°", ats: "personio", id: "1komma5grad", tags: "energy solar engineering" },
+  // software / data / ml
+  { name: "Databricks", ats: "greenhouse", id: "databricks", tags: "software data ml engineering" },
+  { name: "Datadog", ats: "greenhouse", id: "datadog", tags: "software data engineering" },
+  { name: "Cloudflare", ats: "greenhouse", id: "cloudflare", tags: "software engineering infrastructure" },
+  { name: "Celonis", ats: "greenhouse", id: "celonis", tags: "software data process mining" },
+  { name: "Ashby", ats: "ashby", id: "ashby", tags: "software engineering" },
+  // fintech
+  { name: "Stripe", ats: "greenhouse", id: "stripe", tags: "fintech software finance payments" },
+  { name: "Ramp", ats: "ashby", id: "Ramp", tags: "fintech software finance" },
+  { name: "N26", ats: "greenhouse", id: "n26", tags: "fintech finance banking" },
+  { name: "SumUp", ats: "greenhouse", id: "sumup", tags: "fintech finance payments" },
+  { name: "Trade Republic", ats: "greenhouse", id: "traderepublic", tags: "fintech finance trading" },
+  // health
+  { name: "Doctolib", ats: "greenhouse", id: "doctolib", tags: "health healthcare software" },
+];
+
+// Boards whose tags overlap what this candidate is looking for. Falls back to
+// the whole registry when nothing matches, since polling a few extra boards is
+// cheap and finding nothing is not.
+export function pickKnownBoards(sp) {
+  // Parenthesised deliberately: without it the trailing .toLowerCase().match()
+  // binds to the last template literal only, the concatenation yields a string,
+  // and new Set(string) becomes a set of single characters that matches nothing.
+  const haystack = [
+    sp.field || "",
+    (sp.must_have_keywords || []).join(" "),
+    (sp.search_queries || []).join(" "),
+    (sp.target_titles || []).join(" "),
+  ].join(" ").toLowerCase();
+  const words = new Set(haystack.match(/[a-zäöüß]+/g) || []);
+
+  const hits = KNOWN_BOARDS.filter((b) =>
+    b.tags.split(" ").some((t) => words.has(t)));
+  return hits.length ? hits : KNOWN_BOARDS;
+}
+
 // ── Board validation ───────────────────────────────────────────────────────
 // The model reliably names real employers but frequently guesses the wrong ATS
 // for them — large corporates in particular are usually on Workday or
