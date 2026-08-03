@@ -267,7 +267,15 @@ For each field, give the exact text to type into it. Rules:
   notice period in months and the candidate said "from 1 October", work out the
   months only if the CV or details make that unambiguous — otherwise omit it.
 - When "options" are given, answer with one of them EXACTLY as written, or omit
-  the field if none genuinely applies.
+  the field if none genuinely applies. This covers radio buttons too.
+- Interpret rather than copy when the options demand it, provided the fact is
+  already known. If the candidate says "English C1, German B1" and the field
+  asks "What is your German level?" with options "A1 - A2 (Beginner) /
+  B1 - B2 (Intermediate) / C1 - C2 (Fluent to Native)", the answer is
+  "B1 - B2 (Intermediate)". Answer each language field about THAT language only.
+- A notice period or start date can likewise be expressed as the option that
+  matches — "none or less than 1 month", "1 - 2 months", "3 or more months" —
+  but only when the stored answer makes it unambiguous.
 - Yes/no questions: answer "Yes" or "No" only when the details clearly support
   it. Never guess on eligibility, sponsorship or authorisation.
 - Respect "max_length" when given.

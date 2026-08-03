@@ -292,6 +292,33 @@
   // guess can only put the wrong saved answer in a box, not fabricate data.
   function collectUnmatched() {
     const out = [];
+
+    // Radio groups the rules couldn't answer. Questions like "What is your
+    // German level?" with options "A1-A2 / B1-B2 / C1-C2" need the stored
+    // answer ("English C1, German B1") interpreted, not copied — which is
+    // reasoning, so the model gets them. Consent is never included.
+    const groups = new Map();
+    document.querySelectorAll("input[type=radio]").forEach((el) => {
+      if (!visible(el)) return;
+      const key = el.name || "";
+      if (!key) return;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(el);
+    });
+    let g = 0;
+    groups.forEach((inputs) => {
+      if (inputs.some((el) => el.checked)) return;         // already answered
+      const question = groupQuestion(inputs[0]);
+      if (!question || question.length > 200) return;
+      if (isBlocked(question, inputs[0]) || CONSENT.test(question)) return;
+      const id = `r${g++}`;
+      inputs.forEach((el) => { el.dataset.jcFieldId = id; });
+      out.push({
+        id, label: question, type: "radio",
+        options: inputs.map(labelTextFor).filter(Boolean).slice(0, 12),
+      });
+    });
+
     document.querySelectorAll("input, select").forEach((el, i) => {
       const type = (el.type || "").toLowerCase();
       if (["hidden", "submit", "button", "image", "reset", "file",
@@ -303,11 +330,14 @@
       if (isBlocked(hay, el)) return;      // never offer sensitive fields up
       if (specFor(hay)) return;            // a rule already covers it
 
-      // The visible label is what the model should reason about.
+      // The visible question is what the model should reason about. Some ATSes
+      // (Ashby) name their inputs with a UUID, so falling back to the element's
+      // name would send the model "166c6ca7-41c5-…" instead of the question.
       let label = "";
       if (el.labels && el.labels[0]) label = (el.labels[0].innerText || "").trim();
-      if (!label) label = (el.placeholder || el.getAttribute("aria-label") || el.name || "").trim();
-      if (!label || label.length > 120) return;
+      if (!label) label = (el.getAttribute("aria-label") || el.placeholder || "").trim();
+      if (!label || /^[0-9a-f-]{16,}$/i.test(label)) label = groupQuestion(el);
+      if (!label || label.length > 200 || /^[0-9a-f-]{16,}$/i.test(label)) return;
 
       el.dataset.jcFieldId = `f${i}`;
       const max = parseInt(el.getAttribute("maxlength") || "", 10);
@@ -334,8 +364,30 @@
     Object.entries(fills || {}).forEach(([id, raw]) => {
       const value = String(raw == null ? "" : raw).trim();
       if (!value) return;
-      const el = document.querySelector(`[data-jc-field-id="${id}"]`);
-      if (!el || !visible(el) || (el.value && el.value.trim())) return;
+      const nodes = Array.from(document.querySelectorAll(`[data-jc-field-id="${id}"]`));
+      const el = nodes[0];
+      if (!el || !visible(el)) return;
+
+      // Radio group: pick the option whose label the answer names. Consent
+      // groups were never collected, so nothing here can tick one.
+      if ((el.type || "").toLowerCase() === "radio") {
+        if (nodes.some((r) => r.checked)) return;
+        const hit = nodes.find((r) => optionMatches(labelTextFor(r), value));
+        const q = groupQuestion(el).slice(0, 48);
+        if (!hit) {
+          report && report.skipped.push({ label: q, reason: `no option matching "${value}"` });
+          return;
+        }
+        hit.checked = true;
+        hit.dispatchEvent(new Event("click", { bubbles: true }));
+        hit.dispatchEvent(new Event("change", { bubbles: true }));
+        highlight(hit.closest("label") || hit);
+        n++;
+        report && report.filled.push({ label: q, key: "AI" });
+        return;
+      }
+
+      if (el.value && el.value.trim()) return;
       if (isBlocked(haystack(el), el)) return;
 
       const label = ((el.labels && el.labels[0] && el.labels[0].innerText) ||

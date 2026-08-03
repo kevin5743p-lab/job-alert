@@ -77,6 +77,32 @@
 
 #jobcopilot-panel-body { padding: 16px; overflow-y: auto; }
 
+/* Host pages style their own elements aggressively — Ashby zeroes line-height
+   and positions divs absolutely — and those rules reach inside the panel,
+   collapsing its text into an unreadable overlap. Re-assert the essentials on
+   everything the panel renders. */
+#jobcopilot-panel,
+#jobcopilot-panel * {
+  position: static !important;
+  float: none !important;
+  line-height: 1.5 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  box-sizing: border-box !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  transform: none !important;
+}
+#jobcopilot-panel { position: fixed !important; }
+#jobcopilot-panel div,
+#jobcopilot-panel p,
+#jobcopilot-panel ul,
+#jobcopilot-panel li,
+#jobcopilot-panel h4 { display: block !important; }
+#jobcopilot-panel .jc-toolbar { display: flex !important; }
+#jobcopilot-panel span { display: inline !important; }
+#jobcopilot-panel button { display: inline-block !important; }
+
 #jobcopilot-panel .jc-toolbar { margin-bottom: 14px; display: flex; gap: 6px; }
 #jobcopilot-panel .jc-toolbar button {
   flex: 1; padding: 9px 6px; border: none; border-radius: 6px;
