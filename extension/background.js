@@ -93,7 +93,12 @@ async function ensureSearchProfile(cv, apiKey, model, force) {
   // `validated` marks a profile whose employer boards were probed. Profiles
   // built before that check existed are rebuilt once, otherwise they keep
   // scanning boards that don't resolve and quietly return nothing.
-  const usable = existing && (existing.search_queries || []).length && existing.validated;
+  // A profile with no boards left is not usable — it can only ever scan the
+  // generic feed. Rebuilding is cheap next to a scan that finds nothing.
+  const usable = existing
+    && (existing.search_queries || []).length
+    && existing.validated
+    && (existing.company_targets || []).length;
   if (!force && usable) return existing;
 
   progress("Working out what to search for, from your CV…");
@@ -168,6 +173,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       const ap = (prof && prof.application_profile) || {};
       const baseLocation = [ap.city, ap.country].filter(Boolean).join(", ");
 
+      progress(`Scanning ${(sp.company_targets || []).length} employer boards ` +
+               `+ job feeds…`);
       const { jobs, stats } = await fetchAll(sp, (t) => progress(t));
       progress(`Found ${jobs.length} postings — filtering…`);
 
