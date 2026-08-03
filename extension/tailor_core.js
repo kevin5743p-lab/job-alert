@@ -174,18 +174,21 @@ Respond with ONLY the JSON object.`;
 // individually would exhaust a free-tier key in a single scan.
 export function buildBatchScorePrompt(jobs, cvText, field, language = "en",
                                       baseLocation = "") {
+  // Kept tight on purpose: a scan pushes thousands of words through this, and
+  // the opening of a posting carries the role and requirements — the rest is
+  // usually company boilerplate that costs budget without changing the score.
   const list = jobs.map((j, i) =>
     `  {"i": ${i}, "title": ${JSON.stringify(j.title || "")}, ` +
     `"company": ${JSON.stringify(j.company || "")}, ` +
     `"location": ${JSON.stringify(j.location || "")}, ` +
-    `"description": ${JSON.stringify((j.description || "").slice(0, 700))}}`
+    `"description": ${JSON.stringify((j.description || "").slice(0, 450))}}`
   ).join(",\n");
 
   return `You are a strict but fair job-matching assistant. Score how well each \
 posting fits the candidate.
 
 === CANDIDATE CV ===
-${(cvText || "").slice(0, 2500)}
+${(cvText || "").slice(0, 1600)}
 
 Their field: ${field || "as shown in the CV"}
 ${baseLocation ? `They are based in: ${baseLocation}` : ""}

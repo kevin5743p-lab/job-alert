@@ -82,6 +82,12 @@ async function loadKeyAndCv() {
 // looks like a hang.
 const SCORE_BATCH = 8;        // postings per Groq call
 const MAX_SCORED = 80;        // ceiling per scan, to protect a free-tier key
+// Scoring is bulk work — a scan puts thousands of words through it — so it uses
+// the small fast model regardless of what the user picked for tailoring. The
+// large model's free-tier daily token budget is spent in a single scan
+// otherwise, and every batch then fails. Tailoring, which runs once per job and
+// is judged on writing quality, keeps the user's chosen model.
+const SCORING_MODEL = "llama-3.1-8b-instant";
 
 function progress(text, done = false, extra = {}) {
   chrome.runtime.sendMessage({ type: "SCAN_PROGRESS", text, done, ...extra })
@@ -126,6 +132,8 @@ async function ensureSearchProfile(cv, apiKey, model, force) {
 
 async function scoreJobs(jobs, cv, field, apiKey, model, language, baseLocation) {
   const scored = [];
+  let error = null;                  // surfaced, so a silent failure can't look
+                                     // like "no jobs matched"
   const batches = [];
   for (let i = 0; i < jobs.length; i += SCORE_BATCH) {
     batches.push(jobs.slice(i, i + SCORE_BATCH));
@@ -138,10 +146,11 @@ async function scoreJobs(jobs, cv, field, apiKey, model, language, baseLocation)
     try {
       raw = await groqJson(
         buildBatchScorePrompt(batch, cv, field, language, baseLocation),
-        apiKey, model, 1600);
+        apiKey, SCORING_MODEL, 1600);
     } catch (e) {
+      error = e.message || String(e);
       // Out of quota or rate-limited: keep what we have rather than losing the scan.
-      if (/quota|rate limit/i.test(e.message)) break;
+      if (/quota|rate limit/i.test(error)) break;
       continue;
     }
     for (const s of (raw && raw.scores) || []) {
@@ -151,7 +160,7 @@ async function scoreJobs(jobs, cv, field, apiKey, model, language, baseLocation)
       scored.push({ job, score, reason: String(s.reason || "").slice(0, 400) });
     }
   }
-  return scored;
+  return { scored, error };
 }
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
@@ -195,17 +204,23 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         return;
       }
 
-      const scored = await scoreJobs(survivors, cv, sp.field, groqApiKey, model,
-                                     lang, baseLocation);
+      const { scored, error: scoreError } =
+        await scoreJobs(survivors, cv, sp.field, groqApiKey, model, lang, baseLocation);
       const keep = scored.filter((s) => s.score >= 50);
 
       // Report the whole funnel. When a scan ends with nothing, this says which
       // stage swallowed the jobs — sources, keyword filter, or scoring — instead
       // of leaving "0 jobs" to be guessed at.
       const best = scored.reduce((m, s) => Math.max(m, s.score), 0);
-      const funnel = `${jobs.length} found → ${matched.length} relevant → ` +
-        `${survivors.length} scored → ${keep.length} kept` +
-        (scored.length && !keep.length ? ` (best score ${best}, needs 50)` : "");
+      let funnel = `${jobs.length} found → ${matched.length} relevant → ` +
+        `${scored.length} scored → ${keep.length} kept`;
+      if (!scored.length && scoreError) {
+        funnel += ` — scoring failed: ${scoreError}`;
+      } else if (scored.length && !keep.length) {
+        funnel += ` (best score ${best}, needs 50)`;
+      } else if (scoreError) {
+        funnel += ` — scoring stopped early: ${scoreError}`;
+      }
       progress(funnel);
 
       progress(`Saving ${keep.length} match${keep.length === 1 ? "" : "es"}…`);
