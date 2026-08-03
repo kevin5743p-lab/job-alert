@@ -248,13 +248,21 @@
       const unmatched = report.unmatched || [];
       if (!unmatched.length) return;
 
+      renderFillReport(report, Boolean(resp.packet), { working: unmatched.length });
       sendMessage(
-        { type: "MAP_FIELDS", fields: unmatched, keys: AF.PROFILE_KEYS },
+        { type: "MAP_FIELDS", fields: unmatched, keys: AF.PROFILE_KEYS,
+          profile, cv: resp.cvSummary || "" },
         (m, err) => {
-          if (err || !m || !m.ok) return;
-          const n = AF.applyFieldMap(m.map, profile, report);
-          if (n) renderFillReport(report, Boolean(resp.packet), {
-            extra: n, learned: m.learned, asked: m.asked,
+          if (err || !m || !m.ok) {
+            renderFillReport(report, Boolean(resp.packet));
+            return;
+          }
+          // Mapped fields first (a stored answer copied across), then the
+          // values the model wrote for anything that had no stored answer.
+          const mapped = AF.applyFieldMap(m.map, profile, report);
+          const written = AF.applyFieldValues(m.fills, report);
+          renderFillReport(report, Boolean(resp.packet), {
+            extra: mapped + written, learned: m.learned, asked: m.asked,
           });
         });
     });
@@ -265,10 +273,12 @@
       items.length ? `<ul class="jc-fill-list">${items.map(fmt).join("")}</ul>`
                    : `<p class="jc-dim">None.</p>`;
     const open = report.openQuestions || [];
-    const aiNote = ai
-      ? `<div class="jc-saved">✨ Recognised ${ai.extra} more field${ai.extra === 1 ? "" : "s"}
-         the rules didn't know${ai.learned ? ` (${ai.learned} from memory)` : ""} — double-check these.</div>`
-      : "";
+    const aiNote = !ai ? ""
+      : ai.working
+        ? `<div class="jc-saved">✨ Working out ${ai.working} unusual field${ai.working === 1 ? "" : "s"}
+           with AI — this takes a few seconds…</div>`
+        : `<div class="jc-saved">✨ Filled ${ai.extra} more field${ai.extra === 1 ? "" : "s"}
+           the rules didn't know${ai.learned ? ` (${ai.learned} from memory)` : ""} — double-check these.</div>`;
 
     openPanel(`
       <div class="jc-section">

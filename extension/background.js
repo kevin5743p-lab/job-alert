@@ -5,7 +5,7 @@
 // here, not in the content script — so the page's CSP can't block it and the
 // key never touches the page context.
 
-import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt,
+import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, buildFieldFillPrompt,
          buildSearchProfilePrompt, buildBatchScorePrompt, normalize,
          groundingWarnings, DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
 import * as sb from "./supabase.js";
@@ -285,6 +285,10 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 // sees.
 const LEARNED_KEY = "learnedFieldMap";
 const LEARNED_MAX = 400;
+// Value generation runs in small batches with a pause between them: forms can
+// carry dozens of unusual fields, and accuracy matters more here than speed.
+const FILL_BATCH = 6;
+const FILL_PACE_MS = 4000;
 
 const labelKey = (s) => String(s || "").toLowerCase().replace(/\s+/g, " ").trim().slice(0, 90);
 
@@ -307,19 +311,51 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       }
       const fromCache = Object.keys(map).length;
 
+      const fills = {};
       if (unknown.length) {
         const { groqApiKey, model } = await chrome.storage.local.get(["groqApiKey", "model"]);
         if (groqApiKey) {
-          const raw = await groqJson(
-            buildFieldMapPrompt(unknown, msg.keys || []), groqApiKey, model, 700);
           const allowed = new Set(msg.keys || []);
           const asked = new Map(unknown.map((f) => [f.id, f.label]));
-          for (const [id, key] of Object.entries(raw.map || raw || {})) {
-            // Only ids we asked about, only keys we offered.
-            if (!asked.has(id) || !allowed.has(key)) continue;
-            map[id] = key;
-            learned[labelKey(asked.get(id))] = key;
+
+          // Pass 1 — map the fields that correspond to a stored answer. These
+          // are cached by label, so a form seen before fills instantly.
+          try {
+            const raw = await groqJson(
+              buildFieldMapPrompt(unknown, msg.keys || []), groqApiKey, model, 800);
+            for (const [id, key] of Object.entries(raw.map || raw || {})) {
+              // Only ids we asked about, only keys we offered.
+              if (!asked.has(id) || !allowed.has(key)) continue;
+              map[id] = key;
+              learned[labelKey(asked.get(id))] = key;
+            }
+          } catch (e) {
+            console.warn("Field mapping failed:", e);
           }
+
+          // Pass 2 — ask for actual values for whatever is still unplaced, in
+          // small batches so a long form doesn't hit the rate limit. Slower by
+          // design: a field left blank or filled wrongly costs the user more
+          // than a few seconds of waiting.
+          const remaining = unknown.filter((f) => !map[f.id]);
+          for (let i = 0; i < remaining.length; i += FILL_BATCH) {
+            const batch = remaining.slice(i, i + FILL_BATCH);
+            if (i) await sleep(FILL_PACE_MS);
+            try {
+              const raw = await groqJson(
+                buildFieldFillPrompt(batch, msg.profile || {}, msg.cv || ""),
+                groqApiKey, model, 900);
+              for (const [id, val] of Object.entries(raw.fills || raw || {})) {
+                if (asked.has(id) && typeof val === "string" && val.trim()) {
+                  fills[id] = val.trim();
+                }
+              }
+            } catch (e) {
+              console.warn("Field fill failed:", e);
+              break;                       // out of quota — keep what we have
+            }
+          }
+
           // Keep the cache from growing without bound.
           const keys = Object.keys(learned);
           if (keys.length > LEARNED_MAX) {
@@ -329,7 +365,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         }
       }
 
-      sendResponse({ ok: true, map, learned: fromCache, asked: unknown.length });
+      sendResponse({ ok: true, map, fills, learned: fromCache, asked: unknown.length });
     } catch (e) {
       sendResponse({ ok: false, error: String(e.message || e) });
     }
@@ -392,8 +428,19 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
           console.warn("Supabase fetch failed, using local details:", e);
         }
       }
-      const { language } = await chrome.storage.local.get("language");
-      sendResponse({ ok: true, applicationProfile, packet, language: language || "en" });
+      const { language, cvText } = await chrome.storage.local.get(["language", "cvText"]);
+      // A slice of the CV goes with the fill request so the model can answer
+      // fields the saved details don't cover (studies, tools, experience).
+      let cv = cvText || "";
+      try {
+        if (await sb.getSession()) {
+          const profile = await sb.getProfile();
+          if (profile?.cv_text?.trim()) cv = profile.cv_text;
+        }
+      } catch { /* local copy is fine */ }
+
+      sendResponse({ ok: true, applicationProfile, packet,
+                     language: language || "en", cvSummary: cv.slice(0, 2000) });
     } catch (e) {
       sendResponse({ ok: false, error: String(e.message || e) });
     }

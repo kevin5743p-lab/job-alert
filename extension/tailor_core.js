@@ -217,6 +217,70 @@ Respond with ONLY a JSON object in exactly this form:
 {"scores": [{"i": 0, "score": 82, "reason": "…"}, …]}`;
 }
 
+// Fill the form fields the rules couldn't place.
+//
+// This asks for the VALUE rather than just which stored field a box maps to.
+// Mapping alone can only copy an answer verbatim, so it fails whenever a form
+// wants the same fact in a different shape — "3 months" rather than "from 1
+// October", a dropdown's exact wording, a yes/no where the profile holds a
+// sentence, or a number where it holds prose.
+//
+// The model is still not free to invent: it may only restate what the profile
+// or CV already says, and is told to omit a field rather than guess. Anything
+// sensitive is filtered out before it ever reaches here.
+export function buildFieldFillPrompt(fields, profile, cvText) {
+  const known = Object.entries(profile || {})
+    .filter(([, v]) => v !== null && v !== undefined && String(v).trim())
+    .map(([k, v]) => `  "${k}": ${JSON.stringify(String(v).slice(0, 200))}`)
+    .join(",\n");
+
+  const list = fields.map((f) => {
+    const bits = [`"id": "${f.id}"`, `"label": ${JSON.stringify(f.label)}`,
+                  `"type": "${f.type}"`];
+    if (f.options && f.options.length) {
+      bits.push(`"options": ${JSON.stringify(f.options)}`);
+    }
+    if (f.maxLength) bits.push(`"max_length": ${f.maxLength}`);
+    return `  {${bits.join(", ")}}`;
+  }).join(",\n");
+
+  return `You are filling in a job-application form on behalf of a candidate, \
+using only what they have already told us.
+
+=== WHAT THE CANDIDATE HAS TOLD US ===
+{
+${known}
+}
+
+=== THEIR CV (for facts not in the list above) ===
+${(cvText || "").slice(0, 2000)}
+
+=== FORM FIELDS TO FILL ===
+[
+${list}
+]
+
+For each field, give the exact text to type into it. Rules:
+- Use ONLY facts from the details above or the CV. Never invent an employer,
+  date, number, qualification or preference that is not there.
+- Restate a fact in whatever shape the field asks for. If the field wants a
+  notice period in months and the candidate said "from 1 October", work out the
+  months only if the CV or details make that unambiguous — otherwise omit it.
+- When "options" are given, answer with one of them EXACTLY as written, or omit
+  the field if none genuinely applies.
+- Yes/no questions: answer "Yes" or "No" only when the details clearly support
+  it. Never guess on eligibility, sponsorship or authorisation.
+- Respect "max_length" when given.
+- OMIT any field you are not confident about. A blank the person fills in
+  themselves is much better than a plausible-looking wrong answer.
+- Never answer anything asking for a password, government ID, bank or card
+  details, tax number or date of birth — omit those entirely.
+- Do not write cover letters or long essays here; those are handled elsewhere.
+
+Return only a JSON object mapping field id to the text to enter, e.g.:
+{"fills": {"f3": "Munich", "f7": "Yes"}}`;
+}
+
 // Classify form fields the rule-based matcher didn't recognise.
 //
 // Deliberately a CLASSIFICATION task, not a generation one: the model maps each

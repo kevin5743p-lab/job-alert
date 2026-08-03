@@ -310,16 +310,50 @@
       if (!label || label.length > 120) return;
 
       el.dataset.jcFieldId = `f${i}`;
+      const max = parseInt(el.getAttribute("maxlength") || "", 10);
       out.push({
         id: `f${i}`,
         label,
         type: el.tagName === "SELECT" ? "select" : type || "text",
         options: el.tagName === "SELECT"
-          ? Array.from(el.options).map((o) => o.textContent.trim()).filter(Boolean).slice(0, 12)
+          ? Array.from(el.options).map((o) => o.textContent.trim())
+              .filter(Boolean).slice(0, 25)
           : undefined,
+        maxLength: Number.isFinite(max) && max > 0 && max < 500 ? max : undefined,
       });
     });
     return out;
+  }
+
+  // Write model-produced values into the form. Everything arriving here is
+  // treated as a suggestion and re-checked: sensitive fields are refused again,
+  // existing values are never overwritten, and a select only accepts a value
+  // that genuinely matches one of its options.
+  function applyFieldValues(fills, report) {
+    let n = 0;
+    Object.entries(fills || {}).forEach(([id, raw]) => {
+      const value = String(raw == null ? "" : raw).trim();
+      if (!value) return;
+      const el = document.querySelector(`[data-jc-field-id="${id}"]`);
+      if (!el || !visible(el) || (el.value && el.value.trim())) return;
+      if (isBlocked(haystack(el), el)) return;
+
+      const label = ((el.labels && el.labels[0] && el.labels[0].innerText) ||
+                     el.name || "").trim().slice(0, 48);
+      if (el.tagName === "SELECT") {
+        if (!setSelect(el, value)) {
+          report && report.skipped.push({ label, reason: "no matching option" });
+          return;
+        }
+      } else {
+        const max = parseInt(el.getAttribute("maxlength") || "", 10);
+        setValue(el, Number.isFinite(max) && max > 0 ? value.slice(0, max) : value);
+      }
+      highlight(el);
+      n++;
+      if (report) report.filled.push({ label, key: "AI" });
+    });
+    return n;
   }
 
   // Apply a {fieldId: profileKey} mapping. Every safety rule is re-checked
@@ -466,6 +500,7 @@
 
   window.JobCopilotAutofill = {
     fill, findForm, FIELD_SPECS, PROFILE_KEYS,
-    collectOpenQuestions, applyAnswers, collectUnmatched, applyFieldMap,
+    collectOpenQuestions, applyAnswers,
+    collectUnmatched, applyFieldMap, applyFieldValues,
   };
 })();
