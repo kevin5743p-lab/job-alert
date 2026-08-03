@@ -141,6 +141,26 @@
     return BLOCKED.some((re) => re.test(hay));
   }
 
+  // What to call this field when reporting back to the user. Some ATSes name
+  // their inputs with a UUID (Ashby), and "168c6ca1-41c5-42ac…" tells nobody
+  // anything — so a hex-looking name is rejected in favour of visible text.
+  const UUIDISH = /^[0-9a-f-]{16,}$/i;
+
+  function fieldLabel(el) {
+    const candidates = [];
+    if (el.labels && el.labels[0]) candidates.push(el.labels[0].innerText);
+    if (el.id) {
+      const lab = document.querySelector(`label[for="${CSS.escape(el.id)}"]`);
+      if (lab) candidates.push(lab.innerText);
+    }
+    candidates.push(el.getAttribute("aria-label"), el.placeholder, el.name);
+    for (const c of candidates) {
+      const t = norm(c || "").replace(/\s*\*$/, "").trim();
+      if (t && !UUIDISH.test(t)) return t.slice(0, 60);
+    }
+    return "";
+  }
+
   // Two passes: every unambiguous keyword first, then the natural-language
   // phrasings. See the note on FIELD_SPECS for why the order matters.
   function specFor(hay) {
@@ -243,7 +263,7 @@
   function fillChoices(profile, report) {
     const groups = new Map();
     document.querySelectorAll("input[type=radio]").forEach((el) => {
-      if (!visible(el)) return;
+      if (!controlVisible(el)) return;
       const key = el.name || el.closest("fieldset, [role='radiogroup']");
       if (!key) return;
       if (!groups.has(key)) groups.set(key, []);
@@ -277,7 +297,7 @@
 
     // Standalone checkboxes are almost always consent/marketing — never auto-tick.
     document.querySelectorAll("input[type=checkbox]").forEach((el) => {
-      if (!visible(el) || el.checked) return;
+      if (!controlVisible(el) || el.checked) return;
       const q = labelTextFor(el) || groupQuestion(el);
       if (CONSENT.test(q)) {
         report.skipped.push({ label: q.slice(0, 48), reason: "consent — tick it yourself" });
@@ -299,7 +319,7 @@
     // reasoning, so the model gets them. Consent is never included.
     const groups = new Map();
     document.querySelectorAll("input[type=radio]").forEach((el) => {
-      if (!visible(el)) return;
+      if (!controlVisible(el)) return;
       const key = el.name || "";
       if (!key) return;
       if (!groups.has(key)) groups.set(key, []);
@@ -366,11 +386,13 @@
       if (!value) return;
       const nodes = Array.from(document.querySelectorAll(`[data-jc-field-id="${id}"]`));
       const el = nodes[0];
-      if (!el || !visible(el)) return;
+      if (!el) return;
+      const isRadio = (el.type || "").toLowerCase() === "radio";
+      if (!(isRadio ? controlVisible(el) : visible(el))) return;
 
       // Radio group: pick the option whose label the answer names. Consent
       // groups were never collected, so nothing here can tick one.
-      if ((el.type || "").toLowerCase() === "radio") {
+      if (isRadio) {
         if (nodes.some((r) => r.checked)) return;
         const hit = nodes.find((r) => optionMatches(labelTextFor(r), value));
         const q = groupQuestion(el).slice(0, 48);
@@ -390,8 +412,7 @@
       if (el.value && el.value.trim()) return;
       if (isBlocked(haystack(el), el)) return;
 
-      const label = ((el.labels && el.labels[0] && el.labels[0].innerText) ||
-                     el.name || "").trim().slice(0, 48);
+      const label = fieldLabel(el);
       if (el.tagName === "SELECT") {
         if (!setSelect(el, value)) {
           report && report.skipped.push({ label, reason: "no matching option" });
@@ -418,8 +439,7 @@
       if (!el || !visible(el) || (el.value && el.value.trim())) return;
       if (isBlocked(haystack(el), el)) return;
 
-      const label = ((el.labels && el.labels[0] && el.labels[0].innerText) ||
-                     el.name || "").trim().slice(0, 48);
+      const label = fieldLabel(el);
       if (el.tagName === "SELECT") {
         if (!setSelect(el, profile[key])) return;
       } else {
@@ -472,6 +492,21 @@
     return r.width > 0 && r.height > 0;
   }
 
+  // Radios and checkboxes are routinely hidden behind a styled circle — Ashby
+  // does this — so the input itself has no size even though the control is
+  // plainly on screen. Judge those by their visible label or wrapper instead,
+  // otherwise every custom-styled choice question looks absent.
+  function controlVisible(el) {
+    if (el.disabled) return false;
+    if (visible(el)) return true;
+    const proxy = el.closest("label") ||
+                  (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`)) ||
+                  el.parentElement;
+    if (!proxy) return false;
+    const r = proxy.getBoundingClientRect();
+    return r.width > 0 && r.height > 0;
+  }
+
   /**
    * Fill what we can. Returns a report the UI shows the user:
    *   { filled: [{label, key}], skipped: [{label, reason}], coverLetter: bool }
@@ -489,7 +524,7 @@
       if (el.value && el.value.trim()) return;  // never overwrite the user's own input
 
       const hay = haystack(el);
-      const label = (hay.split("|")[0] || hay).slice(0, 48);
+      const label = fieldLabel(el) || (hay.split("|")[0] || hay).slice(0, 48);
 
       if (isBlocked(hay, el)) {
         report.skipped.push({ label, reason: "sensitive — fill this yourself" });

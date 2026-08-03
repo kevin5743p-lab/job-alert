@@ -315,6 +315,11 @@ ${keys.join(", ")}
 
 For each field, decide which profile key it is asking for. Rules:
 - Use ONLY the keys listed above.
+- The field must be asking for THAT THING, not merely something of the same kind.
+  A box asking for a link to a video, a portfolio piece or a specific document is
+  not the LinkedIn field just because both hold a URL; a box asking how many years
+  of experience is not the salary field just because both hold a number. When the
+  match is by category rather than by meaning, omit it.
 - If a field matches none of them, or you are unsure, OMIT it entirely.
   Leaving a field blank is always better than filling it wrongly.
 - Never map anything asking for a password, government ID (passport, national
