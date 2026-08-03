@@ -2026,6 +2026,3181 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-03T07:56:15.145611",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "title fits 'Machine Learning Engineer'; skills: Machine Learning; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4448149218",
+            "title": "AI & Machine Learning Engineer",
+            "company": "AgileGrid Solutions",
+            "location": "Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448149218",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "title fits 'Machine Learning Engineer'; skills: Machine Learning; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4448151143",
+            "title": "Machine Learning Engineer",
+            "company": "AgileGrid Solutions",
+            "location": "Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448151143",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4447687658",
+            "title": "Data Scientist (m/w/d)",
+            "company": "CHEFS CULINAR",
+            "location": "Weeze, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447687658",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4448158127",
+            "title": "Data Scientist (m/w/d)",
+            "company": "DPD Deutschland",
+            "location": "Aschaffenburg, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448158127",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Business Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4448132615",
+            "title": "Business Planning Process Analyst S/4 HANA (m/w/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448132615",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-key-account-manager-bundesweite-kundenbetreuung-ratingen-133272",
+            "title": "Senior Key Account Manager (m/w/d) | bundesweite Kundenbetreuung",
+            "company": "BauWatch Group",
+            "location": "Ratingen",
+            "description": "Über uns Die Firma Bauwatch Projekt Service GmbH ist das führende Unternehmen im Bereich der temporären und mobilen Baustellenüberwachung, sowie der Sicherung des Infrastrukturbaus und des Energiesektors. Mit innovativen Lösungen und modernster Technologie unterstützen wir unsere Kunden dabei, Baupr",
+            "url": "https://www.arbeitnow.com/jobs/companies/bauwatch-group/senior-key-account-manager-bundesweite-kundenbetreuung-ratingen-133272",
+            "published": "2026-08-03T07:20:12+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_head-of-engineering-berlin-hybrid-266137",
+            "title": "Head of Engineering (Berlin, hybrid)",
+            "company": "Kittl",
+            "location": "Berlin",
+            "description": "A little about us AI-native design: End-to-end workflows where a single prompt produces product shoots, social video, labels and full campaigns without switching tools Millions of users: Built a large user base since 2022, with a clear product bet on where design is heading next Diverse team: 120+ p",
+            "url": "https://www.arbeitnow.com/jobs/companies/kittl/head-of-engineering-berlin-hybrid-266137",
+            "published": "2026-08-03T06:00:30+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-devops-engineer-berlin-hybrid-274721",
+            "title": "Senior DevOps Engineer (Berlin, hybrid)",
+            "company": "Kittl",
+            "location": "Berlin",
+            "description": "A little about us AI-native design: End-to-end workflows where a single prompt produces product shoots, social video, labels and full campaigns without switching tools Millions of users: Built a large user base since 2022, with a clear product bet on where design is heading next Diverse team: 120+ p",
+            "url": "https://www.arbeitnow.com/jobs/companies/kittl/senior-devops-engineer-berlin-hybrid-274721",
+            "published": "2026-08-03T06:00:30+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-designer-europe-remote-berlin-496848",
+            "title": "Senior Product Designer (Europe, remote)",
+            "company": "Kittl",
+            "location": "Berlin",
+            "description": "A little about us AI-native design: End-to-end workflows where a single prompt produces product shoots, social video, labels and full campaigns without switching tools Millions of users: Built a large user base since 2022, with a clear product bet on where design is heading next Diverse team: 120+ p",
+            "url": "https://www.arbeitnow.com/jobs/companies/kittl/senior-product-designer-europe-remote-berlin-496848",
+            "published": "2026-08-03T06:00:30+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-designer-berlin-hybrid-442689",
+            "title": "Senior Product Designer (Berlin, hybrid)",
+            "company": "Kittl",
+            "location": "Berlin",
+            "description": "A little about us AI-native design: End-to-end workflows where a single prompt produces product shoots, social video, labels and full campaigns without switching tools Millions of users: Built a large user base since 2022, with a clear product bet on where design is heading next Diverse team: 120+ p",
+            "url": "https://www.arbeitnow.com/jobs/companies/kittl/senior-product-designer-berlin-hybrid-442689",
+            "published": "2026-08-03T06:00:30+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-stress-thermomechanical-fea-engineer-propulsion-battery-system-all-genders-munich-331196",
+            "title": "Senior Stress & Thermomechanical FEA Engineer - Propulsion Battery System (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: As Senior Stress &amp; Thermomechanical FEA Engineer – Propulsion Battery System (all genders) you will join VÆRIDION’s Technology division within the Mechanical Design &amp; Integration team and lead the structural, stress, and thermomechanical finite element analysis (FEA) of the pro",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/senior-stress-thermomechanical-fea-engineer-propulsion-battery-system-all-genders-munich-331196",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-devops-engineering-platform-engineer-aviation-all-genders-munich-391",
+            "title": "Senior DevOps & Engineering Platform Engineer - Aviation (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: VÆRIDION is developing sustainable electric aviation solutions that will redefine regional air mobility. Our Technology division combines aerospace engineering, software development, systems engineering, and certification expertise to deliver highly reliable and certifiable aviation pr",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/senior-devops-engineering-platform-engineer-aviation-all-genders-munich-391",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_team-lead-airborne-electronics-all-genders-munich-321145",
+            "title": "Team Lead Airborne Electronics (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: As Team Lead Airborne Electronics (all genders), you will join the VÆRIDION Technology team and lead the development of airborne electronic hardware supporting the propulsion battery system. You will be responsible for guiding the design, development, integration, and verification of e",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/team-lead-airborne-electronics-all-genders-munich-321145",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-battery-algorithms-engineer-all-genders-munich-431544",
+            "title": "Senior Battery Algorithms Engineer (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: We are developing a next-generation electric aircraft propulsion system, with the propulsion battery designed, developed, and validated in-house. Accurate real-time observation and prediction of the battery’s State of Function (SoF), the energy and power actually accessible for safe fl",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/senior-battery-algorithms-engineer-all-genders-munich-431544",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-high-voltage-airborne-electronics-engineer-power-distribution-protection-all-genders-munich-196303",
+            "title": "Senior High-Voltage Airborne Electronics Engineer – Power Distribution & Protection (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: We are seeking a highly skilled Senior High-Voltage Airborne Electronics Engineer (all genders) to design, develop, and validate high-performance power control and conversion hardware. The ideal candidate will have strong expertise in power electronics design, component selection, simu",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/senior-high-voltage-airborne-electronics-engineer-power-distribution-protection-all-genders-munich-196303",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_sales-director-electric-aviation-all-genders-munich-154082",
+            "title": "Sales Director - Electric Aviation (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: In this business development role (all genders), you will work closely with the Commercial Team, the Chief Business Officer and the Management Team in general, leading aircraft sales campaigns, negotiations and drafting contracts with customers and partners to facilitate deal closures.",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/sales-director-electric-aviation-all-genders-munich-154082",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-quality-manager-all-genders-munich-83210",
+            "title": "Senior Quality Manager (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: As a Senior Quality Manager (all genders), you will define, build-up and implement all Quality, Compliance und HSE processes and activities from the shopfloor up to the national &amp; international regulatory authorities. Play a pivotal role in our journey to sustainable aviation by pr",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/senior-quality-manager-all-genders-munich-83210",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_working-student-pr-communication-all-genders-munich-122739",
+            "title": "Working Student PR & Communication (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your mission Werde Teil unseres dynamischen Marketing- und Kommunikationsteams und unterstütze uns bei der Entwicklung und Umsetzung von Marketingkampagnen sowie PR-Aktivitäten, um unsere Vertriebsaktivitäten zu stärken und die Markenbekanntheit auszubauen. Als Werkstudent:in (all genders) hast du d",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/working-student-pr-communication-all-genders-munich-122739",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_working-student-marketing-and-communications-all-genders-munich-164166",
+            "title": "Working Student Marketing and Communications (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: Werde Teil unseres dynamischen Marketing- und Kommunikationsteams und unterstütze uns bei der Entwicklung und Umsetzung von Marketingkampagnen sowie PR-Aktivitäten, um unsere Vertriebsaktivitäten zu stärken und die Markenbekanntheit auszubauen. Als Werkstudent:in (all genders) hast du ",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/working-student-marketing-and-communications-all-genders-munich-164166",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-manufacturing-engineer-high-voltage-battery-all-genders-gauting-498239",
+            "title": "(Senior) Manufacturing Engineer – High-Voltage Battery (all genders)",
+            "company": "væridion",
+            "location": "Manufacturing & Testing Facility",
+            "description": "Your Mission: Be part of aviation history at VÆRIDION, where we’re pioneering the world’s first electric nine-seater aircraft! As a (Senior) Manufacturing Engineer (all genders), you'll play a pivotal role in the development, optimization and scaling of various manufacturing processes, workflows, an",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/senior-manufacturing-engineer-high-voltage-battery-all-genders-gauting-498239",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-flight-control-system-engineer-all-genders-munich-252005",
+            "title": "(Senior) Flight Control System Engineer (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: We are seeking a (Senior) Flight Control System Engineer (all genders) to lead the design and development of the flight control systems for our battery-electric aircraft. In this role, you will be responsible for defining and integrating the aircraft’s primary and secondary flight cont",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/senior-flight-control-system-engineer-all-genders-munich-252005",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-test-engineer-hil-power-hil-all-genders-gauting-139808",
+            "title": "(Senior) Test Engineer - HiL / Power HiL (all genders)",
+            "company": "væridion",
+            "location": "Manufacturing & Testing Facility",
+            "description": "Your Mission: Join VÆRIDION on our groundbreaking journey to develop the world’s first electric 9-seater aircraft. As a HiL Test Engineer (all genders), you will play a pivotal role in ensuring the success of the VÆRIDION Microliner by integrating and testing the electronic control units of our elec",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/senior-test-engineer-hil-power-hil-all-genders-gauting-139808",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_executive-assistant-to-ceo-all-genders-munich-357816",
+            "title": "Executive Assistant to CEO (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: At VÆRIDION, we are pioneering the future of sustainable regional aviation. As we continue to grow, we are looking for an exceptionally organized, proactive, and reliable Executive Assistant (all genders) to support our CEO in all day-to-day matters, from scheduling and coordination to",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/executive-assistant-to-ceo-all-genders-munich-357816",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_financial-controller-all-genders-munich-402654",
+            "title": "Financial Controller (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: We’re looking for a Financial Controller (all genders) who thrives in a dynamic environment and wants to help mature and scale our financial controlling setup. You will play a central role in the implementation of our new ERP system across all finance processes - defining standards, en",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/financial-controller-all-genders-munich-402654",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_vp-finance-all-genders-munich-13419",
+            "title": "VP Finance (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: As VP Finance (all genders) at VÆRIDION, you will build and lead the financial backbone of a capital-intensive deep-tech aerospace scale-up. You will drive financial steering, ensure strong finance hygiene, and lead financing and fundraising activities to support our transition from de",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/vp-finance-all-genders-munich-13419",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_working-student-people-culture-all-genders-munich-171342",
+            "title": "Working Student People & Culture (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: Als Werkstudent:in (all genders) im People &amp; Culture Team bist du mitten im Herzen unseres Unternehmens dabei. Du gestaltest aktiv mit wie wir als Team zusammenarbeiten, wachsen und uns nach außen präsentieren. Von der Unterstützung im Recruiting und Onboarding über die Organisatio",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/working-student-people-culture-all-genders-munich-171342",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "skills: Python; keyword bonus: 1; +1 core-strength terms",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_working-student-battery-testing-all-genders-gauting-148288",
+            "title": "Working Student Battery Testing (all genders)",
+            "company": "væridion",
+            "location": "Manufacturing & Testing Facility",
+            "description": "Your Mission: Be part of aviation history at VÆRIDION, where we’re building the world’s first electric 9-seater aircraft. As a Working Student in Battery Testing (all genders) within the Test Department, you will support the validation of our battery system across all levels, from cell to module to ",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/working-student-battery-testing-all-genders-gauting-148288",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_unsolicited-application-initiativbewerbung-all-genders-munich-377608",
+            "title": "Unsolicited Application / Initiativbewerbung (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: Would you like to become part of this exciting story and change the world of flying sustainably together with us? Even if the right position is not available on our career page right now, we are always looking for talents who can bring new ideas and perspectives to our team. Your Profi",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/unsolicited-application-initiativbewerbung-all-genders-munich-377608",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_technical-project-manager-erp-implementation-all-genders-munich-124891",
+            "title": "Technical Project Manager - ERP Implementation (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: At VÆRIDION, we are redefining what’s possible in sustainable aviation and we’re looking for a Technical Project Manager (all genders) who’s ready to make a tangible impact. This is not just another project management role: It’s a unique opportunity to build the digital backbone of a f",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/technical-project-manager-erp-implementation-all-genders-munich-124891",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-machine-learning-engineer-munich-493016",
+            "title": "Senior Machine Learning Engineer",
+            "company": "Tools for Humanity",
+            "location": "Munich",
+            "description": "About the Company: Tools for Humanity (TFH) designs and builds technology behind World. World is building a real human network designed to accelerate people in the age of AI. As bots and autonomous agents reshape the internet, people, institutions, and applications need a trusted way to confirm who ",
+            "url": "https://www.arbeitnow.com/jobs/companies/tools-for-humanity/senior-machine-learning-engineer-munich-493016",
+            "published": "2026-08-03T05:41:46+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-technical-product-manager-carbon-and-environmental-models-all-genders-berlin-75185",
+            "title": "Senior Technical Product Manager - Carbon and Environmental Models (all genders)",
+            "company": "Klim",
+            "location": "Berlin,  Germany",
+            "description": "At Klim, we work with farmers and food companies to make regenerative agriculture scalable and financially rewarding for farmers. Through our platform, we help farmers restore soil health, increase biodiversity and capture carbon while creating new, reliable income streams. We’re a Berlin-based Agri",
+            "url": "https://www.arbeitnow.com/jobs/companies/klim/senior-technical-product-manager-carbon-and-environmental-models-all-genders-berlin-75185",
+            "published": "2026-08-03T05:41:35+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_principal-product-manager-robotics-safety-munich-364665",
+            "title": "Principal Product Manager - Robotics & Safety",
+            "company": "RobCo",
+            "location": "Munich",
+            "description": "About the Role at RobCo RobCo is building the category of Autonomous Industrial Robotics and we're doing it fast. We believe that automating the ordinary frees humans to do the extraordinary, and we're building the end-to-end robotics infrastructure to make that possible - hardware, software, and AI",
+            "url": "https://www.arbeitnow.com/jobs/companies/robco/principal-product-manager-robotics-safety-munich-364665",
+            "published": "2026-08-03T05:41:32+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-mobile-engineer-food-tracking-berlin-201147",
+            "title": "Senior Mobile Engineer (Food Tracking)",
+            "company": "YAZIO",
+            "location": "Berlin",
+            "description": "HEY THERE We’re looking for a Senior Mobile Engineer to join the Food Tracking squad at Yazio, the team building the core experience of our product. This includes daily food tracking, AI-driven insights, and features used by millions every day. You are a key part in shaping the Food Tracking squad, ",
+            "url": "https://www.arbeitnow.com/jobs/companies/yazio/senior-mobile-engineer-food-tracking-berlin-201147",
+            "published": "2026-08-03T05:41:17+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_staff-mobile-engineer-kotlin-icasino-fbg-leeds-223715",
+            "title": "Staff Mobile Engineer - Kotlin, iCasino - FBG",
+            "company": "Fanaticsfbg",
+            "location": "Leeds",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2 class=&quot;job-details__description-header text-color-secondary font-family-secondary&quot; data-bind=&quot;i18n: &#39;job-details.employer-description-title&#39;&quot;&gt;About Us&lt;/h2&gt; &lt;div class=&quot;job-details__description-content basi",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/fanaticsfbg/staff-mobile-engineer-kotlin-icasino-fbg-leeds-223715",
+            "published": "2026-08-03T07:16:44+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-manager-london-340550",
+            "title": "Senior Product Manager",
+            "company": "Fanaticsfbg",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2 class=&quot;job-details__description-header text-color-secondary font-family-secondary&quot; data-bind=&quot;i18n: &#39;job-details.employer-description-title&#39;&quot;&gt;About Us&lt;/h2&gt; &lt;div class=&quot;job-details__description-content basi",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/fanaticsfbg/senior-product-manager-london-340550",
+            "published": "2026-08-03T07:16:44+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_data-analyst-iii-product-london-381413",
+            "title": "Data Analyst III (Product)",
+            "company": "Fanaticsfbg",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2 class=&quot;job-details__description-header text-color-secondary font-family-secondary&quot; data-bind=&quot;i18n: &#39;job-details.employer-description-title&#39;&quot;&gt;About Us&lt;/h2&gt; &lt;div class=&quot;job-details__description-content basi",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/fanaticsfbg/data-analyst-iii-product-london-381413",
+            "published": "2026-08-03T07:16:43+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_machine-learning-engineer-remote-397244",
+            "title": "Machine Learning Engineer (Remote)",
+            "company": "Stackadapt",
+            "location": "Germany",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;StackAdapt is the leading technology company that empowers marketers to reach, engage, and convert audiences with precision. With 465 billion automated optimizations per second, the AI-powered StackAdapt Marketing Platform seamlessly connects brand",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/stackadapt/machine-learning-engineer-remote-397244",
+            "published": "2026-08-03T07:15:30+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_software-engineering-team-lead-london-311779",
+            "title": "Software Engineering Team Lead",
+            "company": "M Kopa",
+            "location": "London",
+            "description": "J oin our growing FinTech Engineering team! We're recruiting a Software Engineering Team Lead to spearhead the delivery of our new loan origination architecture, compliance systems, and pricing platform - infrastructure that will power M-KOPA's next phase of expansion across Africa. The Impact Your ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/m-kopa/software-engineering-team-lead-london-311779",
+            "published": "2026-08-03T06:41:21+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_functional-consultant-project-manager-munich-60898",
+            "title": "Functional Consultant & Project Manager",
+            "company": "BLP Digital AG",
+            "location": "Germany",
+            "description": "Join BLP Digital — The #1 Solution for ERP Automation BLP Digital is redefining ERP automation with agentic AI. Spun out of ETH Zurich and HSG, we build AI agents that automate finance, procurement, logistics, sales, and more for some of the world's largest enterprises. We solve real enterprise prob",
+            "url": "https://www.arbeitnow.com/jobs/companies/blp-digital-ag/functional-consultant-project-manager-munich-60898",
+            "published": "2026-08-03T05:41:14+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_growth-manager-berlin-481852",
+            "title": "Growth Manager",
+            "company": "Almedia",
+            "location": "Berlin",
+            "description": "This isn’t your regular job. Almedia is a place where those who want to push harder can accelerate their careers faster than anywhere else. We’re aiming to become Germany’s second bootstrapped unicorn. Almedia is already Europe’s #3 fastest-growing company in 2025 (FT1000). We are building the futur",
+            "url": "https://www.arbeitnow.com/jobs/companies/almedia/growth-manager-berlin-481852",
+            "published": "2026-08-03T05:40:56+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_founding-data-scientist-berlin-273891",
+            "title": "Founding Data Scientist",
+            "company": "Almedia",
+            "location": "Berlin",
+            "description": "This isn’t your regular job. Almedia is a place where those who want to push harder can accelerate their careers faster than anywhere else. We’re aiming to become Germany’s second bootstrapped unicorn. Almedia is already Europe’s #3 fastest-growing company in 2025 (FT1000). We are building the futur",
+            "url": "https://www.arbeitnow.com/jobs/companies/almedia/founding-data-scientist-berlin-273891",
+            "published": "2026-08-03T05:40:56+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-agent-product-manager-germany-178223",
+            "title": "Senior Agent Product Manager",
+            "company": "Decagon",
+            "location": "Germany",
+            "description": "About Decagon Decagon is the leading conversational AI platform empowering every brand to deliver concierge customer experiences. Our technology enables industry-defining enterprises like Avis Budget Group, Block’s Cash App and Square, Chime, Oura Health, and Hunter Douglas to deploy AI agents that ",
+            "url": "https://www.arbeitnow.com/jobs/companies/decagon/senior-agent-product-manager-germany-178223",
+            "published": "2026-08-03T05:40:29+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447689740",
+            "title": "Werkstudent Quality Management (m/w/d)",
+            "company": "Isabellenhütte Heusler GmbH & Co. KG",
+            "location": "Dillenburg, Hesse, Germany",
+            "description": "Wer wir sind: Die Isabellenhütte ist ein international agierendes, familiengeführtes Unternehmen mit einer einzigartigen Fertigungstiefe. Wir vereinen unsere Tradition mit dem unbedingten Willen, Zukunftsmärkte aktiv mitzugestalten. Dies macht uns zu einem 500 Jahre jungen Start Up. Bei uns ist jede",
+            "url": "https://www.linkedin.com/jobs/view/4447689740",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448150045",
+            "title": "Werkstudent im Bereich External Communications & Executive Communications (f/m/d)",
+            "company": "MHP – A Porsche Company",
+            "location": "Ludwigsburg, Baden-Württemberg, Germany",
+            "description": "Aufgaben Du liebst es, die richtigen Inhalte, zum richtigen Zeitpunkt über den richtigen Weg an die richtigen Menschen zu vermitteln? Dich interessiert, wie es im Kommunikationsbereich eines Beratungsunternehmens, ganz besonders in der Presse-/Öffentlichkeitsarbeit sowie hinter den Kulissen der Exec",
+            "url": "https://www.linkedin.com/jobs/view/4448150045",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441225323",
+            "title": "Werkstudent Vorserienlogistik (w/m/d)",
+            "company": "MAN Truck & Bus SE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Stellenbezeichnung: Werkstudent Vorserienlogistik (w/m/d) Startdatum der Ausschreibung: 15.07.26 Zu Besetzen Ab 01.08.2026 Dein Arbeitsumfeld Wir bei MAN Truck & Bus sind Teil eines engagierten internationalen Teams und einer der führenden europäischen Nutzfahrzeughersteller und Anbieter von Transpo",
+            "url": "https://www.linkedin.com/jobs/view/4441225323",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448147210",
+            "title": "Studentische Beschäftigung mit 80 Monatsstunden",
+            "company": "Technische Universität Berlin",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Fakultät V - Verkehrs- und Maschinensysteme, Institut für Werkzeugmaschinen und Fabrikbetrieb - FG Werkzeugmaschinen und Fertigungstechnik Studentische Beschäftigung mit 80 Monatsstunden Ihre Aufgaben Im Rahmen des Forschungsprojektes \"Analyse des Zerspan- und Verschleißverhaltens beim Bürstspanen\" ",
+            "url": "https://www.linkedin.com/jobs/view/4448147210",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448144883",
+            "title": "Werkstudent Fuhrparkmanagement (m/w/d)",
+            "company": "Bostik",
+            "location": "Borgholzhausen, North Rhine-Westphalia, Germany",
+            "description": "Aufgaben Aktive Betreuung von Fahrzeugnutzern im operativen Tagesgeschäft Fahrzeugbestellung und Prüfung der Fahrzeugausstattung gem. interner Regelungen inkl. Terminregelung Organisation und Begleitung von Fahrzeugauslieferungen / Zulassung Überwachung der gesetzlichen Fristen (Führerscheinkontroll",
+            "url": "https://www.linkedin.com/jobs/view/4448144883",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445865777",
+            "title": "WERKSTUDENT:IN TESTING & QUALITÄTSSICHERUNG (m/w/d)",
+            "company": "One-Day Choir Collective",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Wir suchen dich! Wir bauen die großartigste unabhängige Eventplattform der Welt. Und wir glauben, dass (R)ausgehen uns zu besseren Menschen macht. Unser Ziel ist es, Menschen vom Sofa in die Venues dieser Welt zu bringen und besondere, große und kleine Momente zu schaffen. Wir suchen am Standort Köl",
+            "url": "https://www.linkedin.com/jobs/view/4445865777",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447901193",
+            "title": "Werkstudent Marketing (m/w/d)",
+            "company": "Isabellenhütte Heusler GmbH & Co. KG",
+            "location": "Dillenburg, Hesse, Germany",
+            "description": "Wer wir sind: Die Isabellenhütte ist ein international agierendes, familiengeführtes Unternehmen mit einer einzigartigen Fertigungstiefe. Wir vereinen unsere Tradition mit dem unbedingten Willen, Zukunftsmärkte aktiv mitzugestalten. Dies macht uns zu einem 500 Jahre jungen Start Up. Bei uns ist jede",
+            "url": "https://www.linkedin.com/jobs/view/4447901193",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446333470",
+            "title": "Werkstudent Technologie-Partnermanagement (w/m/d)",
+            "company": "Capgemini",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Wenn du dich für Capgemini entscheidest, wählst du ein Unternehmen, in dem du die Möglichkeit hast, deinen Karriereweg selbst zu gestalten. Du wirst von einem kollaborativen Netzwerk von Kolleg*innen auf der ganzen Welt unterstützt und inspiriert und kannst neu definieren, was möglich ist. Schließe ",
+            "url": "https://www.linkedin.com/jobs/view/4446333470",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447691702",
+            "title": "Studentische Hilfskraft (m/w/d): Project Management Office",
+            "company": "Fraunhofer Research Institution for Battery Cell Production FFB",
+            "location": "Münster, North Rhine-Westphalia, Germany",
+            "description": "Wir, die Fraunhofer-Einrichtung Forschungsfertigung Batteriezelle FFB, haben es uns zur Aufgabe gemacht, zum Zentrum der Entwicklung einer modernen und skalierbaren Batteriezellproduktion für Deutschland und Europa zu werden. Dabei arbeiten wir täglich daran, eine Infrastruktur zu schaffen, mit der ",
+            "url": "https://www.linkedin.com/jobs/view/4447691702",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4416586558",
+            "title": "Werkstudent:in Digitalisierung Produktion (w/m/d)",
+            "company": "Eppendorf",
+            "location": "Greater Leipzig Area",
+            "description": "Wie du dich einbringst Du nimmst Kundenanforderungen aus den Fachbereichen auf, ordnest diese in den Prozess ein und übersetzt sie in technische Lösungen. Aus Datenbankabfragen erstellst du visualisierte KPI‑Dashboards in Power BI, die Entscheidungen transparent unterstützen. Mithilfe von RPA‑Tools ",
+            "url": "https://www.linkedin.com/jobs/view/4416586558",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438898914",
+            "title": "Data Engineer (m/w/d)",
+            "company": "Controlware",
+            "location": "Hesse, Germany",
+            "description": "Warum Controlware? Mit ca. 400 Mio. EUR Umsatz und 1000 Mitarbeitern sind wir nicht nur einer der führenden unabhängigen IT-Dienstleister und Managed Service Provider in der DACH Region. Wir sind auch innovativ, fair und nachhaltig. Wir geben unseren hochqualifizierten Mitarbeitern die Möglichkeit s",
+            "url": "https://www.linkedin.com/jobs/view/4438898914",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448150325",
+            "title": "Audit Analytics Engineer (w/m/d)",
+            "company": "AUDAVIS",
+            "location": "Germany",
+            "description": "Unternehmensbeschreibung AUDAVIS ist eine aus dem Prüfungsberuf heraus entwickelte KI-Plattform, die einen co-pilotierten und weitgehend automatisierten Prüfungsprozess ermöglicht. Die Anwendung ist intuitiv nutzbar, mit einfachen Drag-&-Drop-Datenimporten aus verschiedenen ERP- und Buchhaltungssyst",
+            "url": "https://www.linkedin.com/jobs/view/4448150325",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447696353",
+            "title": "SQL Developer",
+            "company": "Langford Staffing",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447696353",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448156079",
+            "title": "Data Engineer -Azure",
+            "company": "AgileGrid Solutions",
+            "location": "Germany",
+            "description": "About The Company Arbeiten bei der Unternehmensgruppe Theo Müller bedeutet, Teil eines regional verwurzelten Familienunternehmens und gleichzeitig eines international wachsenden Konzerns im Bereich Food und Logistics zu sein. Mit bekannten Marken in den Geschäftsbereichen Molkerei, Fisch & Feinkost,",
+            "url": "https://www.linkedin.com/jobs/view/4448156079",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447693473",
+            "title": "Business Intelligence Specialist (m/w/d)",
+            "company": "CHEFS CULINAR",
+            "location": "Weeze, North Rhine-Westphalia, Germany",
+            "description": "Deine Aufgaben Du implementierst und optimierst ETL-/ELT-Prozesse zur Integration verschiedener Datenquellen Du konzipierst und erstellst Datenmodelle Du entwickelst leistungsfähige Dashboards und Reports mit Power BI Du stellst Datenqualität, Performance und Governance (inkl. Berechtigungen) sicher",
+            "url": "https://www.linkedin.com/jobs/view/4447693473",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Chef'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447900006",
+            "title": "Fachinformatiker (m/w/d) - Fachrichtung Daten- und Prozessanalyse",
+            "company": "CHEFS CULINAR",
+            "location": "Weeze, North Rhine-Westphalia, Germany",
+            "description": "Ausbildungsinhalte Dich erwartet ein technisch modernes und innovatives Arbeitsumfeld, auf Basis modernster Hard- und Software, sowie eine umfassende Betreuung durch kompetente Ausbilder, die Dir mit Rat und Tat zur Seite stehen. an 1-2 Tagen pro Woche besuchst Du das Berufskolleg in Kleve und erarb",
+            "url": "https://www.linkedin.com/jobs/view/4447900006",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448141994",
+            "title": "Data Engineer",
+            "company": "Hyra",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Senior AI Data Engineer A well-established leader in the premium automotive and mobility sector is looking for an experienced technical specialist to join their international team of experts. This role focuses on developing privacy-first data and model solutions for next-generation edge AI products ",
+            "url": "https://www.linkedin.com/jobs/view/4448141994",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447685919",
+            "title": "Senior Product Engineer - Safety",
+            "company": "Yanfeng",
+            "location": "Neuss, North Rhine-Westphalia, Germany",
+            "description": "Are you passionate about developing products that save lives? Do you want to work at the forefront of automotive safety innovation? Join Yanfeng and help shape the next generation of airbag and safety restraint systems for leading global OEMs. About the Role – Senior Product Engineer - Safety In thi",
+            "url": "https://www.linkedin.com/jobs/view/4447685919",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448161038",
+            "title": "Artificial Intelligence Engineer",
+            "company": "Hyra",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Senior Machine Learning Engineer A leading global automotive organisation known for its commitment to premium engineering and future mobility is looking for an experienced engineer to join the autonomous driving team in Munich. The successful candidate will focus on developing advanced machine learn",
+            "url": "https://www.linkedin.com/jobs/view/4448161038",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445869820",
+            "title": "Senior Design Engineer Radio Frequency Communication (m/f/x)",
+            "company": "STT-SystemTechnik GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "For over 30 years, Munich based STT-SystemTechnik GmbH , has been very successfully designing, developing and manufacturing highly reliable radio frequency data transmission systems and antennas for industry, aerospace and space. Our equipment and systems operate reliable in many different applicati",
+            "url": "https://www.linkedin.com/jobs/view/4445869820",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434829226",
+            "title": "Senior BESS Design Engineer (m/w/d) in Hamburg",
+            "company": "INTEC Energy Solutions",
+            "location": "Hamburg, Germany",
+            "description": "INTEC Energy Solutions provides best-in-class services in Engineering, Procurement and Construction (EPC), Battery Energy Storage Systems (BESS), Project Development, Consulting, Operations and Maintenance, and New Energy Solutions. With a globally experienced team, INTEC has successfully delivered ",
+            "url": "https://www.linkedin.com/jobs/view/4434829226",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448128627",
+            "title": "Hardware Entwickler (m/w/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Lübeck, Schleswig-Holstein, Germany",
+            "description": "Du brennst für innovative Hardware, bastelst vielleicht sogar in deiner Freizeit und möchtest Dinge entwickeln, die Menschen wirklich helfen? Dann passt die Stelle als Hardware-Entwickler (m/w/d) perfekt zu dir. Unser Kunde ist ein familiäres High-Tech-Unternehmen mit knapp über 50 Mitarbeitenden. H",
+            "url": "https://www.linkedin.com/jobs/view/4448128627",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448147313",
+            "title": "Software Engineer",
+            "company": "Hyra",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Senior Machine Learning Software Engineer A leading global automotive manufacturer known for innovation in premium mobility is looking for an experienced engineer to join an international team of experts. The successful candidate will focus on developing and refining edge GenAI models to enhance int",
+            "url": "https://www.linkedin.com/jobs/view/4448147313",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448157082",
+            "title": "Embedded Electronics Hardware Entwickler (m/w/d) Schwerpunkt High Speed Design",
+            "company": "Lenze",
+            "location": "Aerzen, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448157082",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4410587713",
+            "title": "Senior AI / ML Engineer (w/m/d)",
+            "company": "Cofinpro AG",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4410587713",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448149160",
+            "title": "Lead Structural Integration Engineer (m/w/d) - Defense Aviation",
+            "company": "Progressive",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448149160",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4425234561",
+            "title": "Entwicklungsingenieur Mechanik / Physiker / Messingenieur (m/w/d)",
+            "company": "Mettler-Toledo International, Inc",
+            "location": "Ebingen, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4425234561",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Mechanical Engineer'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431505541",
+            "title": "Mechanical Engineer Implant, Brain-Computer Interfaces",
+            "company": "FUTRUE",
+            "location": "Gräfelfing, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4431505541",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446316059",
+            "title": "Physiker/in (m/w/d) - für MEMS Temperaturschalter im kryogenen Bereich",
+            "company": "German Aerospace Center (DLR)",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446316059",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447682721",
+            "title": "Junior Business Controller/ Business Analyst/ Sales and Logistics Analyst (m/w/d)",
+            "company": "CHEFS CULINAR",
+            "location": "Neubrandenburg, Mecklenburg-West Pomerania, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447682721",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4420639100",
+            "title": "Senior Revenue Operations Manager (F/M/D)",
+            "company": "NavVis",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4420639100",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447687652",
+            "title": "Ausbilder / Trainer für Projektarbeit IT (m/w/d)",
+            "company": "COMCAVE.COLLEGE GmbH",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447687652",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445883468",
+            "title": "Jurist / Wirtschaftsjurist (m/w/d) in Vollzeit | ab sofort | Standort Hannover",
+            "company": "Definet AG",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445883468",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448158040",
+            "title": "Business Analyst",
+            "company": "Pertemps ERP (part of Network EMEA)",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448158040",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445875658",
+            "title": "Business Analyst Energiehandel und Abwicklung (m/w/d)",
+            "company": "Syneco Trading GmbH",
+            "location": "Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445875658",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447699059",
+            "title": "Duales Studium Soziale Arbeit (B.A.) am Campus oder virtuell - Jobbird.com",
+            "company": "Jobster",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447699059",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437175953",
+            "title": "Product Manager Point of Care Hemostasis (m/w/d)",
+            "company": "Werfen",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437175953",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447673884",
+            "title": "Bar & Lounge Service Staff (m/f/d)",
+            "company": "Stryyde",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447673884",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448154133",
+            "title": "Teamleiter Produktmanagement",
+            "company": "Robert Half",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448154133",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447671849",
+            "title": "Kfz-Mechatroniker | m/w/d",
+            "company": "McLaren Nürnberg",
+            "location": "Fürth, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447671849",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448158098",
+            "title": "Technikermeister",
+            "company": "Blessing Automobile GmbH",
+            "location": "Leutenbach, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448158098",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447685880",
+            "title": "Kfz-Mechatroniker (m/w/d)",
+            "company": "PSH Personal Service GmbH",
+            "location": "Paderborn, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447685880",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448141410",
+            "title": "KFZ- Mechatroniker (m/w/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Plettenberg, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448141410",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431958348",
+            "title": "(Junior) Manager Sales Data Analyst",
+            "company": "FUTRUE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4431958348",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448144792",
+            "title": "HR IT & People Analytics Specialist (m/w/d)",
+            "company": "FANUC Europe",
+            "location": "Neuhausen auf den Fildern, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448144792",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448148106",
+            "title": "Data Analyst",
+            "company": "FetchJobs.co",
+            "location": "Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448148106",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448124733",
+            "title": "Professur für \"Informationstechnik und Embedded Systems\"",
+            "company": "University of Applied Sciences and Arts Dortmund",
+            "location": "Dortmund, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448124733",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448151037",
+            "title": "Servicetechniker*in (m/w/d) Vollzeit / Teilzeit",
+            "company": "Landeshauptstadt Kiel",
+            "location": "Kiel, Schleswig-Holstein, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448151037",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447531725",
+            "title": "Internal Service Technician",
+            "company": "Christie Digital Systems",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447531725",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447676333",
+            "title": "Technician (m/f/d)",
+            "company": "Hannusch Industrieelektronik",
+            "location": "Laichingen, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447676333",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448158157",
+            "title": "Mitarbeiter Instandhaltung (m/w/x)",
+            "company": "ZEISS Group",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448158157",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444316479",
+            "title": "Technischer Support Mitarbeiter (m/w/d) - Festanstellung",
+            "company": "The Adecco Group",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4444316479",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447683980",
+            "title": "Techniker/-in / Informatiker/-in (m/w/d) im Programm Leitstellen",
+            "company": "Land Niedersachsen",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447683980",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4440786484",
+            "title": "Mitarbeiterin / Mitarbeiter in der IT (w/m/d)",
+            "company": "Karlsruhe Institute of Technology (KIT)",
+            "location": "Eggenstein-Leopoldshafen, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4440786484",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448155054",
+            "title": "Akademische/r Beschäftigte/n (m/w/d) - Softwaretechnik und Programmiersprachen Referenz-Nr. 26122",
+            "company": "Ulm University",
+            "location": "Ulm, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448155054",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437276859",
+            "title": "(Senior) Data & Cloud Engineer",
+            "company": "FUTRUE",
+            "location": "Gräfelfing, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437276859",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4445866800",
+            "title": "Backend - und Datenbank- Entwickler (m/w/d) klinische Informationssysteme",
+            "company": "Nexus AG",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445866800",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447901288",
+            "title": "Facharzt  Gynäkologie / Geburtshilfe - Region Frankfurt am Main (m/w/d) - SHC-306-1367-JN (7298)",
+            "company": "1a-Ärztevermittlung",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447901288",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448158011",
+            "title": "Klimaanpassungsmanager (w/m/d)",
+            "company": "Landratsamt Alb-Donau-Kreis",
+            "location": "Ulm, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448158011",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448142980",
+            "title": "Mitarbeiter-/in (w/m/d) in der psychologischen Eignungsdiagnostik",
+            "company": "German Aerospace Center (DLR)",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448142980",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448142993",
+            "title": "Automotive Product Manager - Engagement",
+            "company": "3SS",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448142993",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431094691",
+            "title": "(Junior) Product Manager Kijimea",
+            "company": "Kijimea (SYNformulas GmbH)",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4431094691",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4418734651",
+            "title": "(Senior) Brand / Product Manager",
+            "company": "Kijimea (SYNformulas GmbH)",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4418734651",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135679939",
+            "title": "Dualer Master (M.Eng.) - Systems Engineering - Fachrichtung Elektrotechnik im Technischen Backoffice",
+            "company": "Bosch",
+            "location": "Mainz, RP, de",
+            "description": "Als Master of Engineering im Studiengang „Systems Engineering Elektrotechnik“ unterstützt du unserer Technisches Backoffice Vertriebsbereich Mitte. Im dualen Ausbildungssystem bei der Bosch Home Comfort Group werden Theorie und Praxis eng miteinander verbunden. Qualifizierte Dozentinnen und Dozenten",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135679939",
+            "published": "2026-07-03T09:14:18.131Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135677612",
+            "title": "Dualer Master (M.Eng.) - Technischer Vertrieb",
+            "company": "Bosch",
+            "location": "Mainz, de",
+            "description": "Als Master of Engineering im Studiengang „Technischer Vertrieb“ unterstützt du unseren spannenden Vertriebsbereich Mitte am Standort Mainz. Im dualen Ausbildungssystem bei der Bosch Home Comfort Group werden Theorie und Praxis eng miteinander verbunden. Qualifizierte Dozentinnen und Dozenten der dua",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135677612",
+            "published": "2026-07-03T09:11:55.084Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135676550",
+            "title": "Dualer Master (M.Eng.) Systems Engineering - Elektrotechnik im Bereich Produktmanagement",
+            "company": "Bosch",
+            "location": "Wetzlar, HE, de",
+            "description": "Als Master of Engineering (M. Eng.) im Studiengang „Systems Engineering -Elektrotechnik“ unterstützt du unseren spannenden Bereich Produktmanagement. Im dualen Ausbildungssystem bei der Bosch Home Comfort Group werden Theorie und Praxis eng miteinander verbunden. Qualifizierte Dozentinnen und Dozent",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135676550",
+            "published": "2026-07-03T09:09:23.086Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135677731",
+            "title": "Dualer Master (M.Eng.) - Technischer Vertrieb im Bereich Produktmanagement",
+            "company": "Bosch",
+            "location": "Wetzlar, HE, de",
+            "description": "Als Master of Engineering im Studiengang \"Technischer Vertrieb“ unterstützt du unseren spannenden Bereich Produktmanagement. Im dualen Ausbildungssystem bei der Bosch Home Comfort Group werden Theorie und Praxis eng miteinander verbunden. Qualifizierte Dozent:innen der dualen Hochschule „Technischen",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135677731",
+            "published": "2026-07-03T09:05:09.246Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135168409",
+            "title": "Praktikum Data & AI Solutions im industriellen Sondermaschinenbau",
+            "company": "Bosch",
+            "location": "Immenstadt im Allgäu, BY, de",
+            "description": "Während deines Praktikums entwickelst du gemeinsam mit unseren Data Scientists und AI Engineers innovative Digitalisierungslösungen für reale Herausforderungen an unseren Fertigungseinrichtungen. Des Weiteren konzipierst du ein zuverlässiges Monitoring für unsere Industrial-AI-Anwendungen. Du bereit",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135168409",
+            "published": "2026-07-01T05:19:21.702Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134963614",
+            "title": "IT Product Security Specialist (m/w/div.) ",
+            "company": "Bosch",
+            "location": "Berlin, BE, de",
+            "description": "Sie leiten das Product Security Programm: Sie integrieren Security in den SDLC, Sie führen Threat Modeling durch und Sie leiten Sicherheitsanforderungen für Features und Architekturänderungen ab. Sie führen Risikoanalysen durch und priorisieren produktbezogene Risiken (Design, Abhängigkeiten, Compli",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134963614",
+            "published": "2026-06-30T09:05:18.592Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Software Developer'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134438119",
+            "title": "Embedded Software Developer for the Automation of Mobile Work Machines  (f/m/div.)",
+            "company": "Bosch",
+            "location": "Elchingen, BY, de",
+            "description": "As Embedded Software Developer for the Automation of Mobile Work Machines (f/m/div.) you will play a key role in shaping our Offroad Robotics Controller (ORC) platform by integrating state-of-the-art signal and image processing technologies. You will develop complex, high-quality embedded software i",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134438119",
+            "published": "2026-06-26T09:59:28.707Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134437399",
+            "title": "Embedded Softwareentwickler für die Automatisierung mobiler Arbeitsmaschinen  (w/m/div.)",
+            "company": "Bosch",
+            "location": "Elchingen, BY, de",
+            "description": "Als Softwareentwickler (w/m/div.) für die Automatisierung mobiler Arbeitsmaschinen gestaltest du maßgeblich unsere Offroad Robotics Controller (ORC) Plattform, indem du modernste Signal- und Bildverarbeitungstechnologien integrierst. Du entwickelst komplexe, hochwertige Embedded-Software in C++, die",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134437399",
+            "published": "2026-06-26T09:55:48.695Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134402849",
+            "title": "PhD position - Satellite-to-Vehicle Communication in 6G Networks",
+            "company": "Bosch",
+            "location": "Hildesheim, NDS, de",
+            "description": "Shape the future of automotive connectivity - Non-Terrestrial Networks (NTNs) are set to become a cornerstone of the upcoming 6G mobile communication standard. By extending the reach of terrestrial networks, they enable ubiquitous and resilient communication and will play a key role in next-generati",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134402849",
+            "published": "2026-06-26T06:35:45.971Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134254569",
+            "title": "Embedded-Softwareentwickler*in für die Automatisierung mobiler Arbeitsmaschinen (m/w/d) (w/m/div.)",
+            "company": "Bosch",
+            "location": "Elchingen, BY, de",
+            "description": "Als Softwareentwickler (w/m/div.) für die Automatisierung mobiler Arbeitsmaschinen gestalten Sie maßgeblich unsere Offroad Robotics Controller (OCR) Plattform, indem Sie modernste Signal- und Bildverarbeitungstechnologien integrieren. Sie entwickeln komplexe, hochwertige Embedded-Software in C, die ",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134254569",
+            "published": "2026-06-25T12:27:49.416Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134229319",
+            "title": "Praktikum im Bereich Electronic Services",
+            "company": "Bosch",
+            "location": "Karlsruhe, BW, de",
+            "description": "Du stehst am Anfang deiner Karriere und willst dein theoretisches Wissen direkt in die Praxis umsetzen, um die Zukunft des Automotive Aftermarkets mitzugestalten? Dann tauche ein in die Welt der elektronischen Fahrzeugkomponenten und werde Teil eines erfahrenen Teams, das die Ersatzteilversorgung fü",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134229319",
+            "published": "2026-06-25T10:24:01.264Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134205644",
+            "title": "Werkstudent im Bereich Digitale Bildung (w/m/div.)",
+            "company": "Bosch",
+            "location": "Plochingen, BW, de",
+            "description": "Während deiner Werkstudententätigkeit bist du für die Entwicklung webbasierter Trainings für den Product Engineering Process (PEP) verantwortlich. Du bereitest die Trainingsmaterialien vor und bearbeitest die Trainingsvideos. Darüber hinaus hilfst du mit, die Lesbarkeit der Inhalte in PEP Confluence",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134205644",
+            "published": "2026-06-25T08:48:26.528Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000133981459",
+            "title": "Thin Film Expert – MEMS Process & Deposition Technologies (f/m/div.)",
+            "company": "Bosch",
+            "location": "Dresden, SN, de",
+            "description": "Become part of our team and actively contribute to the continued expansion of our fully automated 300 mm semiconductor manufacturing line in Dresden. As a MEMS Process Development Engineer, you will be responsible for the pre-development of innovative thin film single processes and process modules f",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000133981459",
+            "published": "2026-06-24T15:20:06.856Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Promotion'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000132835629",
+            "title": "Dünnschicht-Experte – MEMS-Prozess- und Abscheidungstechnologien (w/m/d) (w/m/div.)",
+            "company": "Bosch",
+            "location": "Dresden, SN, de",
+            "description": "Werden Sie Teil unseres Teams und tragen Sie aktiv zum weiteren Ausbau unserer vollautomatisierten 300‑mm-Halbleiterfertigungslinie in Dresden bei. Als MEMS Process Development Engineer sind Sie für die Vorentwicklung innovativer Dünnschicht‑Einzelprozesse und Prozessmodule für hochmoderne zukünftig",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000132835629",
+            "published": "2026-06-18T10:48:35.386Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000132110189",
+            "title": "Praktikum in der Produktplanung",
+            "company": "Bosch",
+            "location": "Kusterdingen, BW, de",
+            "description": "Du suchst eine Herausforderung in einem innovativen High-Tech-Bereich, in dem deine Fähigkeiten gefragt sind und du entscheidende Beiträge leisten kannst? Dann erwartet dich bei uns eine Position mit vielfältigen Gestaltungsmöglichkeiten im Herzen unserer Produktentwicklung. Werde&#xa0;Teil des Team",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000132110189",
+            "published": "2026-06-15T04:14:39.411Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000131875120",
+            "title": "Pflichtpraktikum im Bereich Marketing und Social Media",
+            "company": "Bosch",
+            "location": "Leonberg, BW, de",
+            "description": "Du interessierst dich für Marketing und Social Media im Automobilumfeld? Arbeitest du gerne aktiv in einem dynamischen Team? Hast du Spaß an der Contentplanung und -umsetzung für verschiedene Kanäle? Interessierst du dich sogar für Autos oder möchtest du in diesem Bereich Neues lernen? Willkommen be",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000131875120",
+            "published": "2026-06-12T11:17:33.419Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000131652434",
+            "title": "Praktikum Automotive Quality (Qualität im Einkauf)",
+            "company": "Bosch",
+            "location": "Ansbach, BAYERN, de",
+            "description": "In unserem Werk in Ansbach fertigen wir elektronische Steuergeräte für die Automobilindustrie und begeistern unsere Kunden - internationale Automobilkonzerne - mit zukunftsorientierten Produkten. Ausschlaggebend für unseren Erfolg ist die hohe Qualität unserer Steuergeräte Damit diese gewährleistet ",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000131652434",
+            "published": "2026-06-11T11:44:04.536Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000131144039",
+            "title": "Pflichtpraktikum im Bereich Automotive Einkauf - Supply Chain Risk Management",
+            "company": "Bosch",
+            "location": "Stuttgart, BW, de",
+            "description": "Während deines Praktikums wirkst du als Teil unseres interdisziplinären Teams bei der Beratung des Einkaufsbereichs Bosch Automotive bei der Risikoprävention und Krisensituationen (Supply Chain Risk Management) mit. In der Weiterentwicklung eines Risk Management IT-Systems zur Erfassung, Bewertung u",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000131144039",
+            "published": "2026-06-09T13:13:00.635Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000130709689",
+            "title": "Support Process & Maintenance Engineer Wafertest (w/m/div)",
+            "company": "Bosch",
+            "location": "Dresden, SN, de",
+            "description": "Als Support Process & Maintenance Engineer Wafertest (w/m/div) unterstützen Sie das Team aktiv dabei, die reibungslose Produktionsverfügbarkeit und Anlagenstabilität im Wafertestbereich sicherzustellen. Bei der Durchführung von geplanten und ungeplanten Wartungsaufgaben und einfachen, klar definiert",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000130709689",
+            "published": "2026-06-08T06:18:05.256Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000130708602",
+            "title": "Support Process & Maintenance Engineer Pre-Assembly (w/m/div)",
+            "company": "Bosch",
+            "location": "Dresden, SN, de",
+            "description": "Als Support Process & Maintenance Engineer (w/m/div) unterstützen Sie das Team aktiv dabei, die reibungslose Produktionsverfügbarkeit und Anlagenstabilität im Pre-Assembly Bereich der Halbleiterfertigung sicherzustellen. Ihr Bereich umfasst alle Anlagen und Prozessschritte des Pre-Assembly (Thinning",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000130708602",
+            "published": "2026-06-08T06:09:06.855Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000129122594",
+            "title": "Process & Maintenance Engineer Wafertest (w/m/div)",
+            "company": "Bosch",
+            "location": "Dresden, SN, de",
+            "description": "Als Process & Maintenance Engineer Wafertest sind Sie für die Sicherstellung einer hohen Maschinenverfügbarkeit (Uptime) und Anlagenstabilität sowie die fachgerechte und qualitative Durchführung von Wartungsmaßnahmen verantwortlich. Geplante und ungeplante Wartungen unter Einhaltung sicherheitsrelev",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000129122594",
+            "published": "2026-05-29T08:48:21.313Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000128959239",
+            "title": "Pflichtpraktikum Projektmanagement im Technischen Einkauf",
+            "company": "Bosch",
+            "location": "Schwieberdingen, BW, de",
+            "description": "Während deines Praktikums gestaltest du aktiv Projekte im Bereich Hochdruckeinspritzventile, Hochdruckpumpen, Common-Rail-Systeme und dem neuen Future-Core Business Wasserstoffmotor mit und übernimmst dabei Verantwortung. Auf Basis systematischer und technischer Analysen unserer Zukaufteile erarbeit",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000128959239",
+            "published": "2026-05-28T13:09:22.069Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000128896656",
+            "title": "PreMaster Programm Ingenieur für Fault Detection and Classification Management in der Halbleiterfertigung Schwerpunkt Elektromobilität (w/m/div.)",
+            "company": "Bosch",
+            "location": "Reutlingen, BW, de",
+            "description": "Als PreMaster Student:in unterstützt du unser erfahrenes Team bei der Entwicklung von Anlagen- bzw. Prozessstrategien. Du analysierst Anlagen- sowie Prozessparameter, erstellst auf Basis von Daten Regelungsstrategien und entwickelst Modelle zur Vorhersage und Klassifizierung von Prozessabweichungen.",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000128896656",
+            "published": "2026-05-28T08:55:59.017Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000128690084",
+            "title": "Senior Application Manager, Site Reliability Engineer (w/m/div.)",
+            "company": "Bosch",
+            "location": "Dresden, SN, de",
+            "description": "Sie übernehmen&#xa0;die Verantwortung für die Inbetriebnahme und den Betrieb sowie die Weiterentwicklung einer Applikationslandschaft für die Halbleiterfabrik der Zukunft. Betriebsprozesse&#xa0;und Deployment-Strategien werden von Ihnen eigenverantwortlich nach modernen Prinzipien wie DevOps und SRE",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000128690084",
+            "published": "2026-05-27T10:28:37.377Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000141189289",
+            "title": "Praktikum im Bereich Human Resources ",
+            "company": "Bosch",
+            "location": "Wetzlar, HE, de",
+            "description": "&#xa0; Erster Ansprechpartner für Mitarbeiter und Führungskräfte in Fragen rund um operative HR-Themen (z.B. Elternzeit, Vertragsfragen). Recruiting-Profi in spe: Du hilfst uns bei der Erstellung und Veröffentlichung von Stellenanzeigen, planst und führst Vorstellungsgespräche durch. Datenanalyse: D",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000141189289",
+            "published": "2026-08-03T07:18:14.678Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135739542",
+            "title": "PreMaster Programm in Digitalisierung und Prozessmanagement im Einkauf (w/m/div.)",
+            "company": "Bosch",
+            "location": "Reutlingen, BW, de",
+            "description": "Als PreMaster analysierst und optimierst du End-to-End-Einkaufsprozesse und entwickelst gemeinsam mit den Fachbereichen innovative Digitalisierungs- und Automatisierungslösungen. Du identifizierst Potenziale für den Einsatz von AI, Data Analytics und digitalen Tools zur Steigerung von Effizienz, Tra",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135739542",
+            "published": "2026-07-03T13:55:13.444Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134737699",
+            "title": "Pflichtpraktikum Innovation, Industrie 4.0 und IT-Logistik",
+            "company": "Bosch",
+            "location": "Homburg, SL, de",
+            "description": "Du brennst dafür, die Zukunft der Logistik mitzugestalten und innovative KI-Lösungen von der Idee bis zum Proof-of-Concept zu entwickeln? Dann tauche ein in die Welt der Generativen AI und erlebe, wie deine Konzepte reale Geschäftsprozesse revolutionieren. Während deines Praktikums evaluierst du mod",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134737699",
+            "published": "2026-06-29T09:19:13.137Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134214328",
+            "title": "Project Leader Innovation and New Technologies at Bosch Management Consulting (f/m/div.)",
+            "company": "Bosch",
+            "location": "Gerlingen, BW, de",
+            "description": "Ready to architect and build the business around tomorrow's technology for a global leader? At Bosch Management Consulting (BMC), we are strategic architects and partners of choice in business building. Our INS (Business & Digital Strategy) department specializes in shaping the viable, scalable busi",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134214328",
+            "published": "2026-06-25T09:15:57.030Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000132827019",
+            "title": "Praktikum New Business und Prozessmanagement",
+            "company": "Bosch",
+            "location": "Murrhardt, BW, de",
+            "description": "Du suchst ein Praktikum, das dir nicht nur Einblicke, sondern echte Gestaltungsmöglichkeiten bietet? Hier tauchst du tief in die Welt des New Business Developments und Prozessmanagements ein, begleitest Projekte von der ersten Idee bis zur erfolgreichen Umsetzung und trägst aktiv zum Unternehmenserf",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000132827019",
+            "published": "2026-06-18T10:03:59.654Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000132564529",
+            "title": "Werkstudent im Bereich Business Intelligence & Data Analytics (w/m/div.)",
+            "company": "Bosch",
+            "location": "Hildesheim, NDS, de",
+            "description": "Gemeinsam mit uns entwickelst du unsere BI- und Analytics-Lösungen zukunftsweisend weiter, automatisierst bestehende Prozesse mit modernen Tools wie der Power Platform oder KNIME und bringst aktiv deine eigenen Optimierungsvorschläge ein. Du integrierst innovative KI-Technologien in unsere Anwendung",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000132564529",
+            "published": "2026-06-17T06:27:42.066Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "skills: Power BI, Git",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000127888889",
+            "title": "Working Student in Digitization, IT and Office Support (f/m/div.)",
+            "company": "Bosch",
+            "location": "Reutlingen, BW, de",
+            "description": "As our new team member, you will support us in Partner Management department to drive Quality, Cost, and Delivery (QGD) in our international semiconductor production network together with our partner divisions. You will be responsible for the design and implementation of solutions to improve collabo",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000127888889",
+            "published": "2026-05-22T12:57:56.397Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134982085",
+            "title": "Master Thesis Ambient Sensing for Digital Health Biomarkers",
+            "company": "Bosch",
+            "location": "Renningen, BW, de",
+            "description": "Passive-ambient smart home sensors offer a unique, privacy-preserving opportunity to continuously monitor health and functional independence in senior living. By analyzing subtle patterns in daily life (e.g., appliance use, room transitions, door movements), we can derive digital biomarkers to act a",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134982085",
+            "published": "2026-06-30T10:34:32.247Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134174990",
+            "title": "PhD - Scalable and Efficient Reinforcement Learning Methods for Physical AI (f/m/div.)",
+            "company": "Bosch",
+            "location": "Renningen, BW, de",
+            "description": "At Bosch Research, we are pioneering the next generation of Physical AI-intelligent systems that can perceive, reason, and act robustly in the real world. From automated driving to robotics, our goal is to develop AI technologies that are not only highly capable but also safe, efficient, and scalabl",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134174990",
+            "published": "2026-06-25T05:56:23.191Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "skills: Data analysis; keyword bonus: 1; +1 core-strength terms",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000133600410",
+            "title": "Master Thesis Automated Sensor Recalibration & Failure Classification for Intelligent Sensor Networks",
+            "company": "Bosch",
+            "location": "Renningen, BW, de",
+            "description": "This project focuses on optimizing the reliability of industrial machinery through advanced sensor monitoring and automated calibration. During your thesis, you will investigate two main types of sensor failures: physical hardware anomalies and software-related drifts. By combining hands-on test ben",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000133600410",
+            "published": "2026-06-23T13:14:49.994Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000133011874",
+            "title": "Pflichtpraktikum im Bereich Datenanalyse und Generative KI (w/m/div.)",
+            "company": "Bosch",
+            "location": "Schwieberdingen, BW, de",
+            "description": "Während Ihres Praktikums wirken Sie an der Konzeption, Entwicklung und Erprobung einer Generative-AI-Anwendung mit. Sie arbeiten eng mit Fach- und KI-Expert:innen, IT-Fachkräften sowie unserem internationalen Team zusammen, um Anforderungen zu verstehen, Herausforderungen zu adressieren und die Umse",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000133011874",
+            "published": "2026-06-19T08:07:01.690Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000132885479",
+            "title": "Praktikum im Prozessmanagement",
+            "company": "Bosch",
+            "location": "Ulm, BW, de",
+            "description": "Du möchtest aktiv an Projekten rund um Daten, Prozesse und moderne Technologien mitwirken und Veränderungen voranbringen? Dann gewinnst du wertvolle Einblicke und bringst deine Ideen direkt ein. Bewirb dich jetzt! Du arbeitest im Projekt „Product Data Flow @ DC“ mit und bringst dich aktiv in die The",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000132885479",
+            "published": "2026-06-18T14:36:49.773Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000128713958",
+            "title": "Master Thesis Graph-Based Question Answering and Retrieval-Augmented Generation Systems",
+            "company": "Bosch",
+            "location": "Reutlingen, BW, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000128713958",
+            "published": "2026-05-27T12:41:13.279Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134444186",
+            "title": "Praktikum in der Fertigungsplanung - Montage, Hydraulische Prüfung, Lackieren",
+            "company": "Bosch",
+            "location": "Elchingen, BY, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134444186",
+            "published": "2026-06-26T10:41:29.429Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000127173920",
+            "title": "Werkstudent Automatisierung der Kapazitätsplanung im Fertigungsbereich (w/m/div.)",
+            "company": "Bosch",
+            "location": "Reutlingen, BW, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000127173920",
+            "published": "2026-05-19T10:18:35.287Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000134175220",
+            "title": "PhD – Skalierbare und effiziente Reinforcement-Learning-Methoden für Physical AI (f/m/div.) (w/m/div.)",
+            "company": "Bosch",
+            "location": "Renningen, BW, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134175220",
+            "published": "2026-06-25T05:56:41.535Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135728539",
+            "title": " Werkstudent Unterstützung Product Management und Projektleitung (w/m/div.) ",
+            "company": "Bosch",
+            "location": "Lollar, HE, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135728539",
+            "published": "2026-07-03T12:54:37.406Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135445449",
+            "title": "Werkstudent After Sales Service Deutschland (w/m/div.) ",
+            "company": "Bosch",
+            "location": "Wernau (Neckar), BW, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135445449",
+            "published": "2026-07-02T08:44:08.561Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135418960",
+            "title": "Praktikum im Bereich Sales & Market Intelligence ",
+            "company": "Bosch",
+            "location": "Ulm, BW, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135418960",
+            "published": "2026-07-02T06:47:20.267Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135478899",
+            "title": "Werkstudent im Marketing Brand- und Projektmanagement (w/m/div.)",
+            "company": "Bosch",
+            "location": "Wernau (Neckar), BW, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135478899",
+            "published": "2026-07-02T11:34:42.394Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 13,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135018834",
+            "title": "Praktikum in der Entwicklung eines Simulations-Tools zur Optimierung der Dynamik und Akustik in Hydrostaten                     ",
+            "company": "Bosch",
+            "location": "Horb am Neckar, BW, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135018834",
+            "published": "2026-06-30T13:32:39.509Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000133529000",
+            "title": "Masterarbeit: Adaptive multimodale Sensorfusion mit 5G/6G ISAC (w/m/div.)",
+            "company": "Bosch",
+            "location": "Erlangen, BY, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000133529000",
+            "published": "2026-06-23T08:01:33.552Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000133528162",
+            "title": "Master’s Thesis Adaptive Multi-Modal Sensor Fusion with 5G/6G ISAC",
+            "company": "Bosch",
+            "location": "Erlangen, BY, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000133528162",
+            "published": "2026-06-23T08:01:11.615Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8614636002",
+            "title": "Applied Scientist / Machine Learning Engineer",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8614636002",
+            "published": "2026-06-30T17:48:01-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8568694002",
+            "title": "Machine Learning Engineer, App SW",
+            "company": "Wayve",
+            "location": "Detroit",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8568694002",
+            "published": "2026-05-28T10:51:17-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8571171002",
+            "title": "Machine Learning Engineering Manager, App SW",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8571171002",
+            "published": "2026-05-29T12:04:34-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8545468002",
+            "title": "NPI Engineer",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8545468002",
+            "published": "2026-06-05T20:21:03-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8542420002",
+            "title": "Product Manager - AI Driver",
+            "company": "Wayve",
+            "location": "Japan; Tokyo",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8542420002",
+            "published": "2026-05-14T11:23:01-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8568841002",
+            "title": "Product Manager, Driving Features",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8568841002",
+            "published": "2026-06-05T20:12:38-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8614457002",
+            "title": "Staff Machine Learning Engineer, Vision Models",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8614457002",
+            "published": "2026-06-30T17:48:16-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8564970002",
+            "title": "System & Data Scientist",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8564970002",
+            "published": "2026-05-28T18:11:21-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8325451002",
+            "title": "Technical Product Manager - Robotaxi",
+            "company": "Wayve",
+            "location": "Sunnyvale",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8325451002",
+            "published": "2026-06-05T21:26:44-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Promotion'",
+          "category": "prefilter",
+          "job": {
+            "id": "sf_bmwag_184120",
+            "title": "PhD Developing customer experience through innovative seating concepts for future interiors (f/m/x)",
+            "company": "BMW Group",
+            "location": "Germany",
+            "description": "THE FUTURE IS WHAT WE CREATE WHEN WE TAKE OUR VISIONS TO THE LIMITS. PHD AT THE BMW GROUP. Bridging the gap between your doctoral studies and the kind of career challenge you’re looking for isn’t always easy. That’s why our ProMotion PhD programme gives you the opportunity to apply your passion and ",
+            "url": "https://career5.successfactors.eu/career?company=bmwag&career_job_req_id=184120&career_ns=job_listing",
+            "published": "",
+            "source": "BMW Group (Direct)"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Automotive Engineer'; skills: Python, Data analysis; keyword bonus: 2; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_analytics-engineer-berlin-301155",
+            "title": "Analytics Engineer",
+            "company": "Almedia",
+            "location": "Berlin",
+            "description": "This isn’t your regular job. Almedia is a place where those who want to push harder can accelerate their careers faster than anywhere else. We’re aiming to become Germany’s second bootstrapped unicorn. Almedia is already Europe’s #3 fastest-growing company in 2025 (FT1000). We are building the futur",
+            "url": "https://www.arbeitnow.com/jobs/companies/almedia/analytics-engineer-berlin-301155",
+            "published": "2026-08-03T05:40:56+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Data Scientist'; skills: Python, Machine Learning; keyword bonus: 2; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "smartr_BoschGroup_744000133011799",
+            "title": "Mandatory Internship in the Area of Data Analytics and Generative AI",
+            "company": "Bosch",
+            "location": "Schwieberdingen, BW, de",
+            "description": "During your internship, you will take part in the design, development and testing of a Generative AI application. You will collaborate closely with domain and AI experts, IT professionals and our international team to understand requirements, address challenges and drive the implementation of new Ge",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000133011799",
+            "published": "2026-06-19T08:06:34.812Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448154058",
+            "title": "Produktmanager (m/w/d) Energievermarktung",
+            "company": "encw",
+            "location": "Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448154058",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4437275929",
+            "title": "Produktmanager:in",
+            "company": "kempers Recruiting & Consulting GmbH",
+            "location": "Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4437275929",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; skills: SolidWorks, CATIA (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_working-student-manufacturing-engineer-all-genders-gauting-59018",
+            "title": "Working Student Manufacturing Engineer (all genders)",
+            "company": "væridion",
+            "location": "Manufacturing & Testing Facility",
+            "description": "Your Mission: Be part of aviation history at VÆRIDION, where we’re pioneering the world’s first electric nine-seater aircraft! As a Working Student Manufacturing Engineer (all genders) you will support the development, assembly, and industrialization of next‑generation battery modules for the VÆRIDI",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/working-student-manufacturing-engineer-all-genders-gauting-59018",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_legal-product-counsel-relocation-to-milan-luxembourg-berlin-359578",
+            "title": "Legal Product Counsel (Relocation to Milan/Luxembourg)",
+            "company": "Satispay",
+            "location": "Germany,  Berlin",
+            "description": "Please note that this opportunity requires relocation to our Milan or Luxembourg office. About us Satispay began by rethinking the simple act of a payment to remove the friction from our daily routines. But we didn't stop there. Today, we are building a complete financial platform designed to empowe",
+            "url": "https://www.arbeitnow.com/jobs/companies/satispay/legal-product-counsel-relocation-to-milan-luxembourg-berlin-359578",
+            "published": "2026-08-03T05:40:09+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445880625",
+            "title": "Software Engineer – AI Workflows (m/f/d)",
+            "company": "EnOcean",
+            "location": "Munich, Bavaria, Germany",
+            "description": "The Company At EnOcean, we are passionate about driving innovation and creating IoT solutions that positively impact our world. We have pioneered batteryless, energy-harvesting wireless sensors and built platforms that enable efficient sensing, tracking, and data-driven solutions across industries s",
+            "url": "https://www.linkedin.com/jobs/view/4445880625",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447699405",
+            "title": "Field-Programmable Gate Arrays Engineer",
+            "company": "agap2 Germany",
+            "location": "Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447699405",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4398554137",
+            "title": "Application & Business Development Manager Automotive EMEA",
+            "company": "Trinseo",
+            "location": "Eschborn, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4398554137",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448136492",
+            "title": "AI Research Scientist (Remote)",
+            "company": "Hired",
+            "location": "Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448136492",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447695688",
+            "title": "Forward Deployed AI Engineer (m/w/d)",
+            "company": "One Thousand",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447695688",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445867534",
+            "title": "Applied AI Engineer - Remote",
+            "company": "dexter health",
+            "location": "Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445867534",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447902050",
+            "title": "AI-Engineer Agentic Development and Enablement",
+            "company": "ALTEN Germany",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447902050",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448147203",
+            "title": "Structural Integration Engineer (m/w/d) - Defense Aviation",
+            "company": "Progressive",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448147203",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448128630",
+            "title": "Hardware Engineer (m/w/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Lübeck, Schleswig-Holstein, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448128630",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447676976",
+            "title": "Software Engineer - Angular/.net (m/w/d)",
+            "company": "CHEFS CULINAR",
+            "location": "Weeze, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447676976",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448137371",
+            "title": "Product Owner LOCTITE Pulse App (d/f/m)",
+            "company": "Henkel",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448137371",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448124688",
+            "title": "Product Owner (m/w/d) Softwareprodukt",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Ahrensburg, Schleswig-Holstein, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448124688",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Business Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445884404",
+            "title": "Business Intelligence Consultant (m/f/x)",
+            "company": "Salesfive",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445884404",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445875597",
+            "title": "Technical Support Engineer | Robotic Kitchens (all genders welcome)",
+            "company": "goodBytz",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445875597",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445864690",
+            "title": "Application Engineer | Robotic Kitchens (all genders welcome)",
+            "company": "goodBytz",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445864690",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448164066",
+            "title": "Software Engineer (w/m/d)",
+            "company": "Kraken",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448164066",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4433198031",
+            "title": "(Junior) Manager Clinical Quality Assurance",
+            "company": "VERTANICAL",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4433198031",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 25,
+          "reason": "title fits 'Datenanalyse' (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "smartr_BoschGroup_744000128917609",
+            "title": "Abschlussarbeit in Supply-Chain-Datenanalyse zur Sicherheitsrisikoerkennung",
+            "company": "Bosch",
+            "location": "Stuttgart, BW, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000128917609",
+            "published": "2026-05-28T10:13:03.352Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 25,
+          "reason": "title fits 'Simulation Engineer'; skills: Git (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "smartr_BoschGroup_744000129951709",
+            "title": "Internship Digital Twin and Task Simulation for a Humanoid Robot",
+            "company": "Bosch",
+            "location": "Hildesheim, NDS, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000129951709",
+            "published": "2026-06-03T09:25:16.606Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445868449",
+            "title": "Junior Consultant PropTech & Construction Monitoring",
+            "company": "PROBIS",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445868449",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4425079256",
+            "title": "Technical (Junior) Consultant | CRM (m/w/d)",
+            "company": "aquilliance GmbH",
+            "location": "Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4425079256",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447689818",
+            "title": "Junior.Techniker für Messtechnik und IT (w/m/d)",
+            "company": "Brunel",
+            "location": "Bonn, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447689818",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4445883236",
+            "title": "Engineering Tools",
+            "company": "RoadInsite",
+            "location": "Sevenig (Our), Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4445883236",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4413522563",
+            "title": "Junior Consultant (m/w/d) - Audit / Wirtschaftsprüfung",
+            "company": "ECOVIS KSO",
+            "location": "Bielefeld, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4413522563",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "skills: Python; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "smartr_BoschGroup_744000132405370",
+            "title": "Mandatory Internship in the Field of Engineering ",
+            "company": "Bosch",
+            "location": "Schwieberdingen, BW, de",
+            "description": "We are looking for a motivated individual to support projects in Assembly and Interconnect Technology (AIT), with a focus on practical material reliability testing. During your internship, you will carry out hands-on metallurgical laboratory work, including preparing cross-sections and conducting op",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000132405370",
+            "published": "2026-06-16T12:37:06.304Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Automotive Engineer' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_pcb-layout-engineer-leiterplattenentwicklerin-all-genders-munich-63583",
+            "title": "PCB Layout Engineer / Leiterplattenentwickler:in (all genders)",
+            "company": "væridion",
+            "location": "Munich HQ",
+            "description": "Your Mission: Join VÆRIDION on our journey to develop the world's first electric nine-seater aircraft. As a PCB Layout Engineer (all genders) in our Technology division, you will own the physical design of the printed circuit boards at the heart of our high-voltage propulsion battery and power-distr",
+            "url": "https://www.arbeitnow.com/jobs/companies/vaeridion/pcb-layout-engineer-leiterplattenentwicklerin-all-genders-munich-63583",
+            "published": "2026-08-03T06:00:19+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Product Manager' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4409696632",
+            "title": "Operations Manager / Technical Account Manager (m/w/d)",
+            "company": "noris network AG",
+            "location": "Greater Nuremberg Metropolitan Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4409696632",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Business Analyst' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4400765159",
+            "title": "Publicis Media - Expert Analytics Business Partner (all genders) - Düsseldorf",
+            "company": "Publicis Media Germany",
+            "location": "Greater Dusseldorf Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4400765159",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "skills: Python, ANSYS, C++; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "smartr_BoschGroup_744000125786394",
+            "title": "Master Thesis AI-Driven Tolerance Sensitivity Analysis of Worm Gears",
+            "company": "Bosch",
+            "location": "Renningen, BW, de",
+            "description": "Are you enthusiastic about the intersection of artificial intelligence and precision engineering? Then take this opportunity, as part of your Master's thesis, to develop a methodology for the tolerance analysis of worm gears. Here, you will actively shape the future of product development and contri",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000125786394",
+            "published": "2026-05-11T09:03:28.776Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "skills: Python, Machine Learning; keyword bonus: 2; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "smartr_BoschGroup_744000132590903",
+            "title": "Mandatory Internship in Automation of Process Development with Agentic AI in Manufacturing",
+            "company": "Bosch",
+            "location": "Renningen, BW, de",
+            "description": "In this internship, you will help to extend a process development toolbox to a wider range of fastening and assembly processes. Our goal is to leverage artificial intelligence to make the toolbox smarter and more efficient. You will test and enhance the toolbox using data from various manufacturing ",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000132590903",
+            "published": "2026-06-17T09:08:51.325Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Data Scientist' (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "smartr_BoschGroup_744000131860325",
+            "title": "Praktikum Data Analytics in der Logistik",
+            "company": "Bosch",
+            "location": "Lohr am Main, BY, de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000131860325",
+            "published": "2026-06-12T10:01:07.613Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Product Manager' (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "smartr_BoschGroup_744000134937490",
+            "title": "Key Account Manager Wärmepumpe - Großraum Dortmund / Kassel / Fulda (w/m/div.)",
+            "company": "Bosch",
+            "location": "Bochum , de",
+            "description": "",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134937490",
+            "published": "2026-06-30T06:51:31.571Z",
+            "source": "Bosch (Direct)"
+          }
+        }
+      ]
     }
   ]
 }
