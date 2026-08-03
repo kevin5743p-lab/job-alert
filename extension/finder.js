@@ -392,3 +392,71 @@ export function prefilter(jobs, sp) {
     return must.some((k) => text.includes(k)) || titles.some((k) => title.includes(k));
   });
 }
+
+// Roughly, is this posting somewhere the candidate could actually work?
+// Several boards in the registry are US-based, so without this the scoring
+// budget is spent entirely on roles that will be capped for distance anyway,
+// and the local ones are never even looked at.
+const REMOTE_RE = /\bremote\b|\bhybrid\b|home ?office|anywhere|work from home/i;
+const FAR_RE = /\b(united states|usa|u\.s\.|canada|india|singapore|australia|japan|china|brazil|mexico|israel)\b|,\s*(ca|ny|tx|wa|ma|il|ga|co|az|nc|va|or|pa|fl|mi|oh|nj|md|mn|ut|tn)\b/i;
+
+// Boards label the same country differently — SmartRecruiters returns "de"
+// where Greenhouse writes "Germany" and Personio "Deutschland". Without these
+// the most relevant local jobs (Bosch's German postings, for instance) are
+// treated as unknown and lose their place in the scoring queue.
+const COUNTRY_ALIASES = [
+  ["germany", "deutschland", "de", "ger", "deu"],
+  ["austria", "österreich", "oesterreich", "at", "aut"],
+  ["switzerland", "schweiz", "suisse", "ch", "che"],
+  ["netherlands", "nederland", "holland", "nl", "nld"],
+  ["france", "frankreich", "fr", "fra"],
+  ["spain", "españa", "espana", "es", "esp"],
+  ["italy", "italia", "it", "ita"],
+  ["poland", "polska", "pl", "pol"],
+  ["united kingdom", "uk", "england", "gb", "gbr", "britain"],
+  ["ireland", "ie", "irl"],
+  ["belgium", "belgië", "belgique", "be", "bel"],
+  ["sweden", "sverige", "se", "swe"],
+  ["denmark", "danmark", "dk", "dnk"],
+];
+
+function expandLocationTerms(text) {
+  const tokens = (text.toLowerCase().match(/[a-zäöüß]{2,}/g) || []);
+  const out = new Set(tokens);
+  for (const group of COUNTRY_ALIASES) {
+    if (group.some((alias) => tokens.includes(alias))) {
+      group.forEach((alias) => out.add(alias));
+    }
+  }
+  return out;
+}
+
+export function locationRank(job, baseLocation) {
+  const loc = `${job.location || ""}`;
+  if (!loc) return 1;                                   // unknown — worth a look
+  if (REMOTE_RE.test(loc)) return 0;                    // remote suits anyone
+  if (!baseLocation) return 1;
+
+  const mine = expandLocationTerms(baseLocation);
+  const here = expandLocationTerms(loc);
+  // Two-letter country codes are only trusted as whole tokens: "de" appears
+  // inside plenty of place names ("Île-de-France") but rarely stands alone
+  // except as a country.
+  for (const term of mine) {
+    if (term.length <= 2) { if (here.has(term)) return 0; }
+    else if (loc.toLowerCase().includes(term)) return 0;
+  }
+
+  return FAR_RE.test(loc) ? 3 : 2;                      // clearly far vs. unclear
+}
+
+/**
+ * Order postings so the scoring budget goes to the ones that could actually
+ * work out: local and remote first, unclear next, other continents last.
+ */
+export function prioritise(jobs, baseLocation) {
+  return jobs
+    .map((j) => ({ j, rank: locationRank(j, baseLocation) }))
+    .sort((a, b) => a.rank - b.rank)
+    .map((x) => x.j);
+}

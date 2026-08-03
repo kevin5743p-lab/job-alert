@@ -9,7 +9,8 @@ import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt,
          buildSearchProfilePrompt, buildBatchScorePrompt, normalize,
          groundingWarnings, DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
 import * as sb from "./supabase.js";
-import { fetchAll, prefilter, validateTargets, pickKnownBoards } from "./finder.js";
+import { fetchAll, prefilter, prioritise, validateTargets, pickKnownBoards }
+  from "./finder.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -178,7 +179,12 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       const { jobs, stats } = await fetchAll(sp, (t) => progress(t));
       progress(`Found ${jobs.length} postings — filtering…`);
 
-      const survivors = prefilter(jobs, sp).slice(0, MAX_SCORED);
+      // Prioritise before capping: several registry boards are US-based, and
+      // without this the budget is spent on roles that get distance-capped
+      // anyway while local ones are never scored at all.
+      const matched = prefilter(jobs, sp);
+      const survivors = prioritise(matched, baseLocation).slice(0, MAX_SCORED);
+      progress(`${matched.length} relevant — scoring the best ${survivors.length}…`);
       if (!survivors.length) {
         progress("No matching postings this time.", true, { added: 0, stats });
         sendResponse({ ok: true, added: 0, fetched: jobs.length, stats });
