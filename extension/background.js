@@ -111,18 +111,14 @@ async function ensureSearchProfile(cv, apiKey, model, force) {
   // Verify the suggested boards before trusting them. The model names real
   // employers but often guesses the wrong ATS, and an unchecked list fails
   // silently — every board 404s and the scan simply finds nothing.
+  // Only the model's own suggestions are stored, and only the ones that
+  // resolved. The verified registry is deliberately NOT saved here: it lives in
+  // code and is merged at scan time, so adding boards benefits every existing
+  // user immediately instead of only those who rebuild their profile.
   const candidates = sp.company_targets || [];
-  const checked = await validateTargets(candidates, (t) => progress(t));
-
-  // Start from the verified registry so a scan is never left with nothing to
-  // poll, and add whichever of the model's suggestions actually resolved.
-  const known = pickKnownBoards(sp);
-  const seen = new Set(known.map((b) => `${b.ats}:${b.id}`));
-  sp.company_targets = known.concat(
-    checked.filter((c) => !seen.has(`${c.ats}:${c.id}`)));
+  sp.company_targets = await validateTargets(candidates, (t) => progress(t));
   sp.validated = true;
-  progress(`${sp.company_targets.length} employer boards to scan ` +
-           `(${known.length} known-good, ${checked.length} of ${candidates.length} suggested).`);
+  progress(`${sp.company_targets.length} of ${candidates.length} suggested boards are live.`);
 
   await sb.saveSearchProfile(sp);
   return sp;
@@ -174,9 +170,16 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       const ap = (prof && prof.application_profile) || {};
       const baseLocation = [ap.city, ap.country].filter(Boolean).join(", ");
 
-      progress(`Scanning ${(sp.company_targets || []).length} employer boards ` +
-               `+ job feeds…`);
-      const { jobs, stats } = await fetchAll(sp, (t) => progress(t));
+      // Merge the code-side registry with the user's validated suggestions here,
+      // so registry updates apply to everyone on their very next scan.
+      const known = pickKnownBoards(sp);
+      const seen = new Set(known.map((b) => `${b.ats}:${b.id}`));
+      const boards = known.concat(
+        (sp.company_targets || []).filter((c) => !seen.has(`${c.ats}:${c.id}`)));
+
+      progress(`Scanning ${boards.length} employer boards + job feeds…`);
+      const { jobs, stats } = await fetchAll({ ...sp, company_targets: boards },
+                                             (t) => progress(t));
       progress(`Found ${jobs.length} postings — filtering…`);
 
       // Prioritise before capping: several registry boards are US-based, and
@@ -195,11 +198,20 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
                                      lang, baseLocation);
       const keep = scored.filter((s) => s.score >= 50);
 
+      // Report the whole funnel. When a scan ends with nothing, this says which
+      // stage swallowed the jobs — sources, keyword filter, or scoring — instead
+      // of leaving "0 jobs" to be guessed at.
+      const best = scored.reduce((m, s) => Math.max(m, s.score), 0);
+      const funnel = `${jobs.length} found → ${matched.length} relevant → ` +
+        `${survivors.length} scored → ${keep.length} kept` +
+        (scored.length && !keep.length ? ` (best score ${best}, needs 50)` : "");
+      progress(funnel);
+
       progress(`Saving ${keep.length} match${keep.length === 1 ? "" : "es"}…`);
       const saved = await sb.upsertFoundJobs(keep);
       await sb.touchLastScan();
 
-      progress(`Done — ${saved} job${saved === 1 ? "" : "s"} in your tracker.`, true,
+      progress(`Done — ${saved} job${saved === 1 ? "" : "s"} added. ${funnel}`, true,
                { added: saved, stats });
       sendResponse({ ok: true, added: saved, fetched: jobs.length,
                      considered: survivors.length, stats });

@@ -403,8 +403,20 @@ function fetchSmartOrPlain(fn, c, queries) {
 // the Python pipeline uses.
 export function prefilter(jobs, sp) {
   const must = (sp.must_have_keywords || []).map((k) => k.toLowerCase());
-  const titles = (sp.target_titles || []).map((k) => k.toLowerCase());
   const exclude = (sp.exclude_keywords || []).map((k) => k.toLowerCase());
+
+  // Target titles are phrases ("Werkstudent Automotive"), but real postings are
+  // titled "Werkstudent Softwareentwicklung (m/w/d)" — testing for the whole
+  // phrase almost never matches. Compare on the individual words instead, minus
+  // the ones too generic to mean anything on their own.
+  const STOP = new Set(["and", "der", "die", "das", "und", "für", "mit", "the",
+                        "job", "jobs", "role", "position", "stelle"]);
+  const titleWords = new Set();
+  for (const t of sp.target_titles || []) {
+    for (const w of (t.toLowerCase().match(/[a-zäöüß]{4,}/g) || [])) {
+      if (!STOP.has(w)) titleWords.add(w);
+    }
+  }
 
   return jobs.filter((j) => {
     const title = (j.title || "").toLowerCase();
@@ -412,8 +424,10 @@ export function prefilter(jobs, sp) {
     // Seniority and experience mismatches are worth rejecting on the title
     // alone; in the body those words often appear in boilerplate.
     if (exclude.some((k) => title.includes(k))) return false;
-    if (!must.length && !titles.length) return true;
-    return must.some((k) => text.includes(k)) || titles.some((k) => title.includes(k));
+    if (!must.length && !titleWords.size) return true;
+    if (must.some((k) => text.includes(k))) return true;
+    for (const w of titleWords) if (title.includes(w)) return true;
+    return false;
   });
 }
 
