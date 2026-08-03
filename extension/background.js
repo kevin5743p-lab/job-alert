@@ -16,7 +16,19 @@ const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
 // One place for the Groq round-trip, so both tailoring and answer-drafting get
 // the same error handling (quota vs. rate limit vs. transport).
-async function groqJson(prompt, apiKey, model, maxTokens) {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Groq reports how long to wait, either in the retry-after header or in the
+// message body ("try again in 12.5s"). Capped so a scan can't stall for minutes.
+function retryAfterMs(resp, body) {
+  const header = parseFloat(resp.headers.get("retry-after") || "");
+  if (!Number.isNaN(header) && header > 0) return Math.min(45000, header * 1000);
+  const m = /try again in ([\d.]+)\s*s/i.exec(body || "");
+  if (m) return Math.min(45000, parseFloat(m[1]) * 1000 + 500);
+  return 8000;
+}
+
+async function groqJson(prompt, apiKey, model, maxTokens, retries = 2) {
   // Groq rejects response_format:json_object unless the prompt itself contains
   // the word "json". A prompt that only shows the shape it wants gets a 400,
   // which is how batch scoring silently failed for every scan.
@@ -41,10 +53,18 @@ async function groqJson(prompt, apiKey, model, maxTokens) {
 
   if (resp.status === 429) {
     const body = await resp.text();
-    const daily = /tokens per day|tpd/i.test(body);
-    throw new Error(daily
-      ? "Groq daily quota reached — try again tomorrow."
-      : "Groq rate limit — wait a moment and retry.");
+    if (/tokens per day|tpd/i.test(body)) {
+      throw new Error("Groq daily quota reached — try again tomorrow.");
+    }
+    // Per-minute limit. Groq says how long to wait, so wait rather than giving
+    // up: a scan that stops after one batch is worse than one that takes a
+    // minute longer.
+    if (retries > 0) {
+      const wait = retryAfterMs(resp, body);
+      await sleep(wait);
+      return groqJson(prompt, apiKey, model, maxTokens, retries - 1);
+    }
+    throw new Error("Groq rate limit — wait a minute and retry.");
   }
   if (!resp.ok) {
     const body = await resp.text();
@@ -88,7 +108,12 @@ async function loadKeyAndCv() {
 // pushed to the dashboard as it goes, because a scan takes a while and silence
 // looks like a hang.
 const SCORE_BATCH = 8;        // postings per Groq call
-const MAX_SCORED = 80;        // ceiling per scan, to protect a free-tier key
+// The free tier's real ceiling is tokens per minute, so a scan is paced rather
+// than fired as fast as it can go. 48 jobs at 6 per minute is about a minute of
+// scoring — enough to surface the best matches without stalling the UI. The
+// prefilter has already put the most relevant, most local postings first.
+const MAX_SCORED = 48;
+const SCORE_PACE_MS = 9000;
 // Scoring is bulk work — a scan puts thousands of words through it — so it uses
 // the small fast model regardless of what the user picked for tailoring. The
 // large model's free-tier daily token budget is spent in a single scan
@@ -148,6 +173,10 @@ async function scoreJobs(jobs, cv, field, apiKey, model, language, baseLocation)
   let n = 0;
   for (const batch of batches) {
     n++;
+    // Pace the calls. The free tier's ceiling is tokens-per-minute, not just
+    // requests, and firing batches back to back trips it after the first one —
+    // which is exactly what happened: 8 of 80 scored, then a rate limit.
+    if (n > 1) await sleep(SCORE_PACE_MS);
     progress(`Scoring matches… (${Math.min(n * SCORE_BATCH, jobs.length)}/${jobs.length})`);
     let raw;
     try {
