@@ -213,7 +213,7 @@ For each posting give a score from 0 to 100 and one short, specific reason.
 - The reason must cite something concrete from the CV or the posting, in one
   sentence, written in ${LANG_NAME[language] || "English"}.
 
-Return only:
+Respond with ONLY a JSON object in exactly this form:
 {"scores": [{"i": 0, "score": 82, "reason": "…"}, …]}`;
 }
 

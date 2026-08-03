@@ -17,6 +17,13 @@ const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 // One place for the Groq round-trip, so both tailoring and answer-drafting get
 // the same error handling (quota vs. rate limit vs. transport).
 async function groqJson(prompt, apiKey, model, maxTokens) {
+  // Groq rejects response_format:json_object unless the prompt itself contains
+  // the word "json". A prompt that only shows the shape it wants gets a 400,
+  // which is how batch scoring silently failed for every scan.
+  if (!/json/i.test(prompt)) {
+    throw new Error("Prompt must mention JSON when requesting a JSON response.");
+  }
+
   const resp = await fetch(GROQ_URL, {
     method: "POST",
     headers: {
