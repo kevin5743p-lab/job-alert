@@ -238,6 +238,17 @@ const KNOWN_BOARDS = [
   { name: "Verkor", ats: "lever", id: "verkor", tags: "automotive battery energy manufacturing" },
   { name: "Blickfeld", ats: "personio", id: "blickfeld", tags: "automotive lidar sensors hardware" },
   { name: "Bosch", ats: "smartrecruiters", id: "BoschGroup", tags: "automotive engineering embedded industrial" },
+  { name: "Continental", ats: "smartrecruiters", id: "ContinentalAG", tags: "automotive engineering" },
+  // German engineering, robotics and hardware — where a Germany-based engineer
+  // is most likely to find something they can actually take.
+  { name: "NavVis", ats: "greenhouse", id: "navvis", tags: "engineering sensors lidar mapping software automotive" },
+  { name: "Helsing", ats: "greenhouse", id: "helsing", tags: "engineering ml software defence" },
+  { name: "Isar Aerospace", ats: "greenhouse", id: "isaraerospace", tags: "aerospace engineering manufacturing simulation" },
+  { name: "ProGlove", ats: "personio", id: "proglove", tags: "hardware engineering industrial iot embedded" },
+  { name: "Magazino", ats: "personio", id: "magazino", tags: "robotics engineering automation logistics" },
+  { name: "Wandelbots", ats: "personio", id: "wandelbots", tags: "robotics engineering automation software" },
+  { name: "CELUS", ats: "personio", id: "celus", tags: "electronics hardware engineering embedded" },
+  { name: "Semron", ats: "personio", id: "semron", tags: "semiconductor hardware engineering ml" },
   // energy / industrial / deep tech
   { name: "1KOMMA5°", ats: "personio", id: "1komma5grad", tags: "energy solar engineering" },
   // software / data / ml
@@ -246,14 +257,27 @@ const KNOWN_BOARDS = [
   { name: "Cloudflare", ats: "greenhouse", id: "cloudflare", tags: "software engineering infrastructure" },
   { name: "Celonis", ats: "greenhouse", id: "celonis", tags: "software data process mining" },
   { name: "Ashby", ats: "ashby", id: "ashby", tags: "software engineering" },
+  { name: "Contentful", ats: "greenhouse", id: "contentful", tags: "software engineering" },
+  { name: "Staffbase", ats: "greenhouse", id: "staffbase", tags: "software engineering" },
+  { name: "GetYourGuide", ats: "greenhouse", id: "getyourguide", tags: "software data engineering" },
+  { name: "HelloFresh", ats: "greenhouse", id: "hellofresh", tags: "software data operations supply" },
+  { name: "Alasco", ats: "personio", id: "alasco", tags: "software construction finance" },
+  { name: "Everphone", ats: "personio", id: "everphone", tags: "software operations" },
+  { name: "Grover", ats: "greenhouse", id: "grover", tags: "software operations" },
   // fintech
   { name: "Stripe", ats: "greenhouse", id: "stripe", tags: "fintech software finance payments" },
   { name: "Ramp", ats: "ashby", id: "Ramp", tags: "fintech software finance" },
   { name: "N26", ats: "greenhouse", id: "n26", tags: "fintech finance banking" },
   { name: "SumUp", ats: "greenhouse", id: "sumup", tags: "fintech finance payments" },
   { name: "Trade Republic", ats: "greenhouse", id: "traderepublic", tags: "fintech finance trading" },
+  { name: "Solaris", ats: "greenhouse", id: "solarisbank", tags: "fintech finance banking" },
+  { name: "Raisin", ats: "greenhouse", id: "raisin", tags: "fintech finance banking savings" },
+  { name: "Bitpanda", ats: "greenhouse", id: "bitpanda", tags: "fintech finance trading crypto" },
   // health
   { name: "Doctolib", ats: "greenhouse", id: "doctolib", tags: "health healthcare software" },
+  { name: "Doctorly", ats: "personio", id: "doctorly", tags: "health healthcare software" },
+  { name: "Climedo", ats: "personio", id: "climedo", tags: "health healthcare clinical data" },
+  { name: "Temedica", ats: "personio", id: "temedica", tags: "health healthcare data" },
 ];
 
 // Boards whose tags overlap what this candidate is looking for. Falls back to
