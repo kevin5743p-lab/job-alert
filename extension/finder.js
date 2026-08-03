@@ -339,18 +339,11 @@ const ATS = {
 //
 // `tags` decide which boards are worth polling for a given candidate; they are
 // matched against their field and keywords.
+// Germany only. Boards headquartered elsewhere were dropped even where they
+// post the odd German role: they made scans slow (a single US board can return
+// 800 postings) and crowded the scoring budget with jobs nobody here can take.
 const KNOWN_BOARDS = [
   // automotive / autonomous driving / mobility
-  { name: "Wayve", ats: "greenhouse", id: "wayve", tags: "automotive autonomous av perception ml" },
-  { name: "Waymo", ats: "greenhouse", id: "waymo", tags: "automotive autonomous av perception ml" },
-  { name: "Nuro", ats: "greenhouse", id: "nuro", tags: "automotive autonomous av robotics" },
-  { name: "Motional", ats: "greenhouse", id: "motional", tags: "automotive autonomous av" },
-  { name: "Torc Robotics", ats: "greenhouse", id: "torcrobotics", tags: "automotive autonomous av trucking" },
-  { name: "May Mobility", ats: "greenhouse", id: "maymobility", tags: "automotive autonomous av" },
-  { name: "Helm.ai", ats: "ashby", id: "helm-ai", tags: "automotive autonomous av ml perception" },
-  { name: "Lucid Motors", ats: "greenhouse", id: "lucidmotors", tags: "automotive ev vehicle" },
-  { name: "Scout Motors", ats: "greenhouse", id: "scoutmotors", tags: "automotive ev vehicle" },
-  { name: "Verkor", ats: "lever", id: "verkor", tags: "automotive battery energy manufacturing" },
   { name: "Blickfeld", ats: "personio", id: "blickfeld", tags: "automotive lidar sensors hardware" },
   { name: "Bosch", ats: "smartrecruiters", id: "BoschGroup", tags: "automotive engineering embedded industrial" },
   { name: "Continental", ats: "smartrecruiters", id: "ContinentalAG", tags: "automotive engineering" },
@@ -376,11 +369,7 @@ const KNOWN_BOARDS = [
   // energy / industrial / deep tech
   { name: "1KOMMA5°", ats: "personio", id: "1komma5grad", tags: "energy solar engineering" },
   // software / data / ml
-  { name: "Databricks", ats: "greenhouse", id: "databricks", tags: "software data ml engineering" },
-  { name: "Datadog", ats: "greenhouse", id: "datadog", tags: "software data engineering" },
-  { name: "Cloudflare", ats: "greenhouse", id: "cloudflare", tags: "software engineering infrastructure" },
   { name: "Celonis", ats: "greenhouse", id: "celonis", tags: "software data process mining" },
-  { name: "Ashby", ats: "ashby", id: "ashby", tags: "software engineering" },
   { name: "Contentful", ats: "greenhouse", id: "contentful", tags: "software engineering" },
   { name: "Staffbase", ats: "greenhouse", id: "staffbase", tags: "software engineering" },
   { name: "GetYourGuide", ats: "greenhouse", id: "getyourguide", tags: "software data engineering" },
@@ -389,16 +378,12 @@ const KNOWN_BOARDS = [
   { name: "Everphone", ats: "personio", id: "everphone", tags: "software operations" },
   { name: "Grover", ats: "greenhouse", id: "grover", tags: "software operations" },
   // fintech
-  { name: "Stripe", ats: "greenhouse", id: "stripe", tags: "fintech software finance payments" },
-  { name: "Ramp", ats: "ashby", id: "Ramp", tags: "fintech software finance" },
   { name: "N26", ats: "greenhouse", id: "n26", tags: "fintech finance banking" },
   { name: "SumUp", ats: "greenhouse", id: "sumup", tags: "fintech finance payments" },
   { name: "Trade Republic", ats: "greenhouse", id: "traderepublic", tags: "fintech finance trading" },
   { name: "Solaris", ats: "greenhouse", id: "solarisbank", tags: "fintech finance banking" },
   { name: "Raisin", ats: "greenhouse", id: "raisin", tags: "fintech finance banking savings" },
-  { name: "Bitpanda", ats: "greenhouse", id: "bitpanda", tags: "fintech finance trading crypto" },
   // health
-  { name: "Doctolib", ats: "greenhouse", id: "doctolib", tags: "health healthcare software" },
   { name: "Doctorly", ats: "personio", id: "doctorly", tags: "health healthcare software" },
   { name: "Climedo", ats: "personio", id: "climedo", tags: "health healthcare clinical data" },
   { name: "Temedica", ats: "personio", id: "temedica", tags: "health healthcare data" },
@@ -632,8 +617,60 @@ export function locationRank(job, baseLocation) {
  * Order postings so the scoring budget goes to the ones that could actually
  * work out: local and remote first, unclear next, other continents last.
  */
+// This is a German job search, so anything abroad is dropped outright rather
+// than ranked — a role in California is not a worse match, it is not a match.
+// Some feeds (SuccessFactors especially) carry no location field at all, so
+// those fall back to reading the posting text before being discarded.
+const GERMAN_HINTS = new RegExp([
+  "germany", "deutschland", "\\bde\\b",
+  // the larger cities, which is how most postings actually name the place
+  "berlin", "münchen", "munich", "hamburg", "köln", "cologne", "frankfurt",
+  "stuttgart", "düsseldorf", "dortmund", "essen", "leipzig", "bremen",
+  "dresden", "hannover", "nürnberg", "nuremberg", "duisburg", "bochum",
+  "wuppertal", "bielefeld", "bonn", "münster", "karlsruhe", "mannheim",
+  "augsburg", "wiesbaden", "braunschweig", "kiel", "chemnitz", "aachen",
+  "magdeburg", "freiburg", "krefeld", "mainz", "lübeck", "erfurt", "rostock",
+  "kassel", "potsdam", "saarbrücken", "ingolstadt", "regensburg", "würzburg",
+  "heidelberg", "\\bulm\\b", "wolfsburg", "erlangen", "reutlingen",
+  "friedrichshafen", "sindelfingen", "böblingen", "schweinfurt", "herzogenaurach",
+].join("|"), "i");
+
+// Signals used when a feed gives no location at all — SuccessFactors carries
+// none, and BMW's single feed mixes German, US, French and Korean postings.
+//
+// The reliable tell is the German gender marker, "(m/w/d)" / "(f/m/x)", which
+// German-market postings carry and others do not. Foreign markers rule a
+// posting out first: France uses "(F/H)", US listings say "Co-Op" or
+// "Spring 2027". Requiring a positive German signal rather than merely the
+// absence of a foreign one is deliberate — filling the tracker with jobs in
+// South Carolina is worse than missing a few German ones.
+const DE_GENDER_RE = /\((?:[mwfdx]\s*\/\s*){1,2}[mwfdx]\)/i;
+const DE_LANG_RE =
+  /\b(und|für|mit|Ihre|Aufgaben|Qualifikationen|Kenntnisse|Berufserfahrung|Studium|Werkstudent|Praktikum|Abschlussarbeit)\b/;
+const FOREIGN_RE =
+  /\(F\/H\)|alternant|korea|\bUSA\b|United States|Spartanburg|Woodcliff|Co-?Op\b|Spring 20\d\d|south africa|thailand|mexico|brazil|\bchina\b|\bjapan\b|\bindia\b/i;
+
+export function isReachable(job) {
+  const loc = job.location || "";
+  if (loc) {
+    if (REMOTE_RE.test(loc)) return true;
+    if (FAR_RE.test(loc)) return false;
+    return GERMAN_HINTS.test(loc);
+  }
+
+  const title = job.title || "";
+  const text = `${title} ${(job.description || "").slice(0, 1500)}`;
+  if (FOREIGN_RE.test(title)) return false;
+  return DE_GENDER_RE.test(title) || GERMAN_HINTS.test(text) || DE_LANG_RE.test(text);
+}
+
+/**
+ * Keep only postings someone in Germany could actually take, then put the
+ * clearly-local ones first so they get the scoring budget.
+ */
 export function prioritise(jobs, baseLocation) {
   return jobs
+    .filter(isReachable)
     .map((j) => ({ j, rank: locationRank(j, baseLocation) }))
     .sort((a, b) => a.rank - b.rank)
     .map((x) => x.j);

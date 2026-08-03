@@ -156,6 +156,7 @@ EXACTLY these keys:
   often hyphenates; smartrecruiters is usually CamelCase).
 
   Choose realistically, because a wrong guess yields nothing:
+  * This is a search within GERMANY — name employers that actually hire here.
   * These boards are used overwhelmingly by STARTUPS, SCALE-UPS and mid-sized
     companies. Personio in particular is a German SME product.
   * Large corporations and household-name manufacturers are almost always on
@@ -205,13 +206,9 @@ For each posting give a score from 0 to 100 and one short, specific reason.
   doesn't show, if it demands fluent/business German (C1/C2, "verhandlungssicher")
   and the CV doesn't have it, or if it is simply a different profession.
   ("Grundkenntnisse", B1/B2 or "von Vorteil" are fine.)
-- LOCATION MATTERS. These boards are international, so many postings are on
-  another continent and are useless however well the skills line up:
-  * same city or country as the candidate, or genuinely remote → no penalty;
-  * elsewhere but plausibly commutable/relocatable within their region → cap 65;
-  * another continent, or requiring work authorisation the CV doesn't show
-    (e.g. a US role for a candidate based in Europe) → cap 30, and say so in
-    the reason.
+- This is a search within GERMANY. Postings elsewhere have already been
+  filtered out, so judge on fit rather than distance — but if one slips through
+  and is clearly outside Germany (and not remote), score it 0 and say so.
 - Judge on real overlap of skills and experience, not keyword coincidence.
 - The reason must cite something concrete from the CV or the posting, in one
   sentence, written in ${LANG_NAME[language] || "English"}.
