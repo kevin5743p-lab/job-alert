@@ -189,6 +189,13 @@ export async function listTrackedJobs(limit = 300) {
               `&limit=${limit}`);
 }
 
+// What the user has done with jobs so far — the signal the scan learns from.
+export async function getDecisionHistory(limit = 400) {
+  return rest(`/applications?select=job_title,job_company,status` +
+              `&status=in.(rejected,dismissed,applied,interview,offer,tailored)` +
+              `&order=updated_at.desc&limit=${limit}`);
+}
+
 export const APPLICATION_STATUSES =
   ["new", "saved", "tailored", "applied", "interview", "offer", "rejected", "dismissed"];
 

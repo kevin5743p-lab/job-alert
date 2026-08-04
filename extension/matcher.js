@@ -298,6 +298,69 @@ export function ruleScore(job, profile, myFamilies) {
   return [Math.max(0, Math.min(100, score)), reasons.join("; ") || "no strong signals"];
 }
 
+// ── Learning from what the user rejected ───────────────────────────────────
+// The bot has a memory file that suppresses postings resembling ones already
+// turned down. The tracker records the same thing far more directly — every job
+// the user set to "rejected" or "dismissed" — and it was sitting there unused.
+//
+// Two guards against over-learning: a pattern must appear at least twice before
+// it counts, and anything that also shows up in a job the user pursued is
+// ignored. One dismissal should never blacklist an employer, and a word that
+// appears in roles they applied to is clearly not the reason they said no.
+const NEGATIVE = new Set(["rejected", "dismissed"]);
+const POSITIVE = new Set(["applied", "interview", "offer", "tailored"]);
+const STOPWORDS = new Set([
+  "und", "der", "die", "das", "für", "mit", "the", "and", "for", "with", "von",
+  "bei", "aus", "job", "jobs", "stelle", "position", "role", "team", "gmbh",
+  "senior", "junior", "werkstudent", "praktikum", "intern", "internship",
+  "student", "manager", "engineer", "ingenieur", "developer",
+]);
+
+export function buildMemory(rows) {
+  const negCompanies = new Map(), negTerms = new Map();
+  const posCompanies = new Set(), posTerms = new Set();
+
+  for (const r of rows || []) {
+    const company = norm(r.job_company).replace(COMPANY_SUFFIX_RE, "").trim();
+    const words = (norm(r.job_title).match(/[a-zäöüß]{4,}/g) || [])
+      .filter((w) => !STOPWORDS.has(w));
+
+    if (NEGATIVE.has(r.status)) {
+      if (company) negCompanies.set(company, (negCompanies.get(company) || 0) + 1);
+      for (const w of new Set(words)) negTerms.set(w, (negTerms.get(w) || 0) + 1);
+    } else if (POSITIVE.has(r.status)) {
+      if (company) posCompanies.add(company);
+      words.forEach((w) => posTerms.add(w));
+    }
+  }
+
+  const keep = (counts, positives) =>
+    new Set([...counts.entries()]
+      .filter(([k, n]) => n >= 2 && !positives.has(k))
+      .map(([k]) => k));
+
+  return {
+    rejectedCompanies: keep(negCompanies, posCompanies),
+    rejectedTerms: keep(negTerms, posTerms),
+  };
+}
+
+/** A reason string when this job looks like one already turned down. */
+export function matchesRejectedPattern(job, memory) {
+  if (!memory) return null;
+  const company = norm(job.company).replace(COMPANY_SUFFIX_RE, "").trim();
+  if (company && memory.rejectedCompanies.has(company)) {
+    return `you previously dismissed roles at ${job.company}`;
+  }
+  const title = norm(job.title);
+  for (const term of memory.rejectedTerms) {
+    if (new RegExp(`\\b${escapeRe(term)}`).test(title)) {
+      return `you previously dismissed roles like "${term}"`;
+    }
+  }
+  return null;
+}
+
 // ── Tier ───────────────────────────────────────────────────────────────────
 // Only out_of_domain is hard-capped; for everything else the model's judgement
 // stands, exactly as in the Python tier router.

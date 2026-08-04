@@ -6,13 +6,13 @@
 // key never touches the page context.
 
 import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, buildFieldFillPrompt,
-         buildSearchProfilePrompt, buildBatchScorePrompt, normalize,
+         buildSearchProfilePrompt, buildBatchScorePrompt, buildSingleScorePrompt, normalize,
          groundingWarnings, DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
 import * as sb from "./supabase.js";
 import { fetchAll, prefilter, prioritise, validateTargets, pickKnownBoards }
   from "./finder.js";
-import { ruleScore, classifyWithRules, getDomain, applyDomainCap, candidateFamilies }
-  from "./matcher.js";
+import { ruleScore, classifyWithRules, getDomain, applyDomainCap, candidateFamilies,
+         buildMemory, matchesRejectedPattern } from "./matcher.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -116,6 +116,11 @@ const SCORE_BATCH = 5;        // postings per Groq call
 // prefilter has already put the most relevant, most local postings first.
 const MAX_SCORED = 48;
 const SCORE_PACE_MS = 9000;
+// How many get the careful, one-at-a-time treatment before the rest are
+// batched. Individual calls cost more but judge far better, so they go to the
+// postings the rules already rated highest.
+const INDIVIDUAL_SCORED = 15;
+const SINGLE_PACE_MS = 4000;
 // Scoring is bulk work — a scan puts thousands of words through it — so it uses
 // the small fast model regardless of what the user picked for tailoring. The
 // large model's free-tier daily token budget is spent in a single scan
@@ -169,13 +174,39 @@ async function ensureSearchProfile(cv, apiKey, model, force) {
   return sp;
 }
 
-async function scoreJobs(jobs, cv, sp, apiKey, model, language, baseLocation) {
+async function scoreJobs(jobs, cv, sp, apiKey, model, language, baseLocation,
+                         klassOf = new Map()) {
   const scored = [];
   let error = null;                  // surfaced, so a silent failure can't look
                                      // like "no jobs matched"
+
+  // The most promising postings are judged one at a time, with the full CV and
+  // 1500 characters of the posting — the way the Python bot does it. Batching
+  // is cheaper but gives each job a fraction of the context, and the scores
+  // showed it. The rest are batched, which is fine: they're the long tail.
+  const individual = jobs.slice(0, INDIVIDUAL_SCORED);
+  const batched = jobs.slice(INDIVIDUAL_SCORED);
+
+  for (let i = 0; i < individual.length; i++) {
+    const job = individual[i];
+    if (i) await sleep(SINGLE_PACE_MS);
+    progress(`Scoring the strongest matches… (${i + 1}/${individual.length})`);
+    try {
+      const raw = await groqJson(
+        buildSingleScorePrompt(job, cv, sp, language, baseLocation,
+                               klassOf.get(job.url || job.id) || ""),
+        apiKey, SCORING_MODEL, 300);
+      const score = Math.max(0, Math.min(100, parseInt(raw.score, 10) || 0));
+      scored.push({ job, score, reason: String(raw.reason || "").slice(0, 400) });
+    } catch (e) {
+      error = e.message || String(e);
+      if (/quota|rate limit/i.test(error)) break;
+    }
+  }
+
   const batches = [];
-  for (let i = 0; i < jobs.length; i += SCORE_BATCH) {
-    batches.push(jobs.slice(i, i + SCORE_BATCH));
+  for (let i = 0; i < batched.length; i += SCORE_BATCH) {
+    batches.push(batched.slice(i, i + SCORE_BATCH));
   }
   let n = 0;
   for (const batch of batches) {
@@ -184,7 +215,7 @@ async function scoreJobs(jobs, cv, sp, apiKey, model, language, baseLocation) {
     // requests, and firing batches back to back trips it after the first one —
     // which is exactly what happened: 8 of 80 scored, then a rate limit.
     if (n > 1) await sleep(SCORE_PACE_MS);
-    progress(`Scoring matches… (${Math.min(n * SCORE_BATCH, jobs.length)}/${jobs.length})`);
+    progress(`Scoring the rest… (${Math.min(n * SCORE_BATCH, batched.length)}/${batched.length})`);
     let raw;
     try {
       raw = await groqJson(
@@ -245,12 +276,23 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       // looking for, so postings from another line of work are rejected even
       // when the generated domain block is thin.
       const families = candidateFamilies(sp);
+
+      // What the user has already turned down. Showing someone a job they've
+      // dismissed twice before is how a tracker loses their trust.
+      let memory = null;
+      try {
+        memory = buildMemory(await sb.getDecisionHistory());
+      } catch (e) {
+        console.warn("Couldn't read decision history:", e);
+      }
+
       const graded = [];
-      let cutOffField = 0, cutRules = 0;
+      let cutOffField = 0, cutRules = 0, cutMemory = 0;
 
       for (const job of keyworded) {
         const [rScore, rReason] = ruleScore(job, sp, families);
         if (rScore === 0) { cutRules++; continue; }        // language, seniority, off-field
+        if (matchesRejectedPattern(job, memory)) { cutMemory++; continue; }
         const [klass] = classifyWithRules(job, domain);
         if (klass === "out_of_domain") { cutOffField++; continue; }
         graded.push({ job, rScore, rReason, klass });
@@ -263,7 +305,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       const klassOf = new Map(graded.map((g) => [g.job.url || g.job.id, g.klass]));
       const survivors = matched.slice(0, MAX_SCORED);
       progress(`${matched.length} relevant (${cutRules} filtered, ` +
-               `${cutOffField} off-field) — scoring the best ${survivors.length}…`);
+               `${cutOffField} off-field${cutMemory ? `, ${cutMemory} like ones you dismissed` : ""})` +
+               ` — scoring the best ${survivors.length}…`);
       if (!survivors.length) {
         progress("No matching postings this time.", true, { added: 0, stats });
         sendResponse({ ok: true, added: 0, fetched: jobs.length, stats });
@@ -271,7 +314,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       }
 
       const { scored, error: scoreError } =
-        await scoreJobs(survivors, cv, sp, groqApiKey, model, lang, baseLocation);
+        await scoreJobs(survivors, cv, sp, groqApiKey, model, lang, baseLocation, klassOf);
 
       // The domain class caps the final score, so anything the rules judged
       // out-of-field can't be rescued by an over-generous model score.

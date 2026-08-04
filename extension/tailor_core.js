@@ -196,6 +196,55 @@ EXACTLY these keys:
 Respond with ONLY the JSON object.`;
 }
 
+// Score ONE posting, with the room to judge it properly: the full CV and 1500
+// characters of the posting, as matchers/ai.py does. Batching is cheaper but
+// gives each job a fraction of the context, and the difference shows — a
+// committee-management role at a car company came back as a strong engineering
+// match under batch scoring. The most promising postings get this treatment;
+// the rest fall back to batches.
+export function buildSingleScorePrompt(job, cvText, sp = {}, language = "en",
+                                       baseLocation = "", domainClass = "") {
+  const field = (sp.domain && sp.domain.name) || sp.field || "";
+  const langPref = sp.language_preference || "any";
+  const level = sp.career_level || "";
+
+  return `You are a strict but fair job-matching assistant.
+
+=== CANDIDATE CV ===
+${(cvText || "").slice(0, 3000)}
+
+Their field: ${field || "as shown in the CV"}
+${level ? `Career level: ${level}` : ""}
+${baseLocation ? `Based in: ${baseLocation}` : ""}
+${domainClass ? `Already classified relative to their field: ${domainClass}` : ""}
+
+=== POSTING ===
+Title: ${job.title || ""}
+Company: ${job.company || ""}
+Location: ${job.location || ""}
+Description: ${(job.description || "").slice(0, 1500)}
+
+Score this posting 0-100 for this candidate and give one short, specific reason.
+- 85-100 outstanding · 70-84 strong · 50-69 worth a look · below 50 poor.
+- Be strict. Most postings are not a good fit; say so.
+- SCORE 0, no exceptions, when any of these hold:
+  * it is a DIFFERENT PROFESSION from ${field || "their field"} — marketing,
+    sales, recruiting, customer service, accounting and the like are not
+    engineering, whatever skills overlap on paper. Working at a company in the
+    right industry does not make an off-field role a fit.
+  * it requires several years of professional experience the CV doesn't show.${
+  langPref === "no_german_required" ? `
+  * it requires fluent or business German ("verhandlungssicheres Deutsch",
+    "Deutsch C1/C2", "fließend", "Muttersprache"), which this candidate lacks.
+    ("Grundkenntnisse", B1/B2 or "von Vorteil" are fine.)` : ""}
+- Judge on real overlap of experience, not keyword coincidence. Being at a
+  well-known employer counts for nothing on its own.
+- The reason must cite something concrete from the CV or the posting, in one
+  sentence, in ${LANG_NAME[language] || "English"}.
+
+Respond with ONLY a JSON object: {"score": <int 0-100>, "reason": "<one sentence>"}`;
+}
+
 // Score a batch of postings in one call. Batching matters: scoring each job
 // individually would exhaust a free-tier key in a single scan.
 export function buildBatchScorePrompt(jobs, cvText, sp = {}, language = "en",
