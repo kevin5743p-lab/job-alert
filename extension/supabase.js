@@ -208,6 +208,13 @@ export async function updateApplicationStatus(id, status) {
   return rows && rows[0] ? rows[0] : null;
 }
 
+// Remove untouched finds only. Anything the user tailored, applied to or moved
+// along the pipeline is theirs and is never deleted by this.
+export async function clearUntouchedFinds() {
+  return rest(`/applications?status=eq.new&tailored_result_id=is.null`,
+              { method: "DELETE" });
+}
+
 export async function deleteApplication(id) {
   return rest(`/applications?id=eq.${encodeURIComponent(id)}`, { method: "DELETE" });
 }

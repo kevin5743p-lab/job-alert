@@ -231,9 +231,37 @@ chrome.runtime.onMessage.addListener((msg) => {
   if (msg.done) {
     $("find").disabled = false;
     $("find").textContent = "🔍 Find jobs";
+    // A changed CV means everything already in the tracker was found for the
+    // previous one. Say so and offer to clear it, rather than leaving two
+    // people's results mixed together.
+    if (msg.cvChanged) showStaleNotice();
     if (!msg.error) load();          // pull in whatever the scan saved
   }
 });
+
+function showStaleNotice() {
+  const el = $("scan");
+  el.insertAdjacentHTML("beforeend", `
+    <div class="sub" style="margin-top:8px">
+      Your CV changed, so the search was rebuilt. Jobs found before that were
+      matched against the old CV.
+      <button id="clear-stale" style="margin-left:6px">Clear those</button>
+    </div>`);
+  const btn = document.getElementById("clear-stale");
+  if (!btn) return;
+  btn.addEventListener("click", async () => {
+    if (!confirm("Remove jobs found for the previous CV?\n\n" +
+                 "Anything you tailored, applied to or moved along is kept.")) return;
+    btn.disabled = true;
+    try {
+      await sb.clearUntouchedFinds();
+      showMessage("");
+      load();
+    } catch (e) {
+      showMessage(`Couldn't clear those: ${e.message}`, true);
+    }
+  });
+}
 
 $("find").addEventListener("click", async () => {
   const btn = $("find");

@@ -133,9 +133,25 @@ function progress(text, done = false, extra = {}) {
     .catch(() => {});          // nobody listening (dashboard closed) is fine
 }
 
+// A cheap fingerprint of the CV the search profile was built from. Without it a
+// changed CV keeps the old profile and the scan hunts the previous field
+// entirely — swap in a different person's CV and it still searches for yours.
+function cvFingerprint(cv) {
+  const text = (cv || "").replace(/\s+/g, " ").trim();
+  let h = 5381;
+  for (let i = 0; i < text.length; i++) h = ((h * 33) ^ text.charCodeAt(i)) >>> 0;
+  return `${text.length}:${h.toString(36)}`;
+}
+
 async function ensureSearchProfile(cv, apiKey, model, force) {
   const profile = await sb.getProfile();
   const existing = profile && profile.search_profile;
+  const fingerprint = cvFingerprint(cv);
+  const cvChanged = existing && existing.cv_fingerprint
+    && existing.cv_fingerprint !== fingerprint;
+  if (cvChanged) {
+    progress("Your CV has changed — working out the search again…");
+  }
   // `validated` marks a profile whose employer boards were probed. Profiles
   // built before that check existed are rebuilt once, otherwise they keep
   // scanning boards that don't resolve and quietly return nothing.
@@ -145,6 +161,7 @@ async function ensureSearchProfile(cv, apiKey, model, force) {
   // graded on keywords alone — which is how plainly off-field work reached the
   // tracker. Rebuild those rather than let them keep scanning blind.
   const usable = existing
+    && !cvChanged
     && (existing.search_queries || []).length
     && existing.validated
     && (existing.company_targets || []).length
@@ -168,9 +185,13 @@ async function ensureSearchProfile(cv, apiKey, model, force) {
   const candidates = sp.company_targets || [];
   sp.company_targets = await validateTargets(candidates, (t) => progress(t));
   sp.validated = true;
+  sp.cv_fingerprint = fingerprint;
   progress(`${sp.company_targets.length} of ${candidates.length} suggested boards are live.`);
 
   await sb.saveSearchProfile(sp);
+  // Flagged so the scan can tell the user that anything already in the tracker
+  // was found for the previous CV and no longer reflects what they're after.
+  sp.rebuiltFromNewCv = Boolean(cvChanged);
   return sp;
 }
 
@@ -343,7 +364,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       await sb.touchLastScan();
 
       progress(`Done — ${saved} job${saved === 1 ? "" : "s"} added. ${funnel}`, true,
-               { added: saved, stats });
+               { added: saved, stats, cvChanged: Boolean(sp.rebuiltFromNewCv) });
       sendResponse({ ok: true, added: saved, fetched: jobs.length,
                      considered: survivors.length, stats });
     } catch (e) {
