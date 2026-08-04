@@ -9,10 +9,10 @@ import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, buildFieldFillPro
          buildSearchProfilePrompt, buildBatchScorePrompt, buildSingleScorePrompt, normalize,
          groundingWarnings, DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
 import * as sb from "./supabase.js";
-import { fetchAll, prefilter, prioritise, validateTargets, pickKnownBoards }
-  from "./finder.js";
+import { fetchAll, prefilter, prioritise, validateTargets, pickKnownBoards,
+         enrichDescriptions } from "./finder.js";
 import { ruleScore, classifyWithRules, getDomain, applyDomainCap, candidateFamilies,
-         buildMemory, matchesRejectedPattern } from "./matcher.js";
+         isOffProfession, buildMemory, matchesRejectedPattern } from "./matcher.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -116,6 +116,10 @@ const SCORE_BATCH = 5;        // postings per Groq call
 // prefilter has already put the most relevant, most local postings first.
 const MAX_SCORED = 48;
 const SCORE_PACE_MS = 9000;
+// LinkedIn descriptions cost one request each, so they're capped. Comfortably
+// above MAX_SCORED: a posting has to be graded before it can be ranked, and
+// grading it without its text is what this budget exists to stop.
+const LI_DETAIL_BUDGET = 80;
 // How many get the careful, one-at-a-time treatment before the rest are
 // batched. Individual calls cost more but judge far better, so they go to the
 // postings the rules already rated highest.
@@ -312,14 +316,40 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       const graded = [];
       let cutOffField = 0, cutRules = 0, cutMemory = 0, cutSeen = 0;
 
+      // Grading happens in two passes because the description has to be there
+      // before most of it means anything. First the cuts that need only the
+      // title and the tracker.
+      const contenders = [];
       for (const job of keyworded) {
         // Already graded on an earlier scan. Boards hand back their entire open
         // list every time, so without this most of the scoring budget — and most
         // of the tokens — would go on jobs that are already in the tracker.
         if (job.url && tracked.has(job.url)) { cutSeen++; continue; }
+        if (isOffProfession(job.title, families)) { cutRules++; continue; }
+        if (matchesRejectedPattern(job, memory)) { cutMemory++; continue; }
+        contenders.push(job);
+      }
+
+      // LinkedIn search cards carry no body text, so until now the German
+      // filter, the domain classifier and the model itself were all reading an
+      // empty description for every LinkedIn posting — the largest source in a
+      // scan. Fetch the real text, for the postings still in the running and in
+      // the order the budget is best spent.
+      const reachable = prioritise(contenders, baseLocation);
+      const enriched = await enrichDescriptions(
+        reachable, LI_DETAIL_BUDGET, (t) => progress(t));
+      if (enriched.requested) {
+        // Worth surfacing: if LinkedIn starts refusing these, everything is
+        // graded on titles again and the only visible symptom is worse matches.
+        stats.push(`LinkedIn text ${enriched.filled}/${enriched.fetched}` +
+                   (enriched.requested > enriched.fetched
+                     ? ` (${enriched.requested} wanted)` : ""));
+      }
+
+      // Second pass: everything that needed the description.
+      for (const job of reachable) {
         const [rScore, rReason] = ruleScore(job, sp, families);
         if (rScore === 0) { cutRules++; continue; }        // language, seniority, off-field
-        if (matchesRejectedPattern(job, memory)) { cutMemory++; continue; }
         const [klass] = classifyWithRules(job, domain);
         if (klass === "out_of_domain") { cutOffField++; continue; }
         graded.push({ job, rScore, rReason, klass });

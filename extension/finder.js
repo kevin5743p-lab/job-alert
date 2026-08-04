@@ -77,14 +77,22 @@ async function fetchArbeitnow() {
 // and residential IP is the least bot-like way to read it, which is the whole
 // reason this lives in the extension rather than on a server.
 //
-// Kept deliberately modest: a handful of queries per scan, spaced out, and no
-// per-posting detail requests. The card gives title, company, location and date,
-// which is enough to score; anything promising gets its full text read anyway
-// when the user opens it and hits "Tailor this job".
+// The search card gives title, company, location and date but no description,
+// and that turned out not to be "enough to score" as first assumed: the domain
+// classifier, the German-fluency filter and the model's own judgement all read
+// job.description, so for every LinkedIn posting they were reading an empty
+// string. LinkedIn is the largest source in a scan, so most of what the user
+// saw had been graded on its title alone. enrichDescriptions() fills them in
+// from the same guest endpoint the job page itself uses.
 const LINKEDIN_GUEST =
   "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search";
+const LINKEDIN_POSTING =
+  "https://www.linkedin.com/jobs-guest/jobs/api/jobPosting";
 const LINKEDIN_MAX_QUERIES = 6;
 const LINKEDIN_PAUSE_MS = 900;
+// One request per posting, so this is paced and capped. Descriptions are only
+// fetched for jobs that already survived the free filters.
+const DETAIL_PAUSE_MS = 350;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -150,6 +158,66 @@ async function fetchLinkedIn(queries, location) {
     await sleep(LINKEDIN_PAUSE_MS);
   }
   return out;
+}
+
+// The posting page wraps its body in
+// <div class="description__text …"><section class="show-more-less-html">
+//   <div class="show-more-less-html__markup …">…</div>
+// and follows it with a "see more" button and the job-criteria list, neither of
+// which belongs in the description. Cut at the button when it's there and fall
+// back to the markup div's own length otherwise.
+export function parseLinkedInDescription(html) {
+  if (!html) return "";
+  const at = html.search(/class="[^"]*show-more-less-html__markup[^"]*"/);
+  if (at === -1) return "";
+  const start = html.indexOf(">", at);
+  if (start === -1) return "";
+
+  let body = html.slice(start + 1);
+  const end = body.search(
+    /<button[^>]*class="[^"]*show-more-less-html__button|class="[^"]*description__job-criteria/);
+  if (end !== -1) body = body.slice(0, end);
+
+  // <br> and </li> carry the only line structure the ad has, so they become
+  // newlines before the tags go — the bulleted requirements are what the model
+  // reads most closely, and stripHtml() alone would run them into one another
+  // as a single paragraph.
+  return body
+    .replace(/<\/(p|div|li|ul|ol|h\d|tr)>/gi, "\n")
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/[^\S\n]+/g, " ")
+    .replace(/ ?\n ?/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim()
+    .slice(0, 4000);
+}
+
+/**
+ * Fill in descriptions for postings whose source only gave a title. Sources are
+ * fetched in bulk and cheaply; this is the expensive per-posting half, so the
+ * caller passes only jobs that already earned it, and `limit` caps the rest.
+ * Failures are left as they were — a missing description is not a lost job.
+ */
+export async function enrichDescriptions(jobs, limit = 60, onProgress = () => {}) {
+  const need = (jobs || []).filter(
+    (j) => j.source === "LinkedIn" && !j.description && /^li_(\d+)$/.test(j.id || ""));
+  const todo = need.slice(0, limit);
+  let filled = 0;
+
+  for (let i = 0; i < todo.length; i++) {
+    const job = todo[i];
+    onProgress(`Reading LinkedIn postings… (${i + 1}/${todo.length})`);
+    const id = job.id.slice(3);
+    const html = await getText(`${LINKEDIN_POSTING}/${encodeURIComponent(id)}`);
+    const text = parseLinkedInDescription(html);
+    if (text) { job.description = text; filled++; }
+    await sleep(DETAIL_PAUSE_MS);
+  }
+  return { requested: need.length, fetched: todo.length, filled };
 }
 
 async function fetchGreenhouse(c) {
