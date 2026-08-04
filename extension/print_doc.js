@@ -45,7 +45,9 @@
 </style></head><body>
   <div class="bar">
     <button onclick="window.print()">Save as PDF / Print</button>
-    <span class="muted"> — in the dialog, choose “Save as PDF”.</span>
+    <span class="muted"> — in the dialog, choose “Save as PDF”. If this button
+    does nothing, the site's security policy has blocked it: press
+    Ctrl&nbsp;+&nbsp;P (⌘&nbsp;+&nbsp;P on a Mac) instead.</span>
   </div>
 
   <h1>Tailored highlights</h1>
@@ -70,6 +72,24 @@
   // that forbid inline handlers — Ashby and Workday among them — the "Save as
   // PDF" button silently did nothing. A blob URL carries its own origin and no
   // inherited policy, so the button works everywhere.
+  // The new tab may not have parsed its document yet when window.open returns,
+  // and printing an empty page produces a blank PDF. Wait for load, with a
+  // timed fallback for the case where the event has already fired, and give up
+  // quietly rather than throwing if the window is closed in the meantime.
+  function printWhenReady(w) {
+    let done = false;
+    const go = () => {
+      if (done) return;
+      done = true;
+      try { w.focus(); w.print(); } catch { /* closed, or blocked: the button remains */ }
+    };
+    try {
+      if (w.document && w.document.readyState === "complete") { setTimeout(go, 150); return; }
+      w.addEventListener("load", () => setTimeout(go, 100));
+    } catch { /* cross-origin for reasons we can't see: fall through to the timer */ }
+    setTimeout(go, 1500);
+  }
+
   function openHtml(html) {
     let url;
     try {
@@ -79,6 +99,18 @@
     }
     const w = url ? window.open(url, "_blank") : null;
     if (w) {
+      // Open the print dialog from here rather than relying on the button in
+      // the document. That button is an inline onclick, and inline handlers are
+      // refused wherever a content-security policy forbids them — which is not
+      // only strict career sites but the extension's own pages, whose default
+      // policy is script-src 'self'. The blob was meant to escape that, but a
+      // blob inherits the origin and the policy of whatever created it, so the
+      // button stayed dead in exactly the places it needed to work.
+      //
+      // This call is our own script in our own context, and the blob is
+      // same-origin with its opener, so it is allowed where the handler is not.
+      // The button stays for printing a second time.
+      printWhenReady(w);
       // Freed once the tab has it; revoking immediately can race the load.
       setTimeout(() => URL.revokeObjectURL(url), 60000);
       return true;
@@ -95,6 +127,7 @@
     fallback.document.open();
     fallback.document.write(html);
     fallback.document.close();
+    printWhenReady(fallback);
     return true;
   }
 
