@@ -9,8 +9,8 @@ import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, buildFieldFillPro
          buildSearchProfilePrompt, buildBatchScorePrompt, buildSingleScorePrompt, normalize,
          groundingWarnings, DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
 import * as sb from "./supabase.js";
-import { fetchAll, prefilter, prioritise, validateTargets, pickKnownBoards,
-         enrichDescriptions } from "./finder.js";
+import { fetchAll, prefilter, prioritise, locationRank, validateTargets,
+         pickKnownBoards, enrichDescriptions } from "./finder.js";
 import { ruleScore, classifyWithRules, getDomain, applyDomainCap, candidateFamilies,
          isOffProfession, buildMemory, matchesRejectedPattern } from "./matcher.js";
 
@@ -120,6 +120,9 @@ const SCORE_PACE_MS = 9000;
 // above MAX_SCORED: a posting has to be graded before it can be ranked, and
 // grading it without its text is what this budget exists to stop.
 const LI_DETAIL_BUDGET = 80;
+// The rule score a posting needs before it's worth spending a model call on.
+// Matches prefilter_min_score in the bot's profile.yaml.
+const PREFILTER_MIN_SCORE = 15;
 
 // The country the search runs across. LinkedIn wants an English country name
 // and treats anything it doesn't recognise as no filter at all, so the handful
@@ -375,22 +378,36 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       }
 
       // Second pass: everything that needed the description.
+      let cutWeak = 0;
       for (const job of reachable) {
         const [rScore, rReason] = ruleScore(job, sp, families);
         if (rScore === 0) { cutRules++; continue; }        // language, seniority, off-field
+        // The bot's prefilter_min_score. Only rejecting a hard zero meant a
+        // posting matching one stray keyword and nothing else still took a place
+        // in the scoring queue ahead of nothing at all — and there are always
+        // more of those than there is budget.
+        if (rScore < PREFILTER_MIN_SCORE) { cutWeak++; continue; }
         const [klass] = classifyWithRules(job, domain);
         if (klass === "out_of_domain") { cutOffField++; continue; }
         graded.push({ job, rScore, rReason, klass });
       }
 
-      // Best rule score first, then location — so the model's budget goes to
-      // the most promising local postings rather than whatever came back first.
-      graded.sort((a, b) => b.rScore - a.rScore);
-      const matched = prioritise(graded.map((g) => g.job), baseLocation);
+      // Best rule score first, nearest first among equals. The sort used to be
+      // done twice — by score, then immediately re-done by location — and the
+      // second pass overwrote the first completely, so the postings that got
+      // scored were the nearest ones rather than the best ones. Distance is a
+      // tie-breaker here, not the ordering; anything unreachable was already
+      // dropped by prioritise() further up.
+      const rankOf = new Map(
+        graded.map((g) => [g, locationRank(g.job, baseLocation)]));
+      graded.sort((a, b) =>
+        b.rScore - a.rScore || rankOf.get(a) - rankOf.get(b));
+
+      const matched = graded.map((g) => g.job);
       const klassOf = new Map(graded.map((g) => [g.job.url || g.job.id, g.klass]));
       const survivors = matched.slice(0, MAX_SCORED);
       progress(`${matched.length} new & relevant (${cutSeen} already tracked, ` +
-               `${cutRules} filtered, ${cutOffField} off-field` +
+               `${cutRules} filtered, ${cutWeak} too weak, ${cutOffField} off-field` +
                `${cutMemory ? `, ${cutMemory} like ones you dismissed` : ""})` +
                ` — scoring the best ${survivors.length}…`);
       if (!survivors.length) {
