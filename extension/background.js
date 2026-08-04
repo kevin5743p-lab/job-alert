@@ -195,6 +195,24 @@ const SINGLE_PACE_MS = 4000;
 // is judged on writing quality, keeps the user's chosen model.
 const SCORING_MODEL = "llama-3.1-8b-instant";
 
+// An MV3 service worker is shut down after ~30 seconds without an extension
+// API call, and a scan now spends much longer than that inside fetch() —
+// LinkedIn paging, per-posting descriptions, employer boards. Being torn down
+// mid-scan loses the run silently. Calling an extension API on a timer resets
+// that countdown, which is the documented way to hold a worker open for a long
+// job. Started only for the duration of a scan: an always-on keepalive would
+// defeat the point of the worker sleeping at all.
+const keepAlive = {
+  timer: null,
+  start() {
+    if (this.timer) return;
+    this.timer = setInterval(() => chrome.runtime.getPlatformInfo().catch(() => {}), 20000);
+  },
+  stop() {
+    if (this.timer) { clearInterval(this.timer); this.timer = null; }
+  },
+};
+
 function progress(text, done = false, extra = {}) {
   chrome.runtime.sendMessage({ type: "SCAN_PROGRESS", text, done, ...extra })
     .catch(() => {});          // nobody listening (dashboard closed) is fine
@@ -325,13 +343,38 @@ async function scoreJobs(jobs, cv, sp, apiKey, model, language, baseLocation,
   return { scored, error };
 }
 
+// Which build the worker is running. An open dashboard tab keeps running the
+// code it was loaded with, so after the extension is reloaded or updated the
+// page is a different version from the worker answering it — and the symptom is
+// a dead message port rather than anything that names the cause.
+chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+  if (msg?.type !== "PING") return;
+  sendResponse({ ok: true, version: chrome.runtime.getManifest().version });
+  return false;                 // answered synchronously; nothing to keep open
+});
+
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg?.type !== "FIND_JOBS") return;
 
   (async () => {
+    let acked = false;
+    // Answer the dashboard as soon as the quick checks pass, and report
+    // everything after that over SCAN_PROGRESS instead.
+    //
+    // A scan runs for minutes. Holding the sendResponse channel open for the
+    // whole of it is what produced "the message channel closed before a
+    // response was received": Chrome tears the channel down long before the
+    // scan finishes, the dashboard's await rejects, and it shows "Scan failed"
+    // for a scan that is still running perfectly well and will go on to save
+    // its results. The only thing the channel is needed for is the three
+    // setup errors below, which are decided in milliseconds.
+    const ack = (payload) => { if (!acked) { acked = true; sendResponse(payload); } };
+
     try {
       const { groqApiKey, cv, lang, model } = await loadKeyAndCv();
       if (!(await sb.getSession())) throw new Error("NOT_SIGNED_IN");
+      ack({ ok: true, started: true });
+      keepAlive.start();
 
       const sp = await ensureSearchProfile(cv, groqApiKey, model, msg.rebuildProfile);
 
@@ -457,7 +500,6 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
                ` — scoring the best ${survivors.length}…`);
       if (!survivors.length) {
         progress("No matching postings this time.", true, { added: 0, stats });
-        sendResponse({ ok: true, added: 0, fetched: jobs.length, stats });
         return;
       }
 
@@ -492,12 +534,15 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
       progress(`Done — ${saved} job${saved === 1 ? "" : "s"} added. ${funnel}`, true,
                { added: saved, stats, cvChanged: Boolean(sp.rebuiltFromNewCv) });
-      sendResponse({ ok: true, added: saved, fetched: jobs.length,
-                     considered: survivors.length, stats });
     } catch (e) {
       const m = String(e.message || e);
+      // Setup errors still travel back over the channel, because the dashboard
+      // is still waiting on it at that point. Anything later has to go by
+      // SCAN_PROGRESS — the channel is gone by then.
+      ack({ ok: false, error: m });
       progress(`Scan failed: ${m}`, true, { error: m });
-      sendResponse({ ok: false, error: m });
+    } finally {
+      keepAlive.stop();
     }
   })();
 

@@ -28,6 +28,9 @@
              vertical-align: top; }
     th { font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
          color: #6e7781; background: #f6f8fa; }
+    th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
+    th.sortable:hover { color: #0969da; }
+    th.sorted { color: #0969da; }
     tr:last-child td { border-bottom: none; }
     .job { font-weight: 600; }
     .co { color: #57606a; font-size: 13px; }
@@ -93,6 +96,7 @@
       .scan.err { background: #2d1214; border-color: #6b2226; color: #ffa198; }
       .stat.on { background: #1c1b2e; }
       th { background: #0d1117; color: #8b949e; }
+      th.sortable:hover, th.sorted { color: #79c0ff; }
       th, td { border-color: #21262d; }
       .sub, .co, .muted { color: #8b949e; }
       select, button { background: #21262d; color: #e6edf3; border-color: #30363d; }
@@ -113,6 +117,7 @@
       </div>
     </header>
     <div id="scan" class="scan hidden"></div>
+    <div id="stale" class="scan hidden"></div>
 
     <div id="message" class="msg hidden"></div>
     <div class="stats" id="stats"></div>

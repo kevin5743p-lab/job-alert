@@ -32,6 +32,68 @@ function fmtDate(iso) {
 let activeFilter = "all";
 let allRows = [];
 
+// ── Sorting ────────────────────────────────────────────────────────────────
+// The list only ever came back in whatever order the query returned, which is
+// no use once there are more rows than fit on screen — the best-fitting job and
+// the one that moved most recently are two different questions.
+//
+// Each column says how to read a value out of a row and which way round it
+// should start: scores and dates are most useful highest-first, text A-Z.
+const SORTS = {
+  job: { label: "Job", get: (r) => (r.job_title || "").toLowerCase(), dir: 1 },
+  fit: { label: "Fit", get: (r) => (r.score === null || r.score === undefined ? -1 : r.score), dir: -1 },
+  status: { label: "Status", get: (r) => sb.APPLICATION_STATUSES.indexOf(r.status), dir: 1 },
+  source: { label: "Source", get: (r) => (r.job_source || "").toLowerCase(), dir: 1 },
+  updated: { label: "Updated", get: (r) => Date.parse(r.updated_at) || 0, dir: -1 },
+};
+const SORT_PREF = "dashboardSort";
+
+let sortKey = "updated";
+let sortDir = SORTS.updated.dir;
+try {
+  const saved = JSON.parse(localStorage.getItem(SORT_PREF) || "null");
+  if (saved && SORTS[saved.key]) { sortKey = saved.key; sortDir = saved.dir === 1 ? 1 : -1; }
+} catch { /* a corrupt preference is not worth failing the page over */ }
+
+function sortRows(rows) {
+  const { get } = SORTS[sortKey];
+  // Sort a copy: allRows is the unfiltered source the filters re-read.
+  return [...rows].sort((a, b) => {
+    const x = get(a), y = get(b);
+    if (x < y) return -sortDir;
+    if (x > y) return sortDir;
+    // Same value either way — fall back to most recent so the order is stable
+    // rather than shuffling between renders.
+    return (Date.parse(b.updated_at) || 0) - (Date.parse(a.updated_at) || 0);
+  });
+}
+
+function headerHtml() {
+  const th = (key) => {
+    const on = key === sortKey;
+    const arrow = on ? (sortDir === 1 ? " ▲" : " ▼") : "";
+    return `<th class="sortable${on ? " sorted" : ""}" data-sort="${key}" ` +
+           `title="Sort by ${esc(SORTS[key].label)}">${esc(SORTS[key].label)}${arrow}</th>`;
+  };
+  return `<tr>${Object.keys(SORTS).map(th).join("")}<th></th></tr>`;
+}
+
+function bindSortHeaders() {
+  document.querySelectorAll("th[data-sort]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const key = el.dataset.sort;
+      // Clicking the active column flips it; a new column starts in whichever
+      // direction is actually useful for that kind of value.
+      sortDir = key === sortKey ? -sortDir : SORTS[key].dir;
+      sortKey = key;
+      try {
+        localStorage.setItem(SORT_PREF, JSON.stringify({ key: sortKey, dir: sortDir }));
+      } catch { /* private mode: sorting still works, it just won't persist */ }
+      renderTable(allRows);
+    });
+  });
+}
+
 function renderStats(rows) {
   const counts = {};
   rows.forEach((r) => { counts[r.status] = (counts[r.status] || 0) + 1; });
@@ -77,11 +139,10 @@ function renderTable(rows) {
 
   $("content").innerHTML = `
     <table>
-      <thead><tr>
-        <th>Job</th><th>Fit</th><th>Status</th><th>Source</th><th>Updated</th><th></th>
-      </tr></thead>
-      <tbody>${shown.map(rowHtml).join("")}</tbody>
+      <thead>${headerHtml()}</thead>
+      <tbody>${sortRows(shown).map(rowHtml).join("")}</tbody>
     </table>`;
+  bindSortHeaders();
 
   // Status dropdown → persist immediately.
   document.querySelectorAll("select[data-id]").forEach((sel) => {
@@ -229,8 +290,7 @@ chrome.runtime.onMessage.addListener((msg) => {
   if (msg?.type !== "SCAN_PROGRESS") return;
   setScan(msg.text, (msg.stats || []).join(" · "), Boolean(msg.error));
   if (msg.done) {
-    $("find").disabled = false;
-    $("find").textContent = "🔍 Find jobs";
+    scanFinished();
     // A changed CV means everything already in the tracker was found for the
     // previous one. Say so and offer to clear it, rather than leaving two
     // people's results mixed together.
@@ -263,30 +323,94 @@ function showStaleNotice() {
   });
 }
 
+const SETUP_HELP = {
+  NO_KEY: "Add your Groq API key from the JobCopilot toolbar icon first.",
+  NO_CV: "Add your CV from the JobCopilot toolbar icon first.",
+  NOT_SIGNED_IN: "Sign in from the JobCopilot toolbar icon first.",
+};
+
+function scanFinished() {
+  $("find").disabled = false;
+  $("find").textContent = "🔍 Find jobs";
+}
+
 $("find").addEventListener("click", async () => {
   const btn = $("find");
   btn.disabled = true;
   btn.textContent = "Searching…";
   setScan("Starting…");
   try {
+    // This reply only confirms the scan started; the run itself reports over
+    // SCAN_PROGRESS, and it is that listener which re-enables the button.
     const resp = await chrome.runtime.sendMessage({ type: "FIND_JOBS" });
     if (resp && !resp.ok) {
-      const msg = resp.error === "NO_KEY"
-        ? "Add your Groq API key from the JobCopilot toolbar icon first."
-        : resp.error === "NO_CV"
-          ? "Add your CV from the JobCopilot toolbar icon first."
-          : resp.error === "NOT_SIGNED_IN"
-            ? "Sign in from the JobCopilot toolbar icon first."
-            : resp.error;
-      setScan("Scan failed", msg, true);
+      setScan("Scan failed", SETUP_HELP[resp.error] || resp.error, true);
+      scanFinished();
     }
   } catch (e) {
-    setScan("Scan failed", String(e.message || e), true);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = "🔍 Find jobs";
+    // The worker went away before even acknowledging. A scan that has already
+    // started reports through SCAN_PROGRESS and must not be declared failed
+    // here — that is exactly the false alarm this used to show.
+    const m = String(e.message || e);
+    if (/message channel closed|message port closed/i.test(m)) {
+      setScan("Still searching…",
+              "This scan takes a few minutes. Progress will appear here.");
+    } else {
+      setScan("Scan failed", m, true);
+      scanFinished();
+    }
   }
 });
 
-$("refresh").addEventListener("click", load);
+// ── Is this page still the extension that's running? ───────────────────────
+// An open dashboard tab keeps executing the code it was loaded with. Reload or
+// update the extension and this page carries on against a worker that is now a
+// different build — messages to it fail with "Extension context invalidated"
+// or a dead port, which is unreadable if you don't already know the cause.
+// Checked on load and on every Refresh, so the answer is "reload this page",
+// not a mystery.
+const PAGE_VERSION = chrome.runtime.getManifest().version;
+
+function showStale(text) {
+  const el = $("stale");
+  el.className = "scan err";
+  el.innerHTML = `<div>${esc(text)}</div>` +
+    `<div class="sub" style="margin-top:6px">` +
+    `<button id="reload-page">Reload this page</button></div>`;
+  el.classList.remove("hidden");
+  const btn = document.getElementById("reload-page");
+  if (btn) btn.addEventListener("click", () => location.reload());
+}
+
+async function checkVersion() {
+  try {
+    const resp = await chrome.runtime.sendMessage({ type: "PING" });
+    if (resp && resp.version && resp.version !== PAGE_VERSION) {
+      showStale(`This page is running JobCopilot ${PAGE_VERSION}, but the ` +
+                `installed extension is now ${resp.version}.`);
+      return false;
+    }
+    $("stale").classList.add("hidden");
+    return true;
+  } catch {
+    // The worker wouldn't answer at all. After an extension reload that's
+    // exactly what an orphaned page sees.
+    showStale("The extension was reloaded or updated, so this page is out of " +
+              "date and its buttons won't work.");
+    return false;
+  }
+}
+
+$("refresh").addEventListener("click", async () => {
+  const btn = $("refresh");
+  btn.disabled = true;
+  try {
+    await checkVersion();
+    await load();
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+checkVersion();
 load();
