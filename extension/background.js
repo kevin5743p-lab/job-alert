@@ -11,7 +11,8 @@ import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, buildFieldFillPro
 import * as sb from "./supabase.js";
 import { fetchAll, prefilter, prioritise, validateTargets, pickKnownBoards }
   from "./finder.js";
-import { ruleScore, classifyWithRules, getDomain, applyDomainCap } from "./matcher.js";
+import { ruleScore, classifyWithRules, getDomain, applyDomainCap, candidateFamilies }
+  from "./matcher.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -240,11 +241,15 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       // scorer and sometimes survived it.
       const keyworded = prefilter(jobs, sp);
       const domain = getDomain(sp);
+      // Worked out once per scan: which professions this person is actually
+      // looking for, so postings from another line of work are rejected even
+      // when the generated domain block is thin.
+      const families = candidateFamilies(sp);
       const graded = [];
       let cutOffField = 0, cutRules = 0;
 
       for (const job of keyworded) {
-        const [rScore, rReason] = ruleScore(job, sp);
+        const [rScore, rReason] = ruleScore(job, sp, families);
         if (rScore === 0) { cutRules++; continue; }        // language, seniority, off-field
         const [klass] = classifyWithRules(job, domain);
         if (klass === "out_of_domain") { cutOffField++; continue; }

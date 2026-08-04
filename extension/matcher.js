@@ -85,6 +85,107 @@ export function classifyWithRules(job, domain) {
   return [null, ""];
 }
 
+// ── Profession guard ───────────────────────────────────────────────────────
+// The domain block is written by a model from each CV, so how thorough its
+// reject_title_terms list turns out to be varies from user to user. Relying on
+// it alone means the next person gets what Meet got: marketing and
+// customer-service roles in an engineering search. This is the floor underneath
+// it — a fixed map of professions that applies to everybody, so a posting from
+// a different line of work is rejected whatever the model happened to generate.
+//
+// Built in code rather than per-user on purpose: it must not be possible to fix
+// one person's results and leave the next person's broken.
+const PROFESSION_FAMILIES = {
+  engineering: ["engineer", "ingenieur", "ingenieurin", "konstrukteur", "techniker",
+    "technician", "mechanic", "mechatronik", "elektronik", "hardware", "embedded",
+    "simulation", "cad", "fertigung", "produktion", "manufacturing", "maintenance",
+    "instandhaltung", "qualitätsingenieur", "prüftechnik", "versuch"],
+  software: ["software", "developer", "entwickler", "programmer", "backend",
+    "frontend", "full-stack", "fullstack", "devops", "sre", "data scientist",
+    "data engineer", "machine learning", "ml engineer", "qa engineer", "tester",
+    "informatiker", "it-", "cloud", "cyber security", "systemadministrator"],
+  finance: ["accountant", "buchhalter", "controller", "controlling", "auditor",
+    "wirtschaftsprüfer", "steuer", "tax", "financial analyst", "finanzanalyst",
+    "treasury", "investment", "banker", "bilanz", "credit risk", "actuary"],
+  marketing: ["marketing", "brand", "seo", "sea", "content manager", "copywriter",
+    "social media", "kommunikation", "communications", "public relations",
+    "growth manager", "campaign", "redakteur"],
+  sales: ["sales", "vertrieb", "account executive", "account manager",
+    "business development", "key account", "kundenberater", "verkauf",
+    "verkäufer", "retail", "einzelhandel", "shop assistant"],
+  support: ["customer support", "customer service", "kundenservice", "kundenbetreuer",
+    "call center", "helpdesk", "service desk", "community management",
+    "customer success", "reklamation"],
+  hr: ["recruiter", "recruiting", "talent acquisition", "human resources",
+    "personalreferent", "personalwesen", "hr manager", "hr business partner",
+    "lohnbuchhaltung", "payroll"],
+  legal: ["lawyer", "anwalt", "rechtsanwalt", "jurist", "legal counsel",
+    "paralegal", "compliance officer", "notar"],
+  health: ["nurse", "krankenpfleger", "pflegekraft", "pflegefachkraft", "doctor",
+    "arzt", "ärztin", "physician", "therapist", "therapeut", "apotheker",
+    "pharmacist", "medizinische", "zahnarzt"],
+  education: ["teacher", "lehrer", "erzieher", "dozent", "lecturer", "professor",
+    "tutor", "kindergarten", "nachhilfe"],
+  logistics: ["logistik", "lagerist", "warehouse", "kommissionier", "fahrer",
+    "driver", "kurier", "spedition", "supply chain", "disponent"],
+  hospitality: ["chef", "koch", "köchin", "barista", "kellner", "waiter",
+    "housekeeping", "rezeptionist", "receptionist", "hotel", "gastronomie"],
+  trades: ["elektriker", "installateur", "klempner", "plumber", "carpenter",
+    "schreiner", "maler", "dachdecker", "bauleiter", "maurer"],
+  design: ["ux designer", "ui designer", "graphic designer", "grafiker",
+    "produktdesigner", "art director", "illustrator"],
+  admin: ["office manager", "assistenz", "sekretär", "sachbearbeiter",
+    "empfang", "verwaltung", "data entry"],
+};
+
+// Families whose work genuinely overlaps, so a posting from one is not treated
+// as foreign to the other.
+const FAMILY_NEIGHBOURS = {
+  engineering: ["software", "design"],
+  software: ["engineering"],
+  design: ["software", "marketing"],
+  finance: ["admin"],
+};
+
+function familiesIn(text) {
+  const t = norm(text);
+  const found = new Set();
+  for (const [family, markers] of Object.entries(PROFESSION_FAMILIES)) {
+    if (markers.some((m) => t.includes(m))) found.add(family);
+  }
+  return found;
+}
+
+/** The professions this candidate is actually looking for. */
+export function candidateFamilies(profile) {
+  const domain = getDomain(profile);
+  const text = [
+    domain.name || "", profile.field || "",
+    (profile.target_titles || []).join(" "),
+    (domain.core_terms || []).join(" "),
+    (profile.skills || []).join(" "),
+  ].join(" ");
+
+  const fams = familiesIn(text);
+  for (const f of Array.from(fams)) {
+    (FAMILY_NEIGHBOURS[f] || []).forEach((n) => fams.add(n));
+  }
+  return fams;
+}
+
+/**
+ * True when a posting's title belongs to a different profession from the
+ * candidate's. Titles that also match the candidate's own field are kept —
+ * "Sales Engineer" is engineering to an engineer.
+ */
+export function isOffProfession(title, myFamilies) {
+  if (!myFamilies || !myFamilies.size) return false;   // unknown field: don't guess
+  const theirs = familiesIn(title);
+  if (!theirs.size) return false;                      // no signal either way
+  for (const f of theirs) if (myFamilies.has(f)) return false;
+  return true;
+}
+
 // ── Rule score ─────────────────────────────────────────────────────────────
 // Phrases that mean the employer wants genuinely fluent German. Casual mentions
 // ("Grundkenntnisse", "B1", "von Vorteil") deliberately don't count.
@@ -104,7 +205,7 @@ const tokenize = (s) => (norm(s).match(/[a-zäöüß0-9]+/g) || []);
  * Score a job 0-100 on rules alone. Returns [score, reason].
  * A zero means a hard filter rejected it and the model should never see it.
  */
-export function ruleScore(job, profile) {
+export function ruleScore(job, profile, myFamilies) {
   const domain = getDomain(profile);
   const title = norm(job.title);
   const desc = norm(job.description);
@@ -121,6 +222,13 @@ export function ruleScore(job, profile) {
       if (!atCore) return [0, `title contains out-of-field term '${bad}'`];
       break;
     }
+  }
+
+  // The same check, from the built-in profession map, so a thin or missing
+  // reject list can't let another line of work through. Applies to every user.
+  const fams = myFamilies || candidateFamilies(profile);
+  if (isOffProfession(title, fams)) {
+    return [0, "a different profession from the candidate's field"];
   }
 
   for (const excl of profile.exclude_keywords || []) {
