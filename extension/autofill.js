@@ -117,8 +117,28 @@
   const norm = (s) => (s || "").toLowerCase().replace(/\s+/g, " ").trim();
 
   // Everything the user would read as this field's name.
+  // aria-labelledby names the element holding the caption. Cornerstone points
+  // it at an error span that is empty until something goes wrong, so resolving
+  // it the proper way yields nothing — but the attribute itself reads
+  // "actionItem.firstName.idTag-error", which names the field outright. Both
+  // are returned: the referenced text when there is any, and the raw token,
+  // which is an identifier exactly like name and id.
+  function labelledByText(el) {
+    const ref = el.getAttribute && el.getAttribute("aria-labelledby");
+    if (!ref) return { text: "", token: "" };
+    const text = ref.split(/\s+/)
+      .map((id) => {
+        const n = id && document.getElementById(id);
+        return n ? norm(n.innerText || n.textContent || "") : "";
+      })
+      .filter(Boolean).join(" ").trim();
+    return { text, token: ref };
+  }
+
   function haystack(el) {
+    const lb = labelledByText(el);
     const bits = [
+      lb.text, lb.token,
       el.name, el.id, el.placeholder, el.getAttribute("aria-label"),
       el.getAttribute("autocomplete"), el.getAttribute("data-qa"),
       el.getAttribute("data-automation-id"),
@@ -191,8 +211,10 @@
       const lab = document.querySelector(`label[for="${CSS.escape(el.id)}"]`);
       if (lab) candidates.push(lab.innerText);
     }
-    candidates.push(el.getAttribute("aria-label"), el.placeholder,
-                    nearbyLabel(el), el.name);
+    // The resolved caption only — never the raw aria-labelledby token, which is
+    // an internal id and has no business being shown to anyone.
+    candidates.push(el.getAttribute("aria-label"), labelledByText(el).text,
+                    el.placeholder, nearbyLabel(el), el.name);
     for (const c of candidates) {
       const t = norm(c || "").replace(/\s*\*$/, "").trim();
       if (t && !UUIDISH.test(t)) return t.slice(0, 60);
