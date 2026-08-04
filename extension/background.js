@@ -564,6 +564,19 @@ const FILL_PACE_MS = 4000;
 
 const labelKey = (s) => String(s || "").toLowerCase().replace(/\s+/g, " ").trim().slice(0, 90);
 
+// A field whose label couldn't be read is not a field we can fill.
+//
+// labelKey("") is "", which is a perfectly good object key — so every
+// unlabelled input on every site shared one entry in the learned map. Learn one
+// of them wrongly and the answer comes back for all of them: on a Cornerstone
+// form that meant First Name receiving an email address and a phone number, and
+// Last Name receiving a city and country. Worse, an unreadable label was still
+// handed to the model to invent a value for, which is guesswork dressed up as
+// an answer. Both paths now require a label of real substance, and a blank one
+// is reported as skipped so the gap is visible rather than silently wrong.
+const MIN_LABEL_LEN = 3;
+const usableLabel = (s) => labelKey(s).length >= MIN_LABEL_LEN;
+
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg?.type !== "MAP_FIELDS") return;
 
@@ -574,10 +587,19 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
       const store = await chrome.storage.local.get(LEARNED_KEY);
       const learned = store[LEARNED_KEY] || {};
+      // Drop entries poisoned before the guard below existed — the blank key
+      // above all, which is the one that filled names with contact details.
+      let purged = 0;
+      for (const k of Object.keys(learned)) {
+        if (k.length < MIN_LABEL_LEN) { delete learned[k]; purged++; }
+      }
+      if (purged) await chrome.storage.local.set({ [LEARNED_KEY]: learned });
 
       const map = {};
       const unknown = [];
+      let unlabelled = 0;
       for (const f of fields) {
+        if (!usableLabel(f.label)) { unlabelled++; continue; }
         const hit = learned[labelKey(f.label)];
         if (hit) map[f.id] = hit; else unknown.push(f);
       }
@@ -599,7 +621,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
               // Only ids we asked about, only keys we offered.
               if (!asked.has(id) || !allowed.has(key)) continue;
               map[id] = key;
-              learned[labelKey(asked.get(id))] = key;
+              // Only labels substantial enough to identify a field again.
+              if (usableLabel(asked.get(id))) learned[labelKey(asked.get(id))] = key;
             }
           } catch (e) {
             console.warn("Field mapping failed:", e);
@@ -637,7 +660,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         }
       }
 
-      sendResponse({ ok: true, map, fills, learned: fromCache, asked: unknown.length });
+      sendResponse({ ok: true, map, fills, learned: fromCache,
+                     asked: unknown.length, unlabelled });
     } catch (e) {
       sendResponse({ ok: false, error: String(e.message || e) });
     }

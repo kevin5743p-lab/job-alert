@@ -91,9 +91,17 @@
   box-sizing: border-box !important;
   max-width: none !important;
   min-height: 0 !important;
-  transform: none !important;
 }
-#jobcopilot-panel { position: fixed !important; }
+/* Children only. Applying this to the panel itself overrode the very transform
+   that slides it in and out — with transform forced to none the panel was
+   permanently on screen and the close button appeared dead, because removing
+   .open changed nothing. Same reason position is re-asserted below. */
+#jobcopilot-panel * { transform: none !important; }
+#jobcopilot-panel {
+  position: fixed !important;
+  transform: translateX(100%) !important;
+}
+#jobcopilot-panel.open { transform: translateX(0) !important; }
 #jobcopilot-panel div,
 #jobcopilot-panel p,
 #jobcopilot-panel ul,

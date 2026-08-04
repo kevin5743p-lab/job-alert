@@ -20,8 +20,16 @@
     return `<!doctype html><html><head><meta charset="utf-8">
 <title>Tailored application — ${esc(job.title || "")}</title>
 <style>
-  @page { size: A4; margin: 20mm; }
-  body { font: 11.5pt/1.55 Georgia, "Times New Roman", serif; color: #111; }
+  /* Zero page margin, and the page's own padding instead. With any non-zero
+     @page margin Chrome prints its own header and footer into it — the source
+     URL along one edge and the date and time along the other. On a cover letter
+     going to an employer that is not a small blemish, and no employer should be
+     receiving a document stamped "chrome-extension://…". Margin 0 is what
+     suppresses them; the padding below restores the same 20mm of white space. */
+  @page { size: A4; margin: 0; }
+  body { font: 11.5pt/1.55 Georgia, "Times New Roman", serif; color: #111;
+         padding: 20mm; }
+  @media print { body { padding: 20mm; } }
   h1 { font-size: 18pt; margin: 0 0 2pt; }
   h2 { font-size: 11pt; text-transform: uppercase; letter-spacing: .05em;
        border-bottom: 1px solid #999; padding-bottom: 3px; margin: 16pt 0 7pt; }
