@@ -155,23 +155,33 @@ export async function saveTailoredResult(job, packet, warnings) {
 
 // Track the job in the application pipeline. Upserts on (user_id, job_url) so
 // re-tailoring the same posting updates that row instead of duplicating it.
-export async function upsertApplication(job, tailoredResultId) {
+export async function upsertApplication(job, tailoredResultId, packet) {
   // The URL is the dedup key. Without one we skip tracking entirely: job_url
   // would be NULL, and NULLs are distinct in the unique index, so every re-tailor
   // would pile up another row instead of updating one.
   if (!job.url) return null;
+
+  // The tailoring call already judged the fit, so a job tailored by hand gets
+  // the same score as one a scan found instead of a blank in the tracker.
+  const body = {
+    user_id: await currentUserId(),
+    job_title: job.title || "",
+    job_company: job.company || "",
+    job_location: job.location || "",
+    job_url: job.url,
+    job_source: job.source || "",
+    status: "tailored",
+    tailored_result_id: tailoredResultId || null,
+  };
+  if (packet && typeof packet.fit_score === "number") {
+    body.score = packet.fit_score;
+    body.tier = packet.fit_score >= 75 ? "strong" : "worth_look";
+    if (packet.fit_summary) body.reason = String(packet.fit_summary).slice(0, 500);
+  }
+
   const rows = await rest("/applications?on_conflict=user_id,job_url", {
     method: "POST",
-    body: {
-      user_id: await currentUserId(),
-      job_title: job.title || "",
-      job_company: job.company || "",
-      job_location: job.location || "",
-      job_url: job.url,
-      job_source: job.source || "",
-      status: "tailored",
-      tailored_result_id: tailoredResultId || null,
-    },
+    body,
     headers: { Prefer: "resolution=merge-duplicates,return=representation" },
   });
   return rows && rows[0] ? rows[0] : null;

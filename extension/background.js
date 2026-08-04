@@ -589,7 +589,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       if (signedIn) {
         try {
           const row = await sb.saveTailoredResult(msg.job, result, warnings);
-          await sb.upsertApplication(msg.job, row?.id);
+          await sb.upsertApplication(msg.job, row?.id, result);
           saved = true;
         } catch (e) {
           console.warn("Supabase save failed:", e);

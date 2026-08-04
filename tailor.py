@@ -108,6 +108,10 @@ ABSOLUTE RULE — NO FABRICATION:
 
 Return a JSON object in EXACTLY this shape:
 {{
+  "fit_score": <int 0-100: how well this candidate fits THIS role — 85+ outstanding,
+                70-84 strong, 50-69 worth a look, below 50 poor. Be strict, and
+                score 0 if it is a different profession, needs years of experience
+                the CV lacks, or demands fluent German the CV doesn't show>,
   "fit_summary": "<one honest sentence on overall fit, strengths and gaps>",
   "tailored_summary": "<3-4 sentence professional summary tuned to THIS role, grounded in the CV>",
   "relevant_experience": [
@@ -144,7 +148,7 @@ Aim for 4-7 items in "relevant_experience". Respond with ONLY the JSON object.""
 
 
 # Every key the caller can rely on being present in a successful result.
-_RESULT_KEYS = ("fit_summary", "tailored_summary", "relevant_experience",
+_RESULT_KEYS = ("fit_score", "fit_summary", "tailored_summary", "relevant_experience",
                 "matched_keywords", "missing_keywords", "suggestions",
                 "cover_letter")
 

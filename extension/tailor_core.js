@@ -47,6 +47,10 @@ ABSOLUTE RULE — NO FABRICATION:
 
 Return a JSON object in EXACTLY this shape:
 {
+  "fit_score": <int 0-100: how well this candidate fits THIS role — 85+ outstanding,
+                70-84 strong, 50-69 worth a look, below 50 poor. Be strict, and
+                score 0 if it is a different profession, needs years of experience
+                the CV lacks, or demands fluent German the CV doesn't show>,
   "fit_summary": "<one honest sentence on overall fit, strengths and gaps>",
   "tailored_summary": "<3-4 sentence professional summary tuned to THIS role, grounded in the CV>",
   "relevant_experience": [
@@ -438,6 +442,10 @@ export function normalize(result) {
   for (const key of ["matched_keywords", "missing_keywords", "suggestions"]) {
     out[key] = asStrList(result[key]);
   }
+  // Comes back with the packet, so a job tailored by hand carries the same fit
+  // number as one found by a scan rather than showing "—" in the tracker.
+  const fit = parseInt(result.fit_score, 10);
+  out.fit_score = Number.isFinite(fit) ? Math.max(0, Math.min(100, fit)) : null;
   const exp = [];
   for (const item of result.relevant_experience || []) {
     if (item && typeof item === "object") {
