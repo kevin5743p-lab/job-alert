@@ -103,16 +103,20 @@ const PROFESSION_FAMILIES = {
   software: ["software", "developer", "entwickler", "programmer", "backend",
     "frontend", "full-stack", "fullstack", "devops", "sre", "data scientist",
     "data engineer", "machine learning", "ml engineer", "qa engineer", "tester",
-    "informatiker", "it-", "cloud", "cyber security", "systemadministrator"],
+    "informatiker", "it-", "cloud", "cyber security", "systemadministrator",
+    "softwareentwicklung", "anwendungsentwicklung", "webentwicklung"],
   finance: ["accountant", "buchhalter", "controller", "controlling", "auditor",
     "wirtschaftsprüfer", "steuer", "tax", "financial analyst", "finanzanalyst",
-    "treasury", "investment", "banker", "bilanz", "credit risk", "actuary"],
+    "treasury", "investment", "banker", "bilanz", "credit risk", "actuary",
+    "steuerberater", "steuerfachangestellte", "finanzbuchhaltung", "rechnungswesen"],
   marketing: ["marketing", "brand", "seo", "sea", "content manager", "copywriter",
     "social media", "kommunikation", "communications", "public relations",
     "growth manager", "campaign", "redakteur"],
   sales: ["sales", "vertrieb", "account executive", "account manager",
     "business development", "key account", "kundenberater", "verkauf",
-    "verkäufer", "retail", "einzelhandel", "shop assistant"],
+    "verkäufer", "verkäuferin", "retail", "einzelhandel", "shop assistant",
+    "vertriebsmitarbeiter", "vertriebsassistenz", "verkaufsberater",
+    "verkaufsleiter", "vertriebsinnendienst"],
   support: ["customer support", "customer service", "kundenservice", "kundenbetreuer",
     "call center", "helpdesk", "service desk", "community management",
     "customer success", "reklamation"],
@@ -126,16 +130,23 @@ const PROFESSION_FAMILIES = {
     "pharmacist", "medizinische", "zahnarzt"],
   education: ["teacher", "lehrer", "erzieher", "dozent", "lecturer", "professor",
     "tutor", "kindergarten", "nachhilfe"],
-  logistics: ["logistik", "lagerist", "warehouse", "kommissionier", "fahrer",
-    "driver", "kurier", "spedition", "supply chain", "disponent"],
+  logistics: ["logistik", "lagerist", "warehouse", "kommissionierer", "kommissionierung", "fahrer",
+    "driver", "kurier", "spedition", "supply chain", "disponent",
+    // Compound forms, since markers now match whole words only.
+    "kraftfahrer", "berufskraftfahrer", "lkw-fahrer", "staplerfahrer",
+    "lagermitarbeiter", "lagerarbeiter", "lagerhelfer", "logistikmitarbeiter",
+    "auslieferungsfahrer", "paketzusteller", "zusteller"],
   hospitality: ["chef", "koch", "köchin", "barista", "kellner", "waiter",
     "housekeeping", "rezeptionist", "receptionist", "hotel", "gastronomie"],
   trades: ["elektriker", "installateur", "klempner", "plumber", "carpenter",
     "schreiner", "maler", "dachdecker", "bauleiter", "maurer"],
   design: ["ux designer", "ui designer", "graphic designer", "grafiker",
     "produktdesigner", "art director", "illustrator"],
-  admin: ["office manager", "assistenz", "sekretär", "sachbearbeiter",
-    "empfang", "verwaltung", "data entry"],
+  admin: ["office manager", "assistenz", "sekretär", "sekretärin", "sachbearbeiter",
+    "empfang", "verwaltung", "data entry",
+    "teamassistenz", "projektassistenz", "vorstandsassistenz", "büroassistenz",
+    "bürokaufmann", "bürokauffrau", "verwaltungsangestellte",
+    "empfangsmitarbeiter", "empfangskraft"],
 };
 
 // Families whose work genuinely overlaps, so a posting from one is not treated
@@ -147,11 +158,56 @@ const FAMILY_NEIGHBOURS = {
   finance: ["admin"],
 };
 
+// Matching these markers as plain substrings read German compounds backwards.
+// "Fahrerassistenz" contains "fahrer" and "assistenz", and "Steuergerät"
+// contains "steuer", so ADAS work was filed under logistics, admin and finance
+// at once — and because the same function builds the candidate's own family
+// set, those three families were added to it, which switched the guard off for
+// every warehouse and back-office posting that came after. A marker found in
+// the middle of a compound means nothing and must not count.
+//
+// German does compound left to right, though, so the profession noun lands at
+// the end: Entwicklungs|ingenieur, Berufskraft|fahrer, Elektro|techniker. Those
+// are real and have to be caught, which is what COMPOUND_TAILS allows for —
+// nouns that name a profession wherever they appear at the end of a word.
+// "assistenz" is deliberately not among them: "Fahrerassistenz" is the ADAS
+// term, not an office job. Everything else matches as a whole word, allowing
+// for the usual inflected endings ("Verkäuferin", "engineering").
+const WORD_CHAR = "a-zäöüß0-9";
+const INFLECTION = "(?:e|en|er|s|es|in|innen|ing)?";
+const STARTS_WORD = new RegExp(`^[${WORD_CHAR}]`);
+const ENDS_WORD = new RegExp(`[${WORD_CHAR}]$`);
+
+const COMPOUND_TAILS = new Set([
+  "ingenieur", "ingenieurin", "konstrukteur", "techniker", "entwickler",
+  "informatiker", "fahrer", "disponent", "buchhalter", "arzt", "ärztin",
+  "apotheker", "elektriker", "installateur", "klempner", "schreiner",
+  "dachdecker", "maurer", "koch", "köchin", "kellner", "lehrer", "erzieher",
+  "verkäufer", "verkäuferin", "sekretär", "sachbearbeiter", "kundenberater",
+]);
+// Left off on purpose: "controller" would turn every Mikrocontroller and domain
+// controller posting into a finance job.
+
+const markerCache = new Map();
+
+function markerRe(marker) {
+  let re = markerCache.get(marker);
+  if (!re) {
+    const left = STARTS_WORD.test(marker) && !COMPOUND_TAILS.has(marker)
+      ? `(?<![${WORD_CHAR}])` : "";
+    const right = ENDS_WORD.test(marker)
+      ? `${INFLECTION}(?![${WORD_CHAR}])` : "";
+    re = new RegExp(`${left}${escapeRe(marker)}${right}`);
+    markerCache.set(marker, re);
+  }
+  return re;
+}
+
 function familiesIn(text) {
   const t = norm(text);
   const found = new Set();
   for (const [family, markers] of Object.entries(PROFESSION_FAMILIES)) {
-    if (markers.some((m) => t.includes(m))) found.add(family);
+    if (markers.some((m) => markerRe(m).test(t))) found.add(family);
   }
   return found;
 }
