@@ -267,7 +267,10 @@ For each field, give the exact text to type into it. Rules:
   notice period in months and the candidate said "from 1 October", work out the
   months only if the CV or details make that unambiguous — otherwise omit it.
 - When "options" are given, answer with one of them EXACTLY as written, or omit
-  the field if none genuinely applies. This covers radio buttons too.
+  the field if none genuinely applies. This covers radio buttons and dropdowns.
+- A field of type "checkbox-group" may take SEVERAL options: list the ones that
+  genuinely apply, separated by commas, each written exactly as given. Choose
+  only what the details or CV support — leave it out rather than padding it.
 - Interpret rather than copy when the options demand it, provided the fact is
   already known. If the candidate says "English C1, German B1" and the field
   asks "What is your German level?" with options "A1 - A2 (Beginner) /

@@ -339,6 +339,50 @@
       });
     });
 
+    // Checkbox questions that offer a choice ("Which of these apply to you?")
+    // rather than asking for consent. Grouped by name, and only when there is
+    // more than one — a lone checkbox is a confirmation, not a choice.
+    const boxes = new Map();
+    document.querySelectorAll("input[type=checkbox]").forEach((el) => {
+      if (!visible(el) || !el.name) return;
+      if (!boxes.has(el.name)) boxes.set(el.name, []);
+      boxes.get(el.name).push(el);
+    });
+    boxes.forEach((inputs) => {
+      if (inputs.length < 2 || inputs.some((el) => el.checked)) return;
+      const question = groupQuestion(inputs[0]);
+      if (!question || question.length > 200) return;
+      if (isBlocked(question, inputs[0]) || CONSENT.test(question)) return;
+      if (inputs.some((el) => CONSENT.test(labelTextFor(el)))) return;
+      const id = `c${g++}`;
+      inputs.forEach((el) => { el.dataset.jcFieldId = id; });
+      out.push({
+        id, label: question, type: "checkbox-group",
+        options: inputs.map(labelTextFor).filter(Boolean).slice(0, 15),
+      });
+    });
+
+    // Choice widgets built out of divs and buttons rather than inputs — how
+    // Ashby and Workday render most of theirs. They expose the same meaning
+    // through ARIA, so that is what we read.
+    document.querySelectorAll("[role='radiogroup']").forEach((grp) => {
+      const opts = Array.from(grp.querySelectorAll("[role='radio']"))
+        .filter(visible);
+      if (opts.length < 2) return;
+      if (opts.some((o) => o.getAttribute("aria-checked") === "true")) return;
+      const question =
+        (grp.getAttribute("aria-label") || "").trim() || groupQuestion(grp);
+      if (!question || question.length > 200) return;
+      if (isBlocked(question, grp) || CONSENT.test(question)) return;
+      const id = `a${g++}`;
+      opts.forEach((o) => { o.dataset.jcFieldId = id; });
+      out.push({
+        id, label: question, type: "radio",
+        options: opts.map((o) => norm(o.innerText || o.getAttribute("aria-label") || ""))
+          .filter(Boolean).slice(0, 12),
+      });
+    });
+
     document.querySelectorAll("input, select").forEach((el, i) => {
       const type = (el.type || "").toLowerCase();
       if (["hidden", "submit", "button", "image", "reset", "file",
@@ -387,23 +431,47 @@
       const nodes = Array.from(document.querySelectorAll(`[data-jc-field-id="${id}"]`));
       const el = nodes[0];
       if (!el) return;
-      const isRadio = (el.type || "").toLowerCase() === "radio";
-      if (!(isRadio ? controlVisible(el) : visible(el))) return;
+      const type = (el.type || "").toLowerCase();
+      const isAria = el.getAttribute && el.getAttribute("role") === "radio";
+      const isChoice = type === "radio" || type === "checkbox" || isAria;
+      if (!(isChoice ? controlVisible(el) : visible(el))) return;
 
-      // Radio group: pick the option whose label the answer names. Consent
-      // groups were never collected, so nothing here can tick one.
-      if (isRadio) {
-        if (nodes.some((r) => r.checked)) return;
-        const hit = nodes.find((r) => optionMatches(labelTextFor(r), value));
-        const q = groupQuestion(el).slice(0, 48);
-        if (!hit) {
+      // Choice question. Consent groups are never collected, so nothing here
+      // can tick one. Checkboxes are a multi-select, so the answer may name
+      // several options; a radio or ARIA group takes exactly one.
+      if (isChoice) {
+        const answered = nodes.some(
+          (r) => r.checked || r.getAttribute("aria-checked") === "true");
+        if (answered) return;
+
+        const optionText = (r) => (isAria || !r.type)
+          ? norm(r.innerText || r.getAttribute("aria-label") || "")
+          : labelTextFor(r);
+
+        const wanted = type === "checkbox"
+          ? value.split(/[,;]|\band\b/).map((s) => s.trim()).filter(Boolean)
+          : [value];
+
+        const hits = [];
+        for (const w of wanted) {
+          const hit = nodes.find((r) => !hits.includes(r) && optionMatches(optionText(r), w));
+          if (hit) hits.push(hit);
+        }
+        const q = (groupQuestion(el) || "").slice(0, 48);
+        if (!hits.length) {
           report && report.skipped.push({ label: q, reason: `no option matching "${value}"` });
           return;
         }
-        hit.checked = true;
-        hit.dispatchEvent(new Event("click", { bubbles: true }));
-        hit.dispatchEvent(new Event("change", { bubbles: true }));
-        highlight(hit.closest("label") || hit);
+        for (const hit of hits) {
+          if (isAria || !hit.type) {
+            hit.click();          // a custom widget only updates via its handler
+          } else {
+            hit.checked = true;
+            hit.dispatchEvent(new Event("click", { bubbles: true }));
+            hit.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+          highlight(hit.closest("label") || hit);
+        }
         n++;
         report && report.filled.push({ label: q, key: "AI" });
         return;
