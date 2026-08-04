@@ -250,6 +250,13 @@ const GERMAN_FLUENCY_RE = new RegExp([
   "flie(ß|ss)end(e|es)? deutsch", "muttersprache deutsch",
   "sehr gute deutschkenntnisse", "fluent german", "native german",
   "german.{0,20}(c1|c2|native|fluent)",
+  // Employers who care enough to put it in the title say so there and often
+  // nowhere else: "Working Student (German Speaking)", "Sachbearbeiter
+  // (deutschsprachig)". The check used to read the body only, so these were
+  // the postings most certain to be a waste of the user's time and the ones
+  // most reliably let through.
+  "german[- ]speaking", "deutschsprachig", "german language required",
+  "gute deutschkenntnisse", "deutschkenntnisse erforderlich",
 ].join("|"), "i");
 
 const GERMAN_TEXT_RE =
@@ -299,7 +306,8 @@ export function ruleScore(job, profile, myFamilies) {
   if (langPref === "english_only" && GERMAN_TEXT_RE.test(desc)) {
     return [0, "posting is in German"];
   }
-  if (langPref === "no_german_required" && GERMAN_FLUENCY_RE.test(desc)) {
+  // Title as well as body: see GERMAN_FLUENCY_RE.
+  if (langPref === "no_german_required" && GERMAN_FLUENCY_RE.test(text)) {
     return [0, "fluent German required"];
   }
 

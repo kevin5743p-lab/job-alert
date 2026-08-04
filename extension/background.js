@@ -138,6 +138,37 @@ const COUNTRY_NAMES = [
   ["France", ["france", "frankreich", "fr", "fra"]],
 ];
 
+// How much German the user actually has, from the "Languages & levels" answer
+// they gave during onboarding ("English C1, German B1").
+//
+// This used to be the model's call, re-guessed from the CV on every profile
+// rebuild, and it kept landing on "any" — which switches the fluency filter off
+// completely and silently. A setting that decides whether German-only postings
+// are filtered should not be re-derived by a model that never sees the user's
+// own statement of their level; the onboarding answer does, and it survives
+// rebuilds because it lives in application_profile rather than search_profile.
+//
+// "english_only" is never chosen automatically. In Germany it would reject
+// almost every posting, and that is a choice for the user to make, not a
+// default to be inferred.
+// The answer is a list — "English C1, German B1, Hindi native" — so it's split
+// into its entries and only the German one is read. Scanning the whole string
+// for a level near the word "German" looks simpler and is wrong: in "German
+// native, English B2" it finds English's B2.
+const GERMAN_NAME_RE = /deutsch|german/i;
+const FLUENT_RE =
+  /\bc1\b|\bc2\b|native|muttersprache|mother ?tongue|fluent|flie(?:ß|ss)end|verhandlungssicher|bilingual/i;
+
+export function germanPolicy(languages) {
+  for (const entry of String(languages || "").split(/[,;\n\/|]|\band\b|\bund\b/i)) {
+    if (!GERMAN_NAME_RE.test(entry)) continue;
+    return FLUENT_RE.test(entry) ? "any" : "no_german_required";
+  }
+  // No German claimed at all, or claimed below C1: postings that demand fluent
+  // German are not worth showing.
+  return "no_german_required";
+}
+
 function searchCountry(country) {
   const c = String(country || "").trim().toLowerCase();
   if (!c) return "Germany";
@@ -301,6 +332,11 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       const prof = await sb.getProfile();
       const ap = (prof && prof.application_profile) || {};
       const baseLocation = [ap.city, ap.country].filter(Boolean).join(", ");
+
+      // Applied per scan rather than baked into the stored profile, so editing
+      // the onboarding answer takes effect on the next scan instead of waiting
+      // for a CV change to trigger a rebuild.
+      sp.language_preference = germanPolicy(ap.languages);
       // Searching and ranking want different places. Ranking wants the city, so
       // a nearby role outranks a distant one. Searching must not: LinkedIn takes
       // the location as a hard filter, so asking it for "Ingolstadt, Germany"
