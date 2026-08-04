@@ -192,8 +192,18 @@
   }
 
   // ── Floating buttons ─────────────────────────────────────────────────────
+  // Application forms are often inside an iframe, which is why the fill button
+  // was missing on some sites — content scripts only reach the top frame unless
+  // told otherwise. Now every frame runs this, so the buttons have to be placed
+  // frame-aware: tailoring belongs to the page as a whole, filling belongs to
+  // whichever frame actually holds the form.
+  const isTopFrame = (() => {
+    try { return window.top === window; } catch { return false; }
+  })();
+
   function injectButton() {
-    if (!$("#jobcopilot-fab")) {
+    if (!document.body) return;
+    if (isTopFrame && !$("#jobcopilot-fab")) {
       const btn = document.createElement("button");
       btn.id = "jobcopilot-fab";
       btn.type = "button";

@@ -3,7 +3,7 @@
   "name": "JobCopilot — Tailor",
   "version": "0.1.0",
   "description": "Tailor your CV and cover letter to the LinkedIn job you're viewing — grounded only in your real CV.",
-  "permissions": ["storage"],
+  "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": [
     "https://api.groq.com/*",
     "https://jiryqdcmukmbflahtptv.supabase.co/*",
@@ -35,16 +35,38 @@
         "https://*.myworkdaysite.com/*",
         "https://boards.greenhouse.io/*",
         "https://job-boards.greenhouse.io/*",
+        "https://*.greenhouse.io/*",
         "https://jobs.ashbyhq.com/*",
+        "https://*.ashbyhq.com/*",
         "https://jobs.lever.co/*",
         "https://*.jobs.personio.de/*",
         "https://*.recruitee.com/*",
         "https://jobs.smartrecruiters.com/*",
-        "https://careers.smartrecruiters.com/*"
+        "https://careers.smartrecruiters.com/*",
+        "https://*.successfactors.eu/*",
+        "https://*.successfactors.com/*",
+        "https://*.softgarden.io/*",
+        "https://*.softgarden.de/*",
+        "https://join.com/*",
+        "https://*.workable.com/*",
+        "https://*.taleo.net/*",
+        "https://*.eightfold.ai/*",
+        "https://*.avature.net/*",
+        "https://*.jobvite.com/*",
+        "https://*.icims.com/*",
+        "https://*.bamboohr.com/*",
+        "https://*.teamtailor.com/*",
+        "https://*.factorialhr.com/*",
+        "https://*.d-vinci.de/*",
+        "https://*.rexx-systems.com/*",
+        "https://*.concludis.de/*",
+        "https://*.stepstone.de/*",
+        "https://*.xing.com/*"
       ],
       "js": ["print_doc.js", "cover_templates.js", "autofill.js", "content.js"],
       "css": ["content.css"],
-      "run_at": "document_idle"
+      "run_at": "document_idle",
+      "all_frames": true
     }
   ]
 }

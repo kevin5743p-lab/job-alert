@@ -17,6 +17,35 @@ const els = {
   onboard: $("onboard"), profileState: $("profile-state"),
 };
 
+// Company career portals live on their own domains, so no fixed list of sites
+// can cover them. Clicking this injects JobCopilot into whatever page is open —
+// activeTab grants that only because the user asked for it, on that one page,
+// which is why it needs no broad host permission.
+document.getElementById("run-here").addEventListener("click", async () => {
+  const status = document.getElementById("run-status");
+  status.textContent = "Starting…";
+  status.style.color = "#57606a";
+  try {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (!tab || !/^https?:/.test(tab.url || "")) {
+      status.textContent = "Open a job or application page first.";
+      status.style.color = "#bc4c00";
+      return;
+    }
+    await chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: ["content.css"] });
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ["print_doc.js", "cover_templates.js", "autofill.js", "content.js"],
+    });
+    status.textContent = "Ready — look for the buttons at the bottom right.";
+    status.style.color = "#1a7f37";
+    setTimeout(() => window.close(), 1200);
+  } catch (e) {
+    status.textContent = `Couldn't run here: ${e.message}`;
+    status.style.color = "#bc4c00";
+  }
+});
+
 // The application questions live on their own page (too many for this popup).
 function openOnboarding() {
   chrome.tabs.create({ url: chrome.runtime.getURL("onboarding.html") });

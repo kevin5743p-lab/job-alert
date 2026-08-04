@@ -57,16 +57,42 @@
 </body></html>`;
   }
 
-  function open_(job, r) {
-    const w = window.open("", "_blank");
-    if (!w) {
-      alert("Pop-up blocked — allow pop-ups for this site, then click Download again.");
-      return;
+  // Opened as a blob rather than written into a blank window. A document
+  // produced with document.write inherits the opener page's CSP, so on sites
+  // that forbid inline handlers — Ashby and Workday among them — the "Save as
+  // PDF" button silently did nothing. A blob URL carries its own origin and no
+  // inherited policy, so the button works everywhere.
+  function openHtml(html) {
+    let url;
+    try {
+      url = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+    } catch {
+      url = null;
     }
-    w.document.open();
-    w.document.write(build(job, r));
-    w.document.close();
+    const w = url ? window.open(url, "_blank") : null;
+    if (w) {
+      // Freed once the tab has it; revoking immediately can race the load.
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      return true;
+    }
+    if (url) URL.revokeObjectURL(url);
+
+    // Pop-up blocked, or blobs unavailable — fall back to the old path, which
+    // still works on pages with a permissive policy.
+    const fallback = window.open("", "_blank");
+    if (!fallback) {
+      alert("Pop-up blocked — allow pop-ups for this site, then click Download again.");
+      return false;
+    }
+    fallback.document.open();
+    fallback.document.write(html);
+    fallback.document.close();
+    return true;
   }
 
-  window.JobCopilotPrintDoc = { build, open: open_ };
+  function open_(job, r) {
+    openHtml(build(job, r));
+  }
+
+  window.JobCopilotPrintDoc = { build, open: open_, openHtml };
 })();

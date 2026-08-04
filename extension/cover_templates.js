@@ -228,14 +228,21 @@ ${inner}</body></html>`;
     return tpl.render(makeData(job, packet, profile, language));
   }
 
+  // Uses the shared opener so the cover letter benefits from the same blob-URL
+  // fix — written documents inherit the page's CSP and the print button dies.
   function openCoverLetter(job, packet, profile, language) {
+    const html = buildCoverLetter(job, packet, profile, language);
+    if (window.JobCopilotPrintDoc && window.JobCopilotPrintDoc.openHtml) {
+      window.JobCopilotPrintDoc.openHtml(html);
+      return;
+    }
     const w = window.open("", "_blank");
     if (!w) {
       alert("Pop-up blocked — allow pop-ups for this site, then try again.");
       return;
     }
     w.document.open();
-    w.document.write(buildCoverLetter(job, packet, profile, language));
+    w.document.write(html);
     w.document.close();
   }
 
