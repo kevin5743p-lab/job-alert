@@ -211,6 +211,7 @@ export function buildSingleScorePrompt(job, cvText, sp = {}, language = "en",
   const field = (sp.domain && sp.domain.name) || sp.field || "";
   const langPref = sp.language_preference || "any";
   const level = sp.career_level || "";
+  const persona = sp.persona || "";
 
   return `You are a strict but fair job-matching assistant.
 
@@ -218,6 +219,7 @@ export function buildSingleScorePrompt(job, cvText, sp = {}, language = "en",
 ${(cvText || "").slice(0, 3000)}
 
 Their field: ${field || "as shown in the CV"}
+${persona ? `About them: ${persona}` : ""}
 ${level ? `Career level: ${level}` : ""}
 ${baseLocation ? `Based in: ${baseLocation}` : ""}
 ${domainClass ? `Already classified relative to their field: ${domainClass}` : ""}
@@ -240,7 +242,13 @@ Score this posting 0-100 for this candidate and give one short, specific reason.
   langPref === "no_german_required" ? `
   * it requires fluent or business German ("verhandlungssicheres Deutsch",
     "Deutsch C1/C2", "fließend", "Muttersprache"), which this candidate lacks.
-    ("Grundkenntnisse", B1/B2 or "von Vorteil" are fine.)` : ""}
+    ("Grundkenntnisse", B1/B2 or "von Vorteil" are fine.)` : ""}${
+  langPref === "english_only" ? `
+  * it is written in German or expects German at work; this candidate needs an
+    English-speaking role.` : ""}
+- This is a search within GERMANY. Postings elsewhere have already been
+  filtered out, so judge on fit rather than distance — but if one slips through
+  and is clearly outside Germany (and not remote), score it 0 and say so.
 - Judge on real overlap of experience, not keyword coincidence. Being at a
   well-known employer counts for nothing on its own.
 - The reason must cite something concrete from the CV or the posting, in one
