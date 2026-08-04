@@ -122,6 +122,10 @@
       el.name, el.id, el.placeholder, el.getAttribute("aria-label"),
       el.getAttribute("autocomplete"), el.getAttribute("data-qa"),
       el.getAttribute("data-automation-id"),
+      // Without this the rules never saw Cornerstone's "First Name", so the
+      // field fell through to the model instead of being filled from the
+      // stored answer — which is how an email address ended up in it.
+      nearbyLabel(el),
     ];
     if (el.labels && el.labels.length) {
       for (const l of el.labels) bits.push(l.innerText || l.textContent);
@@ -146,6 +150,40 @@
   // anything — so a hex-looking name is rejected in favour of visible text.
   const UUIDISH = /^[0-9a-f-]{16,}$/i;
 
+  // Plenty of ATSes render a label as a plain element next to the input rather
+  // than a <label for>. Cornerstone does, which left "First Name" invisible to
+  // both the rules and the model. This looks only at immediate neighbours and
+  // only accepts something short that isn't wrapping another field, so it finds
+  // the caption without ever swallowing a whole section.
+  const LABELISH_MAX = 40;
+
+  function nearbyLabel(el) {
+    const clean = (node) => {
+      if (!node) return "";
+      if (node.querySelector && node.querySelector("input, select, textarea")) return "";
+      const t = norm(node.innerText || node.textContent || "").replace(/\s*\*$/, "").trim();
+      return t && t.length <= LABELISH_MAX && !UUIDISH.test(t) ? t : "";
+    };
+    // The caption usually sits just before the input, or just before its wrapper.
+    for (const start of [el, el.parentElement]) {
+      if (!start) continue;
+      let sib = start.previousElementSibling;
+      for (let i = 0; sib && i < 3; i++, sib = sib.previousElementSibling) {
+        const t = clean(sib);
+        if (t) return t;
+      }
+    }
+    return "";
+  }
+
+  // A caption for one field, or the text of a whole section? Two required
+  // markers mean it spans more than one input, and that is exactly what was
+  // being sent to the model as though it described a single box.
+  const MULTI_FIELD_RE = /\*[\s\S]*\*/;
+  const looksLikeSection = (s) =>
+    !s || s.length > 80 || MULTI_FIELD_RE.test(s) ||
+    (s.match(/\b(first|last|given|sur)\s?name\b/gi) || []).length > 1;
+
   function fieldLabel(el) {
     const candidates = [];
     if (el.labels && el.labels[0]) candidates.push(el.labels[0].innerText);
@@ -153,7 +191,8 @@
       const lab = document.querySelector(`label[for="${CSS.escape(el.id)}"]`);
       if (lab) candidates.push(lab.innerText);
     }
-    candidates.push(el.getAttribute("aria-label"), el.placeholder, el.name);
+    candidates.push(el.getAttribute("aria-label"), el.placeholder,
+                    nearbyLabel(el), el.name);
     for (const c of candidates) {
       const t = norm(c || "").replace(/\s*\*$/, "").trim();
       if (t && !UUIDISH.test(t)) return t.slice(0, 60);
@@ -400,8 +439,15 @@
       let label = "";
       if (el.labels && el.labels[0]) label = (el.labels[0].innerText || "").trim();
       if (!label) label = (el.getAttribute("aria-label") || el.placeholder || "").trim();
-      if (!label || /^[0-9a-f-]{16,}$/i.test(label)) label = groupQuestion(el);
-      if (!label || label.length > 200 || /^[0-9a-f-]{16,}$/i.test(label)) return;
+      if (!label) label = nearbyLabel(el);
+      // groupQuestion falls back to closest("div").innerText, which for a plain
+      // text input is the whole surrounding section — on Cornerstone, the entire
+      // "Contact Information / First Name / Last Name / Email" block. Handing
+      // that to the model as one field's label is why it answered with the whole
+      // contact block: an email, a phone number and a LinkedIn URL, in the box
+      // marked First Name. A section is not a caption, and a field we cannot
+      // name is left for the user rather than guessed at.
+      if (!label || looksLikeSection(label) || /^[0-9a-f-]{16,}$/i.test(label)) return;
 
       el.dataset.jcFieldId = `f${i}`;
       const max = parseInt(el.getAttribute("maxlength") || "", 10);
