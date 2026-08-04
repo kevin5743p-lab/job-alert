@@ -9972,6 +9972,889 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-03T20:05:32.449691",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 50,
+          "reason": "title fits 'Data Scientist'; skills: Machine Learning; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "arbeitnow_data-scientist-computational-genomics-12-month-ftc-london-302742",
+            "title": "Data Scientist – Computational Genomics, 12-month FTC",
+            "company": "Relationrx",
+            "location": "London",
+            "description": "Position Title Data Scientist in Computational Genomics/DNA modelling, 12m FTC About Relation Relation is a sector defining TechBio company developing transformational medicines, with technology at our core. Our ambition is to understand human biology in unprecedented ways, discovering therapies to ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relationrx/data-scientist-computational-genomics-12-month-ftc-london-302742",
+            "published": "2026-08-03T18:41:56+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4447986047",
+            "title": "Product Lifecycle Manager - Medical Device (m/w/d)",
+            "company": "Atos Medical",
+            "location": "Nieder Olm, Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447986047",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-manager-core-platform-berlin-429932",
+            "title": "Senior Product Manager - Core Platform",
+            "company": "n8n",
+            "location": "Berlin Office",
+            "description": "The AI orchestration of your wildest imagination. n8n is the open workflow orchestration platform built for the new era of AI. We give technical teams the freedom of code with the speed of no-code, so they can automate faster, smarter, and without limits. Backed by a fiercely inventive community and",
+            "url": "https://www.arbeitnow.com/jobs/companies/n8n/senior-product-manager-core-platform-berlin-429932",
+            "published": "2026-08-03T18:00:10+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Recruiter'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_recruiter-tech-business-berlin-126760",
+            "title": "Recruiter, Tech & Business (m/w/d)",
+            "company": "Buena",
+            "location": "Berlin",
+            "description": "Buena (backed by GV) macht alles rund um Immobilien so einfach und transparent wie den Kauf eines ETFs. Ob Suchen, Kaufen oder Finanzieren einer Wohnung. Wir tun das, indem wir Hausverwaltungen in ganz Deutschland übernehmen und in Technologieunternehmen verwandeln. In den vergangenen drei Jahren si",
+            "url": "https://www.arbeitnow.com/jobs/companies/buena/recruiter-tech-business-berlin-126760",
+            "published": "2026-08-03T17:30:31+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_snr-data-scientist-computational-genomics-dna-modelling-london-202789",
+            "title": "Snr Data Scientist, Computational Genomics/DNA Modelling",
+            "company": "Relationrx",
+            "location": "London",
+            "description": "About Relation Relation is a sector defining TechBio company developing transformational medicines, with technology at our core. Our ambition is to understand human biology in unprecedented ways, discovering therapies to treat some of life’s most devastating diseases. We leverage single-cell multi-o",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relationrx/snr-data-scientist-computational-genomics-dna-modelling-london-202789",
+            "published": "2026-08-03T18:41:56+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-data-scientist-statistical-genetics-london-410349",
+            "title": "Senior Data Scientist – Statistical Genetics",
+            "company": "Relationrx",
+            "location": "London",
+            "description": "About Relation Relation is a sector defining TechBio company developing transformational medicines, with technology at our core. Our ambition is to understand human biology in unprecedented ways, discovering therapies to treat some of life’s most devastating diseases. We leverage single-cell multi-o",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relationrx/senior-data-scientist-statistical-genetics-london-410349",
+            "published": "2026-08-03T18:41:56+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-data-scientist-computational-biology-london-431277",
+            "title": "Senior Data Scientist - Computational Biology",
+            "company": "Relationrx",
+            "location": "London",
+            "description": "About Relation Relation is a sector defining TechBio company developing transformational medicines, with technology at our core. Our ambition is to understand human biology in unprecedented ways, discovering therapies to treat some of life’s most devastating diseases. We leverage single-cell multi-o",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relationrx/senior-data-scientist-computational-biology-london-431277",
+            "published": "2026-08-03T18:41:56+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_staff-lead-front-end-engineer-london-80077",
+            "title": "Staff/Lead Front-end Engineer",
+            "company": "Mimica",
+            "location": "UK",
+            "description": "What we are building Mimica's mission is to empower enterprises, teams, and individuals to reclaim their most precious resource — time and work more efficiently, with greater purpose and impact. Our AI-powered task mining observes employee actions across the desktop and categorizes them into detaile",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/mimica/staff-lead-front-end-engineer-london-80077",
+            "published": "2026-08-03T18:41:17+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_head-vp-of-product-ai-process-insights-automation-london-209419",
+            "title": "Head/VP of Product (AI Process Insights & Automation)",
+            "company": "Mimica",
+            "location": "UK",
+            "description": "What we are building Mimica's mission is to empower enterprises, teams, and individuals to reclaim their most precious resource — time and work more efficiently, with greater purpose and impact. Our AI-powered task mining observes employee actions across the desktop and categorizes them into detaile",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/mimica/head-vp-of-product-ai-process-insights-automation-london-209419",
+            "published": "2026-08-03T18:41:17+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-ios-engineer-london-19713",
+            "title": "Senior iOS Engineer",
+            "company": "Motorway",
+            "location": "London",
+            "description": "About Motorway Motorway is the UK’s fastest-growing used car marketplace - our online-only platform connects private car sellers with thousands of verified dealers nationwide, ensuring everyone gets the best deal. Founded in 2017, our award-winning, technology-led approach has redefined the experien",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/motorway/senior-ios-engineer-london-19713",
+            "published": "2026-08-03T18:40:40+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-android-engineer-london-59384",
+            "title": "Senior Android Engineer",
+            "company": "Motorway",
+            "location": "London",
+            "description": "About Motorway Motorway is the UK’s fastest-growing used car marketplace - our online-only platform connects private car sellers with thousands of verified dealers nationwide, ensuring everyone gets the best deal. Founded in 2017, our award-winning, technology-led approach has redefined the experien",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/motorway/senior-android-engineer-london-59384",
+            "published": "2026-08-03T18:40:40+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_bi-data-analyst-london-1534",
+            "title": "BI Data Analyst",
+            "company": "Motorway",
+            "location": "London",
+            "description": "About Motorway Motorway is the UK’s fastest-growing used car marketplace - our online-only platform connects private car sellers with thousands of verified dealers nationwide, ensuring everyone gets the best deal. Founded in 2017, our award-winning, technology-led approach has redefined the experien",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/motorway/bi-data-analyst-london-1534",
+            "published": "2026-08-03T18:40:40+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_lead-product-designer-london-465914",
+            "title": "Lead Product Designer",
+            "company": "Motorway",
+            "location": "London",
+            "description": "About Motorway Motorway is the UK’s fastest-growing used car marketplace - our online-only platform connects private car sellers with thousands of verified dealers nationwide, ensuring everyone gets the best deal. Founded in 2017, our award-winning, technology-led approach has redefined the experien",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/motorway/lead-product-designer-london-465914",
+            "published": "2026-08-03T18:40:40+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-designer-london-497449",
+            "title": "Senior Product Designer",
+            "company": "Motorway",
+            "location": "London",
+            "description": "About Motorway Motorway is the UK’s fastest-growing used car marketplace - our online-only platform connects private car sellers with thousands of verified dealers nationwide, ensuring everyone gets the best deal. Founded in 2017, our award-winning, technology-led approach has redefined the experien",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/motorway/senior-product-designer-london-497449",
+            "published": "2026-08-03T18:40:40+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_principal-product-manager-manchester-295348",
+            "title": "Principal Product Manager",
+            "company": "UiPath",
+            "location": "Manchester",
+            "description": "Life at UiPath The people at UiPath believe in the transformative power of automation to change how the world works. We’re committed to creating category-leading enterprise software that unleashes that power. To make that happen, we need people who are curious, self-propelled, generous, and genuine.",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/uipath/principal-product-manager-manchester-295348",
+            "published": "2026-08-03T18:40:32+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-forward-deployed-scientist-manchester-66283",
+            "title": "Senior Forward Deployed Scientist",
+            "company": "UiPath",
+            "location": "Manchester",
+            "description": "Life at UiPath The people at UiPath believe in the transformative power of automation to change how the world works. We’re committed to creating category-leading enterprise software that unleashes that power. To make that happen, we need people who are curious, self-propelled, generous, and genuine.",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/uipath/senior-forward-deployed-scientist-manchester-66283",
+            "published": "2026-08-03T18:40:32+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-software-engineer-blockchain-protocols-united-kingdom-223532",
+            "title": "Senior Software Engineer, Blockchain Protocols",
+            "company": "Chainalysis",
+            "location": "United Kingdom",
+            "description": "The engineering team at Chainalysis is inspired by solving the hardest technical challenges and building products that establish trust in cryptocurrencies. We're a global organization that thrives on challenging work and doing it alongside exceptionally talented teammates. Our industry evolves rapid",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/chainalysis/senior-software-engineer-blockchain-protocols-united-kingdom-223532",
+            "published": "2026-08-03T18:40:30+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-data-scientist-london-200946",
+            "title": "Senior Data Scientist",
+            "company": "Chainalysis",
+            "location": "London Office",
+            "description": "The engineering team at Chainalysis is inspired by solving the hardest technical challenges and building products that establish trust in cryptocurrencies. We're a global organization that thrives on challenging work and doing it alongside exceptionally talented teammates. Our industry evolves rapid",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/chainalysis/senior-data-scientist-london-200946",
+            "published": "2026-08-03T18:40:30+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447994802",
+            "title": "Werkstudent zum Support der Turbolader R&D Abteilung (m/w/d)",
+            "company": "Everllence",
+            "location": "Augsburg, Bavaria, Germany",
+            "description": "Werkstudent zum Support der Turbolader R&D Abteilung (m/w/d) Job-ID: 13904 Tätigkeitsbeginn: ab sofort Standort: Augsburg, DE, 86153 Land: DE Das sollten Sie über uns wissen Everllence ebnet den Weg in eine klimaneutrale Weltwirtschaft. Ob Industrieproduktion, Energie- oder maritime Wirtschaft: Wir ",
+            "url": "https://www.linkedin.com/jobs/view/4447994802",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448208252",
+            "title": "Werkstudent für Produktdatenmanagement (w/m/div.)",
+            "company": "Bosch",
+            "location": "Wernau, Baden-Württemberg, Germany",
+            "description": "Unternehmensbeschreibung Bei Bosch gestalten wir Zukunft mit hochwertigen Technologien und Dienstleistungen, die Begeisterung wecken und das Leben der Menschen verbessern. Unser Versprechen an unsere Mitarbeiterinnen und Mitarbeiter steht dabei felsenfest: Wir wachsen gemeinsam, haben Freude an unse",
+            "url": "https://www.linkedin.com/jobs/view/4448208252",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446237761",
+            "title": "Working Student (m/f/d) Machinery Engineering Digitalization",
+            "company": "thyssenkrupp",
+            "location": "Dortmund, North Rhine-Westphalia, Germany",
+            "description": "Aufgaben Sie unterstützen das Team der Maschinengruppe im Bereich der Digitalisierung von Rotating Equipment (Kompressoren, Dampfturbinen, Getriebe, Gebläse, etc.). Schwerpunkte: Identifikation & Adressierung von Maschinendaten, Einbindung von teils vorhandenen Prozesssimulationen und Dashboards. Au",
+            "url": "https://www.linkedin.com/jobs/view/4446237761",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446220032",
+            "title": "Data Engineer Datenplattform (m/w/d)",
+            "company": "EDEKA IT",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Wir bei der EDEKA IT sind das Herzstück des digitalen Wandels im EDEKA-Verbund. Als leistungsstarkes Team entwickeln wir IT-Strategien, -Infrastrukturen und -Dienstleistungen für alle Handelsbereiche des EDEKA-Verbunds in ganz Deutschland. Wir bündeln unsere Kompetenzen, um innovative Lösungen zu en",
+            "url": "https://www.linkedin.com/jobs/view/4446220032",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431672266",
+            "title": "Application Engineer ETL & DWH (m/w/d)",
+            "company": "BWI GmbH",
+            "location": "Bonn, North Rhine-Westphalia, Germany",
+            "description": "Sorge gemeinsam mit uns für die digitale Zukunftsfähigkeit unseres Landes. Deine Aufgaben: Implementierung und Betrieb von ETL-Prozessen auf Basis von Fachanforderungen Monitoring, Alerting und Incident-Management für ETL-Jobs und Datenbankprozesse Pflege, Optimierung und Support von bestehenden Anw",
+            "url": "https://www.linkedin.com/jobs/view/4431672266",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448147976",
+            "title": "Clinical Scientist",
+            "company": "Pentixapharm AG",
+            "location": "Germany",
+            "description": "Clinical Scientist 📍 Location: Germany / East Coast USA 🚀 Starting date: as soon as possible Who We Are Pentixapharm AG, together with its U.S. subsidiary Pentixapharm Inc., is a research-driven radiopharmaceutical and precision oncology company focused on the preclinical and clinical development, a",
+            "url": "https://www.linkedin.com/jobs/view/4448147976",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448345072",
+            "title": "Machine Learning Engineer - AI (Remote)",
+            "company": "Hire Feed",
+            "location": "Germany",
+            "description": "Role: Machine Learning Engineer - AI (Remote) Location: Remote (Work from Anywhere) Job Type: Contract Payout: $30 - $160/hour Role Overview: We are hiring for one of our clients, seeking a Machine Learning Engineer to design, build, and deploy AI models that drive business decisions. The role invol",
+            "url": "https://www.linkedin.com/jobs/view/4448345072",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448308628",
+            "title": "Project Engineer Mechanics (m/w/d)",
+            "company": "Metsä Group",
+            "location": "Düren, North Rhine-Westphalia, Germany",
+            "description": "Wir sind auf der Suche nach einem Project Engineer Mechanics (m/w/d) für unser Team bei Metsä Greaseproof Papers GmbH am Standort Düren. Sie berichten an den Maintenance Manager. Welche Aufgaben erwarten Sie? Planung, Durchführung sowie Überwachung und Steuerung von Projekten in einem internationale",
+            "url": "https://www.linkedin.com/jobs/view/4448308628",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439429559",
+            "title": "Project Engineer (m/w/d) Heavy Lift Management",
+            "company": "Liebherr Maritime Cranes",
+            "location": "Rostock, Mecklenburg-West Pomerania, Germany",
+            "description": "Faszinierendes schaffen: Ihre Aufgaben Technische Planung und Betreuung von operativen Vorgängen im Bereich Schwerlastumschlag mit dem TCC 78000 Erstellen und prüfen technischer Dokumentationen, z. B. Lift Arrangements, Risk Assesments, Method Statements für Lift- und Transportvorgänge Definition un",
+            "url": "https://www.linkedin.com/jobs/view/4439429559",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446233560",
+            "title": "Digital Analyst (m/w/d)",
+            "company": "Holz-Richter GmbH",
+            "location": "Lindlar, North Rhine-Westphalia, Germany",
+            "description": "casando ist der Onlineshop von Holz-Richter und einer der bekanntesten Anbieter im Bereich Haus & Garten . Unsere Produkte sind echte Schwergewichte – beratungsintensiv, sperrig und langlebig beschreibt sie wohl am besten. Vom Garagentor über Parkettböden und Türen bis hin zu sechs Meter langen Terr",
+            "url": "https://www.linkedin.com/jobs/view/4446233560",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448308347",
+            "title": "Business Analyst (m/w/d) POS",
+            "company": "Dirk Rossmann GmbH",
+            "location": "Burgwedel, Lower Saxony, Germany",
+            "description": "Unsere Unternehmenszentrale in Burgwedel bei Hannover – hier arbeiten rund 3.000 Mitarbeitende mit vollem Einsatz daran, die Zukunft von ROSSMANN zu gestalten. Im Team POS-IT unseres Bereichs Agile Entwicklung sorgen wir dafür, dass unsere Kassensysteme (POS) zuverlässig laufen und sich stetig weite",
+            "url": "https://www.linkedin.com/jobs/view/4448308347",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4438625247",
+            "title": "Business Analyst (gn) - Order To Cash",
+            "company": "The Quality Group",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Start: ab sofort | Level: Intermediate | Location: Hamburg (hybrid) | Arbeitszeit: Vollzeit (40h/Woche) Dein Start im Commercial Team bei ESN & More ! Als Business Analyst (gn) – Order to Cash analysierst, optimierst und gestaltest du gemeinsam mit unserem Commercial Operations Team unsere End-to-En",
+            "url": "https://www.linkedin.com/jobs/view/4438625247",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4253162675",
+            "title": "Business Analyst / Consultant Enterprise Performance Management (m/w/d) in Hamburg",
+            "company": "Deloitte",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4253162675",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447900779",
+            "title": "Business Analyst Pricing (m/w/d)",
+            "company": "Deutsche WertpapierService Bank AG",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Einzigartiger Service braucht ein großartiges Team Die Deutsche WertpapierService Bank AG ist mit über 22 Jahren Erfahrung im Wertpapiergeschäft der führende Dienstleister für Wertpapierservices in Deutschland. Mit unserer Systemplattform WP3 verarbeiten wir für über 1.000 Banken jedes Jahr mehrere ",
+            "url": "https://www.linkedin.com/jobs/view/4447900779",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4390843392",
+            "title": "Business Analyst (m/w/d) ServiceNow für ITSM",
+            "company": "Dirk Rossmann GmbH",
+            "location": "Burgwedel, Lower Saxony, Germany",
+            "description": "Unsere Unternehmenszentrale in Burgwedel bei Hannover – hier arbeiten rund 3.000 Mitarbeitende mit vollem Einsatz daran, die Zukunft von ROSSMANN zu gestalten. Bundesweite Rechenzentren und mehr als 2000 Server, sowie eine hybrid Cloud-Infrastruktur – das macht unseren IT-Betrieb aus. Hier werden di",
+            "url": "https://www.linkedin.com/jobs/view/4390843392",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4410620825",
+            "title": "Tech Analyst - Broker Signup Flows",
+            "company": "DKB | Deutsche Kreditbank AG",
+            "location": "Berlin, Germany",
+            "description": "Tech Analyst - Broker Signup Flows (m/w/d) DKB AG Standort: Berlin unbefristet Teil- & Vollzeit möglich ab sofort Deine Aufgaben Als Tech Analyst-Broker Signup Flow verbindest du technisches Verständnis mit analytischer Stärke und sorgst gemeinsam mit Product, Engineering und Business dafür, dass un",
+            "url": "https://www.linkedin.com/jobs/view/4410620825",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448394456",
+            "title": "Junior Business Solution Analyst Sales (w/m/d)",
+            "company": "Arthrex GmbH",
+            "location": "Freiham, Bavaria, Germany",
+            "description": "Wir gehören zu den weltweit führenden Unternehmen in den Bereichen Orthopädie, Arthroskopie, Sportmedizin und Orthobiologika. Getreu unserer Mission „Helping Surgeons Treat Their Patients Better“ entwickeln wir seit über 40 Jahren innovative Produkte und chirurgische Techniken. Arthrex wurde 1981 in",
+            "url": "https://www.linkedin.com/jobs/view/4448394456",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4292001559",
+            "title": "Business Analyst / Consultant Connected Close (m/w/d) in Köln",
+            "company": "Deloitte",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4292001559",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448328201",
+            "title": "Product Manager - SaaS Product - AI-Driven Product Development - Düsseldorf Hybrid - €100,000",
+            "company": "Findr",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Product Manager - SaaS Product - AI-Driven Product Development - Düsseldorf Hybrid - €100,000 Help redefine how property management is done. We’re supporting a fast-growing B2B SaaS company that’s transforming the property management industry through modern software, AI-assisted product development ",
+            "url": "https://www.linkedin.com/jobs/view/4448328201",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448378582",
+            "title": "Product Manager",
+            "company": "Almedia",
+            "location": "Berlin, Germany",
+            "description": "This isn’t your regular job. Almedia is a place where those who want to push harder can accelerate their careers faster than anywhere else. We’re aiming to become Germany’s second bootstrapped unicorn. Almedia is already Europe’s #3 fastest-growing company in 2025 (FT1000). We are building the futur",
+            "url": "https://www.linkedin.com/jobs/view/4448378582",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446212722",
+            "title": "AI Builder (m/w/d)",
+            "company": "UnternehmerTUM",
+            "location": "Garching, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446212722",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448199343",
+            "title": "Projektingenieur Bautechnische Beweissicherung (m/w/d)",
+            "company": "IGB Ingenieurgesellschaften",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448199343",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442090494",
+            "title": "Team Lead – Marketing Analytics",
+            "company": "Trust In SODA",
+            "location": "Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442090494",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446201916",
+            "title": "Founding Engineering Team Lead (HandsOn)",
+            "company": "Cygrid",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446201916",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446217997",
+            "title": "Prüfstand- und Montageschlosser (m/w/d)",
+            "company": "Woodward, Inc.",
+            "location": "Aken, Saxony-Anhalt, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446217997",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446246570",
+            "title": "Founders Associate (m/w/d)",
+            "company": "hansetherm",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446246570",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 41,
+          "reason": "title fits 'Junior Data Engineer'; skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4430004558",
+            "title": "Data Engineer - Customer (m/f/d)",
+            "company": "BAUHAUS Deutschland",
+            "location": "Mannheim, Baden-Württemberg, Germany",
+            "description": "Stellenbeschreibung Better digital. The Digital Commerce division is committed to digitalization as a means of creating a networked BAUHAUS of the future. Our focus is always on the customer and we aim to create the perfect digital shopping experience. An agile working environment, innovative soluti",
+            "url": "https://www.linkedin.com/jobs/view/4430004558",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 41,
+          "reason": "title fits 'Junior Data Engineer'; skills: Power BI; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4446254398",
+            "title": "Data Engineer",
+            "company": "Haystack",
+            "location": "Coblenz, Rhineland-Palatinate, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role Build and operate the analytical data foundation for COO functions (Support, Service Delivery, Group IT) Model, integrate, and deliver data from raw sources to decision-relevant insights Link key data signals along the customer journey, includin",
+            "url": "https://www.linkedin.com/jobs/view/4446254398",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 36,
+          "reason": "title fits 'Junior Data Engineer'; skills: Machine Learning; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_research-data-engineer-london-93483",
+            "title": "Research Data Engineer",
+            "company": "Relationrx",
+            "location": "London",
+            "description": "About Relation Relation is a sector defining TechBio company developing transformational medicines, with technology at our core. Our ambition is to understand human biology in unprecedented ways, discovering therapies to treat some of life’s most devastating diseases. We leverage single-cell multi-o",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/relationrx/research-data-engineer-london-93483",
+            "published": "2026-08-03T18:41:56+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Data Analyst'; skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448315851",
+            "title": "Digital Marketing Analyst (m/w/d)",
+            "company": "dasauge",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448315851",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448199143",
+            "title": "Produktmanager Nephrologie (m/w/i)",
+            "company": "Salmon Pharma",
+            "location": "Iserlohn, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448199143",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4446238223",
+            "title": "Produktmanager (m/w/d) Reinigungsroboter",
+            "company": "Kärcher",
+            "location": "Schwaikheim, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446238223",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447953797",
+            "title": "Produktmanager Ersatzteile / Aftermarket (m/w/d)",
+            "company": "Wilhelm Schäfer GmbH",
+            "location": "Heppenheim an der Bergstraße, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447953797",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448177786",
+            "title": "ADAS Software Engineer",
+            "company": "microTECH Global LTD",
+            "location": "Munich, Bavaria, Germany",
+            "description": "The ideal candidate will be responsible for developing high-quality applications. They will also be responsible for designing and implementing testable and scalable code. Responsibilities Develop quality software and web applications Analyze and maintain existing software applications Design highly ",
+            "url": "https://www.linkedin.com/jobs/view/4448177786",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4440008301",
+            "title": "AI Engineer (d/w/m) - im Bereich Consulting",
+            "company": "4flow",
+            "location": "Dresden, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4440008301",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4446231695",
+            "title": "AI Engineer (m/f/d)",
+            "company": "PATRIZIA SE",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446231695",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448191888",
+            "title": "Graduate - Quality Assurance Analyst (all genders)",
+            "company": "Distribusion Technologies",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448191888",
+            "published": "2026-08-03T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
