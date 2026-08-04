@@ -301,16 +301,22 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       // What the user has already turned down. Showing someone a job they've
       // dismissed twice before is how a tracker loses their trust.
       let memory = null;
+      let tracked = new Set();
       try {
         memory = buildMemory(await sb.getDecisionHistory());
+        tracked = await sb.getTrackedUrls();
       } catch (e) {
-        console.warn("Couldn't read decision history:", e);
+        console.warn("Couldn't read tracker history:", e);
       }
 
       const graded = [];
-      let cutOffField = 0, cutRules = 0, cutMemory = 0;
+      let cutOffField = 0, cutRules = 0, cutMemory = 0, cutSeen = 0;
 
       for (const job of keyworded) {
+        // Already graded on an earlier scan. Boards hand back their entire open
+        // list every time, so without this most of the scoring budget — and most
+        // of the tokens — would go on jobs that are already in the tracker.
+        if (job.url && tracked.has(job.url)) { cutSeen++; continue; }
         const [rScore, rReason] = ruleScore(job, sp, families);
         if (rScore === 0) { cutRules++; continue; }        // language, seniority, off-field
         if (matchesRejectedPattern(job, memory)) { cutMemory++; continue; }
@@ -325,8 +331,9 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       const matched = prioritise(graded.map((g) => g.job), baseLocation);
       const klassOf = new Map(graded.map((g) => [g.job.url || g.job.id, g.klass]));
       const survivors = matched.slice(0, MAX_SCORED);
-      progress(`${matched.length} relevant (${cutRules} filtered, ` +
-               `${cutOffField} off-field${cutMemory ? `, ${cutMemory} like ones you dismissed` : ""})` +
+      progress(`${matched.length} new & relevant (${cutSeen} already tracked, ` +
+               `${cutRules} filtered, ${cutOffField} off-field` +
+               `${cutMemory ? `, ${cutMemory} like ones you dismissed` : ""})` +
                ` — scoring the best ${survivors.length}…`);
       if (!survivors.length) {
         progress("No matching postings this time.", true, { added: 0, stats });

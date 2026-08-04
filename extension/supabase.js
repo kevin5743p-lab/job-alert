@@ -199,6 +199,15 @@ export async function listTrackedJobs(limit = 300) {
               `&limit=${limit}`);
 }
 
+// Everything already in the tracker, so a scan doesn't pay to score the same
+// posting twice. Boards return their whole open list every time, so without
+// this most of a scan's budget goes on jobs it graded yesterday.
+export async function getTrackedUrls(limit = 2000) {
+  const rows = await rest(
+    `/applications?select=job_url&job_url=not.is.null&limit=${limit}`);
+  return new Set((rows || []).map((r) => r.job_url).filter(Boolean));
+}
+
 // What the user has done with jobs so far — the signal the scan learns from.
 export async function getDecisionHistory(limit = 400) {
   return rest(`/applications?select=job_title,job_company,status` +
