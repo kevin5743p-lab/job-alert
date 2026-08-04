@@ -88,8 +88,18 @@ const LINKEDIN_GUEST =
   "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search";
 const LINKEDIN_POSTING =
   "https://www.linkedin.com/jobs-guest/jobs/api/jobPosting";
-const LINKEDIN_MAX_QUERIES = 6;
-const LINKEDIN_PAUSE_MS = 900;
+// The Python bot searches on 24 phrases; this used to take the first 6, which
+// quietly threw away three quarters of the search. The generated profile writes
+// broad and narrow phrases alike and the narrow ones are the valuable ones — a
+// live check on "Werkstudent Fahrerassistenz" returns nothing at all, while
+// "Werkstudent Automotive" fills four pages, so the phrases that cost the least
+// to run were exactly the ones being dropped.
+const LINKEDIN_MAX_QUERIES = 24;
+// The guest endpoint serves 10 cards per call and pages on `start`. Verified
+// disjoint across four pages, so paging is worth doing.
+const LINKEDIN_PAGE = 10;
+const LINKEDIN_PAGES = 3;
+const LINKEDIN_PAUSE_MS = 700;
 // One request per posting, so this is paced and capped. Descriptions are only
 // fetched for jobs that already survived the free filters.
 const DETAIL_PAUSE_MS = 350;
@@ -116,46 +126,78 @@ function cardField(card, cls) {
   return (text.split(/\s{2,}|\n/)[0] || "").replace(/\s+/g, " ").trim();
 }
 
-async function fetchLinkedIn(queries, location) {
+// One search-results page. Returns how many new postings it contributed, so the
+// caller can stop paging a query that has run dry.
+function parseSearchPage(html, seen, out) {
+  let added = 0;
+  for (const m of html.matchAll(/<li>([\s\S]*?)<\/li>/g)) {
+    const card = m[1];
+    const href = (card.match(
+      /href="(https:\/\/[a-z]{2,3}\.linkedin\.com\/jobs\/view\/[^"?]+)/) || [])[1];
+    if (!href) continue;
+
+    // Canonicalise to the same shape content.js produces on a job page, so a
+    // posting found here and one tailored by hand are the same tracker row
+    // rather than two.
+    const id = (href.match(/-(\d{6,})$/) || href.match(/\/(\d{6,})(?:\/|$)/) || [])[1];
+    if (!id || seen.has(id)) continue;
+    seen.add(id);
+
+    const title = cardField(card, "base-search-card__title");
+    if (!title) continue;
+    const posted = (card.match(/datetime="([^"]+)"/) || [])[1] || null;
+
+    out.push({
+      id: `li_${id}`,
+      title,
+      company: cardField(card, "base-search-card__subtitle"),
+      location: cardField(card, "job-search-card__location"),
+      description: "",
+      url: `https://www.linkedin.com/jobs/view/${id}/`,
+      published: posted,
+      source: "LinkedIn",
+    });
+    added++;
+  }
+  return added;
+}
+
+// LinkedIn treats `location` as a hard filter, not a preference, so the place
+// asked for decides what exists at all. Searching the user's own city — which
+// is what happened, because the caller passed "Ingolstadt, Germany" — meant
+// Munich, Stuttgart and Berlin postings were never fetched, and no amount of
+// ranking afterwards could recover them.
+//
+// The country search alone isn't the answer either: LinkedIn ranks its own way,
+// and a live comparison found local postings that appear for the city and never
+// surface in thirty country-wide results. So both are searched — the country
+// for reach, the home city for the local depth the country ranking buries —
+// and locationRank sorts out distance afterwards.
+async function fetchLinkedIn(queries, region, homeCity) {
   const out = [];
   const seen = new Set();
 
+  const passes = [{ location: region || "Germany", pages: LINKEDIN_PAGES }];
+  if (homeCity && homeCity.trim().toLowerCase() !== String(region || "").trim().toLowerCase()) {
+    passes.push({ location: homeCity, pages: 1 });
+  }
+
   for (const q of (queries || []).slice(0, LINKEDIN_MAX_QUERIES)) {
-    const url = `${LINKEDIN_GUEST}?keywords=${encodeURIComponent(q)}` +
-      `&location=${encodeURIComponent(location || "Germany")}` +
-      `&f_TPR=r604800&start=0`;                       // posted in the last week
-    const html = await getText(url);
-    if (!html) { await sleep(LINKEDIN_PAUSE_MS); continue; }
-
-    for (const m of html.matchAll(/<li>([\s\S]*?)<\/li>/g)) {
-      const card = m[1];
-      const href = (card.match(
-        /href="(https:\/\/[a-z]{2,3}\.linkedin\.com\/jobs\/view\/[^"?]+)/) || [])[1];
-      if (!href) continue;
-
-      // Canonicalise to the same shape content.js produces on a job page, so a
-      // posting found here and one tailored by hand are the same tracker row
-      // rather than two.
-      const id = (href.match(/-(\d{6,})$/) || href.match(/\/(\d{6,})(?:\/|$)/) || [])[1];
-      if (!id || seen.has(id)) continue;
-      seen.add(id);
-
-      const title = cardField(card, "base-search-card__title");
-      if (!title) continue;
-      const posted = (card.match(/datetime="([^"]+)"/) || [])[1] || null;
-
-      out.push({
-        id: `li_${id}`,
-        title,
-        company: cardField(card, "base-search-card__subtitle"),
-        location: cardField(card, "job-search-card__location"),
-        description: "",
-        url: `https://www.linkedin.com/jobs/view/${id}/`,
-        published: posted,
-        source: "LinkedIn",
-      });
+    for (const pass of passes) {
+      for (let page = 0; page < pass.pages; page++) {
+        const url = `${LINKEDIN_GUEST}?keywords=${encodeURIComponent(q)}` +
+          `&location=${encodeURIComponent(pass.location)}` +
+          `&f_TPR=r604800` +                          // posted in the last week
+          `&start=${page * LINKEDIN_PAGE}`;
+        const html = await getText(url);
+        await sleep(LINKEDIN_PAUSE_MS);
+        if (!html) break;                             // blocked or empty: give up on this query
+        // Narrow phrases legitimately return nothing, and most queries run out
+        // well before the page limit. Stopping as soon as a page adds nothing
+        // is what keeps the wider search affordable.
+        if (parseSearchPage(html, seen, out) === 0) break;
+      }
     }
-    await sleep(LINKEDIN_PAUSE_MS);
   }
   return out;
 }
@@ -555,9 +597,10 @@ export async function fetchAll(searchProfile, onProgress = () => {}) {
     stats.push(`arbeitnow ${jobs.length}`);
   } catch { stats.push("arbeitnow ⚠"); }
 
-  onProgress("Searching LinkedIn…");
+  onProgress(`Searching LinkedIn (${Math.min(queries.length, LINKEDIN_MAX_QUERIES)} phrases)…`);
   try {
-    const jobs = await fetchLinkedIn(queries, searchProfile.location);
+    const jobs = await fetchLinkedIn(
+      queries, searchProfile.location, searchProfile.home_city);
     all.push(...jobs);
     stats.push(`LinkedIn ${jobs.length}`);
   } catch { stats.push("LinkedIn ⚠"); }

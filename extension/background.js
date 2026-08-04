@@ -120,6 +120,27 @@ const SCORE_PACE_MS = 9000;
 // above MAX_SCORED: a posting has to be graded before it can be ranked, and
 // grading it without its text is what this budget exists to stop.
 const LI_DETAIL_BUDGET = 80;
+
+// The country the search runs across. LinkedIn wants an English country name
+// and treats anything it doesn't recognise as no filter at all, so the handful
+// of ways people write their own country are normalised rather than passed
+// through. A country that isn't listed is sent as typed; Germany is the default
+// because everything downstream — isReachable, GERMAN_HINTS, the German
+// fluency filter — is written for a German search.
+const COUNTRY_NAMES = [
+  ["Germany", ["germany", "deutschland", "de", "deu", "ger"]],
+  ["Austria", ["austria", "österreich", "oesterreich", "at", "aut"]],
+  ["Switzerland", ["switzerland", "schweiz", "suisse", "svizzera", "ch", "che"]],
+  ["Netherlands", ["netherlands", "nederland", "holland", "nl", "nld"]],
+  ["France", ["france", "frankreich", "fr", "fra"]],
+];
+
+function searchCountry(country) {
+  const c = String(country || "").trim().toLowerCase();
+  if (!c) return "Germany";
+  for (const [name, aliases] of COUNTRY_NAMES) if (aliases.includes(c)) return name;
+  return String(country).trim();
+}
 // How many get the careful, one-at-a-time treatment before the rest are
 // batched. Individual calls cost more but judge far better, so they go to the
 // postings the rules already rated highest.
@@ -277,6 +298,13 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       const prof = await sb.getProfile();
       const ap = (prof && prof.application_profile) || {};
       const baseLocation = [ap.city, ap.country].filter(Boolean).join(", ");
+      // Searching and ranking want different places. Ranking wants the city, so
+      // a nearby role outranks a distant one. Searching must not: LinkedIn takes
+      // the location as a hard filter, so asking it for "Ingolstadt, Germany"
+      // means Munich, Stuttgart and Berlin are never fetched at all — they can't
+      // be ranked low, they're simply absent. Search the country and let
+      // locationRank sort out the distance afterwards.
+      const searchRegion = searchCountry(ap.country);
 
       // Merge the code-side registry with the user's validated suggestions here,
       // so registry updates apply to everyone on their very next scan.
@@ -287,7 +315,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
       progress(`Scanning ${boards.length} employer boards + job feeds…`);
       const { jobs, stats } = await fetchAll(
-        { ...sp, company_targets: boards, location: baseLocation || "Germany" },
+        { ...sp, company_targets: boards, location: searchRegion, home_city: ap.city || "" },
         (t) => progress(t));
       progress(`Found ${jobs.length} postings — filtering…`);
 
