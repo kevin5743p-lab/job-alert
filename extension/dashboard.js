@@ -44,6 +44,12 @@ const SORTS = {
   fit: { label: "Fit", get: (r) => (r.score === null || r.score === undefined ? -1 : r.score), dir: -1 },
   status: { label: "Status", get: (r) => sb.APPLICATION_STATUSES.indexOf(r.status), dir: 1 },
   source: { label: "Source", get: (r) => (r.job_source || "").toLowerCase(), dir: 1 },
+  // When the employer published it, which is a different question from when
+  // this row last changed — a posting found today may have been up for weeks.
+  // A third of rows have no posted_at (SuccessFactors carries no date, and
+  // hand-tailored jobs have none), so unknown sorts to the bottom either way
+  // rather than pretending to be 1970.
+  posted: { label: "Released", get: (r) => Date.parse(r.posted_at) || 0, dir: -1 },
   updated: { label: "Updated", get: (r) => Date.parse(r.updated_at) || 0, dir: -1 },
 };
 const SORT_PREF = "dashboardSort";
@@ -54,6 +60,85 @@ try {
   const saved = JSON.parse(localStorage.getItem(SORT_PREF) || "null");
   if (saved && SORTS[saved.key]) { sortKey = saved.key; sortDir = saved.dir === 1 ? 1 : -1; }
 } catch { /* a corrupt preference is not worth failing the page over */ }
+
+// ── Filtering ──────────────────────────────────────────────────────────────
+// The status chips already narrow by stage. These are the other questions the
+// list can't otherwise answer: is it any good, is it still fresh, where did it
+// come from, and where is that one job I remember seeing.
+const FILTER_PREF = "dashboardFilters";
+const NO_FILTERS = { search: "", fit: "", released: "", source: "" };
+let filters = { ...NO_FILTERS };
+try {
+  const saved = JSON.parse(localStorage.getItem(FILTER_PREF) || "null");
+  if (saved) filters = { ...NO_FILTERS, ...saved };
+} catch { /* a corrupt preference is not worth failing the page over */ }
+
+const DAY_MS = 86400000;
+
+function matchesFilters(r) {
+  const f = filters;
+
+  if (f.search) {
+    const hay = `${r.job_title || ""} ${r.job_company || ""} ${r.job_location || ""}`
+      .toLowerCase();
+    if (!hay.includes(f.search.toLowerCase())) return false;
+  }
+
+  if (f.fit === "unscored") {
+    if (r.score !== null && r.score !== undefined) return false;
+  } else if (f.fit === "scored") {
+    if (r.score === null || r.score === undefined) return false;
+  } else if (f.fit) {
+    // A minimum fit is a question about scored jobs, so unscored ones drop out
+    // rather than counting as zero.
+    if (r.score === null || r.score === undefined) return false;
+    if (r.score < Number(f.fit)) return false;
+  }
+
+  if (f.released === "unknown") {
+    if (r.posted_at) return false;
+  } else if (f.released) {
+    // "Released in the last N days" can only mean rows that say when they were
+    // released; a missing date is not evidence of freshness.
+    const t = Date.parse(r.posted_at);
+    if (!t || Date.now() - t > Number(f.released) * DAY_MS) return false;
+  }
+
+  if (f.source && (r.job_source || "") !== f.source) return false;
+
+  return true;
+}
+
+const activeFilterCount = () =>
+  Object.keys(NO_FILTERS).filter((k) => filters[k] !== NO_FILTERS[k]).length;
+
+function saveFilters() {
+  try { localStorage.setItem(FILTER_PREF, JSON.stringify(filters)); }
+  catch { /* private mode: filtering still works, it just won't persist */ }
+}
+
+// Rebuilt from the data rather than hard-coded, because the source list grows
+// whenever a board is added or the Python bot writes a row of its own.
+function renderSourceOptions(rows) {
+  const sel = $("f-source");
+  if (!sel) return;
+  const sources = [...new Set(rows.map((r) => r.job_source).filter(Boolean))].sort();
+  // A source that no longer appears would otherwise silently filter to nothing.
+  if (filters.source && !sources.includes(filters.source)) sources.push(filters.source);
+  sel.innerHTML = `<option value="">any</option>` +
+    sources.map((s) => `<option value="${esc(s)}">${esc(s)}</option>`).join("");
+  sel.value = filters.source;
+}
+
+function syncFilterInputs() {
+  if (!$("f-search")) return;
+  $("f-search").value = filters.search;
+  $("f-fit").value = filters.fit;
+  $("f-released").value = filters.released;
+  const n = activeFilterCount();
+  $("filters-toggle").textContent = n ? `⚙ Filters (${n})` : "⚙ Filters";
+  $("filters").classList.toggle("on", n > 0);
+}
 
 function sortRows(rows) {
   const { get } = SORTS[sortKey];
@@ -128,12 +213,24 @@ function renderTable(rows) {
     return;
   }
 
-  renderStats(rows);
+  // Filters apply before the status chips, so the chip counts describe what the
+  // filters actually left rather than the whole table.
+  renderSourceOptions(rows);
+  syncFilterInputs();
+  const filtered = rows.filter(matchesFilters);
+
+  renderStats(filtered);
   const shown = activeFilter === "all"
-    ? rows : rows.filter((r) => r.status === activeFilter);
+    ? filtered : filtered.filter((r) => r.status === activeFilter);
+
+  const n = activeFilterCount();
+  $("f-count").textContent = n
+    ? `${filtered.length} of ${rows.length} shown`
+    : `${rows.length} job${rows.length === 1 ? "" : "s"}`;
 
   if (!shown.length) {
-    $("content").innerHTML = `<div class="empty">Nothing at this stage yet.</div>`;
+    $("content").innerHTML = `<div class="empty">${
+      n ? "Nothing matches these filters." : "Nothing at this stage yet."}</div>`;
     return;
   }
 
@@ -204,6 +301,7 @@ function rowHtml(r) {
       <select data-id="${esc(r.id)}">${options}</select>
     </td>
     <td class="muted">${esc(r.job_source || "")}</td>
+    <td class="muted">${r.posted_at ? esc(fmtDate(r.posted_at)) : "—"}</td>
     <td class="muted">${esc(fmtDate(r.updated_at))}</td>
     <td style="white-space:nowrap">
       ${r.job_url ? `<a class="btnlink" href="${esc(r.job_url)}" target="_blank" rel="noreferrer">Open &amp; apply</a>` : ""}
@@ -362,6 +460,34 @@ $("find").addEventListener("click", async () => {
   }
 });
 
+// ── Filter controls ────────────────────────────────────────────────────────
+// Bound once, not on every render: the panel lives in the page rather than
+// inside the table HTML, so rebinding would stack duplicate listeners and,
+// worse, drop focus out of the search box on every keystroke.
+$("filters-toggle").addEventListener("click", () => {
+  $("filters").classList.toggle("hidden");
+  if (!$("filters").classList.contains("hidden")) $("f-search").focus();
+});
+
+function onFilterChange(key, value) {
+  filters[key] = value;
+  saveFilters();
+  renderTable(allRows);
+}
+
+// Typing filters as you go; the list is already in memory so there's nothing
+// to debounce for.
+$("f-search").addEventListener("input", (e) => onFilterChange("search", e.target.value.trim()));
+$("f-fit").addEventListener("change", (e) => onFilterChange("fit", e.target.value));
+$("f-released").addEventListener("change", (e) => onFilterChange("released", e.target.value));
+$("f-source").addEventListener("change", (e) => onFilterChange("source", e.target.value));
+
+$("f-clear").addEventListener("click", () => {
+  filters = { ...NO_FILTERS };
+  saveFilters();
+  renderTable(allRows);
+});
+
 // ── Is this page still the extension that's running? ───────────────────────
 // An open dashboard tab keeps executing the code it was loaded with. Reload or
 // update the extension and this page carries on against a worker that is now a
@@ -411,6 +537,10 @@ $("refresh").addEventListener("click", async () => {
     btn.disabled = false;
   }
 });
+
+// Filters persist, so open the panel when some are already on — otherwise the
+// list looks short for no visible reason on the next visit.
+if (activeFilterCount()) $("filters").classList.remove("hidden");
 
 checkVersion();
 load();
