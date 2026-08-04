@@ -149,6 +149,31 @@ EXACTLY these keys:
   genuinely relevant posting (bilingual).
 - "exclude_keywords": 8-15 seniority or mismatch terms that make a posting wrong
   for them, e.g. Senior, Lead, Principal, "10+ years", mehrjährige Berufserfahrung.
+- "skills": 15-30 skill keywords from the CV, adding the German equivalent where
+  one matters.
+- "career_level": "student", "graduate" or "professional".
+- "language_preference": "english_only", "no_german_required" or "any". If the
+  CV shows German below C1 and the market is Germany, use "no_german_required" —
+  postings demanding fluent German are then rejected outright.
+- "preferred_locations": cities or regions from the CV, plus the country.
+- "domain": an object describing the candidate's FIELD, so obviously wrong work
+  can be rejected without spending a model call on it:
+  - "name": the field, e.g. "automotive engineering", "corporate finance"
+  - "core_terms": 15-30 terms that strongly signal a posting is in this field
+    (bilingual). Two of these appearing is treated as proof.
+  - "supporting_terms": 5-10 relevant but ambiguous terms that could belong to
+    another industry too.
+  - "adjacent_terms": 5-12 terms from neighbouring industries with transferable
+    skills.
+  - "core_companies": 15-30 real employers central to this field in the target
+    country, lowercase.
+  - "adjacent_companies": 5-15 employers in neighbouring industries, lowercase.
+  - "reject_title_terms": 20-40 job-title fragments that mean the posting is a
+    DIFFERENT PROFESSION — for an engineer: "marketing manager", "sales
+    manager", "account executive", "recruiter", "customer service", "nurse";
+    for a lawyer: "software developer", "mechanical engineer". This is the list
+    that keeps unrelated work out, so be thorough and concrete.
+  - "bonus_terms": 5-10 of the candidate's strongest specialty terms.
 - "company_targets": 15-30 objects {"name","ats","id"} for employers in this
   field whose jobs can actually be read from a public board. "ats" is one of:
   greenhouse, ashby, lever, recruitee, personio, smartrecruiters. "id" is their
@@ -173,25 +198,32 @@ Respond with ONLY the JSON object.`;
 
 // Score a batch of postings in one call. Batching matters: scoring each job
 // individually would exhaust a free-tier key in a single scan.
-export function buildBatchScorePrompt(jobs, cvText, field, language = "en",
+export function buildBatchScorePrompt(jobs, cvText, sp = {}, language = "en",
                                       baseLocation = "") {
-  // Kept tight on purpose: a scan pushes thousands of words through this, and
-  // the opening of a posting carries the role and requirements — the rest is
-  // usually company boilerplate that costs budget without changing the score.
+  const field = (sp.domain && sp.domain.name) || sp.field || "";
+  const persona = sp.persona || "";
+  const level = sp.career_level || "";
+  const langPref = sp.language_preference || "any";
+  // Enough of each posting to judge it properly. An earlier version passed 450
+  // characters to keep the batch cheap, and the scores showed it — committee
+  // management at a car company came back as a strong engineering match. The
+  // Python bot reads 1500 characters per job and grades far better for it.
   const list = jobs.map((j, i) =>
     `  {"i": ${i}, "title": ${JSON.stringify(j.title || "")}, ` +
     `"company": ${JSON.stringify(j.company || "")}, ` +
     `"location": ${JSON.stringify(j.location || "")}, ` +
-    `"description": ${JSON.stringify((j.description || "").slice(0, 450))}}`
+    `"description": ${JSON.stringify((j.description || "").slice(0, 1200))}}`
   ).join(",\n");
 
   return `You are a strict but fair job-matching assistant. Score how well each \
 posting fits the candidate.
 
 === CANDIDATE CV ===
-${(cvText || "").slice(0, 1600)}
+${(cvText || "").slice(0, 2200)}
 
 Their field: ${field || "as shown in the CV"}
+${persona ? `About them: ${persona}` : ""}
+${level ? `Career level: ${level}` : ""}
 ${baseLocation ? `They are based in: ${baseLocation}` : ""}
 
 === POSTINGS ===
@@ -202,10 +234,21 @@ ${list}
 For each posting give a score from 0 to 100 and one short, specific reason.
 - 85-100 outstanding fit · 70-84 strong · 50-69 worth a look · below 50 poor.
 - Be strict. Most postings are not a good fit; say so.
-- SCORE 0 if the role requires several years of professional experience the CV
-  doesn't show, if it demands fluent/business German (C1/C2, "verhandlungssicher")
-  and the CV doesn't have it, or if it is simply a different profession.
-  ("Grundkenntnisse", B1/B2 or "von Vorteil" are fine.)
+- SCORE 0, no exceptions, when any of these hold:
+  * the posting is a DIFFERENT PROFESSION from ${field || "the candidate's field"} —
+    marketing, sales, recruiting, customer service, accounting, nursing and the
+    like are not engineering, whatever skills overlap on paper. Working at a
+    company in the right industry does not make an off-field role a fit.
+  * it requires several years of professional experience the CV doesn't show.${
+  langPref === "no_german_required" ? `
+  * it requires fluent or business German — "verhandlungssicheres Deutsch",
+    "Deutsch C1/C2", "fließend Deutsch", "Muttersprache" — which this candidate
+    does not have. ("Grundkenntnisse", B1/B2 or "von Vorteil" are fine.)` : ""}${
+  langPref === "english_only" ? `
+  * it is written in German or expects German at work; this candidate needs an
+    English-speaking role.` : ""}
+- A posting only scores above 70 if it is genuinely in their field and at their
+  level. Being at a well-known employer counts for nothing on its own.
 - This is a search within GERMANY. Postings elsewhere have already been
   filtered out, so judge on fit rather than distance — but if one slips through
   and is clearly outside Germany (and not remote), score it 0 and say so.

@@ -11,6 +11,7 @@ import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, buildFieldFillPro
 import * as sb from "./supabase.js";
 import { fetchAll, prefilter, prioritise, validateTargets, pickKnownBoards }
   from "./finder.js";
+import { ruleScore, classifyWithRules, getDomain, applyDomainCap } from "./matcher.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -107,7 +108,7 @@ async function loadKeyAndCv() {
 // The whole "find" half, on demand, from the user's own browser. Progress is
 // pushed to the dashboard as it goes, because a scan takes a while and silence
 // looks like a hang.
-const SCORE_BATCH = 8;        // postings per Groq call
+const SCORE_BATCH = 5;        // postings per Groq call
 // The free tier's real ceiling is tokens per minute, so a scan is paced rather
 // than fired as fast as it can go. 48 jobs at 6 per minute is about a minute of
 // scoring — enough to surface the best matches without stalling the UI. The
@@ -134,10 +135,15 @@ async function ensureSearchProfile(cv, apiKey, model, force) {
   // scanning boards that don't resolve and quietly return nothing.
   // A profile with no boards left is not usable — it can only ever scan the
   // generic feed. Rebuilding is cheap next to a scan that finds nothing.
+  // A profile without a domain block predates the grading rules and would be
+  // graded on keywords alone — which is how plainly off-field work reached the
+  // tracker. Rebuild those rather than let them keep scanning blind.
   const usable = existing
     && (existing.search_queries || []).length
     && existing.validated
-    && (existing.company_targets || []).length;
+    && (existing.company_targets || []).length
+    && existing.domain
+    && (existing.domain.reject_title_terms || []).length;
   if (!force && usable) return existing;
 
   progress("Working out what to search for, from your CV…");
@@ -162,7 +168,7 @@ async function ensureSearchProfile(cv, apiKey, model, force) {
   return sp;
 }
 
-async function scoreJobs(jobs, cv, field, apiKey, model, language, baseLocation) {
+async function scoreJobs(jobs, cv, sp, apiKey, model, language, baseLocation) {
   const scored = [];
   let error = null;                  // surfaced, so a silent failure can't look
                                      // like "no jobs matched"
@@ -181,7 +187,7 @@ async function scoreJobs(jobs, cv, field, apiKey, model, language, baseLocation)
     let raw;
     try {
       raw = await groqJson(
-        buildBatchScorePrompt(batch, cv, field, language, baseLocation),
+        buildBatchScorePrompt(batch, cv, sp, language, baseLocation),
         apiKey, SCORING_MODEL, 1600);
     } catch (e) {
       error = e.message || String(e);
@@ -228,12 +234,31 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         (t) => progress(t));
       progress(`Found ${jobs.length} postings — filtering…`);
 
-      // Prioritise before capping: several registry boards are US-based, and
-      // without this the budget is spent on roles that get distance-capped
-      // anyway while local ones are never scored at all.
-      const matched = prefilter(jobs, sp);
-      const survivors = prioritise(matched, baseLocation).slice(0, MAX_SCORED);
-      progress(`${matched.length} relevant — scoring the best ${survivors.length}…`);
+      // Grade the way the Telegram bot does: hard filters and a rule score
+      // first, then a domain check, and only then the model. Without these two
+      // stages plainly off-field work (marketing, customer service) reached the
+      // scorer and sometimes survived it.
+      const keyworded = prefilter(jobs, sp);
+      const domain = getDomain(sp);
+      const graded = [];
+      let cutOffField = 0, cutRules = 0;
+
+      for (const job of keyworded) {
+        const [rScore, rReason] = ruleScore(job, sp);
+        if (rScore === 0) { cutRules++; continue; }        // language, seniority, off-field
+        const [klass] = classifyWithRules(job, domain);
+        if (klass === "out_of_domain") { cutOffField++; continue; }
+        graded.push({ job, rScore, rReason, klass });
+      }
+
+      // Best rule score first, then location — so the model's budget goes to
+      // the most promising local postings rather than whatever came back first.
+      graded.sort((a, b) => b.rScore - a.rScore);
+      const matched = prioritise(graded.map((g) => g.job), baseLocation);
+      const klassOf = new Map(graded.map((g) => [g.job.url || g.job.id, g.klass]));
+      const survivors = matched.slice(0, MAX_SCORED);
+      progress(`${matched.length} relevant (${cutRules} filtered, ` +
+               `${cutOffField} off-field) — scoring the best ${survivors.length}…`);
       if (!survivors.length) {
         progress("No matching postings this time.", true, { added: 0, stats });
         sendResponse({ ok: true, added: 0, fetched: jobs.length, stats });
@@ -241,7 +266,13 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       }
 
       const { scored, error: scoreError } =
-        await scoreJobs(survivors, cv, sp.field, groqApiKey, model, lang, baseLocation);
+        await scoreJobs(survivors, cv, sp, groqApiKey, model, lang, baseLocation);
+
+      // The domain class caps the final score, so anything the rules judged
+      // out-of-field can't be rescued by an over-generous model score.
+      for (const s of scored) {
+        s.score = applyDomainCap(s.score, klassOf.get(s.job.url || s.job.id) || "core_field");
+      }
       const keep = scored.filter((s) => s.score >= 50);
 
       // Report the whole funnel. When a scan ends with nothing, this says which
