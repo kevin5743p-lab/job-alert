@@ -169,6 +169,14 @@ export function germanPolicy(languages) {
   return "no_german_required";
 }
 
+// Optional, and kept on this machine only — same rule as the Groq key, which is
+// why it isn't in the Supabase profile. Absent means Adzuna is simply skipped.
+async function adzunaCreds() {
+  const { adzunaAppId, adzunaAppKey } =
+    await chrome.storage.local.get(["adzunaAppId", "adzunaAppKey"]);
+  return { appId: adzunaAppId || "", appKey: adzunaAppKey || "" };
+}
+
 function searchCountry(country) {
   const c = String(country || "").trim().toLowerCase();
   if (!c) return "Germany";
@@ -354,7 +362,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
       progress(`Scanning ${boards.length} employer boards + job feeds…`);
       const { jobs, stats } = await fetchAll(
-        { ...sp, company_targets: boards, location: searchRegion, home_city: ap.city || "" },
+        { ...sp, company_targets: boards, location: searchRegion, home_city: ap.city || "",
+          adzuna: await adzunaCreds() },
         (t) => progress(t));
       progress(`Found ${jobs.length} postings — filtering…`);
 

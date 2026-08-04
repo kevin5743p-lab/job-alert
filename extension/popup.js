@@ -13,6 +13,7 @@ const els = {
   signedIn: $("signed-in"), signedOut: $("signed-out"),
   whoEmail: $("who-email"), authStatus: $("auth-status"),
   key: $("key"), lang: $("lang"), model: $("model"), cv: $("cv"),
+  adzunaId: $("adzuna-id"), adzunaKey: $("adzuna-key"),
   save: $("save"), status: $("status"), apps: $("apps"),
   onboard: $("onboard"), profileState: $("profile-state"),
 };
@@ -127,8 +128,11 @@ async function refreshAuthUI() {
 
 async function init() {
   const local = await chrome.storage.local.get(
-    ["groqApiKey", "language", "model", "cvText", "applicationProfile"]);
+    ["groqApiKey", "language", "model", "cvText", "applicationProfile",
+     "adzunaAppId", "adzunaAppKey"]);
   if (local.groqApiKey) els.key.value = local.groqApiKey;
+  if (local.adzunaAppId) els.adzunaId.value = local.adzunaAppId;
+  if (local.adzunaAppKey) els.adzunaKey.value = local.adzunaAppKey;
   if (local.language) els.lang.value = local.language;
   if (local.model) els.model.value = local.model;
   if (local.cvText) els.cv.value = local.cvText;
@@ -203,8 +207,12 @@ els.save.addEventListener("click", async () => {
   // Always keep a local copy: it's the offline / signed-out fallback.
   // The application answers are owned by the onboarding page, so they're not
   // touched here — writing {} would wipe them.
+  // Adzuna is optional and local-only, like the Groq key: never sent to
+  // Supabase, and an empty pair simply means the source is skipped.
   await chrome.storage.local.set(
-    { groqApiKey, cvText, language, model: els.model.value });
+    { groqApiKey, cvText, language, model: els.model.value,
+      adzunaAppId: els.adzunaId.value.trim(),
+      adzunaAppKey: els.adzunaKey.value.trim() });
 
   let msg = "Saved locally ✓";
   let ok = true;

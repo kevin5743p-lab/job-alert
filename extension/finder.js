@@ -262,6 +262,61 @@ export async function enrichDescriptions(jobs, limit = 60, onProgress = () => {}
   return { requested: need.length, fetched: todo.length, filled };
 }
 
+// Adzuna aggregates the German job boards the ATS feeds don't reach, and it's
+// the one source here that needs an account. Optional by design: the key lives
+// in chrome.storage.local like the Groq one, and with no key this is skipped
+// entirely rather than failing the scan.
+//
+// The free tier is 1000 calls a month and each query is one call, so the query
+// list is capped rather than run in full.
+const ADZUNA_MAX_QUERIES = 8;
+const ADZUNA_PER_PAGE = 50;
+const ADZUNA_PAUSE_MS = 400;
+
+// Country code for the api.adzuna.com/v1/api/jobs/<cc>/ path.
+const ADZUNA_COUNTRIES = {
+  germany: "de", austria: "at", switzerland: "ch", netherlands: "nl",
+  france: "fr", "united kingdom": "gb", poland: "pl", italy: "it", spain: "es",
+};
+
+async function fetchAdzuna(queries, region, creds) {
+  const appId = (creds && creds.appId || "").trim();
+  const appKey = (creds && creds.appKey || "").trim();
+  if (!appId || !appKey) return [];
+
+  const cc = ADZUNA_COUNTRIES[String(region || "germany").trim().toLowerCase()] || "de";
+  const out = [];
+  const seen = new Set();
+
+  for (const q of (queries || []).slice(0, ADZUNA_MAX_QUERIES)) {
+    const d = await getJson(
+      `https://api.adzuna.com/v1/api/jobs/${cc}/search/1` +
+      `?app_id=${encodeURIComponent(appId)}&app_key=${encodeURIComponent(appKey)}` +
+      `&results_per_page=${ADZUNA_PER_PAGE}&what=${encodeURIComponent(q)}` +
+      `&max_days_old=30&content-type=application/json`);
+    await sleep(ADZUNA_PAUSE_MS);
+
+    for (const r of (d && d.results) || []) {
+      if (!r.id || seen.has(r.id)) continue;
+      seen.add(r.id);
+      if (!fresh(r.created)) continue;
+      out.push({
+        id: `adzuna_${r.id}`,
+        title: r.title ? stripHtml(r.title) : "",
+        company: (r.company && r.company.display_name) || "",
+        location: (r.location && r.location.display_name) || "",
+        description: stripHtml(r.description).slice(0, 4000),
+        // redirect_url is Adzuna's tracked hop to the employer, and it's the
+        // only URL the API gives — there is no direct link to fall back to.
+        url: r.redirect_url || "",
+        published: r.created || null,
+        source: "Adzuna",
+      });
+    }
+  }
+  return out;
+}
+
 async function fetchGreenhouse(c) {
   const d = await getJson(
     `https://boards-api.greenhouse.io/v1/boards/${encodeURIComponent(c.id)}/jobs?content=true`);
@@ -596,6 +651,15 @@ export async function fetchAll(searchProfile, onProgress = () => {}) {
     all.push(...jobs);
     stats.push(`arbeitnow ${jobs.length}`);
   } catch { stats.push("arbeitnow ⚠"); }
+
+  if (searchProfile.adzuna && searchProfile.adzuna.appId) {
+    onProgress("Searching Adzuna…");
+    try {
+      const jobs = await fetchAdzuna(queries, searchProfile.location, searchProfile.adzuna);
+      all.push(...jobs);
+      stats.push(`Adzuna ${jobs.length}`);
+    } catch { stats.push("Adzuna ⚠"); }
+  }
 
   onProgress(`Searching LinkedIn (${Math.min(queries.length, LINKEDIN_MAX_QUERIES)} phrases)…`);
   try {
