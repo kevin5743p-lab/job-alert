@@ -171,6 +171,15 @@ export function germanPolicy(languages) {
 
 // Optional, and kept on this machine only — same rule as the Groq key, which is
 // why it isn't in the Supabase profile. Absent means Adzuna is simply skipped.
+// How far back a scan looks. Kept with the other local settings rather than in
+// the search profile, so changing it takes effect on the next scan instead of
+// waiting for the profile to be rebuilt.
+async function maxJobAgeDays() {
+  const { maxJobAge } = await chrome.storage.local.get("maxJobAge");
+  const n = Number(maxJobAge);
+  return Number.isFinite(n) && n > 0 ? n : 7;
+}
+
 async function adzunaCreds() {
   const { adzunaAppId, adzunaAppKey } =
     await chrome.storage.local.get(["adzunaAppId", "adzunaAppKey"]);
@@ -406,7 +415,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       progress(`Scanning ${boards.length} employer boards + job feeds…`);
       const { jobs, stats } = await fetchAll(
         { ...sp, company_targets: boards, location: searchRegion, home_city: ap.city || "",
-          adzuna: await adzunaCreds() },
+          adzuna: await adzunaCreds(), max_age_days: await maxJobAgeDays() },
         (t) => progress(t));
       progress(`Found ${jobs.length} postings — filtering…`);
 

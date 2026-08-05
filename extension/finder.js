@@ -12,8 +12,19 @@
 
 const UA_HEADERS = { Accept: "application/json, text/plain, */*" };
 const FETCH_TIMEOUT = 20000;
-// ATS boards keep postings up for weeks; older than this is a zombie listing.
-const MAX_AGE_DAYS = 90;
+// How old a posting may be. This was a fixed 90 days, which is how a job posted
+// in May reached a scan in August: by then it is either filled or ignored, and
+// applying to it wastes the user's time. It is a setting now, defaulting to a
+// week, and every source is held to it — the ATS feeds through fresh(), plus
+// LinkedIn's own f_TPR window and Adzuna's max_days_old, so the sources filter
+// server-side too rather than fetching a month of postings to throw most away.
+//
+// Postings that carry no date at all are kept. SuccessFactors publishes none,
+// so dropping them would silently remove BMW, Volkswagen and Schaeffler
+// entirely — the opposite of what a tighter window is for. Unknown is not the
+// same as old.
+const DEFAULT_MAX_AGE_DAYS = 7;
+let maxAgeDays = DEFAULT_MAX_AGE_DAYS;
 
 async function getJson(url) {
   const ctl = new AbortController();
@@ -51,7 +62,7 @@ const fresh = (iso) => {
   if (!iso) return true;                       // no date given → don't discard
   const t = Date.parse(iso);
   if (Number.isNaN(t)) return true;
-  return (Date.now() - t) / 86400000 <= MAX_AGE_DAYS;
+  return (Date.now() - t) / 86400000 <= maxAgeDays;
 };
 
 // ── Sources ────────────────────────────────────────────────────────────────
@@ -187,7 +198,7 @@ async function fetchLinkedIn(queries, region, homeCity) {
       for (let page = 0; page < pass.pages; page++) {
         const url = `${LINKEDIN_GUEST}?keywords=${encodeURIComponent(q)}` +
           `&location=${encodeURIComponent(pass.location)}` +
-          `&f_TPR=r604800` +                          // posted in the last week
+          `&f_TPR=r${maxAgeDays * 86400}` +            // same window, server-side
           `&start=${page * LINKEDIN_PAGE}`;
         const html = await getText(url);
         await sleep(LINKEDIN_PAUSE_MS);
@@ -293,7 +304,7 @@ async function fetchAdzuna(queries, region, creds) {
       `https://api.adzuna.com/v1/api/jobs/${cc}/search/1` +
       `?app_id=${encodeURIComponent(appId)}&app_key=${encodeURIComponent(appKey)}` +
       `&results_per_page=${ADZUNA_PER_PAGE}&what=${encodeURIComponent(q)}` +
-      `&max_days_old=30&content-type=application/json`);
+      `&max_days_old=${maxAgeDays}&content-type=application/json`);
     await sleep(ADZUNA_PAUSE_MS);
 
     for (const r of (d && d.results) || []) {
@@ -640,6 +651,8 @@ export async function validateTargets(candidates, onProgress = () => {}) {
  * can't sink the scan. `onProgress(text)` drives the UI.
  */
 export async function fetchAll(searchProfile, onProgress = () => {}) {
+  const wanted = Number(searchProfile.max_age_days);
+  maxAgeDays = Number.isFinite(wanted) && wanted > 0 ? wanted : DEFAULT_MAX_AGE_DAYS;
   const queries = searchProfile.search_queries || [];
   const targets = searchProfile.company_targets || [];
   const all = [];
