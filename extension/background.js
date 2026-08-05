@@ -165,7 +165,15 @@ const FLUENT_RE =
   /\bc1\b|\bc2\b|native|muttersprache|mother ?tongue|fluent|flie(?:ß|ss)end|verhandlungssicher|bilingual/i;
 
 export function germanPolicy(languages) {
-  for (const entry of String(languages || "").split(/[,;\n\/|]|\band\b|\bund\b/i)) {
+  const answer = String(languages || "").trim();
+  // Unanswered is not the same as "no German". Someone who never filled the
+  // onboarding box — a native speaker most of all — would otherwise have every
+  // posting that asks for fluent German quietly removed, which is the exact
+  // opposite of what they need. An empty answer filters nothing; only a stated
+  // level below C1, or a list of languages that doesn't include German, does.
+  if (!answer) return "any";
+
+  for (const entry of answer.split(/[,;\n\/|]|\band\b|\bund\b/i)) {
     if (!GERMAN_NAME_RE.test(entry)) continue;
     return FLUENT_RE.test(entry) ? "any" : "no_german_required";
   }
