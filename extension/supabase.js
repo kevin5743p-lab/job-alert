@@ -208,6 +208,56 @@ export async function getTrackedUrls(limit = 2000) {
   return new Set((rows || []).map((r) => r.job_url).filter(Boolean));
 }
 
+// Postings already judged by the scorer, kept or not.
+//
+// getTrackedUrls only knows the ones that survived the keep threshold, because
+// those are the only ones written to `applications`. Everything scored below it
+// vanished, so the next scan re-fetched its description and paid to score it
+// again — to the same number. This is the memory that stops that.
+//
+// Re-scored after RESCORE_AFTER_DAYS anyway: a posting judged against an older
+// CV, or before the grading rules changed, deserves a fresh look eventually.
+const RESCORE_AFTER_DAYS = 30;
+
+export async function getScoredUrls(limit = 5000) {
+  const since = new Date(Date.now() - RESCORE_AFTER_DAYS * 86400000).toISOString();
+  const rows = await rest(
+    `/scored_jobs?select=job_url&scored_at=gte.${encodeURIComponent(since)}` +
+    `&order=scored_at.desc&limit=${limit}`);
+  return new Set((rows || []).map((r) => r.job_url).filter(Boolean));
+}
+
+/** Remember every posting this scan judged, whatever it scored. */
+export async function recordScored(scored) {
+  const uid = await currentUserId();
+  const seen = new Set();
+  const rows = [];
+  for (const s of scored || []) {
+    const url = s.job && s.job.url;
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+    rows.push({ user_id: uid, job_url: url,
+                score: Number.isFinite(s.score) ? s.score : null,
+                scored_at: new Date().toISOString() });
+  }
+  if (!rows.length) return 0;
+
+  for (let i = 0; i < rows.length; i += 100) {
+    await rest("/scored_jobs?on_conflict=user_id,job_url", {
+      method: "POST",
+      body: rows.slice(i, i + 100),
+      headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+    });
+  }
+  return rows.length;
+}
+
+/** Forget everything, so a new CV is judged from scratch. */
+export async function clearScoredMemory() {
+  const uid = await currentUserId();
+  await rest(`/scored_jobs?user_id=eq.${uid}`, { method: "DELETE" });
+}
+
 // What the user has done with jobs so far — the signal the scan learns from.
 export async function getDecisionHistory(limit = 400) {
   return rest(`/applications?select=job_title,job_company,status` +

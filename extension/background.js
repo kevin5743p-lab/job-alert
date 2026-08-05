@@ -110,11 +110,16 @@ async function loadKeyAndCv() {
 // pushed to the dashboard as it goes, because a scan takes a while and silence
 // looks like a hang.
 const SCORE_BATCH = 5;        // postings per Groq call
-// The free tier's real ceiling is tokens per minute, so a scan is paced rather
-// than fired as fast as it can go. 48 jobs at 6 per minute is about a minute of
-// scoring — enough to surface the best matches without stalling the UI. The
-// prefilter has already put the most relevant, most local postings first.
-const MAX_SCORED = 48;
+// How many postings the model judges per scan. The free tier's real ceiling is
+// tokens per minute, so scoring is paced rather than fired as fast as it can go:
+// the top INDIVIDUAL_SCORED go one at a time, 4s apart, and the rest in batches
+// of SCORE_BATCH, 9s apart. At 70 that is roughly three and a half minutes of
+// scoring, which is the bulk of a scan.
+//
+// The cap only decides how fast the backlog is worked through, not what is
+// eventually seen — since scored_jobs remembers what has been judged, each scan
+// now takes the next slice instead of re-rolling the same pool.
+const MAX_SCORED = 70;
 const SCORE_PACE_MS = 9000;
 // LinkedIn descriptions cost one request each, so they're capped. Comfortably
 // above MAX_SCORED: a posting has to be graded before it can be ranked, and
@@ -397,6 +402,19 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       // the onboarding answer takes effect on the next scan instead of waiting
       // for a CV change to trigger a rebuild.
       sp.language_preference = germanPolicy(ap.languages);
+
+      // A new CV means every past judgement was made about someone else's
+      // experience, so the scoring memory has to go with it — otherwise the
+      // postings that mattered most under the old CV are the very ones never
+      // looked at again.
+      if (sp.rebuiltFromNewCv) {
+        try {
+          await sb.clearScoredMemory();
+          progress("Your CV changed — every posting will be judged again.");
+        } catch (e) {
+          console.warn("Couldn't clear scoring memory:", e);
+        }
+      }
       // Searching and ranking want different places. Ranking wants the city, so
       // a nearby role outranks a distant one. Searching must not: LinkedIn takes
       // the location as a hard filter, so asking it for "Ingolstadt, Germany"
@@ -436,7 +454,13 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       let tracked = new Set();
       try {
         memory = buildMemory(await sb.getDecisionHistory());
-        tracked = await sb.getTrackedUrls();
+        // Both halves of "already dealt with": what reached the tracker, and
+        // what the scorer judged and turned down. Only the first used to be
+        // remembered, so everything rejected was re-fetched and re-scored on
+        // every scan, for ever, to the same answer.
+        const [trackedUrls, scoredUrls] =
+          await Promise.all([sb.getTrackedUrls(), sb.getScoredUrls()]);
+        tracked = new Set([...trackedUrls, ...scoredUrls]);
       } catch (e) {
         console.warn("Couldn't read tracker history:", e);
       }
@@ -539,6 +563,14 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
       progress(`Saving ${keep.length} match${keep.length === 1 ? "" : "es"}…`);
       const saved = await sb.upsertFoundJobs(keep);
+      // Remember everything judged, not just what was kept — that is the whole
+      // point. Never fatal: a scan that found jobs must not be reported as
+      // failed because the memory write didn't land.
+      try {
+        await sb.recordScored(scored);
+      } catch (e) {
+        console.warn("Couldn't record scoring memory:", e);
+      }
       await sb.touchLastScan();
 
       progress(`Done — ${saved} job${saved === 1 ? "" : "s"} added. ${funnel}`, true,
