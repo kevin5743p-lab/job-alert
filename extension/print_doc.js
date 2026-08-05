@@ -20,12 +20,14 @@
     return `<!doctype html><html><head><meta charset="utf-8">
 <title>Tailored application — ${esc(job.title || "")}</title>
 <style>
-  /* Zero page margin, and the page's own padding instead. With any non-zero
-     @page margin Chrome prints its own header and footer into it — the source
-     URL along one edge and the date and time along the other. On a cover letter
-     going to an employer that is not a small blemish, and no employer should be
-     receiving a document stamped "chrome-extension://…". Margin 0 is what
-     suppresses them; the padding below restores the same 20mm of white space. */
+  /* Zero page margin, with the body's own padding restoring the white space.
+     This makes a clean page the default, but it does NOT remove Chrome's
+     header and footer — the date along the top and the document's URL along
+     the bottom. Those follow the "Headers and footers" tick-box in the print
+     dialog, which is a saved user preference that no page can override; a
+     zero margin only changes what the dialog opens with. Hence the notice in
+     the toolbar telling the user where the box is. Verified the hard way: with
+     that box ticked, a letter still printed with a blob: URL across the foot. */
   @page { size: A4; margin: 0; }
   body { font: 11.5pt/1.55 Georgia, "Times New Roman", serif; color: #111;
          padding: 20mm; }
@@ -39,15 +41,27 @@
   pre.letter { white-space: pre-wrap; font: 11.5pt/1.6 Georgia, serif; margin: 0; }
   .page-break { page-break-before: always; }
   .bar { font-family: sans-serif; margin-bottom: 14px; }
+  .bar .note { display: block; margin-top: 8px; padding: 8px 10px; max-width: 640px;
+               background: #fff8c5; border: 1px solid #d4a72c; border-radius: 6px;
+               font-size: 12.5px; line-height: 1.5; color: #4d2d00; }
   .bar button { padding: 8px 16px; font-size: 13px; cursor: pointer;
     border: none; border-radius: 6px; background: #4f46e5; color: #fff; }
   @media print { .bar { display: none; } }
 </style></head><body>
   <div class="bar">
     <button onclick="window.print()">Save as PDF / Print</button>
-    <span class="muted"> — in the dialog, choose “Save as PDF”. If this button
-    does nothing, the site's security policy has blocked it: press
-    Ctrl&nbsp;+&nbsp;P (⌘&nbsp;+&nbsp;P on a Mac) instead.</span>
+    <span class="muted"> — in the dialog, choose “Save as PDF”.</span>
+    <!-- Chrome's headers and footers are a saved user preference, and no page
+         can switch them off for you: with the box ticked it stamps the date on
+         the top of the letter and the blob: URL along the bottom. It is a
+         one-time change, so say exactly where it is rather than leaving an
+         employer to receive a letter with a URL printed across it. -->
+    <span class="note"><b>Before saving, untick “Headers and footers”</b> in the
+    print dialog — under <i>More settings</i> if you don't see it. Otherwise
+    Chrome prints today's date and this page's address onto your letter. Chrome
+    remembers the choice, so this is only needed once.<br />
+    If the button above does nothing, the site's security policy has blocked
+    it: press Ctrl&nbsp;+&nbsp;P (⌘&nbsp;+&nbsp;P on a Mac) instead.</span>
   </div>
 
   <h1>Tailored highlights</h1>
