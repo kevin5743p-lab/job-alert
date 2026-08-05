@@ -3853,6 +3853,1484 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-05T14:43:02.402372",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "title fits 'Data Scientist'; skills: Machine Learning; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4439974686",
+            "title": "Staff Data Scientist, Dmarts - Quick Commerce",
+            "company": "Delivery Hero",
+            "location": "Berlin, Berlin, Germany",
+            "description": "As the world’s pioneering local delivery platform, our mission is to deliver an amazing experience, fast, easy, and to your door. We operate in around 65 countries worldwide, powered by tech, designed by people. As one of Europe’s largest tech platforms, headquartered in Berlin, Germany, Delivery He",
+            "url": "https://www.linkedin.com/jobs/view/4439974686",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Automotive Engineer'; skills: Python, Machine Learning; keyword bonus: 2; preferred location; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4426964740",
+            "title": "ML Ops Engineer",
+            "company": "Zeta Global",
+            "location": "Berlin, Berlin, Germany",
+            "description": "WHO WE ARE Zeta Global (NYSE: ZETA) is the AI-Powered Marketing Cloud that leverages advanced artificial intelligence (AI) and trillions of consumer signals to make it easier for marketers to acquire, grow, and retain customers more efficiently. Through the Zeta Marketing Platform (ZMP), our vision ",
+            "url": "https://www.linkedin.com/jobs/view/4426964740",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Business Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4448993471",
+            "title": "Business-Analyst:in",
+            "company": "SINC GmbH",
+            "location": "Wiesbaden, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448993471",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4448011123",
+            "title": "Data Scientist als Wissenschaftlicher Mitarbeiter (m/w/d)",
+            "company": "Universitätsklinikum Düsseldorf",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448011123",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Marketing Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_interim-marketing-manager-brand-content-munich-272953",
+            "title": "Interim Marketing Manager (m/w/d) - Brand & Content",
+            "company": "Skalar",
+            "location": "Munich",
+            "description": "SKALAR – Wir bauen die digitale Steuerkanzlei der Zukunft Radikal einfach. Voll digital. 100% mandantenfokussiert. Wir denken Steuerberatung komplett neu: einfacher, schneller und transparenter für Mandanten und Kanzleiteam zugleich. Wo andere Kanzleien mit manuellen Prozessen, langen Wartezeiten un",
+            "url": "https://www.arbeitnow.com/jobs/companies/skalar/interim-marketing-manager-brand-content-munich-272953",
+            "published": "2026-08-05T12:30:33+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-account-executive-commercial-sales-dach-munich-25671",
+            "title": "Senior Account Executive, Commercial Sales - DACH",
+            "company": "pendo",
+            "location": "Munich",
+            "description": "&lt;p&gt;&lt;strong&gt;The Team + The Role&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Pendo is hiring a Senior Account Executive for our Commercial Sales team in Munich, Germany to drive new business across our the DACH region to target prospect accounts. This role is built for high-performing Senior Commerc",
+            "url": "https://www.arbeitnow.com/jobs/companies/pendo/senior-account-executive-commercial-sales-dach-munich-25671",
+            "published": "2026-08-05T11:55:23+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_growth-product-manager-italy-ai-x-greentech-berlin-376025",
+            "title": "Growth Product Manager - Italy (AI x Greentech) (m/f/d)",
+            "company": "Reonic",
+            "location": "Berlin",
+            "description": "Are you passionate about AI &amp; renewable energy? Do you thrive in fast-paced, hard-working and purpose-driven environments? If you're ready to use your skills to help leveraging our product to the next level and keep processes smooth, then look no further - we want YOU! Please note that for this ",
+            "url": "https://www.arbeitnow.com/jobs/companies/reonic/growth-product-manager-italy-ai-x-greentech-berlin-376025",
+            "published": "2026-08-05T11:40:35+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_growth-product-manager-uk-ai-x-greentech-berlin-100904",
+            "title": "Growth Product Manager - UK (AI x Greentech) (m/f/d)",
+            "company": "Reonic",
+            "location": "Berlin",
+            "description": "Are you passionate about AI &amp; renewable energy? Do you thrive in fast-paced, hard-working and purpose-driven environments? If you're ready to use your skills to help leveraging our product to the next level and keep processes smooth, then look no further - we want YOU! Please note that for this ",
+            "url": "https://www.arbeitnow.com/jobs/companies/reonic/growth-product-manager-uk-ai-x-greentech-berlin-100904",
+            "published": "2026-08-05T11:40:35+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-information-security-manager-grc-munich-321472",
+            "title": "Senior Information Security Manager (GRC)",
+            "company": "DeepL",
+            "location": "Munich",
+            "description": "Meet DeepL DeepL is a global AI product and research company focused on building secure, intelligent solutions to complex business problems. Over 200,000 business customers and millions of individuals across 228 global markets today trust DeepL's Language AI platform for human-like translation, impr",
+            "url": "https://www.arbeitnow.com/jobs/companies/deepl/senior-information-security-manager-grc-munich-321472",
+            "published": "2026-08-05T11:40:28+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Recruiter'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_recruiter-tech-business-berlin-423758",
+            "title": "Recruiter, Tech & Business (m/w/d)",
+            "company": "Buena",
+            "location": "Berlin",
+            "description": "Über Buena Buena (backed by GV) macht alles rund um Immobilien so einfach und transparent wie den Kauf eines ETFs. Ob Suchen, Kaufen oder Finanzieren einer Wohnung. Wir tun das, indem wir Hausverwaltungen in ganz Deutschland übernehmen und in Technologieunternehmen verwandeln. In den vergangenen dre",
+            "url": "https://www.arbeitnow.com/jobs/companies/buena/recruiter-tech-business-berlin-423758",
+            "published": "2026-08-05T11:40:27+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "title fits 'Data Scientist'; (seniority warning)",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_global-director-of-social-data-london-295364",
+            "title": "Global Director of Social Data",
+            "company": "oliver",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;span data-contrast=&quot;auto&quot;&gt;Established in 2004, &lt;/span&gt;&lt;strong&gt;&lt;span data-contrast=&quot;none&quot;&gt;OLIVER&lt;/span&gt;&lt;/strong&gt;&lt;span data-contrast=&quot;auto&quot;&gt; is the world’s first and only specia",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/oliver/global-director-of-social-data-london-295364",
+            "published": "2026-08-05T12:55:46+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449494553",
+            "title": "Werkstudent im Bereich Research & Development (m/w/d)",
+            "company": "Valeo",
+            "location": "Bad Rodach, Bavaria, Germany",
+            "description": "Valeo est une entreprise mondiale de haute technologie qui conçoit des solutions révolutionnaires pour réinventer la mobilité. Nous sommes un équipementier partenaire des constructeurs automobiles et des acteurs de la nouvelle mobilité dans le monde entier. Notre vision ? Inventer une mobilité plus ",
+            "url": "https://www.linkedin.com/jobs/view/4449494553",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449498187",
+            "title": "Working Student in Research & Development (m/f/d)",
+            "company": "Valeo",
+            "location": "Bad Rodach, Bavaria, Germany",
+            "description": "Valeo est une entreprise mondiale de haute technologie qui conçoit des solutions révolutionnaires pour réinventer la mobilité. Nous sommes un équipementier partenaire des constructeurs automobiles et des acteurs de la nouvelle mobilité dans le monde entier. Notre vision ? Inventer une mobilité plus ",
+            "url": "https://www.linkedin.com/jobs/view/4449498187",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4243057921",
+            "title": "Werkstudent Product Strategy & Lifecycle Management (PLM) (m/w/d) in Stuttgart",
+            "company": "Deloitte",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4243057921",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448011829",
+            "title": "(Junior) Data Engineer (m/w/d)",
+            "company": "Alexander Thamm [at]",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Startdatum Wir suchen Dich ab sofor t an einem unserer deutschen Standorte in München, Nürnberg, Frankfurt am Main, Essen, Leipzig oder Berlin! Deine Aufgaben Data und AI sind Dein zu Hause? Deine neue Herausforderung gestaltet sich wie folgt: Zusammenarbeit mit Data Architects, Business Analysts un",
+            "url": "https://www.linkedin.com/jobs/view/4448011829",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448010618",
+            "title": "Data Engineer",
+            "company": "R3 Robotics",
+            "location": "Greater Karlsruhe Area",
+            "description": "Join us in solving one of industrial robotics' toughest challenges. R3 Robotics is developing the AI-powered dismantling platform that transforms end-of-life electric vehicle systems into strategic sources of critical materials. As global electrification accelerates, the surge in batteries and e-mot",
+            "url": "https://www.linkedin.com/jobs/view/4448010618",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443352998",
+            "title": "Data Engineer (m/w/d) DAI Foundations",
+            "company": "FIEGE",
+            "location": "Münster, North Rhine-Westphalia, Germany",
+            "description": "Über uns Wir sind FIEGE. Ein Familienunternehmen, das innovative Geschäftsmodelle in den Bereichen Logistik, Digital, Real Estate und Ventures vorantreibt - und das seit über 150 Jahren. Als Innovationsführer in der Branche beschäftigen wir bei FIEGE mehr als 22.000 Mitarbeitende an rund 136 Standor",
+            "url": "https://www.linkedin.com/jobs/view/4443352998",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431210298",
+            "title": "Praktikant Hochvoltspeicherentwicklung (m/w/x)",
+            "company": "BMW Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "THEORETISCH DIE BESTE ENTSCHEIDUNG. PRAKTISCH AUCH. TEILE DEINE LEIDENSCHAFT. Nur hochprofessionelle Abläufe in dynamischen Teams produzieren innovative Spitzentechnologie. Aber Fahrfreude wird bei uns von der Entwicklung bis zur Fertigung vor allem auch mit Spaß an der Arbeit und Begeisterung für d",
+            "url": "https://www.linkedin.com/jobs/view/4431210298",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4229602520",
+            "title": "Praktikant*in im Bereich Production Technology (m/w/d)",
+            "company": "Schaeffler",
+            "location": "Herzogenaurach, Bavaria, Germany",
+            "description": "Schaeffler – das ist die Faszination eines internationalen Technologie-Konzerns, verbunden mit der Kultur eines Familienunternehmens. Als Partner aller bedeutenden Automobilhersteller sowie zahlreicher Kunden im Industriebereich bieten wir Ihnen viel Raum für Ihre persönliche Entfaltung. Grundvoraus",
+            "url": "https://www.linkedin.com/jobs/view/4229602520",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449119474",
+            "title": "Design & Development Engineer (m/w/d)",
+            "company": "Bertrandt Group",
+            "location": "Biebergemünd, Hesse, Germany",
+            "description": "Wir sind Bertrandt. Ein eigenständiger und internationaler Engineering Dienstleister mit langjähriger Expertise. Mit branchenübergreifendem Know-how und einem ganzheitlichen System- und Produktverständnis schaffen wir technologische Lösungen entlang der gesamten Wertschöpfungskette. Wir beschäftigen",
+            "url": "https://www.linkedin.com/jobs/view/4449119474",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Mechanical Engineer'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448024294",
+            "title": "Mechanical Engineer - Bogies (w/d/m)",
+            "company": "Alstom",
+            "location": "Salzgitter, Lower Saxony, Germany",
+            "description": "Wir bei Alstom verstehen Verkehrsnetze und wissen, was Menschen bewegt. Von Hochgeschwindigkeitszügen, U-Bahnen, Einschienenbahnen und Straßenbahnen bis hin zu schlüsselfertigen Systemen, Dienstleistungen, Infrastruktur, Signaltechnik und digitaler Mobilität bieten wir unseren Kunden das breiteste P",
+            "url": "https://www.linkedin.com/jobs/view/4448024294",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449640740",
+            "title": "Quality Engineer (m/w/d)",
+            "company": "Auria",
+            "location": "Straubing, Bavaria, Germany",
+            "description": "Description Werden Sie Teil unseres Teams und gestalten Sie mit uns die Zukunft als Quality Engineer (m/w/d) Auria Solutions ist ein global führender Anbieter von technischen Textilien und Akustiklösungen für die Automobilindustrie. Das Unternehmen betreibt 17 Produktionsstätten sowie 10 kommerziell",
+            "url": "https://www.linkedin.com/jobs/view/4449640740",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4432441842",
+            "title": "Development Engineer",
+            "company": "Ingersoll Rand",
+            "location": "Bad Neustadt an der Saale, Bavaria, Germany",
+            "description": "Ingersoll Rand engagiert sich für eine vielfältige Belegschaft, welche die Gesellschaft widerspiegelt. Wir sind ein Arbeitgeber, für den Chancengleichheit wichtig ist. Alle qualifizierten Bewerber werden unabhängig von Alter, Abstammung, Hautfarbe, Urlaub aus familiären oder medizinischen Gründen, G",
+            "url": "https://www.linkedin.com/jobs/view/4432441842",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449470082",
+            "title": "Qualifizierung zum KFZ-Prüfingenieur (m/w/d)",
+            "company": "B56 Prüfservice GmbH",
+            "location": "Düren, North Rhine-Westphalia, Germany",
+            "description": "Hast du als Kind davon geträumt, die faszinierende Welt der Autos zu erforschen? Dann könnte deine Erfüllung genau hier liegen. Komm zu uns und werde Teil unseres Teams! Deine Aufgaben Fahrzeugprüfungen und -untersuchungen: Du führst nicht nur Haupt- und Abgasuntersuchungen durch, sondern begibst di",
+            "url": "https://www.linkedin.com/jobs/view/4449470082",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4186231620",
+            "title": "Train Validation Engineer (all gender)",
+            "company": "ALTEN Germany",
+            "location": "Hennigsdorf, Brandenburg, Germany",
+            "description": "#weareALTEN – the home of forward thinkers Wir sind die Gestalter von heute für die Welt von morgen. Als einer der weltweit führenden Entwicklungsdienstleister setzen wir uns bei ALTEN dafür ein, die Zukunft unserer Partner, die Karrieren unserer Mitarbeiter und die Herausforderungen für unsere Gese",
+            "url": "https://www.linkedin.com/jobs/view/4186231620",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449122438",
+            "title": "Mechanischer Konstrukteur (m/w/d)",
+            "company": "Reisdorfer engineering GmbH",
+            "location": "Wolfsburg, Lower Saxony, Germany",
+            "description": "Konstruktion Mechanischer Konstrukteur (m/w/d) DirekteinstiegVollzeit Wolfsburg Die Reisdorfer engineering bietet hochentwickelte Dienstleistungen im Bereich der Produktions-und Fertigungsautomation. Basierend auf unserer langjährigen Erfahrung in der Automobilindustrie, besitzen wir Knowhow im Proj",
+            "url": "https://www.linkedin.com/jobs/view/4449122438",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431273931",
+            "title": "AI & Data Science Analyst (all genders)",
+            "company": "Accenture DACH",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Im AI & Data Team bei Accenture vereinen wir einzigartige Persönlichkeiten und zukunftsgerichtetes Know-How, um gemeinsam mit unseren Kunden datengetriebene Transformation voranzutreiben und die Zukunft durch KI (Künstlichen Intelligenz) zu gestalten. Wir begleiten unsere Kunden Ende-zu-Ende – von d",
+            "url": "https://www.linkedin.com/jobs/view/4431273931",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4432214339",
+            "title": "Senior Data Scientist (m/f/d)",
+            "company": "AutoScout24",
+            "location": "Munich, Bavaria, Germany",
+            "description": "A career driven by you. Join AutoScout24 Group and experience life in the fast lane. We’re not just leading the market; we’re creating it. We’re constantly innovating, evolving and transforming things for our customers. We’re driven, ambitious and determined to do our best work, together. For a care",
+            "url": "https://www.linkedin.com/jobs/view/4432214339",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4421845834",
+            "title": "Senior Applied Scientist (All genders)",
+            "company": "Zalando",
+            "location": "Berlin, Germany",
+            "description": "THE ROLE & THE TEAM The Marketing Science team acts as the engine behind Zalando’s growth, partnering with business units across the full marketing funnel. We extend the Zalando experience beyond our platform, connecting customers with the fashion inspiration and shopping convenience they love. By l",
+            "url": "https://www.linkedin.com/jobs/view/4421845834",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449486628",
+            "title": "Software-Entwickler Machine Learning (m/w/d)",
+            "company": "ATCSim GmbH",
+            "location": "Kaufbeuren, Bavaria, Germany",
+            "description": "Wir suchen dich! Zur Verstärkung unseres Teams suchen wir für unseren Standort in Kaufbeuren: Software-Entwickler Machine Learning (m/w/d) für Simulations-Software und -Systeme Deine Aufgaben Entwicklung, Implementierung und Optimierung von Machine-Learning-Modellen und Algorithmen Integration von M",
+            "url": "https://www.linkedin.com/jobs/view/4449486628",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448024441",
+            "title": "AI Solutions Engineer (m/w/d)",
+            "company": "Reply",
+            "location": "Frankfurt Rhine-Main Metropolitan Area",
+            "description": "FRANKFURT, HAMBURG, DÜSSELDORF, MÜNCHEN, HYBRID Aufgaben Über unsere Plattform Huacaya: Huacaya ist unsere On-Premise-Plattform für KI-Entwicklung und -Deployment. Sie ermöglicht es, KI-Modelle sicher und effizient zu hosten, zu trainieren und in Anwendungen wie Chats oder Prozessautomatisierungen z",
+            "url": "https://www.linkedin.com/jobs/view/4448024441",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448028473",
+            "title": "Senior AI Engineer (w/m/d)",
+            "company": "Eraneos",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448028473",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449476828",
+            "title": "Anwendungsentwickler (m/w/d)",
+            "company": "ATCSim GmbH",
+            "location": "Kaufbeuren, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449476828",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449113198",
+            "title": "Projektingenieur (m/w/d) Wasserstoff",
+            "company": "Tyczka Group",
+            "location": "Geretsried, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449113198",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449493999",
+            "title": "Data Analyst - focus on Source-to-Pay (m/w/d)",
+            "company": "KWS Group",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449493999",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4217401579",
+            "title": "Business Analyst Workflowmanagementsystem (all genders)",
+            "company": "adesso SE",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4217401579",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448986572",
+            "title": "Business Analyst / Anforderungsmanager (m/w/d)",
+            "company": "SINC GmbH",
+            "location": "Wiesbaden, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448986572",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449499502",
+            "title": "Business Analyst Events (w/m/d)",
+            "company": "Arthrex GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449499502",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431085130",
+            "title": "Senior /Principal Product Manager – Search Experience (m/f/d)",
+            "company": "Redcare Pharmacy",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4431085130",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448012277",
+            "title": "Founders Associate",
+            "company": "credium",
+            "location": "Augsburg, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448012277",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449107653",
+            "title": "Simulationsanwender (m/w/d)",
+            "company": "Reisdorfer engineering GmbH",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449107653",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448999960",
+            "title": "TECHNISCHE*R MITARBEITER*IN im Bereich Satellitenkommunikation",
+            "company": "Fraunhofer FKIE",
+            "location": "Wachtberg, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448999960",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4440849719",
+            "title": "Elektroniker (m/w/d) in Voll- oder Teilzeit",
+            "company": "Thales",
+            "location": "Ulm, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4440849719",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448027393",
+            "title": "Lab Technician",
+            "company": "Proxima Fusion",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448027393",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431266907",
+            "title": "Inbetriebsetzer (w/m/d) Gebäudeautomation",
+            "company": "Siemens",
+            "location": "Essen, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4431266907",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449469132",
+            "title": "Servicetechniker/-in (m/w/x)",
+            "company": "ZEISS Group",
+            "location": "Jena, Thuringia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449469132",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447367614",
+            "title": "Techniker:in bzw. Ingenieur:in Fernwartung und Service",
+            "company": "Koenig & Bauer DK",
+            "location": "Radebeul, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447367614",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448026412",
+            "title": "Inbetriebnehmer (m/w/d) für Magnetresonanztomographen (MRT)",
+            "company": "Siemens Healthineers",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448026412",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448024449",
+            "title": "Entwicklungsingenieur (w/m/d)",
+            "company": "ZEG Zweirad-Einkaufs-Genossenschaft eG",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448024449",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Promotion'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448974450",
+            "title": "Wiss. Mitarbeiter/in (m/w/d) Bereich Fahrzeugantriebssysteme (Fuel Cell Model Toolchain) - Möglichkeit zur Promotion",
+            "company": "SFB 1313 | University of Stuttgart",
+            "location": "Stuttgart Region",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448974450",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449628904",
+            "title": "Entwicklungsingenieur (m/w/d)",
+            "company": "Ingersoll Rand",
+            "location": "Fürstenfeldbruck, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449628904",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439989689",
+            "title": "Scooter Mechanic",
+            "company": "Bolt",
+            "location": "Kassel, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439989689",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4277634372",
+            "title": "Mechatroniker (m/w/d) Nutzfahrzeugtechnik",
+            "company": "Volvo Trucks",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4277634372",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447339990",
+            "title": "Für unseren Standort Rehden",
+            "company": "Ingenieurbüro für Kfz-Technik GmbH Schmidt Elsner Espe",
+            "location": "Rehden, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447339990",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4440593285",
+            "title": "Senior Product Manager, Biosurgery DACH",
+            "company": "Corza Medical",
+            "location": "Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4440593285",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000141719459",
+            "title": "Junior Managers Program (Trainee) - Start your Leadership Journey in Business Intelligence & Analytics ",
+            "company": "Bosch",
+            "location": "Gerlingen, BW, de",
+            "description": "Ready to make a real impact with data? &#xa0;We are looking for analytically strong and tech-savvy master’s graduates with a drive to make a difference, who will drive Bosch's data-driven transformation with us in our Junior Managers Program. If you burn for data analytics, machine learning, and str",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000141719459",
+            "published": "2026-08-05T13:18:09.613Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000141719359",
+            "title": "Junior Managers Program (Trainee) - Starte deine Leadership Journey im Bereich Business Intelligence & Data Analytics",
+            "company": "Bosch",
+            "location": "Gerlingen, BW, de",
+            "description": "Bereit, mit Daten echte Wirkung zu erzielen? Wir suchen analytisch starke und technikaffine Master Graduates mit Gestaltungswillen, die mit uns im Junior Managers Program die datengetriebene Transformation von Bosch vorantreiben. Wenn du für Data Analytics, Machine Learning und strategische Frageste",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000141719359",
+            "published": "2026-08-05T13:17:39.484Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Führungskraft'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000141712069",
+            "title": "Graduate Specialist Program (Trainee) – Sales Business Development",
+            "company": "Bosch",
+            "location": "Lohr am Main, BY, de",
+            "description": "Unser Traineeprogramm „Graduate Specialist Program (Trainee) – Business Development “ ist dein Karrierestart in einem international erfolgreichen Unternehmen. In 18 bis 24 Monaten durchläufst du unterschiedliche Stationen im In- und Ausland, die individuell auf dich abgestimmt sind. Nach Abschluss d",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000141712069",
+            "published": "2026-08-05T12:44:29.137Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000141716839",
+            "title": "Praktikum in der Logistik - Data & Analytics",
+            "company": "Bosch",
+            "location": "Lohr am Main, BY, de",
+            "description": "Möchtest du die Logistik von morgen durch intelligente Datenströme revolutionieren? Dann entwickle mit uns skalierbare Datenprodukte und Reports, um datenbasierte Entscheidungen zu ermöglichen! Werde Teil unseres agilen Teams! Während deines Praktikums erhältst du spannende Einblicke in die Struktur",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000141716839",
+            "published": "2026-08-05T13:03:37.353Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000141721052",
+            "title": "Masterarbeit: Anwendung physikinformierten maschinellen Lernens für die Regelung netzgekoppelter Wechselrichter (Betreuung: Prof. Theis) (w/m/div.)",
+            "company": "Bosch",
+            "location": "Renningen, BW, de",
+            "description": "Im Rahmen Ihrer Masterarbeit werden Sie einen physik-informierten Stromregler für die Regelung netzgekoppelter Wechselrichter entwickeln. Sie werden den linearen Regler sowie den prädiktiven Regler als Referenzpunkte evaluieren und deren Grenzen aufzeigen. Darüber hinaus werden Sie aktuelle KI-basie",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000141721052",
+            "published": "2026-08-05T13:25:11.105Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000135972749",
+            "title": "Werkstudent Weiterbildung und digitales Lernen (w/m/div.) ",
+            "company": "Bosch",
+            "location": "Würzburg, BY, de",
+            "description": "Du siehst in digitaler Bildung nicht nur einen Trend, sondern die Zukunft der Wissensvermittlung? Dann nutze die Chance, unsere digitale Lernlandschaft aktiv mitzugestalten und mit deinen Ideen zu prägen. Bei uns übernimmst du Verantwortung für innovative eLearning-Angebote und schaffst Lernwelten, ",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000135972749",
+            "published": "2026-07-06T10:45:03.318Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000141677513",
+            "title": "Global Quality Supporter (w/m/div.) - Road Side Assistance Services für einen deutschen Premium-Automobilhersteller",
+            "company": "Bosch",
+            "location": "Leipzig, SN, de",
+            "description": "Als Teil unseres Globalen Service Delivery Teams für Connected Mobility Services unterstützt Du den Global Operations Manager und die lokalen Teams bei der Sicherstellung und kontinuierlichen Verbesserung der Prozesse und der Qualitätsleistung für unsere Connected Mobility Services: Du unterstützt a",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000141677513",
+            "published": "2026-08-05T09:42:35.529Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000141670641",
+            "title": "Global Operations Manager (w/m/div.)",
+            "company": "Bosch",
+            "location": "Magdeburg, SA, de",
+            "description": "In dieser Rolle bist Du für den weltweiten operativen Erfolg, die Servicequalität und die finanzielle Performance unserer global vertraglich gebundenen Accounts verantwortlich, wie z. B. Emergency Services (eCall), Stolen Vehicle Services (SVS) und Roadside Assistance Services (RSA). Du agierst als ",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000141670641",
+            "published": "2026-08-05T09:03:43.692Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "title fits 'Data Scientist'; skills: Python, Git; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4449488553",
+            "title": "Specialist Data Science",
+            "company": "HDI Group",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Your Tasks Take functional ownership of specific data domains Consolidate expertise across existing data sources and apply various methods in Data Engineering and Analytics Independently develop and maintain global pricing tools (primarily R-based, partly Python-based) based on business specificatio",
+            "url": "https://www.linkedin.com/jobs/view/4449488553",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "title fits 'Automotive Engineer'; skills: Python, C++; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4438079966",
+            "title": "R&D Software Engineer (C++, Rust, Python)",
+            "company": "Keysight Technologies",
+            "location": "Dresden, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4438079966",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Data Scientist'; skills: Data analysis; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439996910",
+            "title": "Data Science Consultant",
+            "company": "Blue Yonder",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "Overview The Data Science Consultant provides services that maximize the value of the customer’s business through data-driven insights and enhanced decision support. This role will be responsible for advising the customer and recommending software configuration alternatives and adapting the software",
+            "url": "https://www.linkedin.com/jobs/view/4439996910",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 36,
+          "reason": "title fits 'Machine Learning Engineer'; skills: Machine Learning; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "smartr_BoschGroup_744000141721209",
+            "title": "Master Theis Application of Physics-Informed Machine Learning for Grid-Tied Inverter Control",
+            "company": "Bosch",
+            "location": "Renningen, BW, de",
+            "description": "As a part of your Master thesis, you will develop a physics-informed current controller for grid-tied inverter control. You will evaluate the linear regulator and the predictive controller as reference points, as well as establish their boundaries. In addition, you will research current AI-based imp",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000141721209",
+            "published": "2026-08-05T13:24:43.938Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448023041",
+            "title": "Produktmanager / Einkäufer (m/w/d)",
+            "company": "IMAK -die Werkstattmacher-",
+            "location": "Leonberg, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448023041",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448029493",
+            "title": "Project Engineer",
+            "company": "Smart4 Energy",
+            "location": "Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448029493",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4449642685",
+            "title": "Process Engineer, Hydrometallurgy",
+            "company": "European Tech Recruit",
+            "location": "Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449642685",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4440584679",
+            "title": "Konstrukteur / Design Engineer (m/w/x) Space",
+            "company": "SII Germany",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4440584679",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439878566",
+            "title": "Consultant Data Analytics ERP Migrations (w/m/d)",
+            "company": "PwC Deutschland",
+            "location": "Kiel, Schleswig-Holstein, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439878566",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Business Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4440567213",
+            "title": "Consultant Business & AI Insights (m/w/d) in Hannover",
+            "company": "Deloitte",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4440567213",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Business Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448021712",
+            "title": "Business Analys",
+            "company": "ZJ Consulting & Training",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448021712",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Business Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448029049",
+            "title": "Business Owner C Place",
+            "company": "Guldberg GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448029049",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4449108304",
+            "title": "Product Owner",
+            "company": "Piper Maddox",
+            "location": "Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449108304",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Simulation Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4449637045",
+            "title": "Software Designer Simulation (m/w/d)",
+            "company": "SMS group UK",
+            "location": "Mönchengladbach, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449637045",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Business Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4440569165",
+            "title": "Consultant Business & AI Insights (m/w/d) in Stuttgart",
+            "company": "Deloitte",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4440569165",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4319279938",
+            "title": "Consultant Data Science - Healthcare (m/f/d)",
+            "company": "Statista",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4319279938",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448016755",
+            "title": "Operations Analyst - Entry to Mid Level",
+            "company": "Zavod za razvoj umetne inteligence AI-D",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448016755",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4449641539",
+            "title": "Operations Finance Manager – Supply Chain / Inventory (all genders)",
+            "company": "Glow25",
+            "location": "Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449641539",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4447382150",
+            "title": "Category Manager Bücher (m/w/d)",
+            "company": "ANGEHEUERT ⚓ Recruiting mit Tiefgang",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4447382150",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Business Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4243057726",
+            "title": "Consultant Business Modeling (m/w/d) in Düsseldorf",
+            "company": "Deloitte",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4243057726",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 28,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4428935655",
+            "title": "Werkstudent Digital Transformation / Tax Technology (w/m/d)",
+            "company": "GETEC Group",
+            "location": "Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4428935655",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4243068037",
+            "title": "Praktikant / Werkstudent Quantitative Analytics - Financial Services (m/w/d) in Hamburg",
+            "company": "Deloitte",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4243068037",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4243066093",
+            "title": "Praktikant / Werkstudent Quantitative Analytics - Financial Services (m/w/d) in Stuttgart",
+            "company": "Deloitte",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4243066093",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4243069042",
+            "title": "Praktikant / Werkstudent Quantitative Analytics - Financial Services (m/w/d) in Hannover",
+            "company": "Deloitte",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4243069042",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448975548",
+            "title": "Werkstudent:in",
+            "company": "EP EQUIPMENT",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448975548",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4291533663",
+            "title": "Praktikum als Fellow Intern - Tech & AI (m/w/d)",
+            "company": "McKinsey & Company",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4291533663",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 15,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4439876667",
+            "title": "Analytical Consultant, Digital First",
+            "company": "Google",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4439876667",
+            "published": "2026-08-05T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
