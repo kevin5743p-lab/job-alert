@@ -16,16 +16,15 @@
   // a page dead after the extension was reloaded: the orphaned instance had
   // already claimed the flag, and the fresh injection bowed out to it.
   //
-  // So a later injection always wins. The previous instance's re-check timer
-  // is stopped and its launcher removed first, which is what makes running
-  // twice safe rather than merely tolerated.
+  // So a later injection always wins. Stopping the previous instance's timer
+  // is safe to do here; replacing its buttons is NOT, and doing it here was a
+  // mistake — everything below still has to parse and run, and if any of it
+  // throws, the page is left with no buttons at all and no way back. The old
+  // early return at least left the working ones alone. The swap now happens at
+  // the very end, once this instance is known to be whole.
   if (window.__jobCopilotTimer) {
     clearInterval(window.__jobCopilotTimer);
     window.__jobCopilotTimer = null;
-  }
-  for (const id of ["#jobcopilot-fab", "#jobcopilot-fill"]) {
-    const stale = document.querySelector(id);
-    if (stale) stale.remove();
   }
   window.__jobCopilotLoaded = true;
 
@@ -229,7 +228,13 @@
     }
     // The fill button only appears once the page actually looks like an
     // application form, so it stays out of the way while browsing listings.
-    const isForm = window.JobCopilotAutofill.findForm();
+    //
+    // Guarded because this runs on a 2s timer: if autofill.js hasn't landed in
+    // this frame, an unguarded call throws on every tick, and — since it sits
+    // after the tailor button and before the fill button — the visible symptom
+    // is the fill button never appearing, with nothing to say why.
+    const AF = window.JobCopilotAutofill;
+    const isForm = AF && typeof AF.findForm === "function" ? AF.findForm() : false;
     const fill = $("#jobcopilot-fill");
     if (isForm && !fill) {
       const b = document.createElement("button");
@@ -532,6 +537,14 @@
         });
       });
     }
+  }
+
+  // Everything above parsed and ran, so this instance can safely take over from
+  // any earlier one: drop its buttons, whose click handlers close over a scope
+  // that may no longer reach the worker, and put ours in their place.
+  for (const id of ["#jobcopilot-fab", "#jobcopilot-fill"]) {
+    const stale = document.querySelector(id);
+    if (stale) stale.remove();
   }
 
   // LinkedIn is a single-page app; the button can get wiped on navigation.

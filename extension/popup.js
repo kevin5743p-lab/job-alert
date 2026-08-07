@@ -33,9 +33,16 @@ document.getElementById("run-here").addEventListener("click", async () => {
       status.style.color = "var(--warn)";
       return;
     }
-    await chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: ["content.css"] });
+    // Every frame, not just the top one. The declared content scripts run with
+    // all_frames, and content.js is written to match — the tailor button belongs
+    // to the top frame, the fill button to whichever frame actually holds the
+    // form. Injecting only the top frame meant that on any ATS that embeds its
+    // form in an iframe, the fill button could never appear however many times
+    // this was clicked.
+    const target = { tabId: tab.id, allFrames: true };
+    await chrome.scripting.insertCSS({ target, files: ["content.css"] });
     await chrome.scripting.executeScript({
-      target: { tabId: tab.id },
+      target,
       files: ["print_doc.js", "cover_templates.js", "autofill.js", "content.js"],
     });
 
@@ -43,11 +50,12 @@ document.getElementById("run-here").addEventListener("click", async () => {
     // happily on a page where the buttons never appear — the form wasn't
     // recognised, the body wasn't ready — and the old message said "Ready"
     // regardless, which is what made this button look unreliable.
-    const [probe] = await chrome.scripting.executeScript({
-      target: { tabId: tab.id },
+    // One result per frame; a button in any of them counts.
+    const probes = await chrome.scripting.executeScript({
+      target,
       func: () => Boolean(document.querySelector("#jobcopilot-fab, #jobcopilot-fill")),
     });
-    if (probe && probe.result) {
+    if ((probes || []).some((p) => p && p.result)) {
       status.textContent = "Ready — look for the buttons at the bottom right.";
       status.style.color = "var(--good)";
       setTimeout(() => window.close(), 1200);
