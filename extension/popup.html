@@ -2,39 +2,96 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="theme.css" />
   <style>
+    /* Structure only; colour, radius and motion come from theme.css.
+       Ids and classes are untouched — popup.js queries them. */
+    * { box-sizing: border-box; }
     body {
-      width: 340px; margin: 0; padding: 14px;
-      font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: #1f2328;
+      width: 360px; margin: 0; padding: 16px;
+      font: 13px/1.55 var(--font); color: var(--text); background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      animation: jc-fade var(--dur-2) var(--ease) both;
     }
-    h1 { font-size: 15px; margin: 0 0 4px; }
-    p.sub { margin: 0 0 12px; color: #57606a; font-size: 12px; }
-    label { display: block; font-weight: 600; margin: 10px 0 4px; font-size: 12px; }
+    h1 { font-size: 16px; margin: 0 0 3px; letter-spacing: -.01em; }
+    h1 .dot {
+      display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent); margin-right: 7px; vertical-align: middle;
+      box-shadow: 0 0 0 3px var(--accent-dim);
+    }
+    p.sub { margin: 0 0 14px; color: var(--text-2); font-size: 12px; }
+
+    label { display: block; font-weight: 600; margin: 12px 0 5px; font-size: 11px;
+            text-transform: uppercase; letter-spacing: .05em; color: var(--text-3); }
     input, textarea, select {
-      width: 100%; box-sizing: border-box; padding: 7px 8px;
-      border: 1px solid #d0d7de; border-radius: 6px; font: inherit;
+      width: 100%; padding: 8px 10px; font: inherit; color: var(--text);
+      background: var(--surface-2); border: 1px solid var(--border-hi);
+      border-radius: var(--r-sm);
+      transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease),
+                  background var(--dur-1) var(--ease);
     }
-    textarea { height: 130px; resize: vertical; font-size: 12px; }
-    .row { display: flex; gap: 8px; }
-    .row > div { flex: 1; }
+    input:hover, textarea:hover, select:hover { border-color: var(--border-hi); background: var(--surface-3); }
+    input:focus, textarea:focus, select:focus {
+      outline: none; border-color: var(--accent); box-shadow: var(--ring);
+      background: var(--surface-2);
+    }
+    textarea { height: 128px; resize: vertical; font-size: 12px; line-height: 1.5; }
+    /* Three selects don't fit 360px without truncating the model name, so the
+       row wraps: two share a line and the third takes the full width. */
+    .row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .row > div { flex: 1 1 140px; min-width: 132px; }
+
     button {
-      margin-top: 10px; width: 100%; padding: 8px; border: none; border-radius: 6px;
-      background: #4f46e5; color: #fff; font-weight: 600; cursor: pointer;
+      margin-top: 10px; width: 100%; padding: 9px 12px; font: inherit;
+      font-weight: 600; cursor: pointer; border-radius: var(--r-sm);
+      border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent);
+      transition: background var(--dur-1) var(--ease), transform var(--dur-1) var(--ease),
+                  box-shadow var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
     }
-    button:hover { background: #4338ca; }
-    button.secondary { background: #f6f8fa; color: #1f2328; border: 1px solid #d0d7de; }
-    button.secondary:hover { background: #eaeef2; }
-    .status { margin-top: 8px; font-size: 12px; min-height: 16px; }
-    .hint { font-size: 11px; color: #8b949e; margin-top: 2px; }
-    fieldset { border: 1px solid #eaeef2; border-radius: 8px; padding: 10px; margin: 0 0 14px; }
-    legend { font-size: 11px; color: #6e7781; text-transform: uppercase; letter-spacing: .04em; padding: 0 4px; }
-    .who { font-size: 12px; color: #1a7f37; }
-    .hidden { display: none; }
+    button:hover { background: var(--accent-hi); border-color: var(--accent-hi); }
+    button:active { transform: translateY(1px); }
+    button:focus-visible { outline: none; box-shadow: var(--ring); }
+    button:disabled { opacity: .55; cursor: default; transform: none; }
+    button.secondary {
+      background: var(--surface-2); color: var(--text); border-color: var(--border-hi);
+    }
+    button.secondary:hover { background: var(--surface-3); border-color: var(--accent-line); }
+
+    .status { margin-top: 8px; font-size: 12px; min-height: 16px; line-height: 1.45; }
+    .hint { font-size: 11px; color: var(--text-3); margin-top: 4px; line-height: 1.5; }
+
+    fieldset {
+      border: 1px solid var(--border); border-radius: var(--r);
+      background: var(--surface); padding: 12px; margin: 0 0 14px;
+    }
+    legend { font-size: 10px; color: var(--text-3); text-transform: uppercase;
+             letter-spacing: .07em; padding: 0 5px; font-weight: 600; }
+    .who { font-size: 12px; color: var(--good); font-weight: 500; }
+    .hidden { display: none !important; }
+
+    details { margin-top: 12px; border: 1px solid var(--border); border-radius: var(--r);
+              background: var(--surface); overflow: hidden; }
+    details > summary {
+      cursor: pointer; font-size: 12px; font-weight: 600; padding: 9px 11px;
+      color: var(--text-2); list-style: none;
+      transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+    }
+    details > summary::-webkit-details-marker { display: none; }
+    details > summary::before {
+      content: "›"; display: inline-block; margin-right: 7px; color: var(--text-3);
+      transition: transform var(--dur-2) var(--ease);
+    }
+    details[open] > summary::before { transform: rotate(90deg); }
+    details > summary:hover { background: var(--surface-2); color: var(--text); }
+    details > *:not(summary) { padding: 0 11px 11px; animation: jc-rise var(--dur-2) var(--ease-out) both; }
+    details .hint { padding: 0; }
+
+    /* The primary action reads as the primary action. */
+    #run-here { margin-top: 0; font-size: 13px; }
   </style>
 </head>
 <body>
-  <h1>JobCopilot — Tailor</h1>
+  <h1><span class="dot"></span>JobCopilot — Tailor</h1>
   <p class="sub">Your API key stays on this machine. Your CV syncs to your account.</p>
 
   <button id="run-here">✦ Run on this page</button>
@@ -70,9 +127,9 @@
   <input id="key" type="password" placeholder="gsk_..." autocomplete="off" />
   <div class="hint">Free at console.groq.com. Stored only in this browser.</div>
 
-  <details style="margin-top:10px">
-    <summary style="cursor:pointer;font-size:13px">Adzuna (optional — more German jobs)</summary>
-    <div class="row" style="margin-top:8px">
+  <details>
+    <summary>Adzuna (optional — more German jobs)</summary>
+    <div class="row">
       <div>
         <label for="adzuna-id">Adzuna app ID</label>
         <input id="adzuna-id" type="password" placeholder="optional" autocomplete="off" />
@@ -116,7 +173,7 @@
   <label for="cv">Your CV (plain text / markdown)</label>
   <textarea id="cv" placeholder="Paste your CV here…"></textarea>
 
-  <fieldset style="margin-top:14px">
+  <fieldset>
     <legend>Application details</legend>
     <div id="profile-state" class="hint" style="margin:0 0 8px">Not filled in yet.</div>
     <button id="onboard" class="secondary" style="margin-top:0">

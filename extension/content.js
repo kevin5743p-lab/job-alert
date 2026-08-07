@@ -10,7 +10,23 @@
 // Expect to revisit these selectors when LinkedIn reshuffles its markup.
 
 (function () {
-  if (window.__jobCopilotLoaded) return;
+  // "Run on this page" injects this file again, and on the three dozen sites
+  // in content_scripts it is always already running — so returning early here
+  // made that button a no-op that still reported success. It is also what left
+  // a page dead after the extension was reloaded: the orphaned instance had
+  // already claimed the flag, and the fresh injection bowed out to it.
+  //
+  // So a later injection always wins. The previous instance's re-check timer
+  // is stopped and its launcher removed first, which is what makes running
+  // twice safe rather than merely tolerated.
+  if (window.__jobCopilotTimer) {
+    clearInterval(window.__jobCopilotTimer);
+    window.__jobCopilotTimer = null;
+  }
+  for (const id of ["#jobcopilot-fab", "#jobcopilot-fill"]) {
+    const stale = document.querySelector(id);
+    if (stale) stale.remove();
+  }
   window.__jobCopilotLoaded = true;
 
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -519,7 +535,8 @@
   }
 
   // LinkedIn is a single-page app; the button can get wiped on navigation.
-  // Keep it present with a light re-check.
+  // Keep it present with a light re-check. The handle is kept on window so a
+  // later injection can stop this one rather than leaving two timers racing.
   injectButton();
-  setInterval(injectButton, 2000);
+  window.__jobCopilotTimer = setInterval(injectButton, 2000);
 })();

@@ -25,12 +25,12 @@ const els = {
 document.getElementById("run-here").addEventListener("click", async () => {
   const status = document.getElementById("run-status");
   status.textContent = "Starting…";
-  status.style.color = "#57606a";
+  status.style.color = "var(--text-2)";
   try {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     if (!tab || !/^https?:/.test(tab.url || "")) {
       status.textContent = "Open a job or application page first.";
-      status.style.color = "#bc4c00";
+      status.style.color = "var(--warn)";
       return;
     }
     await chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: ["content.css"] });
@@ -38,12 +38,27 @@ document.getElementById("run-here").addEventListener("click", async () => {
       target: { tabId: tab.id },
       files: ["print_doc.js", "cover_templates.js", "autofill.js", "content.js"],
     });
-    status.textContent = "Ready — look for the buttons at the bottom right.";
-    status.style.color = "#1a7f37";
-    setTimeout(() => window.close(), 1200);
+
+    // Don't claim success on the strength of the injection alone. It resolves
+    // happily on a page where the buttons never appear — the form wasn't
+    // recognised, the body wasn't ready — and the old message said "Ready"
+    // regardless, which is what made this button look unreliable.
+    const [probe] = await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: () => Boolean(document.querySelector("#jobcopilot-fab, #jobcopilot-fill")),
+    });
+    if (probe && probe.result) {
+      status.textContent = "Ready — look for the buttons at the bottom right.";
+      status.style.color = "var(--good)";
+      setTimeout(() => window.close(), 1200);
+    } else {
+      status.textContent = "Loaded, but no button appeared — the page may still " +
+                           "be rendering. Wait a moment and try again.";
+      status.style.color = "var(--warn)";
+    }
   } catch (e) {
     status.textContent = `Couldn't run here: ${e.message}`;
-    status.style.color = "#bc4c00";
+    status.style.color = "var(--bad)";
   }
 });
 
@@ -61,14 +76,14 @@ function showProfileState(profile) {
   const answered = Object.keys(profile || {}).length;
   if (!answered) {
     els.profileState.textContent = "Not filled in yet — autofill needs this.";
-    els.profileState.style.color = "#bc4c00";
+    els.profileState.style.color = "var(--warn)";
     return;
   }
   const missing = KEY_ANSWERS.filter((k) => !profile[k]).length;
   els.profileState.textContent = missing
     ? `${answered} answers saved · ${missing} key question${missing === 1 ? "" : "s"} still open`
     : `${answered} answers saved ✓`;
-  els.profileState.style.color = missing ? "#bc4c00" : "#1a7f37";
+  els.profileState.style.color = missing ? "var(--warn)" : "var(--good)";
 }
 
 els.apps.addEventListener("click", () => {
@@ -77,7 +92,7 @@ els.apps.addEventListener("click", () => {
 
 function setStatus(el, text, ok = true) {
   el.textContent = text;
-  el.style.color = ok ? "#1a7f37" : "#bc4c00";
+  el.style.color = ok ? "var(--good)" : "var(--bad)";
 }
 
 // Check the fields before calling Supabase. Without this, an empty email makes
