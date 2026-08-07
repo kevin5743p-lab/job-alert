@@ -3,121 +3,202 @@
 <head>
   <meta charset="utf-8" />
   <title>My applications — JobCopilot</title>
+  <link rel="stylesheet" href="theme.css" />
   <style>
-    :root { color-scheme: light dark; }
+    /* Layout and components only — every colour, radius and duration comes
+       from theme.css. Class and id names are untouched: the JS queries them. */
+    * { box-sizing: border-box; }
     body {
-      margin: 0; padding: 28px 24px 60px;
-      font: 14px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: #1f2328; background: #f6f8fa;
+      margin: 0; padding: 32px 24px 72px;
+      font: 14px/1.6 var(--font);
+      color: var(--text); background: var(--bg);
+      -webkit-font-smoothing: antialiased;
     }
-    .wrap { max-width: 900px; margin: 0 auto; }
-    header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
-    h1 { font-size: 20px; margin: 0 0 4px; }
-    .sub { color: #57606a; font-size: 13px; margin: 0 0 20px; }
+    /* A wash of accent behind the header, so the page has a horizon rather
+       than starting flat at the top. */
+    body::before {
+      content: ""; position: fixed; inset: 0 0 auto 0; height: 320px; z-index: -1;
+      background: radial-gradient(90% 100% at 50% 0%,
+                  color-mix(in srgb, var(--accent) 13%, transparent), transparent 70%);
+      pointer-events: none;
+    }
+    .wrap { max-width: 1040px; margin: 0 auto; }
 
-    .stats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    header { display: flex; align-items: flex-start; justify-content: space-between;
+             gap: 16px; margin-bottom: 22px; animation: jc-rise var(--dur-3) var(--ease-out) both; }
+    h1 { font-size: 26px; line-height: 1.2; margin: 0 0 4px; letter-spacing: -.02em; }
+    .sub { color: var(--text-2); font-size: 13px; margin: 0; }
+    .toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+    /* ── Controls ──────────────────────────────────────────────────────── */
+    button, .btnlink {
+      font: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+      padding: 7px 13px; border-radius: var(--r-sm);
+      border: 1px solid var(--border-hi); background: var(--surface-2);
+      color: var(--text); text-decoration: none; display: inline-block;
+      transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease),
+                  transform var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
+    }
+    button:hover, .btnlink:hover { background: var(--surface-3); border-color: var(--accent-line); }
+    button:active { transform: translateY(1px); }
+    button:focus-visible, .btnlink:focus-visible,
+    select:focus-visible, input:focus-visible, th:focus-visible {
+      outline: none; box-shadow: var(--ring); border-color: var(--accent);
+    }
+    button:disabled { opacity: .55; cursor: default; transform: none; }
+    button.primary, .btnlink {
+      background: var(--accent); border-color: var(--accent); color: var(--on-accent);
+      font-weight: 600;
+    }
+    button.primary:hover, .btnlink:hover { background: var(--accent-hi); border-color: var(--accent-hi); }
+    button.primary:disabled { background: var(--accent); }
+    button.danger:hover { background: var(--bad-dim); border-color: var(--bad-line); color: var(--bad); }
+
+    select, input[type="search"] {
+      font: inherit; font-size: 13px; padding: 6px 9px; color: var(--text);
+      background: var(--surface-2); border: 1px solid var(--border-hi);
+      border-radius: var(--r-sm);
+      transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
+    }
+
+    /* ── Scan + notices ────────────────────────────────────────────────── */
+    .scan, .msg {
+      border-radius: var(--r); padding: 12px 14px; font-size: 13px;
+      margin-bottom: 16px; border: 1px solid var(--accent-line);
+      background: var(--accent-dim); color: var(--text);
+      animation: jc-rise var(--dur-2) var(--ease-out) both;
+    }
+    /* A band of light crossing the notice while a scan runs — the one piece of
+       motion that repeats, because a scan takes minutes and stillness reads as
+       a hang. It stops the moment the notice turns into an error. */
+    .scan { position: relative; overflow: hidden; }
+    .scan::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(100deg, transparent 35%,
+                  color-mix(in srgb, var(--accent) 22%, transparent) 50%, transparent 65%);
+      background-size: 220% 100%;
+      animation: jc-sweep 2.1s linear infinite;
+    }
+    .scan.err::after { display: none; }
+    .scan.err, .msg.err {
+      background: var(--bad-dim); border-color: var(--bad-line); color: var(--bad);
+    }
+    .scan .sub { color: var(--text-2); font-size: 12px; margin-top: 4px; }
+    .scan.err .sub { color: var(--bad); opacity: .85; }
+    .hidden { display: none !important; }
+
+    /* ── Stat chips ────────────────────────────────────────────────────── */
+    .stats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
     .stat {
-      background: #fff; border: 1px solid #d8dee4; border-radius: 8px;
-      padding: 8px 14px; font-size: 13px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 10px 16px; font-size: 12px;
+      color: var(--text-2); min-width: 76px; position: relative;
+      transition: border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease),
+                  background var(--dur-1) var(--ease);
+      animation: jc-rise var(--dur-2) var(--ease-out) both;
     }
-    .stat b { font-size: 18px; display: block; }
+    .stat b { font-size: 22px; display: block; color: var(--text); font-weight: 650;
+              letter-spacing: -.02em; line-height: 1.25; }
+    .stat[data-filter] { cursor: pointer; user-select: none; }
+    .stat[data-filter]:hover { border-color: var(--accent-line); transform: translateY(-2px); }
+    .stat.on { border-color: var(--accent); background: var(--accent-dim); }
+    .stat.on b { color: var(--accent); }
 
-    table { width: 100%; border-collapse: collapse; background: #fff;
-            border: 1px solid #d8dee4; border-radius: 8px; overflow: hidden; }
-    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #eaeef2;
-             vertical-align: top; }
-    th { font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
-         color: #6e7781; background: #f6f8fa; }
-    .filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
-               background: #f6f8fa; border: 1px solid #d8dee4; border-radius: 8px;
-               padding: 10px 12px; margin-bottom: 12px; }
-    .filters label { display: flex; align-items: center; gap: 5px;
-                     font-size: 12px; color: #57606a; }
+    /* ── Filters ───────────────────────────────────────────────────────── */
+    .filters {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 12px 14px; margin-bottom: 14px;
+      animation: jc-rise var(--dur-2) var(--ease-out) both;
+    }
+    .filters label { display: flex; align-items: center; gap: 6px;
+                     font-size: 12px; color: var(--text-2); }
     /* Capped: left to grow freely it absorbs every spare pixel and pushes the
        count onto a line of its own even in a wide window. */
-    .filters input[type="search"] { flex: 1 1 200px; min-width: 150px; max-width: 320px;
-                                    padding: 5px 8px;
-                                    border: 1px solid #d8dee4; border-radius: 6px; }
-    .filters.on { border-color: #0969da; }
-    #f-count { margin-left: auto; white-space: nowrap; }
-    th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
-    th.sortable:hover { color: #0969da; }
-    th.sorted { color: #0969da; }
-    tr:last-child td { border-bottom: none; }
-    .job { font-weight: 600; }
-    .co { color: #57606a; font-size: 13px; }
-    .muted { color: #8b949e; font-size: 12px; }
-    a { color: #4f46e5; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    .filters input[type="search"] { flex: 1 1 200px; min-width: 150px; max-width: 320px; }
+    .filters.on { border-color: var(--accent); box-shadow: var(--ring); }
+    #f-count { margin-left: auto; white-space: nowrap; color: var(--text-3); font-size: 12px; }
 
-    select { padding: 4px 6px; border: 1px solid #d0d7de; border-radius: 6px;
-             font: inherit; font-size: 12px; background: #fff; }
-    button {
-      padding: 4px 10px; font-size: 12px; cursor: pointer; border: 1px solid #d0d7de;
-      border-radius: 6px; background: #f6f8fa; color: #1f2328; margin-right: 4px;
+    /* ── Table ─────────────────────────────────────────────────────────── */
+    /* Seven columns don't fit a narrow window, and the page scrolling sideways
+       drags the header and filters off screen with it. Confine it here. */
+    #content { overflow-x: auto; }
+    table { width: 100%; min-width: 760px; border-collapse: separate; border-spacing: 0;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-1); }
+    th, td { text-align: left; padding: 13px 14px; vertical-align: top;
+             border-bottom: 1px solid var(--border); }
+    th { font-size: 11px; text-transform: uppercase; letter-spacing: .06em;
+         font-weight: 600; color: var(--text-3); background: var(--surface-2);
+         position: sticky; top: 0; z-index: 1; }
+    th.sortable { cursor: pointer; user-select: none; white-space: nowrap;
+                  transition: color var(--dur-1) var(--ease); }
+    th.sortable:hover { color: var(--accent); }
+    th.sorted { color: var(--accent); }
+    tbody tr { transition: background var(--dur-1) var(--ease); }
+    tbody tr:hover { background: var(--surface-2); }
+    tbody tr:last-child td { border-bottom: none; }
+
+    /* Rows arrive in sequence rather than all at once. Capped at twelve steps
+       so a long list never feels like it is loading in slow motion. */
+    tbody tr { animation: jc-rise var(--dur-2) var(--ease-out) both; }
+    tbody tr:nth-child(1)  { animation-delay: 0ms; }
+    tbody tr:nth-child(2)  { animation-delay: 26ms; }
+    tbody tr:nth-child(3)  { animation-delay: 52ms; }
+    tbody tr:nth-child(4)  { animation-delay: 78ms; }
+    tbody tr:nth-child(5)  { animation-delay: 104ms; }
+    tbody tr:nth-child(6)  { animation-delay: 130ms; }
+    tbody tr:nth-child(7)  { animation-delay: 156ms; }
+    tbody tr:nth-child(8)  { animation-delay: 182ms; }
+    tbody tr:nth-child(9)  { animation-delay: 208ms; }
+    tbody tr:nth-child(10) { animation-delay: 234ms; }
+    tbody tr:nth-child(11) { animation-delay: 260ms; }
+    tbody tr:nth-child(n+12) { animation-delay: 286ms; }
+
+    .job { font-weight: 600; font-size: 14px; letter-spacing: -.01em; }
+    .co { color: var(--text-2); font-size: 13px; margin-top: 2px; }
+    .why { color: var(--text-3); font-size: 12px; margin-top: 6px;
+           padding-left: 9px; border-left: 2px solid var(--border-hi); }
+    .muted { color: var(--text-3); font-size: 12px; }
+    a { color: var(--accent); text-decoration: none;
+        transition: color var(--dur-1) var(--ease); }
+    a:hover { color: var(--accent-hi); text-decoration: underline; }
+
+    /* ── Fit score ─────────────────────────────────────────────────────── */
+    .score {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 38px; padding: 3px 8px; border-radius: var(--r-sm);
+      font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums;
+      border: 1px solid transparent; animation: jc-pop var(--dur-3) var(--ease-out) both;
     }
-    button:hover { background: #eaeef2; }
-    button.danger:hover { background: #ffebe9; border-color: #ff8182; }
+    .s-hi  { color: var(--good); background: var(--good-dim); border-color: var(--good-line); }
+    .s-mid { color: var(--warn); background: var(--warn-dim); border-color: var(--warn-line); }
+    .s-lo  { color: var(--text-3); background: var(--surface-2); border-color: var(--border); }
 
-    .empty { background: #fff; border: 1px dashed #d0d7de; border-radius: 8px;
-             padding: 36px; text-align: center; color: #57606a; }
-    .msg { padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 13px; }
-    .msg.err { background: #ffebe9; color: #82071e; }
-    .hidden { display: none; }
+    /* ── Status pills ──────────────────────────────────────────────────── */
+    .st { display: inline-block; padding: 2px 10px; border-radius: var(--r-pill);
+          font-size: 11px; font-weight: 600; letter-spacing: .01em;
+          border: 1px solid transparent; }
+    .st-new       { background: var(--accent-dim); color: var(--accent); border-color: var(--accent-line); }
+    .st-tailored  { background: var(--accent-dim); color: var(--accent); border-color: var(--accent-line); }
+    .st-saved     { background: var(--surface-3); color: var(--text-2); border-color: var(--border-hi); }
+    .st-dismissed { background: var(--surface-2); color: var(--text-3); border-color: var(--border); }
+    .st-applied   { background: var(--warn-dim); color: var(--warn); border-color: var(--warn-line); }
+    .st-interview { background: var(--info-dim); color: var(--info); border-color: var(--info-line); }
+    .st-offer     { background: var(--good-dim); color: var(--good); border-color: var(--good-line); }
+    .st-rejected  { background: var(--bad-dim); color: var(--bad); border-color: var(--bad-line); }
+    td select { margin-top: 6px; font-size: 12px; padding: 4px 7px; }
 
-    button.primary { background: #4f46e5; color: #fff; border-color: #4f46e5; font-weight: 600; }
-    button.primary:hover { background: #4338ca; }
-    button:disabled { opacity: .6; cursor: default; }
-
-    .scan {
-      background: #eef2ff; border: 1px solid #c7d2fe; color: #3730a3;
-      border-radius: 8px; padding: 10px 12px; font-size: 13px; margin-bottom: 16px;
+    .empty {
+      background: var(--surface); border: 1px dashed var(--border-hi);
+      border-radius: var(--r-lg); padding: 52px 24px; text-align: center;
+      color: var(--text-2); animation: jc-fade var(--dur-3) var(--ease) both;
     }
-    .scan.err { background: #ffebe9; border-color: #ffc1bc; color: #82071e; }
-    .scan .sub { color: #6366f1; font-size: 12px; margin-top: 3px; }
 
-    .stat[data-filter] { cursor: pointer; user-select: none; }
-    .stat[data-filter]:hover { border-color: #a5b4fc; }
-    .stat.on { border-color: #4f46e5; background: #eef2ff; }
-
-    .why { color: #6e7781; font-size: 12px; margin-top: 2px; }
-    .score { font-weight: 600; font-size: 14px; }
-    .s-hi { color: #1a7f37; }
-    .s-mid { color: #9a6700; }
-    .s-lo { color: #8b949e; }
-    .btnlink {
-      display: inline-block; padding: 4px 10px; font-size: 12px; margin-right: 4px;
-      border: 1px solid #4f46e5; border-radius: 6px; background: #4f46e5; color: #fff;
-    }
-    .btnlink:hover { background: #4338ca; text-decoration: none; }
-
-    .st { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; }
-    .st-new { background: #eef2ff; color: #4338ca; }
-    .st-dismissed { background: #eaeef2; color: #8b949e; }
-    .st-saved { background: #eaeef2; color: #57606a; }
-    .st-tailored { background: #eef2ff; color: #4338ca; }
-    .st-applied { background: #fff8c5; color: #7d4e00; }
-    .st-interview { background: #dbf4ff; color: #0550ae; }
-    .st-offer { background: #e6f4ea; color: #1a7f37; }
-    .st-rejected { background: #ffebe9; color: #82071e; }
-
-    @media (prefers-color-scheme: dark) {
-      body { background: #0d1117; color: #e6edf3; }
-      .stat, table, .empty { background: #161b22; border-color: #30363d; }
-      .scan { background: #1c1b2e; border-color: #3730a3; color: #c7d2fe; }
-      .scan.err { background: #2d1214; border-color: #6b2226; color: #ffa198; }
-      .stat.on { background: #1c1b2e; }
-      th { background: #0d1117; color: #8b949e; }
-      th.sortable:hover, th.sorted { color: #79c0ff; }
-      .filters { background: #161b22; border-color: #30363d; }
-      .filters label { color: #8b949e; }
-      .filters input[type="search"] { background: #21262d; color: #e6edf3;
-                                      border-color: #30363d; }
-      .filters.on { border-color: #1f6feb; }
-      th, td { border-color: #21262d; }
-      .sub, .co, .muted { color: #8b949e; }
-      select, button { background: #21262d; color: #e6edf3; border-color: #30363d; }
-      button:hover { background: #30363d; }
+    @media (max-width: 720px) {
+      body { padding: 20px 14px 56px; }
+      header { flex-direction: column; }
+      th, td { padding: 11px 10px; }
     }
   </style>
 </head>
@@ -128,7 +209,7 @@
         <h1>My applications</h1>
         <p class="sub" id="who">Loading…</p>
       </div>
-      <div style="display:flex;gap:8px;align-items:center">
+      <div class="toolbar">
         <button id="find" class="primary">🔍 Find jobs</button>
         <button id="filters-toggle">⚙ Filters</button>
         <button id="refresh">Refresh</button>
