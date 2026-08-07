@@ -238,6 +238,12 @@ export async function recordScored(scored) {
     seen.add(url);
     rows.push({ user_id: uid, job_url: url,
                 score: Number.isFinite(s.score) ? s.score : null,
+                // Kept so the pre-filter can be tuned against what the model
+                // actually turned down. Three quarters of every scan scores 0,
+                // and a URL tells you nothing about why.
+                job_title: (s.job.title || "").slice(0, 300),
+                job_company: (s.job.company || "").slice(0, 200),
+                job_source: (s.job.source || "").slice(0, 100),
                 scored_at: new Date().toISOString() });
   }
   if (!rows.length) return 0;

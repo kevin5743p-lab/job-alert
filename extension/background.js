@@ -559,8 +559,15 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       // stage swallowed the jobs — sources, keyword filter, or scoring — instead
       // of leaving "0 jobs" to be guessed at.
       const best = scored.reduce((m, s) => Math.max(m, s.score), 0);
+      // How many relevant postings this scan did not get to. Without it a run
+      // that adds ten jobs looks the same whether there are four hundred left
+      // or none, so a queue that is nearly drained is indistinguishable from a
+      // tool that drips results forever — which is exactly how it felt.
+      const queued = Math.max(0, matched.length - survivors.length);
       let funnel = `${jobs.length} found → ${matched.length} relevant → ` +
-        `${scored.length} scored → ${keep.length} kept`;
+        `${scored.length} scored → ${keep.length} kept` +
+        (queued ? ` · ${queued} still queued for the next scan`
+                : " · nothing left queued");
       if (!scored.length && scoreError) {
         funnel += ` — scoring failed: ${scoreError}`;
       } else if (scored.length && !keep.length) {
