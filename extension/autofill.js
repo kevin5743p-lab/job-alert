@@ -284,6 +284,27 @@
     return key ? FIELD_SPECS.find((s) => s.key === key) || null : null;
   }
 
+  // What to actually type for a field key, given what the user stored.
+  //
+  // A form asking for one "Name" and a profile holding first and last are the
+  // same fact in different shapes, and this is where they are reconciled. It
+  // lived inside the rules path only, so when the rules missed a field and the
+  // model correctly identified it as the full-name box, applyFieldMap looked up
+  // profile.full_name, found nothing — most profiles store the two halves — and
+  // silently filled nothing. The model had answered correctly and we discarded
+  // it. Both paths now resolve values the same way.
+  function resolveValue(profile, key) {
+    let value = profile[key];
+    if (!value && key === "full_name" && (profile.first_name || profile.last_name)) {
+      value = [profile.first_name, profile.last_name].filter(Boolean).join(" ");
+    }
+    if (!value && (key === "first_name" || key === "last_name") && profile.full_name) {
+      const parts = String(profile.full_name).trim().split(/\s+/);
+      value = key === "first_name" ? parts[0] : parts.slice(1).join(" ");
+    }
+    return value;
+  }
+
   function specFor(hay, el) {
     const declared = el && autocompleteSpec(el);
     if (declared) return declared;
@@ -647,16 +668,17 @@
   function applyFieldMap(map, profile, report) {
     let n = 0;
     Object.entries(map || {}).forEach(([id, key]) => {
-      if (!key || !profile[key]) return;
+      const mapped = key && resolveValue(profile, key);
+      if (!mapped) return;
       const el = document.querySelector(`[data-jc-field-id="${id}"]`);
       if (!el || !visible(el) || (el.value && el.value.trim())) return;
       if (isBlocked(haystack(el), el)) return;
 
       const label = fieldLabel(el);
       if (el.tagName === "SELECT") {
-        if (!setSelect(el, profile[key])) return;
+        if (!setSelect(el, mapped)) return;
       } else {
-        setValue(el, profile[key]);
+        setValue(el, mapped);
       }
       highlight(el);
       n++;
@@ -759,15 +781,9 @@
       const spec = specFor(hay, el);
       if (!spec) return;
 
-      let value = profile[spec.key];
-      // Fall back to splitting/joining the name if the form asks differently.
-      if (!value && spec.key === "full_name" && (profile.first_name || profile.last_name)) {
-        value = [profile.first_name, profile.last_name].filter(Boolean).join(" ");
-      }
-      if (!value && (spec.key === "first_name" || spec.key === "last_name") && profile.full_name) {
-        const parts = profile.full_name.trim().split(/\s+/);
-        value = spec.key === "first_name" ? parts[0] : parts.slice(1).join(" ");
-      }
+      // Same resolver the model-mapped path uses, so a form asking for one
+      // "Name" is answered identically however the field was identified.
+      const value = resolveValue(profile, spec.key);
       if (!value) return;
 
       if (el.tagName === "SELECT") {
