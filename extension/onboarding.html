@@ -3,82 +3,131 @@
 <head>
   <meta charset="utf-8" />
   <title>Complete your profile — JobCopilot</title>
+  <link rel="stylesheet" href="theme.css" />
   <style>
-    :root { color-scheme: light dark; }
+    /* Structure only; colour, radius and motion come from theme.css.
+       Ids and classes are untouched — onboarding.js queries them. */
+    * { box-sizing: border-box; }
     body {
-      margin: 0; padding: 28px 24px 80px;
-      font: 14px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: #1f2328; background: #f6f8fa;
+      margin: 0; padding: 36px 24px 120px;
+      font: 14px/1.6 var(--font); color: var(--text); background: var(--bg);
+      -webkit-font-smoothing: antialiased;
     }
-    .wrap { max-width: 720px; margin: 0 auto; }
-    h1 { font-size: 20px; margin: 0 0 4px; }
-    .sub { color: #57606a; font-size: 13px; margin: 0 0 24px; }
+    body::before {
+      content: ""; position: fixed; inset: 0 0 auto 0; height: 300px; z-index: -1;
+      background: radial-gradient(85% 100% at 50% 0%,
+                  color-mix(in srgb, var(--accent) 13%, transparent), transparent 70%);
+      pointer-events: none;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; }
+
+    h1 { font-size: 28px; line-height: 1.2; margin: 0 0 6px; letter-spacing: -.02em; }
+    .sub { color: var(--text-2); margin: 0 0 22px; font-size: 14px; }
+    .why { color: var(--text-2); font-size: 12.5px; margin: 0 0 14px; }
+    .hint { font-size: 11.5px; color: var(--text-3); margin-top: 5px; line-height: 1.5; }
+    .opt { color: var(--text-3); font-weight: 400; text-transform: none; letter-spacing: 0; }
+
+    .note {
+      background: var(--warn-dim); border: 1px solid var(--warn-line); color: var(--warn);
+      border-radius: var(--r); padding: 12px 14px; font-size: 13px; margin-bottom: 22px;
+      animation: jc-rise var(--dur-2) var(--ease-out) both;
+    }
 
     fieldset {
-      background: #fff; border: 1px solid #d8dee4; border-radius: 10px;
-      padding: 18px 20px; margin: 0 0 16px;
+      border: 1px solid var(--border); border-radius: var(--r-lg);
+      background: var(--surface); padding: 20px 22px 22px; margin: 0 0 18px;
+      box-shadow: var(--shadow-1);
+      animation: jc-rise var(--dur-3) var(--ease-out) both;
     }
-    legend { font-size: 12px; font-weight: 600; text-transform: uppercase;
-             letter-spacing: .04em; color: #4f46e5; padding: 0 6px; }
-    .why { color: #57606a; font-size: 12px; margin: -4px 0 14px; }
+    /* The sections arrive one after another rather than all at once. */
+    fieldset:nth-of-type(1) { animation-delay: 30ms; }
+    fieldset:nth-of-type(2) { animation-delay: 70ms; }
+    fieldset:nth-of-type(3) { animation-delay: 110ms; }
+    fieldset:nth-of-type(4) { animation-delay: 150ms; }
+    fieldset:nth-of-type(n+5) { animation-delay: 190ms; }
+    legend {
+      font-size: 11px; text-transform: uppercase; letter-spacing: .07em;
+      font-weight: 700; color: var(--accent); padding: 0 8px;
+    }
 
-    label { display: block; font-weight: 600; margin: 12px 0 4px; font-size: 13px; }
-    label .opt { font-weight: 400; color: #8b949e; font-size: 12px; }
+    label {
+      display: block; font-weight: 600; margin: 16px 0 6px;
+      font-size: 11px; text-transform: uppercase; letter-spacing: .05em;
+      color: var(--text-3);
+    }
     input, select, textarea {
-      width: 100%; box-sizing: border-box; padding: 8px 9px;
-      border: 1px solid #d0d7de; border-radius: 6px; font: inherit; background: #fff;
+      width: 100%; padding: 9px 11px; font: inherit; color: var(--text);
+      background: var(--surface-2); border: 1px solid var(--border-hi);
+      border-radius: var(--r-sm);
+      transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease),
+                  background var(--dur-1) var(--ease);
     }
-    textarea { height: 70px; resize: vertical; }
-    .row { display: flex; gap: 12px; }
-    .row > div { flex: 1; }
-    .hint { font-size: 12px; color: #8b949e; margin-top: 3px; }
+    input:hover, select:hover, textarea:hover { background: var(--surface-3); }
+    input:focus, select:focus, textarea:focus {
+      outline: none; border-color: var(--accent); box-shadow: var(--ring);
+      background: var(--surface-2);
+    }
+    textarea { min-height: 88px; resize: vertical; line-height: 1.55; }
+    .row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .row > div { flex: 1 1 200px; min-width: 190px; }
 
+    /* ── Sticky action bar ─────────────────────────────────────────────── */
     .bar {
-      position: sticky; bottom: 0; background: #f6f8fa; padding: 14px 0 0;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
       display: flex; align-items: center; gap: 12px;
+      padding: 14px 24px;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
     }
-    button {
-      padding: 10px 20px; border: none; border-radius: 8px;
-      background: #4f46e5; color: #fff; font-weight: 600; font-size: 14px; cursor: pointer;
-    }
-    button:hover { background: #4338ca; }
-    button.secondary { background: #fff; color: #1f2328; border: 1px solid #d0d7de; }
-    #status { font-size: 13px; }
-    .note { background: #fff8c5; border: 1px solid #eac54f; color: #7d4e00;
-            border-radius: 8px; padding: 10px 12px; font-size: 12.5px; margin-bottom: 18px; }
+    .bar > * { flex: 0 0 auto; }
+    #status { font-size: 13px; color: var(--text-2); margin-left: auto; }
 
-    .tpl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
-    .tpl {
-      border: 2px solid #d0d7de; border-radius: 10px; padding: 10px;
-      cursor: pointer; background: #fff; transition: border-color .12s;
+    button {
+      font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+      padding: 9px 18px; border-radius: var(--r-sm);
+      border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent);
+      transition: background var(--dur-1) var(--ease), transform var(--dur-1) var(--ease),
+                  box-shadow var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
     }
-    .tpl:hover { border-color: #a5b4fc; }
-    .tpl.sel { border-color: #4f46e5; background: #f5f4ff; }
-    .tpl h3 { margin: 0 0 3px; font-size: 14px; }
-    .tpl p { margin: 0 0 8px; font-size: 11.5px; color: #57606a; line-height: 1.45; }
+    button:hover { background: var(--accent-hi); border-color: var(--accent-hi); }
+    button:active { transform: translateY(1px); }
+    button:focus-visible { outline: none; box-shadow: var(--ring); }
+    button:disabled { opacity: .55; cursor: default; transform: none; }
+    button.secondary {
+      background: var(--surface-2); color: var(--text); border-color: var(--border-hi);
+    }
+    button.secondary:hover { background: var(--surface-3); border-color: var(--accent-line); }
+
+    /* ── Cover-letter templates ────────────────────────────────────────── */
+    .tpl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+                gap: 14px; }
+    .tpl {
+      border: 2px solid var(--border); border-radius: var(--r);
+      padding: 12px; cursor: pointer; background: var(--surface-2);
+      transition: border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease),
+                  background var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
+    }
+    .tpl:hover { border-color: var(--accent-line); transform: translateY(-2px);
+                 box-shadow: var(--shadow-2); }
+    .tpl.sel { border-color: var(--accent); background: var(--accent-dim);
+               box-shadow: var(--ring); }
+    .tpl h3 { margin: 0 0 4px; font-size: 14px; }
+    .tpl p { margin: 0 0 9px; font-size: 11.5px; color: var(--text-2); line-height: 1.45; }
     .tpl .thumb {
-      height: 120px; border: 1px solid #e6e9ee; border-radius: 6px; overflow: hidden;
-      background: #fff; position: relative;
+      height: 120px; border: 1px solid var(--border); border-radius: var(--r-sm);
+      overflow: hidden; background: #fff; position: relative;
     }
     .tpl .thumb iframe {
       width: 620px; height: 800px; border: 0; transform: scale(.29);
       transform-origin: top left; pointer-events: none; position: absolute; top: 0; left: 0;
     }
-    .tpl .preview-link { font-size: 11.5px; color: #4f46e5; margin-top: 6px; display: inline-block; }
-    @media (prefers-color-scheme: dark) {
-      .tpl { background: #161b22; border-color: #30363d; }
-      .tpl.sel { border-color: #6366f1; background: #1c1b2e; }
-      .tpl p { color: #8b949e; }
-    }
+    .tpl .preview-link { font-size: 11.5px; color: var(--accent); margin-top: 7px;
+                         display: inline-block; }
 
-    @media (prefers-color-scheme: dark) {
-      body { background: #0d1117; color: #e6edf3; }
-      fieldset { background: #161b22; border-color: #30363d; }
-      input, select, textarea { background: #0d1117; color: #e6edf3; border-color: #30363d; }
-      .bar { background: #0d1117; }
-      button.secondary { background: #21262d; color: #e6edf3; border-color: #30363d; }
-      .sub, .why, .hint { color: #8b949e; }
-      .note { background: #2d2611; border-color: #6b5a1f; color: #e3b341; }
+    @media (max-width: 640px) {
+      body { padding: 24px 14px 120px; }
+      .bar { padding: 12px 14px; }
     }
   </style>
 </head>
