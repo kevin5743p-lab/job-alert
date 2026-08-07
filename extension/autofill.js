@@ -222,16 +222,93 @@
     return "";
   }
 
+  // The browser already has a standard answer to this problem, and we weren't
+  // reading it. HTML defines a fixed vocabulary of autocomplete tokens for
+  // exactly these fields, and a well-built ATS sets them — Ashby, Greenhouse
+  // and Workday all do — though Ashby, measured on a live form, sets it on
+  // nothing at all, so this helps where it is present rather than everywhere.
+  // Where it is present it states outright what a box is for, instead of
+  // leaving us to infer it from wording that changes with site and language.
+  //
+  // The attribute was already going into the haystack as raw text, which did
+  // almost nothing: the token is "given-name" and the pattern was /given name/,
+  // so a hyphen was the difference between certainty and guessing.
+  //
+  // Only tokens with a matching stored answer are listed. Anything else — the
+  // payment and password tokens above all — is left unmapped and falls through
+  // to the ordinary path, where BLOCKED refuses it.
+  const AUTOCOMPLETE_FIELDS = {
+    "given-name": "first_name",
+    "family-name": "last_name",
+    "name": "full_name",
+    "nickname": "first_name",
+    "email": "email",
+    "tel": "phone",
+    "tel-national": "phone",
+    "tel-local": "phone",
+    "street-address": "address",
+    "address-line1": "address",
+    "address-level2": "city",
+    "postal-code": "postal_code",
+    "country": "country",
+    "country-name": "country",
+    "url": "website_url",
+    "language": "languages",
+  };
+
+  function autocompleteSpec(el) {
+    const raw = (el.getAttribute && el.getAttribute("autocomplete") || "")
+      .toLowerCase().trim();
+    if (!raw || raw === "off" || raw === "on") return null;
+    // A token can be prefixed with a section or a shipping/billing hint
+    // ("shipping address-level2"); the field name is always the last part.
+    const key = AUTOCOMPLETE_FIELDS[raw.split(/\s+/).pop()];
+    return key ? FIELD_SPECS.find((s) => s.key === key) || null : null;
+  }
+
   // Two passes: every unambiguous keyword first, then the natural-language
   // phrasings. See the note on FIELD_SPECS for why the order matters.
-  function specFor(hay) {
-    for (const spec of FIELD_SPECS) {
-      if (spec.patterns.some((re) => re.test(hay))) return spec;
+  // An explicit autocomplete token outranks both — it is a statement of intent
+  // by whoever built the form, not an inference drawn from their wording.
+  // What the input's own type says. Ashby names none of its fields but types
+  // them properly — email, tel, url — and we were reading none of it. Only the
+  // unambiguous ones are mapped: type="url" is a link, but which link is a
+  // question the label answers, and there are three of them on that one form.
+  //
+  // Deliberately last. A field labelled "Recovery email" is still typed
+  // email, so the wording has to have its say first.
+  const TYPE_FIELDS = { email: "email", tel: "phone" };
+
+  function typeSpec(el) {
+    const key = TYPE_FIELDS[(el.type || "").toLowerCase()];
+    return key ? FIELD_SPECS.find((s) => s.key === key) || null : null;
+  }
+
+  function specFor(hay, el) {
+    const declared = el && autocompleteSpec(el);
+    if (declared) return declared;
+
+    // The visible caption on its own, as well as the pooled haystack.
+    // Several patterns are anchored — /^name$/ exists precisely to catch a box
+    // labelled exactly "Name" without also claiming "Company name" — and an
+    // anchored pattern can never match the pooled string, which carries the id
+    // and the name attribute too. On Ashby that pooled string is
+    // "name _systemfield_name _systemfield_name", so the commonest field on any
+    // application form matched nothing at all.
+    const caption = el ? fieldLabel(el).toLowerCase() : "";
+    const sources = caption && caption !== hay ? [caption, hay] : [hay];
+
+    for (const hs of sources) {
+      for (const spec of FIELD_SPECS) {
+        if (spec.patterns.some((re) => re.test(hs))) return spec;
+      }
     }
-    for (const spec of FIELD_SPECS) {
-      if (spec.loose && spec.loose.some((re) => re.test(hay))) return spec;
+    for (const hs of sources) {
+      for (const spec of FIELD_SPECS) {
+        if (spec.loose && spec.loose.some((re) => re.test(hs))) return spec;
+      }
     }
-    return null;
+    return (el && typeSpec(el)) || null;
   }
 
   // React/Vue track their own state, so setting .value directly is ignored on
@@ -453,7 +530,7 @@
 
       const hay = haystack(el);
       if (isBlocked(hay, el)) return;      // never offer sensitive fields up
-      if (specFor(hay)) return;            // a rule already covers it
+      if (specFor(hay, el)) return;         // a rule already covers it
 
       // The visible question is what the model should reason about. Some ATSes
       // (Ashby) name their inputs with a UUID, so falling back to the element's
@@ -597,7 +674,7 @@
       if (!visible(el) || (el.value && el.value.trim())) return;
       const hay = haystack(el);
       if (isBlocked(hay, el)) return;
-      if (specFor(hay)) return;              // a profile field covers it
+      if (specFor(hay, el)) return;          // a profile field covers it
       const q = (el.labels && el.labels[0]
         ? (el.labels[0].innerText || "") : "").trim() || groupQuestion(el);
       if (!q) return;
@@ -679,7 +756,7 @@
         return;
       }
 
-      const spec = specFor(hay);
+      const spec = specFor(hay, el);
       if (!spec) return;
 
       let value = profile[spec.key];
@@ -725,5 +802,8 @@
     fill, findForm, FIELD_SPECS, PROFILE_KEYS,
     collectOpenQuestions, applyAnswers,
     collectUnmatched, applyFieldMap, applyFieldValues,
+    // Exported so the field-matching rules can be exercised directly against
+    // real markup without driving a whole fill.
+    specFor,
   };
 })();
