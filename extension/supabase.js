@@ -188,13 +188,14 @@ export async function upsertApplication(job, tailoredResultId, packet) {
 }
 
 export async function listApplications(limit = 100) {
-  return rest(`/applications?select=*&order=updated_at.desc&limit=${limit}`);
+  return rest(`/applications?select=*&archived_at=is.null` +
+              `&order=updated_at.desc&limit=${limit}`);
 }
 
 // The tracker view: newly-found jobs ranked by fit first, then everything the
 // user has already acted on, most recent first.
 export async function listTrackedJobs(limit = 300) {
-  return rest(`/applications?select=*` +
+  return rest(`/applications?select=*&archived_at=is.null` +
               `&order=status.asc,score.desc.nullslast,updated_at.desc` +
               `&limit=${limit}`);
 }
@@ -300,6 +301,48 @@ export async function saveSearchProfile(searchProfile) {
     body: { id: await currentUserId(), search_profile: searchProfile },
     headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
   });
+}
+
+// ── Scan window and retention ──────────────────────────────────────────────
+
+// How far back the next scan should look. The answer is always "since the last
+// successful scan", never a fixed interval — that is what makes an unreliable
+// scheduler safe. A browser closed for three days asks for three days; a run
+// two hours after the last asks for two hours; a user who has never scanned
+// asks for the full backfill. One rule, no special cases.
+export const BACKFILL_DAYS = 7;
+const MIN_WINDOW_DAYS = 10 / (24 * 60);        // 10 minutes, against clock skew
+
+export async function scanWindowDays() {
+  let last = null;
+  try {
+    const profile = await getProfile();
+    last = profile && profile.last_scan_at;
+  } catch { /* offline or not signed in: fall back to the backfill */ }
+  if (!last) return BACKFILL_DAYS;             // never scanned
+
+  const days = (Date.now() - Date.parse(last)) / 86400000;
+  if (!Number.isFinite(days) || days <= 0) return MIN_WINDOW_DAYS;
+  // Capped, because beyond the backfill the postings are stale anyway and the
+  // sources stop being able to answer usefully.
+  return Math.min(BACKFILL_DAYS, Math.max(MIN_WINDOW_DAYS, days));
+}
+
+/**
+ * Age untouched finds out of the dashboard. Only status 'new' is eligible:
+ * anything saved, tailored or applied to is the user's work, and anything
+ * rejected or dismissed is the signal buildMemory() learns from. Sets a
+ * timestamp rather than deleting or restating the status, so it is reversible
+ * and nothing masquerades as a decision the user didn't make.
+ */
+export async function archiveStaleFinds(days = BACKFILL_DAYS) {
+  const before = new Date(Date.now() - days * 86400000).toISOString();
+  const rows = await rest(
+    `/applications?status=eq.new&archived_at=is.null` +
+    `&discovered_at=lt.${encodeURIComponent(before)}&select=id`,
+    { method: "PATCH", body: { archived_at: new Date().toISOString() },
+      headers: { Prefer: "return=representation" } });
+  return Array.isArray(rows) ? rows.length : 0;
 }
 
 export async function touchLastScan() {

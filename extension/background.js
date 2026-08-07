@@ -188,6 +188,15 @@ export function germanPolicy(languages) {
 // How far back a scan looks. Kept with the other local settings rather than in
 // the search profile, so changing it takes effect on the next scan instead of
 // waiting for the profile to be rebuilt.
+// "2 hours", "3 days" — for the progress line, so the window a scan chose is
+// visible rather than implied.
+function humanGap(days) {
+  const mins = Math.round(days * 24 * 60);
+  if (mins < 90) return `${Math.max(1, mins)} min`;
+  const hours = Math.round(days * 24);
+  return hours < 48 ? `${hours} h` : `${Math.round(days)} days`;
+}
+
 async function maxJobAgeDays() {
   const { maxJobAge } = await chrome.storage.local.get("maxJobAge");
   const n = Number(maxJobAge);
@@ -412,6 +421,20 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       // for a CV change to trigger a rebuild.
       sp.language_preference = germanPolicy(ap.languages);
 
+      // How far back to look. Two limits, and the tighter one wins: the user's
+      // "Job age" setting is a ceiling on how old a posting may be, and the gap
+      // since the last successful scan is how much ground is actually new.
+      //
+      // Asking for a fixed two hours would be wrong — a browser closed for three
+      // days would search two hours and silently skip the rest. Asking "what has
+      // appeared since I last looked" heals its own gaps, and a user who has
+      // never scanned gets the full backfill from the same line of code.
+      const sinceLast = await sb.scanWindowDays();
+      const scanWindow = Math.min(await maxJobAgeDays(), sinceLast);
+      progress(sinceLast >= sb.BACKFILL_DAYS
+        ? `Looking back ${Math.round(scanWindow)} days…`
+        : `Looking for anything new since your last scan (${humanGap(sinceLast)})…`);
+
       // A new CV means every past judgement was made about someone else's
       // experience, so the scoring memory has to go with it — otherwise the
       // postings that mattered most under the old CV are the very ones never
@@ -442,7 +465,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       progress(`Scanning ${boards.length} employer boards + job feeds…`);
       const { jobs, stats } = await fetchAll(
         { ...sp, company_targets: boards, location: searchRegion, home_city: ap.city || "",
-          adzuna: await adzunaCreds(), max_age_days: await maxJobAgeDays() },
+          adzuna: await adzunaCreds(), max_age_days: scanWindow },
         (t) => progress(t));
       progress(`Found ${jobs.length} postings — filtering…`);
 
@@ -587,7 +610,19 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       } catch (e) {
         console.warn("Couldn't record scoring memory:", e);
       }
+      // Only on a scan that finished. If it died halfway — quota, network — the
+      // timestamp stays put and the next run covers the same ground again. A
+      // failed scan must never be allowed to skip a day of postings.
       await sb.touchLastScan();
+
+      // Age out untouched finds. Never deletes, never restates a status: an
+      // archived row keeps status 'new' and gains a date, so it can come back.
+      try {
+        const archived = await sb.archiveStaleFinds();
+        if (archived) stats.push(`${archived} older finds archived`);
+      } catch (e) {
+        console.warn("Couldn't archive stale finds:", e);
+      }
 
       progress(`Done — ${saved} job${saved === 1 ? "" : "s"} added. ${funnel}`, true,
                { added: saved, stats, cvChanged: Boolean(sp.rebuiltFromNewCv) });
