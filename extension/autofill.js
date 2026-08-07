@@ -129,33 +129,32 @@
     const text = ref.split(/\s+/)
       .map((id) => {
         const n = id && document.getElementById(id);
-        return n ? norm(n.innerText || n.textContent || "") : "";
+        // Case preserved — this becomes the accessible name, which is shown.
+        return n ? String(n.innerText || n.textContent || "").replace(/\s+/g, " ").trim() : "";
       })
       .filter(Boolean).join(" ").trim();
     return { text, token: ref };
   }
 
   function haystack(el) {
-    const lb = labelledByText(el);
     const bits = [
-      lb.text, lb.token,
-      el.name, el.id, el.placeholder, el.getAttribute("aria-label"),
-      el.getAttribute("autocomplete"), el.getAttribute("data-qa"),
-      el.getAttribute("data-automation-id"),
-      // Without this the rules never saw Cornerstone's "First Name", so the
-      // field fell through to the model instead of being filled from the
-      // stored answer — which is how an email address ended up in it.
-      nearbyLabel(el),
+      // The accessible name first: it already resolves aria-labelledby,
+      // aria-label, every shape of <label>, placeholder and title in the right
+      // order, so the pool no longer needs its own competing copy of that hunt.
+      accessibleName(el),
+      // Identifiers behind it. These are not captions — they routinely hold a
+      // UUID — but they carry the field's intent on the ATSes that name them
+      // ("_systemfield_email", "actionItem.firstName.idTag-error").
+      labelledByText(el).token,
+      el.name, el.id, el.getAttribute("autocomplete"),
+      el.getAttribute("data-qa"), el.getAttribute("data-automation-id"),
     ];
-    if (el.labels && el.labels.length) {
-      for (const l of el.labels) bits.push(l.innerText || l.textContent);
-    }
-    if (el.id) {
-      const lab = document.querySelector(`label[for="${CSS.escape(el.id)}"]`);
-      if (lab) bits.push(lab.innerText || lab.textContent);
-    }
-    // Some ATSes don't use <label> at all — fall back to the nearest wrapper's text.
-    const wrap = el.closest("label, .field, [class*='field'], [class*='form-group'], div");
+    // Some ATSes don't use <label> at all, so the per-field wrapper's text is a
+    // last-ditch signal. "div" is deliberately not in that list: the nearest div
+    // is frequently an entire section, and pooling "Contact Information First
+    // Name Last Name Email" would let a Last Name box match the rule for First
+    // Name. Wrappers that name themselves as fields don't have that problem.
+    const wrap = el.closest("label, .field, [class*='field'], [class*='form-group']");
     if (wrap) bits.push((wrap.innerText || "").slice(0, 120));
     return norm(bits.filter(Boolean).join(" | "));
   }
@@ -204,22 +203,89 @@
     !s || s.length > 80 || MULTI_FIELD_RE.test(s) ||
     (s.match(/\b(first|last|given|sur)\s?name\b/gi) || []).length > 1;
 
-  function fieldLabel(el) {
-    const candidates = [];
-    if (el.labels && el.labels[0]) candidates.push(el.labels[0].innerText);
+  // The accessible name: what a screen reader would announce for this control,
+  // which is also what the applicant reads on screen.
+  //
+  // This replaces three separate ad-hoc attempts at the same question that had
+  // each grown their own priority order and disagreed with one another. The
+  // order below is the one the HTML-AAM algorithm defines, and following it
+  // matters: aria-labelledby OUTRANKS a native <label>, because a form that
+  // sets both means the first one. We had it fourth.
+  //
+  // Every serious ATS is accessible — in the EU and US it is a legal
+  // requirement — so this is the most reliable description of a field that
+  // exists, and it is stable across sites and languages in a way that
+  // hand-rolled DOM spelunking never is.
+  const NAME_MAX = 80;
+
+  // Strip the decoration a caption carries: the required marker, and the
+  // "(optional)" kind of aside, neither of which identifies the field.
+  // Case is preserved deliberately: this string is shown to the user in the
+  // panel, and "first name" reads like a bug. Every place that matches on it
+  // lowercases for itself — haystack pools through norm(), and specFor
+  // lowercases the caption before testing patterns against it.
+  function cleanName(text) {
+    return String(text || "").replace(/\s+/g, " ").trim()
+      .replace(/[\s*:]+$/, "")
+      .replace(/\s*\((?:optional|required|erforderlich|optional angeben)\)\s*$/i, "")
+      .trim();
+  }
+
+  function accessibleName(el) {
+    if (!el || !el.getAttribute) return "";
+
+    // 1. aria-labelledby — an explicit pointer at the caption, highest priority.
+    const byRef = labelledByText(el).text;
+    if (cleanName(byRef)) return cleanName(byRef).slice(0, NAME_MAX);
+
+    // 2. aria-label — an explicit caption written inline.
+    const aria = cleanName(el.getAttribute("aria-label"));
+    if (aria) return aria.slice(0, NAME_MAX);
+
+    // 3. The native label: <label for>, or one wrapping the control. el.labels
+    //    covers both, so it is asked first, with an explicit lookup behind it
+    //    for the controls that don't populate it.
+    if (el.labels && el.labels.length) {
+      for (const l of el.labels) {
+        const t = cleanName(l.innerText || l.textContent);
+        if (t) return t.slice(0, NAME_MAX);
+      }
+    }
     if (el.id) {
-      const lab = document.querySelector(`label[for="${CSS.escape(el.id)}"]`);
-      if (lab) candidates.push(lab.innerText);
+      const forLabel = document.querySelector(`label[for="${CSS.escape(el.id)}"]`);
+      const t = forLabel && cleanName(forLabel.innerText || forLabel.textContent);
+      if (t) return t.slice(0, NAME_MAX);
     }
-    // The resolved caption only — never the raw aria-labelledby token, which is
-    // an internal id and has no business being shown to anyone.
-    candidates.push(el.getAttribute("aria-label"), labelledByText(el).text,
-                    el.placeholder, nearbyLabel(el), el.name);
-    for (const c of candidates) {
-      const t = norm(c || "").replace(/\s*\*$/, "").trim();
-      if (t && !UUIDISH.test(t)) return t.slice(0, 60);
+    const wrapping = el.closest && el.closest("label");
+    if (wrapping) {
+      // The control's own text is part of the label element; take the label's
+      // text minus any value the control itself contributes.
+      const t = cleanName(wrapping.innerText || wrapping.textContent);
+      if (t && t !== cleanName(el.value)) return t.slice(0, NAME_MAX);
     }
+
+    // 4. placeholder, then title. Both are fallbacks in the algorithm because a
+    //    placeholder is a hint rather than a name, but on a form that supplies
+    //    nothing else it is the only thing the applicant has to go on either.
+    const ph = cleanName(el.placeholder);
+    if (ph) return ph.slice(0, NAME_MAX);
+    const title = cleanName(el.getAttribute("title"));
+    if (title) return title.slice(0, NAME_MAX);
+
+    // 5. Beyond the algorithm: a caption sitting beside the control with no
+    //    markup tying the two together. Not accessible, and not rare —
+    //    Cornerstone does exactly this — so it is read last rather than not at
+    //    all. A UUID is never a caption.
+    const near = cleanName(nearbyLabel(el));
+    if (near && !UUIDISH.test(near)) return near.slice(0, NAME_MAX);
+
     return "";
+  }
+
+  // Kept as the name the rest of the code already calls. Identical result,
+  // capped shorter, since this one is shown to the user.
+  function fieldLabel(el) {
+    return accessibleName(el).slice(0, 60);
   }
 
   // The browser already has a standard answer to this problem, and we weren't
@@ -553,13 +619,13 @@
       if (isBlocked(hay, el)) return;      // never offer sensitive fields up
       if (specFor(hay, el)) return;         // a rule already covers it
 
-      // The visible question is what the model should reason about. Some ATSes
-      // (Ashby) name their inputs with a UUID, so falling back to the element's
-      // name would send the model "166c6ca7-41c5-…" instead of the question.
-      let label = "";
-      if (el.labels && el.labels[0]) label = (el.labels[0].innerText || "").trim();
-      if (!label) label = (el.getAttribute("aria-label") || el.placeholder || "").trim();
-      if (!label) label = nearbyLabel(el);
+      // The visible question is what the model should reason about, and it is
+      // the same question accessibleName answers — so it is asked once, here,
+      // rather than hunted for a second time with a slightly different order.
+      // Some ATSes (Ashby) name their inputs with a UUID, which is why the
+      // element's name is not part of it: the model would be sent
+      // "166c6ca7-41c5-…" instead of a question.
+      const label = accessibleName(el);
       // groupQuestion falls back to closest("div").innerText, which for a plain
       // text input is the whole surrounding section — on Cornerstone, the entire
       // "Contact Information / First Name / Last Name / Email" block. Handing
@@ -820,6 +886,6 @@
     collectUnmatched, applyFieldMap, applyFieldValues,
     // Exported so the field-matching rules can be exercised directly against
     // real markup without driving a whole fill.
-    specFor,
+    specFor, fieldLabel,
   };
 })();
