@@ -398,6 +398,75 @@
     return (el && typeSpec(el)) || null;
   }
 
+  // ── Does this value belong in this box? ────────────────────────────────
+  //
+  // The last line of defence, and the one that was missing. Nothing checked
+  // that an email-shaped value wasn't going into a name box, which is how
+  // "pmeet2905@gmail.com, +49 176 8592 6598" came to be typed into First Name:
+  // the field was misidentified upstream, and there was nothing downstream to
+  // notice that the answer made no sense for the question.
+  //
+  // Every fix above reduces how often a field is misidentified. None of them
+  // can promise it never happens again, on a form neither of us has seen. This
+  // catches the consequence rather than the cause, which is why it is worth
+  // having even when the matching is good — and why it refuses rather than
+  // repairs. A refusal costs a moment of typing; a wrong answer on a real
+  // application costs the application.
+  const EMAILISH = /\S+@\S+\.\S+/;
+  const URLISH = /^(?:https?:\/\/|www\.)|\.[a-z]{2,}(?:\/|$)/i;
+  const digitsIn = (v) => (String(v).match(/\d/g) || []).length;
+
+  function nameRule(v) {
+    if (EMAILISH.test(v)) return "that looks like an email address";
+    if (URLISH.test(v)) return "that looks like a link";
+    if (digitsIn(v) >= 4) return "that looks like a number";
+    if (v.length > 80) return "too long to be a name";
+    return null;
+  }
+  function placeRule(v) {
+    if (EMAILISH.test(v)) return "that looks like an email address";
+    if (digitsIn(v) >= 5) return "that looks like a number";
+    return null;
+  }
+
+  // Only kinds with a shape worth asserting. Free text — notice period,
+  // languages, "why this company" — is deliberately absent: there is no wrong
+  // shape for a sentence, and a rule that guesses would block honest answers.
+  const VALUE_RULES = {
+    email: (v) => (EMAILISH.test(v) ? null : "that is not an email address"),
+    phone: (v) => (digitsIn(v) >= 6 ? null : "that is not a phone number"),
+    first_name: nameRule, last_name: nameRule, full_name: nameRule,
+    city: placeRule, country: placeRule,
+    linkedin_url: (v) => (/linkedin\./i.test(v) ? null : "that is not a LinkedIn URL"),
+    github_url: (v) => (/github\./i.test(v) ? null : "that is not a GitHub URL"),
+    website_url: (v) => (URLISH.test(v) ? null : "that is not a web address"),
+    postal_code: (v) => (v.length <= 12 ? null : "too long to be a postcode"),
+  };
+
+  // For values the model produced, where there is no profile key to check
+  // against: read the kind off the control itself. The input's own type is the
+  // strongest statement available, and the caption fills in behind it.
+  function fieldKind(el) {
+    const t = (el.type || "").toLowerCase();
+    if (t === "email") return "email";
+    if (t === "tel") return "phone";
+    const cap = accessibleName(el).toLowerCase();
+    if (/\b(?:first|last|given|sur|full)\s?name\b|^name$|vorname|nachname/.test(cap)) {
+      return "full_name";
+    }
+    if (/e-?mail/.test(cap)) return "email";
+    if (/\bphone\b|telefon|mobile|handy/.test(cap)) return "phone";
+    return null;
+  }
+
+  /** A reason the value doesn't belong here, or null if it's fine. */
+  function rejectValue(el, value, key) {
+    const v = String(value == null ? "" : value).trim();
+    if (!v) return null;
+    const rule = VALUE_RULES[key] || VALUE_RULES[fieldKind(el)];
+    return rule ? rule(v) : null;
+  }
+
   // React/Vue track their own state, so setting .value directly is ignored on
   // re-render. Setting through the native setter and then dispatching input +
   // change makes the framework observe it.
@@ -713,6 +782,11 @@
       if (isBlocked(haystack(el), el)) return;
 
       const label = fieldLabel(el);
+      const badFor = rejectValue(el, value, null);
+      if (badFor) {
+        report && report.skipped.push({ label, reason: badFor });
+        return;
+      }
       if (el.tagName === "SELECT") {
         if (!setSelect(el, value)) {
           report && report.skipped.push({ label, reason: "no matching option" });
@@ -741,6 +815,11 @@
       if (isBlocked(haystack(el), el)) return;
 
       const label = fieldLabel(el);
+      const badMap = rejectValue(el, mapped, key);
+      if (badMap) {
+        report && report.skipped.push({ label, reason: badMap });
+        return;
+      }
       if (el.tagName === "SELECT") {
         if (!setSelect(el, mapped)) return;
       } else {
@@ -852,6 +931,15 @@
       const value = resolveValue(profile, spec.key);
       if (!value) return;
 
+      // Checked here too, though the rules path is the least likely to be
+      // wrong: if a rule ever does misread a field, the stored answer lands in
+      // it just as silently as a model's guess would.
+      const bad = rejectValue(el, value, spec.key);
+      if (bad) {
+        report.skipped.push({ label, reason: bad });
+        return;
+      }
+
       if (el.tagName === "SELECT") {
         if (setSelect(el, value)) { highlight(el); report.filled.push({ label, key: spec.key }); }
         else report.skipped.push({ label, reason: "no matching option" });
@@ -886,6 +974,6 @@
     collectUnmatched, applyFieldMap, applyFieldValues,
     // Exported so the field-matching rules can be exercised directly against
     // real markup without driving a whole fill.
-    specFor, fieldLabel,
+    specFor, fieldLabel, rejectValue,
   };
 })();
