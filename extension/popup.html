@@ -86,6 +86,13 @@
     details > *:not(summary) { padding: 0 11px 11px; animation: jc-rise var(--dur-2) var(--ease-out) both; }
     details .hint { padding: 0; }
 
+    label.check {
+      display: flex; align-items: center; gap: 9px; cursor: pointer;
+      text-transform: none; letter-spacing: 0; font-size: 13px;
+      color: var(--text); margin-top: 16px;
+    }
+    label.check input { width: auto; flex: 0 0 auto; accent-color: var(--accent); }
+
     /* The primary action reads as the primary action. */
     #run-here { margin-top: 0; font-size: 13px; }
   </style>
@@ -169,6 +176,14 @@
       </select>
     </div>
   </div>
+
+  <label class="check" for="auto-scan">
+    <input id="auto-scan" type="checkbox" />
+    Check for new jobs every 2 hours
+  </label>
+  <div class="hint">Only while Chrome is open, and never between 11pm and 6am.
+    Each check looks for whatever appeared since the last one, so nothing is
+    missed if your laptop was off.</div>
 
   <label for="cv">Your CV (plain text / markdown)</label>
   <textarea id="cv" placeholder="Paste your CV here…"></textarea>

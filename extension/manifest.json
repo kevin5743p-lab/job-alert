@@ -3,7 +3,12 @@
   "name": "JobCopilot — Tailor",
   "version": "0.1.0",
   "description": "Tailor your CV and cover letter to the LinkedIn job you're viewing — grounded only in your real CV.",
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "alarms"
+  ],
   "host_permissions": [
     "https://api.groq.com/*",
     "https://jiryqdcmukmbflahtptv.supabase.co/*",
@@ -63,8 +68,15 @@
         "https://*.stepstone.de/*",
         "https://*.xing.com/*"
       ],
-      "js": ["print_doc.js", "cover_templates.js", "autofill.js", "content.js"],
-      "css": ["content.css"],
+      "js": [
+        "print_doc.js",
+        "cover_templates.js",
+        "autofill.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
       "run_at": "document_idle",
       "all_frames": true
     }

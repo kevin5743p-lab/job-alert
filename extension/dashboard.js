@@ -544,6 +544,10 @@ $("refresh").addEventListener("click", async () => {
   }
 });
 
+// Opening the tracker is the moment new finds have been seen, so the count on
+// the toolbar icon comes off. Failure is fine — the badge is a nicety.
+chrome.runtime.sendMessage({ type: "DASHBOARD_OPENED" }).catch(() => {});
+
 // Filters persist, so open the panel when some are already on — otherwise the
 // list looks short for no visible reason on the next visit.
 if (activeFilterCount()) $("filters").classList.remove("hidden");

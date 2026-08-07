@@ -387,8 +387,15 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg?.type !== "FIND_JOBS") return;
+  runScan(msg, sendResponse);
+  return true;
+});
 
-  (async () => {
+// The scan itself, callable from the dashboard button and from the timer.
+// sendResponse defaults to a no-op: a scheduled run has nobody waiting on a
+// reply, and everything it reports goes over SCAN_PROGRESS anyway.
+async function runScan(msg = {}, sendResponse = () => {}) {
+  {
     let acked = false;
     // Answer the dashboard as soon as the quick checks pass, and report
     // everything after that over SCAN_PROGRESS instead.
@@ -636,10 +643,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
     } finally {
       keepAlive.stop();
     }
-  })();
-
-  return true;
-});
+  }
+}
 
 // Classify form fields the rules missed.
 //
@@ -895,4 +900,77 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   })();
 
   return true; // keep the message channel open for the async sendResponse
+});
+
+// ── Scheduled scanning ─────────────────────────────────────────────────────
+// A browser extension cannot be always-on: the alarm only ticks while Chrome is
+// running, so a machine that is off scans nothing. What makes that acceptable is
+// the window — every run asks "what has appeared since I last looked", so a gap
+// of any length is covered by the next run rather than skipped. The schedule is
+// best-effort; correctness does not depend on it.
+//
+// Chrome persists alarms and fires a missed one ONCE shortly after startup, not
+// once per interval missed. Three days closed gives one catch-up scan asking for
+// three days, which is exactly right.
+const SCAN_ALARM = "jobcopilot-scan";
+const SCAN_PERIOD_MIN = 120;
+
+// Borrowed from the Python bot, which enforces the same window in code rather
+// than in its cron so that daylight saving can't shift it. Nothing worth finding
+// is posted at 4am, and skipping those runs halves the work for no loss.
+const QUIET_FROM = 23, QUIET_TO = 6;
+
+function inQuietHours(d = new Date()) {
+  const h = d.getHours();
+  return QUIET_FROM > QUIET_TO ? (h >= QUIET_FROM || h < QUIET_TO)
+                               : (h >= QUIET_FROM && h < QUIET_TO);
+}
+
+async function autoScanEnabled() {
+  const { autoScan } = await chrome.storage.local.get("autoScan");
+  return autoScan !== false;           // on unless explicitly turned off
+}
+
+async function ensureScanAlarm() {
+  const existing = await chrome.alarms.get(SCAN_ALARM);
+  if (existing) return;
+  chrome.alarms.create(SCAN_ALARM, { periodInMinutes: SCAN_PERIOD_MIN,
+                                     delayInMinutes: 1 });
+}
+
+chrome.runtime.onInstalled.addListener(() => { ensureScanAlarm(); });
+chrome.runtime.onStartup.addListener(() => { ensureScanAlarm(); });
+
+chrome.alarms.onAlarm.addListener(async (alarm) => {
+  if (alarm.name !== SCAN_ALARM) return;
+  try {
+    if (!(await autoScanEnabled())) return;
+    if (inQuietHours()) return;
+    // A scheduled scan must never interrupt a manual one, and must never run
+    // for someone who hasn't finished setting up — loadKeyAndCv throws for a
+    // missing key or CV and that is not worth surfacing on a timer.
+    if (keepAlive.timer) return;
+    await loadKeyAndCv();
+    if (!(await sb.getSession())) return;
+    await runScan({ scheduled: true });
+  } catch (e) {
+    // Silent by design. A timer that pops errors at someone every two hours is
+    // worse than one that quietly retries in two more.
+    console.warn("Scheduled scan skipped:", e && e.message);
+  }
+});
+
+// A count on the toolbar icon, so a background scan that found something says
+// so without a notification permission or a popup stealing focus. Cleared when
+// the dashboard is opened, which is the moment they have been seen.
+function setBadge(n) {
+  try {
+    chrome.action.setBadgeText({ text: n > 0 ? String(n) : "" });
+    chrome.action.setBadgeBackgroundColor({ color: "#4f46e5" });
+  } catch { /* action API unavailable: the badge is a nicety, not a feature */ }
+}
+
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg?.type === "SCAN_PROGRESS" && msg.done && msg.added > 0) setBadge(msg.added);
+  if (msg?.type === "DASHBOARD_OPENED") setBadge(0);
 });

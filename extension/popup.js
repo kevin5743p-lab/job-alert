@@ -14,6 +14,7 @@ const els = {
   whoEmail: $("who-email"), authStatus: $("auth-status"),
   key: $("key"), lang: $("lang"), model: $("model"), cv: $("cv"),
   adzunaId: $("adzuna-id"), adzunaKey: $("adzuna-key"), age: $("age"),
+  autoScan: $("auto-scan"),
   save: $("save"), status: $("status"), apps: $("apps"),
   onboard: $("onboard"), profileState: $("profile-state"),
 };
@@ -152,7 +153,8 @@ async function refreshAuthUI() {
 async function init() {
   const local = await chrome.storage.local.get(
     ["groqApiKey", "language", "model", "cvText", "applicationProfile",
-     "adzunaAppId", "adzunaAppKey", "maxJobAge"]);
+     "adzunaAppId", "adzunaAppKey", "maxJobAge", "autoScan"]);
+  els.autoScan.checked = local.autoScan !== false;   // on unless turned off
   els.age.value = String(local.maxJobAge || 7);
   if (local.groqApiKey) els.key.value = local.groqApiKey;
   if (local.adzunaAppId) els.adzunaId.value = local.adzunaAppId;
@@ -237,7 +239,8 @@ els.save.addEventListener("click", async () => {
     { groqApiKey, cvText, language, model: els.model.value,
       adzunaAppId: els.adzunaId.value.trim(),
       adzunaAppKey: els.adzunaKey.value.trim(),
-      maxJobAge: Number(els.age.value) || 7 });
+      maxJobAge: Number(els.age.value) || 7,
+      autoScan: els.autoScan.checked });
 
   let msg = "Saved locally ✓";
   let ok = true;
