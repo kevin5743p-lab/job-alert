@@ -6806,6 +6806,325 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-07T19:27:18.234606",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 55,
+          "reason": "title fits 'Data Scientist'; skills: Git; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4450342810",
+            "title": "Data & AI Scientist (f/m/d)",
+            "company": "Siemens",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Shape the industry of tomorrow – today. Something special is taking shape at the Siemens Technology Campus Erlangen (F80): one of Europe’s most ambitious high-tech locations and, at the same time, an adaptive, autonomous and AI-driven factory where people and technology are reinventing production pr",
+            "url": "https://www.linkedin.com/jobs/view/4450342810",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_junior-energy-data-scientist-energiedaten-automatisierung-msb-berlin-71106",
+            "title": "(Junior) Energy Data Scientist – Energiedaten & Automatisierung (MSB) (m/w/d)",
+            "company": "Vrey",
+            "location": "Berlin HQ",
+            "description": "Über uns Bei VREY bauen wir das EnergyOS für Mehrfamilienhäuser . In Deutschland stehen über 3,3 Millionen Mehrparteienhäuser – und sie sind das schwarze Loch der Energiewende. &lt;1% Solardurchdringung. &lt;2% Smart Metering. Kaum Flexibilität oder intelligentes Energiemanagement. Gleichzeitig zwin",
+            "url": "https://www.arbeitnow.com/jobs/companies/vrey/junior-energy-data-scientist-energiedaten-automatisierung-msb-berlin-71106",
+            "published": "2026-08-07T17:40:07+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_it-projektmanager-softwareentwicklung-munich-260825",
+            "title": "IT Projektmanager Softwareentwicklung (m/w/d)",
+            "company": "MY Humancapital GmbH",
+            "location": "Munich",
+            "description": "IT Projektmanager Softwareentwicklung (m/w/d) - Vollzeit | München | Unbefristet | Homeoffice-Möglichkeit Im Auftrag unseres Partnerunternehmens in München suchen wir Sie zum nächstmöglichen Zeitpunkt als „ IT Projektmanager Softwareentwicklung (m/w/d) “. Aufgaben Sie leiten IT-Projekte zur Weiteren",
+            "url": "https://www.arbeitnow.com/jobs/companies/my-humancapital-gmbh/it-projektmanager-softwareentwicklung-munich-260825",
+            "published": "2026-08-07T17:00:40+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_sachbearbeiter-controlling-und-finanzen-munich-309165",
+            "title": "Sachbearbeiter Controlling und Finanzen (m/w/d)",
+            "company": "MY Humancapital GmbH",
+            "location": "Munich",
+            "description": "Sachbearbeiter Controlling und Finanzen (m/w/d) gesucht – Vollzeit | München Im Auftrag unseres Partnerunternehmens in München suchen wir Sie zum nächstmöglichen Zeitpunkt als „Sachbearbeiter im Bereich Controlling und Finanzen (m/w/d)“ Aufgaben Sie prüfen, pflegen und bereinigen Stammdaten und stel",
+            "url": "https://www.arbeitnow.com/jobs/companies/my-humancapital-gmbh/sachbearbeiter-controlling-und-finanzen-munich-309165",
+            "published": "2026-08-07T17:00:37+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-manager-hardware-london-23197",
+            "title": "Senior Product Manager - Hardware",
+            "company": "Verifone",
+            "location": "London",
+            "description": "&lt;h2&gt;&lt;span style=&quot;color: #236fa1;&quot;&gt;Why Verifone&lt;/span&gt;&lt;/h2&gt; &lt;p&gt;For more than 40 years Verifone has&amp;nbsp;established&amp;nbsp;a remarkable record of leadership in the electronic payment technology industry. Verifone has one of the leading electronic payment ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/verifone/senior-product-manager-hardware-london-23197",
+            "published": "2026-08-07T18:55:24+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_engineering-manager-london-251923",
+            "title": "Engineering Manager",
+            "company": "Thought Machine",
+            "location": "United Kingdom,  London",
+            "description": "Thought Machine's mission is bold – to properly and permanently rid the world's banks of legacy technology. To achieve this, we have developed the foundations of modern banking through core and payments technology which run natively in the cloud. What we are attempting is hard and means we need grea",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/thought-machine/engineering-manager-london-251923",
+            "published": "2026-08-07T18:40:10+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450742226",
+            "title": "Systems Engineer (m/w/d)",
+            "company": "ETO GRUPPE",
+            "location": "Stockach, Baden-Württemberg, Germany",
+            "description": "Ihre Aufgaben Analyse, Bewertung und Abstimmung von Kundenanforderungen sowie Ableitung strukturierter, belastbarer Systemanforderungen Entwicklung und Ausgestaltung wettbewerbsfähiger, robuster Systemarchitekturen (funktional, logisch, physikalisch) für mechatronische Produkte Sicherstellung der Ko",
+            "url": "https://www.linkedin.com/jobs/view/4450742226",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449212288",
+            "title": "Process Engineer Machine Shop (m/w/d)",
+            "company": "Tesla Automation GmbH",
+            "location": "Roth, Rhineland-Palatinate, Germany",
+            "description": "Tesla steht für die Beschleunigung des Übergangs zu nachhaltiger Energie. Innerhalb weniger Jahre wurden revolutionäre Strategien und Produkte entwickelt und erfolgreich auf den Markt gebracht. Dies ist nur möglich durch außerordentliche Begeisterung und Identifikation der Mitarbeiter, Geschwindigke",
+            "url": "https://www.linkedin.com/jobs/view/4449212288",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449221176",
+            "title": "AI Engineer",
+            "company": "muffintech",
+            "location": "Berlin, Germany",
+            "description": "AI Engineer (m/f/d) Mid to Senior · Full-time · Hybrid/Remote About the role muffintech is at the forefront of AI-driven solutions for the insurance industry, empowering companies to seamlessly integrate cutting-edge technologies into their operations. We focus on vertical scalability – automating a",
+            "url": "https://www.linkedin.com/jobs/view/4449221176",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449220575",
+            "title": "Senior Machine Learning Ops Engineer",
+            "company": "KAYAK",
+            "location": "Berlin, Berlin, Germany",
+            "description": "KAYAK, part of Booking Holdings (NASDAQ: BKNG), is a leading travel search engine. With billions of queries across our platforms, we help people find their perfect flight, stay, rental car and vacation package. We're also transforming business travel with a new corporate travel solution, KAYAK for B",
+            "url": "https://www.linkedin.com/jobs/view/4449220575",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449209664",
+            "title": "Systemingenieur Thermal Management & Simulation - CFD (w/m/d)",
+            "company": "Brunel",
+            "location": "Baden-Württemberg, Germany",
+            "description": "Mitarbeit an der Konzeption thermaler und fluiddynamischer Architekturen für hochpräzise mechatronische und optische Systeme Entwicklung, Modellierung und Optimierung thermischer Systeme unter Berücksichtigung von Performance-, Termin- und Kostenzielen Entwicklung von Methoden zur Systemidentifikati",
+            "url": "https://www.linkedin.com/jobs/view/4449209664",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4423596122",
+            "title": "Business Analyst (m/w/d) Erneuerbare Energien",
+            "company": "TotalEnergies",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Contexte et environnement Engagieren Sie sich bei TotalEnergies, einem der führenden Multi-Energieunternehmen in Deutschland an unserem Standort in Düsseldorf als Business Analyst (m/w/d) Erneuerbare Energien bei Quadra Energy . Als Unternehmen, das mit über 500 Berufen in 130 Ländern vertreten ist,",
+            "url": "https://www.linkedin.com/jobs/view/4423596122",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450735427",
+            "title": "Senior Product Manager II, Menu Planning (all genders)",
+            "company": "HelloFresh",
+            "location": "Berlin, Berlin, Germany",
+            "description": "About the role: What's in the Box As the Senior Product Manager II for Menu Planning within the Operations Mega Alliance, you will own the product layer that decides what lands on HelloFresh menus every week, across markets, brands, and millions of customers. You will drive the systems and workflows",
+            "url": "https://www.linkedin.com/jobs/view/4450735427",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450337763",
+            "title": "Mechanics",
+            "company": "Michelin",
+            "location": "Bad Schwartau, Schleswig-Holstein, Germany",
+            "description": "- - - - - - - - - - - - EUROMASTER ist eine 100-prozentige Tochtergesellschaft der Michelin Group, einem der weltweit erfolgreichsten Unternehmen europäischen Ursprungs. Wir sind Marktführer für Reifen- und Autoservice und pflegen in unserer alltäglichen Arbeit einen hohen Anspruch an die Qualität u",
+            "url": "https://www.linkedin.com/jobs/view/4450337763",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448789930",
+            "title": "Ford KFZ-Mechatroniker/Servicetechniker (m/w/d) (Fahrzeugtechnik)",
+            "company": "Borgmann GmbH",
+            "location": "Herne, North Rhine-Westphalia, Germany",
+            "description": "Das erwartet Sie: Wartung und Reparatur: Durchführung von umfassenden Wartungs-, Reparatur- und Garantiearbeiten an Ford-Fahrzeugen verschiedener Modelle. Diagnosestellung: Schlüsselfunktion in der präzisen Fehlersuche und Diagnose von komplexen mechanischen, elektrischen und elektronischen Systemen",
+            "url": "https://www.linkedin.com/jobs/view/4448789930",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448790494",
+            "title": "Data Scientist (m/w/d)",
+            "company": "IBM",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Introduction Eine Karriere bei IBM Consulting basiert auf langfristigen Beziehungen und enger Zusammenarbeit mit Kunden auf der ganzen Welt. Du wirst mit Vordenkern aus verschiedenen Branchen zusammenarbeiten, um die Hybrid‑Cloud‑ und KI‑Reise der innovativsten und wertvollsten Unternehmen weltweit ",
+            "url": "https://www.linkedin.com/jobs/view/4448790494",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450746408",
+            "title": "Data Center Technician, DCO",
+            "company": "Amazon Web Services (AWS)",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Description TÄTIGKEITSÜBERSICHT Du hast einen technischen Beruf und bist daran interessiert, einem erstklassigen Team beizutreten und die Fähigkeiten zu erwerben, die zur Pflege einer der weltweit größten IT-Infrastrukturen notwendig sind. Wir erweitern derzeit unser Infrastrukturteam und suchen IT-",
+            "url": "https://www.linkedin.com/jobs/view/4450746408",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450735966",
+            "title": "Global Product Manager IPC and I/O (m/w/d)",
+            "company": "ABB",
+            "location": "Heidelberg, Baden-Württemberg, Germany",
+            "description": "Bei ABB unterstützen wir Industrien dabei, effizienter und sauberer zu arbeiten – und jede einzelne Person trägt hier dazu bei. Wir bieten allen Mitarbeitenden die Möglichkeit, Verantwortung zu übernehmen und die eigene Entwicklung aktiv voranzutreiben. Gemeinsam entstehen Lösungen, auf die alle sto",
+            "url": "https://www.linkedin.com/jobs/view/4450735966",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 46,
+          "reason": "title fits 'Junior Data Engineer'; skills: Python; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450344708",
+            "title": "Data Engineer",
+            "company": "Haystack",
+            "location": "North Rhine-Westphalia, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role • Synthesize operational data into actionable automation insights, such as Overall Equipment Effectiveness (OEE) and patterns of operational issues. • Partner with a team of experienced automation design engineers to develop new technologies. • ",
+            "url": "https://www.linkedin.com/jobs/view/4450344708",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 15,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_solution-architect-443339",
+            "title": "Solution Architect",
+            "company": "Cognite",
+            "location": "Germany",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;/p&gt; &lt;h1&gt;&lt;span style=&quot;font-size: 18pt;&quot;&gt;&lt;span style=&quot;color: rgb(102, 110, 153);&quot;&gt;What Cognite is:&lt;/span&gt; &lt;span style=&quot;color: rgb(0, 41, 255);&quot;&gt;Relentless&lt;/span&gt; &lt;span style=",
+            "url": "https://www.arbeitnow.com/jobs/companies/cognite/solution-architect-443339",
+            "published": "2026-08-07T17:55:34+00:00",
+            "source": "Arbeitnow"
+          }
+        }
+      ]
     }
   ]
 }
