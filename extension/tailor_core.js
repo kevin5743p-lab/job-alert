@@ -59,8 +59,42 @@ Return a JSON object in EXACTLY this shape:
   "matched_keywords": ["<job requirement the CV genuinely supports>"],
   "missing_keywords": ["<job requirement the CV does NOT support>"],
   "suggestions": ["<honest positioning tip or gap-mitigation>"],
-  "cover_letter": "<the BODY of the cover letter — see rules below>"
+  "cover_letter": "<the BODY of the cover letter — see rules below>",
+  "tailored_cv": {
+    "headline": "<the candidate's current title or field, exactly as the CV states it>",
+    "summary": "<2-3 sentences opening the CV, tuned to this role, grounded in the CV>",
+    "sections": [
+      {
+        "title": "<Experience | Education | Projects — use the CV's own wording>",
+        "entries": [
+          {
+            "role": "<VERBATIM from the CV: job title or degree>",
+            "org": "<VERBATIM from the CV: employer or institution>",
+            "dates": "<VERBATIM from the CV, e.g. 03/2024 - 09/2024>",
+            "location": "<VERBATIM from the CV, or empty>",
+            "bullets": ["<a fact from THIS entry, rephrased for this job>"]
+          }
+        ]
+      },
+      { "title": "Skills", "items": ["<a skill the CV genuinely shows>"] }
+    ]
+  }
 }
+
+TAILORED CV — the strictest part of this task.
+A cover letter is an argument; a CV is a factual record, and an employer will
+check it. Inventing a title, an employer, a date or a qualification is not a
+weak answer, it is a false document in the candidate's name.
+- "role", "org", "dates" and "location" must be copied VERBATIM from the CV.
+  Do not tidy, translate, expand or standardise them. If the CV says
+  "Werkstudent" do not write "Working Student". If a date is missing, use "".
+- You may REORDER entries, DROP irrelevant ones, and REPHRASE bullets to
+  emphasise what this job asks for. You may not add an entry, a skill, a tool
+  or a number that is not in the CV.
+- Every bullet must be traceable to the entry it sits under.
+- Keep every "Skills" item to words that appear in the CV.
+- Order sections the way this job would want them read, and put the entries
+  that matter most to this posting first within each section.
 
 COVER LETTER — this is the part candidates are judged on, so make it specific:
 - Write the BODY ONLY: no letterhead, no date, no subject line, no "Dear ...",
@@ -441,6 +475,35 @@ Return only a JSON object mapping field id to profile key, e.g.:
 // Coerce the model's output into the stable shape the UI expects. Mirrors
 // tailor.py's _normalize: tolerates a string where a list is expected and
 // fills every key so the renderer never trips on a missing field.
+const str = (v) => (typeof v === "string" ? v.trim() : "");
+
+// Shape-only. Nothing here judges whether a fact is true — that is
+// cvGroundingWarnings' job, and it needs the CV text this function never sees.
+function normalizeCv(raw) {
+  if (!raw || typeof raw !== "object") return null;
+  const sections = [];
+  for (const sec of Array.isArray(raw.sections) ? raw.sections : []) {
+    if (!sec || typeof sec !== "object") continue;
+    const entries = [];
+    for (const e of Array.isArray(sec.entries) ? sec.entries : []) {
+      if (!e || typeof e !== "object") continue;
+      const entry = {
+        role: str(e.role), org: str(e.org), dates: str(e.dates),
+        location: str(e.location),
+        bullets: asStrList(e.bullets),
+      };
+      // An entry naming nothing is not an entry.
+      if (entry.role || entry.org) entries.push(entry);
+    }
+    const items = asStrList(sec.items);
+    if (entries.length || items.length) {
+      sections.push({ title: str(sec.title), entries, items });
+    }
+  }
+  if (!sections.length) return null;
+  return { headline: str(raw.headline), summary: str(raw.summary), sections };
+}
+
 export function normalize(result) {
   const out = {};
   for (const key of ["fit_summary", "tailored_summary", "cover_letter"]) {
@@ -454,6 +517,8 @@ export function normalize(result) {
   // number as one found by a scan rather than showing "—" in the tracker.
   const fit = parseInt(result.fit_score, 10);
   out.fit_score = Number.isFinite(fit) ? Math.max(0, Math.min(100, fit)) : null;
+  out.tailored_cv = normalizeCv(result.tailored_cv);
+
   const exp = [];
   for (const item of result.relevant_experience || []) {
     if (item && typeof item === "object") {
@@ -493,6 +558,47 @@ export function groundingWarnings(result, cvText, minOverlap = 0.5) {
     const overlap = hit / srcWords.size;
     if (overlap < minOverlap) {
       warnings.push(`weak CV grounding (${Math.round(overlap * 100)}%) for: ${item.bullet.slice(0, 60)}`);
+    }
+  }
+  return warnings;
+}
+
+// A CV's facts are checked differently from a cover letter's claims. A letter
+// argues, and word overlap is a fair test of whether the argument is grounded.
+// A CV asserts — this employer, this title, these dates — and an employer will
+// verify it. So role, org and dates must appear in the source CV almost
+// literally, not merely resemble it. "Werkstudent" quietly becoming "Working
+// Student" is a small edit and a different claim.
+//
+// Compared with punctuation, case and spacing removed, because a model
+// reformatting "03/2024 – 09/2024" as "03/2024 - 09/2024" is not fabrication.
+const flatten = (s) => (s || "").toLowerCase().replace(/[^a-zäöüß0-9]+/g, "");
+
+export function cvGroundingWarnings(cv, cvText) {
+  const warnings = [];
+  if (!cv || !cvText) return warnings;
+  const flatCv = flatten(cvText);
+
+  // Verbatim-required fields, checked by containment.
+  const mustAppear = (value, what, where) => {
+    const v = flatten(value);
+    if (!v) return;
+    if (!flatCv.includes(v)) {
+      warnings.push(`${what} not found in your CV: "${String(value).slice(0, 48)}"${where}`);
+    }
+  };
+
+  for (const section of cv.sections || []) {
+    const title = section.title ? ` (${section.title})` : "";
+    for (const entry of section.entries || []) {
+      mustAppear(entry.org, "employer/institution", title);
+      mustAppear(entry.role, "title", title);
+      mustAppear(entry.dates, "dates", title);
+      mustAppear(entry.location, "location", title);
+    }
+    // A skill on a CV is a claim about the candidate, so it gets the same test.
+    for (const item of section.items || []) {
+      mustAppear(item, "skill", title);
     }
   }
   return warnings;

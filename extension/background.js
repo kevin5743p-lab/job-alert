@@ -7,7 +7,8 @@
 
 import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, buildFieldFillPrompt,
          buildSearchProfilePrompt, buildBatchScorePrompt, buildSingleScorePrompt, normalize,
-         groundingWarnings, DEFAULT_MODEL, MAX_TOKENS } from "./tailor_core.js";
+         groundingWarnings, cvGroundingWarnings, DEFAULT_MODEL, MAX_TOKENS }
+         from "./tailor_core.js";
 import * as sb from "./supabase.js";
 import { fetchAll, prefilter, prioritise, locationRank, validateTargets,
          pickKnownBoards, enrichDescriptions } from "./finder.js";
@@ -826,7 +827,11 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       if (!cv || !cv.trim()) throw new Error("NO_CV");
 
       const result = await callGroq(msg.job, cv, groqApiKey, model, lang || "en");
-      const warnings = groundingWarnings(result, cv);
+      // The CV's facts are checked separately and more strictly than the
+      // letter's claims: an employer verifies a CV, so a title or employer that
+      // isn't in the source has to be surfaced, not smoothed over.
+      const warnings = groundingWarnings(result, cv)
+        .concat(cvGroundingWarnings(result.tailored_cv, cv));
 
       // Persist the run + track the job. Best-effort: a save failure must not
       // lose the result the user is waiting for.

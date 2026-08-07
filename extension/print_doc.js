@@ -40,6 +40,21 @@
   li { margin-bottom: 5pt; }
   pre.letter { white-space: pre-wrap; font: 11.5pt/1.6 Georgia, serif; margin: 0; }
   .page-break { page-break-before: always; }
+  /* CV page. Deliberately plain: a CV is read by people in a hurry and by
+     parsers that choke on columns, boxes and colour. Structure comes from
+     spacing and weight, not decoration. */
+  .cv-head { margin-bottom: 4pt; }
+  .cv-headline { font-size: 11.5pt; color: #333; margin: 0 0 2pt; }
+  .cv-contact { font-size: 9.5pt; color: #555; }
+  .cv-summary { margin: 8pt 0 0; }
+  .cv-entry { margin: 0 0 10pt; page-break-inside: avoid; }
+  .cv-entry-head { display: flex; justify-content: space-between; gap: 12pt; }
+  .cv-role { font-weight: bold; }
+  .cv-org { font-style: italic; }
+  .cv-dates { white-space: nowrap; color: #444; font-size: 10pt; }
+  .cv-entry ul { margin: 3pt 0 0; padding-left: 16px; }
+  .cv-entry li { margin-bottom: 2pt; }
+  .cv-skills { margin: 0; }
   .bar { font-family: sans-serif; margin-bottom: 14px; }
   .bar .note { display: block; margin-top: 8px; padding: 8px 10px; max-width: 640px;
                background: #fff8c5; border: 1px solid #d4a72c; border-radius: 6px;
@@ -64,6 +79,7 @@
     it: press Ctrl&nbsp;+&nbsp;P (⌘&nbsp;+&nbsp;P on a Mac) instead.</span>
   </div>
 
+  ${cvHtml(r.tailored_cv, job)}
   <h1>Tailored highlights</h1>
   <div class="muted">For: ${esc(job.title || "")} — ${esc(job.company || "")} · ${esc(today)}</div>
 
@@ -143,6 +159,47 @@
     fallback.document.close();
     printWhenReady(fallback);
     return true;
+  }
+
+  // The CV, rendered only when the model returned one that survived
+  // normalisation. Anything it did return that could not be traced back to the
+  // source CV has already been raised as a warning in the panel — this renders
+  // what it was given and does not quietly repair it, because silently
+  // correcting a CV is how a wrong fact becomes an invisible one.
+  function cvEntry(e) {
+    const head = [
+      e.role ? `<span class="cv-role">${esc(e.role)}</span>` : "",
+      e.org ? `<span class="cv-org">${esc(e.org)}</span>` : "",
+    ].filter(Boolean).join(" — ");
+    const right = [e.location, e.dates].filter(Boolean).map(esc).join(", ");
+    const bullets = (e.bullets || []).length
+      ? `<ul>${e.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>` : "";
+    return `<div class="cv-entry">
+      <div class="cv-entry-head"><div>${head}</div>
+        ${right ? `<div class="cv-dates">${right}</div>` : ""}</div>
+      ${bullets}
+    </div>`;
+  }
+
+  function cvHtml(cv, job) {
+    if (!cv || !cv.sections || !cv.sections.length) return "";
+    const contact = [job.applicantContact || ""].filter(Boolean).join(" · ");
+    const sections = cv.sections.map((sec) => {
+      const body = sec.entries && sec.entries.length
+        ? sec.entries.map(cvEntry).join("")
+        : `<p class="cv-skills">${(sec.items || []).map(esc).join(" · ")}</p>`;
+      return `<h2>${esc(sec.title || "")}</h2>${body}`;
+    }).join("");
+
+    return `
+  <div class="cv-head">
+    <h1>${esc(cv.name || job.applicantName || "")}</h1>
+    ${cv.headline ? `<div class="cv-headline">${esc(cv.headline)}</div>` : ""}
+    ${contact ? `<div class="cv-contact">${esc(contact)}</div>` : ""}
+  </div>
+  ${cv.summary ? `<p class="cv-summary">${esc(cv.summary)}</p>` : ""}
+  ${sections}
+  <div class="page-break"></div>`;
   }
 
   function open_(job, r) {
