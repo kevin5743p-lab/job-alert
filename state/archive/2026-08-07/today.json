@@ -6296,6 +6296,516 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-07T17:14:27.515845",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 55,
+          "reason": "title fits 'Automotive Engineer'; skills: Python, CATIA, Git (+1); keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4450716495",
+            "title": "Digital Twin and Systems Integration Engineer",
+            "company": "GMV",
+            "location": "Gilching, Bavaria, Germany",
+            "description": "Are you looking for an innovative and consolidated place for your professional development? We are expanding our teams in our space sector and we are looking for an Digital Twin and Systems Integration Engineer to work on DART digital twin interoperability architeture design. We´ll get to the point;",
+            "url": "https://www.linkedin.com/jobs/view/4450716495",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Machine Learning Engineer'; skills: Machine Learning; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "arbeitnow_machine-learning-engineer-london-90466",
+            "title": "Machine Learning Engineer",
+            "company": "Grahamcapitalmanagement",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;Graham Capital Management, L.P. (collectively with its affiliates, &quot;Graham&quot;) is an alternative investment manager founded in 1994 by Kenneth G. Tropin. Specializing in discretionary and quantitative macro strategies, Graham is dedicated t",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/grahamcapitalmanagement/machine-learning-engineer-london-90466",
+            "published": "2026-08-07T15:55:20+00:00",
+            "source": "Arbeitnow"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_vertriebscontroller-im-bankenumfeld-munich-330630",
+            "title": "Vertriebscontroller im Bankenumfeld (m/w/d)",
+            "company": "MY Humancapital GmbH",
+            "location": "Munich",
+            "description": "Im Auftrag unseres Partnerunternehmens in München suchen wir Sie zum nächstmöglichen Zeitpunkt als „Vertriebscontroller im Bankenumfeld (m/w/d)“. Aufgaben Als Vertriebscontroller im Bankenumfeld (m/w/d) erstellen Sie datenbasierte Reports, Kundenpotenzial-Analysen und Forecasts, um die Vertriebsstra",
+            "url": "https://www.arbeitnow.com/jobs/companies/my-humancapital-gmbh/vertriebscontroller-im-bankenumfeld-munich-330630",
+            "published": "2026-08-07T16:30:37+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_software-quality-engineer-uk-london-387820",
+            "title": "Software quality engineer (UK)",
+            "company": "Writer",
+            "location": "London,  UK",
+            "description": "🚀 About WRITER WRITER is where the world's leading enterprises orchestrate AI-powered work. Our vision is to expand human capacity through superintelligence. And we're proving it's possible – through powerful, trustworthy AI that unites IT and business teams together to unlock enterprise-wide transf",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/writer/software-quality-engineer-uk-london-387820",
+            "published": "2026-08-07T15:40:25+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_software-engineer-agents-uk-london-476896",
+            "title": "Software engineer, agents (UK)",
+            "company": "Writer",
+            "location": "London,  UK",
+            "description": "🚀 About WRITER WRITER is where the world's leading enterprises orchestrate AI-powered work. Our vision is to expand human capacity through superintelligence. And we're proving it's possible – through powerful, trustworthy AI that unites IT and business teams together to unlock enterprise-wide transf",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/writer/software-engineer-agents-uk-london-476896",
+            "published": "2026-08-07T15:40:25+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_ai-engineer-uk-london-253344",
+            "title": "AI engineer (UK)",
+            "company": "Writer",
+            "location": "London,  UK",
+            "description": "🚀 About WRITER WRITER is where the world's leading enterprises orchestrate AI-powered work. Our vision is to expand human capacity through superintelligence. And we're proving it's possible – through powerful, trustworthy AI that unites IT and business teams together to unlock enterprise-wide transf",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/writer/ai-engineer-uk-london-253344",
+            "published": "2026-08-07T15:40:25+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_software-engineer-generative-ai-uk-london-249213",
+            "title": "Software engineer, generative AI (UK)",
+            "company": "Writer",
+            "location": "London,  UK",
+            "description": "🚀 About WRITER WRITER is where the world's leading enterprises orchestrate AI-powered work. Our vision is to expand human capacity through superintelligence. And we're proving it's possible – through powerful, trustworthy AI that unites IT and business teams together to unlock enterprise-wide transf",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/writer/software-engineer-generative-ai-uk-london-249213",
+            "published": "2026-08-07T15:40:25+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4361888509",
+            "title": "Praktikum Entwicklung Karosseriesystem – Konstruktion Exterieur Anbausystem",
+            "company": "Porsche AG",
+            "location": "Weissach, Baden-Württemberg, Germany",
+            "description": "Wir als Team …gestalten unsere Sportwagen und Luxusfahrzeuge von vorne bis hinten. Wir realisieren von ersten Designentwürfen bis zur Serienfertigung die zukünftigen Erfolgsmodelle von Porsche. Was erwartet dich? Deine Themenschwerpunkte sind... Unterstützung bei der Auslegung neuer innovativer Konz",
+            "url": "https://www.linkedin.com/jobs/view/4361888509",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450728279",
+            "title": "AMG Praktikanten Software Engineering & Continuous Integration e-Drive ab Mitte Oktober 2026 (m/w/d)",
+            "company": "Mercedes-AMG GmbH",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Für den Bereich Entwicklung Fahrdynamik, e-Drive und Elektrik/Elektronik suchen wir einen AMG Praktikanten Software Engineering & Continuous Integration e-Drive ab Mitte Oktober 2026 (m/w/d) Stellennummer: 18251 Standort: Affalterbach bei Stuttgart Dynamisch. Verlässlich. Leistungsstark. Mit Facette",
+            "url": "https://www.linkedin.com/jobs/view/4450728279",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449200334",
+            "title": "Data Scientist (m/w/d)",
+            "company": "IBM",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Introduction Eine Karriere bei IBM Consulting basiert auf langfristigen Beziehungen und enger Zusammenarbeit mit Kunden auf der ganzen Welt. Du wirst mit Vordenkern aus verschiedenen Branchen zusammenarbeiten, um die Hybrid‑Cloud‑ und KI‑Reise der innovativsten und wertvollsten Unternehmen weltweit ",
+            "url": "https://www.linkedin.com/jobs/view/4449200334",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450336913",
+            "title": "Data & AI Scientist (f/m/d)",
+            "company": "Siemens",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Gestalte die Industrie von morgen – heute. Auf dem Siemens Technology Campus Erlangen entsteht etwas Besonderes: einer der ambitioniertesten Hightech-Standorte Europas und gleichzeitig eine adaptive, autonome, datengetriebene Fabrik, in der Mensch, Technologie und Algorithmen gemeinsam Produktionspr",
+            "url": "https://www.linkedin.com/jobs/view/4450336913",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4439312534",
+            "title": "Data Analyst (gn) - ESN/More Nutrition",
+            "company": "The Quality Group",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Start: Ab sofort | Level: Mid | Location: Hamburg, hybrid | Arbeitszeit: Vollzeit (40h/Woche) Dein Start im Business Insights Team bei The Quality Group ! Als Data Analyst (gn) wirst Du Teil unseres Business Insights Teams im Digital Department und trägst maßgeblich dazu bei, datenbasierte Entscheid",
+            "url": "https://www.linkedin.com/jobs/view/4439312534",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4403955096",
+            "title": "Business Analyst ERP* (m/w/d)",
+            "company": "Liebherr Group",
+            "location": "Rostock, Mecklenburg-West Pomerania, Germany",
+            "description": "Als Business Analyst (m/w/d) mit Schwerpunkt ERP-Systeme übernehmen Sie eine zentrale Schlüsselrolle an der Schnittstelle zwischen Fachbereichen und IT. Sie analysieren, konzipieren und entwickeln ERP-nahe Prozesse und Anwendungen weiter und leisten damit einen wesentlichen Beitrag zur Stabilität, E",
+            "url": "https://www.linkedin.com/jobs/view/4403955096",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450734466",
+            "title": "Business Analyst Prozesssysteme (m/w/d)",
+            "company": "Atruvia AG",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Für unser Geschäftsfeld Omnichannel im Tribe Prozessmanagement und Automation (OMCPMA) suchen wir dich als Business Analyst Prozesssysteme (m/w/d) am Standort München. Deine Aufgaben mit Perspektiven Du hast Freude daran als Teil des agilen Teams Verantwortung für die Prozesskomponenten zu übernehme",
+            "url": "https://www.linkedin.com/jobs/view/4450734466",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4433852322",
+            "title": "Senior Product Manager (m/w/d)",
+            "company": "Peter Park",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Du willst als Senior Product Manager in einem B2B SaaS-Unternehmen echten Impact schaffen – von der strategischen Roadmap bis zur erfolgreichen Umsetzung? Bei Peter Park, einem der führenden Parking-Tech-Unternehmen in Deutschland, übernimmst du die Produktverantwortung für unser wachsendes SaaS- un",
+            "url": "https://www.linkedin.com/jobs/view/4433852322",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450723850",
+            "title": "Product Manager - Product Factory",
+            "company": "N26",
+            "location": "Berlin, Germany",
+            "description": "About The Opportunity We are seeking a passionate, technically-minded Product Manager - Product Factory to join our Core Systems team. Our mission is to disrupt traditional core banking technology standards by building highly configurable, modular, and automated solutions that enable rapid financial",
+            "url": "https://www.linkedin.com/jobs/view/4450723850",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450336785",
+            "title": "Mechanics",
+            "company": "Michelin",
+            "location": "Steglitz-Zehlendorf, Berlin, Germany",
+            "description": "- - - - - - - - - - - - EUROMASTER ist eine 100-prozentige Tochtergesellschaft der Michelin Group, einem der weltweit erfolgreichsten Unternehmen europäischen Ursprungs. Wir sind Marktführer für Reifen- und Autoservice und pflegen in unserer alltäglichen Arbeit einen hohen Anspruch an die Qualität u",
+            "url": "https://www.linkedin.com/jobs/view/4450336785",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448788789",
+            "title": "Kfz-Mechatroniker (all genders)",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Voll/Teilzeit Du hast Benzin im Blut? Du hast eine Leidenschaft für Autos und Technik und bist auf der Suche nach einer spannenden neuen Aufgabe? Dann komm zu uns ins Team! Bewirb Dich bei Hamburgs beliebtestem Unternehmen!* Wir suchen für unsere Werkstatt in Stellingen Kfz-Mechatroniker (all gender",
+            "url": "https://www.linkedin.com/jobs/view/4448788789",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448794924",
+            "title": "KFZ-Mechatroniker (m/w/d)",
+            "company": "Borgmann GmbH",
+            "location": "Dorsten, North Rhine-Westphalia, Germany",
+            "description": "Das erwartet Sie: Wartung und Reparatur: Durchführung von Wartungs- und Reparaturarbeiten an Fahrzeugen unterschiedlicher Marken und Modelle. Diagnosestellung: Fehlersuche und Diagnose von mechanischen, elektrischen und elektronischen Systemen. Montage von Zubehör: Installation und Inbetriebnahme vo",
+            "url": "https://www.linkedin.com/jobs/view/4448794924",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450347763",
+            "title": "Data Analyst Consultant (w/m/d)",
+            "company": "Siemens",
+            "location": "Mannheim, Baden-Württemberg, Germany",
+            "description": "Die ONE Tech Company ist die Strategie von Siemens, sich in ein Technologieführerunternehmen zu verwandeln, bei dem Daten im Mittelpunkt stehen. Dadurch ergeben sich spannende Projekte im Bereich Analytics. Wir suchen Menschen, die eine Leidenschaft für Daten haben, um dies zu verwirklichen. Als Dat",
+            "url": "https://www.linkedin.com/jobs/view/4450347763",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4433829306",
+            "title": "AMHS Techniker (m/w/d)",
+            "company": "Black Semiconductor",
+            "location": "Aachen, North Rhine-Westphalia, Germany",
+            "description": "Über uns Wir sehen die Halbleiterindustrie als ein Universum der Möglichkeiten. Wir sehen Chancen. Wir sehen die tiefgreifenden Auswirkungen, die unsere Graphen-Lösungen auf die Umgestaltung der Branche habenwerden. Wir laden dich ein, mit uns gemeinsam den Wandel voranzutreiben, indem wir kluge Köp",
+            "url": "https://www.linkedin.com/jobs/view/4433829306",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450337770",
+            "title": "Product Manager Security Scanner (m/w/d)",
+            "company": "Rohde & Schwarz",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Einleitung Übernimm Verantwortung für unsere Security Scanner und treibe Innovation, Markterfolg und bereichsübergreifende Umsetzung aktiv voran! Aufgaben Du übernimmst die End-to-End-Verantwortung für die Rohde & Schwarz Security Scanner Produkte – vom Lifecycle Management bestehender Produkte bis ",
+            "url": "https://www.linkedin.com/jobs/view/4450337770",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000142168259",
+            "title": "Junior Managers Program (Trainee) - Start your Leadership Journey in Information Technology",
+            "company": "Bosch",
+            "location": "Gerlingen-Schillerhöhe, BW, de",
+            "description": "Ready to change the IT world? &#xa0;We are looking for tech-savvy master’s graduates with a drive to make a difference, who will shape Bosch's digital transformation with us in our Junior Managers Program. If you are passionate about data, think strategically, and are eager to build an outstanding l",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142168259",
+            "published": "2026-08-07T15:20:33.186Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000142168029",
+            "title": "Junior Managers Program (Trainee) - Start your Leadership Journey in Purchasing",
+            "company": "Bosch",
+            "location": "Gerlingen-Schillerhöhe, BW, de",
+            "description": "Shape the purchasing of the future with us! &#xa0;We are looking for master’s graduates with a drive to make a difference, who will optimize our global supplier network and secure innovations in our Junior Managers Program. Do you negotiate skillfully, think globally, and want to win the best partne",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142168029",
+            "published": "2026-08-07T15:19:41.525Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000142166560",
+            "title": "Junior Managers Program (Trainee) - Start your Leadership Journey in HR Tech, Digitalization and GenAI",
+            "company": "Bosch",
+            "location": "Gerlingen, BW, de",
+            "description": "Shape the future of HR with us! &#xa0;We are looking for master’s graduates with a drive to make a difference, who will revolutionize our HR network and bring Generative AI (GenAI) to \"People\" topics in our Junior Managers Program. Do you think innovatively, act with a human-centric approach, and wa",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142166560",
+            "published": "2026-08-07T15:18:51.778Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000142167669",
+            "title": "Junior Managers Program (Trainee) - Starte deine Leadership Journey im Bereich HR Tech, Digitalisierung und Generative AI",
+            "company": "Bosch",
+            "location": "Gerlingen, BW, de",
+            "description": "Gestalte das Personalwesen der Zukunft mit uns! &#xa0;Wir suchen Master-Graduates mit Gestaltungswillen, die im Junior Managers Program unser HR-Netzwerk revolutionieren und Generative AI (GenAI) in die People-Themen einbringen. Du denkst innovativ, handelst menschenzentriert und willst die besten H",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142167669",
+            "published": "2026-08-07T15:18:23.191Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000142167495",
+            "title": "Junior Managers Program (Trainee) - Starte deine Leadership Journey im Bereich IT",
+            "company": "Bosch",
+            "location": "Gerlingen-Schillerhöhe, BW, de",
+            "description": "Bereit, die IT-Welt zu verändern? Wir suchen technikbegeisterte Master-Graduates mit Gestaltungswillen, um mit uns im Junior Managers Program die digitale Transformation von Bosch zu gestalten. Wenn du von Daten begeistert bist, strategisch denkst und leidenschaftlich daran interessiert bist, eine h",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142167495",
+            "published": "2026-08-07T15:20:05.157Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000142164670",
+            "title": "Junior Managers Program (Trainee) - Starte deine Leadership Journey im Bereich Purchasing",
+            "company": "Bosch",
+            "location": "Gerlingen-Schillerhöhe, BW, de",
+            "description": "Gestalte den Einkauf der Zukunft mit uns! Wir suchen Master-Graduates mit Gestaltungswillen, die im Junior Managers Program unser globales Lieferantennetzwerk optimieren und Innovationen sichern. Du verhandelst geschickt, denkst global und willst die besten Partner für Bosch gewinnen? Dann möchten w",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142164670",
+            "published": "2026-08-07T15:19:14.558Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 46,
+          "reason": "title fits 'Junior Data Engineer'; skills: Python; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450340802",
+            "title": "Data Engineer",
+            "company": "Haystack",
+            "location": "North Rhine-Westphalia, Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role • Synthesize operational data into actionable automation insights, such as Overall Equipment Effectiveness (OEE) and patterns of operational issues. • Partner with a team of experienced automation design engineers to develop new technologies. • ",
+            "url": "https://www.linkedin.com/jobs/view/4450340802",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "title fits 'Automotive Engineer'; skills: Machine Learning, Git; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450353808",
+            "title": "AI Engineer (f/m/d)",
+            "company": "Siemens Energy",
+            "location": "Berlin, Berlin, Germany",
+            "description": "A Snapshot of Your Day As an AI Engineer (f/m/d), you will become a valued member of a passionate and highly skilled team. Within our Process Digitalization Department, you will serve as the link between software development, data science, and business functions by integrating trained machine learni",
+            "url": "https://www.linkedin.com/jobs/view/4450353808",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Simulation Engineer'; skills: Git; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450349630",
+            "title": "Simulation & Digital Twin Expert (f/m/d)",
+            "company": "Siemens",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Shape the industry of tomorrow – today. Something special is taking shape at the Siemens Technology Campus Erlangen (F80): one of Europe’s most ambitious high-tech locations and, at the same time, an adaptive, autonomous and AI-driven factory where people and technology are reinventing production pr",
+            "url": "https://www.linkedin.com/jobs/view/4450349630",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Automotive Engineer' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_fullstack-engineer-backend-leaning-london-173187",
+            "title": "Fullstack Engineer (Backend leaning)",
+            "company": "Ben",
+            "location": "London",
+            "description": "Our Mission We're not your average benefits platform; we're the unordinary force that uplifts people's lives. Our technology is the link that connects the entire benefits ecosystem, creating better outcomes for employers, employees, brokers, and providers. Our mission is clear: we're here to create ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/ben/fullstack-engineer-backend-leaning-london-173187",
+            "published": "2026-08-07T15:40:19+00:00",
+            "source": "Arbeitnow"
+          }
+        }
+      ]
     }
   ]
 }
