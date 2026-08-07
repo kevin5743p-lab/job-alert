@@ -1903,6 +1903,919 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-07T07:50:19.763360",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 50,
+          "reason": "title fits 'Machine Learning Engineer'; skills: Machine Learning; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "arbeitnow_staff-machine-learning-engineer-tlm-driver-understanding-and-evaluation-london-44117",
+            "title": "Staff Machine Learning Engineer (TLM), Driver Understanding and Evaluation",
+            "company": "Waymo",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;Waymo is an autonomous driving technology company with the mission to be the world&#39;s most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World&#39;s Most Experi",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/waymo/staff-machine-learning-engineer-tlm-driver-understanding-and-evaluation-london-44117",
+            "published": "2026-08-07T06:55:06+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4448731798",
+            "title": "Product Owner / App Manager m/w/d",
+            "company": "prettyTELCO",
+            "location": "Reken, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448731798",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_praktikum-commercial-operations-account-management-munich-41922",
+            "title": "Praktikum Commercial Operations & Account Management",
+            "company": "Carwow",
+            "location": "Munich",
+            "description": "Praktikum Commercial Operations &amp; Account Management UNSERE MISSION Wir wollen die erste Anlaufstelle für den Autowechsel werden. Mit einer Kombination aus Technologie, Medien und tiefem Verständnis für den Automobilsektor haben wir schon jetzt die Art wie Menschen Autos (ver)kaufen, vermarkten ",
+            "url": "https://www.arbeitnow.com/jobs/companies/carwow/praktikum-commercial-operations-account-management-munich-41922",
+            "published": "2026-08-07T05:40:11+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-consultant-murex-capital-markets-295881",
+            "title": "(Senior) Consultant* - Murex/Capital Markets",
+            "company": "capco",
+            "location": "Germany",
+            "description": "&lt;p class=&quot;isSelectedEnd&quot;&gt;Location: Frankfurt, Berlin, München oder Wien (Hybrid) | Practice Area: Capital Markets | Type: Permanent&lt;/p&gt; &lt;p class=&quot;isSelectedEnd&quot;&gt;&lt;strong&gt;Gestalte die Zukunft moderner Kapitalmarktplattformen mit Murex MX.3&lt;/strong&gt;&lt;",
+            "url": "https://www.arbeitnow.com/jobs/companies/capco/senior-consultant-murex-capital-markets-295881",
+            "published": "2026-08-06T23:55:22+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_staff-machine-learning-engineer-london-282186",
+            "title": "Staff Machine Learning Engineer",
+            "company": "Waymo",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;Waymo is an autonomous driving technology company with the mission to be the world&#39;s most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World&#39;s Most Experi",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/waymo/staff-machine-learning-engineer-london-282186",
+            "published": "2026-08-07T06:55:06+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-machine-learning-engineer-simulation-london-184282",
+            "title": "Senior Machine Learning Engineer, Simulation",
+            "company": "Waymo",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;Waymo is an autonomous driving technology company with the mission to be the world&#39;s most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World&#39;s Most Experi",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/waymo/senior-machine-learning-engineer-simulation-london-184282",
+            "published": "2026-08-07T06:55:06+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-machine-learning-engineer-london-uk-lon-40br-simulation-7xw-207903",
+            "title": "Senior Machine Learning Engineer / London (UK-LON-40BR) / Simulation (7XW)",
+            "company": "Waymo",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;Waymo is an autonomous driving technology company with the mission to be the world&#39;s most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World&#39;s Most Experi",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/waymo/senior-machine-learning-engineer-london-uk-lon-40br-simulation-7xw-207903",
+            "published": "2026-08-07T06:55:06+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_machine-learning-engineer-london-134903",
+            "title": "Machine Learning Engineer",
+            "company": "Waymo",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;Waymo is an autonomous driving technology company with the mission to be the world&#39;s most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World&#39;s Most Experi",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/waymo/machine-learning-engineer-london-134903",
+            "published": "2026-08-07T06:55:05+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_director-of-engineering-london-425937",
+            "title": "Director of Engineering, London",
+            "company": "Waymo",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;Waymo is an autonomous driving technology company with the mission to be the world&#39;s most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World&#39;s Most Experi",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/waymo/director-of-engineering-london-425937",
+            "published": "2026-08-07T06:55:05+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_associate-product-manager-london-278986",
+            "title": "Associate Product Manager",
+            "company": "Lendable",
+            "location": "London,  United Kingdom",
+            "description": "About Lendable Lendable is on a mission to build the world's best technology to help people get credit and save money. We're building one of the world’s leading fintech companies and are off to a strong start: One of the UK’s newest unicorns with a team of just over 700 people Among the fastest-grow",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/lendable/associate-product-manager-london-278986",
+            "published": "2026-08-07T06:40:13+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450078337",
+            "title": "Werkstudent Qualitätsmanagement Marine-Schiffbau (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "WOFÜR WIR SIE SUCHEN Unterstützung des Qualitätsmanagements im operativen Tagesgeschäft und bei Optimierungsprojekten Mitarbeit bei der Aufrechterhaltung und Weiterentwicklung des integrierten Managementsystems Erstellung, Pflege und Revision von Dokumenten und Prozessunterlagen Unterstützung im Pro",
+            "url": "https://www.linkedin.com/jobs/view/4450078337",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450068609",
+            "title": "Werkstudent Wettbewerbsanalyse (w/m/d)",
+            "company": "STIHL",
+            "location": "Waiblingen, Baden-Württemberg, Germany",
+            "description": "Arbeiten bei STIHL heißt, von Anfang an etwas zu bewegen. Wir suchen Menschen, die Verantwortung übernehmen, ihre Ideen einbringen und gemeinsam wachsen wollen. Ob innovative Technologien, starke Produkte oder zukunftsweisende Projekte – bei uns findest du Raum, um Wirkung zu entfalten. Denn jeder B",
+            "url": "https://www.linkedin.com/jobs/view/4450068609",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448722674",
+            "title": "Werkstudent Forderungsmanagement (m/w/d)",
+            "company": "Renault Retail Group Deutschland GmbH",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Wir sind die Renault Retail Group Deutschland. Als Teil des international agierenden Renault-Konzerns sind wir mit rund 730 Mitarbeitenden an 13 Standorten in den Metropolen Berlin, Frankfurt am Main, München, Köln und Hamburg vertreten. Unser Kerngeschäft ist der Verkauf unserer Fahrzeuge der Marke",
+            "url": "https://www.linkedin.com/jobs/view/4448722674",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448724863",
+            "title": "Werkstudent (m/w/d) – HMI",
+            "company": "e.solutions GmbH",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Die Zukunft des Autos findet im Innenraum statt. Die Software dazu entwickeln wir! Als Joint Venture der CARIAD SE und der Elektrobit Automotive GmbH entwickeln wir hochkomplexe Lösungen für die Kommunikation im und aus dem Auto. Für unsere Kunden aus dem VW-Konzern gestalten wir Frameworks, Applika",
+            "url": "https://www.linkedin.com/jobs/view/4448724863",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450082049",
+            "title": "Werkstudent Produktion und Mechatronik Montage (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Bremen, Bremen, Germany",
+            "description": "WOFÜR WIR SIE SUCHEN Aufbau mechatronischer Systeme Durchführen von Funktionsprüfungen Unterstützung im Bereich Wareneingang WAS SIE MITBRINGEN SOLLTEN Studium im Bereich Mechatronik, Elektrotechnik, Maschinenbau oder vergleichbaren Studiengängen Qualifikation in Form einer Berufsausbildung (Industr",
+            "url": "https://www.linkedin.com/jobs/view/4450082049",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450065751",
+            "title": "Python Developer (m/w/d) – Backend & Data Engineering",
+            "company": "Stiftung Kirchliches Rechenzentrum Südwestdeutschland",
+            "location": "Eggenstein, Baden-Württemberg, Germany",
+            "description": "Deine Mission - Du entwickelst das datengetriebene Herz unserer Services Als Python Developer bist Du der Experte für die Konzeption, Entwicklung und Optimierung unserer datenintensiven Anwendungen. Dein Fokus liegt auf der Implementierung performanter Backend-Services und der Sicherstellung geschäf",
+            "url": "https://www.linkedin.com/jobs/view/4450065751",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450081256",
+            "title": "Praktikum Weiterentwicklung Testroutine für EC-Motoren und Messdatenauswertung",
+            "company": "STIHL",
+            "location": "Waiblingen, Baden-Württemberg, Germany",
+            "description": "Arbeiten bei STIHL heißt, von Anfang an etwas zu bewegen. Wir suchen Menschen, die Verantwortung übernehmen, ihre Ideen einbringen und gemeinsam wachsen wollen. Ob innovative Technologien, starke Produkte oder zukunftsweisende Projekte – bei uns findest du Raum, um Wirkung zu entfalten. Denn jeder B",
+            "url": "https://www.linkedin.com/jobs/view/4450081256",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450082082",
+            "title": "Praktikum Programmierung Elektronik-Prüfsysteme & Tools",
+            "company": "STIHL",
+            "location": "Waiblingen, Baden-Württemberg, Germany",
+            "description": "Arbeiten bei STIHL heißt, von Anfang an etwas zu bewegen. Wir suchen Menschen, die Verantwortung übernehmen, ihre Ideen einbringen und gemeinsam wachsen wollen. Ob innovative Technologien, starke Produkte oder zukunftsweisende Projekte – bei uns findest du Raum, um Wirkung zu entfalten. Denn jeder B",
+            "url": "https://www.linkedin.com/jobs/view/4450082082",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Hochschulabschluss'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448736133",
+            "title": "Prüfingenieur Fahrzeuge / Kfz Sachverständiger (m/w/d) ggf. zur Weiterbildung",
+            "company": "DEKRA",
+            "location": "Ludwigshafen, Rhineland-Palatinate, Germany",
+            "description": "Prüfingenieur Fahrzeuge / Kfz Sachverständiger (m/w/d) Ludwigshafen, DE, 67071 Einsatzbereich:  Fahrzeugprüfung Einstiegslevel:  Berufseinsteiger:innen Vertragsart:  Unbefristeter Vertrag Vollzeit/Teilzeit:  Vollzeit Mobiles Arbeiten:  Nein Job ID:  6238 Veröffentlichungsdatum:  23.07.2026 Diese Tät",
+            "url": "https://www.linkedin.com/jobs/view/4448736133",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Mechanical Engineer'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450062720",
+            "title": "Mechanical Engineer (m/f/d)",
+            "company": "Spheros Group",
+            "location": "Gilching, Bavaria, Germany",
+            "description": "Spheros is a global technology company and market leader in the development and production of innovative solutions for heating systems, air conditioning and refrigeration technology, as well as intelligent regulation and control systems. We are a partner of the international commercial vehicle indus",
+            "url": "https://www.linkedin.com/jobs/view/4450062720",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450061728",
+            "title": "Entwicklungsingenieur Konstruktion (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Lohmar, North Rhine-Westphalia, Germany",
+            "description": "WOFÜR WIR SIE SUCHEN Entwicklung, Konstruktion und Modellierung von geschützten Fahrzeugen mithilfe von Siemens NX und Teamcenter Erstellung von 3D - CAD - Modellen und Konstruktionszeichnungen Erstellung von Schweißbaugruppen Durchführung von Bauraumuntersuchungen Auslegung von Einzelteilen, Baugru",
+            "url": "https://www.linkedin.com/jobs/view/4450061728",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450082053",
+            "title": "Systemingenieur Component Systems (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Kassel, Hesse, Germany",
+            "description": "WOFÜR WIR SIE SUCHEN Führung interdisziplinärer Fachteams zur Stellung von Baugruppenspezifikationen Abstimmung mit der Sub-System-Ebene zur Beauftragung der Realisierung mit den Bereichen System, Software sowie Elektrik / Elektronik Klärung der Verifikations- und Integrationsplanung in Kollaboratio",
+            "url": "https://www.linkedin.com/jobs/view/4450082053",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450077401",
+            "title": "(Senior) Climate & Energy Data Scientist (f/m/d)",
+            "company": "Climate Analytics",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Job Description We are seeking a (Senior) Climate & Energy Data Scientist to strengthen our scenario and data capabilities at the interface of global mitigation pathways, climate policy analysis, and decision-relevant insights for countries. In this role, you will contribute to core projects includi",
+            "url": "https://www.linkedin.com/jobs/view/4450077401",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448735297",
+            "title": "Applied AI Engineer (all genders)",
+            "company": "MAI Group",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Über Uns Wir sind MAI Marketing Automation Intelligence – eine der Top 20 Digitalagenturgruppen in Deutschland mit rund 400 Expert:innen, die datengetriebenes Marketing neu denken. Für unsere Tochtergesellschaft mediaworx in Berlin und Augsburg suchen wir eine engagierte Persönlichkeit, die Lust hat",
+            "url": "https://www.linkedin.com/jobs/view/4448735297",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448732392",
+            "title": "Forward Deployed Engineer Applied AI (f/m/x)",
+            "company": "paretos",
+            "location": "Heidelberg, Baden-Württemberg, Germany",
+            "description": "paretos ist die führende KI-basierte Decision Intelligence Plattform für effektive, datengesteuerte Entscheidungen in ganzen Unternehmen. Unsere Business Agents ermöglichen es, komplexe Datenmengen auszuwerten, Szenarien vorherzusagen und optimale Maßnahmen abzuleiten. Vom Demand Forecasting über Re",
+            "url": "https://www.linkedin.com/jobs/view/4448732392",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448734531",
+            "title": "Senior ML Engineer - Search & LLM Ops",
+            "company": "RavenPack",
+            "location": "Berlin, Germany",
+            "description": "About us At RavenPack, we are at the forefront of developing the next generation of generative AI tools for the finance industry and beyond. With 20 years of experience as a leading big data analytics provider for financial services, we empower our clients—including some of the world's most successf",
+            "url": "https://www.linkedin.com/jobs/view/4448734531",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4399505564",
+            "title": "Test Engineer (all gender) Flight Control System - Flight Management System",
+            "company": "ALTEN",
+            "location": "Manching, Bavaria, Germany",
+            "description": "Die ALTEN Consulting Services GmbH bietet mit über 20 Jahren Branchenerfahrung ihren namhaften Kunden aus Industrie und Wirtschaft hochspezialisierte Engineering- und IT-Dienstleistungen zur gemeinsamen Realisierung von branchen- und technologieübergreifenden Lösungen an. Kompetenz, Engagement und L",
+            "url": "https://www.linkedin.com/jobs/view/4399505564",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448728823",
+            "title": "Senior IT Business Analyst Insurance (all genders) DE",
+            "company": "BSI",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Alle reden von Digitalisierung – Wir machen es. Als Hersteller von Europas #1 CRM/CX-Plattform entwickeln wir innovative Softwareprodukte in den Bereichen Kundenbeziehungsmanagement, Marketing Automation und Machine Learning. Unternehmen bei der Digitalisierung und der konsequenten Kundenzentrierung",
+            "url": "https://www.linkedin.com/jobs/view/4448728823",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450064518",
+            "title": "Mitarbeiter (m/w/d) Prozessmanagement",
+            "company": "GO! Express & Logistics",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "Deine Aufgaben Prozessmanagement weiterentwickeln – Du identifizierst, analysierst, dokumentierst und optimierst Geschäftsprozesse entlang der gesamten Wertschöpfungskette. Prozessdigitalisierung vorantreiben – Du überführst bestehende Prozesse in digitale Prozessmodelle und sorgst für eine transpar",
+            "url": "https://www.linkedin.com/jobs/view/4450064518",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448740132",
+            "title": "Business Analyst",
+            "company": "FetchJobs.co",
+            "location": "Germany",
+            "description": "About The Company ISR Information Products AG is a leading provider of innovative digital solutions, dedicated to transforming business processes through technology. With a strong commitment to excellence and a focus on customer-centricity, ISR empowers organizations to optimize their workflows, enh",
+            "url": "https://www.linkedin.com/jobs/view/4448740132",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448737113",
+            "title": "Business Process & Operations Consultant",
+            "company": "CaseBuddy.io",
+            "location": "Germany",
+            "description": "Company Description CaseBuddy is a curated talent network matching Business, Data, Product, and Project professionals with leading companies across Germany and Europe — for both full-time positions and flexible contract engagements. We work directly with hiring companies to place vetted talent into ",
+            "url": "https://www.linkedin.com/jobs/view/4448737113",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450075415",
+            "title": "Product Manager Roadmap und Produktanforderungen (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Kiel, Schleswig-Holstein, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450075415",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448720828",
+            "title": "Kfz-Mechatroniker:in (m/w/d)",
+            "company": "Autohaus Keller GmbH & Co. KG",
+            "location": "Limburg an der Lahn, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448720828",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450079423",
+            "title": "Mitarbeiter Instandhaltung/Maintenance (w/m/d)",
+            "company": "Niterra UK Ltd",
+            "location": "Duisburg, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450079423",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450011314",
+            "title": "Technischer Mitarbeiter LKW-Werkstatt (m/w/d)",
+            "company": "AUTOKONTOR BAYERN GmbH",
+            "location": "Zörbig, Saxony-Anhalt, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450011314",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450064808",
+            "title": "Inbetriebnehmer (alle Geschlechter)",
+            "company": "Maschinenfabrik Herkules Hans Thoma GmbH",
+            "location": "Siegen, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450064808",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450075572",
+            "title": "Prüftechniker / Prüfingenieur (m/w/d)",
+            "company": "Treo - Labor für Umweltsimulation GmbH",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450075572",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450065568",
+            "title": "Technik Projektleiter Taktiksimulation (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Bremen, Bremen, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450065568",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448739442",
+            "title": "Data Analyst - R, Statistics & Data Processing - Hybrid - Frankfurt - €60,000-75,000",
+            "company": "Findr",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448739442",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4448726748",
+            "title": "Senior DataOps Engineer / Software Engineer",
+            "company": "Zero to One Search | Recruitment Agency",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448726748",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450081415",
+            "title": "Product Manager (m/w/d)",
+            "company": "WEGMANN automotive GmbH",
+            "location": "Veitshöchheim, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450081415",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000142063250",
+            "title": "Pflichtpraktikum im Bereich Operational Excellence in der Fertigung",
+            "company": "Bosch",
+            "location": "Bühl, BW, de",
+            "description": "Dein Herz schlägt für den Wertstrom und die Produktion? Wir fertigen als Innovationsführer und Leitwerk im internationalen Produktionsnetzwerk Thermomanagementsysteme für die E-Mobilität der Zukunft! &#xa0; Du unterstützt aktiv den Neuanlauf neuer Produkte und Produktionsprozesse, indem du diese von",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142063250",
+            "published": "2026-08-07T07:35:54.123Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000142056459",
+            "title": "Werkstudent im Bereich MEMS-Sensorik (w/m/div.)",
+            "company": "Bosch",
+            "location": "Reutlingen, BW, de",
+            "description": "Während deiner Werkstudententätigkeit unterstützt du unser Team tatkräftig bei der detaillierten Analyse und Charakterisierung von MEMS-Sensoren, die in den Schlüsselbereichen Consumer Electronics sowie Automotive zum Einsatz kommen. Dabei lernst du modernste Messverfahren kennen und trägst direkt z",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142056459",
+            "published": "2026-08-07T06:40:54.737Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000142052779",
+            "title": "Pflichtpraktikum im Learning & Skill Management - Bosch Global Real Estate Academy",
+            "company": "Bosch",
+            "location": "Gerlingen, BW, de",
+            "description": "Starte dein Pflichtpraktikum bei der Bosch Global Real Estate Academy und wirke an innovativen Lern‑ und Skillthemen mit. Dich erwartet ein praxisnahes Umfeld, in dem du Verantwortung übernimmst und eigene Ideen einbringen kannst. Im Rahmen deines Praktikums unterstützt du die Bosch Global Real Esta",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142052779",
+            "published": "2026-08-07T06:13:01.880Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "smartr_BoschGroup_744000142058903",
+            "title": "Executive Assistant / Fachreferent des Bereichsvorstands (w/m/div.)",
+            "company": "Bosch",
+            "location": "München, BY, de",
+            "description": "Strategie & Transformation :&#xa0;Mitwirkung bei der Entwicklung der Geschäftsbereichsstrategie sowie Steuerung und Nachverfolgung strategischer Initiativen und Transformationsprojekte. Management Support: Erstellung von Entscheidungsvorlagen, Präsentationen und Vorträgen für den Bereichsvorstand so",
+            "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142058903",
+            "published": "2026-08-07T07:09:47.066Z",
+            "source": "Bosch (Direct)"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "gh_wayve_8622191002",
+            "title": "Machine Learning Engineer, ADAS",
+            "company": "Wayve",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;h2&gt;&lt;strong&gt;About us&nbsp;&lt;/strong&gt;&nbsp;&nbsp;&lt;/h2&gt; &lt;p&gt;Founded in 2017, Wayve is the leading developer of Embodied AI technology.&nbsp; Our advanced AI software and foundation models enable vehicles to perceive, understand, an",
+            "url": "https://wayve.firststage.co/jobs?gh_jid=8622191002",
+            "published": "2026-07-08T04:02:08-04:00",
+            "source": "Wayve (Direct)"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450080339",
+            "title": "Produktmanager Autonome Wasserfahrzeuge (USV) / Drohnenboote (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450080339",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450076372",
+            "title": "Produktmanager (m/w/d) – Bereich Küchen-Elektrogeräte",
+            "company": "Häfele SE & Co KG",
+            "location": "Nagold, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450076372",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Produktmanager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448740119",
+            "title": "Produktmanager (m/w/d) Markierungswerkstoffe",
+            "company": "Triflex GmbH & Co. KG",
+            "location": "Minden, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448740119",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448739232",
+            "title": "WORKING STUDENT FOR PRODUCT STRATEGY (M/F/D)",
+            "company": "Hyundai Motor Europe Technical Center GmbH",
+            "location": "Rüsselsheim, Hesse, Germany",
+            "description": "To start shortly, we are currently seeking an WORKING STUDENT FOR PRODUCT STRATEGY (M/F/D) You will be responsible for Market Research for Zero Emission Commercial Vehicles - Heavy Duty and Light Duty Vehicles Analyzing Commercial Vehicle Benchmark data Monitoring and Investigation of new CV technol",
+            "url": "https://www.linkedin.com/jobs/view/4448739232",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Simulation Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448724944",
+            "title": "Simulation Software Architect",
+            "company": "Airbus Defence and Space",
+            "location": "Manching, Bavaria, Germany",
+            "description": "Job Description: We develop top-notch, high-fidelity Engineering and Training Simulations for a variety of aircraft, supporting the entire development lifecycle. We are looking for a Simulation Software Architect (d/f/m) to reinforce our simulation team in Manching. You will be responsible for defin",
+            "url": "https://www.linkedin.com/jobs/view/4448724944",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450076459",
+            "title": "Product Owner e-Commerce (m/w/d)",
+            "company": "ifm",
+            "location": "Essen, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450076459",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448712982",
+            "title": "AI Solutions Engineer (all genders)",
+            "company": "MAI Group",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4448712982",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450076134",
+            "title": "Technical Support Engineer",
+            "company": "BYD",
+            "location": "Magdeburg, Saxony-Anhalt, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450076134",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 28,
+          "reason": "skills: Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4448734255",
+            "title": "Junior PHP Entwickler (Frankfurt)",
+            "company": "Zero to One Search | Recruitment Agency",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Junior PHP Entwickler Location : Frankfurt am Main, hybrid Contract : Permanent Are you interested in the next big challenge? Are you fascinated by agile working, digital business models and a dynamic team? Here's the opportunity to join a modern FinTech environment with agile processes, short decis",
+            "url": "https://www.linkedin.com/jobs/view/4448734255",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Product Manager' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_remote-engineering-manager-69043",
+            "title": "Engineering Manager",
+            "company": "prolific",
+            "location": "Remote",
+            "description": "&lt;h2 style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: #7e8c8d;&quot;&gt;Engineering Manager&amp;nbsp;&lt;/span&gt;&lt;/h2&gt; &lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(126, 140, 141);&quot;&gt;Engineering&lt;/span&gt;&lt;/p&gt; &lt;p&gt;&lt;",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/prolific/remote-engineering-manager-69043",
+            "published": "2026-08-07T06:55:44+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Machine Learning Engineer'; skills: Machine Learning; keyword bonus: 1; (seniority warning); +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "too_senior",
+          "job": {
+            "id": "arbeitnow_staff-machine-learning-engineer-simulation-london-266087",
+            "title": "Staff Machine Learning Engineer, Simulation",
+            "company": "Waymo",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;Waymo is an autonomous driving technology company with the mission to be the world&#39;s most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World&#39;s Most Experi",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/waymo/staff-machine-learning-engineer-simulation-london-266087",
+            "published": "2026-08-07T06:55:06+00:00",
+            "source": "Arbeitnow"
+          }
+        }
+      ]
     }
   ]
 }
