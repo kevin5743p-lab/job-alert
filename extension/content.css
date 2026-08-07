@@ -1,62 +1,169 @@
-/* content.css — styles for the floating button + slide-in panel.
-   IDs/classes are prefixed jobcopilot-/jc- to avoid clashing with LinkedIn. */
+/* content.css — the floating buttons and the slide-in panel, injected into
+   other people's pages. IDs/classes are prefixed jobcopilot-/jc- to avoid
+   clashing with the host.
 
-#jobcopilot-fab {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 2147483646;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 22px;
-  background: #4f46e5;
-  color: #fff;
-  font: 600 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-}
-#jobcopilot-fab:hover { background: #4338ca; }
+   This file repeats the palette from theme.css instead of importing it, and
+   that duplication is deliberate: :root belongs to the host page, so tokens
+   declared there would be the host's, not ours. They are declared on our own
+   elements below. Keep the two files in step.
 
-/* Autofill: make every touched field obvious, so nothing is filled invisibly. */
+   The panel follows the user's own light/dark preference rather than the host
+   page's, because it is our surface and it is the same surface they see in the
+   dashboard. */
+
+#jobcopilot-panel,
+#jobcopilot-fab,
+#jobcopilot-fill,
 .jobcopilot-filled {
-  outline: 2px solid #4f46e5 !important;
-  outline-offset: 1px;
-  background-color: #eef2ff !important;
-  transition: outline-color 1s ease, background-color 1s ease;
+  --jc-bg: #0a0c11;
+  --jc-surface: #111520;
+  --jc-surface-2: #171c29;
+  --jc-surface-3: #1f2634;
+  --jc-border: #232a3a;
+  --jc-border-hi: #333c52;
+  --jc-text: #e9edf5;
+  --jc-text-2: #9aa5ba;
+  --jc-text-3: #6b768c;
+  --jc-accent: #7c8cff;
+  --jc-accent-hi: #98a4ff;
+  --jc-accent-dim: #2a2f52;
+  --jc-accent-line: #3b4485;
+  --jc-on-accent: #080a10;
+  --jc-fill: #2dd4bf;          /* the fill button, kept distinct from tailor */
+  --jc-fill-hi: #5eead4;
+  --jc-good: #4ade80;
+  --jc-good-dim: #10281c;
+  --jc-good-line: #1d5138;
+  --jc-warn: #fbbf46;
+  --jc-warn-dim: #2a2110;
+  --jc-warn-line: #5c4515;
+  --jc-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --jc-ease: cubic-bezier(.2, .7, .3, 1);
+  --jc-shadow: 0 10px 34px rgba(0, 0, 0, .5);
 }
 
+@media (prefers-color-scheme: light) {
+  #jobcopilot-panel,
+  #jobcopilot-fab,
+  #jobcopilot-fill,
+  .jobcopilot-filled {
+    --jc-bg: #f6f7fa;
+    --jc-surface: #ffffff;
+    --jc-surface-2: #f2f4f8;
+    --jc-surface-3: #e8ecf2;
+    --jc-border: #e0e5ec;
+    --jc-border-hi: #c8d0db;
+    --jc-text: #121620;
+    --jc-text-2: #586272;
+    --jc-text-3: #838d9c;
+    --jc-accent: #4f46e5;
+    --jc-accent-hi: #4338ca;
+    --jc-accent-dim: #eef0ff;
+    --jc-accent-line: #c7cbfb;
+    --jc-on-accent: #ffffff;
+    --jc-fill: #0f766e;
+    --jc-fill-hi: #115e59;
+    --jc-good: #157f3b;
+    --jc-good-dim: #e7f6ec;
+    --jc-good-line: #b7e0c4;
+    --jc-warn: #8a5a00;
+    --jc-warn-dim: #fff6dd;
+    --jc-warn-line: #f0d79a;
+    --jc-shadow: 0 10px 34px rgba(16, 24, 40, .18);
+  }
+}
+
+/* ── Floating buttons ──────────────────────────────────────────────────── */
+#jobcopilot-fab,
 #jobcopilot-fill {
   position: fixed;
   right: 20px;
-  bottom: 68px;
   z-index: 2147483646;
-  padding: 10px 16px;
+  padding: 11px 18px;
   border: none;
-  border-radius: 22px;
-  background: #0f766e;
-  color: #fff;
-  font: 600 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  border-radius: 999px;
+  font: 600 14px/1 var(--jc-font);
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .3);
+  transition: transform .16s var(--jc-ease), box-shadow .16s var(--jc-ease),
+              background .16s var(--jc-ease);
+  animation: jc-fab-in .32s var(--jc-ease) both;
 }
-#jobcopilot-fill:hover { background: #115e59; }
+#jobcopilot-fab { bottom: 20px; background: var(--jc-accent); color: var(--jc-on-accent); }
+#jobcopilot-fill { bottom: 68px; background: var(--jc-fill); color: var(--jc-on-accent); }
+#jobcopilot-fab:hover { background: var(--jc-accent-hi); }
+#jobcopilot-fill:hover { background: var(--jc-fill-hi); }
+#jobcopilot-fab:hover,
+#jobcopilot-fill:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0, 0, 0, .36); }
+#jobcopilot-fab:active,
+#jobcopilot-fill:active { transform: translateY(0); }
 
+/* The panel is defended against hostile host CSS; these two were not, and they
+   are the more exposed of the pair — a bare <button> on someone else's page,
+   inheriting every rule that page has for buttons. A host styling its own
+   buttons with `max-width: 40px` reduced ours to a 40px stub with the label
+   clipped away, which is indistinguishable from the button being broken.
+   Measured on a test page doing exactly that.
+   Asserted separately from the panel's block because these live outside it. */
+#jobcopilot-fab,
+#jobcopilot-fill {
+  box-sizing: border-box !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  float: none !important;
+  clip-path: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  white-space: nowrap !important;
+  text-indent: 0 !important;
+  text-align: center !important;
+  vertical-align: baseline !important;
+  display: inline-block !important;
+  position: fixed !important;
+}
+
+@keyframes jc-fab-in {
+  from { opacity: 0; transform: translateY(10px) scale(.94); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Autofill: make every touched field obvious, so nothing is filled invisibly.
+   This lands on the HOST page's own inputs, which is why it needs !important
+   and why its colours are tokens declared on this class rather than inherited
+   from the panel — it is nowhere near the panel in the tree. */
+.jobcopilot-filled {
+  outline: 2px solid var(--jc-accent) !important;
+  outline-offset: 1px;
+  background-color: var(--jc-accent-dim) !important;
+  transition: outline-color 1s ease, background-color 1s ease;
+}
+
+/* ── Panel ─────────────────────────────────────────────────────────────── */
 #jobcopilot-panel {
   position: fixed;
   top: 0;
   right: 0;
-  width: 420px;
+  width: 440px;
   max-width: 92vw;
   height: 100vh;
   z-index: 2147483647;
-  background: #ffffff;
-  color: #1f2328;
-  box-shadow: -6px 0 24px rgba(0, 0, 0, 0.18);
+  background: var(--jc-bg);
+  color: var(--jc-text);
+  color-scheme: dark light;
+  box-shadow: var(--jc-shadow);
   transform: translateX(100%);
-  transition: transform 0.22s ease;
+  transition: transform .26s var(--jc-ease);
   display: flex;
   flex-direction: column;
-  font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font: 14px/1.55 var(--jc-font);
+  border-left: 1px solid var(--jc-border);
 }
 #jobcopilot-panel.open { transform: translateX(0); }
 
@@ -64,18 +171,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
-  background: #4f46e5;
-  color: #fff;
+  padding: 14px 18px;
+  background: var(--jc-surface);
+  border-bottom: 1px solid var(--jc-border);
+  color: var(--jc-text);
   flex: 0 0 auto;
 }
-#jobcopilot-panel-title { font-weight: 600; font-size: 15px; }
+#jobcopilot-panel-title { font-weight: 650; font-size: 15px; letter-spacing: -.01em; }
 #jobcopilot-close {
-  border: none; background: transparent; color: #fff;
-  font-size: 16px; cursor: pointer;
+  border: none; background: transparent; color: var(--jc-text-2);
+  font-size: 16px; cursor: pointer; line-height: 1;
+  padding: 4px 6px; border-radius: 6px;
+  transition: background .12s var(--jc-ease), color .12s var(--jc-ease);
 }
+#jobcopilot-close:hover { background: var(--jc-surface-3); color: var(--jc-text); }
 
-#jobcopilot-panel-body { padding: 16px; overflow-y: auto; }
+#jobcopilot-panel-body { padding: 18px; overflow-y: auto; }
 
 /* Host pages style their own elements aggressively — Ashby zeroes line-height
    and positions divs absolutely — and those rules reach inside the panel,
@@ -95,13 +206,15 @@
 /* Children only. Applying this to the panel itself overrode the very transform
    that slides it in and out — with transform forced to none the panel was
    permanently on screen and the close button appeared dead, because removing
-   .open changed nothing. Same reason position is re-asserted below. */
+   .open changed nothing. Same reason position is re-asserted below.
+   These three rules must stay in this order and after the reset above. */
 #jobcopilot-panel * { transform: none !important; }
 #jobcopilot-panel {
   position: fixed !important;
   transform: translateX(100%) !important;
 }
 #jobcopilot-panel.open { transform: translateX(0) !important; }
+
 #jobcopilot-panel div,
 #jobcopilot-panel p,
 #jobcopilot-panel ul,
@@ -111,73 +224,137 @@
 #jobcopilot-panel span { display: inline !important; }
 #jobcopilot-panel button { display: inline-block !important; }
 
-#jobcopilot-panel .jc-toolbar { margin-bottom: 14px; display: flex; gap: 6px; }
+/* The head has to outrank "#jobcopilot-panel div", which is an id plus a type
+   selector and therefore more specific than a bare id — !important on both
+   sides doesn't change that. It was losing, which is why the close button sat
+   next to the title all this time instead of at the right-hand edge: the head
+   was never actually a flex row, so justify-content had nothing to act on.
+   Two ids settles it. */
+#jobcopilot-panel #jobcopilot-panel-head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+/* ── Panel contents ────────────────────────────────────────────────────── */
+#jobcopilot-panel .jc-toolbar { margin-bottom: 16px; display: flex; gap: 7px; }
 #jobcopilot-panel .jc-toolbar button {
-  flex: 1; padding: 9px 6px; border: none; border-radius: 6px;
-  background: #4f46e5; color: #fff; font-weight: 600; font-size: 13px; cursor: pointer;
+  flex: 1; padding: 10px 6px; border: 1px solid var(--jc-accent);
+  border-radius: 8px; background: var(--jc-accent); color: var(--jc-on-accent);
+  font-weight: 600; font-size: 13px; cursor: pointer; font-family: var(--jc-font);
+  transition: background .12s var(--jc-ease), border-color .12s var(--jc-ease);
 }
-#jobcopilot-panel .jc-toolbar button:hover { background: #4338ca; }
+#jobcopilot-panel .jc-toolbar button:hover {
+  background: var(--jc-accent-hi); border-color: var(--jc-accent-hi);
+}
 #jobcopilot-panel .jc-toolbar button.jc-secondary {
-  background: #f6f8fa; color: #1f2328; border: 1px solid #d0d7de; font-weight: 500;
+  background: var(--jc-surface-2); color: var(--jc-text);
+  border-color: var(--jc-border-hi); font-weight: 500;
 }
-#jobcopilot-panel .jc-toolbar button.jc-secondary:hover { background: #eaeef2; }
+#jobcopilot-panel .jc-toolbar button.jc-secondary:hover {
+  background: var(--jc-surface-3); border-color: var(--jc-accent-line);
+}
 
 #jobcopilot-panel .jc-saved {
-  background: #e6f4ea; color: #1a7f37; border-radius: 6px;
-  padding: 7px 10px; font-size: 12px; margin-bottom: 14px;
+  background: var(--jc-good-dim); color: var(--jc-good);
+  border: 1px solid var(--jc-good-line); border-radius: 8px;
+  padding: 8px 11px; font-size: 12px; margin-bottom: 14px;
 }
-#jobcopilot-panel .jc-saved-warn { background: #fff8c5; color: #7d4e00; }
+#jobcopilot-panel .jc-saved-warn {
+  background: var(--jc-warn-dim); color: var(--jc-warn); border-color: var(--jc-warn-line);
+}
 
-#jobcopilot-panel .jc-msg { color: #57606a; }
-#jobcopilot-panel .jc-dim { color: #8b949e; }
+#jobcopilot-panel .jc-msg { color: var(--jc-text-2); }
+#jobcopilot-panel .jc-dim { color: var(--jc-text-3); }
 
-#jobcopilot-panel .jc-section { margin-bottom: 16px; }
+#jobcopilot-panel .jc-section { margin-bottom: 18px; }
 #jobcopilot-panel h4 {
-  margin: 0 0 6px; font-size: 12px; letter-spacing: 0.04em;
-  text-transform: uppercase; color: #6e7781;
+  margin: 0 0 7px; font-size: 11px; letter-spacing: .06em !important;
+  text-transform: uppercase !important; color: var(--jc-text-3); font-weight: 600;
 }
 #jobcopilot-panel .jc-fit {
-  background: #f0f0ff; border-left: 3px solid #4f46e5;
-  padding: 8px 10px; border-radius: 4px; font-weight: 500;
+  background: var(--jc-accent-dim); border: 1px solid var(--jc-accent-line);
+  border-left: 3px solid var(--jc-accent);
+  padding: 10px 12px; border-radius: 8px; font-weight: 500;
 }
 #jobcopilot-panel p { margin: 0 0 6px; }
 
 #jobcopilot-panel ul { margin: 0; padding-left: 0; list-style: none; }
-#jobcopilot-panel .jc-exp li { margin-bottom: 10px; }
+#jobcopilot-panel .jc-exp li { margin-bottom: 12px; }
 #jobcopilot-panel .jc-bullet { font-weight: 500; }
 #jobcopilot-panel .jc-source {
-  font-size: 12px; color: #57606a; margin-top: 2px; font-style: italic;
+  font-size: 12px; color: var(--jc-text-2); margin-top: 3px; font-style: italic;
+  padding-left: 9px; border-left: 2px solid var(--jc-border-hi);
 }
 
 #jobcopilot-panel .jc-fill-list { list-style: none; padding: 0; margin: 0; }
 #jobcopilot-panel .jc-fill-list li {
-  padding: 3px 0; border-bottom: 1px solid #f0f2f5; font-size: 13px;
+  padding: 5px 0; border-bottom: 1px solid var(--jc-border); font-size: 13px;
 }
 #jobcopilot-panel .jc-fill-list li:last-child { border-bottom: none; }
 
 #jobcopilot-panel .jc-chip {
-  display: inline-block; margin: 0 4px 4px 0; padding: 2px 9px;
-  border-radius: 12px; font-size: 12px;
+  display: inline-block; margin: 0 5px 5px 0; padding: 2px 10px;
+  border-radius: 999px; font-size: 12px; font-weight: 500;
+  border: 1px solid transparent;
 }
-#jobcopilot-panel .jc-match { background: #e6f4ea; color: #1a7f37; }
-#jobcopilot-panel .jc-gap { background: #fff1e5; color: #bc4c00; }
+#jobcopilot-panel .jc-match {
+  background: var(--jc-good-dim); color: var(--jc-good); border-color: var(--jc-good-line);
+}
+#jobcopilot-panel .jc-gap {
+  background: var(--jc-warn-dim); color: var(--jc-warn); border-color: var(--jc-warn-line);
+}
 
 #jobcopilot-panel .jc-letter {
-  white-space: pre-wrap; background: #f6f8fa; border: 1px solid #eaeef2;
-  border-radius: 6px; padding: 10px; font-family: inherit; font-size: 13px;
+  white-space: pre-wrap; background: var(--jc-surface-2);
+  border: 1px solid var(--jc-border); color: var(--jc-text);
+  border-radius: 8px; padding: 12px; font-family: inherit; font-size: 13px;
 }
 #jobcopilot-panel .jc-copy {
-  margin-top: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer;
-  border: 1px solid #d0d7de; border-radius: 6px; background: #f6f8fa; color: #1f2328;
+  margin-top: 7px; padding: 5px 11px; font-size: 12px; cursor: pointer;
+  border: 1px solid var(--jc-border-hi); border-radius: 7px;
+  background: var(--jc-surface-2); color: var(--jc-text); font-family: var(--jc-font);
+  transition: background .12s var(--jc-ease), border-color .12s var(--jc-ease);
 }
-#jobcopilot-panel .jc-copy:hover { background: #eaeef2; }
+#jobcopilot-panel .jc-copy:hover {
+  background: var(--jc-surface-3); border-color: var(--jc-accent-line);
+}
 
 #jobcopilot-panel .jc-warn {
-  background: #fff8c5; border: 1px solid #eac54f; border-radius: 6px;
-  padding: 10px; font-size: 13px;
+  background: var(--jc-warn-dim); border: 1px solid var(--jc-warn-line);
+  color: var(--jc-warn); border-radius: 8px; padding: 11px; font-size: 13px;
 }
 #jobcopilot-panel .jc-warn ul { list-style: disc; padding-left: 18px; margin-top: 6px; }
 #jobcopilot-panel .jc-okcheck {
-  background: #e6f4ea; border: 1px solid #4ac26b; border-radius: 6px;
-  padding: 10px; color: #1a7f37;
+  background: var(--jc-good-dim); border: 1px solid var(--jc-good-line);
+  border-radius: 8px; padding: 11px; color: var(--jc-good);
+}
+
+/* Sections arrive in sequence as the panel slides in, rather than the whole
+   report appearing at once. */
+#jobcopilot-panel .jc-section { animation: jc-panel-rise .3s var(--jc-ease) both; }
+#jobcopilot-panel .jc-section:nth-of-type(1) { animation-delay: 60ms; }
+#jobcopilot-panel .jc-section:nth-of-type(2) { animation-delay: 100ms; }
+#jobcopilot-panel .jc-section:nth-of-type(3) { animation-delay: 140ms; }
+#jobcopilot-panel .jc-section:nth-of-type(4) { animation-delay: 180ms; }
+#jobcopilot-panel .jc-section:nth-of-type(n+5) { animation-delay: 220ms; }
+
+/* Opacity only, on purpose. The children-only "transform: none !important"
+   above outranks a keyframe — an !important declaration beats an animation —
+   so a translate here would simply be ignored, and a rule claiming otherwise
+   would be a comment describing something that does not happen. Fading in
+   sequence reads well enough and costs nothing. */
+@keyframes jc-panel-rise {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #jobcopilot-panel,
+  #jobcopilot-panel *,
+  #jobcopilot-fab,
+  #jobcopilot-fill {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
 }
