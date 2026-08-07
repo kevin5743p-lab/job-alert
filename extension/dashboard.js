@@ -50,6 +50,11 @@ const SORTS = {
   // hand-tailored jobs have none), so unknown sorts to the bottom either way
   // rather than pretending to be 1970.
   posted: { label: "Released", get: (r) => Date.parse(r.posted_at) || 0, dir: -1 },
+  // When a scan brought this in. Shown because it is the date the seven-day
+  // archive rule counts from — a job that disappears on a timer should at least
+  // display the clock it is being measured against. It also says which run a
+  // job arrived on: two scans an hour apart show as different times.
+  found: { label: "Found", get: (r) => Date.parse(r.discovered_at) || 0, dir: -1 },
   updated: { label: "Updated", get: (r) => Date.parse(r.updated_at) || 0, dir: -1 },
 };
 const SORT_PREF = "dashboardSort";
@@ -302,6 +307,7 @@ function rowHtml(r) {
     </td>
     <td class="muted">${esc(r.job_source || "")}</td>
     <td class="muted">${r.posted_at ? esc(fmtDate(r.posted_at)) : "—"}</td>
+    <td class="muted">${r.discovered_at ? esc(fmtDate(r.discovered_at)) : "—"}</td>
     <td class="muted">${esc(fmtDate(r.updated_at))}</td>
     <td style="white-space:nowrap">
       ${r.job_url ? `<a class="btnlink" href="${esc(r.job_url)}" target="_blank" rel="noreferrer">Open &amp; apply</a>` : ""}
