@@ -5127,6 +5127,156 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-08T19:05:41.323486",
+      "strong": [],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-mri-application-specialist-munich-71261",
+            "title": "Senior MRI Application Specialist (f/m/d)",
+            "company": "Orbem",
+            "location": "Munich",
+            "description": "We see the potential inside everything and everyone. Starting with you. Orbem uses AI to industrialize MRI, delivering non-invasive insight into everything from fruits to eggs to the human body. We are transforming what is becoming the world's largest biological dataset into actionable intelligence ",
+            "url": "https://www.arbeitnow.com/jobs/companies/orbem/senior-mri-application-specialist-munich-71261",
+            "published": "2026-08-08T17:40:24+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Marketing Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-marketing-manager-cardiff-331787",
+            "title": "Senior Product Marketing Manager",
+            "company": "Monzo",
+            "location": "Cardiff",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;🚀 We’re on a mission to make money work for everyone.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;We’re waving goodbye to the complicated and confusing ways of traditional banking.&lt;/p&gt; &lt;p&gt;After starting as a pre",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/monzo/senior-product-marketing-manager-cardiff-331787",
+            "published": "2026-08-08T18:55:29+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-legal-counsel-digital-assets-and-payments-cardiff-351675",
+            "title": "Senior Legal Counsel, Digital Assets and Payments",
+            "company": "Monzo",
+            "location": "Cardiff",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;🚀 We’re on a mission to make money work for everyone.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;We’re waving goodbye to the complicated and confusing ways of traditional banking.&lt;/p&gt; &lt;p&gt;After starting as a pre",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/monzo/senior-legal-counsel-digital-assets-and-payments-cardiff-351675",
+            "published": "2026-08-08T18:55:29+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450912548",
+            "title": "Data Analyst",
+            "company": "Haystack",
+            "location": "Germany",
+            "description": "We're hiring on behalf of a Haystack partner! The Role • Synthesize operational data into actionable automation insights, such as Overall Equipment Effectiveness (OEE) and patterns of operational issues. • Partner with a team of experienced automation design engineers to develop new technologies. • ",
+            "url": "https://www.linkedin.com/jobs/view/4450912548",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4392886520",
+            "title": "Business Analyst (m/w/d) – Lohn- und Gehaltsabrechnung",
+            "company": "Wolters Kluwer",
+            "location": "Ludwigsburg, Baden-Württemberg, Germany",
+            "description": "Schon heute die Zukunft gestalten – mit Wolters Kluwer Seit über 180 Jahren unterstützen wir Unternehmen weltweit dabei, Arbeitsprozesse einfacher, effizienter und zukunftssicher zu gestalten. Mit Niederlassungen in über 40 Ländern und Kunden in mehr als 180 Märkten sind wir ein globaler Partner für",
+            "url": "https://www.linkedin.com/jobs/view/4392886520",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4373897960",
+            "title": "KFZ-Mechatroniker:in",
+            "company": "Deutsche Bahn",
+            "location": "Meldorf, Schleswig-Holstein, Germany",
+            "description": "Für über 500 verschiedene Berufe suchen wir motivierte Mitarbeitende. Und das in ganz Deutschland. Ob erfahrene Profis oder Berufsstarter:innen - wir bieten zahlreiche Einstiegs- und Weiterbildungsmöglichkeiten. Zum nächstmöglichen Zeitpunkt suchen wir dich als Kfz-Mechatroniker:in (w/m/d) für die A",
+            "url": "https://www.linkedin.com/jobs/view/4373897960",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449264194",
+            "title": "Technical Product Manager - Robotik & Maschinenbau",
+            "company": "Smarcel - Innovative Robot Delivery",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Du willst die Plattform für die Zustellung der Zukunft mitentwickeln - mit echten Kunden, einem starken industriellen Partner und drei Produkten in unterschiedlichen Reifegraden? Wir wollen die Zustelllogistik ein zweites Mal revolutionieren - mit mobilen Paketautomaten, die auf jeden Parkplatz pass",
+            "url": "https://www.linkedin.com/jobs/view/4449264194",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 36,
+          "reason": "title fits 'Junior Data Engineer'; skills: Python; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450926191",
+            "title": "Data Engineer",
+            "company": "Haystack",
+            "location": "Greater Dusseldorf Area",
+            "description": "We're hiring on behalf of a Haystack partner! The Role • Synthesize operational data into actionable automation insights, such as Overall Equipment Effectiveness (OEE) and patterns of operational issues. • Partner with a team of experienced automation design engineers to develop new technologies. • ",
+            "url": "https://www.linkedin.com/jobs/view/4450926191",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Data Scientist' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_innomaster-big-data-engineering-part-time-masters-program-hamburg-384251",
+            "title": "InnoMaster Big Data Engineering - part-time Master's Program",
+            "company": "Innogames",
+            "location": "Hamburg",
+            "description": "Part-time Master's Program starting Oct 2026 or April 2027 &nbsp; Do you have a passion for Big Data? Do you want to make your Master studies exciting and practical? Do you wish to continue studying after your Bachelor's degree while simultaneously stepping into the professional world? And all this ",
+            "url": "https://www.arbeitnow.com/jobs/companies/innogames/innomaster-big-data-engineering-part-time-masters-program-hamburg-384251",
+            "published": "2026-08-08T17:24:04+00:00",
+            "source": "Arbeitnow"
+          }
+        }
+      ]
     }
   ]
 }
