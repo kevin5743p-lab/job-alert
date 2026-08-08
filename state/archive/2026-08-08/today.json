@@ -5277,6 +5277,178 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-08T20:54:28.307954",
+      "strong": [],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4380457153",
+            "title": "Data Engineer Salesforce Data Cloud (all genders)",
+            "company": "adesso SE",
+            "location": "Essen, North Rhine-Westphalia, Germany",
+            "description": "Wir gehören zu den Top-Adressen in der IT-Welt und fokussieren uns auf die Optimierung der Kerngeschäfts­prozesse unserer Kunden. Durch den smarten Einsatz maßgeschneiderter IT-Lösungen unterstützen wir unsere Kunden dabei, das Beste aus ihrem Business und aktuellen Technologien herauszuholen. Unser",
+            "url": "https://www.linkedin.com/jobs/view/4380457153",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4395282904",
+            "title": "Azure Data Platform Engineer (m/w/d)",
+            "company": "netgo",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Werde auch du \"part of netgo group\" - einem der größten IT-Dienstleister Deutschlands. Über 1.500 Mitarbeiter*innen an zahlreichen Standorten in ganz Deutschland erwarten dich als neues Teammitglied. Du legst Wert auf einen modernen Arbeitsplatz, ein familienfreundliches Umfeld und spannende Herausf",
+            "url": "https://www.linkedin.com/jobs/view/4395282904",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449259805",
+            "title": "Datenwissenschaftler:in",
+            "company": "Data-Talent GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Standort: München (2 Tage pro Woche vor Ort) Gehalt: je nach Qualifikation bis zu 88.000 € (Bonus inkludiert) Vertragsform: unbefristete Festanstellung Für unseren Kunden in München suchen wir einen Data Scientist (m/w/d) , welcher das Team bei der Entwicklung und Umsetzung datengetriebener Lösungen",
+            "url": "https://www.linkedin.com/jobs/view/4449259805",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4423360961",
+            "title": "Senior Business Analyst Reinsurance",
+            "company": "HDI Group",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Deine Aufgaben Fachliche Führung bei der strukturierten Anforderungsaufnahme für Reinsurance Accounting/Technical Accounting (Workshops, Interviews) und Abstimmung mit den involvierten Fachbereichen sowie Business Ownern Übersetzung fachlicher Anforderungen in umsetzbare User Stories/Spezifikationen",
+            "url": "https://www.linkedin.com/jobs/view/4423360961",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4401763444",
+            "title": "Referent:in Business Development & Analytics",
+            "company": "HDI Group",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Deine Aufgaben Aktive Mitarbeit in strategischen und operativen Projekten im Schadenbereich - von der Konzeption bis zur Umsetzung (z.B. Projektsteuerung, Projektmanagement, Koordination von Stakeholder:innen) Unterstützung und Mitgestaltung der Weiterentwicklung des Schadenbereichs der HDI Versiche",
+            "url": "https://www.linkedin.com/jobs/view/4401763444",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450914722",
+            "title": "Global Product Manager - Network Interface Connectors",
+            "company": "HARTING Technology Group",
+            "location": "Espelkamp, North Rhine-Westphalia, Germany",
+            "description": "HARTING stands for strong connections – across the globe. As one of the leading international suppliers of industrial connectivity, we are connecting customers to their digital future. And as an employer? We connect around 6,000 people at our headquarter in Espelkamp and at locations worldwide. Here",
+            "url": "https://www.linkedin.com/jobs/view/4450914722",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4105580117",
+            "title": "Product Manager / Solution Lead Leasing (m/w/d)",
+            "company": "BearingPoint",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Deine Benefits Corporate Benefits : Dazu zählen beispielsweise WellYou Gesundheitsbudget, JobRad-Leasing oder Firmenfitness mit EGYM Wellpass Flexibles Arbeiten : Ob bei Kund:innen vor Ort, im Büro, von zu Hause oder unterwegs – bei uns hast du die Möglichkeit, Arbeitsort und -zeiten so zu gestalten",
+            "url": "https://www.linkedin.com/jobs/view/4105580117",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4382466289",
+            "title": "Product Owner (m/w/d)",
+            "company": "CompuGroup Medical SE & Co. KGaA",
+            "location": "Martinsried, Bavaria, Germany",
+            "description": "Deine Aufgabe bei CGM: Als führendes Unternehmen im Bereich Softwarelösungen für das Gesundheitswesen sind wir in 19 Ländern tätig und beschäftigen fast 9.000 engagierte Mitarbeitende. Du wirst in einem dynamischen und innovativen Umfeld arbeiten, das voller Möglichkeiten steckt. Mit Deinem Einsatz ",
+            "url": "https://www.linkedin.com/jobs/view/4382466289",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451091440",
+            "title": "Jobprofil: Soltechnikerin",
+            "company": "Bundesverband Erdgas, Erdöl und Geoenergie e.V. (BVEG)",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Sie gibt uns Einblicke in ihren außergewöhnlichen Arbeitsalltag: von der detaillierten Vermessung und Modellierung unterirdischer Speicherkavernen bis hin zur Entwicklung von Speicherlösungen, die entscheidend zur Energiezukunft Deutschlands beitragen. Begleite Aura zu Vermessungsarbeiten, erhalte E",
+            "url": "https://www.linkedin.com/jobs/view/4451091440",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441317556",
+            "title": "Knowledge Engineering Consultant (all genders)",
+            "company": "Accenture DACH",
+            "location": "Kronberg, Hesse, Germany",
+            "description": "YOU ARE You are a a strong individual contributor knowledge engineer growing into a team lead. You are well versed in the full knowledge graph development lifecycle. You formulate real-world problems into practical, efficient, scalable AI and Knowledge Graph solutions, working hands-on across the li",
+            "url": "https://www.linkedin.com/jobs/view/4441317556",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4414144550",
+            "title": "Mitarbeiter Montage- und Prüfbereich (m/w/d) - befristet",
+            "company": "Liebherr Group",
+            "location": "Deggendorf, Bavaria, Germany",
+            "description": "Aufgaben Montage und Prüfung von Common Rail Komponenten im Bereich der Hochdruck-Pumpenmontage Maschinenbedienung mit hohem Automatisierungsgrad in der Serienproduktion Feststellung der Teile- und Materialverfügbarkeit anhand vorgegebener Fertigungsprogramme Arbeiten nach Arbeitsplan und Zeichnunge",
+            "url": "https://www.linkedin.com/jobs/view/4414144550",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
