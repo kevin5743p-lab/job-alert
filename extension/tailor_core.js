@@ -280,9 +280,11 @@ Score this posting 0-100 for this candidate and give one short, specific reason.
   langPref === "english_only" ? `
   * it is written in German or expects German at work; this candidate needs an
     English-speaking role.` : ""}
-- This is a search within GERMANY. Postings elsewhere have already been
-  filtered out, so judge on fit rather than distance — but if one slips through
-  and is clearly outside Germany (and not remote), score it 0 and say so.
+- LOCATION IS NOT YOURS TO JUDGE. This is a Germany-wide search and everything
+  outside Germany has already been removed before you see it. ANY German
+  location is equally acceptable — Munich, Hamburg, Salzgitter, anywhere. Never
+  lower a score, and never mention distance from the candidate's home city,
+  because the search was national on purpose. Judge the work, not the map.
 - Judge on real overlap of experience, not keyword coincidence. Being at a
   well-known employer counts for nothing on its own.
 - The reason must cite something concrete from the CV or the posting, in one
@@ -344,9 +346,11 @@ For each posting give a score from 0 to 100 and one short, specific reason.
     English-speaking role.` : ""}
 - A posting only scores above 70 if it is genuinely in their field and at their
   level. Being at a well-known employer counts for nothing on its own.
-- This is a search within GERMANY. Postings elsewhere have already been
-  filtered out, so judge on fit rather than distance — but if one slips through
-  and is clearly outside Germany (and not remote), score it 0 and say so.
+- LOCATION IS NOT YOURS TO JUDGE. This is a Germany-wide search and everything
+  outside Germany has already been removed before you see it. ANY German
+  location is equally acceptable — Munich, Hamburg, Salzgitter, anywhere. Never
+  lower a score, and never mention distance from the candidate's home city,
+  because the search was national on purpose. Judge the work, not the map.
 - Judge on real overlap of skills and experience, not keyword coincidence.
 - The reason must cite something concrete from the CV or the posting, in one
   sentence, written in ${LANG_NAME[language] || "English"}.

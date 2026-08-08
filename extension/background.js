@@ -220,12 +220,24 @@ function searchCountry(country) {
 // postings the rules already rated highest.
 const INDIVIDUAL_SCORED = 15;
 const SINGLE_PACE_MS = 4000;
-// Scoring is bulk work — a scan puts thousands of words through it — so it uses
-// the small fast model regardless of what the user picked for tailoring. The
-// large model's free-tier daily token budget is spent in a single scan
-// otherwise, and every batch then fails. Tailoring, which runs once per job and
-// is judged on writing quality, keeps the user's chosen model.
-const SCORING_MODEL = "llama-3.1-8b-instant";
+// Scoring follows the user's chosen model.
+//
+// It used to be pinned to the small fast one, because a scan put seventy
+// postings through it and the large model's daily budget went in a single run.
+// Incremental scanning removed that: a scan now judges ten to forty, and the
+// arithmetic that justified the small model no longer holds.
+//
+// The evidence that it mattered is in the stored reasons. The 8b model rejected
+// "BERECHNUNGSINGENIEUR FEM" as "a different profession (marketing)" — with FEM
+// on the candidate's CV — and had scored the same kind of role 85 an hour
+// earlier. Around eight of twenty-seven rejections in one scan were plainly
+// wrong, always confidently phrased. A cheap wrong answer is not cheap: it
+// throws away a job the candidate would have wanted, silently.
+//
+// Anyone who does hit a quota can still pick the 8b model in the popup.
+function scoringModel(userModel) {
+  return userModel || DEFAULT_MODEL;
+}
 
 // An MV3 service worker is shut down after ~30 seconds without an extension
 // API call, and a scan now spends much longer than that inside fetch() —
@@ -333,7 +345,7 @@ async function scoreJobs(jobs, cv, sp, apiKey, model, language, baseLocation,
       const raw = await groqJson(
         buildSingleScorePrompt(job, cv, sp, language, baseLocation,
                                klassOf.get(job.url || job.id) || ""),
-        apiKey, SCORING_MODEL, 300);
+        apiKey, scoringModel(model), 300);
       const score = Math.max(0, Math.min(100, parseInt(raw.score, 10) || 0));
       scored.push({ job, score, reason: String(raw.reason || "").slice(0, 400) });
     } catch (e) {
@@ -358,7 +370,7 @@ async function scoreJobs(jobs, cv, sp, apiKey, model, language, baseLocation,
     try {
       raw = await groqJson(
         buildBatchScorePrompt(batch, cv, sp, language, baseLocation),
-        apiKey, SCORING_MODEL, 1600);
+        apiKey, scoringModel(model), 1600);
     } catch (e) {
       error = e.message || String(e);
       // Out of quota or rate-limited: keep what we have rather than losing the scan.
