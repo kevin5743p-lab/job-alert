@@ -28,6 +28,21 @@ function fmtDate(iso) {
     : d.toLocaleDateString();
 }
 
+// Always the clock, not just for today. fmtDate drops the time once a row is a
+// day old, which makes two scans on the same past day indistinguishable — and
+// "which run brought this in" is the whole reason the Found column exists.
+// Released keeps fmtDate: job boards publish a date, and a time there would be
+// precision the source never had.
+function fmtWhen(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  const time = d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  return d.toDateString() === new Date().toDateString()
+    ? time
+    : `${d.toLocaleDateString([], { day: "numeric", month: "short" })}, ${time}`;
+}
+
 // Stats double as filters: clicking one narrows the list to that stage.
 let activeFilter = "all";
 let allRows = [];
@@ -307,7 +322,8 @@ function rowHtml(r) {
     </td>
     <td class="muted">${esc(r.job_source || "")}</td>
     <td class="muted">${r.posted_at ? esc(fmtDate(r.posted_at)) : "—"}</td>
-    <td class="muted">${r.discovered_at ? esc(fmtDate(r.discovered_at)) : "—"}</td>
+    <td class="muted" style="white-space:nowrap">${
+      r.discovered_at ? esc(fmtWhen(r.discovered_at)) : "—"}</td>
     <td class="muted">${esc(fmtDate(r.updated_at))}</td>
     <td style="white-space:nowrap">
       ${r.job_url ? `<a class="btnlink" href="${esc(r.job_url)}" target="_blank" rel="noreferrer">Open &amp; apply</a>` : ""}
