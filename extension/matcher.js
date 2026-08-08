@@ -108,7 +108,9 @@ const PROFESSION_FAMILIES = {
   finance: ["accountant", "buchhalter", "controller", "controlling", "auditor",
     "wirtschaftsprüfer", "steuer", "tax", "financial analyst", "finanzanalyst",
     "treasury", "investment", "banker", "bilanz", "credit risk", "actuary",
-    "steuerberater", "steuerfachangestellte", "finanzbuchhaltung", "rechnungswesen"],
+    "steuerberater", "steuerfachangestellte", "finanzbuchhaltung", "rechnungswesen",
+    // From real scans: these reached the model and came back 0 every time.
+    "forderungsmanagement", "mahnwesen", "debitoren", "kreditoren", "leasing"],
   marketing: ["marketing", "brand", "seo", "sea", "content manager", "copywriter",
     "social media", "kommunikation", "communications", "public relations",
     "growth manager", "campaign", "redakteur"],
@@ -116,10 +118,11 @@ const PROFESSION_FAMILIES = {
     "business development", "key account", "kundenberater", "verkauf",
     "verkäufer", "verkäuferin", "retail", "einzelhandel", "shop assistant",
     "vertriebsmitarbeiter", "vertriebsassistenz", "verkaufsberater",
-    "verkaufsleiter", "vertriebsinnendienst"],
+    "verkaufsleiter", "vertriebsinnendienst",
+    "beschaffung", "einkauf", "einkäufer", "e-commerce", "autohaus"],
   support: ["customer support", "customer service", "kundenservice", "kundenbetreuer",
     "call center", "helpdesk", "service desk", "community management",
-    "customer success", "reklamation"],
+    "customer success", "reklamation", "kundendienst", "kundenbetreuung"],
   hr: ["recruiter", "recruiting", "talent acquisition", "human resources",
     "personalreferent", "personalwesen", "hr manager", "hr business partner",
     "lohnbuchhaltung", "payroll"],
@@ -146,7 +149,7 @@ const PROFESSION_FAMILIES = {
     "empfang", "verwaltung", "data entry",
     "teamassistenz", "projektassistenz", "vorstandsassistenz", "büroassistenz",
     "bürokaufmann", "bürokauffrau", "verwaltungsangestellte",
-    "empfangsmitarbeiter", "empfangskraft"],
+    "empfangsmitarbeiter", "empfangskraft", "backoffice", "back-office"],
 };
 
 // Families whose work genuinely overlaps, so a posting from one is not treated
