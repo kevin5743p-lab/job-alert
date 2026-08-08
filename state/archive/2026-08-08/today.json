@@ -2151,6 +2151,464 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-08T09:06:47.694566",
+      "strong": [
+        {
+          "score": 85,
+          "reason": "title fits 'Data Scientist'; skills: Python, Machine Learning, Power BI (+1); keyword bonus: 3; preferred location; +3 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4450599165",
+            "title": "Data Scientist / Data Visualization Analyst",
+            "company": "Jangadeiro Têxtil",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Job Title: Data Scientist / Data Visualization Analyst Location: Germany Job Type: Full-Time Job Overview We are seeking a highly analytical and detail-oriented Data Scientist / Data Visualization Analyst to join our growing data team. In this role, you will collect, analyze, and interpret complex d",
+            "url": "https://www.linkedin.com/jobs/view/4450599165",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 50,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4434564092",
+            "title": "Product Marketing Specialist / Manager (m/f/d)",
+            "company": "Simon-Kucher",
+            "location": "Bonn, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4434564092",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_scientific-data-architect-germany-expression-of-interest-dusseldorf-260904",
+            "title": "Scientific Data Architect - Germany Expression of interest",
+            "company": "Tetrascience",
+            "location": "Düsseldorf,  Germany",
+            "description": "Expression of interest We are actively building our talent pipeline for upcoming growth across the Scientific Data Architect team. Please note: This is an Expression of Interest advert, and there is no active vacancy at this exact moment. However, we anticipate opening formal roles in the coming mon",
+            "url": "https://www.arbeitnow.com/jobs/companies/tetrascience/scientific-data-architect-germany-expression-of-interest-dusseldorf-260904",
+            "published": "2026-08-08T08:20:22+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_chief-technology-officer-london-86509",
+            "title": "Chief Technology Officer",
+            "company": "Wave",
+            "location": "London,  England,  United Kingdom",
+            "description": "Our mission We're making Africa the first cashless continent. In 2017, over half the population in Sub-Saharan Africa had no bank account. That's for good reason—the fees are too high, the closest branch can be miles away, and nobody takes cards. Without access to financial institutions, people are ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/wave/chief-technology-officer-london-86509",
+            "published": "2026-08-08T07:45:29+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4440460839",
+            "title": "Werkstudent im Consulting, Project Support & Research - Automotive (m/w/d)",
+            "company": "Simon-Kucher",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "In Deutschland - Frankfurt/Main | Köln | München Zum nächstmöglichen Zeitpunkt suchen wir Studierende, die Lust auf Praxis neben dem Studium haben und unser Berater-Team mit dem Schwerpunkt Automotive für 15-20 Std/Woche zu unterstützen. Du bist noch mindestens 12 Monate ordentlich immatrikuliert un",
+            "url": "https://www.linkedin.com/jobs/view/4440460839",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451066153",
+            "title": "Senior Data Engineer (m/w/d)",
+            "company": "Ascory Bank",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Ascory Bank AG Hamburg Präsenz / Mobil IT Vollzeit Publiziert: 07.08.2026 Was Du Über Uns Wissen Solltest Als Data Platform-Team innerhalb der IT gestalten wir gemeinsam mit dem Team Software Development den Erfolg unseres datenzentrierten Unternehmens. In deiner Rolle als Senior Data Engineer:in üb",
+            "url": "https://www.linkedin.com/jobs/view/4451066153",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4405110959",
+            "title": "Praktikum Data Engineer im Bereich Advanced Analytics (m/w/d)",
+            "company": "Simon-Kucher",
+            "location": "Berlin, Berlin, Germany",
+            "description": "In Deutschland - Berlin | Bonn | Frankfurt/Main | Hamburg | Köln | München Du willst Praxiserfahrung in einer internationalen Unternehmensberatung sammeln? Bei uns kannst du dein Interesse an Wirtschaftsthemen mit deinen analytischen Fähigkeiten verbinden! Werde für mindestens 10 Wochen Teil eines a",
+            "url": "https://www.linkedin.com/jobs/view/4405110959",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450586461",
+            "title": "Praktikum/ Abschlussarbeit gesucht?",
+            "company": "PAVANA GmbH",
+            "location": "Husum, Schleswig-Holstein, Germany",
+            "description": "Pavana GmbH Cuxhaven Husum Präsenz Voll/Teilzeit Die Husumer PAVANA GmbH ist die Expertin für hochspezialisierte Dienstleistungen im Rahmen der komplexen Planung von Windenergie-Projekten. Sie realisiert Windmesskampagnen, erstellt Fachgutachten und übernimmt vielfältige unterstützende und bewertend",
+            "url": "https://www.linkedin.com/jobs/view/4450586461",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451057508",
+            "title": "Maschinenbauingenieur - Projektmanager (m/w/d)",
+            "company": "Oehler Maschinen Fahrzeugbau GmbH",
+            "location": "Offenburg, Baden-Württemberg, Germany",
+            "description": "Bei einem der Branchenführer arbeiten! Die Firma Oehler Maschinen Fahrzeugbau GmbH ist bereits seit über 70 Jahren im Bereich der Landtechnik tätig und bietet ein umfangreiches Produktprogramm Kippfahrzeuge, Gülletechnik, Hofschlepper sowie Forst- und Gartengeräte umfassen die Hauptprodukte. Unsere ",
+            "url": "https://www.linkedin.com/jobs/view/4451057508",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451067168",
+            "title": "Entwicklungsingenieur m/w/d",
+            "company": "IMO Group",
+            "location": "Gremsdorf, Bavaria, Germany",
+            "description": "Drehverbindungen mit bis zu 20 t Gewicht und 6 m Durchmesser, Schwenktriebe mit der höchsten Tragfähigkeit auf kleinstem Bauraum. Weltweit sind unsere Produkte Teil zahlreicher Erfolgsgeschichten: In Schwimmbaggern beim Bau der Palmeninsel in Dubai, in Lenkgetrieben beim Landtransport gigantischer Ö",
+            "url": "https://www.linkedin.com/jobs/view/4451067168",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4432350306",
+            "title": "Manager Data Science & (Gen)AI – Healthcare & Life Sciences (m/f/d)",
+            "company": "Simon-Kucher",
+            "location": "Berlin, Berlin, Germany",
+            "description": "In Germany - Berlin | Munich Do you want to further develop your expertise in data science, with a strong focus on AI and Generative AI? Then you’ve come to the right place! Actively shape digital transformation and join our Healthcare & Life Sciences digital consulting team as a Manager Data Scienc",
+            "url": "https://www.linkedin.com/jobs/view/4432350306",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451043945",
+            "title": "Senior Data Scientist",
+            "company": "AgileGrid Solutions",
+            "location": "Germany",
+            "description": "About The Company KONUX is a pioneering technology company dedicated to transforming the railway industry through innovative AI-driven solutions. With a focus on leveraging cutting-edge data science and IoT technologies, KONUX aims to optimize railway infrastructure management, enhance safety, and i",
+            "url": "https://www.linkedin.com/jobs/view/4451043945",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451002952",
+            "title": "Senior AI Programmer",
+            "company": "Cloud Imperium Games",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "As a Senior AI programmer you will be working with our custom engine and our internal tools in a multi-disciplinary environment composed by industry veterans, with the goal of creating systems and behaviours for our AI agents. The goal for the AI of Star Citizen and Squadron 42 is to shape a world t",
+            "url": "https://www.linkedin.com/jobs/view/4451002952",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450581855",
+            "title": "Process and Systems Engineer (m/w/d)",
+            "company": "ITM Power Solutions",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Privacy Policy Job Openings Process and Systems Engineer (m/w/d) Process & Systems Engineering - Berlin-Adlershof, Berlin Department Process & Systems Engineering Employment Type Full-Time Minimum Experience Experienced Process and Systems Engineer (m/w/d) Einsatzort: Berlin Arbeitszeit: 40 Stunden/",
+            "url": "https://www.linkedin.com/jobs/view/4450581855",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450596282",
+            "title": "Windgutachter (m/w/d)",
+            "company": "PAVANA GmbH",
+            "location": "Bremen, Bremen, Germany",
+            "description": "Pavana GmbH Bremen Cuxhaven Hamburg Husum Präsenz / Mobil Berufserfahrung Voll/Teilzeit Die Husumer PAVANA GmbH ist die Expertin für hochspezialisierte Dienstleistungen im Rahmen der komplexen Planung von Windenergie-Projekten. Sie realisiert Windmesskampagnen, erstellt Fachgutachten und übernimmt v",
+            "url": "https://www.linkedin.com/jobs/view/4450596282",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451071103",
+            "title": "Senior Staff Digital Verification Engineer (f/m/d)",
+            "company": "Renesas Electronics",
+            "location": "Dresden, Saxony, Germany",
+            "description": "Job Description We are looking for an IC verification expert for our sensors division. As an expert you will work within a team of talented engineers to deliver highly efficient verification environments for integrated circuit designs for sensor applications mainly for the automotive and industrial ",
+            "url": "https://www.linkedin.com/jobs/view/4451071103",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451075001",
+            "title": "Senior Data Analyst (m/w/d)",
+            "company": "Riverty",
+            "location": "Dortmund, North Rhine-Westphalia, Germany",
+            "description": "Unternehmensbeschreibung BFS health finance nimmt Mediziner:innen alles ab, was Zeit frisst: Vom Zahlungsstrommanagement über die Sicherung von Honoraren bis hin zur Beratung im Praxismanagement. BFS vertrauen tausende Zahnärzt:innen, Ärzt:innen, Tierärzt:innen, Dentallabore, medizinische Versorgung",
+            "url": "https://www.linkedin.com/jobs/view/4451075001",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4432670068",
+            "title": "Lead Portfolio and Performance Analytics",
+            "company": "Sompo",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Are you looking for your next opportunity? Sompo has a unique opportunity for a Lead, Portfolio and Performance Analytics in our newly established CUO Office team for Continental Europe . Reporting directly to the Chief Underwriting Officer (CUO) for Continental Europe, this role offers a unique opp",
+            "url": "https://www.linkedin.com/jobs/view/4432670068",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450903050",
+            "title": "Business Analyst (Entry-Level / Associate)",
+            "company": "Instituto Questão de Ciência",
+            "location": "Hesse, Germany",
+            "description": "Job Title: Business Analyst (Entry-Level / Associate) Location: Germany Job Type: Full-Time Job Overview We are looking for a motivated and detail-oriented Business Analyst (Entry-Level / Associate) to join our team. In this role, you will support business analysis activities by gathering and analyz",
+            "url": "https://www.linkedin.com/jobs/view/4450903050",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4406056222",
+            "title": "Consultant (m/w/d)",
+            "company": "Simon-Kucher",
+            "location": "Berlin, Berlin, Germany",
+            "description": "In Deutschland - Berlin | Bonn | Frankfurt/Main | Hamburg | Köln | München Du planst deinen Karrierestart in einer internationalen Unternehmensberatung? Bei uns kannst du dein Interesse an Wirtschaftsthemen mit deinen analytischen Fähigkeiten verbinden! Werde Teil eines außergewöhnlichen Teams und a",
+            "url": "https://www.linkedin.com/jobs/view/4406056222",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444328092",
+            "title": "Senior-Produktmanager (m/w/d)",
+            "company": "ekom21 – KGRZ Hessen",
+            "location": "Gießen, Hesse, Germany",
+            "description": "Die ekom21 Die ekom21 ist ein renommiertes Technologieunternehmen im Bereich IT-Komplettlösungen für den öffentlichen Dienst. Als das größte BSI-zertifizierte IT-Dienstleistungsunternehmen in Hessen, mit einem umfassenden Produkt- und Dienstleistungsportfolio, betreuen wir über 500 Kunden mit 29.000",
+            "url": "https://www.linkedin.com/jobs/view/4444328092",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449247419",
+            "title": "Senior Product Owner",
+            "company": "Bragi",
+            "location": "Germany",
+            "description": "Bragi was founded in 2013 and launched the world's first Truly Wireless Earphones in 2015 (yes, a whole 12 months before the Airpods...) Since then, we have evolved from a promising startup to a market-moving creator of innovative technology, opening the new category of Truly Wireless Earphones. Bra",
+            "url": "https://www.linkedin.com/jobs/view/4449247419",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450590353",
+            "title": "Kfz-Mechatroniker",
+            "company": "Procar Automobile",
+            "location": "Lüdinghausen, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450590353",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450590354",
+            "title": "Kfz-Mechatroniker Gebrauchtwagen",
+            "company": "ernst+könig GmbH",
+            "location": "Weil am Rhein, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450590354",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450589451",
+            "title": "KFZ-Mechatroniker    - Vollzeit",
+            "company": "Sitex - Textile Dienstleistungen",
+            "location": "Köthen, Saxony-Anhalt, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450589451",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4419126864",
+            "title": "Systemadministrator Versorgungstechnik (m/w/d)",
+            "company": "Cologne Bonn Airport",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4419126864",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450588582",
+            "title": "OT-System Specialist (m/w/d)*",
+            "company": "SCHOTT",
+            "location": "Mainz, Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450588582",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 35,
+          "reason": "title fits 'Data Analyst'; skills: Power BI; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4449236663",
+            "title": "Supply Chain Analyst",
+            "company": "Pavoot (YC P26)",
+            "location": "Bavaria, Germany",
+            "description": "Job Title: Supply Chain Analyst Location: Germany Job Type: Full-Time Job Overview We are looking for a detail-oriented and analytical Supply Chain Analyst to join our team. In this role, you will support supply chain operations by analyzing data, monitoring inventory, optimizing logistics processes",
+            "url": "https://www.linkedin.com/jobs/view/4449236663",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450072853",
+            "title": "Optimization Engineer, Working Student (m/f/d)",
+            "company": "Aqarios",
+            "location": "Munich, Bavaria, Germany",
+            "description": "𝗪𝗼𝗿𝗸𝗶𝗻𝗴 𝗦𝘁𝘂𝗱𝗲𝗻𝘁 𝘂𝗽 𝘁𝗼 𝟮𝟬𝗵 𝗽𝗲𝗲𝗿 𝘄𝗲𝗲𝗸 Munich (preferred) · Remote possible within Germany 𝗝𝗼𝗶𝗻 𝗔𝗾𝗮𝗿𝗶𝗼𝘀 𝘁𝗼 𝗥𝗲𝗱𝗲𝗳𝗶𝗻𝗲 𝘁𝗵𝗲 𝗙𝘂𝘁𝘂𝗿𝗲 𝗼𝗳 𝗖𝗼𝗺𝗽𝘂𝘁𝗶𝗻𝗴! At Aqarios, we want to change how the world solves hard problems. We use quantum computing to tackle some of the most complex challenges companies face across ind",
+            "url": "https://www.linkedin.com/jobs/view/4450072853",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
