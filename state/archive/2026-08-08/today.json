@@ -1644,6 +1644,513 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-08T07:27:12.137945",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 50,
+          "reason": "title fits 'Simulation Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4450792858",
+            "title": "Simulation UI Software Engineer - Qt/QML (d/m/f)",
+            "company": "Airbus Defence and Space",
+            "location": "Manching, Bavaria, Germany",
+            "description": "Job Description: In order to support the Simulation Team, Airbus Defence and Space is looking for a Simulation UI Software Engineer - Qt/QML (d/m/f) Our department develops top-notch, high-fidelity engineering and training simulations for a variety of aircrafts, supporting the entire development lif",
+            "url": "https://www.linkedin.com/jobs/view/4450792858",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_product-manager-courier-delivery-experience-berlin-471911",
+            "title": "Product Manager, Courier Delivery Experience",
+            "company": "Wolt - English",
+            "location": "Berlin,  Berlin,  Germany",
+            "description": "About Wolt At Wolt, we create technology that brings joy, simplicity and earnings to the neighborhoods of the world. In 2014 we started with delivery of restaurant food. Now we're building the delivery of (almost) everything and you'll find us in over 500 cities in 30 countries around the world. In ",
+            "url": "https://www.arbeitnow.com/jobs/companies/wolt-english/product-manager-courier-delivery-experience-berlin-471911",
+            "published": "2026-08-08T06:45:21+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450593020",
+            "title": "Werkstudent CAD Design und Konstruktion (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "WOFÜR WIR SIE SUCHEN Unterstützung beim Design, der Erstellung und dem Aufbau prototypischer UGVs und UAVs Entwicklung und Modifikation mechanischer Bauteile und Komponenten (Gehäuse, Halterungen, Verbinder) mittels CAD Produktion von Bauteilen mithilfe additiver Fertigung (3D-Druck) sowie manueller",
+            "url": "https://www.linkedin.com/jobs/view/4450593020",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450527010",
+            "title": "Werkstudent im Consulting (m/w/d)",
+            "company": "FEV Consulting",
+            "location": "Munich, Bavaria, Germany",
+            "description": "WAS WIR TUN - UND WARUM Die FEV Consulting ist die technologiegetriebene Top-Management-Beratung der FEV Group, die im internationalen Umfeld als Wegweiser zwischen Strategieentwicklung und Produktrealisierung agiert. Wir arbeiten nicht einfach für Unternehmen, sondern für unsere Kunden. Menschen, d",
+            "url": "https://www.linkedin.com/jobs/view/4450527010",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450586147",
+            "title": "Werkstudent im Bereich Drahtlose Kommunikationssysteme (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "WOFÜR WIR SIE SUCHEN Entwicklung von drahtlosen Kommunikationssystemen für UAVs und UGVs Entwerfen von Analog-/Digitalschaltungen, auch HF/RF-Schaltungen, für drahtlose Kommunikationsanwendungen und Radartechnik Simulation, Validierung und Optimierung von Schaltungen z.B. Simulation von HF/RF-Schalt",
+            "url": "https://www.linkedin.com/jobs/view/4450586147",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450585029",
+            "title": "Werkstudent im Bereich Qualitätsmanagement (m/w/d)",
+            "company": "VULKAN Italia",
+            "location": "Herne, North Rhine-Westphalia, Germany",
+            "description": "Stellen-ID: 180526/1 Herne Teilzeit befristet Wer wir sind Ob in luxuriösen Kreuzfahrtschiffen wie der AIDAcosma, imposanten Arbeitsschiffen wie der riesigen Pioneering Spirit, in Auto-Klimaanlagen, Kühlschränken oder Schaufelradbaggern: Die Produkte von VULKAN haben sich seit Jahrzehnten bewährt, s",
+            "url": "https://www.linkedin.com/jobs/view/4450585029",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451049711",
+            "title": "Associate Data Analyst",
+            "company": "Tech Pipeline",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Most business processes eventually break under the weight of manual workarounds and fragmented data. At Tech Pipeline, we find those broken links and fix them so the business can actually function again. The role As an Associate Data Analyst, you will support our project for a Berlin-based technolog",
+            "url": "https://www.linkedin.com/jobs/view/4451049711",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450584204",
+            "title": "Praktikant Aktuatorik / humanoide Robotik (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "WOFÜR WIR SIE SUCHEN Konzeptionierung, Auslegung und Entwicklung von Elektronikkomponenten/-systemen von innovativen Produkten im Bereich Robotik (Humanoide, künstliche Muskeln) Definition relevanter Anforderungen anhand definierter Anwendungen Unterstützung bei der Planung und Betreuung von CAE-Sim",
+            "url": "https://www.linkedin.com/jobs/view/4450584204",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450514349",
+            "title": "Praktikum im Consulting (m/w/d)",
+            "company": "FEV Consulting",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "WAS WIR TUN - UND WARUM Die FEV Consulting ist die technologiegetriebene Top-Management-Beratung der FEV Group, die im internationalen Umfeld als Wegweiser zwischen Strategieentwicklung und Produktrealisierung agiert. Wir arbeiten nicht einfach für Unternehmen, sondern für unsere Kunden. Menschen, d",
+            "url": "https://www.linkedin.com/jobs/view/4450514349",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450500026",
+            "title": "MSc or BSc Thesis / Internship (m/f/d) AI for Intent-Based Networking",
+            "company": "ABB",
+            "location": "Mannheim, Baden-Württemberg, Germany",
+            "description": "At ABB , we help industries run leaner and cleaner—and every person here makes that happen. You’ll be empowered to lead, supported to grow, and proud of the impact we create together. Join us and help run what runs the world. This position reports to: R&D Team Lead - Secure Connected Systems __ You ",
+            "url": "https://www.linkedin.com/jobs/view/4450500026",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450589128",
+            "title": "Entwicklungsingenieur Elektrik (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Kassel, Hesse, Germany",
+            "description": "WOFÜR WIR SIE SUCHEN Auslegung der elektrischen Anlage im Fahrzeugbordnetzbereich gemäß ISO 26262 Erarbeitung & Erstellung der Automotiv-Anforderungen an (Sub-) Systeme & an Baugruppen Ausarbeitung von Baugruppen- & Schnittstellenspezifikationen Beauftragung & Betreuung von Unterauftragnehmern (m/w/",
+            "url": "https://www.linkedin.com/jobs/view/4450589128",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450559831",
+            "title": "Senior Engineer for Peripherals (f/m/d)",
+            "company": "MAGNOTHERM",
+            "location": "Darmstadt, Hesse, Germany",
+            "description": "Startdate From 01.10.2026 onwards. What You Will Be Doing Here MAGNOTHERM builds refrigerant-free magnetocaloric cooling systems. Our STELLAR program builds them big — and while the magnetocaloric core gets the headlines, the machine around the core is what makes it a product: hydraulics, heat rejec",
+            "url": "https://www.linkedin.com/jobs/view/4450559831",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451048597",
+            "title": "Data Scientist / Softwareentwickler (m/w/d)",
+            "company": "AITAD GmbH",
+            "location": "Offenburg, Baden-Württemberg, Germany",
+            "description": "AITAD entwickelt Embedded-KI-Systeme dort, wo Zuverlässigkeit und technologische Tiefe entscheidend sind. Als wachsendes High-Tech-Unternehmen in Offenburg arbeiten wir an anspruchsvollen Industrie- und Elektronikprojekten – vom Sensor bis zum KI-Modell. Wir suchen Menschen, die Verantwortung überne",
+            "url": "https://www.linkedin.com/jobs/view/4451048597",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450584305",
+            "title": "Experte Data Science (m/w/d)",
+            "company": "Netrolynx AI",
+            "location": "Germany",
+            "description": "About The Company Pfalzwerke is a distinguished energy provider with a rich history spanning over a century. Committed to sustainability, regional development, and innovation, the company guarantees a secure and environmentally friendly energy supply. Pfalzwerke invests both regionally and internati",
+            "url": "https://www.linkedin.com/jobs/view/4450584305",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450589258",
+            "title": "Senior Data Scientist",
+            "company": "Netrolynx AI",
+            "location": "Germany",
+            "description": "About The Company Instaffo GmbH is a dynamic and innovative organization committed to delivering cutting-edge solutions in the technology and data-driven sectors. With a focus on leveraging advanced analytics and machine learning, we aim to empower our clients by transforming complex data into actio",
+            "url": "https://www.linkedin.com/jobs/view/4450589258",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450390258",
+            "title": "(Senior) Forward Deployed AI Scientist, Operations & Optimization, Germany & Austria - BCG X",
+            "company": "BCG X",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Locations : München | Berlin | Frankfurt | Hamburg | Köln | Düsseldorf | Stuttgart | Vienna Who We Are Boston Consulting Group partners with leaders in business and society to tackle their most important challenges and capture their greatest opportunities. BCG was the pioneer in business strategy wh",
+            "url": "https://www.linkedin.com/jobs/view/4450390258",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451031944",
+            "title": "AI Platform Engineer (f/m/d)",
+            "company": "Pegel",
+            "location": "Berlin, Berlin, Germany",
+            "description": "At Upvest, we are on a mission to make investing as easy as spending money . Upvest empowers businesses to offer a wide range of investment products and the best experience in the field of capital market investment and retirement planning. Upvest’s Investment API is easy to integrate so that fintech",
+            "url": "https://www.linkedin.com/jobs/view/4451031944",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4414700934",
+            "title": "DSP ASIC Verification Engineer - Optical Transmission Systems",
+            "company": "Ciena",
+            "location": "Hannover-Braunschweig-Göttingen-Wolfsburg Region",
+            "description": "As the global leader in high-speed connectivity, Ciena is committed to a people-first approach. Our teams enjoy a culture focused on prioritizing a flexible work environment that empowers individual growth, well-being, and belonging. We’re a technology company that leads with our humanity—driving ou",
+            "url": "https://www.linkedin.com/jobs/view/4414700934",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450394201",
+            "title": "FPGA Engineer (m/f/d)",
+            "company": "ABB",
+            "location": "Minden, North Rhine-Westphalia, Germany",
+            "description": "At ABB , we help industries run leaner and cleaner—and every person here makes that happen. You’ll be empowered to lead, supported to grow, and proud of the impact we create together. Join us and help run what runs the world. This position reports to: R&D Team Lead __ The work model for the role is:",
+            "url": "https://www.linkedin.com/jobs/view/4450394201",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451041943",
+            "title": "Data Analyst",
+            "company": "FetchJobs.co",
+            "location": "Germany",
+            "description": "About The Company The Landeshauptstadt Stuttgart is the capital city of Baden-Württemberg, Germany, renowned for its vibrant cultural scene, innovative industries, and commitment to digital transformation. As a forward-thinking municipality, Stuttgart emphasizes sustainable development, technologica",
+            "url": "https://www.linkedin.com/jobs/view/4451041943",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451050611",
+            "title": "Business Analyst",
+            "company": "FetchJobs.co",
+            "location": "Germany",
+            "description": "About The Company ISR Information Products AG is a leading organization specializing in innovative digital transformation solutions. With a strong focus on process automation and enterprise digitalization, we strive to empower our clients by optimizing their business workflows and enhancing operatio",
+            "url": "https://www.linkedin.com/jobs/view/4451050611",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451055153",
+            "title": "BC Spezialist (m/w/d)",
+            "company": "S&L Connect GmbH",
+            "location": "Schönefeld, Brandenburg, Germany",
+            "description": "S&L Connect ist ein auf Agrartechnik sowie Rasen- und Grundstückspflege spezialisiertes Unternehmen und offizieller Partner von John Deere. Als verlässlicher Ansprechpartner stehen wir für landwirtschaftliche Produktivität sowie hochwertige Maschinen und Dienstleistungen. Mit einem engagierten Team ",
+            "url": "https://www.linkedin.com/jobs/view/4451055153",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450795634",
+            "title": "Szukasz pracy jako MECHANIK AUTOBUSÓW? Mamy dla Ciebie propozycję pracy w Niemczech!",
+            "company": "Pajeczyna.pl",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450795634",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450584205",
+            "title": "Inbetriebnehmer / Testtechniker USV/Unbemannte Überwasserfahrzeuge (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450584205",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450578758",
+            "title": "Schiffsführer/Testtechniker für unbemannte Überwasserfahrzeuge (USV) (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450578758",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451004495",
+            "title": "Systemingenieur für Laser Communication Terminals (d/m/w)",
+            "company": "Airbus",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4451004495",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450576780",
+            "title": "Softwareentwickler - Datenfusion (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Bremen, Bremen, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450576780",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450593103",
+            "title": "Senior DataOps Engineer / Software Engineer",
+            "company": "Zero to One Search | Recruitment Agency",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4450593103",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 45,
+          "reason": "title fits 'Data Scientist'; skills: Power BI, Data analysis; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450593236",
+            "title": "Project Data Analys",
+            "company": "KANShop.Ga - Boutique En Ligne",
+            "location": "Germany",
+            "description": "📊 We’re Hiring: Project Data Analyst (Entry / Junior Level) 📍 Remote (Germany) 🕒 Full-Time 💼 Level: Entry-Level / Junior We’re looking for a detail-oriented and analytical Project Data Analyst to support project teams by transforming data into actionable insights. This role is perfect for candidates",
+            "url": "https://www.linkedin.com/jobs/view/4450593236",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4451056267",
+            "title": "Product Ownr",
+            "company": "VACANTES MX",
+            "location": "Germany",
+            "description": "📊 We’re Hiring: Product Owner (Junior & Manager) 📍 Remote (Germany) 🕒 Full-Time 💼 Level: Junior / Manager We’re looking for motivated and detail-oriented Product Owners at both Junior and Manager levels to join our team. This role is ideal for candidates who enjoy working with cross-functional teams",
+            "url": "https://www.linkedin.com/jobs/view/4451056267",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4446218658",
+            "title": "Power Platform Developer & Product Owner",
+            "company": "CACI International Inc",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Job Title: Power Platform Developer & Product Owner Job Category: Information Technology Time Type: Full time Minimum Clearance Required to Start: Secret Employee Type: Regular-Long Term Assignment Percentage of Travel Required: Up to 10% Type of Travel: Outside Continental US * * * The Opportunity ",
+            "url": "https://www.linkedin.com/jobs/view/4446218658",
+            "published": "2026-08-07T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 23,
+          "reason": "preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4451063023",
+            "title": "Junior AI Automation Developer",
+            "company": "Tech Pipeline",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Most companies lose hours every week to manual data entry and broken approval chains. We find those bottlenecks and replace them with automated workflows that actually work. The role We are currently helping a Berlin-based technology partner modernize their internal operations by connecting their le",
+            "url": "https://www.linkedin.com/jobs/view/4451063023",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
