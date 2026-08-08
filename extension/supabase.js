@@ -245,6 +245,11 @@ export async function recordScored(scored) {
                 job_title: (s.job.title || "").slice(0, 300),
                 job_company: (s.job.company || "").slice(0, 200),
                 job_source: (s.job.source || "").slice(0, 100),
+                // Free to keep: the model already wrote it for every posting,
+                // and it was being discarded for everything below the keep
+                // threshold — which is precisely where an unexplained score
+                // needs explaining.
+                reason: (s.reason || "").slice(0, 400),
                 scored_at: new Date().toISOString() });
   }
   if (!rows.length) return 0;
