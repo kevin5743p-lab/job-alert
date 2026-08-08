@@ -4715,6 +4715,418 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-08T16:58:44.781908",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "title fits 'Machine Learning Engineer'; skills: Python, Machine Learning; keyword bonus: 2; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "arbeitnow_remote-founding-machine-learning-engineer-379036",
+            "title": "Founding Machine Learning Engineer",
+            "company": "Clera",
+            "location": "remote",
+            "description": "About the Role This is a founding-level Machine Learning Engineer role at a well-funded Series A AI data and services startup based in Mountain View, CA. You will join a small, high-caliber team building and scaling core ML systems from the ground up — bridging research and engineering to design, tr",
+            "url": "https://www.arbeitnow.com/jobs/companies/clera/remote-founding-machine-learning-engineer-379036",
+            "published": "2026-08-08T14:40:22+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Simulation Engineer'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4424180703",
+            "title": "Global Graduate Program 2026 - Simulation engineer",
+            "company": "Goldwind",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Job Responsibilities: Assist in interpreting domestic and international grid connection guidelines and grid connection requirements for integrated energy projects; sort out and summarize technical indicators and core parameters; support the establishment of a standardized guideline library and the c",
+            "url": "https://www.linkedin.com/jobs/view/4424180703",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_engineering-intern-berlin-70901",
+            "title": "Engineering Intern",
+            "company": "Clera",
+            "location": "Berlin",
+            "description": "About the Role A fast-growing, Series B–funded EdTech startup is looking for an Engineering Intern to join their team. The company operates a widely-used AI-powered learning platform for students, with tens of millions of users across more than 30 countries. This is a hands-on internship where you'l",
+            "url": "https://www.arbeitnow.com/jobs/companies/clera/engineering-intern-berlin-70901",
+            "published": "2026-08-08T14:40:22+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-staff-product-designer-munich-495924",
+            "title": "Senior / Staff Product Designer",
+            "company": "Clera",
+            "location": "Munich",
+            "description": "About the Role We're a well-funded, Series A AI-powered procurement intelligence platform serving the industrial sector — helping companies modernise how they manage spend, suppliers, and sourcing through a suite of AI agents. Our product is used daily by non-technical procurement professionals who ",
+            "url": "https://www.arbeitnow.com/jobs/companies/clera/senior-staff-product-designer-munich-495924",
+            "published": "2026-08-08T14:40:22+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-engineer-berlin-32507",
+            "title": "Senior Product Engineer",
+            "company": "Clera",
+            "location": "Berlin",
+            "description": "About the Role This is a high-ownership product engineering role at a fast-growing, widely adopted open-source AI engineering platform — think the observability layer for the LLM era. The company is trusted by major enterprises and thousands of developers worldwide, with tens of millions of monthly ",
+            "url": "https://www.arbeitnow.com/jobs/companies/clera/senior-product-engineer-berlin-32507",
+            "published": "2026-08-08T14:40:22+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_remote-senior-geospatial-machine-learning-engineer-452654",
+            "title": "Senior Geospatial Machine Learning Engineer",
+            "company": "Clera",
+            "location": "remote",
+            "description": "About the Role Join a fast-growing, mission-driven climate tech company using AI and advanced satellite imagery to help electric utilities manage vegetation risks — preventing wildfires, reducing outages, and building a more resilient energy grid. You'll be part of a multidisciplinary Vegetation Mod",
+            "url": "https://www.arbeitnow.com/jobs/companies/clera/remote-senior-geospatial-machine-learning-engineer-452654",
+            "published": "2026-08-08T14:40:22+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_remote-technical-program-manager-63155",
+            "title": "Technical Program Manager",
+            "company": "SoSafe",
+            "location": "United Kingdom Remote",
+            "description": "SoSafe has the ambition to become the leading human risk management provider in Europe. Our award-winning awareness platform triggers behavioural change by providing effective and engaging training and simulations on cybersecurity and data protection. Cybercrime is costing the world &gt;$10 trillion",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/sosafe/remote-technical-program-manager-63155",
+            "published": "2026-08-08T15:40:26+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451091197",
+            "title": "Data Engineer Campaign & Analytics (w/m/d)",
+            "company": "freenet AG",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Das erwartet dich Der Bereich Data & AI entwickelt auf einer skalierenden AWS-Infrastruktur datengetriebene Services mit signifikantem Business Impact. Dafür arbeiten Platform Engineers, Data Engineers, Data Analysts und Data Scientists gemeinsam an modernen Technologien, um unseren Fachabteilungen ",
+            "url": "https://www.linkedin.com/jobs/view/4451091197",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4379845917",
+            "title": "Prozessentwickler (m/w/d)",
+            "company": "HÖRMANN Gruppe",
+            "location": "Ginsheim-Gustavsburg, Hesse, Germany",
+            "description": "Zukunft gestalten in der HÖRMANNschaft Unser Familienunternehmen steht seit über 65 Jahren für Stabilität, Fortschritt und echten Teamgeist. Unsere Erfolgsformel: gemeinsam vorwärtskommen, voneinander lernen, sich gegenseitig unterstützen. Mit über 30 Unternehmen und namhaften Kunden aus verschieden",
+            "url": "https://www.linkedin.com/jobs/view/4379845917",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4419211555",
+            "title": "Systemingenieur Überlebensfähigkeit (m/w/d)",
+            "company": "Rheinmetall",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "WOFÜR WIR SIE SUCHEN Ganzheitliche Verantwortung der Kundenanforderungen bis zum technischen Nachweis von Ketten- und Radfahrzeugen Prüfung und Abstimmung von Kundenanforderungen im Bereich Überlebensfähigkeit Entwicklung, Definition und Festlegung von Systemanforderungen im Bereich Überlebensfähigk",
+            "url": "https://www.linkedin.com/jobs/view/4419211555",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451090261",
+            "title": "Senior Data Scientist - Rankings & Recommendations (all genders)",
+            "company": "Holidu",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Holidu is one of the world’s fastest-growing vacation rental technology companies. Our mission is to make booking and hosting holiday homes free of doubt and full of joy, by helping hosts generate more bookings with less work and helping guests find a holiday home they truly enjoy. Our team of 700 c",
+            "url": "https://www.linkedin.com/jobs/view/4451090261",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451077818",
+            "title": "Senior Data Scientist - Dynamic Pricing & Revenue Management (all genders)",
+            "company": "Holidu",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Holidu is one of the world’s fastest-growing vacation rental technology companies. Our mission is to make booking and hosting holiday homes free of doubt and full of joy, by helping hosts generate more bookings with less work and helping guests find a holiday home they truly enjoy. Our team of 700 c",
+            "url": "https://www.linkedin.com/jobs/view/4451077818",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4291462238",
+            "title": "Study Engineer / Data Scientist (d/f/m) - AI & Operations Research",
+            "company": "Airbus Defence and Space",
+            "location": "Immenstaad am Bodensee, Baden-Württemberg, Germany",
+            "description": "Job Description: Zur Verstärkung der Abteilung \"Operationelle Analyse und Studien\" suchen wir bei Airbus Defence and Space in Friedrichshafen in den nächsten Monaten für zukünftige Projekte eine/n Study Engineer / Data Scientist (d/f/m) - AI & Operations Research Wir untersuchen innovative zukünftig",
+            "url": "https://www.linkedin.com/jobs/view/4291462238",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449264250",
+            "title": "Machine Learning Engineer (all genders)",
+            "company": "NFON AG",
+            "location": "Bremen, Bremen, Germany",
+            "description": "Dein neuer Job Modelle trainieren, die wirklich in Produktion laufen – nicht nur im Notebook. Bei botario entwickelst du die ML-Systeme hinter unseren AI Agents: vom ersten Experiment über das Training bis zum effizienten Serving. Unser Anwendungsfeld ist spannend, bewegt sich schnell und du wächst ",
+            "url": "https://www.linkedin.com/jobs/view/4449264250",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449255659",
+            "title": "Voice AI Engineer (all genders)",
+            "company": "NFON AG",
+            "location": "Bremen, Bremen, Germany",
+            "description": "Dein neuer Job Du baust Stimmen. Nicht konfigurieren, nicht API anbinden – wirklich bauen. Bei botario entwickelst du die Text-To-Speech- und Speech-To-Text-Systeme hinter unseren Voice Agents: Stimmen, die natürlich klingen, in Echtzeit antworten und auch dann verstehen, wenn es am anderen Ende nus",
+            "url": "https://www.linkedin.com/jobs/view/4449255659",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451097036",
+            "title": "Software Engineer",
+            "company": "Hyra",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Senior AI Application Engineer An innovative leader in the premium automotive and mobility sector is looking for an experienced engineer to join the team in München. This role focuses on building and prototyping advanced machine learning use cases that leverage edge device models to enhance intellig",
+            "url": "https://www.linkedin.com/jobs/view/4451097036",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4424462914",
+            "title": "CAD Design Engineer",
+            "company": "The Exploration Company",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Here at The Exploration Company, we are developing, producing, and operating Nyx, a modular and reusable space orbital vehicle that can eventually be refuelled in orbit and that can carry cargo - and potentially humans in the longer run. We want you as a talented CAD designer to help us in our missi",
+            "url": "https://www.linkedin.com/jobs/view/4424462914",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4423525335",
+            "title": "IT Business Analyst (gn) - Data, Finance & SAP",
+            "company": "The Quality Group",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Start: ab sofort | Level: Mid - Senior | Location: Hamburg (hybrid) | Arbeitszeit: Vollzeit (40h/Woche) Als IT Business Analyst (gn) mit Schwerpunkt Finance, Data & SAP übernimmst du eine zentrale Rolle an der Schnittstelle zwischen Fachbereichen und IT. Du analysierst komplexe fachliche und technis",
+            "url": "https://www.linkedin.com/jobs/view/4423525335",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4433334208",
+            "title": "Business Process Analyst (m/w/d) Finance Transformation I IT-Finance",
+            "company": "Dirk Rossmann GmbH",
+            "location": "Burgwedel, Lower Saxony, Germany",
+            "description": "Unsere Unternehmenszentrale in Burgwedel bei Hannover – hier arbeiten rund 3.000 Mitarbeitende mit vollem Einsatz daran, die Zukunft von ROSSMANN zu gestalten. Die agile Entwicklung umfasst fünf Gruppen, die ihrerseits aus mehreren Teams bestehen. In diesen arbeiten Analysten, Anwendungs- und BI-Ent",
+            "url": "https://www.linkedin.com/jobs/view/4433334208",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451074919",
+            "title": "ERP Product Manager (m/w/d)",
+            "company": "Mister Spex",
+            "location": "Berlin, Germany",
+            "description": "Gestalte die Zukunft der Brillen mit uns! Wir verbinden Innovation und Stil mit einer unvergleichlichen Markenvielfalt und höchsten Qualitätsstandards – online und offline. Sei unsere Inspiration bei #teamspex! SEE & BE SEEN at #teamspex Als ERP Product Manager (m/w/d) übernimmst du eine entscheiden",
+            "url": "https://www.linkedin.com/jobs/view/4451074919",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449254574",
+            "title": "Kfz-Mechatroniker (all genders)",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Voll/Teilzeit Du hast Benzin im Blut? Du hast eine Leidenschaft für Autos und Technik und bist auf der Suche nach einer spannenden neuen Aufgabe? Dann komm zu uns ins Team! Bewirb Dich bei Hamburgs beliebtestem Unternehmen!* Wir suchen für unsere Werkstatt in Stellingen Kfz-Mechatroniker (all gender",
+            "url": "https://www.linkedin.com/jobs/view/4449254574",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451077717",
+            "title": "Koordinator für Prozess- und Datenanalyse (m/w/d)",
+            "company": "ERGO",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Ihre zentrale Rolle Initiierung und Koordination quantitativ geprägter Prozessanalysen im Segment Gesundheit Datenbasierte Identifikation von Aufwandstreibern in Verarbeitungsprozessen und Entwicklung von Optimierungs- und Alternativszenarien Kontinuierliche Beobachtung von Leistungsprozessen und Ar",
+            "url": "https://www.linkedin.com/jobs/view/4451077717",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Promotion'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449261398",
+            "title": "Researcher Applied AI (all genders)",
+            "company": "NFON AG",
+            "location": "Bremen, Bremen, Germany",
+            "description": "Dein neuer Job Zwischen Paper und Produkt liegt der spannendste Teil. Bei botario nimmst du die neuesten Ideen aus der AI-Forschung – Speech, LLMs, multimodale Modelle – und findest heraus, was davon wirklich trägt: reproduzieren, verstehen, erweitern und in produktionsreife Systeme überführen. Wora",
+            "url": "https://www.linkedin.com/jobs/view/4449261398",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4394982058",
+            "title": "Field Service Techniker (m/w/d) Gebäudeautomation",
+            "company": "Honeywell Technologies",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Job Description Helping to Transform Buildings to be Safer and More Operationally and Energy Efficient. Honeywell Building Automation verändert die Art und Weise, wie unsere Gebäude betrieben werden, um die Lebensqualität der Menschen, die es täglich nutzen, zu verbessern. Mit einem Portfolio aus So",
+            "url": "https://www.linkedin.com/jobs/view/4394982058",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4451086215",
+            "title": "Risk Analyst B2B (m/f/d)",
+            "company": "Riverty",
+            "location": "Berlin, Germany",
+            "description": "Company Description Everyone’s story matters. Come shape your story with us at Riverty. But where does that take you? To one of our 30 hybrid workspaces – designed for exchanging ideas, learning from others, and shaping the way we work. An international community of over 4,000 people, representing a",
+            "url": "https://www.linkedin.com/jobs/view/4451086215",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Product Manager' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_junior-product-designer-munich-90817",
+            "title": "Junior Product Designer",
+            "company": "Clera",
+            "location": "Munich",
+            "description": "About the Role We're a Series A AI-powered B2B SaaS company operating in the procurement intelligence and supply chain space, backed by top-tier European and global investors. Our ~150-person team is building the next generation of AI-agent-driven procurement tools for the industrial sector — and we",
+            "url": "https://www.arbeitnow.com/jobs/companies/clera/junior-product-designer-munich-90817",
+            "published": "2026-08-08T14:40:22+00:00",
+            "source": "Arbeitnow"
+          }
+        }
+      ]
     }
   ]
 }
