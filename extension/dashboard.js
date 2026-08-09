@@ -244,8 +244,15 @@ function renderTable(rows) {
     ? filtered : filtered.filter((r) => r.status === activeFilter);
 
   const n = activeFilterCount();
+  // Spell out the undated ones when a release window is set. SuccessFactors
+  // publishes no dates, so "last 7 days" quietly removes every BMW, Volkswagen
+  // and Schaeffler posting — a third of the list here — and the count alone
+  // gives no hint that a missing date, rather than an old one, is why.
+  const undated = filters.released && filters.released !== "unknown"
+    ? rows.filter((r) => !r.posted_at).length : 0;
   $("f-count").textContent = n
-    ? `${filtered.length} of ${rows.length} shown`
+    ? `${filtered.length} of ${rows.length} shown` +
+      (undated ? ` · ${undated} hidden with no release date` : "")
     : `${rows.length} job${rows.length === 1 ? "" : "s"}`;
 
   if (!shown.length) {
