@@ -1386,6 +1386,449 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-09T07:29:04.709936",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 55,
+          "reason": "title fits 'Data Scientist'; skills: Python, Git; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "arbeitnow_data-scientist-growth-london-448521",
+            "title": "Data Scientist, Growth",
+            "company": "Lovable",
+            "location": "London",
+            "description": "TL;DR — The first data scientist in our new London growth team. You own the growth funnel end to end, from acquisition to activation to retention to expansion, find the levers, and work directly with growth engineering to ship experiments into the product. Not decision support: you drive the numbers",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/lovable/data-scientist-growth-london-448521",
+            "published": "2026-08-09T06:40:13+00:00",
+            "source": "Arbeitnow"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449296535",
+            "title": "Praktikant:in / Werkstudent:in (m/w/d)",
+            "company": "vdpConsulting AG",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Die vdpConsulting AG ist eine in Hamburg ansässige Beratungsboutique mit einer Spezialisierung auf die deutsche Kredit- und Immobilienwirtschaft. Wir beraten unsere Kunden hinsichtlich Strategie-, Fach- und Umsetzungsthematiken aus den Bereichen des Kreditgeschäfts, der Immobilienbewertung, der Refi",
+            "url": "https://www.linkedin.com/jobs/view/4449296535",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450926638",
+            "title": "Werkstudent:in Data Management und CRM",
+            "company": "NTT DATA Business Solutions",
+            "location": "Berlin, Berlin, Germany",
+            "description": "In Teilzeit Als NTT DATA Business Solutions treiben wir Innovationen voran – von der Beratung und Implementierung bis hin zu Managed Services und darüber hinaus, gestützt von einem globalen Team von über 19.000 Expert:innen aus über 90 Nationen in mehr als 30 Ländern. Mit SAP als Herzstück und einem",
+            "url": "https://www.linkedin.com/jobs/view/4450926638",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450949191",
+            "title": "Werkstudent Marketing (m/w/d)",
+            "company": "REUTER TECHNOLOGIE GmbH",
+            "location": "Alzenau in Unterfranken, Bavaria, Germany",
+            "description": "Du bereitest Inhalte für Social-Media-Kanäle auf und sorgst du dafür, dass diese ansprechend und zielgruppengerecht gestaltet werden. Für unsere Marktanalysen recherchierst du im Internet gezielt nach Informationen über Kunden, und diskutierst die Ergebnisse mit unseren Marketing- und Vertriebsspezi",
+            "url": "https://www.linkedin.com/jobs/view/4450949191",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449283769",
+            "title": "Senior Data Warehouse Engineer",
+            "company": "FindYou Consulting GmbH",
+            "location": "Greater Hamburg Area",
+            "description": "💚 🖤 🤍 *** Weg vom Standard, hin zu echtem Impact: Baue das Herzstück einer modernen Investmentbank. *** Zum Unternehmen Unser Kunde ist eine Privatbank, die sich radikal neu erfunden hat. Weg von alten Strukturen, hin zu einem agilen, internationalen Umfeld, das die Energie eines FinTechs mit der So",
+            "url": "https://www.linkedin.com/jobs/view/4449283769",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449282832",
+            "title": "Junior Specialist Operational Excellence (m/w/d)",
+            "company": "Optipack GmbH",
+            "location": "Freising, Bavaria, Germany",
+            "description": "Arbeiten bei der Unternehmensgruppe Theo Müller bedeutet, Teil eines regional verwurzelten Familienunternehmens und international wachsenden Konzerns im Bereich Food und Logistics zu sein. Mit bekannten Marken in den Geschäftsbereichen Molkerei, Fisch & Feinkost, Saucen und Dressings, einem eigenen ",
+            "url": "https://www.linkedin.com/jobs/view/4449282832",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4441212860",
+            "title": "Ausbildung zum Mechatroniker (w/m/d) im Werk München (Sept. 2027)",
+            "company": "MAN Truck & Bus SE",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Stellenbezeichnung: Ausbildung zum Mechatroniker (w/m/d) im Werk München (Sept. 2027) Startdatum der Ausschreibung: 15.07.26 Wir bei MAN Truck & Bus sind Teil eines starken internationalen Teams und einer der führenden europäischen Nutzfahrzeughersteller und Anbieter von Transportlösungen. An unsere",
+            "url": "https://www.linkedin.com/jobs/view/4441212860",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451313521",
+            "title": "Schul- und Orientierungspraktikum",
+            "company": "WIKUS Sägenfabrik GmbH & Co. KG",
+            "location": "Spangenberg, Hesse, Germany",
+            "description": "Du bist neugierig auf die Arbeitswelt und möchtest wissen, welcher Job der richtige für Dich ist? Wir bieten Dir verschiedene Praktika! Ob im technischen oder im kaufmännischen Bereich, Du entscheidest in welchem Arbeitsbereich Du unser Unternehmen und die Arbeitswelt kennen lernen willst! In unsere",
+            "url": "https://www.linkedin.com/jobs/view/4451313521",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451337379",
+            "title": "Manufacturing Engineer (m/w/d)",
+            "company": "Real",
+            "location": "Baden-Württemberg, Germany",
+            "description": "Innovativer Medizingerätehersteller mit Sitz im Südwesten von Baden-Württemberg sucht ab sofort einen erfahrenen Manufacturing Engineer (m/w/d) für die Katheterfertigung. Ihre Aufgaben Technische Betreuung und kontinuierliche Optimierung der Katheter-Serienfertigung Sicherstellung stabiler und leist",
+            "url": "https://www.linkedin.com/jobs/view/4451337379",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449142104",
+            "title": "Konstrukteur Applikationsbaukasten (m/w/d)",
+            "company": "SCHUNK - Hand in hand for tomorrow",
+            "location": "Lauffen am Neckar, Baden-Württemberg, Germany",
+            "description": "Das Ist Ihre Aufgabe Als Konstrukteur (m/w/d) sind Sie für die Konstruktion modular standardisierter Maschinen und Baugruppen in Creo verantwortlich Komplexe Systeme gestalten und miteinander verknüpfen? Sie sind versiert in der Entwicklung zukunftsfähige Modulkonzepte für unseren Automationsbaukast",
+            "url": "https://www.linkedin.com/jobs/view/4449142104",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451348037",
+            "title": "AI Integration & Automation Engineer (m/w/d)",
+            "company": "Customs Support Group",
+            "location": "Germany",
+            "description": "Über uns Die Customs Support Group (CSG) ist der europäische Marktführer für Zolldienstleistungen und in 15 Ländern aktiv. CSG befindet sich im Besitz einer Private-Equity-Gesellschaft und ist ein schnell wachsendes, dynamisches und datengetriebenes Unternehmen, das seine Präsenz durch starkes organ",
+            "url": "https://www.linkedin.com/jobs/view/4451348037",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449289739",
+            "title": "Senior Software Engineer",
+            "company": "Isarsoft",
+            "location": "Munich, Bavaria, Germany",
+            "description": "We are Isarsoft We make every camera count At Isarsoft we develop video analytics software to make transportation and cities more efficient, inclusive and secure. We stand for data protection and responsible processing of sensitive data. Being on the forefront of innovation we work together in inter",
+            "url": "https://www.linkedin.com/jobs/view/4449289739",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4426986131",
+            "title": "Senior Analyst, In-Field Repair Quality",
+            "company": "Lime",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "As the largest global shared micromobility business, Lime is on a mission to build a future where transportation is shared, affordable and carbon-free. A Time Magazine 100 Most Influential Company, Lime has powered more than one billion rides in close to 30 countries across five continents, spurring",
+            "url": "https://www.linkedin.com/jobs/view/4426986131",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449500108",
+            "title": "Business Analysten Online-Banking-Backend (m/w/d)",
+            "company": "Finanz Informatik",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Als einer der größten Banken-IT-Dienstleister und Digitalisierungspartner Europas sind wir der Treiber der Digitalisierung innerhalb der Sparkassen-Finanzgruppe. Mit über 5.000 Mitarbeitenden an 3 Standorten machen wir digitales Banking von heute leistungsfähig und entwickeln smarte Finanz-Services ",
+            "url": "https://www.linkedin.com/jobs/view/4449500108",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4444383456",
+            "title": "Technical Product Manager | Developer Platform",
+            "company": "Kaufland e-commerce",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Your tasks – this is what awaits you in detail You take ownership of a strategic piece of our internal Developer Platform, understanding the technical product and keeping a sharp focus on the needs of our engineering teams Active discovery is part of your daily routine: you conduct user interviews, ",
+            "url": "https://www.linkedin.com/jobs/view/4444383456",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4437959749",
+            "title": "Produktmanager (m/w/d)",
+            "company": "Soldan Holding + Bonbonspezialitäten GmbH",
+            "location": "Adelsdorf, Bavaria, Germany",
+            "description": "Stellenbeschreibung: „Nur echt mit der Fahne“ – das ist das Markenzeichen von Em-eukal. Aber es sind die Menschen, die Em-eukal erfolgreich und einzigartig machen. Bei Dr. C SOLDAN leben wir die Leidenschaft für das Bonbonkochen, bewahren uns die Neugier auf die Zukunft und sind stolz auf die Dynami",
+            "url": "https://www.linkedin.com/jobs/view/4437959749",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450935452",
+            "title": "Major & Legacy Giving Product Manager (d/w/m)",
+            "company": "EZjobs.org",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Jobsuche Nachlass- & Großspenden Manager (d/w/m) Plan International Deutschland e.V. Vollzeit Hamburg, Hamburg, DE 4 Tag(e) Wir suchen für unsere Abteilung Marketing & Fundraising in Hamburg zum nächstmöglichen Zeitpunkt eine:n Nachlass- & Großspenden Manager (d/w/m) unbefristet / Voll- oder Teilzei",
+            "url": "https://www.linkedin.com/jobs/view/4450935452",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449503043",
+            "title": "Technischer Product Owner (m/w/d) - KI & Automatisierung",
+            "company": "raphael GmbH",
+            "location": "Dortmund, North Rhine-Westphalia, Germany",
+            "description": "Du hast selbst Software gebaut, denkst in Architekturen und kannst trotzdem mit Kunden auf Geschäftsebene reden? Und KI ist für dich kein neues Karrierethema, sondern das, womit du dich ohnehin jeden Tag beschäftigst? Dann lies weiter. Wir sind eine technologiegetriebene Digitalagentur aus Dortmund.",
+            "url": "https://www.linkedin.com/jobs/view/4449503043",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449500122",
+            "title": "Mechatroniker (m/w/d)",
+            "company": "AVS Verkehrssicherung GmbH",
+            "location": "Senden, North Rhine-Westphalia, Germany",
+            "description": "Die AVS Verkehrssicherung GmbH hat ihren Hauptsitz in Leverkusen. Die AVS ist ein führender Anbieter von Verkehrssicherheitslösungen in Deutschland und ist auf die Verkehrssicherung sowie das Verkehrsmanagement in Baustellenbereichen auf Autobahnen, Bundes- und Schnellstraßen sowie für urbane Verkeh",
+            "url": "https://www.linkedin.com/jobs/view/4449500122",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449278970",
+            "title": "Servicetechniker (m/w/d)",
+            "company": "AVS Verkehrssicherung GmbH",
+            "location": "Kürten, North Rhine-Westphalia, Germany",
+            "description": "Die Peter Berghaus GmbH ist ein seit über 60 Jahren international erfolgreich tätiges Unternehmen in der Verkehrstechnik und einer der führenden Hersteller von mobilen Ampeln und innovativen Produkten für Verkehrssicherheit. Die Firma Berghaus gehört zu der AVS Gruppe. Diese bietet komplette Service",
+            "url": "https://www.linkedin.com/jobs/view/4449278970",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451317926",
+            "title": "KFZ Mechatroniker (m/w/d)",
+            "company": "mamgo | Talente 🔗 Jobs",
+            "location": "Freudenberg, North Rhine-Westphalia, Germany",
+            "description": "Wer Wir Sind Die Dornseifer Personalmanagement GmbH ist ein Familienunternehmen, dessen Erfolg auf Vertrauen und nachhaltige Zusammenarbeit begründet ist. Nicht umsonst sind wir mittlerweile mit unseren Niederlassungen an 6 Standorten in 4 Bundesländern vertreten. Unsere ca. 500 Mitarbeiter repräsen",
+            "url": "https://www.linkedin.com/jobs/view/4451317926",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449282836",
+            "title": "Kaufmännischer Sachbearbeiter IT-Systeme (w/m/d)",
+            "company": "PricewaterhouseCoopers AG Wirtschaftsprüfungsgesellschaft",
+            "location": "Duisburg, North Rhine-Westphalia, Germany",
+            "description": "Du hast Talent. Wir sind ein internationales Netzwerk aus 284.000 Mitarbeiter:innen, die ihr Wissen, ihre Erfahrungen und ihre Ideen miteinander teilen. Du suchst einen herausfordernden, spannenden Job. Wir bieten dir als weltweit führende Wirtschaftsprüfungs- und Beratungsgesellschaft ein Maximum a",
+            "url": "https://www.linkedin.com/jobs/view/4449282836",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449258876",
+            "title": "Karriere",
+            "company": "Schmitt Elektrotechnik GmbH & Co.KG",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Übersicht Elektroniker Fachrichtung Energie und Gebäudetechnik (m/w/d) Ausbildung zum Elektroniker Fachrichtung Energie- und Gebäudetechnik (m/w/d) Initiativbewerbung Übersicht Elektroniker Fachrichtung Energie und Gebäudetechnik (m/w/d) Ausbildung zum Elektroniker Fachrichtung Energie- und Gebäudet",
+            "url": "https://www.linkedin.com/jobs/view/4449258876",
+            "published": "2026-08-08T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450949227",
+            "title": "Ingenieur / Techniker / Meister (m/w/d)",
+            "company": "VAG Freiburg - Freiburger Verkehrs AG",
+            "location": "Freiburg, Baden-Württemberg, Germany",
+            "description": "Die Freiburger Verkehrs AG leistet in der zukunftsorientierten Branche des Öffentlichen Nahverkehrs mit ihrem multimodalen Mobilitätsangebot einen wesentlichen Beitrag zur Stärkung der Lebens- und Umweltqualität in und um Freiburg. Zur Verstärkung unseres Teams suchen wir eine engagierte Persönlichk",
+            "url": "https://www.linkedin.com/jobs/view/4450949227",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449280990",
+            "title": "Chapter Lead (m/w/d) Data Reporting",
+            "company": "SIGNAL IDUNA Gruppe",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449280990",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Automotive Engineer'; skills: Python; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4449504047",
+            "title": "Full Stack AI Engineer",
+            "company": "Zalion",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Zalion is an international AI start-up revolutionizing industrial procurement. We use cutting-edge AI agents to automate manual Source-to-Pay processes, freeing up procurement teams for strategic work. We are live with the largest companies in Europe & the US. We love what we do. We get stuff done. ",
+            "url": "https://www.linkedin.com/jobs/view/4449504047",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4449278965",
+            "title": "AI Engineer Intern",
+            "company": "Enzo",
+            "location": "Heidelberg, Baden-Württemberg, Germany",
+            "description": "Enzo is a B2B PropTech and WaterTech startup revolutionizing the real estate and insurance industry with its cutting-edge IoT and AI solution, one.drop. Our proprietary sensor technology helps monitor water systems in buildings in real-time, enabling early detection of leaks and preventing costly wa",
+            "url": "https://www.linkedin.com/jobs/view/4449278965",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4428035400",
+            "title": "Project Manager (m/w/d)",
+            "company": "RUTRONIK Electronics Worldwide",
+            "location": "Ispringen, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4428035400",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
