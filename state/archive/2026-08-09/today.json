@@ -3564,6 +3564,404 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-09T14:58:26.612674",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 61,
+          "reason": "title fits 'Junior Data Engineer'; skills: Python, Data analysis, Git; keyword bonus: 2; preferred location; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4369591509",
+            "title": "Data Engineer (m/f/d) Feedback Management",
+            "company": "BAUHAUS Deutschland",
+            "location": "Mannheim, Baden-Württemberg, Germany",
+            "description": "Stellenbeschreibung Better digital. The Digital Commerce division is committed to digitalization as a means of creating a networked BAUHAUS of the future. Our focus is always on the customer and we aim to create the perfect digital shopping experience. An agile working environment, innovative soluti",
+            "url": "https://www.linkedin.com/jobs/view/4369591509",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4312595784",
+            "title": "Consultant Cloud & Data (m/w/d)",
+            "company": "Deloitte",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4312595784",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4410618455",
+            "title": "Abschlussarbeit Versuch (m/w/d) Injektoren für Power-to-X Kraftstoffe",
+            "company": "Woodward, Inc.",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Woodward L'Orange ist als Pionier modernster Technologie auf dem Weg zu nachhaltigen Lösungen: Komponenten und Systeme für die Energiewandlungssysteme der Zukunft. Mit unseren rund 1.300 Mitarbeitern an den Standorten Stuttgart, Glatten, Wolfratshausen und Rellingen entwickeln und produzieren wir ei",
+            "url": "https://www.linkedin.com/jobs/view/4410618455",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450953460",
+            "title": "Ingenieur Fahrzeugtechnik, Maschinenbau, Elektrotechnik für die Fahrzeugprüfung (w/m/d)",
+            "company": "TÜV SÜD",
+            "location": "Kehl, Baden-Württemberg, Germany",
+            "description": "Innovationen bringen tiefgreifende Veränderungen mit sich und beeinflussen unser Leben in vielfältiger Weise. Bei TÜV SÜD sind wir in hohem Maße bestrebt, ein wichtiger Teil dieser Entwicklung und des Fortschritts zu sein. Wir sind von Anfang an dabei und begleiten diesen Prozess. Wir sorgen für ein",
+            "url": "https://www.linkedin.com/jobs/view/4450953460",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450352022",
+            "title": "Systemingenieur Thermische Systeme (m/w/d)",
+            "company": "Bertrandt Group",
+            "location": "Oberkochen, Baden-Württemberg, Germany",
+            "description": "Wir sind Bertrandt. Ein eigenständiger und internationaler Engineering Dienstleister mit langjähriger Expertise. Mit branchenübergreifendem Know-how und einem ganzheitlichen System- und Produktverständnis schaffen wir technologische Lösungen entlang der gesamten Wertschöpfungskette. Wir beschäftigen",
+            "url": "https://www.linkedin.com/jobs/view/4450352022",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4243063283",
+            "title": "Consultant AI & Data Analytics / Data Science (m/w/d) in Hamburg",
+            "company": "Deloitte",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4243063283",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4333938709",
+            "title": "Senior Software Engineer (AI Platform)",
+            "company": "Smartly",
+            "location": "Berlin, Germany",
+            "description": "We are looking for a Senior Software Engineer to join the AI Platform Team at Smartly! Our team works on helping marketers make the most of their ad creatives (images, video, text) and campaigns (product and performance data). We build and experiment with AI-based solutions across the media and crea",
+            "url": "https://www.linkedin.com/jobs/view/4333938709",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4395345466",
+            "title": "Business Analyst – Asset Management: BI & Data Science (m/w/d)*",
+            "company": "Bankhaus Metzler",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Weiterkommen mit Eigen-Sinn – wir suchen Sie Sie haben Ihren eigenen Kopf, sind leistungsbereit und stellen hohe Ansprüche an sich und Ihre Arbeit? Sie sind Teamplayer, wollen gestalten, etwas bewegen und Ihre Ideen verwirklichen? Dann sind Sie bei uns genau richtig: Verstärken Sie unser Team Busine",
+            "url": "https://www.linkedin.com/jobs/view/4395345466",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4243063507",
+            "title": "Business Analyst / Consultant Cloud Integration (m/w/d) in Frankfurt (Main)",
+            "company": "Deloitte",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4243063507",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450949732",
+            "title": "Business Analyst Workflowmanagementsystem (all genders)",
+            "company": "adesso SE",
+            "location": "Paderborn, North Rhine-Westphalia, Germany",
+            "description": "Wir gehören zu den Top-Adressen in der IT-Welt und fokussieren uns auf die Optimierung der Kerngeschäfts­prozesse unserer Kunden. Durch den smarten Einsatz maßgeschneiderter IT-Lösungen unterstützen wir unsere Kunden dabei, das Beste aus ihrem Business und aktuellen Technologien herauszuholen. Unser",
+            "url": "https://www.linkedin.com/jobs/view/4450949732",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449504655",
+            "title": "SAP Business Analyst",
+            "company": "Haystack",
+            "location": "Augsburg, Bavaria, Germany",
+            "description": "Are you looking for a dynamic, inclusive, and international work environment with a strong entrepreneurial spirit in real asset investments? We are working with a leading investment management firm specializing in real assets across Europe, North America, and Asia. This company is a key player in th",
+            "url": "https://www.linkedin.com/jobs/view/4449504655",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4433882122",
+            "title": "Business Analyst (w/m/d) Produkte Private Altersvorsorge und Vermögensaufbau",
+            "company": "DekaBank",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Standort: Frankfurt - Innenstadt Besetzung zum: 01.09.2026 Zuständige Ansprechperson für die Position: Sigrid Jung (recruiting@deka.de) Wir sind die DekaBank – das Wertpapierhaus der Sparkassen und einer der größten Fondsanbieter in Deutschland. Wir entwickeln erstklassige Produkte und sind nahe an ",
+            "url": "https://www.linkedin.com/jobs/view/4433882122",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4243060876",
+            "title": "Business Analyst / Consultant (m/w/d) Enterprise Resource Planning (ERP) in München",
+            "company": "Deloitte",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Deloitte bietet führende Prüfungs- und Beratungsleistungen in Audit & Assurance, Tax & Legal, Consulting und Advisory - für nahezu 90 % der Fortune Global 500® und zahlreiche private Unternehmen. Wir liefern innovative Denkansätze, lösen komplexe Herausforderungen und fördern nachhaltiges Wachstum. ",
+            "url": "https://www.linkedin.com/jobs/view/4243060876",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442519891",
+            "title": "Business Analyst*in Fondsbuchhaltung",
+            "company": "Union Investment",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Was wir bieten Als Business Analyst*in in unserer Fondsbuchhaltung und Fondsadministration übernimmst du eine zentrale Schnittstellenfunktion zwischen Fachbereich und IT. Du bringst fachliches Verständnis für das Fondsgeschäft mit technischer Affinität zusammen und gestaltest so die kontinuierliche ",
+            "url": "https://www.linkedin.com/jobs/view/4442519891",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4404722439",
+            "title": "Product Manager (f/m/d)",
+            "company": "Siemens",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Welcome to Hacon, a leading IT company in the field of digital mobility solutions. As an independently managed company, we are part of Siemens Mobility. Whenever you are traveling with public transportation in Europe, you have already encountered us and our work. In our headquarter in Hannover, Berl",
+            "url": "https://www.linkedin.com/jobs/view/4404722439",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4375181644",
+            "title": "Mechatroniker (m/w/d) für Koblenz",
+            "company": "Scania Deutschland",
+            "location": "Coblenz, Rhineland-Palatinate, Germany",
+            "description": "Scania ist einer der weltweit führenden Hersteller von Lkw, Bussen und Industriemotoren und ein dynamischer und sicherer Arbeitgeber. Werden Sie ein Teil davon! Deine Aufgaben als Mechatroniker bei Scania: Du bist verantwortlich für die professionelle Durchführung von Wartungs-, Reparatur- und Insta",
+            "url": "https://www.linkedin.com/jobs/view/4375181644",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443892411",
+            "title": "(Junior) Consultant Reporting, Projects & Operations Management (w/m/d)",
+            "company": "KPMG Deutschland",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Begleite KPMG bei den zukünftigen Herausforderungen unserer Kund:innen. Begeistere auch Du Dich für die Vielfalt unserer Fragestellungen - und mach gemeinsam mit uns den Unterschied. Unterstütze gemeinsam mit Deinem Team die Weiterentwicklung der Kund:innenbeziehung sowie die Definition der strategi",
+            "url": "https://www.linkedin.com/jobs/view/4443892411",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4404727370",
+            "title": "Techniker (w/m/d) Energieversorgung",
+            "company": "Siemens",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Gemeinsam machen wir den Unterschied Siemens Mobility ist ein eigenständig geführtes Unternehmen der Siemens AG und seit über 160 Jahren ein führender Anbieter im Bereich Mobilität. Zu unserem Kerngeschäft gehören Schienenfahrzeuge, Bahnautomatisierungs- und Elektrifizierungslösungen, schlüsselferti",
+            "url": "https://www.linkedin.com/jobs/view/4404727370",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4344043668",
+            "title": "Global Field Servicetechniker (m/w/d)* Inspektionstechnik",
+            "company": "Krones",
+            "location": "Regensburg, Bavaria, Germany",
+            "description": "Als Weltmarktführer arbeiten wir bei Krones an zukunftsorientierten Lösungen für nachhaltige und bezahlbare Getränke und Lebensmittel – für alle und überall. Um diese in die Welt zu tragen, braucht es dich! Du wünschst dir einen abwechslungsreichen Job rund um hochentwickelte Technologien, bei dem d",
+            "url": "https://www.linkedin.com/jobs/view/4344043668",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4294303681",
+            "title": "Elektroniker:in / Elektriker:in / Mechatroniker:in für eine Qualifizierung als Signalmechaniker:in",
+            "company": "Deutsche Bahn",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Wir haben eine Vielzahl wichtiger Berufe, für die spezielle Kenntnisse notwendig sind. Deswegen setzen wir auf Menschen, die sich beruflich neu orientieren und entwickeln möchten. Du durchläufst eine maßgeschneiderte interne Weiterbildung, die dich auf dem Weg zum:zur Signalmechaniker:in unterstützt",
+            "url": "https://www.linkedin.com/jobs/view/4294303681",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4375007258",
+            "title": "Field Service Technician (m/w/d)",
+            "company": "BOBST",
+            "location": "Bielefeld, North Rhine-Westphalia, Germany",
+            "description": "BOBST ist der weltweit führende Lieferant von Qualitätsanlagen und Services für Verpackungshersteller in den Bereichen Faltschachteln, Wellpappe und flexible Materialien. Für unseren Standort in Bielefeld suchen wir zum nächstmöglichen Termin einen Field Service Technician (m/w/d) im weltweiten Eins",
+            "url": "https://www.linkedin.com/jobs/view/4375007258",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434011298",
+            "title": "Senior Product Owner Digital Customizations",
+            "company": "PUMA Group",
+            "location": "Herzogenaurach, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4434011298",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Analyst'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4451356226",
+            "title": "Risk Analyst B2B (m/f/d)",
+            "company": "Riverty",
+            "location": "Berlin, Germany",
+            "description": "Company Description Everyone’s story matters. Come shape your story with us at Riverty. But where does that take you? To one of our 30 hybrid workspaces – designed for exchanging ideas, learning from others, and shaping the way we work. An international community of over 4,000 people, representing a",
+            "url": "https://www.linkedin.com/jobs/view/4451356226",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4394930057",
+            "title": "Customer Data Platform (CDP) Product Owner",
+            "company": "PUMA Group",
+            "location": "Herzogenaurach, Bavaria, Germany",
+            "description": "SPEED & SPIRIT is what we look for in our candidates, defined by some simple values that inspire us to BE DRIVEN in our performance, BE VIBRANT in our sporting legacy, BE TOGETHER in our team spirit, and BE YOU to let our individual talent and experience shine. Applying for a job at PUMA is easy and",
+            "url": "https://www.linkedin.com/jobs/view/4394930057",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "skills: Python; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4414763002",
+            "title": "Developer - Augsburg, Germany",
+            "company": "NCR Atleos",
+            "location": "Augsburg, Bavaria, Germany",
+            "description": "Title: Developer Location: Augsburg, Germany / Hybrid Introduction We are seeking an experienced Developer who will be responsible for maintaining and extending our server-based transactional system. The ideal candidate will be fluent in German, possess strong skills in Business Intelligence develop",
+            "url": "https://www.linkedin.com/jobs/view/4414763002",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
