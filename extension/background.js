@@ -484,7 +484,12 @@ async function runScan(msg = {}, sendResponse = () => {}) {
       progress(`Scanning ${boards.length} employer boards + job feeds…`);
       const { jobs, stats } = await fetchAll(
         { ...sp, company_targets: boards, location: searchRegion, home_city: ap.city || "",
-          adzuna: await adzunaCreds(), max_age_days: scanWindow },
+          adzuna: await adzunaCreds(),
+          // How old a posting may be — the user's own setting, unchanged by
+          // how recently they last scanned.
+          max_age_days: await maxJobAgeDays(),
+          // How far back to ask the sources that can filter server-side.
+          search_window_days: scanWindow },
         (t) => progress(t));
       progress(`Found ${jobs.length} postings — filtering…`);
 

@@ -15,9 +15,9 @@ const FETCH_TIMEOUT = 20000;
 // How old a posting may be. This was a fixed 90 days, which is how a job posted
 // in May reached a scan in August: by then it is either filled or ignored, and
 // applying to it wastes the user's time. It is a setting now, defaulting to a
-// week, and every source is held to it — the ATS feeds through fresh(), plus
-// LinkedIn's own f_TPR window and Adzuna's max_days_old, so the sources filter
-// server-side too rather than fetching a month of postings to throw most away.
+// week, and every source is held to it — the ATS feeds through fresh(), and
+// Adzuna through max_days_old. See searchWindowDays below for why LinkedIn is
+// treated separately.
 //
 // Postings that carry no date at all are kept. SuccessFactors publishes none,
 // so dropping them would silently remove BMW, Volkswagen and Schaeffler
@@ -25,6 +25,25 @@ const FETCH_TIMEOUT = 20000;
 // same as old.
 const DEFAULT_MAX_AGE_DAYS = 7;
 let maxAgeDays = DEFAULT_MAX_AGE_DAYS;
+
+// Two different questions, and conflating them cost every Bosch posting.
+//
+//   maxAgeDays      — how old a POSTING may be. The user's setting. Used by
+//                     fresh() and by Adzuna.
+//   searchWindowDays — how far back to ASK, for sources that can filter by
+//                     recency server-side. The gap since the last scan.
+//
+// Narrowing the ask saves LinkedIn requests, because LinkedIn does the
+// filtering before it answers. Narrowing fresh() saves nothing at all — the
+// board has already sent its whole list by then — and simply throws good jobs
+// away. With the window down to two hours, Bosch's SmartRecruiters feed (64
+// Werkstudent postings, typically one to two days old) was discarded in full,
+// every scan. The OEMs kept appearing only because SuccessFactors publishes no
+// dates, so fresh() waved them through.
+//
+// Re-reading a week of an employer's board on every scan costs nothing worth
+// counting: scored_jobs already stops anything being judged twice.
+let searchWindowDays = DEFAULT_MAX_AGE_DAYS;
 
 async function getJson(url) {
   const ctl = new AbortController();
@@ -198,7 +217,7 @@ async function fetchLinkedIn(queries, region, homeCity) {
       for (let page = 0; page < pass.pages; page++) {
         const url = `${LINKEDIN_GUEST}?keywords=${encodeURIComponent(q)}` +
           `&location=${encodeURIComponent(pass.location)}` +
-          `&f_TPR=r${maxAgeDays * 86400}` +            // same window, server-side
+          `&f_TPR=r${Math.round(searchWindowDays * 86400)}` +   // server-side, incremental
           `&start=${page * LINKEDIN_PAGE}`;
         const html = await getText(url);
         await sleep(LINKEDIN_PAUSE_MS);
@@ -653,6 +672,11 @@ export async function validateTargets(candidates, onProgress = () => {}) {
 export async function fetchAll(searchProfile, onProgress = () => {}) {
   const wanted = Number(searchProfile.max_age_days);
   maxAgeDays = Number.isFinite(wanted) && wanted > 0 ? wanted : DEFAULT_MAX_AGE_DAYS;
+  const win = Number(searchProfile.search_window_days);
+  // Never wider than the posting age the user asked for, and never so narrow
+  // that a source with coarse granularity is asked for nothing.
+  searchWindowDays = Math.min(maxAgeDays,
+    Number.isFinite(win) && win > 0 ? win : maxAgeDays);
   const queries = searchProfile.search_queries || [];
   const targets = searchProfile.company_targets || [];
   const all = [];
