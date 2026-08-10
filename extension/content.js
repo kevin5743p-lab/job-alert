@@ -425,17 +425,20 @@
     }
   }
 
-  function onTailorClick() {
+  // `force` skips the saved packet and pays for a fresh one — the "Tailor again"
+  // button. Without it the worker reuses whatever it already wrote for this
+  // posting under the current CV.
+  function onTailorClick(force = false) {
     const job = readJob();
     if (!job.description || job.description.length < 60) {
       openPanel(`<p class="jc-msg">Couldn't read a job description on this page.
         Open a specific job posting first, then click again.</p>`);
       return;
     }
-    openPanel(`<p class="jc-msg">✦ Tailoring your application for
+    openPanel(`<p class="jc-msg">✦ ${force ? "Tailoring again" : "Tailoring your application"} for
       <b>${esc(job.title || "this role")}</b>…<br/><span class="jc-dim">This takes a few seconds.</span></p>`);
 
-    sendMessage({ type: "TAILOR", job }, (resp, err) => {
+    sendMessage({ type: "TAILOR", job, force }, (resp, err) => {
       if (err) {
         openPanel(`<p class="jc-msg">Extension error: ${esc(err)}</p>`);
         return;
@@ -479,12 +482,23 @@
          supported by your CV — review before using:<ul>${warnings.map((w) => `<li>${esc(w)}</li>`).join("")}</ul></div>`
       : `<div class="jc-okcheck">✅ Grounding check passed — every point traces to your CV.</div>`;
 
-    const savedNote = meta.saved
-      ? `<div class="jc-saved">☁️ Saved to your account &amp; tracked as <b>tailored</b>.</div>`
-      : meta.signedIn
-        ? `<div class="jc-saved jc-saved-warn">⚠️ Couldn't save to your account (result still shown).</div>`
-        : `<div class="jc-saved jc-saved-warn">Not signed in — this result isn't saved.
-           Sign in from the extension icon to keep a history.</div>`;
+    // A reused packet says so plainly. Silently showing a stored result would
+    // look identical to a fresh one, and the user would have no way to tell why
+    // it appeared instantly or how old it is.
+    const when = meta.tailoredAt ? new Date(meta.tailoredAt) : null;
+    const whenTxt = when && !isNaN(when)
+      ? when.toLocaleDateString(undefined, { day: "numeric", month: "short" })
+      : null;
+
+    const savedNote = meta.reused
+      ? `<div class="jc-saved">💾 Your saved version${whenTxt ? ` from <b>${esc(whenTxt)}</b>` : ""} —
+         no API tokens used. <button id="jc-retailor" type="button" class="jc-linkbtn">Tailor again</button></div>`
+      : meta.saved
+        ? `<div class="jc-saved">☁️ Saved to your account &amp; tracked as <b>tailored</b>.</div>`
+        : meta.signedIn
+          ? `<div class="jc-saved jc-saved-warn">⚠️ Couldn't save to your account (result still shown).</div>`
+          : `<div class="jc-saved jc-saved-warn">Not signed in — this result isn't saved.
+             Sign in from the extension icon to keep a history.</div>`;
 
     openPanel(`
       <div class="jc-toolbar">
@@ -524,6 +538,11 @@
     // wire the PDF downloads
     const dl = document.querySelector("#jobcopilot-panel #jc-download");
     if (dl) dl.addEventListener("click", () => openPrintDoc(job, r));
+
+    // "Tailor again" — the one path that deliberately spends tokens on a
+    // posting already in the account.
+    const again = document.querySelector("#jobcopilot-panel #jc-retailor");
+    if (again) again.addEventListener("click", () => onTailorClick(true));
 
     // The cover letter renders through the user's chosen template, so it needs
     // their contact details — fetched from the background rather than assumed.

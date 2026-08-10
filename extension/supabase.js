@@ -135,7 +135,7 @@ export async function saveProfile({ cv_text, language, full_name,
 }
 
 // ── tailored results + application tracking ─────────────────────────────────
-export async function saveTailoredResult(job, packet, warnings) {
+export async function saveTailoredResult(job, packet, warnings, cvFingerprint = null) {
   const rows = await rest("/tailored_results", {
     method: "POST",
     body: {
@@ -147,9 +147,26 @@ export async function saveTailoredResult(job, packet, warnings) {
       job_source: job.source || "",
       packet,
       warnings: warnings || [],
+      // Which CV this was written from, so it can be reused later without
+      // risking a packet built from a CV the user has since replaced.
+      cv_fingerprint: cvFingerprint || null,
     },
     headers: { Prefer: "return=representation" },
   });
+  return rows && rows[0] ? rows[0] : null;
+}
+
+/**
+ * The most recent tailored packet for a posting, with everything needed to
+ * decide whether it can be reused instead of paying for the model again.
+ * Returns null when there is nothing saved for this URL.
+ */
+export async function latestTailoredForUrl(url) {
+  if (!url) return null;
+  const rows = await rest(
+    `/tailored_results?job_url=eq.${encodeURIComponent(url)}` +
+    `&select=id,packet,warnings,cv_fingerprint,created_at` +
+    `&order=created_at.desc&limit=1`);
   return rows && rows[0] ? rows[0] : null;
 }
 
@@ -402,10 +419,8 @@ export async function upsertFoundJobs(scored) {
 // The most recent tailored packet for a posting — used to fill a cover-letter
 // box on that job's application form.
 export async function latestPacketForUrl(url) {
-  const rows = await rest(
-    `/tailored_results?job_url=eq.${encodeURIComponent(url)}` +
-    `&select=packet&order=created_at.desc&limit=1`);
-  return rows && rows[0] ? rows[0].packet : null;
+  const row = await latestTailoredForUrl(url);
+  return row ? row.packet : null;
 }
 
 // The full tailored packet for one application (used to re-open / re-print it).

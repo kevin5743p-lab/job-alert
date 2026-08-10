@@ -7,7 +7,8 @@
 
 import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, buildFieldFillPrompt,
          buildSearchProfilePrompt, buildBatchScorePrompt, buildSingleScorePrompt, normalize,
-         groundingWarnings, cvGroundingWarnings, DEFAULT_MODEL, MAX_TOKENS }
+         groundingWarnings, cvGroundingWarnings, cvFingerprint,
+         DEFAULT_MODEL, MAX_TOKENS }
          from "./tailor_core.js";
 import * as sb from "./supabase.js";
 import { fetchAll, prefilter, prioritise, locationRank, validateTargets,
@@ -288,15 +289,9 @@ function progress(text, done = false, extra = {}) {
     .catch(() => {});          // nobody listening (dashboard closed) is fine
 }
 
-// A cheap fingerprint of the CV the search profile was built from. Without it a
-// changed CV keeps the old profile and the scan hunts the previous field
-// entirely — swap in a different person's CV and it still searches for yours.
-function cvFingerprint(cv) {
-  const text = (cv || "").replace(/\s+/g, " ").trim();
-  let h = 5381;
-  for (let i = 0; i < text.length; i++) h = ((h * 33) ^ text.charCodeAt(i)) >>> 0;
-  return `${text.length}:${h.toString(36)}`;
-}
+// cvFingerprint now lives in tailor_core.js, unchanged, so the tailoring path
+// can share the one definition of "has the CV changed" and so it can be tested
+// without the chrome API.
 
 async function ensureSearchProfile(cv, apiKey, model, force) {
   const profile = await sb.getProfile();
@@ -917,6 +912,40 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
       if (!cv || !cv.trim()) throw new Error("NO_CV");
 
+      const fingerprint = cvFingerprint(cv);
+
+      // Re-opening a posting that was already tailored used to pay for the whole
+      // packet again. The result was being saved all along; nothing ever read it
+      // back. Reuse it instead — but only when it was written from the CV in use
+      // now, because a packet built from a replaced CV is worse than no packet:
+      // it is wrong in a way the user cannot see. A row with no fingerprint is
+      // treated as unknown and re-tailored.
+      //
+      // msg.force is the "Tailor again" button, for when the posting or the mood
+      // has changed rather than the CV.
+      if (signedIn && msg.job?.url && !msg.force) {
+        try {
+          const prev = await sb.latestTailoredForUrl(msg.job.url);
+          if (prev?.packet && prev.cv_fingerprint &&
+              prev.cv_fingerprint === fingerprint) {
+            sendResponse({
+              ok: true,
+              result: prev.packet,
+              warnings: Array.isArray(prev.warnings) ? prev.warnings : [],
+              saved: true,
+              signedIn: true,
+              reused: true,
+              tailoredAt: prev.created_at || null,
+            });
+            return;
+          }
+        } catch (e) {
+          // A lookup failure must never block tailoring — fall through and
+          // generate, which costs tokens but always produces something.
+          console.warn("Couldn't check for a saved packet:", e);
+        }
+      }
+
       const result = await callGroq(msg.job, cv, groqApiKey, model, lang || "en");
       // The CV's facts are checked separately and more strictly than the
       // letter's claims: an employer verifies a CV, so a title or employer that
@@ -929,7 +958,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       let saved = false;
       if (signedIn) {
         try {
-          const row = await sb.saveTailoredResult(msg.job, result, warnings);
+          const row = await sb.saveTailoredResult(msg.job, result, warnings,
+                                                  fingerprint);
           await sb.upsertApplication(msg.job, row?.id, result);
           saved = true;
         } catch (e) {
@@ -937,7 +967,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         }
       }
 
-      sendResponse({ ok: true, result, warnings, saved, signedIn });
+      sendResponse({ ok: true, result, warnings, saved, signedIn, reused: false });
     } catch (e) {
       sendResponse({ ok: false, error: String(e.message || e) });
     }

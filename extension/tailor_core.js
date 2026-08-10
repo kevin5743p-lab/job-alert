@@ -14,6 +14,35 @@ const CV_LIMIT = 4000;
 const JD_LIMIT = 3000;
 const LANG_NAME = { en: "English", de: "German" };
 
+/**
+ * A cheap fingerprint of a CV, used everywhere the question is "is this still
+ * the CV that produced this?".
+ *
+ * Two callers, one meaning. The search profile stores it so a changed CV can't
+ * keep hunting the previous field — swap in a different person's CV and it
+ * would otherwise still search for yours. Each tailored packet stores it so a
+ * saved packet is only ever reused for the CV it was written from; serving one
+ * built from a replaced CV is worse than serving none, because it is wrong in a
+ * way the user cannot see.
+ *
+ * profiles.updated_at cannot answer this: a BEFORE UPDATE trigger bumps it on
+ * every write to the row, and the scan writes last_scan_at after every run, so
+ * it moves every two hours whether or not the CV changed.
+ *
+ * djb2, not a cryptographic hash — it only has to detect change, and it carries
+ * the length so two different CVs would have to collide on both. Whitespace is
+ * normalised first, so reformatting a CV is not treated as rewriting it. Lives
+ * here rather than in background.js so it is testable without the chrome API;
+ * the algorithm is unchanged, because altering it would invalidate every
+ * fingerprint already stored in a search profile.
+ */
+export function cvFingerprint(cv) {
+  const text = (cv || "").replace(/\s+/g, " ").trim();
+  let h = 5381;
+  for (let i = 0; i < text.length; i++) h = ((h * 33) ^ text.charCodeAt(i)) >>> 0;
+  return `${text.length}:${h.toString(36)}`;
+}
+
 export function buildPrompt(job, cvText, language = "en") {
   const langName = LANG_NAME[language] || "English";
   const desc = (job.description || "").slice(0, JD_LIMIT);
