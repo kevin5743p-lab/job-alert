@@ -122,10 +122,11 @@ const SCORE_BATCH = 5;        // postings per Groq call
 // now takes the next slice instead of re-rolling the same pool.
 const MAX_SCORED = 70;
 const SCORE_PACE_MS = 9000;
-// LinkedIn descriptions cost one request each, so they're capped. Comfortably
-// above MAX_SCORED: a posting has to be graded before it can be ranked, and
-// grading it without its text is what this budget exists to stop.
-const LI_DETAIL_BUDGET = 80;
+// Per-posting descriptions cost one request each, so they're capped, and the
+// sources that need them share the cap. Comfortably above MAX_SCORED: a posting
+// has to be graded before it can be ranked, and grading it without its text is
+// what this budget exists to stop.
+const DETAIL_BUDGET = 80;
 // The rule score a posting needs before it's worth spending a model call on.
 // Matches prefilter_min_score in the bot's profile.yaml.
 const PREFILTER_MIN_SCORE = 15;
@@ -538,18 +539,19 @@ async function runScan(msg = {}, sendResponse = () => {}) {
         contenders.push(job);
       }
 
-      // LinkedIn search cards carry no body text, so until now the German
-      // filter, the domain classifier and the model itself were all reading an
-      // empty description for every LinkedIn posting — the largest source in a
-      // scan. Fetch the real text, for the postings still in the running and in
-      // the order the budget is best spent.
+      // LinkedIn search cards and SmartRecruiters list entries both carry no
+      // body text, so until now the German filter, the domain classifier and
+      // the model itself were all reading an empty description for every one of
+      // them — LinkedIn being the largest source in a scan, and SmartRecruiters
+      // being Bosch. Fetch the real text, for the postings still in the running
+      // and in the order the budget is best spent.
       const reachable = prioritise(contenders, baseLocation);
       const enriched = await enrichDescriptions(
-        reachable, LI_DETAIL_BUDGET, (t) => progress(t));
+        reachable, DETAIL_BUDGET, (t) => progress(t));
       if (enriched.requested) {
-        // Worth surfacing: if LinkedIn starts refusing these, everything is
+        // Worth surfacing: if a source starts refusing these, its postings are
         // graded on titles again and the only visible symptom is worse matches.
-        stats.push(`LinkedIn text ${enriched.filled}/${enriched.fetched}` +
+        stats.push(`job text ${enriched.filled}/${enriched.fetched}` +
                    (enriched.requested > enriched.fetched
                      ? ` (${enriched.requested} wanted)` : ""));
       }

@@ -268,28 +268,95 @@ export function parseLinkedInDescription(html) {
     .slice(0, 4000);
 }
 
+// SmartRecruiters splits a posting across four titled sections, and only three
+// of them describe the work. "companyDescription" is a blurb about the employer
+// — measured at 450, 527 and 1014 characters on three live Bosch postings, and
+// different every time, so it can't even be deduplicated. It would take a third
+// of the model's 1500-character window to say who Bosch is, which is not the
+// question being asked. The other three run 2000-2400 characters together.
+const SR_ROLE_SECTIONS = ["jobDescription", "qualifications",
+                          "additionalInformation"];
+
+export function parseSmartRecruitersDescription(detail) {
+  const sections = (detail && detail.jobAd && detail.jobAd.sections) || {};
+  return SR_ROLE_SECTIONS
+    .map((k) => stripHtml((sections[k] && sections[k].text) || ""))
+    .filter(Boolean)
+    .join("\n\n")
+    .slice(0, 4000);
+}
+
+// Each source that hands back titles without body text, and how to go and get
+// it. `match` picks the postings, `fetch` returns the description or "".
+const DESCRIPTION_FILLERS = [
+  {
+    label: "LinkedIn",
+    match: (j) => j.source === "LinkedIn" && /^li_(\d+)$/.test(j.id || ""),
+    fetch: async (j) => parseLinkedInDescription(
+      await getText(`${LINKEDIN_POSTING}/${encodeURIComponent(j.id.slice(3))}`)),
+  },
+  {
+    // The posting id is the trailing number; the company id is everything
+    // between, matched lazily so a board id containing an underscore survives.
+    label: "employer boards",
+    match: (j) => /^smartr_(.+)_(\d+)$/.test(j.id || ""),
+    fetch: async (j) => {
+      const [, company, posting] = j.id.match(/^smartr_(.+)_(\d+)$/);
+      return parseSmartRecruitersDescription(await getJson(
+        `https://api.smartrecruiters.com/v1/companies/` +
+        `${encodeURIComponent(company)}/postings/${encodeURIComponent(posting)}`));
+    },
+  },
+];
+
 /**
  * Fill in descriptions for postings whose source only gave a title. Sources are
  * fetched in bulk and cheaply; this is the expensive per-posting half, so the
  * caller passes only jobs that already earned it, and `limit` caps the rest.
  * Failures are left as they were — a missing description is not a lost job.
+ *
+ * SmartRecruiters was left out of this until now, on the reasoning that titles
+ * were enough for the prefilter and the model would get the URL. The model
+ * cannot open a URL. Every Bosch posting was therefore prefiltered, classified
+ * and scored on its title alone — visible in the stored reasons, which rejected
+ * "Werkstudent im Bereich MEMS-Sensorik" as a different profession "as
+ * indicated by the title", because the title was genuinely all there was.
  */
 export async function enrichDescriptions(jobs, limit = 60, onProgress = () => {}) {
-  const need = (jobs || []).filter(
-    (j) => j.source === "LinkedIn" && !j.description && /^li_(\d+)$/.test(j.id || ""));
-  const todo = need.slice(0, limit);
-  let filled = 0;
+  const all = (jobs || []).filter((j) => !j.description);
+  const queues = DESCRIPTION_FILLERS.map((f) => ({ f, jobs: all.filter(f.match) }));
+  const requested = queues.reduce((n, q) => n + q.jobs.length, 0);
 
+  // One budget, taken from the queues in turn. Sharing it round-robin rather
+  // than first-come stops whichever source happens to be largest — usually
+  // LinkedIn — from spending the whole allowance before the others are reached.
+  // Each queue is already in priority order, so this keeps the best of each.
+  const todo = [];
+  for (let i = 0; todo.length < limit; i++) {
+    const round = queues.filter((q) => i < q.jobs.length);
+    if (!round.length) break;
+    for (const q of round) {
+      if (todo.length >= limit) break;
+      todo.push({ job: q.jobs[i], filler: q.f });
+    }
+  }
+
+  const filled = {};
+  let total = 0;
   for (let i = 0; i < todo.length; i++) {
-    const job = todo[i];
-    onProgress(`Reading LinkedIn postings… (${i + 1}/${todo.length})`);
-    const id = job.id.slice(3);
-    const html = await getText(`${LINKEDIN_POSTING}/${encodeURIComponent(id)}`);
-    const text = parseLinkedInDescription(html);
-    if (text) { job.description = text; filled++; }
+    const { job, filler } = todo[i];
+    onProgress(`Reading ${filler.label}… (${i + 1}/${todo.length})`);
+    try {
+      const text = await filler.fetch(job);
+      if (text) {
+        job.description = text;
+        filled[filler.label] = (filled[filler.label] || 0) + 1;
+        total++;
+      }
+    } catch { /* a missing description is not a lost job */ }
     await sleep(DETAIL_PAUSE_MS);
   }
-  return { requested: need.length, fetched: todo.length, filled };
+  return { requested, fetched: todo.length, filled: total, byLabel: filled };
 }
 
 // Adzuna aggregates the German job boards the ATS feeds don't reach, and it's
