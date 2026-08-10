@@ -269,11 +269,11 @@ Score this posting 0-100 for this candidate and give one short, specific reason.
 - Be strict. Most postings are not a good fit; say so.
 - SCORE 0, no exceptions, when any of these hold:
   * it is a DIFFERENT PROFESSION from ${field || "their field"}. Working at a
-    company in the right industry does not make an off-field role a fit. If you
-    reject for this, your reason MUST name the profession the posting is
-    actually for, taken from its own title and description — never a profession
-    you were not shown. Saying "this is marketing" about an engineering posting
-    is a worse error than accepting it.
+    company in the right industry does not make an off-field role a fit. To
+    reject for this you MUST quote, word for word, the part of the posting's
+    own title that names its profession. If no words in that title name a
+    profession outside ${field || "their field"}, this rule does not apply —
+    score the posting on its merits instead.
   * it requires several years of professional experience the CV doesn't show.${
   langPref === "no_german_required" ? `
   * it requires fluent or business German ("verhandlungssicheres Deutsch",
@@ -336,10 +336,10 @@ For each posting give a score from 0 to 100 and one short, specific reason.
 - SCORE 0, no exceptions, when any of these hold:
   * the posting is a DIFFERENT PROFESSION from ${field || "the candidate's field"}.
     Working at a company in the right industry does not make an off-field role a
-    fit. If you reject for this, your reason MUST name the profession the
-    posting is actually for, taken from its own title and description — never a
-    profession you were not shown. Saying "this is marketing" about an
-    engineering posting is a worse error than accepting it.
+    fit. To reject for this you MUST quote, word for word, the part of the
+    posting's own title that names its profession. If no words in that title
+    name a profession outside ${field || "the candidate's field"}, this rule
+    does not apply — score the posting on its merits instead.
   * it requires several years of professional experience the CV doesn't show.${
   langPref === "no_german_required" ? `
   * it requires fluent or business German — "verhandlungssicheres Deutsch",
