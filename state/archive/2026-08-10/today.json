@@ -5476,6 +5476,272 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-10T17:14:41.706977",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "title fits 'Data Scientist'; skills: Python; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442732120",
+            "title": "Data Scientist (m/w/d)",
+            "company": "Randstad Deutschland",
+            "location": "Aschheim, Bavaria, Germany",
+            "description": "On behalf of one of our clients in the fashion/retail sector, we are currently seeking a Data Scientist — Mid Level (m/f/d) for an upcoming project. Start Date: ASAP Duration: until 31.12.2026 (with option to extend) Capacity: 100% (5 days per week) Location: 100% Remote (Client Headquarter in Germa",
+            "url": "https://www.linkedin.com/jobs/view/4442732120",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_ai-native-business-analyst-dach-mannheim-198122",
+            "title": "AI-Native Business Analyst - DACH",
+            "company": "Oper",
+            "location": "Mannheim",
+            "description": "About Oper Oper, a European Fintech company, is a leader in cloud-based digital mortgage software. We provide personalized journeys for borrowers and lenders. Oper's technology streamlines the mortgage application process, eliminates paperwork, and increases transparency. The fastest growing part of",
+            "url": "https://www.arbeitnow.com/jobs/companies/oper/ai-native-business-analyst-dach-mannheim-198122",
+            "published": "2026-08-10T16:00:32+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-data-analyst-hybrid-7351",
+            "title": "Senior Data Analyst",
+            "company": "Cloudflare",
+            "location": "Hybrid",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;div&gt;&lt;strong&gt;About Us&lt;/strong&gt;&lt;/div&gt; &lt;div&gt; &lt;p&gt;At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Inter",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/cloudflare/senior-data-analyst-hybrid-7351",
+            "published": "2026-08-10T15:55:31+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-payments-manager-london-434527",
+            "title": "Senior Payments Manager",
+            "company": "loveholidays",
+            "location": "London",
+            "description": "Why loveholidays? At loveholidays - we trailblaze together . We’re on a mission to open the world to everyone, giving our customers’ unlimited choice, unmatched ease and unmissable value for their next getaway. Our team is the driving force behind our role as our customers’ personal holiday expert -",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/loveholidays/senior-payments-manager-london-434527",
+            "published": "2026-08-10T15:40:26+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451564644",
+            "title": "Werkstudent (m/w/d) im Innovation & Prototyping für Parksysteme",
+            "company": "Valeo",
+            "location": "Bietigheim-Bissingen, Baden-Württemberg, Germany",
+            "description": "Möchten Sie gemeinsam mit uns die Zukunft der intelligenten Mobilität gestalten? Werden Sie Teil unseres VALEO-Teams und revolutionieren Sie das Erlebnis des autonomen und vernetzten Fahrens. Sie studieren im Umkreis Stuttgart, Heilbronn oder Karlsruhe und wollen Ihre theoretischen Kenntnisse in der",
+            "url": "https://www.linkedin.com/jobs/view/4451564644",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449801049",
+            "title": "Data Engineer",
+            "company": "Russell Tobin",
+            "location": "Berlin, Germany",
+            "description": "Data Engineer – Deutschland Arbeitsmodell: Hybrid Über die Position Wir suchen einen erfahrenen Data Engineer (m/w/d) zur Verstärkung eines leistungsstarken Data- und Technology-Teams. In dieser Position arbeiten Sie an anspruchsvollen Datenprojekten und unterstützen groß angelegte Dateninitiativen ",
+            "url": "https://www.linkedin.com/jobs/view/4449801049",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442073197",
+            "title": "Data Engineer (m/w/d)",
+            "company": "Coroplast Group",
+            "location": "Wuppertal, North Rhine-Westphalia, Germany",
+            "description": "Was wir bieten: Urlaubs- und Weihnachtsgeld 30 Tage Urlaub pro Jahr 1 Tag mobiles Arbeiten pro Woche Individuelle Weiterbildungs- und Entwicklungsmöglichkeiten Kostenlose Mitgliedschaft in einem Fitnessstudio Bezuschusste Betriebsgastronomie Betriebliche Krankenzusatzversicherung mit 600€ Jahresbudg",
+            "url": "https://www.linkedin.com/jobs/view/4442073197",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449583332",
+            "title": "Praktikant Kundenerlebnis Laden von elektrifizierten Fahrzeugen (m/w/x)",
+            "company": "BMW Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "THEORETISCH DIE BESTE ENTSCHEIDUNG. PRAKTISCH AUCH. TEILE DEINE LEIDENSCHAFT. Nur hochprofessionelle Abläufe in dynamischen Teams produzieren innovative Spitzentechnologie. Aber Fahrfreude wird bei uns von der Entwicklung bis zur Fertigung vor allem auch mit Spaß an der Arbeit und Begeisterung für d",
+            "url": "https://www.linkedin.com/jobs/view/4449583332",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451420249",
+            "title": "Messtechnik- und Fahrzeugentwicklungsingenieur (w/m/d)",
+            "company": "Brunel",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "Sind Sie auf der Suche nach einem Unternehmen, das täglich neue Herausforderungen und spannende Aufgaben bietet? Dann sind Sie bei uns genau richtig! Kundendetails Arbeiten bei Brunel bedeutet: Attraktive Arbeitsaufgaben, außergewöhnliche Karriereperspektiven, die Sicherheit eines expandierenden Ing",
+            "url": "https://www.linkedin.com/jobs/view/4451420249",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451564715",
+            "title": "Advanced System Engineer (m/w/d)",
+            "company": "Marquardt Group",
+            "location": "Rietheim-Weilheim, Baden-Württemberg, Germany",
+            "description": "Qualifikationen Erfahrung in Projektarbeit und -steuerung Kenntnisse im Automotive-Produktentstehungsprozess (PEP, SEP) Gute Kenntnisse von Entwicklungsprozessen, -werkzeugen und relevanten Tools (z. B. Jira, DOORS, SAP, agile Methoden) Ausgepragte analytische und technische Fahigkeiten Sehr gute Ko",
+            "url": "https://www.linkedin.com/jobs/view/4451564715",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451569224",
+            "title": "Data Scientist (m/w/d) Advanced Analytics innerhalb R&D Diagnostics",
+            "company": "Roche",
+            "location": "Penzberg, Bavaria, Germany",
+            "description": "At Roche you can show up as yourself, embraced for the unique qualities you bring. Our culture encourages personal expression, open dialogue, and genuine connections, where you are valued, accepted and respected for who you are, allowing you to thrive both personally and professionally. This is how ",
+            "url": "https://www.linkedin.com/jobs/view/4451569224",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451567701",
+            "title": "(Senior) Data Scientist",
+            "company": "Boehringer Ingelheim",
+            "location": "Biberach, Baden-Württemberg, Germany",
+            "description": "The Position Are you a passionate data enthusiast who loves to dive deep into complex problems and emerge with clear, actionable insights by application of methods of modern applied mathematics? Do you thrive in a collaborative environment where your work can make a real difference? If so, we have a",
+            "url": "https://www.linkedin.com/jobs/view/4451567701",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4424676642",
+            "title": "Forward Deployed AI Scientist, Germany & Austria - BCG X",
+            "company": "BCG X",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Locations : München | Berlin | Frankfurt | Hamburg | Köln | Düsseldorf | Stuttgart | Vienna Who We Are Boston Consulting Group partners with leaders in business and society to tackle their most important challenges and capture their greatest opportunities. BCG was the pioneer in business strategy wh",
+            "url": "https://www.linkedin.com/jobs/view/4424676642",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449597040",
+            "title": "Data & AI Engineer",
+            "company": "AI Futures",
+            "location": "Berlin, Germany",
+            "description": "Data & AI Engineer - Cutting-Edge Robotics | Industrial AI | Berlin Berlin | Hybrid | Vollzeit Entwickle die intelligenten Systeme der nächsten Generation Wie sieht die Fabrik der Zukunft aus? Intelligente Maschinen. Autonome Robotik. Echtzeitdaten. Systeme, die ihre Umgebung verstehen, Entscheidung",
+            "url": "https://www.linkedin.com/jobs/view/4449597040",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449574818",
+            "title": "(Senior) Machine Learning Engineer (f/m/d)",
+            "company": "Pricenow",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Do you have a passion for developing complex, intelligent, data-driven systems and cloud solutions? Do you want to work on challenging projects and with the latest technologies? Do you want to find ideal solutions together with great colleagues? We are looking for an experienced and enthusiastic (Se",
+            "url": "https://www.linkedin.com/jobs/view/4449574818",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449588279",
+            "title": "AI Developer (m/w/d)",
+            "company": "beatsquares",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449588279",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "sf_bmwag_194585",
+            "title": "PACE Associate-Jan 2027 Start",
+            "company": "BMW Group",
+            "location": "Germany",
+            "description": "You can't know what's coming unless you invent it. World-leading technologies don’t make it onto a BMW until they’ve undergone one of the most challenging journeys you can imagine. It takes dynamic teams with outstanding technical skills to drive them from the drawing board to the road. Description ",
+            "url": "https://career5.successfactors.eu/career?company=bmwag&career_job_req_id=194585&career_ns=job_listing",
+            "published": "",
+            "source": "BMW Group (Direct)"
+          }
+        }
+      ]
     }
   ]
 }
