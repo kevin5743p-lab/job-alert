@@ -5742,6 +5742,434 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-10T19:27:47.677757",
+      "strong": [
+        {
+          "score": 75,
+          "reason": "title fits 'Data Scientist'; skills: Python, Signal processing, Git; keyword bonus: 2; preferred location; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4451558903",
+            "title": "Founding AI Engineer & Data Scientist",
+            "company": "Connect-AI",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Founding AI Engineer & Data Scientist 📍 Munich – onsite 💰 €90,000–€120,000 + meaningful equity I’m partnering with an ambitious early-stage healthtech company building technology that could fundamentally change how people understand and manage their health. The platform uses smartphone-based data—in",
+            "url": "https://www.linkedin.com/jobs/view/4451558903",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "worth_look": [
+        {
+          "score": 50,
+          "reason": "title fits 'Machine Learning Engineer'; skills: Machine Learning; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "arbeitnow_machine-learning-engineer-berlin-berlin-munchen-bavaria-180645",
+            "title": "Machine Learning Engineer (f/m/d)",
+            "company": "Awin",
+            "location": "Berlin,  Berlin; München,  Bavaria",
+            "description": "&lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Purpose of position&lt;/strong&gt;&lt;br&gt;Data sits at the heart of the company. This role ensures that Awin can fully leverage the data available across the group, enabling the development of robust reporting capabilities that support stronger ",
+            "url": "https://www.arbeitnow.com/jobs/companies/awin/machine-learning-engineer-berlin-berlin-munchen-bavaria-180645",
+            "published": "2026-08-10T17:55:51+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4451402525",
+            "title": "Product Lifecycle Manager (f/m/d) eMobility",
+            "company": "Siemens",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4451402525",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Principal'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_principal-designer-346230",
+            "title": "Principal Designer (m/f/d)",
+            "company": "autoscout24",
+            "location": "Germany",
+            "description": "&lt;p&gt;&lt;span class=&quot;TextRun SCXW116046568 BCX4&quot; lang=&quot;DE-DE&quot; data-contrast=&quot;auto&quot;&gt;&lt;strong&gt;&lt;span class=&quot;NormalTextRun SCXW116046568 BCX4&quot;&gt;A &lt;/span&gt;&lt;span class=&quot;NormalTextRun SpellingErrorV2Themed SCXW116046568 BCX4&quot;&gt;car",
+            "url": "https://www.arbeitnow.com/jobs/companies/autoscout24/principal-designer-346230",
+            "published": "2026-08-10T17:55:50+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_principal-data-scientist-481617",
+            "title": "Principal Data Scientist (m/f/d)",
+            "company": "autoscout24",
+            "location": "Germany",
+            "description": "&lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;span data-contrast=&quot;auto&quot;&gt;A career driven by you.&amp;nbsp;&lt;/span&gt;&lt;/strong&gt;&lt;span data-contrast=&quot;auto&quot;&gt;Join AutoScout24 Group and experience life in the fast lane.&amp;nbsp;We’re&amp;nbsp;not just leading the mark",
+            "url": "https://www.arbeitnow.com/jobs/companies/autoscout24/principal-data-scientist-481617",
+            "published": "2026-08-10T17:55:50+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-software-engineer-berlin-119055",
+            "title": "Senior Software Engineer",
+            "company": "Zetaglobal",
+            "location": "Berlin",
+            "description": "&lt;p&gt;&lt;strong&gt;WHO WE ARE&amp;nbsp;&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Zeta Global (NYSE: ZETA) is the AI-Powered Marketing Cloud that leverages advanced artificial intelligence (AI) and trillions of consumer signals to make it easier for marketers to acquire, grow, and retain customers more ",
+            "url": "https://www.arbeitnow.com/jobs/companies/zetaglobal/senior-software-engineer-berlin-119055",
+            "published": "2026-08-10T17:55:20+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_remote-engineering-manager-dedicated-integrations-326822",
+            "title": "Engineering Manager, Dedicated Integrations",
+            "company": "gitlab",
+            "location": "Remote",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;GitLab is the intelligent orchestration platform for DevSecOps. GitLab enables organizations to increase developer productivity, improve operational efficiency, reduce security and compliance risk, and accelerate digital transformation. More than 5",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/gitlab/remote-engineering-manager-dedicated-integrations-326822",
+            "published": "2026-08-10T18:56:20+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_director-data-strategy-london-194188",
+            "title": "Director, Data Strategy",
+            "company": "wppmedia",
+            "location": "London",
+            "description": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;strong&gt;About WPP Media&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;WPP is the trusted growth partner for the world’s leading brands. With exceptional talent, trusted data and intelligence, and world-class partnerships – all united by our pioneering ag",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/wppmedia/director-data-strategy-london-194188",
+            "published": "2026-08-10T18:56:16+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451443122",
+            "title": "Werkstudent E-Mobility Solutions - Hardware (m/w/d)",
+            "company": "Schwarz Digits",
+            "location": "Bad Friedrichshall, Baden-Württemberg, Germany",
+            "description": "Schwarz Digits schafft das technologische Fundament für digitale Entscheidungsfreiheit in Europa. Als IT- und Digitalsparte der Schwarz Gruppe entwickeln und verantworten wir einerseits die IT-Infrastrukturen für die Handelssparten Lidl und Kaufland sowie die Schwarz Produktion und PreZero. Gleichze",
+            "url": "https://www.linkedin.com/jobs/view/4451443122",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451822345",
+            "title": "AI/ML Engineer (m/w/d) – Generative AI + Legal AI",
+            "company": "YPOG",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Jobbeschreibung Willkommen bei YPOG YPOG ist eine führende Wirtschaftskanzlei für Rechts- und Steuerberatung mit einem starken Fokus auf Legal Tech, Legal AI und Innovation. Wir entwickeln digitale Lösungen und AI-Produkte, die unsere Beratung von morgen gestalten. Bei YPOG arbeiten wir in einer vol",
+            "url": "https://www.linkedin.com/jobs/view/4451822345",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451403339",
+            "title": "Junior Projektingenieur Verwundbarkeit (m/w/d)",
+            "company": "IABG",
+            "location": "Ottobrunn, Bavaria, Germany",
+            "description": "Beschreibung der Stelle: Die Abteilung \"Verwundbarkeit und Wirkung\" bewertet die Effekte von Waffeneinsätzen auf beabsichtigte Ziele und minimiert unerwünschte Begleitschäden an eigenen Kräften sowie an unbeteiligten Personen. Im Auftrag des Verteidigungsministeriums entwickeln und betreiben wir das",
+            "url": "https://www.linkedin.com/jobs/view/4451403339",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451838849",
+            "title": "Business Intelligence Analyst (w/d/m)",
+            "company": "Diamant Software GmbH",
+            "location": "Bielefeld, North Rhine-Westphalia, Germany",
+            "description": "Für unsere Jobs gibt es keine Bewerbungsfristen. Solange der Job angezeigt wird, kannst du dich bewerben. Wir brauchen kein Anschreiben, nur deinen Lebenslauf oder XING-/LinkedIn-Profil. Deine Aufgaben Du entwickelst, gestaltest und optimierst aussagekräftige Tableau-Dashboards sowie Reports für FP&",
+            "url": "https://www.linkedin.com/jobs/view/4451838849",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449807436",
+            "title": "Business Analyst",
+            "company": "Softengi Middle East",
+            "location": "Aug, Bavaria, Germany",
+            "description": "Description Of The Project & Team We are looking for a strong, proactive, and autonomous Business Analyst to join our core team as part of our strategic capability expansion and overall growth. This is a core team position aimed at driving long-term scaling, rather than a single-project assignment. ",
+            "url": "https://www.linkedin.com/jobs/view/4449807436",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451421558",
+            "title": "Business Analyst – Data Governance & Microsoft Purview",
+            "company": "Careerwise",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Business Analyst – Data Governance & Microsoft Purview Location : Munich, Germany and UK (London/Working/Fareham) Work mod e: Hybrid -3days in office Permanent position Salary up to 75K Euros Language – Good professional/ Native German Speaker required We’re looking for a hands-on Business Analyst –",
+            "url": "https://www.linkedin.com/jobs/view/4451421558",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451411509",
+            "title": "(Lead) Business & Requirements Analyst (m/w/d)",
+            "company": "SINC GmbH",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "WORUM GEHT ES Du baust dabei mit an unseren GovTech-Lösungen der nächsten Generation, die den Alltag von Millionen von Menschen einfacher machen. Unterstütze uns bei der Umsetzung unserer Vision, den Staat fit für das 21. Jahrhundert zu machen. Denn starke und funktionierende Institutionen sind die ",
+            "url": "https://www.linkedin.com/jobs/view/4451411509",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4343831750",
+            "title": "KFZ-Mechatroniker:in",
+            "company": "Deutsche Bahn",
+            "location": "Paderborn, North Rhine-Westphalia, Germany",
+            "description": "Für über 500 verschiedene Berufe suchen wir motivierte Mitarbeitende. Und das in ganz Deutschland. Ob erfahrene Profis oder Berufsstarter:innen - wir bieten zahlreiche Einstiegs- und Weiterbildungsmöglichkeiten. Zum nächstmöglichen Zeitpunkt suchen wir dich als KFZ-Mechatroniker:in (w/m/d) für die N",
+            "url": "https://www.linkedin.com/jobs/view/4343831750",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451588876",
+            "title": "Kfz Mechatroniker (m/w/d) Wechselprämie 2.000€",
+            "company": "ATU",
+            "location": "Leipzig, Saxony, Germany",
+            "description": "Unternehmensbeschreibung Mehr als ein Job. Teil von etwas Großem. ATU ist Deutschlands größte unabhängige Werkstattkette mit über 500 Filialen, rund 9.000 Beschäftigten und täglich über 30.000 Filialbesuchern. Doch unsere größte Stärke sind nicht Zahlen, sondern die Menschen dahinter. Als Möglichmac",
+            "url": "https://www.linkedin.com/jobs/view/4451588876",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451581037",
+            "title": "Spezialist (m/w/d) Prognose & Insights in Operations Steuerung",
+            "company": "AXA",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Job-Beschreibung Als Spezialist (m/w/d) Prognose & Insights in Operations Steuerung bei der AXA Logistik & Service GmbH wirst du zum strategischen Partner unserer Geschäftsführung. In dieser Rolle vereinst du ausgeprägte analytische Fähigkeiten und fundiertes Fachwissen im Bereich Operations, um eff",
+            "url": "https://www.linkedin.com/jobs/view/4451581037",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449809485",
+            "title": "Service Engineer Digital Technologies",
+            "company": "Leica Biosystems",
+            "location": "Nussloch, Baden-Württemberg, Germany",
+            "description": "Bring more to life. Are you ready to accelerate your potential and make a real difference within life sciences, diagnostics and biotechnology? At Leica Biosystems, one of Danaher’s 15+ operating companies, our work saves lives—and we’re all united by a shared commitment to innovate for tangible impa",
+            "url": "https://www.linkedin.com/jobs/view/4449809485",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4424690503",
+            "title": "Forward Deployed AI Scientist, Germany & Austria - BCG X",
+            "company": "BCG X",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Locations : München | Berlin | Frankfurt | Hamburg | Köln | Düsseldorf | Stuttgart | Vienna Who We Are Boston Consulting Group partners with leaders in business and society to tackle their most important challenges and capture their greatest opportunities. BCG was the pioneer in business strategy wh",
+            "url": "https://www.linkedin.com/jobs/view/4424690503",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449567765",
+            "title": "Data Engineer (m/w/d)",
+            "company": "Atos",
+            "location": "Tübingen, Baden-Württemberg, Germany",
+            "description": "Bull steht für ein Jahrhundert europäischer Innovationskraft. Als Teil eines zukunftsorientierten Arbeitsumfelds entwickeln unsere Expertinnen und Experten leistungsstarke, nachhaltige und souveräne digitale Lösungen – damit Staaten und Industrien die volle Kontrolle über ihre Daten und ihre Künstli",
+            "url": "https://www.linkedin.com/jobs/view/4449567765",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 46,
+          "reason": "title fits 'Junior Data Engineer'; skills: Data analysis; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4440155913",
+            "title": "Vehicle testing & data analysis support engineer (m/f/d)",
+            "company": "HARMAN International",
+            "location": "Bochum, North Rhine-Westphalia, Germany",
+            "description": "About The Role This role is about investigating and troubleshooting technical issues found in Geely vehicles. It involves reproducing software and hardware problems, collecting and analyzing vehicle data logs to identify root causes, and tracking issues through JIRA. The position also supports the h",
+            "url": "https://www.linkedin.com/jobs/view/4440155913",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 40,
+          "reason": "title fits 'Business Analyst'; skills: Data analysis; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4451199253",
+            "title": "Business Analys",
+            "company": "Golf (YC X25)",
+            "location": "Berlin, Germany",
+            "description": "🗂 We’re Hiring: Business Analyst 🕒 Employment Type: Full-Time 💼 Level: Entry-Level to Mid-Level We are seeking a highly analytical and detail-oriented Business Analyst to bridge the gap between business needs and technology solutions. This role is responsible for gathering requirements, analyzing bu",
+            "url": "https://www.linkedin.com/jobs/view/4451199253",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 31,
+          "reason": "title fits 'Junior Data Engineer'; skills: Git (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4451159690",
+            "title": "Data Engineer",
+            "company": "Haystack",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "We're hiring on behalf of a Haystack partner! The Role • Design, develop, and maintain modular components for standard software in controlling, financial accounting, patient management, and HR. • Architect and implement high-performance business intelligence solutions using Microsoft SQL Server Anal",
+            "url": "https://www.linkedin.com/jobs/view/4451159690",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4451823101",
+            "title": "Data Center Operations Technician, AWS Data Centers",
+            "company": "Amazon Web Services (AWS)",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Description AWS Infrastructure Services owns the design, planning, delivery, and operation of all AWS global infrastructure. In other words, we’re the people who keep the cloud running. We support all AWS data centers and all of the servers, storage, networking, power, and cooling equipment that ens",
+            "url": "https://www.linkedin.com/jobs/view/4451823101",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Automotive Engineer' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4451599458",
+            "title": "Application Engineer for ADAS - global business trips (w/m/d) - with experience in ADAS testing + EU driving licence and prototype driving license",
+            "company": "Luxoft Germany",
+            "location": "Hannover-Braunschweig-Göttingen-Wolfsburg Region",
+            "description": "Project description We are looking for highly motivated Application Engineers with strong hands-on experience in vehicles, ECUs, and ADAS systems, combined with a solid system-level understanding. The role involves vehicle-level application, calibration, tuning, integration, and validation activitie",
+            "url": "https://www.linkedin.com/jobs/view/4451599458",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
