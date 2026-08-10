@@ -125,13 +125,20 @@ const SCORE_BATCH = 3;
 // How many postings the model judges per scan. The free tier's real ceiling is
 // tokens per minute, so scoring is paced rather than fired as fast as it can go:
 // the top INDIVIDUAL_SCORED go one at a time, 4s apart, and the rest in batches
-// of SCORE_BATCH, 9s apart. At 70 that is roughly three and a half minutes of
-// scoring, which is the bulk of a scan.
+// of SCORE_BATCH, 9s apart. At 120 that is about six minutes of pacing, against
+// three and a half at 70 — the bulk of a scan either way.
 //
-// The cap only decides how fast the backlog is worked through, not what is
-// eventually seen — since scored_jobs remembers what has been judged, each scan
-// now takes the next slice instead of re-rolling the same pool.
-const MAX_SCORED = 70;
+// This used to say the cap decides only how fast the backlog is worked through
+// and not what is eventually seen, because scored_jobs makes each scan take the
+// next slice rather than re-rolling the same pool. That is true of the employer
+// boards and Adzuna, which re-serve their whole list within the user's job-age
+// setting, so a posting cut at the cap comes back next scan.
+//
+// It is NOT true of LinkedIn. LinkedIn is asked only for the incremental window
+// — two hours on a normal run — so a posting dropped for placing 71st is never
+// offered again. For the largest source in a scan, the cap is a permanent miss,
+// not a deferral. That is what 120 buys, and why the cost is worth paying.
+const MAX_SCORED = 120;
 const SCORE_PACE_MS = 9000;
 // Per-posting descriptions cost one request each, so they're capped, and the
 // sources that need them share the cap. Well above MAX_SCORED: a posting has to
