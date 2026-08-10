@@ -134,10 +134,17 @@ const SCORE_BATCH = 3;
 const MAX_SCORED = 70;
 const SCORE_PACE_MS = 9000;
 // Per-posting descriptions cost one request each, so they're capped, and the
-// sources that need them share the cap. Comfortably above MAX_SCORED: a posting
-// has to be graded before it can be ranked, and grading it without its text is
-// what this budget exists to stop.
-const DETAIL_BUDGET = 80;
+// sources that need them share the cap. Well above MAX_SCORED: a posting has to
+// be graded before it can be ranked, and grading it without its text is what
+// this budget exists to stop.
+//
+// Raised from 80 because 80 was only a little above MAX_SCORED (70), and any
+// scan that went past it handed the overflow to the scorer with no description
+// — the title-only bug, back again and silent. The cost is time and nothing
+// else: 120 more postings at DETAIL_PAUSE_MS is about 40 seconds on a scan that
+// actually needs them, and scans that don't are unaffected. Kevin's call, on
+// the grounds that scan length doesn't matter to him and bad matches do.
+const DETAIL_BUDGET = 200;
 // The rule score a posting needs before it's worth spending a model call on.
 // Matches prefilter_min_score in the bot's profile.yaml.
 const PREFILTER_MIN_SCORE = 15;
