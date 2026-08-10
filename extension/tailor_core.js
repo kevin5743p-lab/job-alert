@@ -317,11 +317,18 @@ export function buildBatchScorePrompt(jobs, cvText, sp = {}, language = "en",
   // characters to keep the batch cheap, and the scores showed it — committee
   // management at a car company came back as a strong engineering match. The
   // Python bot reads 1500 characters per job and grades far better for it.
+  //
+  // Now 2500, matching the individual pass, so a posting is not graded
+  // differently for having placed 16th rather than 15th. Employer-board role
+  // text measured 1742-2528 characters on live Bosch postings, so 1200 was
+  // cutting most of them off around the qualifications — the half that decides
+  // whether a student fits. SCORE_BATCH came down from 5 to 3 in the same
+  // change to pay for it; see the note there.
   const list = jobs.map((j, i) =>
     `  {"i": ${i}, "title": ${JSON.stringify(j.title || "")}, ` +
     `"company": ${JSON.stringify(j.company || "")}, ` +
     `"location": ${JSON.stringify(j.location || "")}, ` +
-    `"description": ${JSON.stringify((j.description || "").slice(0, 1200))}}`
+    `"description": ${JSON.stringify((j.description || "").slice(0, 2500))}}`
   ).join(",\n");
 
   return `You are a strict but fair job-matching assistant. Score how well each \

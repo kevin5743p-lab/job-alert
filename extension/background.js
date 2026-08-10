@@ -110,7 +110,18 @@ async function loadKeyAndCv() {
 // The whole "find" half, on demand, from the user's own browser. Progress is
 // pushed to the dashboard as it goes, because a scan takes a while and silence
 // looks like a hang.
-const SCORE_BATCH = 5;        // postings per Groq call
+// Postings per Groq call. Dropped from 5 to 3 when the batch prompt went from
+// 1200 characters per posting to 2500, so that the tail of a scan is judged on
+// the same text as the top of it. Smaller batches are what make that affordable:
+// at 5 postings the batch pass would have gone from ~71k to ~118k characters a
+// minute, and this is the pass that once scored 8 of 80 and then hit a rate
+// limit. At 3 it is ~78k — about a tenth more than today, rather than two
+// thirds. The honest caveat is that the limit itself is inferred from that one
+// failure, not measured; if scans start truncating, this constant is the dial.
+//
+// It is not free: the pass makes 19 calls instead of 11, so a full scan spends
+// roughly 70 seconds longer and about twice the daily tokens.
+const SCORE_BATCH = 3;
 // How many postings the model judges per scan. The free tier's real ceiling is
 // tokens per minute, so scoring is paced rather than fired as fast as it can go:
 // the top INDIVIDUAL_SCORED go one at a time, 4s apart, and the rest in batches
