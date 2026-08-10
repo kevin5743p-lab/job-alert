@@ -4917,6 +4917,565 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-10T15:29:32.240184",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 60,
+          "reason": "title fits 'Machine Learning Engineer'; skills: Machine Learning; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442725398",
+            "title": "Machine Learning Engineer (m/w/d)",
+            "company": "Randstad Deutschland",
+            "location": "Munich, Bavaria, Germany",
+            "description": "On behalf of one of our clients in the fashion/retail sector, we are currently seeking a ML Engineer (m/f/d) for an upcoming project. Start Date: ASAP Duration: until 31.12.2026 (with the option to extend) Capacity: 100% (5 days per week) Location: 100% Remote (Client Headquarter in Germany) Projekt",
+            "url": "https://www.linkedin.com/jobs/view/4442725398",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 60,
+          "reason": "title fits 'Business Analyst'; skills: Power BI, Git; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4451554323",
+            "title": "Business Systems Analyst (M/F/X)",
+            "company": "Hager",
+            "location": "Blieskastel, Saarland, Germany",
+            "description": "Job description: What You Will Do Act as the functional business owner of the Group Management System and Business Process Management platforms. Ensure platform administration, user management, governance and business support for an international community of users. Gather business requirements, man",
+            "url": "https://www.linkedin.com/jobs/view/4451554323",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-adas-function-application-vehicle-calibration-engineer-braunschweig-192685",
+            "title": "Senior ADAS Function Application & Vehicle Calibration Engineer",
+            "company": "FPT Deutschland GmbH",
+            "location": "Braunschweig",
+            "description": "We are looking for experienced ADAS Function Application Engineers who can take technical ownership of ADAS functions from requirements and parameter definition through virtual validation, prototype vehicle testing, calibration and customer acceptance. The work covers areas including Driving, Active",
+            "url": "https://www.arbeitnow.com/jobs/companies/fpt-deutschland-gmbh/senior-adas-function-application-vehicle-calibration-engineer-braunschweig-192685",
+            "published": "2026-08-10T15:00:25+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_business-analyst-design-freelance-remote-karlsruhe-347499",
+            "title": "Business Analyst & Design (m/w/d) · Freelance · remote",
+            "company": "ZWW Deutschland GmbH",
+            "location": "Karlsruhe",
+            "description": "Du lebst im Ausland, arbeitest remote und suchst eine spannende, flexible Aufgabe mit echtem Startup-Einblick und direktem Kontakt zu Unternehmern? Wir sind ZWW Deutschland. Wir verbinden KMU, Agenturen und Berater mit staatlichen Förderprogrammen, von denen kaum jemand weiß. Unser Team wächst und w",
+            "url": "https://www.arbeitnow.com/jobs/companies/zww-deutschland-gmbh/business-analyst-design-freelance-remote-karlsruhe-347499",
+            "published": "2026-08-10T15:00:24+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-engineering-manager-ad-performance-recommendation-berlin-242083",
+            "title": "Senior Engineering Manager, Ad Performance Recommendation",
+            "company": "Smartly",
+            "location": "Berlin,  Berlin,  Germany",
+            "description": "We are seeking a Senior Engineering Manager to join our 200+ product development organization and lead our Ad Performance Recommendation team . The team is responsible for developing an innovative AI-powered system that leverages marketing ad tech data and various data sources to identify performanc",
+            "url": "https://www.arbeitnow.com/jobs/companies/smartly/senior-engineering-manager-ad-performance-recommendation-berlin-242083",
+            "published": "2026-08-10T13:45:26+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-designer-all-genders-berlin-46680",
+            "title": "Senior Product Designer (all genders)",
+            "company": "Urban Sports Club",
+            "location": "Berlin,  Germany",
+            "description": "Meet Urban Sports Club We are Europe's leading platform for sports and wellness. Our mission is to inspire people to lead active, healthy lives and with just one membership we offer access to thousands of fitness and wellness experiences across Europe. But what truly sets us apart? We believe our pe",
+            "url": "https://www.arbeitnow.com/jobs/companies/urban-sports-club/senior-product-designer-all-genders-berlin-46680",
+            "published": "2026-08-10T13:45:24+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-analytics-engineer-consumer-berlin-462072",
+            "title": "Senior Analytics Engineer, Consumer",
+            "company": "Wolt - English",
+            "location": "Berlin,  Berlin,  Germany",
+            "description": "About Wolt At Wolt, we create technology that brings joy, simplicity and earnings to the neighborhoods of the world. In 2014 we started with delivery of restaurant food. Now we're building the delivery of (almost) everything and you'll find us in over 500 cities in 30 countries around the world. In ",
+            "url": "https://www.arbeitnow.com/jobs/companies/wolt-english/senior-analytics-engineer-consumer-berlin-462072",
+            "published": "2026-08-10T13:45:21+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Marketing Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_online-marketing-manager-digital-marketing-consultant-frankfurt-am-main-201644",
+            "title": "Online Marketing Manager / Digital Marketing Consultant (m/w/d)",
+            "company": "Klickkonzept by Cosmo5",
+            "location": "Frankfurt am Main",
+            "description": "Hallo! Schön, dass du hier bist. Wir sind Klickkonzept, Teil der internationalen Cosmo5-Gruppe. Als KI-orientierte Performance-Agentur entwickeln wir in Frankfurt datengetriebene Lösungen für Brands, die wachsen wollen – von der Beauty-Industrie bis zum B2B-Sektor. Bei uns findest du keine starren K",
+            "url": "https://www.arbeitnow.com/jobs/companies/klickkonzept-by-cosmo5/online-marketing-manager-digital-marketing-consultant-frankfurt-am-main-201644",
+            "published": "2026-08-10T13:30:23+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_amazon-advertising-manager-retail-media-manager-frankfurt-am-main-245199",
+            "title": "Amazon Advertising Manager / Retail Media Manager (m/w/d)",
+            "company": "Klickkonzept by Cosmo5",
+            "location": "Frankfurt am Main",
+            "description": "Hallo! Schön, dass du hier bist. Wir sind Klickkonzept, Teil der internationalen Cosmo5-Gruppe. Als KI-orientierte Performance-Agentur entwickeln wir in Frankfurt datengetriebene Lösungen für Brands, die wachsen wollen – von der Beauty-Industrie bis zum B2B-Sektor. Bei uns findest du keine starren K",
+            "url": "https://www.arbeitnow.com/jobs/companies/klickkonzept-by-cosmo5/amazon-advertising-manager-retail-media-manager-frankfurt-am-main-245199",
+            "published": "2026-08-10T13:30:22+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_social-media-advertising-manager-paid-social-manager-frankfurt-am-main-388018",
+            "title": "Social Media Advertising Manager / Paid Social Manager (m/w/d)",
+            "company": "Klickkonzept by Cosmo5",
+            "location": "Frankfurt am Main",
+            "description": "Hallo! Schön, dass du hier bist. Wir sind Klickkonzept, Teil der internationalen Cosmo5-Gruppe. Als KI-orientierte Performance-Agentur entwickeln wir in Frankfurt datengetriebene Lösungen für Brands, die wachsen wollen – von der Beauty-Industrie bis zum B2B-Sektor. Bei uns findest du keine starren K",
+            "url": "https://www.arbeitnow.com/jobs/companies/klickkonzept-by-cosmo5/social-media-advertising-manager-paid-social-manager-frankfurt-am-main-388018",
+            "published": "2026-08-10T13:01:40+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_seo-geo-manager-organic-visibility-manager-frankfurt-am-main-320661",
+            "title": "SEO/GEO Manager / Organic Visibility Manager (m/w/d)",
+            "company": "Klickkonzept by Cosmo5",
+            "location": "Frankfurt am Main",
+            "description": "Hallo! Schön, dass du hier bist. Wir sind Klickkonzept, Teil der internationalen Cosmo5-Gruppe. Als KI-orientierte Performance-Agentur entwickeln wir in Frankfurt datengetriebene Lösungen für Brands, die wachsen wollen – von der Beauty-Industrie bis zum B2B-Sektor. Bei uns findest du keine starren K",
+            "url": "https://www.arbeitnow.com/jobs/companies/klickkonzept-by-cosmo5/seo-geo-manager-organic-visibility-manager-frankfurt-am-main-320661",
+            "published": "2026-08-10T13:01:40+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451543671",
+            "title": "Werkstudent - Forschung & Entwicklung im Bereich Reifen (m/w/d) - REF98292G",
+            "company": "Continental",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Unternehmensbeschreibung Continental ist ein führender Reifenhersteller und Industriespezialist. Das 1871 gegründete Unternehmen erzielte 2025 einen Umsatz von 19,7 Milliarden Euro und beschäftigt aktuell rund 78.000 Mitarbeiterinnen und Mitarbeiter in 54 Ländern und Märkten. Reifenlösungen des Unte",
+            "url": "https://www.linkedin.com/jobs/view/4451543671",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449563885",
+            "title": "Data Engineer (m/w/d)",
+            "company": "Atos",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Bull steht für ein Jahrhundert europäischer Innovationskraft. Als Teil eines zukunftsorientierten Arbeitsumfelds entwickeln unsere Expertinnen und Experten leistungsstarke, nachhaltige und souveräne digitale Lösungen – damit Staaten und Industrien die volle Kontrolle über ihre Daten und ihre Künstli",
+            "url": "https://www.linkedin.com/jobs/view/4449563885",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451565088",
+            "title": "Praktikum im Bereich Automotive",
+            "company": "Oehmichen & Bürgers Industrieplanung GmbH",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Wir besetzen diese Position an unserem Zentral-Standort in Düsseldorf ab Oktober. Ihr Job Als motivierte(r) Student(in) erhalten Sie zu Beginn des Praktikums eine intensive Einarbeitung in die für die Fahrzeugtechnik relevanten CAD-Systeme CATIA V5 und/oder Siemens NX Anschließend wirken Sie aktiv i",
+            "url": "https://www.linkedin.com/jobs/view/4451565088",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451180674",
+            "title": "Praktikum im Bereich Crash- und Struktursimulation CAE (m/w/d) 1",
+            "company": "EDAG Group",
+            "location": "Böblingen, Baden-Württemberg, Germany",
+            "description": "Im Vehicle Engineering treiben wir mit Innovationsgeist und über 50 Jahren Expertise die Produktentwicklung für die Automobilbranche voran. Für eine erfolgreiche Entwicklung in der Zukunft setzen wir auf Ihr Know-how. Daran werden Sie wachsen: Eigenständige Bearbeitung von Crash- und Struktursimulat",
+            "url": "https://www.linkedin.com/jobs/view/4451180674",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451198057",
+            "title": "Harness Design Engineer (m/w/d)",
+            "company": "Bertrandt Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Wir sind Bertrandt. Ein eigenständiger und internationaler Engineering Dienstleister mit langjähriger Expertise. Mit branchenübergreifendem Know-how und einem ganzheitlichen System- und Produktverständnis schaffen wir technologische Lösungen entlang der gesamten Wertschöpfungskette. Wir beschäftigen",
+            "url": "https://www.linkedin.com/jobs/view/4451198057",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451177798",
+            "title": "Principal Data Scientist (m/f/d)",
+            "company": "AutoScout24",
+            "location": "Munich, Bavaria, Germany",
+            "description": "A career driven by you. Join AutoScout24 Group and experience life in the fast lane. We’re not just leading the market; we’re creating it. We’re constantly innovating, evolving and transforming things for our customers. We’re driven, ambitious and determined to do our best work, together. For a care",
+            "url": "https://www.linkedin.com/jobs/view/4451177798",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451537695",
+            "title": "Machine Learning Consultant (m/w/d)",
+            "company": "Machine Learning Reply GmbH",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Company overview: Machine Learning Reply provides customized end-to-end solutions in the data science field that cover the entire project life cycle - from initial strategic consulting to data architecture and infrastructure topics, through to data processing and quality assurance using machine lear",
+            "url": "https://www.linkedin.com/jobs/view/4451537695",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451561176",
+            "title": "Senior Machine Learning Engineer (All genders)",
+            "company": "Zalando",
+            "location": "Berlin, Germany",
+            "description": "THE ROLE & THE TEAM We are looking for a Senior Machine Learning Engineer to enhance Zalando’s recommendation ML systems, making them more scalable, efficient, and impactful. You will play a key role in productionizing ML models, optimising pipelines, and ensuring seamless deployment of high-perform",
+            "url": "https://www.linkedin.com/jobs/view/4451561176",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449583114",
+            "title": "Data Analyst CRM",
+            "company": "DKB | Deutsche Kreditbank AG",
+            "location": "Berlin, Germany",
+            "description": "Data Analyst CRM (m/w/d) DKB AG Standort: Zentrale/Berlin unbefristet Teil- & Vollzeit möglich ab sofort Deine Aufgaben Als Data Analyst*in CRM arbeitest du im Bereich Business Intelligence an der Schnittstelle zwischen Business, Data Engineering und Produktentwicklung Du sorgst dafür, dass CRM-rele",
+            "url": "https://www.linkedin.com/jobs/view/4449583114",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449581256",
+            "title": "Finance Data & Systems Analyst (FP&A)",
+            "company": "Lovehoney Group",
+            "location": "Berlin, Germany",
+            "description": "Lovehoney Group is the world’s leading sexual wellbeing company, with the mission to elevate pleasure through innovative technologies, a data-driven approach, and foster creative and fresh perspectives on intimacy. We offer exciting brands with innovative, high-quality sex toys, lingerie, and access",
+            "url": "https://www.linkedin.com/jobs/view/4449581256",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449593044",
+            "title": "Marketing Data Analyst",
+            "company": "Found By Few",
+            "location": "Berlin, Germany",
+            "description": "📊 Role: Marketing Data Analyst 📍 Location: Germany, UK, Portugal, or Spain 💻 Remote First 💵 Salary: Up to €75,000 Join a consumer health-tech startup, already having a significant impact on the well-being of millions. As a Marketing Data Analyst you'll have a significant impact on the growth of an a",
+            "url": "https://www.linkedin.com/jobs/view/4449593044",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4447920172",
+            "title": "Business Analyst Pricing (m/w/d)",
+            "company": "Deutsche WertpapierService Bank AG",
+            "location": "Eschborn, Hesse, Germany",
+            "description": "Einzigartiger Service braucht ein großartiges Team Die Deutsche WertpapierService Bank AG ist mit über 22 Jahren Erfahrung im Wertpapiergeschäft der führende Dienstleister für Wertpapierservices in Deutschland. Mit unserer Systemplattform WP3 verarbeiten wir für über 1.000 Banken jedes Jahr mehrere ",
+            "url": "https://www.linkedin.com/jobs/view/4447920172",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442599771",
+            "title": "Product Manager (f/m/x)_metrify",
+            "company": "Enpal",
+            "location": "Berlin, Germany",
+            "description": "Our goal is to have a solar system on every roof, a storage unit in every house, and an electric car in every garage. Enpal makes this possible with an integrated total solution for decentralized energy—from solar systems and battery storage to wall boxes, smart meters, and heat pumps. At the heart ",
+            "url": "https://www.linkedin.com/jobs/view/4442599771",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451560170",
+            "title": "Product Manager Integration (m/w/d)",
+            "company": "Riverty",
+            "location": "Baden-Baden, Baden-Württemberg, Germany",
+            "description": "Unternehmensbeschreibung Jede Geschichte zählt. Gestalte deine eigene – gemeinsam mit uns bei Riverty. Und wohin führt dich das? In eine unserer 30 hybriden Arbeitsumgebungen – gestaltet für den Austausch von Ideen, gemeinsames Lernen und die Mitgestaltung unserer Arbeitsweise. Werde Teil einer inte",
+            "url": "https://www.linkedin.com/jobs/view/4451560170",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449593034",
+            "title": "Kfz-Mechatroniker (all genders)",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Voll/Teilzeit Du hast Benzin im Blut? Du hast eine Leidenschaft für Autos und Technik und bist auf der Suche nach einer spannenden neuen Aufgabe? Dann komm zu uns ins Team! Bewirb Dich bei Hamburgs beliebtestem Unternehmen!* Wir suchen für unsere Werkstatt in Stellingen Kfz-Mechatroniker (all gender",
+            "url": "https://www.linkedin.com/jobs/view/4449593034",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451410064",
+            "title": "Messtechniker (m/w/d)",
+            "company": "MIMplus Technologies GmbH & Co. KG",
+            "location": "Ispringen, Baden-Württemberg, Germany",
+            "description": "The MIM process combines the design flexibility of plastic injection molding with the strength and precision of metal. Cost-effective manufacturing of parts with superior surface quality and demanding geometries in large quantities. Sinter-based Additive Manufacturing enables the production of geome",
+            "url": "https://www.linkedin.com/jobs/view/4451410064",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451542723",
+            "title": "Prototype Technician (all genders) Prototype Shop Airbag (1021)",
+            "company": "Joyson Safety Systems Hungary",
+            "location": "Berlin, Germany",
+            "description": "Your Job We are Joyson Safety Systems – A Mobility Safety Company. Joyson Safety Systems ist einer der global führenden Entwickler und Hersteller von automobilen Insassenschutzsystemen mit einem Umsatz von ca. 4,8 Mrd. Euro und weltweit mehr als 50.000 Mitarbeiterinnen und Mitarbeitern. Wir stehen f",
+            "url": "https://www.linkedin.com/jobs/view/4451542723",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442594996",
+            "title": "Instandhalter (m/w/x)",
+            "company": "Magna International",
+            "location": "Elsendorf, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4442594996",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451147988",
+            "title": "Product Manager",
+            "company": "Haystack",
+            "location": "Rhineland-Palatinate, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4451147988",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 36,
+          "reason": "title fits 'Junior Data Engineer'; skills: Python; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4451190507",
+            "title": "Data Engineer",
+            "company": "Haystack",
+            "location": "Greater Dusseldorf Area",
+            "description": "We're hiring on behalf of a Haystack partner! The Role • Synthesize operational data into actionable automation insights, such as Overall Equipment Effectiveness (OEE) and patterns of operational issues. • Partner with experienced automation design engineers to transform raw operational data into us",
+            "url": "https://www.linkedin.com/jobs/view/4451190507",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Scientist'; skills: Machine Learning; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "arbeitnow_product-owner-data-ai-fluegede-leipzig-104383",
+            "title": "Product Owner Data & AI (m/f/d) – fluege.de",
+            "company": "TC Flights Germany GmbH",
+            "location": "Leipzig",
+            "description": "Introduction TC Flights Germany is known for operating one of the most successful flight search portals in Germany— fluege.de . We are part of Tongcheng Travel, an internationally active company in online travel distribution. Our vision is to be Germany’s top choice for comparing and booking flights",
+            "url": "https://www.arbeitnow.com/jobs/companies/tc-flights-germany-gmbh/product-owner-data-ai-fluegede-leipzig-104383",
+            "published": "2026-08-10T13:30:24+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Data Scientist'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4451538751",
+            "title": "Product Scientist",
+            "company": "Tripledot Studios",
+            "location": "Berlin, Germany",
+            "description": "Who are we? Tripledot Studios is one of the largest independent mobile games companies in the world. We are a multi-award-winning organisation, with a global 2,500+ strong team across 12 studios. Our expanded portfolio includes some of the biggest titles in mobile gaming, collectively reaching top c",
+            "url": "https://www.linkedin.com/jobs/view/4451538751",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4451563025",
+            "title": "AI/ML Engineer",
+            "company": "boilr",
+            "location": "Berlin, Berlin, Germany",
+            "description": "One form. No login, no seven interview rounds, no cover letter theater. ← back to all positions Show more Show less",
+            "url": "https://www.linkedin.com/jobs/view/4451563025",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 25,
+          "reason": "title fits 'Produktmanager' (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4449574154",
+            "title": "Produktmanager",
+            "company": "Umami Ware",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449574154",
+            "published": "2026-08-10T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
