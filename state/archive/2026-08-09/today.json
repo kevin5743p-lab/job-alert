@@ -4221,6 +4221,309 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-09T19:08:41.756256",
+      "strong": [],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_technical-product-manager-data-platform-london-427659",
+            "title": "Technical Product Manager (Data Platform)",
+            "company": "Globalwebindex",
+            "location": "London",
+            "description": "&lt;div&gt; &lt;p&gt;&lt;strong&gt;Technical Product Manager (Data Platform)&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Location&lt;/strong&gt;: London&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Office requirement&lt;/strong&gt;: Hybrid, 2x week&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Employment type&lt;/strong",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/globalwebindex/technical-product-manager-data-platform-london-427659",
+            "published": "2026-08-09T18:55:30+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449519482",
+            "title": "Junior ETL-Developer / Business Analyst m/w/d - remote - deutschlandweit",
+            "company": "23DATA",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Über uns: 23DATA – ein cooles, dezentrales Team voller Datenversteher:innen und Zahlenzauberer! Bei uns trifft Remote-Arbeit auf echten Teamgeist, spannende BI-Projekte auf spaßige Social Weeks und knallharte Analysen auf jede Menge Humor. Regelmäßige Treffen in coolen Offices an wechselnden Orten i",
+            "url": "https://www.linkedin.com/jobs/view/4449519482",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449524070",
+            "title": "Senior Data Engineer (w/m/d)",
+            "company": "Skalar",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Build our data foundation from v1 -> v10. Join the early core team of experienced entrepreneurs (scaled to millions of users, $100m+ exits). Build the future of tax & accounting with AI. Architect our data warehouse, build resilient pipelines, and enable our finance stack. Grow into leadership as we",
+            "url": "https://www.linkedin.com/jobs/view/4449524070",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449512576",
+            "title": "Full-time R&D Engineer (f/m/d)",
+            "company": "VAARHAFT",
+            "location": "Berlin, Berlin, Germany",
+            "description": "VAARHAFT is a young startup that deals with the authentication of digital media. In an age of publicly accessible generative AI, creating deepfakes has become child's play, meaning that the authenticity of digital images and videos can no longer be blindly trusted. Our mission is to preserve the cre",
+            "url": "https://www.linkedin.com/jobs/view/4449512576",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4375191308",
+            "title": "Mechatroniker (m/w/d) für Hamburg",
+            "company": "Scania Deutschland",
+            "location": "Oststeinbek, Schleswig-Holstein, Germany",
+            "description": "Scania ist einer der weltweit führenden Hersteller von Lkw, Bussen und Industriemotoren und ein dynamischer und sicherer Arbeitgeber. Werden Sie ein Teil davon! Deine Aufgaben als Mechatroniker bei Scania: Du bist verantwortlich für die professionelle Durchführung von Wartungs-, Reparatur- und Insta",
+            "url": "https://www.linkedin.com/jobs/view/4375191308",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450971043",
+            "title": "Servicetechniker (m/w/d)",
+            "company": "Wessels + Müller AG",
+            "location": "Mönchengladbach, North Rhine-Westphalia, Germany",
+            "description": "Vollzeit 41189 Mönchengladbach, Deutschland Berufserfahrene Willkommen bei WM ! Seit 1945 agieren wir am Markt und sind mittlerweile ein führendes Unternehmen im Kfz- und Nfz-Teile und Zubehörhandel mit über 200 Verkaufshäuser in Europa und den USA. Unser Team aus 6.000 engagierten Mitarbeitern steh",
+            "url": "https://www.linkedin.com/jobs/view/4450971043",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449512546",
+            "title": "Kfz-Mechatroniker (m/w/d)",
+            "company": "Stellantis &You Deutschland",
+            "location": "Heidelberg, Baden-Württemberg, Germany",
+            "description": "STELLANTIS &YOU - Mit starken Marken Zukunft gestalten. Die aktuelle Produktpalette unserer Marken ABARTH, ALFA ROMEO, CITROËN, DS AUTOMOBILES, FIAT, FIAT PROFESSIONAL, JEEP, LEAPMOTOR, OPEL und PEUGEOT, ist die umfassendste und modernste, die wir je im Angebot hatten – also optimale Voraussetzungen",
+            "url": "https://www.linkedin.com/jobs/view/4449512546",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4344908575",
+            "title": "Signalmechaniker:in",
+            "company": "Deutsche Bahn",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Wir haben eine Vielzahl wichtiger Berufe, für die spezielle Kenntnisse notwendig sind. Deswegen setzen wir auf Menschen, die sich beruflich neu orientieren und entwickeln möchten. Zum nächstmöglichen Zeitpunkt suchen wir dich als Signalmechaniker:in (RBEG) (w/m/d) für den Großraum Stuttgart bei der ",
+            "url": "https://www.linkedin.com/jobs/view/4344908575",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4404562948",
+            "title": "Elektroniker:in / Elektriker:in / Mechatroniker:in für eine Qualifizierung als Signalmechaniker:in",
+            "company": "Deutsche Bahn",
+            "location": "Paderborn, North Rhine-Westphalia, Germany",
+            "description": "Wir haben eine Vielzahl wichtiger Berufe, für die spezielle Kenntnisse notwendig sind. Deswegen setzen wir auf Menschen, die sich beruflich neu orientieren und entwickeln möchten. Du durchläufst eine maßgeschneiderte interne Weiterbildung, die dich auf dem Weg zum:zur Signalmechaniker:in unterstützt",
+            "url": "https://www.linkedin.com/jobs/view/4404562948",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449513593",
+            "title": "Prüf- und Montagetechniker Motoren (m/w/d)",
+            "company": "surge aero",
+            "location": "Munich, Bavaria, Germany",
+            "description": "SurgeAero entwickelt leistungsstarke Antriebssysteme und UAV-Plattformen für die nächste Generation unbemannter Luftfahrzeuge. Wir verbinden innovative Luftfahrttechnik mit einer schnellen, praxisorientierten Startup-Kultur und entwickeln Produkte, die unter realen Einsatzbedingungen überzeugen. Zur",
+            "url": "https://www.linkedin.com/jobs/view/4449513593",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451361366",
+            "title": "Group Product Manager [Klaxoon]",
+            "company": "Wrike",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Wrike is the most powerful work management platform. Built for teams and organizations looking to collaborate, create, and exceed every day, Wrike brings everyone and all work into a single place to remove complexity, increase productivity, and free people up to focus on their most purposeful work. ",
+            "url": "https://www.linkedin.com/jobs/view/4451361366",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 25,
+          "reason": "skills: Python, Git; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4449512545",
+            "title": "Full-time Backend Developer (f/m/d)",
+            "company": "VAARHAFT",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "VAARHAFT is a young startup that deals with the authentication of digital media. In an age of publicly accessible generative AI, creating deepfakes has become child's play, meaning that the authenticity of digital images and videos can no longer be blindly trusted. Our mission is to preserve the cre",
+            "url": "https://www.linkedin.com/jobs/view/4449512545",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-08-09T20:58:13.830661",
+      "strong": [],
+      "worth_look": [],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_technical-product-manager-data-platform-athens-gr-300766",
+            "title": "Technical Product Manager (Data Platform)",
+            "company": "Globalwebindex",
+            "location": "Athens,  GR",
+            "description": "&lt;p&gt;&lt;strong&gt;Technical Product Manager (Data Platform)&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Location&lt;/strong&gt;: Athens&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Weekly office requirement&lt;/strong&gt;: Hybrid, 1 days/week&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Employment type&lt;/strong&",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/globalwebindex/technical-product-manager-data-platform-athens-gr-300766",
+            "published": "2026-08-09T18:55:30+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451374006",
+            "title": "Werkstudent:in (m/w/d) gesucht!",
+            "company": "Smart Train Lease GmbH",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Die Smart Train Lease GmbH ist eine 100%ige Tochtergesellschaft der Siemens Mobility und seit Anfang 2024 im deutschen Markt aktiv. Wir bieten Betreibern moderne Nahverkehrszüge im kurz- und mittelfristigen Leasing und entwickeln unser Geschäft sowie unsere Prozesse kontinuierlich weiter. Dabei setz",
+            "url": "https://www.linkedin.com/jobs/view/4451374006",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4405801815",
+            "title": "Lead Payment Behavioural Models Strategist - Group Strategic Analytics (f/m/x)",
+            "company": "Deutsche Bank",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Position Overview English version below* Über den Bereich Group Strategic Analytics (GSA) ist Teil des Group Chief Operation Office (COO), das als Brücke zwischen den Geschäfts- und Infrastrukturbereichen der Bank fungiert, um Effizienz-, Kontroll- und Transformationsziele zu erreichen. Sie arbeiten",
+            "url": "https://www.linkedin.com/jobs/view/4405801815",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449508781",
+            "title": "Kfz.-Mechaniker / Mechatroniker (m/w/d) 2.500€ Willkommensprämie",
+            "company": "Driver Reifen und KFZ-Technik GmbH - a Pirelli Group Company",
+            "location": "Lübeck, Schleswig-Holstein, Germany",
+            "description": "Bist du ein Kfz.-Mechaniker und Allround Talent mit selbstständiger Arbeitsweise (m/w/d) und suchst nach einer neuen Herausforderung? Dann komm zu Driver Reifen- und Kfz.-Technik GmbH, einer 100%igen Tochter des Pirelli Konzerns! Wir legen großen Wert auf Ehrlichkeit, Respekt, Nachhaltigkeit und Tea",
+            "url": "https://www.linkedin.com/jobs/view/4449508781",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4450972278",
+            "title": "Servicetechniker (m/w/d)",
+            "company": "Wessels + Müller AG",
+            "location": "Bubenreuth, Bavaria, Germany",
+            "description": "Vollzeit Bubenreuth, Deutschland Berufserfahrene Willkommen bei WM ! Seit 1945 agieren wir am Markt und sind mittlerweile ein führendes Unternehmen im Kfz- und Nfz-Teile und Zubehörhandel mit über 200 Verkaufshäuser in Europa und den USA. Unser Team aus 6.000 engagierten Mitarbeitern steht für Leide",
+            "url": "https://www.linkedin.com/jobs/view/4450972278",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4395350170",
+            "title": "Mitarbeiter Central Data Management (m/w/d)",
+            "company": "SMC Deutschland",
+            "location": "Egelsbach, Hesse, Germany",
+            "description": "Einstieg als: Festanstellung | Art: Vollzeit | Befristung: Unbefristet | Unternehmensbereich: Central Data Management | Arbeitsort: Egelsbach Automation ist unsere Leidenschaft – Ihre auch? Begeistern Sie sich für neue Technologien, ergreifen die Initiative und arbeiten selbstständig? Dann sind Sie ",
+            "url": "https://www.linkedin.com/jobs/view/4395350170",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4373649232",
+            "title": "AI Technology Lead (m/f/d)",
+            "company": "WSCAD: AI-Powered Electrical CAD",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Engineering software is at a structural turning point. For decades, CAD systems digitized drawing. At WSCAD, we are building the next paradigm: AI-native engineering systems, where AI is not an add-on, but the core operating layer of engineering workflows. We are looking for an AI Technology Lead to",
+            "url": "https://www.linkedin.com/jobs/view/4373649232",
+            "published": "2026-08-09T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
