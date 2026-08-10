@@ -247,6 +247,16 @@ export function buildSingleScorePrompt(job, cvText, sp = {}, language = "en",
   const level = sp.career_level || "";
   const persona = sp.persona || "";
 
+  // 1500 cut real requirements off the end. An employer board's role text — the
+  // duties, the qualifications and the practical conditions — measured 1742,
+  // 2117, 2354 and 2528 characters on live Bosch postings, so the
+  // qualifications section, the part that decides the fit, was the part being
+  // dropped. 2500 covers them whole. This is the individually-scored pass, 15
+  // postings a scan, so it costs a few thousand tokens; the batched pass stays
+  // at 1200, because that one is 55 postings and it is where the
+  // tokens-per-minute ceiling actually bites.
+  const description = (job.description || "").slice(0, 2500);
+
   return `You are a strict but fair job-matching assistant.
 
 === CANDIDATE CV ===
@@ -262,7 +272,7 @@ ${domainClass ? `Already classified relative to their field: ${domainClass}` : "
 Title: ${job.title || ""}
 Company: ${job.company || ""}
 Location: ${job.location || ""}
-Description: ${(job.description || "").slice(0, 1500)}
+Description: ${description}
 
 Score this posting 0-100 for this candidate and give one short, specific reason.
 - 85-100 outstanding · 70-84 strong · 50-69 worth a look · below 50 poor.
