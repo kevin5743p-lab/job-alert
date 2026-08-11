@@ -5704,6 +5704,486 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-11T17:18:54.366552",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 50,
+          "reason": "skills: Python, Machine Learning, Automotive Engineering (+1); keyword bonus: 4; preferred location; +4 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442751233",
+            "title": "Working Student (m/f/d) for Algorithm Research & Development on Radar Systems for Autonomous Driving",
+            "company": "Valeo",
+            "location": "Bietigheim-Bissingen, Baden-Württemberg, Germany",
+            "description": "Would you like to shape the future of intelligent mobility together with us? Become part of our VALEO team and revolutionize the experience of autonomous and connected driving. We are looking for YOU as a Working Student (m/f/d) for Algorithm Research & Development on Radar Systems for Autonomous Dr",
+            "url": "https://www.linkedin.com/jobs/view/4442751233",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_technischer-projekt-und-produktmanager-sicherheitstechnologie-munich-416782",
+            "title": "Technischer Projekt- und Produktmanager Sicherheitstechnologie (m/w/x)",
+            "company": "K-tronik GmbH",
+            "location": "Munich",
+            "description": "Projektbeschreibung: Du möchtest nicht nur Produkte verwalten, sondern Technologien, Lösungen und ein Unternehmen aktiv mitgestalten? Dann bieten wir Dir hier die Möglichkeit, Verantwortung in einem dynamisch wachsenden Unternehmen der Sicherheitsbranche zu übernehmen. Aufgaben: Schnittstelle zwisch",
+            "url": "https://www.arbeitnow.com/jobs/companies/k-tronik-gmbh/technischer-projekt-und-produktmanager-sicherheitstechnologie-munich-416782",
+            "published": "2026-08-11T15:31:02+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_technical-product-manager-intellij-scala-plugin-london-293264",
+            "title": "Technical Product Manager (IntelliJ Scala Plugin)",
+            "company": "Jetbrains",
+            "location": "London",
+            "description": "&lt;p&gt;At JetBrains, we care deeply about developer tools and the code-writing experience. The Scala plugin for IntelliJ IDEA helps developers work with Scala every day. Supporting that experience means understanding real-world development workflows, staying close to user needs, and continuously i",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/jetbrains/technical-product-manager-intellij-scala-plugin-london-293264",
+            "published": "2026-08-11T15:55:07+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_ai-technical-lead-c-ecosystem-london-336879",
+            "title": "AI Technical Lead - C++ Ecosystem",
+            "company": "Jetbrains",
+            "location": "London",
+            "description": "&lt;p data-start=&quot;213&quot; data-end=&quot;305&quot;&gt;AI is fundamentally changing how developers write, understand, debug, and maintain software.&lt;/p&gt; &lt;p data-start=&quot;307&quot; data-end=&quot;665&quot;&gt;At JetBrains, we&#39;re exploring what an AI-native development experience ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/jetbrains/ai-technical-lead-c-ecosystem-london-336879",
+            "published": "2026-08-11T15:55:07+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_head-of-data-engineering-london-94050",
+            "title": "Head of Data Engineering",
+            "company": "Numan",
+            "location": "London",
+            "description": "About Numan&nbsp; &nbsp; Founded in 2018, we’ve already grown to be a 300+ team distributed across the globe, united by a singular mission: empowering people to take control of their health. &nbsp; Numan is transforming health: we’ve built a cutting-edge platform that integrates diagnostics, medicat",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/numan/head-of-data-engineering-london-94050",
+            "published": "2026-08-11T15:24:38+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451914150",
+            "title": "Werkstudentin / Werkstudent Benchmarking und Produktivität (w/m/d)",
+            "company": "Volkswagen Group",
+            "location": "Wolfsburg, Lower Saxony, Germany",
+            "description": "Arbeitsumfeld Im Team Wettbewerbsbeobachtung Produktion bei Volkswagen unterstützen Sie die Analyse und Bewertung von Produktionsnetzwerken der Wettbewerber. Dabei tragen Sie zur strategischen Entscheidungsfindung im Bereich Konzernproduktion bei, indem Sie Produktionsstandorte und -kapazitäten bewe",
+            "url": "https://www.linkedin.com/jobs/view/4451914150",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451902864",
+            "title": "Praktikum / Abschlussarbeit in der Bremsenentwicklung: Versuch und Datenanalyse (w/m/d)",
+            "company": "Volkswagen Group",
+            "location": "Wolfsburg, Lower Saxony, Germany",
+            "description": "Arbeitsumfeld Werden Sie Teil unseres Teams „Virtuelle Entwicklung, Bremse und Betätigung“ am Standort Wolfsburg. Unsere Abteilung vereint klassische Fahrzeugentwicklung mit modernen virtuellen, experimentellen und datengetriebenen Methoden zur Entwicklung und Absicherung von Brems- und Betätigungss",
+            "url": "https://www.linkedin.com/jobs/view/4451902864",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451913171",
+            "title": "Praktikum / Abschlussarbeit (Master) Robotic Foundation Models Automobil-Endmontage (m/w/d)",
+            "company": "Volkswagen Group",
+            "location": "Wolfsburg, Lower Saxony, Germany",
+            "description": "Arbeitsumfeld Als Teil der Group IT für Produktion und Logistik verantworten wir konzernweit eingesetzte Software entlang der gesamten Prozesskette und gestalten aktiv die Transformation hin zu einer KI-gestützten, datengetriebenen Produktion. Unser Team forscht an der Schnittstelle von industrielle",
+            "url": "https://www.linkedin.com/jobs/view/4451913171",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4424677659",
+            "title": "Forward Deployed AI Scientist, Germany & Austria - BCG X",
+            "company": "BCG X",
+            "location": "Frankfurt, Hesse, Germany",
+            "description": "Locations : München | Berlin | Frankfurt | Hamburg | Köln | Düsseldorf | Stuttgart | Vienna Who We Are Boston Consulting Group partners with leaders in business and society to tackle their most important challenges and capture their greatest opportunities. BCG was the pioneer in business strategy wh",
+            "url": "https://www.linkedin.com/jobs/view/4424677659",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451908182",
+            "title": "Senior AI Engineer (f/m/d)",
+            "company": "Siemens",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Create a better #TomorrowWithUs 🚀 At Siemens, we build technology solutions to shape the world we live in. We transform industries and societies by combining the real and digital worlds. With over 300.000 of the world’s most forward-thinking minds and the power of a presence in more than 190 countri",
+            "url": "https://www.linkedin.com/jobs/view/4451908182",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452485658",
+            "title": "Structural Dynamics Engineer (m/w/x)",
+            "company": "SII Germany",
+            "location": "Ottobrunn, Bavaria, Germany",
+            "description": "Im heutigen, dynamischen Umfeld technologischen Wandels sind intelligente IT-, Software- und Systemlösungen von zentraler Bedeutung – in komplexen, sicherheitskritischen und regulierten Technologiefeldern wie Automotive, Defence und der Luft- und Raumfahrt. Wir vereinen fundierte Expertise in Avioni",
+            "url": "https://www.linkedin.com/jobs/view/4452485658",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451921233",
+            "title": "Research Engineer (m/f/d)",
+            "company": "Siemens Energy",
+            "location": "Berlin, Berlin, Germany",
+            "description": "A Snapshot of Your Day As a part of fundamental development in an innovative technology company in the energy sector, your focus is on the development of new concepts and basic technologies for a sustainable, secure and efficient energy future. In your basic research, you will work on solutions that",
+            "url": "https://www.linkedin.com/jobs/view/4451921233",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Leitung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449859534",
+            "title": "Head of Machine Analytics & Simulation (m/w/d)",
+            "company": "SCHNEIDER Optical Machines",
+            "location": "Fronhausen, Hesse, Germany",
+            "description": "SCHNEIDER DEINE ZUKUNFT! Nicht jeder kennt SCHNEIDER, aber wir sind ein wichtiger Teil im Leben von Millionen von Menschen. Wir schärfen ihre Sehkraft, wir helfen ihnen, nach den Sternen zu greifen, wir bringen sie sicher von Punkt A nach Punkt B und verbinden sie mit dem, was zählt. Als eines der w",
+            "url": "https://www.linkedin.com/jobs/view/4449859534",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Promotion'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451903665",
+            "title": "R&D Engineer / Scientist / Developer",
+            "company": "Leybold",
+            "location": "Cologne, North Rhine-Westphalia, Germany",
+            "description": "Ihre Aufgaben Technologische Auslegung und Weiterentwicklung aktiver Magnetlagersysteme für Hochgeschwindigkeitsrotoren Definition, Spezifikation und Bewertung von Anforderungen an Sensorik, Leistungselektronik, Echtzeitsysteme und Regelungsfunktionen Technische Steuerung und Bewertung externer Entw",
+            "url": "https://www.linkedin.com/jobs/view/4451903665",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451921139",
+            "title": "Business Analyst IT (m/w/d)",
+            "company": "Otto Group",
+            "location": "Löhne, North Rhine-Westphalia, Germany",
+            "description": "Dein Profil Du hast ein Studium mit wirtschaftlichem oder technischem Schwerpunkt oder eine vergleichbare Ausbildung abgeschlossen. Anforderungsmanagement und –analyse (Requirements Engineering). Du hast schon mindestens zwei Jahre als Business Analyst gearbeitet, vorzugsweise bereits in einem logis",
+            "url": "https://www.linkedin.com/jobs/view/4451921139",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442729298",
+            "title": "Business Process Analyst IT (w/m/d)",
+            "company": "ADAC",
+            "location": "Wessling, Bavaria, Germany",
+            "description": "Deine Aufgaben Hinter jedem erfolgreichen Prozess stehen durchdachte Abläufe und die richtigen IT-Lösungen. Als Business Process Analyst IT (w/m/d) sorgst Du dafür, dass beides optimal zusammenspielt: Du analysierst bestehende Geschäftsprozesse, identifizierst Verbesserungspotenziale und unterstützt",
+            "url": "https://www.linkedin.com/jobs/view/4442729298",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452478398",
+            "title": "Business Analyst (m/w/d)",
+            "company": "Amadeus Fire",
+            "location": "Heppenheim an der Bergstraße, Hesse, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4452478398",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452477948",
+            "title": "Product Manager (m/f/d) - Digital Rent",
+            "company": "SIXT",
+            "location": "Munich, Bavaria, Germany",
+            "description": "As a Product Manager (m/f/d) at SIXT, you will be creating solutions used globally by millions of users, revolutionizing the way people experience mobility. In this role, you will own the digital rent experience that enables customers to skip the counter and get on the road faster. As we push to mak",
+            "url": "https://www.linkedin.com/jobs/view/4452477948",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451902738",
+            "title": "KFZ Mechatroniker / KFZ Mechaniker (m/w/d)",
+            "company": "Michelin",
+            "location": "Ulm, Baden-Württemberg, Germany",
+            "description": "- - - - - - - - - - - - EUROMASTER ist eine 100-prozentige Tochtergesellschaft der Michelin Group, einem der weltweit erfolgreichsten Unternehmen europäischen Ursprungs. Wir sind Marktführer für Reifen- und Autoservice und pflegen in unserer alltäglichen Arbeit einen hohen Anspruch an die Qualität u",
+            "url": "https://www.linkedin.com/jobs/view/4451902738",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449852999",
+            "title": "Kfz-Mechatroniker (all genders)",
+            "company": "Stadtreinigung Hamburg",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "Voll/Teilzeit Du hast Benzin im Blut? Du hast eine Leidenschaft für Autos und Technik und bist auf der Suche nach einer spannenden neuen Aufgabe? Dann komm zu uns ins Team! Bewirb Dich bei Hamburgs beliebtestem Unternehmen!* Wir suchen für unsere Werkstatt in Stellingen Kfz-Mechatroniker (all gender",
+            "url": "https://www.linkedin.com/jobs/view/4449852999",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449860600",
+            "title": "KFZ-Mechatroniker (m/w/d)",
+            "company": "Borgmann GmbH",
+            "location": "Dorsten, North Rhine-Westphalia, Germany",
+            "description": "Das erwartet Sie: Wartung und Reparatur: Durchführung von Wartungs- und Reparaturarbeiten an Fahrzeugen unterschiedlicher Marken und Modelle. Diagnosestellung: Fehlersuche und Diagnose von mechanischen, elektrischen und elektronischen Systemen. Montage von Zubehör: Installation und Inbetriebnahme vo",
+            "url": "https://www.linkedin.com/jobs/view/4449860600",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449858647",
+            "title": "Ford KFZ-Mechatroniker/Servicetechniker (m/w/d) (Fahrzeugtechnik)",
+            "company": "Borgmann GmbH",
+            "location": "Herne, North Rhine-Westphalia, Germany",
+            "description": "Das erwartet Sie: Wartung und Reparatur: Durchführung von umfassenden Wartungs-, Reparatur- und Garantiearbeiten an Ford-Fahrzeugen verschiedener Modelle. Diagnosestellung: Schlüsselfunktion in der präzisen Fehlersuche und Diagnose von komplexen mechanischen, elektrischen und elektronischen Systemen",
+            "url": "https://www.linkedin.com/jobs/view/4449858647",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451908181",
+            "title": "BI Professional (m/w/d)",
+            "company": "Siemens",
+            "location": "Erlangen, Bavaria, Germany",
+            "description": "Was wir dir bieten: Ein attraktives Vergütungspaket Zugang zu Aktienplänen für Mitarbeitende 30 Tage Urlaub sowie vielfältige, flexible Arbeitszeitmodelle, die eine Auszeit für dich und deine Familie ermöglichen Flexible Weiterbildungsmöglichkeiten sowohl für deine berufliche, als auch persönliche E",
+            "url": "https://www.linkedin.com/jobs/view/4451908181",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452497260",
+            "title": "Junior Data Analyst & Data Operations Specialist (m/f/d)",
+            "company": "REPA Deutschland",
+            "location": "Bergkirchen, Bavaria, Germany",
+            "description": "Company Description We are REPA Deutschland GmbH , part of the REPA Group - Europe's leading distributor of spare parts for the catering industry, commercial kitchens, refrigeration technology and more. With over 95,000 items from more than 2,000 manufacturers, we offer the largest range on the mark",
+            "url": "https://www.linkedin.com/jobs/view/4452497260",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451902832",
+            "title": "Consultant in Agentic & Artificial Intelligence (f/m/d)",
+            "company": "Siemens",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Are you a trailblazer in the latest developments of Artificial Intelligence, eager to apply your expertise to real-world industrial challenges and make a tangible impact? Do you thrive in a dynamic, international environment where cutting-edge innovation meets deep operational technology know-how? I",
+            "url": "https://www.linkedin.com/jobs/view/4451902832",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4440155970",
+            "title": "Product Design Engineer – fluent German (m/f/d)",
+            "company": "Molex",
+            "location": "Walldorf, Baden-Württemberg, Germany",
+            "description": "Business Line – Molex Germany Molex Connectivity GmbH in Walldorf is a key European engineering and manufacturing site within the Molex organization, focused on precision interconnects, optical modules and customer‑specific assemblies. Our local teams combine product development, process engineering",
+            "url": "https://www.linkedin.com/jobs/view/4440155970",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4432975740",
+            "title": "(Senior) Data Engineer (gn)",
+            "company": "The Quality Group",
+            "location": "Hamburg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4432975740",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4344763281",
+            "title": "Kfz-Mechatroniker:in",
+            "company": "Deutsche Bahn",
+            "location": "Neustadt in Holstein, Schleswig-Holstein, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4344763281",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443093313",
+            "title": "Mechaniker:in / Mechatroniker:in Instandhaltung",
+            "company": "Deutsche Bahn",
+            "location": "Munich, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4443093313",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452463981",
+            "title": "Product Manager Integration (m/w/d)",
+            "company": "Riverty",
+            "location": "Baden-Baden, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4452463981",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "title fits 'Automotive Engineer' (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4442729375",
+            "title": "Technical Support Engineer",
+            "company": "Boston Dynamics",
+            "location": "Ruhr Region",
+            "description": "Technical Support Engineers take ownership for resolving technical customer issues in a reasonable time, act as the representative of Boston Dynamics technical expertise in voice, tone, and knowledge, and serve as an internal Voice of the Customer in identifying and escalating customer needs for iss",
+            "url": "https://www.linkedin.com/jobs/view/4442729375",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
