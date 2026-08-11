@@ -5198,6 +5198,512 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-11T15:27:36.167320",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 55,
+          "reason": "title fits 'Automotive Engineer'; skills: Python, Git; keyword bonus: 1; +1 core-strength terms (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4452460975",
+            "title": "Automotive System Test Engineer",
+            "company": "T&S (Technology & Strategy)",
+            "location": "Hannover-Braunschweig-Göttingen-Wolfsburg Region",
+            "description": "We are currently looking for an Automotive System Test Engineer (m/w/d) for a customer project in the region of Hanover. We are seeking a highly skilled Automotive System Test Engineer with strong experience in ADAS, Telematics, or Braking systems . The ideal candidate will be responsible for design",
+            "url": "https://www.linkedin.com/jobs/view/4452460975",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Simulation Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4442733787",
+            "title": "Simulation & Robotics Engineer (gn) Gaussian Splatting, Cloud & NVIDIA Isaac Sim",
+            "company": "Wandelbots",
+            "location": "Dresden, Saxony, Germany",
+            "description": "Your mission At Wandelbots, we're building NOVA, a platform that makes robot programming accessible to everyone. Our Simulation team is driving forward exactly the foundation NOVA relies on: realistic, scalable simulation environments that shorten the path from the physical cell into the cloud. As a",
+            "url": "https://www.linkedin.com/jobs/view/4442733787",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449847822",
+            "title": "Werkstudent (m/w/d) Fleet Management (befristet auf 24 Monate)",
+            "company": "Hyundai Motor Company",
+            "location": "Offenbach, Hesse, Germany",
+            "description": "Job description: Als Werkstudent (m/w/d) Fleet Management kannst du dich auf abwechslungsreiche Aufgaben in einem dynamischen Umfeld freuen, von Organisation bis aktive operative Unterstützung des Fleet Management Teams, ist alles dabei. Die Position bietet eine hervorragende Chance, praktische Erfa",
+            "url": "https://www.linkedin.com/jobs/view/4449847822",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452455779",
+            "title": "Werkstudent - Forschung & Entwicklung im Bereich Reifen (m/w/d) - REF98292G",
+            "company": "Continental",
+            "location": "Hannover, Lower Saxony, Germany",
+            "description": "Unternehmensbeschreibung Continental ist ein führender Reifenhersteller und Industriespezialist. Das 1871 gegründete Unternehmen erzielte 2025 einen Umsatz von 19,7 Milliarden Euro und beschäftigt aktuell rund 78.000 Mitarbeiterinnen und Mitarbeiter in 54 Ländern und Märkten. Reifenlösungen des Unte",
+            "url": "https://www.linkedin.com/jobs/view/4452455779",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4442633084",
+            "title": "Data Engineer (m/w/d)",
+            "company": "Atruvia AG",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "Für unser Geschäftsfeld Data, Security and Identity (DSI) im Tribe Analytics (ANA) suchen wir dich in Voll- oder Teilzeit ab 30 Wochenstunden als Data Engineer (m/w/d) in Münster bzw. Karlsruhe. Hier arbeitest du mit deinen Kolleg*innen standortübergreifend und mit vielfältigen, teilweise englischsp",
+            "url": "https://www.linkedin.com/jobs/view/4442633084",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Hochschulabschluss'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4264774172",
+            "title": "Consultant Data Warehouse / ETL (w|m|d) | findic",
+            "company": "zeb consulting",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "zeb ist eine der führenden, auf den Finanzdienstleistungssektor spezialisierten Strategie-, Management und IT- Beratungen in Europa. Wir unterstützen Banken, Versicherungen und (Tech) Dienstleister bei allen Herausforderungen und Chancen, die sich aus dem Wandel der Branche ergeben. Deine Aufgaben: ",
+            "url": "https://www.linkedin.com/jobs/view/4264774172",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449854149",
+            "title": "Praktikum - Radarsensorik für Fahrerassistenzsysteme (w/m/d)",
+            "company": "AUDI AG",
+            "location": "Ingolstadt, Bavaria, Germany",
+            "description": "Arbeitsumfeld Unsere Abteilung ist unter anderem für die Entwicklung und Applikation von Radarsensorik für Fahrerassistenzsysteme zuständig. In unserem Radarlabor verfügen wir über Prüfstände und Messmittel um die Eigenschaften von Radarsensoren und die Radartauglichkeit von Materialien zu bestimmen",
+            "url": "https://www.linkedin.com/jobs/view/4449854149",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452464655",
+            "title": "Working Student/Intern in Interior Camera Testing.",
+            "company": "Italdesign",
+            "location": "Wolfsburg, Lower Saxony, Germany",
+            "description": "Italdesign is an Italian design and engineering company specializing in automotive, transportation, and product development sectors. Based in Moncalieri (Turin) with over 1,300 employees worldwide, it has been innovating and working with top car makers and emerging players for more than 57 years. Re",
+            "url": "https://www.linkedin.com/jobs/view/4452464655",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452483070",
+            "title": "(Senior) Engineer – Vehicle Dynamics & Chassis",
+            "company": "Chery Europe GmbH",
+            "location": "Raunheim, Hesse, Germany",
+            "description": "Chery Automobile is a leading Chinese auto company and an international brand whose business covers more than 80 countries and regions. For our Engineering Center in Raunheim, near Frankfurt, we are looking for a (Senior) Engineer – Vehicle Dynamics & Chassis We welcome you to join a growing team of",
+            "url": "https://www.linkedin.com/jobs/view/4452483070",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452457939",
+            "title": "Homologation & Certification Engineer (m/f/d)",
+            "company": "SEGULA Technologies",
+            "location": "Ginsheim-Gustavsburg, Hesse, Germany",
+            "description": "Manage Type Approval Testing (TAT) and In-Service Conformity (ISC) activities for combustion engine and emissions certification in accordance with EU regulations. Guide internal project teams and ensure compliance with applicable homologation and certification requirements. Attend type approval test",
+            "url": "https://www.linkedin.com/jobs/view/4452457939",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4397570456",
+            "title": "Data Scientist (Marketing) (m/w/d)",
+            "company": "XXXLdigital – Part of XXXL Group",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Wien (AT), Würzburg, München (DE) Vollzeit Willkommen bei XXXLdigital, wo digitale Innovation echte Wirkung zeigt. Als digitale Organisationseinheit der XXXL-Gruppe widmen wir uns allen Facetten des E-Commerce und stationärem Handel. Die Zusammenstellung von Produkten für die Online-Shops, die Optim",
+            "url": "https://www.linkedin.com/jobs/view/4397570456",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443026686",
+            "title": "Applied Scientist",
+            "company": "Audible",
+            "location": "Berlin, Germany",
+            "description": "Description At Audible, we believe stories have the power to transform lives. It’s why we work with some of the world’s leading creators to produce and share audio storytelling with our millions of global listeners. We are dreamers and inventors who come from a wide range of backgrounds and experien",
+            "url": "https://www.linkedin.com/jobs/view/4443026686",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452458944",
+            "title": "Machine Learning Engineer (Schwerpunkt NLU / NLP) (m/w/d)",
+            "company": "engenious GmbH",
+            "location": "Mannheim, Baden-Württemberg, Germany",
+            "description": "Standort: Brühl (Baden) bei Mannheim / Heidelberg Anstellung: Vollzeit Arbeitsmodell: Hybrid Werde Teil von engenious Als innovatives Technologieunternehmen entwickeln wir skalierbare KI-Lösungen für Kunden unterschiedlicher Branchen. Mit unserer eigenen Plattform engenious AI und individuellen Kund",
+            "url": "https://www.linkedin.com/jobs/view/4452458944",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'mehrjährige Berufserfahrung'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452469570",
+            "title": "AI Engineer (m/w/d)",
+            "company": "Eisenach.life | Das EA-Stadtmagazin",
+            "location": "Eisenach, Thuringia, Germany",
+            "description": "Die IBYKUS Holding GmbH entwickelt Softwarelösungen für fachlich anspruchsvolle Anforderungen und sucht zur Verstärkung des AI‑Teams eine erfahrene Fachkraft. Die Stelle ist in Vollzeit und unbefristet zu besetzen; geplant ist ein Eintritt ab dem 01.09.2026. Benefits Anspruchsvolle AI‑Projekte mit u",
+            "url": "https://www.linkedin.com/jobs/view/4452469570",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4420102503",
+            "title": "Data Analyst (m/w/d) – Industrial & Automotive Consulting",
+            "company": "DRIVE Consulting",
+            "location": "Aachen, North Rhine-Westphalia, Germany",
+            "description": "Beschreibung Du willst im Bereich Data Science & Analytics dort arbeiten, wo es wirklich zählt – an komplexen Industrieprojekten mit direktem Einfluss auf Entscheidungen auf Management-Ebene? Bei DRIVE Consulting arbeitest du an anspruchsvollen Fragestellungen führender Industrieunternehmen. Du unte",
+            "url": "https://www.linkedin.com/jobs/view/4420102503",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451685513",
+            "title": "Fraud Data Analyst",
+            "company": "EBA CLEARING",
+            "location": "Frankfurt Rhine-Main Metropolitan Area",
+            "description": "EBA CLEARING is a provider of pan-European payment infrastructure solutions. Founded in 1998, the Company is owned by 48 of the major banks operating in Europe and based on a country-neutral governance model. The payment systems of EBA CLEARING are pan-European by design and desire: they are develop",
+            "url": "https://www.linkedin.com/jobs/view/4451685513",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4384850018",
+            "title": "Data Scientist / Data Analyst (w/m/d)",
+            "company": "HiSolutions AG",
+            "location": "Berlin, Berlin, Germany",
+            "description": "Wachstum braucht Freiheit. Wir sind eine unabhängige IT-Management- und IT-Security-Beratung, die dort ansetzt, wo Digitalisierung anspruchsvoll wird: bei Informationssicherheit, IT-Services und -Betrieb, sowie organisatorischer Transformation. Wir unterstützen unsere Kunden dabei, komplexe Herausfo",
+            "url": "https://www.linkedin.com/jobs/view/4384850018",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452475318",
+            "title": "Business Analyst (m/w/d)",
+            "company": "Instaffo",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "Business Analyst (m/w/d) bei CoCoNet AG Anforderungen Bitte beachte, dass für diese Stelle eine Arbeitserlaubnis für Deutschland erforderlich ist. Sprache: Deutsch - Fließend (C1), Englisch - Fließend (C1) Eine bankfachliche Ausbildung oder ein abgeschlossenes Hochschulstudium, vorzugsweise der Wirt",
+            "url": "https://www.linkedin.com/jobs/view/4452475318",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Business Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4425637215",
+            "title": "IT-Business Analyst (w/m/d) Online Brokerage",
+            "company": "DekaBank",
+            "location": "Wiesbaden, Hesse, Germany",
+            "description": "Standort: Wiesbaden Besetzung zum: 01.09.2026 Zuständige Ansprechperson für die Position: Mario Ciapanna (recruiting@deka.de) Wir sind der S Broker und das Wertpapiergeschäft ist unsere Leidenschaft. Engagiert und motiviert unterstützen wir unsere Kundinnen und Kunden bei der Verfolgung ihrer finanz",
+            "url": "https://www.linkedin.com/jobs/view/4425637215",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452465962",
+            "title": "Product Manager Integration (m/w/d)",
+            "company": "Riverty",
+            "location": "Berlin, Germany",
+            "description": "Unternehmensbeschreibung Jede Geschichte zählt. Gestalte deine eigene – gemeinsam mit uns bei Riverty. Und wohin führt dich das? In eine unserer 30 hybriden Arbeitsumgebungen – gestaltet für den Austausch von Ideen, gemeinsames Lernen und die Mitgestaltung unserer Arbeitsweise. Werde Teil einer inte",
+            "url": "https://www.linkedin.com/jobs/view/4452465962",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449856362",
+            "title": "Product Manager Customer & Commercials (f/m/d)",
+            "company": "Neumann Kaffee Gruppe (NKG)",
+            "location": "Hamburg, Hamburg, Germany",
+            "description": "We are Neumann Kaffee Gruppe. And we love coffee. For us at Neumann Kaffee Gruppe (NKG), everything revolves around coffee. As a globally active green coffee service group, our more than 3,300 employees in 28 countries work with dedication for and with green coffee, which is always the focus of our ",
+            "url": "https://www.linkedin.com/jobs/view/4449856362",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449859192",
+            "title": "Kfz-Mechatroniker / Servicetechniker (m/w/d) AUDI München",
+            "company": "MAHAG Gruppe",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Wasserburger Landstraße 69, 81827 München Heisenbergstraße 4, 85386 Eching Albrechtstraße 16, 80636 München Hochstraße 15, 81669 München ab sofort Willkommen bei Audi in München Für unsere AUDI Standorte in der Albrechtstraße, Trudering, Hochstraße und in Eching suchen wir Kfz-Mechatroniker / Servic",
+            "url": "https://www.linkedin.com/jobs/view/4449859192",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Data Analyst'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449867212",
+            "title": "Junior Data Analyst & Data Operations Specialist (m/f/d)",
+            "company": "REPA",
+            "location": "Bergkirchen, Bavaria, Germany",
+            "description": "Company Description We are REPA Deutschland GmbH , part of the REPA Group - Europe's leading distributor of spare parts for the catering industry, commercial kitchens, refrigeration technology and more. With over 95,000 items from more than 2,000 manufacturers, we offer the largest range on the mark",
+            "url": "https://www.linkedin.com/jobs/view/4449867212",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 10,
+          "reason": "preferred location",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452472811",
+            "title": "Ingenieure (m/w/d) Mechatronik",
+            "company": "Oehmichen & Bürgers Industrieplanung GmbH",
+            "location": "Düsseldorf, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4452472811",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4443373143",
+            "title": "(Senior) Data Engineer (m/w/d)",
+            "company": "Baader Bank AG",
+            "location": "Unterschleißheim, Bavaria, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4443373143",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 6,
+          "reason": "title fits 'Junior Data Engineer'; preferred location; (seniority warning)",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4434967738",
+            "title": "Staff Engineer, Data & Analytics",
+            "company": "Staffbase",
+            "location": "Chemnitz, Saxony, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4434967738",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431731253",
+            "title": "Area Lead Analytics Engineer",
+            "company": "Vinted",
+            "location": "Berlin, Berlin, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4431731253",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "basic keyword match",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4446664089",
+            "title": "Meister (m/w/d) Prüfstand Fahrzeuggetriebe",
+            "company": "RENK Group",
+            "location": "Greater Munich Metropolitan Area",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4446664089",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4431938300",
+            "title": "Product Manager (m/w/d)",
+            "company": "bilstein group",
+            "location": "Ennepetal, North Rhine-Westphalia, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4431938300",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4450687881",
+            "title": "Engineer (f/m/d) - Adaptive Optics Technologies for Free-Space Optical Communication",
+            "company": "German Aerospace Center (DLR)",
+            "location": "Oberpfaffenhofen, Bavaria, Germany",
+            "description": "Vacancy-ID: 5998 Place of work: Oberpfaffenhofen Starting date: as soon as possible Career level: Experienced professionals; Graduates Type of employment: Full-time; Part time Duration of contract: 2 years Remuneration: Remuneration is in accordance with the Collective Agreement for the Public Secto",
+            "url": "https://www.linkedin.com/jobs/view/4450687881",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 30,
+          "reason": "title fits 'Automotive Engineer'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4449860359",
+            "title": "Customer Integration Engineer",
+            "company": "Wayve",
+            "location": "Leonberg, Baden-Württemberg, Germany",
+            "description": "",
+            "url": "https://www.linkedin.com/jobs/view/4449860359",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 20,
+          "reason": "skills: Automotive Engineering; keyword bonus: 1; preferred location; +1 core-strength terms (rule-based)",
+          "domain_class": "skill_adjacent",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "category": "low_score",
+          "job": {
+            "id": "linkedin_4382713021",
+            "title": "WORKING STUDENT FOR BODY TESTING (M/F/D)",
+            "company": "Hyundai Motor Europe Technical Center GmbH",
+            "location": "Rüsselsheim, Hesse, Germany",
+            "description": "To start shortly, we are currently seeking an WORKING STUDENT FOR BODY TESTING (M/F/D) You will be responsible for Participate in hands-on testing and evaluation of mechanical and electrical/electronic body systems e.g. Lamps, Mirrors and Seats Support internal customer clinics incl. planning, and e",
+            "url": "https://www.linkedin.com/jobs/view/4382713021",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
