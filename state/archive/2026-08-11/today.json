@@ -6184,6 +6184,320 @@
           }
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-11T19:31:31.012284",
+      "strong": [],
+      "worth_look": [
+        {
+          "score": 70,
+          "reason": "title fits 'Data Scientist'; skills: Machine Learning, Signal processing; keyword bonus: 2; preferred location; +2 core-strength terms (rule-based)",
+          "domain_class": "core_field",
+          "ai_score": null,
+          "ai_reason": "AI scoring unavailable",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4366858758",
+            "title": "Physicist as Data Scientist / Algorithm Developer in the field of EMAT (all genders welcome)",
+            "company": "ROSEN",
+            "location": "Lingen, Lower Saxony, Germany",
+            "description": "Location: Lingen/Osnabrück Apply now What you can expect For our development team in Lingen (Ems) or Osnabrück we are looking for a Physicist as Data Scientist / Algorithm Developer in the field of EMAT (all genders welcome) Data science refers to the extraction of knowledge from data. We achieve th",
+            "url": "https://www.linkedin.com/jobs/view/4366858758",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 50,
+          "reason": "title fits 'Product Manager'; preferred location (rule-based)",
+          "domain_class": "unclassified",
+          "ai_score": null,
+          "ai_reason": "",
+          "unscored": false,
+          "job": {
+            "id": "linkedin_4452613597",
+            "title": "Product Line Manager CORE Apparel Outerwear * Limited 18 months*",
+            "company": "PUMA Group",
+            "location": "Herzogenaurach, Bavaria, Germany",
+            "description": "SPEED & SPIRIT is what we look for in our candidates, defined by some simple values that inspire us to BE DRIVEN in our performance, BE VIBRANT in our sporting legacy, BE TOGETHER in our team spirit, and BE YOU to let our individual talent and experience shine. Applying for a job at PUMA is easy and",
+            "url": "https://www.linkedin.com/jobs/view/4452613597",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_product-manager-studio-monitors-adam-audio-gmbh-berlin-298211",
+            "title": "Product Manager - Studio Monitors (m/f/d) - ADAM Audio GmbH",
+            "company": "Focusrite",
+            "location": "Berlin,  Germany",
+            "description": "Product Manager - Studio Monitors (m/f/d) – ADAM Audio GmbH Location: Berlin office / hybrid (Berlin preferred) Term: Full-time, permanent Salary: &nbsp;Depending on experience Start date: as soon as possible Travel: Up to 20% (trade shows, studio visits, JDM/ODM partners) Are you passionate about p",
+            "url": "https://www.arbeitnow.com/jobs/companies/focusrite/product-manager-studio-monitors-adam-audio-gmbh-berlin-298211",
+            "published": "2026-08-11T17:20:39+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_software-engineering-lead-london-united-kingdom-338856",
+            "title": "Software Engineering Lead",
+            "company": "Elliptic",
+            "location": "London,  United Kingdom",
+            "description": "Do you enjoy building scalable products that empower compliance teams to track fund flows and uncover deeper insights in financial data? Are you excited to solve complex engineering challenges that improve speed, precision, and usability across investigative workflows? Elliptic is seeking a Software",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/elliptic/software-engineering-lead-london-united-kingdom-338856",
+            "published": "2026-08-11T18:40:16+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-product-manager-london-united-kingdom-58979",
+            "title": "Senior Product Manager",
+            "company": "Elliptic",
+            "location": "London,  United Kingdom",
+            "description": "The impact you will have Are you an analytical thinker who thrives in dynamic environments? Do you possess commercial acumen and a passion for crypto and technology? Join our team as a Senior Product Manager and play a pivotal role in shaping Elliptic’s future. In this role, you will own, drive and ",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/elliptic/senior-product-manager-london-united-kingdom-58979",
+            "published": "2026-08-11T18:40:16+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_senior-software-engineer-data-london-united-kingdom-276115",
+            "title": "Senior Software Engineer - Data",
+            "company": "Elliptic",
+            "location": "London,  United Kingdom",
+            "description": "Do you want to help define the future of finance? Are you a strong software engineer who's passionate about data, distributed systems, and delivering impact at scale? Are you looking for a values-driven company that invests in its people and gives you the autonomy to shape critical systems, while st",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/elliptic/senior-software-engineer-data-london-united-kingdom-276115",
+            "published": "2026-08-11T18:40:16+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_forward-deployed-builder-london-357959",
+            "title": "Forward Deployed Builder",
+            "company": "Ema",
+            "location": "United Kingdom (Remote)",
+            "description": "About Ema Ema is building the world’s leading Agentic AI platform to transform enterprise productivity. We enable organizations to delegate repetitive tasks to Ema, the Universal AI Employee, delivering 10x gains in workforce efficiency, across functions. Founded by former executives from Google, Co",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/ema/forward-deployed-builder-london-357959",
+            "published": "2026-08-11T18:40:15+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "arbeitnow_software-engineer-full-stack-uk-london-237008",
+            "title": "Software Engineer, Full Stack - UK",
+            "company": "Ema",
+            "location": "United Kingdom (Remote)",
+            "description": "About Ema Ema is building the world’s leading Agentic AI platform to transform enterprise productivity. We enable organizations to delegate repetitive tasks to Ema, the Universal AI Employee, delivering 10x gains in workforce efficiency, across functions. Founded by former executives from Google, Co",
+            "url": "https://www.arbeitnow.co.uk/jobs/companies/ema/software-engineer-full-stack-uk-london-237008",
+            "published": "2026-08-11T18:40:15+00:00",
+            "source": "Arbeitnow"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4452497820",
+            "title": "Junior Data Engineer (m/w/d)",
+            "company": "Oliva Advisory",
+            "location": "Munich, Bavaria, Germany",
+            "description": "📍 Einsatzort: München | 📅 Start: ab sofort | 💼 Vollzeit | 💰 Fixgehalt: 5.000 € brutto/Monat nach der Probezeit 🗣️ Voraussetzung: verhandlungssicheres Deutsch (mind. C1) in Wort und Schrift. Bitte bewerben Sie sich auf Deutsch. 👋 Wer wir sind Wir sind eine spezialisierte Beratungsagentur für Data-, A",
+            "url": "https://www.linkedin.com/jobs/view/4452497820",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449867872",
+            "title": "Data Engineer (m/w/d)",
+            "company": "ELA Container",
+            "location": "Haren, Lower Saxony, Germany",
+            "description": "1.600 Mitarbeiter. 18 Standorte weltweit. 60.000 Container im Umlauf. Seit der Gründung im Jahr 1972 befinden wir uns stetig auf Wachstumskurs. Wir sind Spezialisten für mobile Raumlösungen in Containerbauweise. Unser familiengeführtes Unternehmen wächst dynamisch, daher suchen wir weltweit stetig q",
+            "url": "https://www.linkedin.com/jobs/view/4449867872",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449855949",
+            "title": "Cloud Native Data Engineer (all genders)",
+            "company": "adesso SE",
+            "location": "Frankfurt am Main, Hesse, Germany",
+            "description": "adesso steht für digitale Exzellenz – und damit auch für vielfältige Entwicklungsmöglichkeiten für alle adessi. Wir wachsen gemeinsam und lernen voneinander: in anspruchsvollen Projekten, interdisziplinären Teams und mit zielgerichteten Trainingsangeboten. Wir haben IT im Herzen und den Erfolg unser",
+            "url": "https://www.linkedin.com/jobs/view/4449855949",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451919402",
+            "title": "Data Scientist (m/w/d)",
+            "company": "CHEFS CULINAR",
+            "location": "Weeze, North Rhine-Westphalia, Germany",
+            "description": "Deine Aufgaben Du entwickelst Lösungen im Bereich Predictive Analytics, Machine Learning und Künstliche Intelligenz Du analysierst Prozesse, erarbeitest Optimierungspotentiale und erstellst Prototypen, um Lösungsansätze zu bestätigen Du berätst unsere Fachbereiche bei der Anwendung von datengetriebe",
+            "url": "https://www.linkedin.com/jobs/view/4451919402",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Senior'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451923043",
+            "title": "Senior AI Engineer (f/m/d)",
+            "company": "Siemens",
+            "location": "Munich, Bavaria, Germany",
+            "description": "Create a better #TomorrowWithUs 🚀 At Siemens, we build technology solutions to shape the world we live in. We transform industries and societies by combining the real and digital worlds. With over 300.000 of the world’s most forward-thinking minds and the power of a presence in more than 190 countri",
+            "url": "https://www.linkedin.com/jobs/view/4451923043",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451903432",
+            "title": "Founding AI-Engineer (m/w/d)",
+            "company": "AIFOREU",
+            "location": "Osnabrück, Lower Saxony, Germany",
+            "description": "Wir bauen die Infrastruktur für die Autonomous Workforce. Menschen und KI-Agenten als ein Team. In fünf Jahren besteht jedes Team aus Menschen und Agenten. Wir bauen die Infrastruktur, die das trägt. Heute. Wer wir sind Wir sind zu dritt und haben eine erste sechsstellige Runde eingesammelt, kofinan",
+            "url": "https://www.linkedin.com/jobs/view/4451903432",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Excluded — contains 'Lead'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451914273",
+            "title": "Research Engineer (m/f/d)",
+            "company": "Siemens Energy",
+            "location": "Nuremberg, Bavaria, Germany",
+            "description": "A Snapshot of Your Day As a part of fundamental development in an innovative technology company in the energy sector, your focus is on the development of new concepts and basic technologies for a sustainable, secure and efficient energy future. In your basic research, you will work on solutions that",
+            "url": "https://www.linkedin.com/jobs/view/4451914273",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449863889",
+            "title": "Analyst IT-Consulting (all genders)",
+            "company": "adesso SE",
+            "location": "Berlin, Berlin, Germany",
+            "description": "adesso steht für digitale Exzellenz – und damit auch für vielfältige Entwicklungsmöglichkeiten für alle adessi. Wir wachsen gemeinsam und lernen voneinander: in anspruchsvollen Projekten, interdisziplinären Teams und mit zielgerichteten Trainingsangeboten. Wir haben IT im Herzen und den Erfolg unser",
+            "url": "https://www.linkedin.com/jobs/view/4449863889",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Title contains out-of-field term 'Product Manager'",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449855964",
+            "title": "Product Manager - Data & Analytics (w/m/d)",
+            "company": "1&1",
+            "location": "Karlsruhe, Baden-Württemberg, Germany",
+            "description": "1&1 gehört mit über 3.200 Mitarbeitenden und fast 16 Millionen Kundenverträgen zu den führenden Telekommunikationsanbietern in Deutschland. Mit Pioniergeist, ungewöhnlichen Ideen und kreativen Teams haben wir eine führende Marktstellung im Mobilfunk und bei Breitband-Anschlüssen erobert. Durch die K",
+            "url": "https://www.linkedin.com/jobs/view/4449855964",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4449868861",
+            "title": "Mobile Expert (w/m/d) Nutzfahrzeuge / Busse - Deutschland & Europa",
+            "company": "Daimler Buses GmbH",
+            "location": "Neu-Ulm, Bavaria, Germany",
+            "description": "Bei Daimler Buses gestalten wir rund um den Globus die Zukunft der Mobilität und erzielen damit gemeinsam echte Wirkung. Als weltweit führender Bushersteller entwickeln und bauen wir nicht nur die besten Busse, sondern bringen den gesamten öffentlichen Personennah- und Reiseverkehr mit intelligenten",
+            "url": "https://www.linkedin.com/jobs/view/4449868861",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4395719035",
+            "title": "Flying Doc – Tech Support (m/w/d)",
+            "company": "MSX International",
+            "location": "Stuttgart, Baden-Württemberg, Germany",
+            "description": "Unternehmensbeschreibung MSX International ist seit mehr als 30 Jahren zuverlässiger Partner für führende Fahrzeugherstellende, deren Händlernetz und Mobilitätsdienstleistende weltweit. Unser unerschütterliches Engagement gilt der Unterstützung unserer Kunden bei der Transformation ihrer Unternehmen",
+            "url": "https://www.linkedin.com/jobs/view/4395719035",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        },
+        {
+          "score": 0,
+          "reason": "Skipped — job description is in German",
+          "category": "prefilter",
+          "job": {
+            "id": "linkedin_4451911463",
+            "title": "Servicetechniker (m/w/d)",
+            "company": "Wessels + Müller AG",
+            "location": "Siegen, North Rhine-Westphalia, Germany",
+            "description": "Vollzeit 57072 Siegen, Deutschland Berufserfahrene Willkommen bei WM ! Seit 1945 agieren wir am Markt und sind mittlerweile ein führendes Unternehmen im Kfz- und Nfz-Teile und Zubehörhandel mit über 200 Verkaufshäuser in Europa und den USA. Unser Team aus 6.000 engagierten Mitarbeitern steht für Lei",
+            "url": "https://www.linkedin.com/jobs/view/4451911463",
+            "published": "2026-08-11T00:00:00+00:00",
+            "source": "LinkedIn"
+          }
+        }
+      ]
     }
   ]
 }
