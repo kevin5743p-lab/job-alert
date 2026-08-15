@@ -13,6 +13,8 @@ const els = {
   signedIn: $("signed-in"), signedOut: $("signed-out"),
   whoEmail: $("who-email"), authStatus: $("auth-status"),
   key: $("key"), lang: $("lang"), model: $("model"), cv: $("cv"),
+  allowance: $("allowance"), submitPolicy: $("submitPolicy"),
+  grantHosts: $("grant-hosts"), grantHint: $("grant-hint"),
   adzunaId: $("adzuna-id"), adzunaKey: $("adzuna-key"), age: $("age"),
   autoScan: $("auto-scan"),
   save: $("save"), status: $("status"), apps: $("apps"),
@@ -140,6 +142,59 @@ function credentials() {
   return { email, password };
 }
 
+// ── the all-sites permission ────────────────────────────────────────────────
+//
+// The manifest covers LinkedIn and the thirty-odd applicant-tracking systems by
+// name, which is most job boards but not most employers: a company can host its
+// application form on any domain it likes, and Chrome will not let the apply
+// engine read a page it has no permission for. Asking for every https site at
+// install would put "read and change all your data on all websites" in front of
+// someone who has not yet decided to trust this, so it is an optional
+// permission requested here, once, with Chrome's own dialog doing the asking.
+//
+// chrome.permissions.request must be called from a user gesture, which is why
+// this lives on a button in the popup and cannot be done from the worker
+// mid-run.
+const ALL_SITES = { origins: ["https://*/*"] };
+
+async function hasAllSites() {
+  try {
+    return await chrome.permissions.contains(ALL_SITES);
+  } catch {
+    return false;
+  }
+}
+
+async function refreshGrantUI() {
+  if (!els.grantHosts) return;
+  const granted = await hasAllSites();
+
+  els.grantHosts.textContent = granted
+    ? "Enabled ✓ — auto-apply works on any employer site"
+    : "Enable auto-apply on all sites";
+  els.grantHosts.disabled = granted;
+  els.grantHint.textContent = granted
+    ? "Granted. Revoke any time from chrome://extensions → JobCopilot → Site access."
+    : "Job boards work already. Many employers host their application form on " +
+      "their own website instead, and Chrome needs your permission for those. " +
+      "This asks once; nothing is sent anywhere.";
+}
+
+els.grantHosts?.addEventListener("click", async () => {
+  try {
+    const granted = await chrome.permissions.request(ALL_SITES);
+    await refreshGrantUI();
+    if (!granted) {
+      els.grantHint.textContent =
+        "Not granted. Auto-apply will still work on LinkedIn and the major job " +
+        "boards, but jobs hosted on an employer's own site will be handed back " +
+        "to you to finish.";
+    }
+  } catch (e) {
+    els.grantHint.textContent = `Couldn't request permission: ${e.message}`;
+  }
+});
+
 // ── initial paint ───────────────────────────────────────────────────────────
 async function refreshAuthUI() {
   const session = await sb.getSession();
@@ -147,15 +202,57 @@ async function refreshAuthUI() {
   els.signedIn.classList.toggle("hidden", !signedIn);
   els.signedOut.classList.toggle("hidden", signedIn);
   if (signedIn) els.whoEmail.textContent = session.user?.email || "";
+  refreshAllowance(signedIn);
   return signedIn;
 }
 
+// The month's AI spend, in plain money. Shown because "auto-apply stopped
+// working" and "you've used this month's allowance" feel identical from the
+// outside, and only one of them is a bug worth reporting.
+//
+// Not awaited by the caller: a slow or failing backend must not hold up the
+// popup's first paint, and the hint it replaces is already a true sentence.
+async function refreshAllowance(signedIn) {
+  if (!els.allowance) return;
+  if (!signedIn) {
+    els.allowance.textContent =
+      "Tailoring and auto-apply run on the shared JobCopilot AI account — " +
+      "sign in above and they just work, with no second key to paste.";
+    return;
+  }
+  try {
+    const a = await sb.aiAllowance();
+    if (!a) return;
+    const spent = (a.spent_micros / 1e6).toFixed(2);
+    const limit = (a.limit_micros / 1e6).toFixed(2);
+    const resets = a.resets_at ? new Date(a.resets_at).toLocaleDateString() : "";
+    els.allowance.textContent = Number(a.remaining_micros) > 0
+      ? `AI allowance: $${spent} of $${limit} used this month` +
+        (resets ? `, resets ${resets}.` : ".")
+      : `AI allowance used ($${limit}). Scanning and autofill still work` +
+        (resets ? `; tailoring and auto-apply resume ${resets}.` : ".");
+  } catch {
+    // Leave whatever text is already there rather than showing an error for
+    // something the user cannot act on.
+  }
+}
+
 async function init() {
+  refreshGrantUI();          // not awaited: it must not delay the first paint
+
   const local = await chrome.storage.local.get(
     ["groqApiKey", "language", "model", "cvText", "applicationProfile",
-     "adzunaAppId", "adzunaAppKey", "maxJobAge", "autoScan"]);
+     "adzunaAppId", "adzunaAppKey", "maxJobAge", "autoScan", "submitPolicy"]);
+
+  // Any Anthropic key saved by an older build is now both useless and a
+  // liability: nothing reads it, and a real key sitting in browser storage is
+  // one extension audit away from being someone else's problem. Clear it.
+  chrome.storage.local.remove("anthropicApiKey");
   els.autoScan.checked = local.autoScan !== false;   // on unless turned off
   els.age.value = String(local.maxJobAge || 7);
+  // Defaults to hand-submit. Auto-submit is something you turn on once you've
+  // watched a few applications go through, not something you inherit silently.
+  els.submitPolicy.value = local.submitPolicy || "never";
   if (local.groqApiKey) els.key.value = local.groqApiKey;
   if (local.adzunaAppId) els.adzunaId.value = local.adzunaAppId;
   if (local.adzunaAppKey) els.adzunaKey.value = local.adzunaAppKey;
@@ -240,7 +337,8 @@ els.save.addEventListener("click", async () => {
       adzunaAppId: els.adzunaId.value.trim(),
       adzunaAppKey: els.adzunaKey.value.trim(),
       maxJobAge: Number(els.age.value) || 7,
-      autoScan: els.autoScan.checked });
+      autoScan: els.autoScan.checked,
+      submitPolicy: els.submitPolicy.value });
 
   let msg = "Saved locally ✓";
   let ok = true;

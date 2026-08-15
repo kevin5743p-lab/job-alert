@@ -5,73 +5,79 @@
  * grey" were. They drifted, and the popup, the panel and the dashboard stopped
  * looking like the same product. Everything visual now comes from here.
  *
- * Dark is the design, not an afterthought: the values below are the dark ones,
- * and the light theme is derived from them further down. That is the right way
- * round for a tool used to scan long job lists at night.
+ * The identity is "Still Water": a calm teal on deep slate at night and on cool
+ * near-white by day. Dark is the design, not an afterthought — the tool is used
+ * to scan long job lists at night — but the light theme is a first-class
+ * translation of it, key for key, further down.
  *
  * The panel injected into job pages can't rely on :root — it lives inside
- * someone else's document — so it redeclares these on its own container. Keep
- * the two in step.
+ * someone else's document — so content.css redeclares these on its own
+ * container. Keep the two in step.
  */
 
 :root {
   color-scheme: dark light;
 
   /* ── Surfaces, back to front ─────────────────────────────────────────── */
-  --bg: #0a0c11;
-  --surface: #111520;
-  --surface-2: #171c29;
-  --surface-3: #1f2634;
-  --border: #232a3a;
-  --border-hi: #333c52;
+  --bg: #0b1418;
+  --surface: #0f1b21;
+  --surface-2: #13222a;
+  --surface-3: #1b2f39;
+  --border: #22343d;
+  --border-hi: #2e4650;
+  /* Alias: a couple of surfaces reference --line for hairlines. */
+  --line: var(--border);
 
   /* ── Text, in descending emphasis ────────────────────────────────────── */
-  --text: #e9edf5;
-  --text-2: #9aa5ba;
-  --text-3: #6b768c;
+  --text: #e8f0f2;
+  --text-2: #93a8b0;
+  --text-3: #63757d;
 
-  /* ── Accent ──────────────────────────────────────────────────────────── */
-  --accent: #7c8cff;
-  --accent-hi: #98a4ff;
-  --accent-dim: #2a2f52;
-  --accent-line: #3b4485;
-  --on-accent: #080a10;
+  /* ── Accent — Still Water teal ───────────────────────────────────────── */
+  --accent: #5ec8c2;
+  --accent-hi: #7ad6d0;
+  --accent-dim: #10262a;
+  --accent-line: #234a4a;
+  --on-accent: #05171a;
+
+  /* ── Selection — a designed teal wash, distinct from the accent cyan ──── */
+  --sel: rgba(90, 206, 176, .32);
 
   /* ── Meaning, not decoration ─────────────────────────────────────────── */
-  --good: #4ade80;
-  --good-dim: #10281c;
-  --good-line: #1d5138;
-  --warn: #fbbf46;
-  --warn-dim: #2a2110;
-  --warn-line: #5c4515;
-  --bad: #ff7a7a;
+  --good: #63d0a3;
+  --good-dim: #0e2419;
+  --good-line: #1b4a37;
+  --warn: #e6c072;
+  --warn-dim: #261f11;
+  --warn-line: #574417;
+  --bad: #f08a8a;
   --bad-dim: #2c1418;
   --bad-line: #5e2029;
   --info: #6ec1ff;
   --info-dim: #0e1f2e;
   --info-line: #1c4666;
 
-  /* ── Shape ───────────────────────────────────────────────────────────── */
-  --r-sm: 6px;
-  --r: 10px;
-  --r-lg: 14px;
+  /* ── Shape. Softened for the calm "Zen" feel; buttons go fully pill. ─── */
+  --r-sm: 8px;
+  --r: 12px;
+  --r-lg: 16px;
   --r-pill: 999px;
 
   /* ── Depth. Kept restrained: on near-black, shadow reads as haze. ────── */
   --shadow-1: 0 1px 2px rgba(0, 0, 0, .4);
   --shadow-2: 0 4px 16px rgba(0, 0, 0, .45);
   --shadow-3: 0 12px 40px rgba(0, 0, 0, .55);
-  --ring: 0 0 0 3px rgba(124, 140, 255, .32);
+  --ring: 0 0 0 3px rgba(94, 200, 194, .34);
 
   /* ── Type ────────────────────────────────────────────────────────────── */
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
           Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
 
-  /* ── Motion ──────────────────────────────────────────────────────────── */
-  --dur-1: 120ms;
-  --dur-2: 220ms;
-  --dur-3: 380ms;
+  /* ── Motion. Zen: unhurried, everything eases out and settles. ───────── */
+  --dur-1: 140ms;
+  --dur-2: 260ms;
+  --dur-3: 420ms;
   --ease: cubic-bezier(.2, .7, .3, 1);
   --ease-out: cubic-bezier(.16, 1, .3, 1);
 }
@@ -81,42 +87,53 @@
    in one theme and not the other. */
 @media (prefers-color-scheme: light) {
   :root {
-    --bg: #f6f7fa;
+    --bg: #eef4f4;
     --surface: #ffffff;
-    --surface-2: #f2f4f8;
-    --surface-3: #e8ecf2;
-    --border: #e0e5ec;
-    --border-hi: #c8d0db;
+    --surface-2: #f2f8f8;
+    --surface-3: #e4eeee;
+    --border: #d7e4e4;
+    --border-hi: #c0d2d2;
 
-    --text: #121620;
-    --text-2: #586272;
-    --text-3: #838d9c;
+    --text: #142222;
+    --text-2: #52676a;
+    --text-3: #83999b;
 
-    --accent: #4f46e5;
-    --accent-hi: #4338ca;
-    --accent-dim: #eef0ff;
-    --accent-line: #c7cbfb;
+    --accent: #2c8f88;
+    --accent-hi: #237570;
+    --accent-dim: #e2f1ef;
+    --accent-line: #b9ddd8;
     --on-accent: #ffffff;
 
-    --good: #157f3b;
-    --good-dim: #e7f6ec;
-    --good-line: #b7e0c4;
-    --warn: #8a5a00;
-    --warn-dim: #fff6dd;
-    --warn-line: #f0d79a;
-    --bad: #b42318;
-    --bad-dim: #fdeceb;
-    --bad-line: #f5c2be;
-    --info: #0b5cad;
-    --info-dim: #e6f2fd;
-    --info-line: #b3d6f5;
+    --sel: rgba(60, 178, 150, .30);
 
-    --shadow-1: 0 1px 2px rgba(16, 24, 40, .06);
-    --shadow-2: 0 4px 14px rgba(16, 24, 40, .08);
-    --shadow-3: 0 12px 32px rgba(16, 24, 40, .12);
-    --ring: 0 0 0 3px rgba(79, 70, 229, .22);
+    --good: #2f8f68;
+    --good-dim: #e5f3ec;
+    --good-line: #b7ddc9;
+    --warn: #a9781f;
+    --warn-dim: #f6eed9;
+    --warn-line: #ecd7a3;
+    --bad: #c0554c;
+    --bad-dim: #fbeae8;
+    --bad-line: #f0c5c0;
+    --info: #1d6fb8;
+    --info-dim: #e6f1fa;
+    --info-line: #bcdcf0;
+
+    --shadow-1: 0 1px 2px rgba(20, 40, 60, .05);
+    --shadow-2: 0 4px 14px rgba(20, 40, 60, .08);
+    --shadow-3: 0 12px 32px rgba(20, 40, 60, .12);
+    --ring: 0 0 0 3px rgba(44, 143, 136, .28);
   }
 }
+
+/* ── Selection: one designed tint everywhere, never the OS blue ──────────
+ * Text highlight is a soft teal wash that reads on both themes; the text
+ * colour is left intact so the highlighted words stay legible. Form controls
+ * borrow the accent so checkboxes, radios and range thumbs match too.
+ */
+::selection { background: var(--sel); }
+::-moz-selection { background: var(--sel); }
+input, textarea, select { accent-color: var(--accent); }
 
 /* ── Motion primitives ───────────────────────────────────────────────────
  * Entrances are deliberately short. A list that takes half a second to appear
@@ -147,6 +164,13 @@
 }
 @keyframes jc-spin {
   to { transform: rotate(360deg); }
+}
+/* The "breathing" halo: a slow, calm pulse of accent light around whatever is
+   live right now (a job being applied to). The signature of the Zen feel. */
+@keyframes jc-breathe {
+  0%, 100% { box-shadow: var(--shadow-1), 0 0 0 0 transparent; }
+  50%      { box-shadow: var(--shadow-1),
+                         0 0 0 6px color-mix(in srgb, var(--accent) 14%, transparent); }
 }
 
 .jc-anim-rise { animation: jc-rise var(--dur-3) var(--ease-out) both; }

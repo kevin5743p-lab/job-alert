@@ -1,13 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "JobCopilot — Tailor",
-  "version": "0.1.0",
-  "description": "Tailor your CV and cover letter to the LinkedIn job you're viewing — grounded only in your real CV.",
+  "name": "JobCopilot — Auto-Apply",
+  "version": "1.0.0",
+  "description": "Tailors your CV and cover letter to a job, then applies for you — filling every page, uploading real PDFs, and submitting only when every answer is grounded in your CV.",
   "permissions": [
     "storage",
     "activeTab",
     "scripting",
-    "alarms"
+    "alarms",
+    "notifications",
+    "downloads",
+    "debugger"
   ],
   "host_permissions": [
     "https://api.groq.com/*",
@@ -17,15 +20,51 @@
     "https://api.ashbyhq.com/*",
     "https://api.lever.co/*",
     "https://api.smartrecruiters.com/*",
-    "https://*.recruitee.com/*",
+    "https://*.linkedin.com/*",
+    "https://*.greenhouse.io/*",
+    "https://*.ashbyhq.com/*",
+    "https://jobs.lever.co/*",
     "https://*.jobs.personio.de/*",
+    "https://*.recruitee.com/*",
+    "https://*.smartrecruiters.com/*",
     "https://*.successfactors.eu/*",
     "https://*.successfactors.com/*",
-    "https://*.linkedin.com/*"
+    "https://*.myworkdayjobs.com/*",
+    "https://*.myworkdaysite.com/*",
+    "https://*.workable.com/*",
+    "https://*.teamtailor.com/*",
+    "https://*.softgarden.io/*",
+    "https://*.softgarden.de/*",
+    "https://*.taleo.net/*",
+    "https://*.icims.com/*",
+    "https://*.avature.net/*",
+    "https://*.jobvite.com/*",
+    "https://*.eightfold.ai/*",
+    "https://*.bamboohr.com/*",
+    "https://*.factorialhr.com/*",
+    "https://*.d-vinci.de/*",
+    "https://*.rexx-systems.com/*",
+    "https://*.concludis.de/*",
+    "https://join.com/*"
   ],
+  "optional_host_permissions": [
+    "https://*/*"
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "JobCopilot — set your CV & key"
+    "default_title": "JobCopilot — Auto-Apply",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
   },
   "background": {
     "service_worker": "background.js",
@@ -72,6 +111,7 @@
         "print_doc.js",
         "cover_templates.js",
         "autofill.js",
+        "apply_engine.js",
         "content.js"
       ],
       "css": [
