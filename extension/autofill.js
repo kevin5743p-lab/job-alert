@@ -898,11 +898,17 @@
   // attaching is upload.js's job, because the two paths for it (DataTransfer
   // and CDP) need context autofill.js has no business knowing about.
 
+  // Order matters: the first pattern that matches wins, and "Bewerbungsfoto"
+  // would otherwise never be reached on a form that also says "Bewerbung".
   const FILE_KINDS = [
     { kind: "cv",           re: /\bcv\b|resum(e|é)|lebenslauf|curriculum ?vitae/ },
     { kind: "cover_letter", re: /cover ?letter|anschreiben|motivation(sschreiben)?|covering ?letter/ },
     { kind: "portfolio",    re: /portfolio|work ?sample|arbeitsprobe|writing ?sample/ },
     { kind: "certificate",  re: /certificat|zeugnis|diploma|transcript|qualification|referenz|reference ?letter/ },
+    // German applications still routinely ask for a photo, and until the
+    // document library existed there was nothing that could ever be attached
+    // here — so classifying it would only have produced a smarter refusal.
+    { kind: "photo",        re: /\bphoto\b|\bfoto\b|lichtbild|passbild|headshot|profile ?picture/ },
   ];
 
   // Stable per-page ids so the background, the model, and CDP all refer to the

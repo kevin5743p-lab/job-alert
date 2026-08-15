@@ -34,7 +34,7 @@ import {
 } from "./domain_health.js";
 import {
   updateApplyRun, appendApplyStep, uploadPauseScreenshot, tailoredForJob,
-  getProfile,
+  getProfile, primaryDocuments,
 } from "./supabase.js";
 import { callClaude } from "./ai_client.js";
 
@@ -153,14 +153,23 @@ const TOOLS = [
   {
     name: "upload",
     description:
-      "Attach a generated document to a file input. Documents available: 'cv' " +
-      "and, when the packet had one, 'cover_letter'.",
+      "Attach a document to a file input. 'cv' and 'cover_letter' are written " +
+      "for this posting; 'certificate', 'portfolio' and 'photo' come from the " +
+      "user's own uploaded files and only exist if they added them. The exact " +
+      "set available for this application is listed in <documents> — asking " +
+      "for anything not on that list fails.",
     strict: true,
     input_schema: {
       type: "object",
       properties: {
         element_id: { type: "string" },
-        doc_kind: { type: "string", enum: ["cv", "cover_letter"] },
+        // Every kind the system can attach, not every kind it has right now:
+        // what is actually present varies per run and is stated in the system
+        // prompt, where it can be accurate. A wrong guess here is answered with
+        // a plain "there is no such document", which the model can act on —
+        // whereas a schema that changed shape between runs could not be cached.
+        doc_kind: { type: "string",
+                    enum: ["cv", "cover_letter", "certificate", "portfolio", "photo"] },
       },
       required: ["element_id", "doc_kind"],
       additionalProperties: false,
@@ -246,7 +255,7 @@ function askClaude({ task, system, messages }) {
  * token read from the second call onward — and the tools render before the
  * system block, so they land inside the same cached prefix for free.
  */
-function buildSystem(profile, cvText) {
+function buildSystem(profile, cvText, docKinds = []) {
   return [
     { type: "text", text: SYSTEM },
     { type: "text", text: `<saved_profile>\n${JSON.stringify(profile, null, 1)}\n</saved_profile>` },
@@ -254,6 +263,16 @@ function buildSystem(profile, cvText) {
       type: "text",
       text: `<cv>\n${cvText}\n</cv>`,
       cache_control: { type: "ephemeral" },
+    },
+    // Deliberately after the cache breakpoint: this is the one part of the
+    // system prompt that differs run to run, and it is two lines long. Putting
+    // it before the CV would invalidate the cached prefix on every application
+    // for the sake of a sentence.
+    {
+      type: "text",
+      text: `<documents>\nAttachable right now: ${docKinds.join(", ") || "none"}.\n` +
+            `Anything not listed does not exist — pause and ask rather than ` +
+            `substituting a different document.\n</documents>`,
     },
   ];
 }
@@ -314,7 +333,7 @@ async function ensureEngine(tabId, timeoutMs = 45000) {
         if (!granted) {
           throw new Error(
             "This employer hosts its application on its own site, which needs " +
-            "one extra permission. Open the JobCopilot toolbar icon and click " +
+            "one extra permission. Open Settings → Applying and click " +
             "\"Enable auto-apply on all sites\", then retry this job.");
         }
         throw new Error(
@@ -522,11 +541,29 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     const docs = await ensureDocuments({
       job, packet, applicantName, tailoredId: tailored.id,
     });
+
+    // Then whatever the user has in their library, for the slots the renderer
+    // can't fill. A form asking for an Arbeitszeugnis, a transcript or a photo
+    // used to be the end of the run — there was no such file anywhere in the
+    // system, so the only honest move was to hand the job back.
+    //
+    // Generated documents win where both exist: a CV written for *this* posting
+    // is strictly better than the general one on file, and silently sending the
+    // general one would undo the entire point of tailoring.
+    const library = await primaryDocuments().catch(() => ({}));
+    const fromLibrary = [];
+    for (const [kind, doc] of Object.entries(library)) {
+      if (kind === "other" || docs[kind]) continue;
+      docs[kind] = doc;
+      fromLibrary.push(kind);
+    }
+
     // Which tailoring the attachments came from, in the audit trail — the point
     // of the trail is that a sent application can be reconstructed, and "which
     // CV went out" is the first thing you'd want to know.
     await appendApplyStep(run.id, {
-      kind: "documents", kinds: Object.keys(docs), tailoredId: tailored.id,
+      kind: "documents", kinds: Object.keys(docs), fromLibrary,
+      tailoredId: tailored.id,
       // Which identity rule found this packet. A reuse that turns out to be
       // wrong is otherwise very hard to explain after the fact — "url" is
       // exact, "job_key" was a company+title judgement call.
@@ -567,7 +604,7 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     // third failure now pauses for the human instead — see the attempts check
     // in the pause path.
     const task = taskFor(run.tier);
-    const system = buildSystem(profile, cvText);
+    const system = buildSystem(profile, cvText, Object.keys(docs));
     const messages = [];
     const answers = {};              // jcaId -> {label, text, evidence, profileKey}
     const autofilled = new Set();    // urls the rule pass has already run on
@@ -764,7 +801,13 @@ async function execute(ctx) {
 
     case "upload": {
       const doc = docs[a.doc_kind];
-      if (!doc) return { summary: `no ${a.doc_kind} was generated for this job`, isError: true };
+      if (!doc) {
+        return {
+          summary: `there is no ${a.doc_kind} for this application — ` +
+                   `available: ${Object.keys(docs).join(", ") || "none"}`,
+          isError: true,
+        };
+      }
       try {
         const res = await attachDocument(tabId, {
           jcaId: a.element_id, doc, tier: run.tier,

@@ -47,6 +47,41 @@ function fmtWhen(iso) {
 let activeFilter = "all";
 let allRows = [];
 
+// Job URL -> row, rebuilt whenever allRows changes. The apply poll runs every
+// 2.5 seconds and used to do a linear scan of allRows *per visible row* to find
+// the record behind it — fine at twenty jobs, and quadratic at five hundred.
+let rowsByUrl = new Map();
+
+function setRows(rows) {
+  allRows = rows;
+  rowsByUrl = new Map(rows.map((r) => [r.job_url, r]));
+}
+
+// ── Paging ─────────────────────────────────────────────────────────────────
+// Rendering the whole list in one innerHTML was survivable at fifty rows and is
+// not at five hundred: every row carries a status <select> and up to five
+// buttons, so the browser is asked to build several thousand elements and wire
+// listeners to them before anything appears — on every keystroke in the search
+// box. A page at a time keeps that bounded no matter how long the list gets.
+const PAGE_PREF = "dashboardPageSize";
+const PAGE_SIZES = [25, 50, 100, 0];        // 0 = show everything
+let pageSize = 50;
+let page = 1;
+try {
+  // Read the raw string first. Number(null) is 0, and 0 is a *valid* page size
+  // here meaning "show everything" — so testing the parsed value alone turns
+  // "no preference saved" into "render all five hundred rows".
+  const raw = localStorage.getItem(PAGE_PREF);
+  if (raw !== null && PAGE_SIZES.includes(Number(raw))) pageSize = Number(raw);
+} catch { /* a corrupt preference is not worth failing the page over */ }
+
+/** Repaint from the rows already in memory; `resetPage` for anything that
+    changes what the list contains rather than just how it's ordered. */
+function repaint(resetPage = false) {
+  if (resetPage) page = 1;
+  renderTable(allRows);
+}
+
 // ── Sorting ────────────────────────────────────────────────────────────────
 // The list only ever came back in whatever order the query returned, which is
 // no use once there are more rows than fit on screen — the best-fitting job and
@@ -194,7 +229,9 @@ function bindSortHeaders() {
       try {
         localStorage.setItem(SORT_PREF, JSON.stringify({ key: sortKey, dir: sortDir }));
       } catch { /* private mode: sorting still works, it just won't persist */ }
-      renderTable(allRows);
+      // Back to the top: re-sorting and staying on page 7 shows you the middle
+      // of a list you just asked to reorder.
+      repaint(true);
     });
   });
 }
@@ -216,20 +253,22 @@ function renderStats(rows) {
   document.querySelectorAll("[data-filter]").forEach((el) => {
     el.addEventListener("click", () => {
       activeFilter = el.dataset.filter;
-      renderTable(allRows);
+      repaint(true);
     });
   });
 }
 
 function renderTable(rows) {
-  allRows = rows;
+  setRows(rows);
   if (!rows.length) {
+    $("content").className = "";
     $("content").innerHTML = `<div class="empty">
       No jobs yet.<br />
       They'll appear here automatically once the job-alert bot runs, or as soon
       as you open a posting and click <b>✦ Tailor this job</b>.
     </div>`;
     $("stats").innerHTML = "";
+    $("pager").classList.add("hidden");
     return;
   }
 
@@ -256,17 +295,35 @@ function renderTable(rows) {
     : `${rows.length} job${rows.length === 1 ? "" : "s"}`;
 
   if (!shown.length) {
+    $("content").className = "";
     $("content").innerHTML = `<div class="empty">${
       n ? "Nothing matches these filters." : "Nothing at this stage yet."}</div>`;
+    $("pager").classList.add("hidden");
     return;
   }
 
+  // Sort the whole matching set, then cut one page out of it — sorting only the
+  // visible page would make "highest fit first" mean "highest fit on page 4".
+  const ordered = sortRows(shown);
+  const pages = pageSize ? Math.max(1, Math.ceil(ordered.length / pageSize)) : 1;
+  if (page > pages) page = pages;          // filters just shrank the list
+  const from = pageSize ? (page - 1) * pageSize : 0;
+  const pageRows = pageSize ? ordered.slice(from, from + pageSize) : ordered;
+
+  $("content").className = "boxed";       // the frame belongs to the scroller
   $("content").innerHTML = `
     <table>
       <thead>${headerHtml()}</thead>
-      <tbody>${sortRows(shown).map(rowHtml).join("")}</tbody>
+      <tbody>${pageRows.map(rowHtml).join("")}</tbody>
     </table>`;
   bindSortHeaders();
+  renderPager({ total: ordered.length, from, count: pageRows.length, pages });
+
+  // The match explanation is clamped to two lines; this is how you read the
+  // rest of one without leaving the page.
+  document.querySelectorAll("td .why").forEach((el) => {
+    el.addEventListener("click", () => el.classList.toggle("open"));
+  });
 
   // Status dropdown → persist immediately.
   document.querySelectorAll("select[data-id]").forEach((sel) => {
@@ -302,6 +359,51 @@ function renderTable(rows) {
   });
 }
 
+/**
+ * Where you are in the list, and how to move.
+ *
+ * Deliberately states the totals in words rather than only offering arrows: at
+ * five hundred jobs the useful question is usually "how many are left", not
+ * "which page is this".
+ */
+function renderPager({ total, from, count, pages }) {
+  const el = $("pager");
+  if (!pageSize && total <= 100) { el.classList.add("hidden"); return; }
+  el.classList.remove("hidden");
+
+  const range = pageSize
+    ? `<b>${from + 1}–${from + count}</b> of <b>${total}</b>`
+    : `all <b>${total}</b>`;
+
+  el.innerHTML = `
+    <span>Showing ${range}</span>
+    <span class="spacer"></span>
+    <label>Per page
+      <select id="p-size">${PAGE_SIZES.map((s) =>
+        `<option value="${s}"${s === pageSize ? " selected" : ""}>${s || "all"}</option>`
+      ).join("")}</select>
+    </label>
+    ${pageSize ? `
+      <button id="p-prev"${page <= 1 ? " disabled" : ""}>‹ Previous</button>
+      <span>Page <b>${page}</b> of <b>${pages}</b></span>
+      <button id="p-next"${page >= pages ? " disabled" : ""}>Next ›</button>` : ""}`;
+
+  $("p-size").addEventListener("change", (e) => {
+    pageSize = Number(e.target.value);
+    try { localStorage.setItem(PAGE_PREF, String(pageSize)); }
+    catch { /* private mode: paging still works, it just won't persist */ }
+    repaint(true);
+  });
+  $("p-prev")?.addEventListener("click", () => { page--; repaint(); scrollToTop(); });
+  $("p-next")?.addEventListener("click", () => { page++; repaint(); scrollToTop(); });
+}
+
+// Turning the page and landing at the bottom of the next one is disorienting.
+function scrollToTop() {
+  document.getElementById("content")
+    ?.scrollIntoView({ block: "start", behavior: "smooth" });
+}
+
 function rowHtml(r) {
   const options = sb.APPLICATION_STATUSES
     .map((s) => `<option value="${s}"${s === r.status ? " selected" : ""}>${s}</option>`)
@@ -322,7 +424,8 @@ function rowHtml(r) {
     <td>
       <div class="job">${title}</div>
       <div class="co">${esc(r.job_company || "")}${r.job_location ? " · " + esc(r.job_location) : ""}</div>
-      ${r.reason ? `<div class="why">${esc(r.reason)}</div>` : ""}
+      ${r.reason
+        ? `<div class="why" title="Click to expand">${esc(r.reason)}</div>` : ""}
     </td>
     <td>${score}</td>
     <td>
@@ -334,14 +437,14 @@ function rowHtml(r) {
     <td class="muted" style="white-space:nowrap">${
       r.discovered_at ? esc(fmtWhen(r.discovered_at)) : "—"}</td>
     <td class="muted">${esc(fmtDate(r.updated_at))}</td>
-    <td style="white-space:nowrap">
+    <td class="acts">
       <span class="apply-cell">${applyCell(r)}</span>
       ${r.job_url ? `<a class="btnlink" href="${esc(r.job_url)}" target="_blank" rel="noreferrer">Open</a>` : ""}
       ${r.tailored_result_id
-        ? `<button data-cover="${esc(r.tailored_result_id)}">Cover letter</button>
-           <button data-open="${esc(r.tailored_result_id)}">Packet</button>`
+        ? `<button data-cover="${esc(r.tailored_result_id)}" title="Open the tailored cover letter">Letter</button>
+           <button data-open="${esc(r.tailored_result_id)}" title="Open the tailored CV and cover letter together">Packet</button>`
         : ""}
-      <button class="danger" data-del="${esc(r.id)}">Delete</button>
+      <button class="danger" data-del="${esc(r.id)}" title="Remove this job from your list">Delete</button>
     </td>
   </tr>`;
 }
@@ -412,7 +515,7 @@ function wireApplyButtons(root) {
   root.querySelectorAll("[data-apply]").forEach((b) => {
     wireOnce(b, async () => {
       const url = b.dataset.apply;
-      const row = allRows.find((r) => r.job_url === url);
+      const row = rowsByUrl.get(url);
       b.disabled = true;
       b.textContent = "Queueing…";
       try {
@@ -487,7 +590,7 @@ async function pollApplyStatus() {
  */
 function refreshApplyCells() {
   document.querySelectorAll("tbody tr[data-url]").forEach((tr) => {
-    const r = allRows.find((x) => x.job_url === tr.dataset.url);
+    const r = rowsByUrl.get(tr.dataset.url);
     const cell = tr.querySelector(".apply-cell");
     if (!r || !cell) return;
     const html = applyCell(r);
@@ -629,7 +732,8 @@ function renderApplyPanel(st) {
   // Making them wait out a day they know is unnecessary is not caution, it is
   // just a dead end with a countdown on it.
   const health = blocked.map((h) =>
-    `<li><b>${esc(h.domain)}</b> — ${esc(h.state)}${h.signal ? ` (${esc(h.signal)})` : ""}
+    `<li><b>${esc(h.domain)}</b> — ${esc(h.state)}${
+       h.signal ? ` <span class="muted" title="${esc(h.signal)}">(${esc(shortSignal(h.signal))})</span>` : ""}
      ${h.retryAt ? `<span class="muted">back ${esc(fmtWhen(h.retryAt))}</span>` : ""}
      <button class="resume-site" data-domain="${esc(h.domain)}">Resume now</button></li>`)
     .join("");
@@ -642,6 +746,35 @@ function renderApplyPanel(st) {
   for (const btn of el.querySelectorAll(".resume-site")) {
     btn.addEventListener("click", () => resumeSite(btn.dataset.domain, btn));
   }
+}
+
+/**
+ * Why a site is resting, in a form that fits on a line.
+ *
+ * The breaker records whatever signal it saw, and when that signal is an API
+ * failure the raw text is a paragraph of protocol detail — the banner was
+ * showing users "messages.8: `tool_use` ids were found without `tool_result`
+ * blocks immediately after: toolu_01RHqnpouFp6…". True, and unreadable, and it
+ * pushed the Resume button off the line. The full text stays on the title
+ * attribute, where it is there for a bug report and nowhere else.
+ */
+const SIGNAL_LABEL = [
+  [/captcha|challenge|cloudflare|are you a (human|robot)/i, "bot check"],
+  [/\b(401|403)\b|forbidden|unauthori[sz]ed|access denied/i, "refused us"],
+  [/\b429\b|rate ?limit|too many requests/i, "rate limited"],
+  [/\b5\d\d\b|internal server|bad gateway|unavailable/i, "site error"],
+  [/timeout|timed out|took too long/i, "timed out"],
+  [/tool_use|tool_result|messages\.\d|anthropic|claude call failed/i, "AI call failed"],
+  [/network|fetch failed|offline|dns/i, "network problem"],
+];
+
+function shortSignal(signal) {
+  const text = String(signal || "").trim();
+  for (const [re, label] of SIGNAL_LABEL) if (re.test(text)) return label;
+  // Unrecognised, so say the first clause and stop — better a short true
+  // fragment than three lines of someone else's stack trace.
+  const first = text.split(/[:\n]/)[0].trim();
+  return first.length > 48 ? `${first.slice(0, 45)}…` : (first || "unknown");
 }
 
 /** Lift a quarantine and immediately try the queue again. */
@@ -704,13 +837,23 @@ async function load() {
     const session = await sb.getSession();
     if (!session?.access_token) {
       $("who").textContent = "Not signed in.";
-      $("content").innerHTML = `<div class="empty">
+      $("content").className = "";
+    $("content").innerHTML = `<div class="empty">
         Sign in from the JobCopilot toolbar icon to see your applications.
       </div>`;
       return;
     }
     $("who").textContent = `Signed in as ${session.user?.email || ""}`;
-    renderTable((await sb.listTrackedJobs()) || []);
+    const rows = (await sb.listTrackedJobs()) || [];
+    renderTable(rows);
+    // A cap that silently truncates the list is worse than a smaller list: for
+    // as long as the fetch stopped at 300 rows, someone with more than that
+    // simply never saw the rest and nothing anywhere said so.
+    if (rows.length >= sb.TRACKED_JOBS_LIMIT) {
+      showMessage(`Showing the ${sb.TRACKED_JOBS_LIMIT} most relevant jobs — ` +
+                  `there are more. Delete or dismiss what you've finished with, ` +
+                  `or narrow it down with Filters.`);
+    }
     startApplyPolling();
   } catch (e) {
     if (e.message === "NOT_SIGNED_IN") {
@@ -769,10 +912,13 @@ function showStaleNotice() {
   });
 }
 
+// These used to say "from the JobCopilot toolbar icon", which was a dead end:
+// the settings were three scrolls down a popup, and nothing on this page led
+// there. There is a Settings button in the header now, so they can point at it.
 const SETUP_HELP = {
-  NO_KEY: "Add your Groq API key from the JobCopilot toolbar icon first.",
-  NO_CV: "Add your CV from the JobCopilot toolbar icon first.",
-  NOT_SIGNED_IN: "Sign in from the JobCopilot toolbar icon first.",
+  NO_KEY: "Add your Groq API key first — Settings, top right, under AI.",
+  NO_CV: "Add your CV first — Settings, top right.",
+  NOT_SIGNED_IN: "Sign in first, from the JobCopilot toolbar icon.",
 };
 
 function scanFinished() {
@@ -820,12 +966,20 @@ $("filters-toggle").addEventListener("click", () => {
 function onFilterChange(key, value) {
   filters[key] = value;
   saveFilters();
-  renderTable(allRows);
+  // Filtering changes what the list contains, so page 4 of the old list is
+  // meaningless against the new one.
+  repaint(true);
 }
 
-// Typing filters as you go; the list is already in memory so there's nothing
-// to debounce for.
-$("f-search").addEventListener("input", (e) => onFilterChange("search", e.target.value.trim()));
+// Typing filters as you go. Debounced now — the filtering itself is in-memory
+// and instant, but each keystroke rebuilds a table of rows, and doing that
+// eight times while someone types "engineer" is work nobody sees.
+let searchTimer = null;
+$("f-search").addEventListener("input", (e) => {
+  const value = e.target.value.trim();
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => onFilterChange("search", value), 140);
+});
 $("f-fit").addEventListener("change", (e) => onFilterChange("fit", e.target.value));
 $("f-released").addEventListener("change", (e) => onFilterChange("released", e.target.value));
 $("f-source").addEventListener("change", (e) => onFilterChange("source", e.target.value));
@@ -833,7 +987,11 @@ $("f-source").addEventListener("change", (e) => onFilterChange("source", e.targe
 $("f-clear").addEventListener("click", () => {
   filters = { ...NO_FILTERS };
   saveFilters();
-  renderTable(allRows);
+  repaint(true);
+});
+
+$("settings").addEventListener("click", () => {
+  chrome.tabs.create({ url: chrome.runtime.getURL("settings.html") });
 });
 
 // ── Is this page still the extension that's running? ───────────────────────

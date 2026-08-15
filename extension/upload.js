@@ -44,26 +44,34 @@ async function verify(tabId, jcaId) {
 /**
  * Attach `doc` to the file input identified by `jcaId`.
  *
- * `doc` is one entry from docgen.ensureDocuments():
- *   { diskPath, storagePath }
+ * `doc` is one entry from docgen.ensureDocuments() — { diskPath, storagePath } —
+ * or one from the user's own library, which has { storagePath, filename } and
+ * no local copy.
  *
  * Returns { path: "datatransfer" | "cdp", name } or throws.
  */
 export async function attachDocument(tabId, { jcaId, doc, tier = 0, filename }) {
   if (!doc) throw new Error(`upload: no document to attach for ${jcaId}`);
 
-  const name = filename || doc.diskPath?.split("/").pop() || "document.pdf";
+  const name = filename || doc.filename ||
+               doc.diskPath?.split("/").pop() || "document.pdf";
   const errors = [];
 
   // ── Path A ────────────────────────────────────────────────────────────────
-  // Skipped on Tier 1 not because it fails there, but because those forms are
-  // the ones with custom widgets that inspect the file, and doing the round
-  // trip twice on every upload is wasted time.
-  if (tier === 0 && doc.storagePath) {
+  // Normally skipped on Tier 1 — not because it fails there, but because those
+  // forms are the ones with custom widgets that inspect the file, and doing the
+  // round trip twice on every upload is wasted time.
+  //
+  // The exception is a document from the user's library: it was uploaded from
+  // their machine straight to Storage and was never rendered locally, so there
+  // is no disk path for Path B to hand to CDP. For those this is the only path
+  // there is, whatever the tier.
+  if (doc.storagePath && (tier === 0 || !doc.diskPath)) {
     try {
       const resp = await chrome.tabs.sendMessage(tabId, {
         target: "jca-engine", type: "ATTACH_FILE",
-        jcaId, name, base64: await docBytes(doc.storagePath),
+        jcaId, name, mime: doc.mime || "application/pdf",
+        base64: await docBytes(doc.storagePath),
       });
       if (resp?.ok) {
         const state = await verify(tabId, jcaId);

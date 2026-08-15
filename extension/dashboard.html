@@ -22,7 +22,10 @@
                   color-mix(in srgb, var(--accent) 13%, transparent), transparent 70%);
       pointer-events: none;
     }
-    .wrap { max-width: 1040px; margin: 0 auto; }
+    /* Wider than the other surfaces on purpose: this one holds a seven-column
+       table, and at 1040px the job title was squeezed into a 90px ribbon that
+       wrapped every posting over six lines. */
+    .wrap { max-width: 1320px; margin: 0 auto; }
 
     header { display: flex; align-items: flex-start; justify-content: space-between;
              gap: 16px; margin-bottom: 22px; animation: jc-rise var(--dur-3) var(--ease-out) both; }
@@ -123,14 +126,23 @@
     /* Eight columns do not fit a narrow window, and the page scrolling sideways
        drags the header and filters off screen with it. Confine it here. */
     #content { overflow-x: auto; }
-    table { width: 100%; min-width: 860px; border-collapse: separate; border-spacing: 0;
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-1); }
-    th, td { text-align: left; padding: 13px 14px; vertical-align: top;
+    /* The frame lives on the scroll container, not on the table.
+       It used to be on the table itself, via `overflow: hidden` for the rounded
+       corners — and an `overflow: hidden` ancestor is exactly what stops
+       `position: sticky` from working, so the pinned job column below silently
+       scrolled away with everything else. The class is only applied when there
+       really is a table, so the empty state doesn't get a second border. */
+    #content.boxed {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-lg); box-shadow: var(--shadow-1);
+    }
+    table { width: 100%; min-width: 1080px;
+            border-collapse: separate; border-spacing: 0; }
+    th, td { text-align: left; padding: 10px 13px; vertical-align: top;
              border-bottom: 1px solid var(--border); }
     th { font-size: 11px; text-transform: uppercase; letter-spacing: .06em;
          font-weight: 600; color: var(--text-3); background: var(--surface-2);
-         position: sticky; top: 0; z-index: 1; }
+         position: sticky; top: 0; z-index: 2; }
     th.sortable { cursor: pointer; user-select: none; white-space: nowrap;
                   transition: color var(--dur-1) var(--ease); }
     th.sortable:hover { color: var(--accent); }
@@ -139,27 +151,65 @@
     tbody tr:hover { background: var(--surface-2); }
     tbody tr:last-child td { border-bottom: none; }
 
-    /* Rows arrive in sequence rather than all at once. Capped at twelve steps
-       so a long list never feels like it is loading in slow motion. */
-    tbody tr { animation: jc-rise var(--dur-2) var(--ease-out) both; }
-    tbody tr:nth-child(1)  { animation-delay: 0ms; }
-    tbody tr:nth-child(2)  { animation-delay: 26ms; }
-    tbody tr:nth-child(3)  { animation-delay: 52ms; }
-    tbody tr:nth-child(4)  { animation-delay: 78ms; }
-    tbody tr:nth-child(5)  { animation-delay: 104ms; }
-    tbody tr:nth-child(6)  { animation-delay: 130ms; }
-    tbody tr:nth-child(7)  { animation-delay: 156ms; }
-    tbody tr:nth-child(8)  { animation-delay: 182ms; }
-    tbody tr:nth-child(9)  { animation-delay: 208ms; }
-    tbody tr:nth-child(10) { animation-delay: 234ms; }
-    tbody tr:nth-child(11) { animation-delay: 260ms; }
-    tbody tr:nth-child(n+12) { animation-delay: 286ms; }
+    /* The job column stays put while the rest scrolls sideways.
+       Without this the first thing to leave a narrow window is the only column
+       that identifies the row, and you are left reading "78 · found · LinkedIn"
+       with no idea which job that is.
+
+       The min-width is not decoration. Table auto-layout hands the spare width
+       to whichever column demands it, and the actions cell — five buttons that
+       must not wrap mid-word — demands a lot; left alone it starves the one
+       column that says what the row is. */
+    th:first-child, td:first-child {
+      position: sticky; left: 0; z-index: 1;
+      min-width: 290px; width: 34%;
+      background: var(--surface); border-right: 1px solid var(--border);
+    }
+    th:first-child { z-index: 3; background: var(--surface-2); }
+    tbody tr:hover td:first-child { background: var(--surface-2); }
+
+    /* One fade for the whole body rather than a stagger per row. A staggered
+       entrance is charming at twelve rows and absurd at a hundred — and the
+       per-row transform it needs would break the sticky column above. */
+    tbody { animation: jc-fade var(--dur-2) var(--ease) both; }
 
     .job { font-weight: 600; font-size: 14px; letter-spacing: -.01em; }
     .co { color: var(--text-2); font-size: 13px; margin-top: 2px; }
-    .why { color: var(--text-3); font-size: 12px; margin-top: 6px;
+    /* Clamped, because this is the single reason the old table couldn't hold a
+       long list: a three-line explanation per row made every row ~200px tall,
+       so a hundred jobs was twenty thousand pixels of scrolling. Two lines is
+       enough to judge relevance; the rest is one click away. */
+    .why { color: var(--text-3); font-size: 12px; margin-top: 5px;
            padding-left: 9px; border-left: 2px solid var(--border-hi); }
+    /* Scoped to the table: the same class is used in the apply panel, where
+       there is only ever one line and nothing to expand. */
+    td .why {
+      max-width: 460px; cursor: pointer;
+      display: -webkit-box; -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2; overflow: hidden;
+    }
+    td .why.open { -webkit-line-clamp: unset; display: block; }
+    td .why:hover { color: var(--text-2); }
     .muted { color: var(--text-3); font-size: 12px; }
+
+    /* Row actions. Five buttons at full size is a 340px column, which is a
+       third of the table spent on controls; small and wrapped to two lines,
+       it is half that and reads as a cluster belonging to the row. */
+    td.acts { white-space: normal; }
+    td.acts > * {
+      margin: 0 4px 4px 0; padding: 5px 11px; font-size: 12px;
+      white-space: nowrap; vertical-align: middle;
+    }
+
+    /* ── Pager ─────────────────────────────────────────────────────────── */
+    .pager {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      margin-top: 14px; font-size: 12px; color: var(--text-2);
+    }
+    .pager .spacer { flex: 1 1 auto; }
+    .pager button { padding: 6px 12px; font-size: 12px; }
+    .pager select { font-size: 12px; padding: 5px 8px; }
+    .pager b { color: var(--text); font-weight: 600; }
     a { color: var(--accent); text-decoration: none;
         transition: color var(--dur-1) var(--ease); }
     a:hover { color: var(--accent-hi); text-decoration: underline; }
@@ -260,6 +310,7 @@
         <button id="applyAll" title="Queue every strong match that's already tailored">Apply to all strong</button>
         <button id="filters-toggle">Filters</button>
         <button id="refresh">Refresh</button>
+        <button id="settings" title="CV, documents, keys and how applying behaves">⚙ Settings</button>
       </div>
     </header>
     <div id="scan" class="scan hidden"></div>
@@ -304,6 +355,7 @@
 
     <div class="stats" id="stats"></div>
     <div id="content"></div>
+    <div id="pager" class="pager hidden"></div>
   </div>
 
   <script src="print_doc.js"></script>

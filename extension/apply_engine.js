@@ -353,14 +353,19 @@
 
   // ── file attachment (Path A) ──────────────────────────────────────────────
 
-  function attachFile(jcaId, name, base64) {
+  // `mime` matters now that documents can come from the user's own library
+  // rather than only from the PDF renderer: a photo is a JPEG and a reference
+  // may be a Word file, and plenty of upload widgets read file.type and reject
+  // anything their `accept` doesn't cover. Defaulted, so older callers that
+  // pass nothing still get the PDF they were assuming.
+  function attachFile(jcaId, name, base64, mime) {
     const el = byId(jcaId);
     if (!el) return { ok: false, error: `no element ${jcaId}` };
 
     const bin = atob(base64);
     const bytes = new Uint8Array(bin.length);
     for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-    const file = new File([bytes], name, { type: "application/pdf" });
+    const file = new File([bytes], name, { type: mime || "application/pdf" });
 
     const dt = new DataTransfer();
     dt.items.add(file);
@@ -396,7 +401,7 @@
       switch (msg.type) {
         case "OBSERVE":     sendResponse({ ok: true, state: observe() }); break;
         case "ACT":         sendResponse(act(msg.action)); break;
-        case "ATTACH_FILE": sendResponse(attachFile(msg.jcaId, msg.name, msg.base64)); break;
+        case "ATTACH_FILE": sendResponse(attachFile(msg.jcaId, msg.name, msg.base64, msg.mime)); break;
         case "FILE_STATE":  sendResponse(fileState(msg.jcaId)); break;
         case "AUTOFILL":    sendResponse({ ok: true, report: A.fill(msg.profile, msg.packet) }); break;
         case "PING":        sendResponse({ ok: true }); break;

@@ -315,7 +315,15 @@ export async function listApplications(limit = 100) {
 
 // The tracker view: newly-found jobs ranked by fit first, then everything the
 // user has already acted on, most recent first.
-export async function listTrackedJobs(limit = 300) {
+//
+// The cap used to be 300, which is not a display limit — it is a data limit,
+// and it was silent. Someone with 500 tracked jobs simply never saw 200 of
+// them and nothing said so. The dashboard paginates now, so the fetch can be
+// generous; and when the ceiling really is reached the dashboard says so
+// rather than presenting a truncated list as the whole list.
+export const TRACKED_JOBS_LIMIT = 1000;
+
+export async function listTrackedJobs(limit = TRACKED_JOBS_LIMIT) {
   return rest(`/applications?select=*&archived_at=is.null` +
               `&order=status.asc,score.desc.nullslast,updated_at.desc` +
               `&limit=${limit}`);
@@ -710,6 +718,92 @@ export async function recordApplyDocument(row) {
   return rows && rows[0] ? rows[0] : null;
 }
 
+// ── the user's own document library ─────────────────────────────────────────
+//
+// apply_documents above is what the engine *generates* per job. This is what
+// the user already has: certificates, transcripts, a portfolio, the photo a
+// German application asks for. Autofill has always been able to recognise those
+// slots on a form; until this existed there was simply nothing to put in them,
+// so the run paused and handed the job back.
+
+/** Every stored document, current one of each kind first. */
+export async function listUserDocuments() {
+  return rest("/user_documents?select=*" +
+              "&order=kind.asc,is_primary.desc,created_at.desc") || [];
+}
+
+/**
+ * Store one file and record it.
+ *
+ * `bytes` is a Uint8Array — settings.js reads the File the user picked. The
+ * object path keeps the row id in it so a file in the bucket can always be
+ * traced back to its row, and so two uploads of "CV.pdf" don't collide.
+ */
+export async function uploadUserDocument({ kind, label, filename, mime, bytes,
+                                           makePrimary = true }) {
+  const uid = await currentUserId();
+  const id = crypto.randomUUID();
+  const safe = String(filename || "document")
+    .normalize("NFKD").replace(/[\u0300-\u036f]/g, "")   // drop diacritics
+    .replace(/[^A-Za-z0-9._-]+/g, "_").slice(-60) || "document";
+  const storage_path = `${uid}/library/${id}-${safe}`;
+
+  await storagePut(storage_path, bytes, mime || "application/octet-stream");
+
+  // Clear the old current file *before* inserting, or the partial unique index
+  // rejects the insert rather than the write silently winning.
+  if (makePrimary) await clearPrimary(kind);
+
+  const rows = await rest("/user_documents", {
+    method: "POST",
+    body: { id, user_id: uid, kind, label: label || null, filename: safe,
+            mime: mime || null, bytes: bytes.length, storage_path,
+            is_primary: makePrimary },
+    headers: { Prefer: "return=representation" },
+  });
+  return rows && rows[0] ? rows[0] : null;
+}
+
+async function clearPrimary(kind) {
+  await rest(`/user_documents?kind=eq.${encodeURIComponent(kind)}&is_primary=is.true`,
+             { method: "PATCH", body: { is_primary: false } });
+}
+
+/** Promote one file to be the one the engine attaches for its kind. */
+export async function setPrimaryDocument(id, kind) {
+  await clearPrimary(kind);
+  await rest(`/user_documents?id=eq.${encodeURIComponent(id)}`,
+             { method: "PATCH", body: { is_primary: true } });
+}
+
+export async function deleteUserDocument(id, storagePath) {
+  // Row first: an orphaned object costs a few kilobytes, whereas a row pointing
+  // at a deleted object would have the engine try to attach a file that isn't
+  // there and fail mid-application.
+  await rest(`/user_documents?id=eq.${encodeURIComponent(id)}`, { method: "DELETE" });
+  if (storagePath) await storageDelete(storagePath).catch(() => {});
+}
+
+/**
+ * The current file of each kind, shaped like docgen's output so the apply
+ * engine can merge the two without caring where a document came from.
+ *
+ *   { certificate: { storagePath, filename }, … }
+ *
+ * No `diskPath`: these were never rendered locally, so they attach over the
+ * DataTransfer path from their stored bytes — see upload.js.
+ */
+export async function primaryDocuments() {
+  const rows = await rest("/user_documents?select=kind,filename,mime,storage_path" +
+                          "&is_primary=is.true") || [];
+  const out = {};
+  for (const r of rows) {
+    out[r.kind] = { storagePath: r.storage_path, filename: r.filename,
+                    mime: r.mime || "application/pdf" };
+  }
+  return out;
+}
+
 // ── Storage ─────────────────────────────────────────────────────────────────
 // Every object path starts with the user id, which is what the bucket policy
 // in the migration checks. Keep that first segment or the upload 403s.
@@ -732,6 +826,23 @@ async function storagePut(objectPath, bytes, contentType) {
     throw new Error(`Storage ${resp.status}: ${(await resp.text()).slice(0, 200)}`);
   }
   return objectPath;
+}
+
+async function storageDelete(objectPath) {
+  const session = await getSession();
+  if (!session?.access_token) throw new Error("NOT_SIGNED_IN");
+
+  const resp = await fetch(`${STORAGE}/object/${APPLY_BUCKET}/${objectPath}`, {
+    method: "DELETE",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${session.access_token}`,
+    },
+  });
+  // 404 means it is already gone, which is the state we were asking for.
+  if (!resp.ok && resp.status !== 404) {
+    throw new Error(`Storage delete ${resp.status}`);
+  }
 }
 
 function b64ToBytes(base64) {
