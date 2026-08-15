@@ -316,7 +316,9 @@ function rowHtml(r) {
     ? `<span class="muted">—</span>`
     : `<span class="score s-${r.score >= 75 ? "hi" : r.score >= 50 ? "mid" : "lo"}">${r.score}</span>`;
 
-  return `<tr>
+  // data-url is how a status poll finds this row again without re-rendering the
+  // table — see refreshApplyCells().
+  return `<tr data-url="${esc(r.job_url || "")}">
     <td>
       <div class="job">${title}</div>
       <div class="co">${esc(r.job_company || "")}${r.job_location ? " · " + esc(r.job_location) : ""}</div>
@@ -333,7 +335,8 @@ function rowHtml(r) {
       r.discovered_at ? esc(fmtWhen(r.discovered_at)) : "—"}</td>
     <td class="muted">${esc(fmtDate(r.updated_at))}</td>
     <td style="white-space:nowrap">
-      ${r.job_url ? `<a class="btnlink" href="${esc(r.job_url)}" target="_blank" rel="noreferrer">Open &amp; apply</a>` : ""}
+      <span class="apply-cell">${applyCell(r)}</span>
+      ${r.job_url ? `<a class="btnlink" href="${esc(r.job_url)}" target="_blank" rel="noreferrer">Open</a>` : ""}
       ${r.tailored_result_id
         ? `<button data-cover="${esc(r.tailored_result_id)}">Cover letter</button>
            <button data-open="${esc(r.tailored_result_id)}">Packet</button>`
@@ -341,6 +344,321 @@ function rowHtml(r) {
       <button class="danger" data-del="${esc(r.id)}">Delete</button>
     </td>
   </tr>`;
+}
+
+// ── Apply ───────────────────────────────────────────────────────────────────
+//
+// The old build could only hand you a link to the posting. This is the button
+// the whole engine hangs off: it queues the job and the router takes it from
+// there. What it shows depends on where that job already is, so a second click
+// can't queue a duplicate application.
+
+/** runId/status by job_url, refreshed by pollApplyStatus(). */
+const applyState = new Map();
+
+const APPLY_LABEL = {
+  queued:             ["Queued",   "muted"],
+  running:            ["Applying…", "busy"],
+  paused_needs_human: ["Needs you", "warn"],
+  submitted:          ["Applied ✓", "good"],
+  blocked:            ["Blocked",  "warn"],
+  failed:             ["Failed",   "warn"],
+  aborted:            ["Stopped",  "muted"],
+};
+
+function applyCell(r) {
+  if (!r.job_url) return "";
+  const st = applyState.get(r.job_url);
+
+  if (!st) {
+    // Applying needs the tailored packet — that's where the CV, the cover
+    // letter, and the grounding all come from. Say so rather than offering a
+    // button that would fail.
+    return r.tailored_result_id
+      ? `<button class="primary" data-apply="${esc(r.job_url)}">Apply</button>`
+      : `<button disabled title="Tailor this job first — the engine applies with the tailored CV and cover letter">Apply</button>`;
+  }
+
+  const [label, cls] = APPLY_LABEL[st.status] || [st.status, "muted"];
+  const detail = st.pause_reason ? ` title="${esc(st.pause_reason)}"` : "";
+  const actions =
+    st.status === "running"  ? `<button data-abort="${esc(st.id)}">Stop</button>` :
+    st.status === "queued"   ? `<button data-abort="${esc(st.id)}">Cancel</button>` :
+    ["paused_needs_human", "failed", "blocked", "aborted"].includes(st.status)
+      ? `<button data-retry="${esc(st.id)}">Retry</button>` : "";
+
+  return `<span class="apply-state ${cls}"${detail}>${label}</span> ${actions}`;
+}
+
+async function send(msg) {
+  const resp = await chrome.runtime.sendMessage(msg);
+  if (!resp?.ok) throw new Error(resp?.error || "no response from the extension");
+  return resp;
+}
+
+/**
+ * `refreshApplyCells` re-runs this over the whole document every few seconds,
+ * and only the cells whose HTML changed are new elements. Every other button
+ * would collect a second listener per poll — so an Apply button on screen for a
+ * minute fired ~24 enqueues on one click. Wire each element exactly once.
+ */
+const wireOnce = (el, fn) => {
+  if (el.dataset.wired) return;
+  el.dataset.wired = "1";
+  el.addEventListener("click", fn);
+};
+
+function wireApplyButtons(root) {
+  root.querySelectorAll("[data-apply]").forEach((b) => {
+    wireOnce(b, async () => {
+      const url = b.dataset.apply;
+      const row = allRows.find((r) => r.job_url === url);
+      b.disabled = true;
+      b.textContent = "Queueing…";
+      try {
+        const res = await send({
+          type: "APPLY_START",
+          job: { url, title: row?.job_title, company: row?.job_company,
+                 applicationId: row?.id },
+        });
+        if (res.rerouted) {
+          showMessage(`Applying on the company's own site instead of the aggregator ` +
+                      `(found via ${res.rerouted.via}).`);
+        } else if (res.parked) {
+          showMessage(`${res.reason} — open it and apply directly; your tailored ` +
+                      `documents are ready.`, true);
+        }
+        await pollApplyStatus();
+      } catch (e) {
+        showMessage(`Couldn't queue that: ${e.message}`, true);
+        b.disabled = false;
+        b.textContent = "Apply";
+      }
+    });
+  });
+
+  root.querySelectorAll("[data-abort]").forEach((b) => {
+    wireOnce(b, async () => {
+      try { await send({ type: "APPLY_ABORT", runId: b.dataset.abort }); await pollApplyStatus(); }
+      catch (e) { showMessage(`Couldn't stop that: ${e.message}`, true); }
+    });
+  });
+
+  root.querySelectorAll("[data-retry]").forEach((b) => {
+    wireOnce(b, async () => {
+      try { await send({ type: "APPLY_RETRY", runId: b.dataset.retry }); await pollApplyStatus(); }
+      catch (e) { showMessage(`Couldn't retry that: ${e.message}`, true); }
+    });
+  });
+}
+
+/**
+ * Refresh the queue and the per-domain health strip.
+ *
+ * Polled rather than pushed because the service worker sleeps: a run that
+ * finishes while the dashboard tab is in the background would otherwise leave
+ * the row showing "Applying…" forever.
+ */
+async function pollApplyStatus() {
+  let st;
+  try { st = await send({ type: "APPLY_STATUS" }); }
+  catch { return; }                    // not signed in yet, or worker restarting
+
+  applyState.clear();
+  for (const run of st.runs || []) {
+    // original_job_url is set when an aggregator posting was rerouted, so the
+    // row the user clicked still lights up even though the run is against a
+    // different URL.
+    applyState.set(run.job_url, run);
+    if (run.original_job_url) applyState.set(run.original_job_url, run);
+  }
+
+  renderApplyPanel(st);
+  refreshApplyCells();
+}
+
+/**
+ * Repaint only the Apply cells.
+ *
+ * Deliberately not a full re-render: this runs every few seconds, and redrawing
+ * the table would reset the sort, drop focus, and clobber a status dropdown the
+ * user is halfway through changing. Rows are found by their job URL rather than
+ * by position, so filtering or sorting between polls can't misalign them.
+ */
+function refreshApplyCells() {
+  document.querySelectorAll("tbody tr[data-url]").forEach((tr) => {
+    const r = allRows.find((x) => x.job_url === tr.dataset.url);
+    const cell = tr.querySelector(".apply-cell");
+    if (!r || !cell) return;
+    const html = applyCell(r);
+    if (cell.innerHTML !== html) cell.innerHTML = html;   // avoid pointless churn
+  });
+  wireApplyButtons(document);
+}
+
+let applyPollTimer = null;
+
+/**
+ * Poll while there's anything in flight, and stop when there isn't.
+ *
+ * A permanently-running timer on a tab people leave open all day is rude to
+ * both the browser and Supabase, so this idles down and is woken again by the
+ * router's progress messages.
+ */
+function startApplyPolling() {
+  if (applyPollTimer) return;
+  const tick = async () => {
+    await pollApplyStatus();
+    const busy = [...applyState.values()].some((r) =>
+      r.status === "queued" || r.status === "running");
+    if (busy) { applyPollTimer = setTimeout(tick, 2500); }
+    else { applyPollTimer = null; }
+  };
+  tick();
+}
+
+// The router broadcasts as it works. Any progress means something is moving, so
+// pick the polling back up if it had idled down.
+//
+// The error branch matters as much as the progress one: the router refuses to
+// start without an API key, and until this existed that refusal went nowhere —
+// the row sat at "Queued" with no explanation anywhere in the UI. A component
+// that can decline to work has to say so.
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg?.type !== "APPLY_PROGRESS" || !msg.event) return;
+  const ev = msg.event;
+  if (ev.type === "error") showMessage(ev.text, true);
+  applyEvents.unshift({ at: Date.now(), ...ev });
+  applyEvents.length = Math.min(applyEvents.length, 30);
+  renderActivity();
+  startApplyPolling();
+});
+
+/** Recent router events, newest first — the "what is it doing" log. */
+const applyEvents = [];
+
+const EVENT_TEXT = {
+  queued:    (e) => `Queued ${e.job || ""}`,
+  resolving: (e) => `Looking for ${e.job || "this job"} on the employer's own site…`,
+  rerouted:  (e) => `Applying via ${e.to} instead of ${e.from}`,
+  parked:    (e) => `${e.job || "A job"} needs applying by hand`,
+  running:   (e) => `Applying — ${e.company || ""} ${e.job || ""}`.trim(),
+  step:      (e) => e.text,
+  skipped:   (e) => `${e.domain} skipped: ${e.reason}`,
+  reclaimed: (e) => e.text,
+  finished:  (e) => `${e.domain}: ${e.status}`,
+  aborted:   () => "Stopped",
+  stopped:   () => "Stopped",
+  idle:      () => "Idle",
+  error:     (e) => `⚠ ${e.text}`,
+};
+
+function renderActivity() {
+  const el = document.getElementById("applyActivity");
+  if (!el) return;
+  const lines = applyEvents.slice(0, 8).map((e) => {
+    const fn = EVENT_TEXT[e.type];
+    const text = fn ? fn(e) : (e.text || "");
+    if (!text) return "";
+    const t = new Date(e.at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    return `<li><span class="muted">${t}</span> ${esc(text)}</li>`;
+  }).filter(Boolean).join("");
+  el.innerHTML = lines ? `<h3>Activity</h3><ul class="queue">${lines}</ul>` : "";
+  el.hidden = !lines;
+}
+
+/** Queue every strong match that's been tailored and not yet applied to. */
+async function applyToAllStrong() {
+  const btn = $("applyAll");
+  const eligible = allRows.filter((r) =>
+    r.job_url && r.tailored_result_id && (r.score ?? 0) >= 75 &&
+    !applyState.has(r.job_url) &&
+    !["applied", "rejected", "dismissed"].includes(r.status));
+
+  if (!eligible.length) {
+    showMessage("Nothing to queue — strong matches need to be tailored first.", true);
+    return;
+  }
+  if (!confirm(
+    `Queue ${eligible.length} application${eligible.length === 1 ? "" : "s"}?\n\n` +
+    `They'll be spaced out per site and each one stops for you if anything ` +
+    `can't be answered from your profile and CV.`)) return;
+
+  btn.disabled = true;
+  try {
+    const { results } = await send({
+      type: "APPLY_MANY",
+      jobs: eligible.map((r) => ({ url: r.job_url, title: r.job_title,
+                                   company: r.job_company, applicationId: r.id })),
+    });
+    const parked = results.filter((r) => r.parked).length;
+    showMessage(`Queued ${results.length - parked}.` +
+      (parked ? ` ${parked} need${parked === 1 ? "s" : ""} applying to by hand — see the panel above.` : ""));
+    startApplyPolling();
+  } catch (e) {
+    showMessage(`Couldn't queue those: ${e.message}`, true);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function renderApplyPanel(st) {
+  const el = document.getElementById("applyPanel");
+  if (!el) return;
+
+  const active = (st.runs || []).filter((r) =>
+    ["queued", "running", "paused_needs_human"].includes(r.status));
+  const blocked = (st.health || []).filter((h) => h.state !== "healthy");
+
+  if (!active.length && !blocked.length) { el.innerHTML = ""; el.hidden = true; return; }
+  el.hidden = false;
+
+  const queue = active.map((r) => {
+    const [label] = APPLY_LABEL[r.status] || [r.status];
+    return `<li><b>${esc(r.job_company || "")}</b> — ${esc(r.job_title || "")}
+      <span class="muted">${label}</span>
+      ${r.pause_reason ? `<div class="why">${esc(r.pause_reason)}</div>` : ""}</li>`;
+  }).join("");
+
+  // The health strip exists to make the isolation visible: when a domain is
+  // quarantined you can see that it is the only one, and that everything else
+  // is still moving.
+  // Every paused site gets a Resume button. The breaker is deliberately
+  // cautious and sometimes rests a domain for something the user has already
+  // fixed — a permission they have now granted, a tab they closed themselves.
+  // Making them wait out a day they know is unnecessary is not caution, it is
+  // just a dead end with a countdown on it.
+  const health = blocked.map((h) =>
+    `<li><b>${esc(h.domain)}</b> — ${esc(h.state)}${h.signal ? ` (${esc(h.signal)})` : ""}
+     ${h.retryAt ? `<span class="muted">back ${esc(fmtWhen(h.retryAt))}</span>` : ""}
+     <button class="resume-site" data-domain="${esc(h.domain)}">Resume now</button></li>`)
+    .join("");
+
+  el.innerHTML =
+    `${active.length ? `<h3>Applying (${active.length})</h3><ul class="queue">${queue}</ul>` : ""}
+     ${blocked.length ? `<h3>Paused sites</h3><ul class="queue health">${health}</ul>
+        <p class="muted">Only these are paused — every other site keeps applying.</p>` : ""}`;
+
+  for (const btn of el.querySelectorAll(".resume-site")) {
+    btn.addEventListener("click", () => resumeSite(btn.dataset.domain, btn));
+  }
+}
+
+/** Lift a quarantine and immediately try the queue again. */
+async function resumeSite(domain, btn) {
+  btn.disabled = true;
+  btn.textContent = "Resuming…";
+  try {
+    await send({ type: "APPLY_RESUME_SITE", domain });
+    showMessage(`${domain} resumed — it will run at half speed until it has a clean day.`);
+    // Kick the queue rather than waiting for the next poll: the user clicked
+    // this because they want it to go now.
+    await send({ type: "APPLY_PUMP" }).catch(() => {});
+  } catch (e) {
+    showMessage(`Couldn't resume ${domain}: ${e.message}`, true);
+    btn.disabled = false;
+    btn.textContent = "Resume now";
+  }
 }
 
 // Re-open a saved packet as the same printable document the panel produces.
@@ -393,6 +711,7 @@ async function load() {
     }
     $("who").textContent = `Signed in as ${session.user?.email || ""}`;
     renderTable((await sb.listTrackedJobs()) || []);
+    startApplyPolling();
   } catch (e) {
     if (e.message === "NOT_SIGNED_IN") {
       $("who").textContent = "Session expired — sign in again from the toolbar icon.";
@@ -570,6 +889,8 @@ $("refresh").addEventListener("click", async () => {
 // Opening the tracker is the moment new finds have been seen, so the count on
 // the toolbar icon comes off. Failure is fine — the badge is a nicety.
 chrome.runtime.sendMessage({ type: "DASHBOARD_OPENED" }).catch(() => {});
+
+$("applyAll").addEventListener("click", applyToAllStrong);
 
 // Filters persist, so open the panel when some are already on — otherwise the
 // list looks short for no visible reason on the next visit.

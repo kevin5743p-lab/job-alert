@@ -8,3 +8,8 @@ venv/
 ._*
 .claude/
 .idea/
+
+# Packaged extension builds — produced by scripts/pack-extension.sh and
+# attached to a release, never committed.
+dist/
+node_modules/

@@ -15,61 +15,68 @@
 #jobcopilot-fab,
 #jobcopilot-fill,
 .jobcopilot-filled {
-  --jc-bg: #0a0c11;
-  --jc-surface: #111520;
-  --jc-surface-2: #171c29;
-  --jc-surface-3: #1f2634;
-  --jc-border: #232a3a;
-  --jc-border-hi: #333c52;
-  --jc-text: #e9edf5;
-  --jc-text-2: #9aa5ba;
-  --jc-text-3: #6b768c;
-  --jc-accent: #7c8cff;
-  --jc-accent-hi: #98a4ff;
-  --jc-accent-dim: #2a2f52;
-  --jc-accent-line: #3b4485;
-  --jc-on-accent: #080a10;
-  --jc-fill: #2dd4bf;          /* the fill button, kept distinct from tailor */
-  --jc-fill-hi: #5eead4;
-  --jc-good: #4ade80;
-  --jc-good-dim: #10281c;
-  --jc-good-line: #1d5138;
-  --jc-warn: #fbbf46;
-  --jc-warn-dim: #2a2110;
-  --jc-warn-line: #5c4515;
+  --jc-bg: #0b1418;
+  --jc-surface: #0f1b21;
+  --jc-surface-2: #13222a;
+  --jc-surface-3: #1b2f39;
+  --jc-border: #22343d;
+  --jc-border-hi: #2e4650;
+  --jc-text: #e8f0f2;
+  --jc-text-2: #93a8b0;
+  --jc-text-3: #63757d;
+  --jc-accent: #5ec8c2;
+  --jc-accent-hi: #7ad6d0;
+  --jc-accent-dim: #10262a;
+  --jc-accent-line: #234a4a;
+  --jc-on-accent: #05171a;
+  --jc-sel: rgba(90, 206, 176, .32);   /* designed teal highlight, not OS blue */
+  --jc-fill: #4f9ec4;          /* the fill button, kept distinct from tailor */
+  --jc-fill-hi: #6fb6d9;
+  --jc-good: #63d0a3;
+  --jc-good-dim: #0e2419;
+  --jc-good-line: #1b4a37;
+  --jc-warn: #e6c072;
+  --jc-warn-dim: #261f11;
+  --jc-warn-line: #574417;
   --jc-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --jc-ease: cubic-bezier(.2, .7, .3, 1);
   --jc-shadow: 0 10px 34px rgba(0, 0, 0, .5);
 }
+
+/* The panel's own highlight colour, so selecting text inside it matches the
+   dashboard rather than falling back to the host page's / browser's blue. */
+#jobcopilot-panel ::selection { background: var(--jc-sel); }
+#jobcopilot-panel ::-moz-selection { background: var(--jc-sel); }
 
 @media (prefers-color-scheme: light) {
   #jobcopilot-panel,
   #jobcopilot-fab,
   #jobcopilot-fill,
   .jobcopilot-filled {
-    --jc-bg: #f6f7fa;
+    --jc-bg: #eef4f4;
     --jc-surface: #ffffff;
-    --jc-surface-2: #f2f4f8;
-    --jc-surface-3: #e8ecf2;
-    --jc-border: #e0e5ec;
-    --jc-border-hi: #c8d0db;
-    --jc-text: #121620;
-    --jc-text-2: #586272;
-    --jc-text-3: #838d9c;
-    --jc-accent: #4f46e5;
-    --jc-accent-hi: #4338ca;
-    --jc-accent-dim: #eef0ff;
-    --jc-accent-line: #c7cbfb;
+    --jc-surface-2: #f2f8f8;
+    --jc-surface-3: #e4eeee;
+    --jc-border: #d7e4e4;
+    --jc-border-hi: #c0d2d2;
+    --jc-text: #142222;
+    --jc-text-2: #52676a;
+    --jc-text-3: #83999b;
+    --jc-accent: #2c8f88;
+    --jc-accent-hi: #237570;
+    --jc-accent-dim: #e2f1ef;
+    --jc-accent-line: #b9ddd8;
     --jc-on-accent: #ffffff;
-    --jc-fill: #0f766e;
-    --jc-fill-hi: #115e59;
-    --jc-good: #157f3b;
-    --jc-good-dim: #e7f6ec;
-    --jc-good-line: #b7e0c4;
-    --jc-warn: #8a5a00;
-    --jc-warn-dim: #fff6dd;
-    --jc-warn-line: #f0d79a;
-    --jc-shadow: 0 10px 34px rgba(16, 24, 40, .18);
+    --jc-sel: rgba(60, 178, 150, .30);
+    --jc-fill: #2f6f9e;
+    --jc-fill-hi: #26788a;
+    --jc-good: #2f8f68;
+    --jc-good-dim: #e5f3ec;
+    --jc-good-line: #b7ddc9;
+    --jc-warn: #a9781f;
+    --jc-warn-dim: #f6eed9;
+    --jc-warn-line: #ecd7a3;
+    --jc-shadow: 0 10px 34px rgba(20, 40, 60, .18);
   }
 }
 
@@ -240,7 +247,7 @@
 #jobcopilot-panel .jc-toolbar { margin-bottom: 16px; display: flex; gap: 7px; }
 #jobcopilot-panel .jc-toolbar button {
   flex: 1; padding: 10px 6px; border: 1px solid var(--jc-accent);
-  border-radius: 8px; background: var(--jc-accent); color: var(--jc-on-accent);
+  border-radius: 999px; background: var(--jc-accent); color: var(--jc-on-accent);
   font-weight: 600; font-size: 13px; cursor: pointer; font-family: var(--jc-font);
   transition: background .12s var(--jc-ease), border-color .12s var(--jc-ease);
 }
@@ -319,8 +326,8 @@
   border-radius: 8px; padding: 12px; font-family: inherit; font-size: 13px;
 }
 #jobcopilot-panel .jc-copy {
-  margin-top: 7px; padding: 5px 11px; font-size: 12px; cursor: pointer;
-  border: 1px solid var(--jc-border-hi); border-radius: 7px;
+  margin-top: 7px; padding: 6px 13px; font-size: 12px; cursor: pointer;
+  border: 1px solid var(--jc-border-hi); border-radius: 999px;
   background: var(--jc-surface-2); color: var(--jc-text); font-family: var(--jc-font);
   transition: background .12s var(--jc-ease), border-color .12s var(--jc-ease);
 }

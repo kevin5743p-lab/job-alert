@@ -33,7 +33,7 @@
     /* ── Controls ──────────────────────────────────────────────────────── */
     button, .btnlink {
       font: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
-      padding: 7px 13px; border-radius: var(--r-sm);
+      padding: 8px 16px; border-radius: var(--r-pill);
       border: 1px solid var(--border-hi); background: var(--surface-2);
       color: var(--text); text-decoration: none; display: inline-block;
       transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease),
@@ -74,10 +74,10 @@
     .scan { position: relative; overflow: hidden; }
     .scan::after {
       content: ""; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(100deg, transparent 35%,
-                  color-mix(in srgb, var(--accent) 22%, transparent) 50%, transparent 65%);
-      background-size: 220% 100%;
-      animation: jc-sweep 2.1s linear infinite;
+      background: linear-gradient(100deg, transparent 30%,
+                  color-mix(in srgb, var(--accent) 18%, transparent) 50%, transparent 70%);
+      background-size: 230% 100%;
+      animation: jc-sweep 3.6s ease-in-out infinite;
     }
     .scan.err::after { display: none; }
     .scan.err, .msg.err {
@@ -195,6 +195,52 @@
       color: var(--text-2); animation: jc-fade var(--dur-3) var(--ease) both;
     }
 
+    /* ── Auto-apply ─────────────────────────────────────────────────────── */
+
+    .apply-panel {
+      border: 1px solid var(--line); border-radius: var(--r-lg);
+      padding: 14px 16px; margin: 0 0 16px;
+      background: var(--surface-2, rgba(127,127,127,.05));
+      animation: jc-fade var(--dur-3) var(--ease) both;
+    }
+    /* The live queue breathes slowly while work is happening — the one calm,
+       ambient signal that something is being applied to right now. */
+    #applyPanel:not([hidden]) {
+      animation: jc-fade var(--dur-3) var(--ease) both, jc-breathe 4s ease-in-out 420ms infinite;
+    }
+    .apply-panel h3 {
+      margin: 0 0 8px; font-size: 12px; text-transform: uppercase;
+      letter-spacing: .06em; color: var(--text-2);
+    }
+    .apply-panel h3 + ul + h3 { margin-top: 14px; }
+    ul.queue { margin: 0; padding: 0; list-style: none; }
+    ul.queue li {
+      padding: 6px 0; font-size: 13px;
+      border-bottom: 1px solid var(--line);
+    }
+    ul.queue li:last-child { border-bottom: none; }
+    ul.queue .muted { margin-left: 6px; }
+    .apply-panel p.muted { margin: 8px 0 0; }
+
+    /* The per-row state chip. Colour carries the same meaning as the status
+       column, so a scan down the table reads consistently. */
+    .apply-state {
+      display: inline-block; padding: 2px 8px; border-radius: 999px;
+      font-size: 12px; font-weight: 600; white-space: nowrap;
+      background: rgba(127,127,127,.12); color: var(--text-2);
+    }
+    .apply-state.good { background: rgba(22,163,74,.14); color: var(--good, #16a34a); }
+    .apply-state.warn { background: rgba(217,119,6,.14); color: var(--warn, #d97706); }
+    .apply-state.busy {
+      background: rgba(79,70,229,.14); color: var(--accent, #4f46e5);
+      animation: jc-pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes jc-pulse { 50% { opacity: .55; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .apply-state.busy { animation: none; }
+    }
+
     @media (max-width: 720px) {
       body { padding: 20px 14px 56px; }
       header { flex-direction: column; }
@@ -210,13 +256,22 @@
         <p class="sub" id="who">Loading…</p>
       </div>
       <div class="toolbar">
-        <button id="find" class="primary">🔍 Find jobs</button>
-        <button id="filters-toggle">⚙ Filters</button>
+        <button id="find" class="primary">Find jobs for me</button>
+        <button id="applyAll" title="Queue every strong match that's already tailored">Apply to all strong</button>
+        <button id="filters-toggle">Filters</button>
         <button id="refresh">Refresh</button>
       </div>
     </header>
     <div id="scan" class="scan hidden"></div>
     <div id="stale" class="scan hidden"></div>
+
+    <!-- Live queue and per-site health. Hidden until there is something to
+         say, so a quiet dashboard stays quiet. -->
+    <div id="applyPanel" class="apply-panel" hidden></div>
+    <!-- A running log of what the router is doing. Without this, anything that
+         stops the engine before it starts (no API key, a quarantined domain)
+         is completely invisible. -->
+    <div id="applyActivity" class="apply-panel" hidden></div>
 
     <div id="message" class="msg hidden"></div>
 

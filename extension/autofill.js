@@ -887,9 +887,86 @@
     return r.width > 0 && r.height > 0;
   }
 
+  // ── File inputs ───────────────────────────────────────────────────────────
+  //
+  // The original tool skipped `type=file` everywhere, because there was nothing
+  // to put in one — it could only ever produce HTML behind a print dialog. Now
+  // that docgen.js renders real PDFs, a file input is the whole point of the
+  // exercise, so they are found and classified here instead of ignored.
+  //
+  // Note this does NOT attach anything. Reading the DOM stays in this file;
+  // attaching is upload.js's job, because the two paths for it (DataTransfer
+  // and CDP) need context autofill.js has no business knowing about.
+
+  const FILE_KINDS = [
+    { kind: "cv",           re: /\bcv\b|resum(e|é)|lebenslauf|curriculum ?vitae/ },
+    { kind: "cover_letter", re: /cover ?letter|anschreiben|motivation(sschreiben)?|covering ?letter/ },
+    { kind: "portfolio",    re: /portfolio|work ?sample|arbeitsprobe|writing ?sample/ },
+    { kind: "certificate",  re: /certificat|zeugnis|diploma|transcript|qualification|referenz|reference ?letter/ },
+  ];
+
+  // Stable per-page ids so the background, the model, and CDP all refer to the
+  // same element by the same name. Shared with apply_engine.js via the DOM
+  // attribute rather than a JS global, since they're in the same isolated world
+  // but load independently.
+  let jcaSeq = 0;
+  function stampId(el, prefix) {
+    if (!el.dataset.jcaId) el.dataset.jcaId = `${prefix}${++jcaSeq}`;
+    return el.dataset.jcaId;
+  }
+
+  /**
+   * Which document does this input want?
+   *
+   * Reuses the same label haystack every other field goes through, so an input
+   * labelled "Lebenslauf hochladen" is understood for the same reason "First
+   * name" is. Unlabelled inputs fall back to "cv": a form with exactly one
+   * upload is asking for a CV in overwhelmingly the common case, and the
+   * confidence gate will catch it if the form disagrees.
+   */
+  function classifyFile(el) {
+    const hay = haystack(el);
+    for (const { kind, re } of FILE_KINDS) if (re.test(hay)) return kind;
+    return null;
+  }
+
+  /**
+   * Every file input on the page, whether or not it is visible.
+   *
+   * Deliberately not filtered by visible(): most ATSes hide the real input at
+   * opacity 0 behind a styled label or drop zone, so a visibility check would
+   * miss exactly the ones that matter. `hidden` is reported instead, and
+   * upload.js decides what to do about it.
+   */
+  function collectFileInputs() {
+    const out = [];
+    document.querySelectorAll('input[type="file"]').forEach((el) => {
+      if (el.disabled) return;
+      const label = fieldLabel(el) || accessibleName(el) ||
+                    (haystack(el).split("|")[0] || "").slice(0, 60);
+      out.push({
+        id: stampId(el, "u"),
+        label,
+        kind: classifyFile(el),
+        required: el.required || /\*/.test(label),
+        multiple: !!el.multiple,
+        accept: el.accept || "",
+        attached: !!(el.files && el.files.length),
+        attachedName: el.files && el.files[0] ? el.files[0].name : null,
+        hidden: !visible(el),
+      });
+    });
+
+    // A form with a single unlabelled upload is asking for a CV.
+    const unknown = out.filter((f) => !f.kind);
+    if (out.length === 1 && unknown.length === 1) unknown[0].kind = "cv";
+    return out;
+  }
+
   /**
    * Fill what we can. Returns a report the UI shows the user:
-   *   { filled: [{label, key}], skipped: [{label, reason}], coverLetter: bool }
+   *   { filled: [{label, key}], skipped: [{label, reason}], coverLetter: bool,
+   *     files: [{id, label, kind, required, attached}] }
    * `profile` is the saved application profile; `packet` is the tailored result
    * (used to draft long free-text answers like a cover letter).
    */
@@ -899,6 +976,8 @@
 
     fields.forEach((el) => {
       const type = (el.type || "").toLowerCase();
+      // `file` is handled by collectFileInputs below — there is no text value to
+      // set on one, so it does not belong in this loop.
       if (["hidden", "submit", "button", "image", "reset", "file"].includes(type)) return;
       if (!visible(el)) return;
       if (el.value && el.value.trim()) return;  // never overwrite the user's own input
@@ -953,6 +1032,7 @@
     fillChoices(profile, report);
     report.openQuestions = collectOpenQuestions();
     report.unmatched = collectUnmatched();
+    report.files = collectFileInputs();
     return report;
   }
 
@@ -968,9 +1048,18 @@
   // know how to fill, so it can never map a field to something invented.
   const PROFILE_KEYS = FIELD_SPECS.map((s) => s.key);
 
+  // apply_engine.js serialises the page for the model and needs the same
+  // labelling and the same blocked-field veto this file already applies — so
+  // they are shared rather than reimplemented. A second copy of the BLOCKED
+  // list is a second copy that can drift, and the failure mode there is a
+  // password box being offered to a model.
+  const isBlockedField = (el) => isBlocked(haystack(el), el);
+
   window.JobCopilotAutofill = {
     fill, findForm, FIELD_SPECS, PROFILE_KEYS,
     collectOpenQuestions, applyAnswers,
+    collectFileInputs, classifyFile, stampId,
+    fieldLabel, groupQuestion, isBlockedField, haystack,
     collectUnmatched, applyFieldMap, applyFieldValues,
     // Exported so the field-matching rules can be exercised directly against
     // real markup without driving a whole fill.

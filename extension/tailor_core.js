@@ -10,8 +10,31 @@
 
 export const DEFAULT_MODEL = "llama-3.3-70b-versatile";
 export const MAX_TOKENS = 2200;
+
+/**
+ * Output ceiling for the Claude tailoring path.
+ *
+ * Much higher than the Groq one, and it has to be. Groq is asked for
+ * response_format:json_object, which makes the model close the object inside
+ * whatever budget it is given — 2200 tokens produces a tighter packet, not a
+ * broken one. Anthropic has no equivalent switch here, so the same 2200 simply
+ * ran out mid-object: three live tailorings came back with output_tokens of
+ * exactly 2200, unparseable, and billed in full.
+ *
+ * A packet is a rewritten CV plus a 300-450 word cover letter plus keyword and
+ * suggestion lists — realistically 2,500-3,500 tokens. 8000 is headroom, not a
+ * target: max_tokens is a ceiling the model does not try to reach, so raising
+ * it costs nothing on a normal packet and only stops the pathological one from
+ * being silently cut in half.
+ */
+export const TAILOR_MAX_TOKENS = 8000;
 const CV_LIMIT = 4000;
 const JD_LIMIT = 3000;
+// The ranking pass reads far less of each posting than the judging pass. It
+// only has to tell an engineering role from a marketing one, and the title plus
+// the opening of the description carries that; paying for the full requirements
+// section 120 times to decide reading order is what blows the daily budget.
+const RANK_JD_LIMIT = 900;
 const LANG_NAME = { en: "English", de: "German" };
 
 /**
@@ -147,6 +170,65 @@ COVER LETTER — this is the part candidates are judged on, so make it specific:
 - First person, warm but professional, plain language.
 
 Aim for 4-7 items in "relevant_experience". Respond with ONLY the JSON object.`;
+}
+
+/**
+ * The same tailoring prompt, shaped for the Anthropic Messages API.
+ *
+ * Deliberately a thin wrapper over buildPrompt rather than a reordered copy.
+ * The obvious move would be to split the rules and the CV into cached system
+ * blocks with the job posting last — but the cheapest model that can do this
+ * job, Haiku 4.5, only caches prefixes of 4096 tokens or more, and the whole
+ * prompt is around 1,500. Reordering would buy nothing today and would leave
+ * two copies of a 100-line prompt to keep in step, which is how the tailoring
+ * rules and tailor.py quietly drift apart.
+ *
+ * If tailoring ever moves to a model with a lower cache minimum, this is the
+ * function to split — buildPrompt stays as the Groq/Python-mirrored original.
+ */
+export function buildTailorMessages(job, cvText, language = "en") {
+  return {
+    system: "You are an expert career coach and CV writer. You answer with a " +
+            "single JSON object and nothing else — no prose, no code fences.",
+    messages: [
+      { role: "user", content: buildPrompt(job, cvText, language) },
+    ],
+  };
+}
+
+/**
+ * Pull a JSON object out of a model's reply.
+ *
+ * Groq is asked for response_format:json_object and answers with bare JSON.
+ * Anthropic has no equivalent switch here, so however firmly the prompt says
+ * "ONLY the JSON object", the reply can arrive wrapped in ```json fences or
+ * with a sentence in front of it. Both are easy to recover from and neither is
+ * worth failing a paid call over.
+ */
+export function extractJson(text) {
+  const raw = String(text || "").trim();
+
+  try {
+    return JSON.parse(raw);
+  } catch { /* not bare JSON — keep going */ }
+
+  const fenced = raw.match(/```(?:json)?\s*([\s\S]*?)```/i);
+  if (fenced) {
+    try {
+      return JSON.parse(fenced[1].trim());
+    } catch { /* fenced but still malformed */ }
+  }
+
+  // Last resort: the outermost {...}. Slicing between the first brace and the
+  // last is enough for a preamble or a trailing sign-off, which is all we have
+  // ever seen; anything more broken than that should fail loudly.
+  const start = raw.indexOf("{");
+  const end = raw.lastIndexOf("}");
+  if (start !== -1 && end > start) {
+    return JSON.parse(raw.slice(start, end + 1));
+  }
+
+  throw new Error("The model did not return JSON.");
 }
 
 // Draft answers to an application form's free-text questions ("Why do you want
@@ -334,80 +416,56 @@ Score this posting 0-100 for this candidate and give one short, specific reason.
 Respond with ONLY a JSON object: {"score": <int 0-100>, "reason": "<one sentence>"}`;
 }
 
-// Score a batch of postings in one call. Batching matters: scoring each job
-// individually would exhaust a free-tier key in a single scan.
-export function buildBatchScorePrompt(jobs, cvText, sp = {}, language = "en",
-                                      baseLocation = "") {
+/**
+ * Stage one of scoring: order a batch of postings, cheaply.
+ *
+ * This runs on the small fast model, whose free-tier budget is five times
+ * larger than the big one's — a separate pool, so spending it costs the careful
+ * pass nothing. Three things keep it cheap: a one-line profile instead of the
+ * CV, a short slice of each posting, and scores with no reasons (the reason is
+ * most of the output tokens, and nothing reads a rank's reason).
+ *
+ * IT RANKS, IT DOES NOT REJECT. The small model's failure mode is documented
+ * and specific: it rejects good postings confidently and wrongly — an FEM
+ * engineering role read as marketing, with FEM on the candidate's CV. That is
+ * survivable when its only job is deciding what the big model looks at first,
+ * and unacceptable if it can drop a posting outright. Every posting it ranks is
+ * still recorded; the ranking only decides who gets judged properly.
+ */
+export function buildRankPrompt(jobs, sp = {}, baseLocation = "") {
   const field = (sp.domain && sp.domain.name) || sp.field || "";
-  const persona = sp.persona || "";
   const level = sp.career_level || "";
-  const langPref = sp.language_preference || "any";
-  // Enough of each posting to judge it properly. An earlier version passed 450
-  // characters to keep the batch cheap, and the scores showed it — committee
-  // management at a car company came back as a strong engineering match. The
-  // Python bot reads 1500 characters per job and grades far better for it.
-  //
-  // Now 2500, matching the individual pass, so a posting is not graded
-  // differently for having placed 16th rather than 15th. Employer-board role
-  // text measured 1742-2528 characters on live Bosch postings, so 1200 was
-  // cutting most of them off around the qualifications — the half that decides
-  // whether a student fits. SCORE_BATCH came down from 5 to 3 in the same
-  // change to pay for it; see the note there.
+  const persona = sp.persona || "";
+
   const list = jobs.map((j, i) =>
     `  {"i": ${i}, "title": ${JSON.stringify(j.title || "")}, ` +
     `"company": ${JSON.stringify(j.company || "")}, ` +
-    `"location": ${JSON.stringify(j.location || "")}, ` +
-    `"description": ${JSON.stringify((j.description || "").slice(0, 2500))}}`
+    `"description": ${JSON.stringify((j.description || "").slice(0, RANK_JD_LIMIT))}}`
   ).join(",\n");
 
-  return `You are a strict but fair job-matching assistant. Score how well each \
-posting fits the candidate.
+  return `Rank how relevant each posting is to this candidate.
 
-=== CANDIDATE CV ===
-${(cvText || "").slice(0, 2200)}
-
-Their field: ${field || "as shown in the CV"}
-${persona ? `About them: ${persona}` : ""}
+CANDIDATE
+Field: ${field || "as implied by the postings"}
 ${level ? `Career level: ${level}` : ""}
-${baseLocation ? `They are based in: ${baseLocation}` : ""}
+${persona ? `About them: ${persona}` : ""}
+${baseLocation ? `Based in: ${baseLocation}` : ""}
 
-=== POSTINGS ===
+POSTINGS
 [
 ${list}
 ]
 
-For each posting give a score from 0 to 100 and one short, specific reason.
-- 85-100 outstanding fit · 70-84 strong · 50-69 worth a look · below 50 poor.
-- Be strict. Most postings are not a good fit; say so.
-- SCORE 0, no exceptions, when any of these hold:
-  * the posting is a DIFFERENT PROFESSION from ${field || "the candidate's field"}.
-    Working at a company in the right industry does not make an off-field role a
-    fit. To reject for this you MUST quote, word for word, the part of the
-    posting's own title that names its profession. If no words in that title
-    name a profession outside ${field || "the candidate's field"}, this rule
-    does not apply — score the posting on its merits instead.
-  * it requires several years of professional experience the CV doesn't show.${
-  langPref === "no_german_required" ? `
-  * it requires fluent or business German — "verhandlungssicheres Deutsch",
-    "Deutsch C1/C2", "fließend Deutsch", "Muttersprache" — which this candidate
-    does not have. ("Grundkenntnisse", B1/B2 or "von Vorteil" are fine.)` : ""}${
-  langPref === "english_only" ? `
-  * it is written in German or expects German at work; this candidate needs an
-    English-speaking role.` : ""}
-- A posting only scores above 70 if it is genuinely in their field and at their
-  level. Being at a well-known employer counts for nothing on its own.
-- LOCATION IS NOT YOURS TO JUDGE. This is a Germany-wide search and everything
-  outside Germany has already been removed before you see it. ANY German
-  location is equally acceptable — Munich, Hamburg, Salzgitter, anywhere. Never
-  lower a score, and never mention distance from the candidate's home city,
-  because the search was national on purpose. Judge the work, not the map.
-- Judge on real overlap of skills and experience, not keyword coincidence.
-- The reason must cite something concrete from the CV or the posting, in one
-  sentence, written in ${LANG_NAME[language] || "English"}.
+Give each posting a relevance score from 0 to 100.
+- Judge on profession and level. A posting in a different profession scores low.
+- Do not judge location. Every posting shown has already passed a location filter.
+- This is a first pass to decide reading order, not a final verdict. When you
+  are unsure, score in the middle rather than at either extreme.
 
-Respond with ONLY a JSON object in exactly this form:
-{"scores": [{"i": 0, "score": 82, "reason": "…"}, …]}`;
+Respond with ONLY a JSON object in exactly this form, and no reasons:
+{"ranks": [{"i": 0, "score": 72}]}`;
 }
+
 
 // Fill the form fields the rules couldn't place.
 //

@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>JobCopilot — rendering</title>
+    <!-- An offscreen-ish surface: docgen.js opens this in a background tab so
+         Page.printToPDF has a real document to render, and so we have a page
+         context that can call URL.createObjectURL (an MV3 service worker
+         cannot). Nothing here is ever meant to be looked at. -->
+    <script src="print_doc.js"></script>
+    <script src="render.js"></script>
+  </head>
+  <body></body>
+</html>

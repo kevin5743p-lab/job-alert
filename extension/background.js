@@ -6,15 +6,20 @@
 // key never touches the page context.
 
 import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, buildFieldFillPrompt,
-         buildSearchProfilePrompt, buildBatchScorePrompt, buildSingleScorePrompt, normalize,
+         buildSearchProfilePrompt, buildRankPrompt, buildSingleScorePrompt, normalize,
          groundingWarnings, cvGroundingWarnings, cvFingerprint,
-         DEFAULT_MODEL, MAX_TOKENS }
+         buildTailorMessages, extractJson,
+         DEFAULT_MODEL, MAX_TOKENS, TAILOR_MAX_TOKENS }
          from "./tailor_core.js";
+import { callClaude } from "./ai_client.js";
 import * as sb from "./supabase.js";
 import { fetchAll, prefilter, prioritise, locationRank, validateTargets,
          pickKnownBoards, enrichDescriptions } from "./finder.js";
 import { ruleScore, classifyWithRules, getDomain, applyDomainCap, candidateFamilies,
          isOffProfession, buildMemory, matchesRejectedPattern } from "./matcher.js";
+// The apply engine. Namespaced rather than destructured so it stays obvious at
+// every call site which half of the extension a call belongs to.
+import * as router from "./router.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -86,6 +91,43 @@ async function callGroq(job, cvText, apiKey, model, language) {
   return normalize(raw);
 }
 
+// The same tailoring, on Claude, through ai-proxy. No API key here or anywhere
+// else in the extension: the proxy holds it, picks the model, and bills the
+// call against this user's monthly allowance.
+//
+// Uses TAILOR_MAX_TOKENS, not the Groq path's MAX_TOKENS. See the comment on
+// that constant: the two providers need very different ceilings for the same
+// prompt, and sharing one silently truncated every packet.
+async function callClaudeTailor(job, cvText, language) {
+  const { system, messages } = buildTailorMessages(job, cvText, language);
+
+  const reply = await callClaude({
+    task: "tailor",
+    system,
+    messages,
+    max_tokens: TAILOR_MAX_TOKENS,
+    jobUrl: job?.url || null,
+  });
+
+  const text = (reply?.content || [])
+    .filter((b) => b.type === "text")
+    .map((b) => b.text)
+    .join("");
+
+  if (reply?.stop_reason === "max_tokens") {
+    // Should not happen now there is real headroom, so if it does, the ceiling
+    // is wrong again rather than this packet being unusual. The token count
+    // goes in the message because that is the number that identifies which.
+    const used = reply?.usage?.output_tokens ?? "?";
+    console.warn("Tailoring hit max_tokens", { used, cap: TAILOR_MAX_TOKENS });
+    throw new Error(
+      `The tailored packet was cut short at ${used} tokens. This is a bug — ` +
+      `please report it rather than retrying, since each attempt is charged.`);
+  }
+
+  return normalize(extractJson(text));
+}
+
 // Shared setup for any call that needs the user's key + CV.
 async function loadKeyAndCv() {
   const { groqApiKey, cvText, language, model } = await chrome.storage.local.get(
@@ -111,36 +153,19 @@ async function loadKeyAndCv() {
 // The whole "find" half, on demand, from the user's own browser. Progress is
 // pushed to the dashboard as it goes, because a scan takes a while and silence
 // looks like a hang.
-// Postings per Groq call. Dropped from 5 to 3 when the batch prompt went from
-// 1200 characters per posting to 2500, so that the tail of a scan is judged on
-// the same text as the top of it. Smaller batches are what make that affordable:
-// at 5 postings the batch pass would have gone from ~71k to ~118k characters a
-// minute, and this is the pass that once scored 8 of 80 and then hit a rate
-// limit. At 3 it is ~78k — about a tenth more than today, rather than two
-// thirds. The honest caveat is that the limit itself is inferred from that one
-// failure, not measured; if scans start truncating, this constant is the dial.
+// How many postings reach a model at all in one scan.
 //
-// It is not free: the pass makes 19 calls instead of 11, so a full scan spends
-// roughly 70 seconds longer and about twice the daily tokens.
-const SCORE_BATCH = 3;
-// How many postings the model judges per scan. The free tier's real ceiling is
-// tokens per minute, so scoring is paced rather than fired as fast as it can go:
-// the top INDIVIDUAL_SCORED go one at a time, 4s apart, and the rest in batches
-// of SCORE_BATCH, 9s apart. At 120 that is about six minutes of pacing, against
-// three and a half at 70 — the bulk of a scan either way.
-//
-// This used to say the cap decides only how fast the backlog is worked through
-// and not what is eventually seen, because scored_jobs makes each scan take the
-// next slice rather than re-rolling the same pool. That is true of the employer
+// The cap decides only how fast the backlog is worked through for the employer
 // boards and Adzuna, which re-serve their whole list within the user's job-age
-// setting, so a posting cut at the cap comes back next scan.
+// setting: a posting cut at the cap comes back next scan.
 //
-// It is NOT true of LinkedIn. LinkedIn is asked only for the incremental window
-// — two hours on a normal run — so a posting dropped for placing 71st is never
-// offered again. For the largest source in a scan, the cap is a permanent miss,
-// not a deferral. That is what 120 buys, and why the cost is worth paying.
+// It is NOT true of LinkedIn. LinkedIn is asked only for the window since the
+// last scan, so a posting dropped for placing 121st is never offered again. For
+// the largest source in a scan, the cap is a permanent miss, not a deferral —
+// which is why it stays at 120 even though only JUDGE_TOP of those get read
+// closely. Ranking all 120 on the small model is what makes keeping the cap
+// this high affordable.
 const MAX_SCORED = 120;
-const SCORE_PACE_MS = 9000;
 // Per-posting descriptions cost one request each, so they're capped, and the
 // sources that need them share the cap. Well above MAX_SCORED: a posting has to
 // be graded before it can be ranked, and grading it without its text is what
@@ -242,11 +267,40 @@ function searchCountry(country) {
   for (const [name, aliases] of COUNTRY_NAMES) if (aliases.includes(c)) return name;
   return String(country).trim();
 }
-// How many get the careful, one-at-a-time treatment before the rest are
-// batched. Individual calls cost more but judge far better, so they go to the
-// postings the rules already rated highest.
-const INDIVIDUAL_SCORED = 15;
-const SINGLE_PACE_MS = 4000;
+// ── the two scoring passes ──────────────────────────────────────────────────
+//
+// Every pacing number here is derived from a published free-tier ceiling, not
+// guessed. Getting them wrong doesn't fail loudly — it spends the user's whole
+// day in one scan, which is the bug this replaced.
+//
+//   llama-3.1-8b-instant   500k tokens/day,  6k tokens/min
+//   llama-3.3-70b-versatile 100k tokens/day, 12k tokens/min
+//
+// Stage 1 ranks on the small model: ~1,600 tokens a call against a 6k/min
+// ceiling. Sixteen seconds would sit exactly on that ceiling, so eighteen is
+// used instead — a posting slightly longer than average would otherwise trip a
+// 429 on a pass that has no headroom at all. 120 postings in batches of 5 is 24
+// calls, about 7 minutes and ~38k tokens, a fourteenth of that pool.
+const RANK_MODEL = "llama-3.1-8b-instant";
+const RANK_BATCH = 5;
+const RANK_PACE_MS = 18000;
+
+// Stage 2 judges on the large model: ~1,900 tokens a call against a 12k/min
+// ceiling, so eleven seconds apart leaves the same kind of margin. 25 postings
+// is ~48k tokens — which is why this is 25 and not 120.
+//
+// Two full scans in a day come to ~95k of the 100k daily budget, which sounds
+// tighter than it is: scored_jobs remembers every posting already judged, so
+// only the first scan of a day faces 120 unseen postings. The second normally
+// judges a handful. A user who does manage to exhaust it loses scoring for the
+// rest of the day, not the extension.
+const JUDGE_TOP = 25;
+const SINGLE_PACE_MS = 11000;
+
+// What a rank-only posting may score. The ranking model is explicitly not
+// trusted to judge — capping its score below the dashboard's strong-match band
+// keeps an unreviewed posting from presenting itself as a reviewed one.
+const QUICK_SCORE_CAP = 60;
 // Scoring follows the user's chosen model.
 //
 // It used to be pinned to the small fast one, because a scan put seventy
@@ -345,66 +399,118 @@ async function ensureSearchProfile(cv, apiKey, model, force) {
   return sp;
 }
 
+const idOf = (job) => job.url || job.id;
+
+/**
+ * Stage one: rank every candidate on the small model.
+ *
+ * Returns a Map of job id -> 0-100 relevance. On failure it returns whatever it
+ * managed plus the error; the caller falls back to the rule order for anything
+ * missing, which is the order these jobs already arrived in.
+ */
+async function rankJobs(jobs, sp, apiKey, baseLocation) {
+  const ranks = new Map();
+  let error = null;
+
+  for (let i = 0; i < jobs.length; i += RANK_BATCH) {
+    const batch = jobs.slice(i, i + RANK_BATCH);
+    if (i) await sleep(RANK_PACE_MS);
+    progress(`Sorting ${jobs.length} postings by relevance… ` +
+             `(${Math.min(i + RANK_BATCH, jobs.length)}/${jobs.length})`);
+    try {
+      const raw = await groqJson(buildRankPrompt(batch, sp, baseLocation),
+                                 apiKey, RANK_MODEL, 400);
+      for (const r of (raw && raw.ranks) || []) {
+        const job = batch[r.i];
+        if (!job) continue;
+        ranks.set(idOf(job), Math.max(0, Math.min(100, parseInt(r.score, 10) || 0)));
+      }
+    } catch (e) {
+      error = e.message || String(e);
+      // Ranking is an optimisation, not a requirement. Losing it costs reading
+      // order, not results, so stop asking and let the rule order stand.
+      if (/quota|rate limit/i.test(error)) break;
+    }
+  }
+  return { ranks, error };
+}
+
+/**
+ * Score a scan's candidates, cheapest-model-first.
+ *
+ * Two Groq models, two SEPARATE free-tier token budgets — 500k/day for the
+ * small one, 100k/day for the large. The old single-pass version spent the
+ * large model's entire day on one scan and then died with "daily quota
+ * reached", because 120 postings at 2,500 characters each is 145k tokens
+ * however you batch it.
+ *
+ * Splitting the work across both pools fixes that:
+ *   stage 1  every candidate, small model, short text, no reasons  → ~38k
+ *   stage 2  the best JUDGE_TOP, large model, full CV + posting    → ~48k
+ *
+ * The large model now reads a quarter as many postings, but reads each of them
+ * properly — which is the pass whose judgement the user actually sees.
+ */
 async function scoreJobs(jobs, cv, sp, apiKey, model, language, baseLocation,
                          klassOf = new Map()) {
   const scored = [];
   let error = null;                  // surfaced, so a silent failure can't look
                                      // like "no jobs matched"
 
-  // The most promising postings are judged one at a time, with the full CV and
-  // 1500 characters of the posting — the way the Python bot does it. Batching
-  // is cheaper but gives each job a fraction of the context, and the scores
-  // showed it. The rest are batched, which is fine: they're the long tail.
-  const individual = jobs.slice(0, INDIVIDUAL_SCORED);
-  const batched = jobs.slice(INDIVIDUAL_SCORED);
+  const { ranks, error: rankError } = await rankJobs(jobs, sp, apiKey, baseLocation);
+  if (rankError) error = rankError;
 
-  for (let i = 0; i < individual.length; i++) {
-    const job = individual[i];
+  // Jobs the ranker never answered for keep their rule-order position rather
+  // than sinking to the bottom: a posting that lost its rank to a rate limit
+  // has not been judged badly, it has not been judged at all.
+  const ruleOrder = new Map(jobs.map((j, i) => [idOf(j), i]));
+  const ordered = jobs.slice().sort((a, b) => {
+    const ra = ranks.get(idOf(a)), rb = ranks.get(idOf(b));
+    if (ra !== undefined && rb !== undefined && ra !== rb) return rb - ra;
+    if (ra !== undefined && rb === undefined) return -1;
+    if (ra === undefined && rb !== undefined) return 1;
+    return ruleOrder.get(idOf(a)) - ruleOrder.get(idOf(b));
+  });
+
+  const judged = ordered.slice(0, JUDGE_TOP);
+  const quick = ordered.slice(JUDGE_TOP);
+
+  for (let i = 0; i < judged.length; i++) {
+    const job = judged[i];
     if (i) await sleep(SINGLE_PACE_MS);
-    progress(`Scoring the strongest matches… (${i + 1}/${individual.length})`);
+    progress(`Judging the strongest matches… (${i + 1}/${judged.length})`);
     try {
       const raw = await groqJson(
         buildSingleScorePrompt(job, cv, sp, language, baseLocation,
-                               klassOf.get(job.url || job.id) || ""),
+                               klassOf.get(idOf(job)) || ""),
         apiKey, scoringModel(model), 300);
       const score = Math.max(0, Math.min(100, parseInt(raw.score, 10) || 0));
       scored.push({ job, score, reason: String(raw.reason || "").slice(0, 400) });
     } catch (e) {
       error = e.message || String(e);
-      if (/quota|rate limit/i.test(error)) break;
+      if (/quota|rate limit/i.test(error)) {
+        // Out of budget mid-pass. Everything still unjudged joins the quick
+        // list rather than vanishing — a posting nobody looked at is worth more
+        // to the user as a low-confidence row than as an absence.
+        quick.push(...judged.slice(i));
+        break;
+      }
     }
   }
 
-  const batches = [];
-  for (let i = 0; i < batched.length; i += SCORE_BATCH) {
-    batches.push(batched.slice(i, i + SCORE_BATCH));
+  // Recorded, not judged. Carrying the rank score keeps these out of the
+  // dashboard's strong-match band on their own merit, and writing them to
+  // scored_jobs is what stops the next scan paying to rank them all over again.
+  for (const job of quick) {
+    const rank = ranks.get(idOf(job));
+    if (rank === undefined) continue;   // never seen by either model
+    scored.push({
+      job,
+      score: Math.min(rank, QUICK_SCORE_CAP),
+      reason: "Quick relevance pass only — not individually reviewed this scan.",
+    });
   }
-  let n = 0;
-  for (const batch of batches) {
-    n++;
-    // Pace the calls. The free tier's ceiling is tokens-per-minute, not just
-    // requests, and firing batches back to back trips it after the first one —
-    // which is exactly what happened: 8 of 80 scored, then a rate limit.
-    if (n > 1) await sleep(SCORE_PACE_MS);
-    progress(`Scoring the rest… (${Math.min(n * SCORE_BATCH, batched.length)}/${batched.length})`);
-    let raw;
-    try {
-      raw = await groqJson(
-        buildBatchScorePrompt(batch, cv, sp, language, baseLocation),
-        apiKey, scoringModel(model), 1600);
-    } catch (e) {
-      error = e.message || String(e);
-      // Out of quota or rate-limited: keep what we have rather than losing the scan.
-      if (/quota|rate limit/i.test(error)) break;
-      continue;
-    }
-    for (const s of (raw && raw.scores) || []) {
-      const job = batch[s.i];
-      if (!job) continue;
-      const score = Math.max(0, Math.min(100, parseInt(s.score, 10) || 0));
-      scored.push({ job, score, reason: String(s.reason || "").slice(0, 400) });
-    }
-  }
+
   return { scored, error };
 }
 
@@ -890,8 +996,6 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       const { groqApiKey, cvText, language, model } =
         await chrome.storage.local.get(["groqApiKey", "cvText", "language", "model"]);
 
-      if (!groqApiKey) throw new Error("NO_KEY");
-
       // The CV comes from Supabase when signed in (so it follows the user
       // across devices); the locally-stored copy is the offline/signed-out
       // fallback so the extension keeps working without an account.
@@ -912,6 +1016,13 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
       if (!cv || !cv.trim()) throw new Error("NO_CV");
 
+      // Signed in, tailoring runs on Claude through ai-proxy — better packets,
+      // and it costs the user nothing because the shared key is metered against
+      // their monthly allowance rather than their own quota. Signed out there
+      // is no allowance to meter, so it falls back to the user's own Groq key,
+      // which is also what keeps the extension usable without an account.
+      if (!signedIn && !groqApiKey) throw new Error("NO_KEY");
+
       const fingerprint = cvFingerprint(cv);
 
       // Re-opening a posting that was already tailored used to pay for the whole
@@ -923,9 +1034,18 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       //
       // msg.force is the "Tailor again" button, for when the posting or the mood
       // has changed rather than the CV.
-      if (signedIn && msg.job?.url && !msg.force) {
+      //
+      // Matched on job identity rather than URL alone: a user who tailors on
+      // LinkedIn and then follows "Apply on company site" lands on the
+      // employer's own board, where the URL is different but the job is not.
+      // Keying on the URL charged them a second time for the same posting.
+      if (signedIn && msg.job && !msg.force) {
         try {
-          const prev = await sb.latestTailoredForUrl(msg.job.url);
+          const prev = await sb.tailoredForJob({
+            url: msg.job.url,
+            company: msg.job.company,
+            title: msg.job.title,
+          });
           if (prev?.packet && prev.cv_fingerprint &&
               prev.cv_fingerprint === fingerprint) {
             sendResponse({
@@ -946,7 +1066,9 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         }
       }
 
-      const result = await callGroq(msg.job, cv, groqApiKey, model, lang || "en");
+      const result = signedIn
+        ? await callClaudeTailor(msg.job, cv, lang || "en")
+        : await callGroq(msg.job, cv, groqApiKey, model, lang || "en");
       // The CV's facts are checked separately and more strictly than the
       // letter's claims: an employer verifies a CV, so a title or employer that
       // isn't in the source has to be surfaced, not smoothed over.
@@ -987,12 +1109,45 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 // once per interval missed. Three days closed gives one catch-up scan asking for
 // three days, which is exactly right.
 const SCAN_ALARM = "jobcopilot-scan";
-const SCAN_PERIOD_MIN = 120;
+
+// Once a day, in the morning — not every two hours.
+//
+// Scanning runs on the user's own free Groq key, and that key has a hard daily
+// token ceiling. Twelve automatic scans a day spent it before lunch, which is
+// how a user ends up staring at "daily quota reached" having done nothing
+// wrong. The window logic makes the change safe: every scan asks "what has
+// appeared since I last looked", so one daily run covers the same ground twelve
+// runs did — it just covers it in one go.
+//
+// What the daily run is actually for is the toolbar badge. Finding jobs when
+// the user wants them is the Find Jobs button's job, and a click costs the same
+// tokens whenever it happens.
+const SCAN_PERIOD_MIN = 24 * 60;
 
 // Borrowed from the Python bot, which enforces the same window in code rather
 // than in its cron so that daylight saving can't shift it. Nothing worth finding
 // is posted at 4am, and skipping those runs halves the work for no loss.
-const QUIET_FROM = 23, QUIET_TO = 6;
+//
+// Widened from 23–06 to 21–08: German employers post during office hours, so an
+// evening or small-hours scan spends the day's token budget re-reading the same
+// postings the morning scan will find anyway.
+const QUIET_FROM = 21, QUIET_TO = 8;
+
+/**
+ * Minutes until the next QUIET_TO o'clock — i.e. the next morning the scan is
+ * allowed to run.
+ *
+ * Without this the daily alarm fires 24h after whenever the extension happened
+ * to be installed, which for an evening install is inside quiet hours every
+ * single day: the scan would be skipped forever and the badge would never
+ * update. Anchoring the first fire to a morning makes the period meaningful.
+ */
+function minutesUntilNextMorning(now = new Date()) {
+  const next = new Date(now);
+  next.setHours(QUIET_TO, 0, 0, 0);
+  if (next <= now) next.setDate(next.getDate() + 1);
+  return Math.max(1, Math.round((next - now) / 60000));
+}
 
 function inQuietHours(d = new Date()) {
   const h = d.getHours();
@@ -1007,9 +1162,14 @@ async function autoScanEnabled() {
 
 async function ensureScanAlarm() {
   const existing = await chrome.alarms.get(SCAN_ALARM);
-  if (existing) return;
-  chrome.alarms.create(SCAN_ALARM, { periodInMinutes: SCAN_PERIOD_MIN,
-                                     delayInMinutes: 1 });
+  // An alarm left over from the two-hourly build would keep its old period
+  // forever — alarms survive updates. Replace anything that isn't on the daily
+  // schedule rather than returning early on "an alarm exists".
+  if (existing && existing.periodInMinutes === SCAN_PERIOD_MIN) return;
+  chrome.alarms.create(SCAN_ALARM, {
+    periodInMinutes: SCAN_PERIOD_MIN,
+    delayInMinutes: minutesUntilNextMorning(),
+  });
 }
 
 chrome.runtime.onInstalled.addListener(() => { ensureScanAlarm(); });
@@ -1047,4 +1207,84 @@ function setBadge(n) {
 chrome.runtime.onMessage.addListener((msg) => {
   if (msg?.type === "SCAN_PROGRESS" && msg.done && msg.added > 0) setBadge(msg.added);
   if (msg?.type === "DASHBOARD_OPENED") setBadge(0);
+});
+
+// ════════════════════════════════════════════════════════════════════════════
+// AUTO-APPLY
+//
+// Everything above this line is the original tailoring extension, unchanged.
+// The apply engine hangs off it: router.js owns the queue and the per-domain
+// scheduling, and this section is only the message surface the dashboard talks
+// to. Keeping it thin means the scan path and the apply path can't break each
+// other.
+// ════════════════════════════════════════════════════════════════════════════
+
+chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+  if (!msg?.type?.startsWith("APPLY_")) return;
+
+  (async () => {
+    try {
+      switch (msg.type) {
+        case "APPLY_START": {
+          const result = await router.enqueue(msg.job);
+          router.pump();                    // deliberately not awaited
+          sendResponse({ ok: true, ...result });
+          break;
+        }
+        case "APPLY_MANY":
+          sendResponse({ ok: true, results: await router.enqueueMany(msg.jobs || []) });
+          break;
+        case "APPLY_STATUS": {
+          const st = await router.status();
+          // Opening or refreshing the dashboard resumes the queue. Without
+          // this, a run left `queued` by a reload or a browser restart sits
+          // there forever: nothing claims it, because the only things that ever
+          // started the pump were a fresh Apply click and the retry alarm.
+          //
+          // Throttled, because this arrives every 2.5s while anything is in
+          // flight. Un-stalling a queue is worth doing periodically; doing it on
+          // every poll turned a job waiting out a pacing gap into a permanent
+          // spin against Supabase.
+          if (st.runs.some((r) => r.status === "queued")) router.pumpSoon();
+          sendResponse({ ok: true, ...st });
+          break;
+        }
+        case "APPLY_ABORT":
+          await router.abort(msg.runId);
+          sendResponse({ ok: true });
+          break;
+        case "APPLY_RETRY":
+          await router.retry(msg.runId);
+          sendResponse({ ok: true });
+          break;
+        case "APPLY_STOP":
+          router.requestStop();
+          sendResponse({ ok: true });
+          break;
+        case "APPLY_PUMP":
+          router.pump();
+          sendResponse({ ok: true });
+          break;
+        case "APPLY_RESUME_SITE":
+          // Lift a quarantine the user knows is stale — they granted the
+          // permission, or closed the tab themselves. Half throttle, so a site
+          // that really is unhappy is not immediately hammered again.
+          await router.resumeSite(msg.domain);
+          sendResponse({ ok: true });
+          break;
+        default:
+          sendResponse({ ok: false, error: `unknown ${msg.type}` });
+      }
+    } catch (e) {
+      sendResponse({ ok: false, error: String(e?.message || e) });
+    }
+  })();
+
+  return true;
+});
+
+// The router asks to be woken when a paced or capped domain frees up. A
+// separate alarm from the scan one so neither can starve the other.
+chrome.alarms.onAlarm.addListener((alarm) => {
+  if (alarm.name === router.PUMP_ALARM) router.pump();
 });

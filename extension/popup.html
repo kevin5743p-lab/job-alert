@@ -42,8 +42,8 @@
     .row > div { flex: 1 1 140px; min-width: 132px; }
 
     button {
-      margin-top: 10px; width: 100%; padding: 9px 12px; font: inherit;
-      font-weight: 600; cursor: pointer; border-radius: var(--r-sm);
+      margin-top: 10px; width: 100%; padding: 10px 12px; font: inherit;
+      font-weight: 600; cursor: pointer; border-radius: var(--r-pill);
       border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent);
       transition: background var(--dur-1) var(--ease), transform var(--dur-1) var(--ease),
                   box-shadow var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
@@ -133,6 +133,30 @@
   <label for="key">Groq API key</label>
   <input id="key" type="password" placeholder="gsk_..." autocomplete="off" />
   <div class="hint">Free at console.groq.com. Stored only in this browser.</div>
+
+  <div class="hint" id="allowance">
+    Tailoring and auto-apply run on the shared JobCopilot AI account — sign in
+    above and they just work, with no second key to paste.
+  </div>
+
+  <label>Auto-apply on employer sites</label>
+  <button id="grant-hosts" type="button">Enable auto-apply on all sites</button>
+  <div class="hint" id="grant-hint">
+    Job boards work already. Many employers host their application form on their
+    own website instead, and Chrome needs your permission for those. This asks
+    once; nothing is sent anywhere.
+  </div>
+
+  <label for="submitPolicy">When a form is complete</label>
+  <select id="submitPolicy">
+    <option value="never">Fill everything, let me press submit</option>
+    <option value="confident">Submit it automatically</option>
+  </select>
+  <div class="hint">
+    Either way it stops and asks you whenever an answer can't be traced to your
+    profile or CV, and it never ticks a consent box. Start with the first option
+    for your first several applications — a sent application can't be recalled.
+  </div>
 
   <details>
     <summary>Adzuna (optional — more German jobs)</summary>

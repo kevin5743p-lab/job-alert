@@ -12,6 +12,8 @@
 //  - The session (access + refresh token) lives in chrome.storage.local, on the
 //    user's own machine.
 
+import { jobKey } from "./job_key.js";
+
 export const SUPABASE_URL = "https://jiryqdcmukmbflahtptv.supabase.co";
 export const SUPABASE_ANON_KEY = "sb_publishable_G1Mf9PySGYmp2YLqfj4FWg_BzdAnHJ_";
 
@@ -108,6 +110,56 @@ async function currentUserId() {
   return session?.user?.id;
 }
 
+// ── Edge Functions ──────────────────────────────────────────────────────────
+// Same shape and same one-shot token refresh as rest(), pointed at the
+// Functions endpoint instead of PostgREST. This is how the extension reaches
+// ai-proxy, which is the only holder of the shared Anthropic key.
+//
+// Unlike rest(), a non-2xx is not flattened into a generic Error: the caller
+// needs the status and the parsed body to tell "you are out of allowance"
+// (402) from "Anthropic is rate limiting" (429), and to react differently.
+export const FUNCTIONS_URL = `${SUPABASE_URL}/functions/v1`;
+
+export async function callFunction(name, body, retry = true) {
+  const session = await getSession();
+  if (!session?.access_token) throw new Error("NOT_SIGNED_IN");
+
+  const resp = await fetch(`${FUNCTIONS_URL}/${name}`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${session.access_token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (resp.status === 401 && retry) {
+    try {
+      await refreshSession(session);
+    } catch {
+      await signOut();
+      throw new Error("NOT_SIGNED_IN");
+    }
+    return callFunction(name, body, false);
+  }
+
+  const data = await resp.json().catch(() => null);
+  return { ok: resp.ok, status: resp.status, data, headers: resp.headers };
+}
+
+/**
+ * This user's month-to-date Anthropic spend against their allowance.
+ *
+ * Reads through the ai_allowance() function rather than summing ai_usage in
+ * the client: the limit itself lives in ai_settings, which RLS hides from
+ * clients entirely, so the arithmetic has to happen server-side.
+ */
+export async function aiAllowance() {
+  const rows = await rest("/rpc/ai_allowance", { method: "POST", body: {} });
+  return Array.isArray(rows) ? rows[0] : rows;
+}
+
 // ── profile (the CV lives here) ─────────────────────────────────────────────
 export async function getProfile() {
   const rows = await rest("/profiles?select=*&limit=1");
@@ -145,6 +197,10 @@ export async function saveTailoredResult(job, packet, warnings, cvFingerprint = 
       job_location: job.location || "",
       job_url: job.url || "",
       job_source: job.source || "",
+      // Cross-site identity, so this packet is still findable after the user
+      // follows an aggregator's "Apply on company site" link. Null for
+      // postings too sparse to key safely — see job_key.js.
+      job_key: jobKey(job),
       packet,
       warnings: warnings || [],
       // Which CV this was written from, so it can be reused later without
@@ -168,6 +224,54 @@ export async function latestTailoredForUrl(url) {
     `&select=id,packet,warnings,cv_fingerprint,created_at` +
     `&order=created_at.desc&limit=1`);
   return rows && rows[0] ? rows[0] : null;
+}
+
+// A packet reused across sites has to be recent as well as written from the
+// current CV. cv_fingerprint already catches "the user replaced their CV"; this
+// catches the other staleness — a role reposted months later under the same
+// title, whose text has moved on since the packet was written.
+const JOB_KEY_MAX_AGE_DAYS = 60;
+
+/**
+ * The saved packet for a posting, found by whichever identity still works.
+ *
+ * Tried in descending order of certainty:
+ *   1. the exact URL          — always correct when it hits
+ *   2. the pre-reroute URL    — the aggregator link this run came from
+ *   3. company + title        — the cross-site fallback, recent rows only
+ *
+ * The result carries `matched_by` so a surprising reuse can be traced to the
+ * rule that caused it rather than guessed at.
+ *
+ * @param {object} job  { url, originalUrl?, company?, title? }
+ */
+export async function tailoredForJob(job = {}) {
+  const { url, originalUrl = null } = job;
+
+  if (url) {
+    const row = await latestTailoredForUrl(url);
+    if (row) return { ...row, matched_by: "url" };
+  }
+
+  // resolve_ats.js rewrites job_url to the employer's own ATS and keeps the
+  // aggregator link in original_job_url. The user tailored against that one.
+  if (originalUrl && originalUrl !== url) {
+    const row = await latestTailoredForUrl(originalUrl);
+    if (row) return { ...row, matched_by: "original_url" };
+  }
+
+  const key = jobKey(job);
+  if (!key) return null;
+
+  const since = new Date(Date.now() - JOB_KEY_MAX_AGE_DAYS * 86400000)
+    .toISOString();
+  const rows = await rest(
+    `/tailored_results?job_key=eq.${encodeURIComponent(key)}` +
+    `&created_at=gte.${encodeURIComponent(since)}` +
+    `&select=id,packet,warnings,cv_fingerprint,created_at,job_url` +
+    `&order=created_at.desc&limit=1`);
+
+  return rows && rows[0] ? { ...rows[0], matched_by: "job_key" } : null;
 }
 
 // Track the job in the application pipeline. Upserts on (user_id, job_url) so
@@ -428,4 +532,282 @@ export async function getTailoredResult(id) {
   const rows = await rest(
     `/tailored_results?id=eq.${encodeURIComponent(id)}&select=*&limit=1`);
   return rows && rows[0] ? rows[0] : null;
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// AUTO-APPLY ENGINE
+//
+// Everything below backs the tables in sql/001_apply_engine.sql. It is additive
+// in exactly the same way that migration is: nothing above this line changed,
+// so the frozen extension/ copy keeps talking to the same project unaffected.
+// ════════════════════════════════════════════════════════════════════════════
+
+const STORAGE = `${SUPABASE_URL}/storage/v1`;
+const APPLY_BUCKET = "apply-docs";
+
+// ── the queue ───────────────────────────────────────────────────────────────
+
+/** Registrable-ish domain. The circuit-breaker key, so it must be stable. */
+export function domainOf(url) {
+  try {
+    const host = new URL(url).hostname.toLowerCase().replace(/^www\./, "");
+    // Collapse per-tenant subdomains to one bucket. A Workday tenant blocking
+    // us says nothing about another tenant, but they do share infrastructure
+    // and rate limits, so one health row per platform is the useful grain.
+    for (const suffix of ["myworkdayjobs.com", "myworkdaysite.com", "greenhouse.io",
+                          "ashbyhq.com", "lever.co", "recruitee.com",
+                          "smartrecruiters.com", "personio.de", "successfactors.eu",
+                          "successfactors.com", "workable.com", "teamtailor.com",
+                          "icims.com", "avature.net", "jobvite.com", "taleo.net",
+                          "eightfold.ai", "softgarden.io", "softgarden.de"]) {
+      if (host === suffix || host.endsWith(`.${suffix}`)) return suffix;
+    }
+    return host;
+  } catch { return "unknown"; }
+}
+
+/**
+ * Queue a job for the apply engine.
+ *
+ * The partial unique index in the migration means a second click on a job
+ * that's already queued/running/paused is a conflict, not a duplicate
+ * application. We swallow that and return the existing run.
+ */
+export async function enqueueApply(job, { tier = 0, originalJobUrl = null } = {}) {
+  const body = {
+    user_id: await currentUserId(),
+    job_url: job.url,
+    job_title: job.title || "",
+    job_company: job.company || "",
+    domain: domainOf(job.url),
+    tier,
+    status: "queued",
+    original_job_url: originalJobUrl,
+  };
+  if (job.applicationId) body.application_id = job.applicationId;
+
+  try {
+    const rows = await rest("/apply_runs", {
+      method: "POST", body, headers: { Prefer: "return=representation" },
+    });
+    return rows && rows[0] ? rows[0] : null;
+  } catch (e) {
+    if (/duplicate key|23505/i.test(e.message)) return liveRunForUrl(job.url);
+    throw e;
+  }
+}
+
+export async function liveRunForUrl(url) {
+  const rows = await rest(
+    `/apply_runs?job_url=eq.${encodeURIComponent(url)}` +
+    `&status=in.(queued,running,paused_needs_human)&select=*&limit=1`);
+  return rows && rows[0] ? rows[0] : null;
+}
+
+/**
+ * Claim the next runnable job.
+ *
+ * Delegates to the claim_apply_run() function so the skip-quarantined and
+ * respect-the-cap logic lives in one place the extension and the Phase 3
+ * daemon share — and so FOR UPDATE SKIP LOCKED keeps them from both grabbing
+ * the same row.
+ */
+export async function claimApplyRun() {
+  const row = await rest("/rpc/claim_apply_run", { method: "POST", body: {} });
+  return row && row.id ? row : null;
+}
+
+export async function updateApplyRun(id, patch) {
+  const rows = await rest(`/apply_runs?id=eq.${encodeURIComponent(id)}`, {
+    method: "PATCH", body: patch, headers: { Prefer: "return=representation" },
+  });
+  return rows && rows[0] ? rows[0] : null;
+}
+
+/**
+ * Append one action to a run's audit trail.
+ *
+ * Read-modify-write rather than a jsonb append, because PostgREST can't express
+ * `steps || $1` without a stored function and the volume here is tiny (tens of
+ * steps per run, one writer at a time — the row is already claimed).
+ */
+export async function appendApplyStep(id, step) {
+  const rows = await rest(`/apply_runs?id=eq.${encodeURIComponent(id)}&select=steps`);
+  const steps = (rows && rows[0]?.steps) || [];
+  steps.push({ at: new Date().toISOString(), ...step });
+  return updateApplyRun(id, { steps });
+}
+
+export async function listApplyRuns(limit = 100) {
+  return rest(`/apply_runs?select=*&order=created_at.desc&limit=${limit}`);
+}
+
+// A run can only ever be claimed out of `queued`, so anything left sitting in
+// `running` is stranded — the worker that owned it is gone (browser closed,
+// extension reloaded, service worker torn down mid-await). Nothing will ever
+// pick it up again and the dashboard shows "Applying…" forever.
+//
+// The agent's own ceiling is 4 minutes plus document generation, so a run older
+// than this by a wide margin is definitely not still working.
+const STALE_RUN_MS = 10 * 60 * 1000;
+
+/**
+ * Put stranded runs back in the queue.
+ *
+ * `attempts` is already incremented by the claim, so a job that strands
+ * repeatedly escalates to the stronger model and eventually gives up rather
+ * than looping forever.
+ */
+export async function reclaimStaleRuns() {
+  const cutoff = new Date(Date.now() - STALE_RUN_MS).toISOString();
+  return rest(
+    `/apply_runs?status=eq.running&started_at=lt.${encodeURIComponent(cutoff)}`,
+    { method: "PATCH",
+      body: { status: "queued", error: "interrupted — requeued automatically" },
+      headers: { Prefer: "return=representation" } }) || [];
+}
+
+export async function activeApplyRuns() {
+  return rest("/apply_runs?select=*" +
+              "&status=in.(queued,running,paused_needs_human)" +
+              "&order=created_at.asc");
+}
+
+// ── domain health / the circuit breaker ─────────────────────────────────────
+
+export async function getDomainHealth(domain) {
+  const rows = await rest(
+    `/domain_health?domain=eq.${encodeURIComponent(domain)}&select=*&limit=1`);
+  return rows && rows[0] ? rows[0] : null;
+}
+
+export async function allDomainHealth() {
+  return rest("/domain_health?select=*&order=domain.asc");
+}
+
+/** Upsert one domain's health row. */
+export async function upsertDomainHealth(domain, patch) {
+  const rows = await rest("/domain_health?on_conflict=user_id,domain", {
+    method: "POST",
+    body: { user_id: await currentUserId(), domain, ...patch },
+    headers: { Prefer: "resolution=merge-duplicates,return=representation" },
+  });
+  return rows && rows[0] ? rows[0] : null;
+}
+
+// ── documents ───────────────────────────────────────────────────────────────
+
+export async function getApplyDocuments(jobUrl) {
+  return rest(`/apply_documents?job_url=eq.${encodeURIComponent(jobUrl)}&select=*`) || [];
+}
+
+export async function recordApplyDocument(row) {
+  const rows = await rest("/apply_documents?on_conflict=user_id,job_url,kind", {
+    method: "POST",
+    body: { user_id: await currentUserId(), ...row },
+    headers: { Prefer: "resolution=merge-duplicates,return=representation" },
+  });
+  return rows && rows[0] ? rows[0] : null;
+}
+
+// ── Storage ─────────────────────────────────────────────────────────────────
+// Every object path starts with the user id, which is what the bucket policy
+// in the migration checks. Keep that first segment or the upload 403s.
+
+async function storagePut(objectPath, bytes, contentType) {
+  const session = await getSession();
+  if (!session?.access_token) throw new Error("NOT_SIGNED_IN");
+
+  const resp = await fetch(`${STORAGE}/object/${APPLY_BUCKET}/${objectPath}`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${session.access_token}`,
+      "Content-Type": contentType,
+      "x-upsert": "true",
+    },
+    body: bytes,
+  });
+  if (!resp.ok) {
+    throw new Error(`Storage ${resp.status}: ${(await resp.text()).slice(0, 200)}`);
+  }
+  return objectPath;
+}
+
+function b64ToBytes(base64) {
+  const bin = atob(base64);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+
+/** Short, stable, filesystem-safe key for a job URL. */
+async function urlKey(url) {
+  const digest = await crypto.subtle.digest("SHA-1", new TextEncoder().encode(url));
+  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0"))
+    .join("").slice(0, 16);
+}
+
+/**
+ * `tailoredId` is the tailored_results row this PDF was rendered from, and it
+ * belongs in the object path: the stored document then carries its own
+ * provenance. docgen can tell a current PDF from one rendered before the job was
+ * re-tailored just by reading the path it already has — no extra column, no
+ * migration to run — and after the fact any file in the bucket traces back to
+ * the exact packet that produced it.
+ */
+export async function uploadApplyDoc(jobUrl, kind, base64, tailoredId) {
+  const uid = await currentUserId();
+  const path =
+    `${uid}/docs/${await urlKey(jobUrl)}/${tailoredId || "untracked"}-${kind}.pdf`;
+  return storagePut(path, b64ToBytes(base64), "application/pdf");
+}
+
+/** Screenshot of the page a run paused on, so the dashboard can show it. */
+export async function uploadPauseScreenshot(runId, base64) {
+  const uid = await currentUserId();
+  const path = `${uid}/shots/${runId}.png`;
+  return storagePut(path, b64ToBytes(base64), "image/png");
+}
+
+/** Time-limited URL for a private object — for showing a screenshot in the UI. */
+export async function signedUrl(objectPath, expiresIn = 3600) {
+  const session = await getSession();
+  if (!session?.access_token) throw new Error("NOT_SIGNED_IN");
+
+  const resp = await fetch(`${STORAGE}/object/sign/${APPLY_BUCKET}/${objectPath}`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${session.access_token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ expiresIn }),
+  });
+  if (!resp.ok) throw new Error(`Storage sign ${resp.status}`);
+  const { signedURL } = await resp.json();
+  return `${STORAGE}${signedURL}`;
+}
+
+/**
+ * Fetch a stored PDF as base64 — the Tier 0 upload path builds its File from
+ * this when the local copy is gone (different machine, cleared Downloads).
+ */
+export async function downloadApplyDoc(objectPath) {
+  const session = await getSession();
+  if (!session?.access_token) throw new Error("NOT_SIGNED_IN");
+
+  const resp = await fetch(`${STORAGE}/object/${APPLY_BUCKET}/${objectPath}`, {
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${session.access_token}`,
+    },
+  });
+  if (!resp.ok) throw new Error(`Storage get ${resp.status}`);
+  const buf = new Uint8Array(await resp.arrayBuffer());
+  let bin = "";
+  for (let i = 0; i < buf.length; i += 0x8000) {
+    bin += String.fromCharCode.apply(null, buf.subarray(i, i + 0x8000));
+  }
+  return btoa(bin);
 }
