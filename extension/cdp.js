@@ -134,12 +134,29 @@ chrome.debugger.onDetach.addListener(({ tabId }) => {
 // stamps on everything it serialises. That keeps one stable identifier shared
 // between the content script, the model, and CDP — no selector guessing.
 
+/**
+ * Quote a value for use inside an attribute selector.
+ *
+ * NOT `CSS.escape`. This file runs in the service worker, and `CSS` is a Window
+ * interface — it does not exist in ServiceWorkerGlobalScope. Calling it here
+ * threw `CSS is not defined` on every CDP upload, which surfaced to the user as
+ * "upload failed for u2 — cdp: CSS is not defined": a fault of ours, reported as
+ * if the application needed their help.
+ *
+ * A quoted attribute value only needs its backslashes and its closing quote
+ * escaped, which is the whole job here — apply_engine mints these ids itself as
+ * `prefix + counter`, so there is nothing exotic to handle.
+ */
+function quoteAttrValue(value) {
+  return String(value).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+}
+
 /** Resolve a data-jca-id to a CDP nodeId. Returns null when not found. */
 export async function nodeForId(cdp, jcaId) {
   const { root } = await cdp("DOM.getDocument", { depth: 1 });
   const { nodeId } = await cdp("DOM.querySelector", {
     nodeId: root.nodeId,
-    selector: `[data-jca-id="${CSS.escape(jcaId)}"]`,
+    selector: `[data-jca-id="${quoteAttrValue(jcaId)}"]`,
   });
   return nodeId || null;         // CDP returns 0 for "no match"
 }

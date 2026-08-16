@@ -5,6 +5,7 @@
 // packet, or drop it.
 
 import * as sb from "./supabase.js";
+import { helpForPause, pauseLabel } from "./pause_help.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) =>
@@ -482,8 +483,18 @@ function applyCell(r) {
       : `<button disabled title="Tailor this job first — the engine applies with the tailored CV and cover letter">Apply</button>`;
   }
 
-  const [label, cls] = APPLY_LABEL[st.status] || [st.status, "muted"];
-  const detail = st.pause_reason ? ` title="${esc(st.pause_reason)}"` : "";
+  let [label, cls] = APPLY_LABEL[st.status] || [st.status, "muted"];
+  // A run that stopped on our own crash is not waiting on the user, and saying
+  // "Needs you" over it sends them hunting for a form problem that isn't there.
+  if (st.status === "paused_needs_human" && st.pause_reason) {
+    label = pauseLabel(st.pause_reason);
+  }
+  // The tooltip carries the next action, because that is what the user is
+  // looking for when they hover a stopped run — the reason is already in the
+  // panel above.
+  const detail = st.pause_reason
+    ? ` title="${esc(`${helpForPause(st.pause_reason).headline}\n\n${st.pause_reason}`)}"`
+    : "";
   const actions =
     st.status === "running"  ? `<button data-abort="${esc(st.id)}">Stop</button>` :
     st.status === "queued"   ? `<button data-abort="${esc(st.id)}">Cancel</button>` :
@@ -719,8 +730,8 @@ function renderApplyPanel(st) {
   const queue = active.map((r) => {
     const [label] = APPLY_LABEL[r.status] || [r.status];
     return `<li><b>${esc(r.job_company || "")}</b> — ${esc(r.job_title || "")}
-      <span class="muted">${label}</span>
-      ${r.pause_reason ? `<div class="why">${esc(r.pause_reason)}</div>` : ""}</li>`;
+      <span class="muted">${esc(r.pause_reason ? pauseLabel(r.pause_reason) : label)}</span>
+      ${r.pause_reason ? `<div class="why">${esc(r.pause_reason)}</div>${handOff(r)}` : ""}</li>`;
   }).join("");
 
   // The health strip exists to make the isolation visible: when a domain is
@@ -745,6 +756,99 @@ function renderApplyPanel(st) {
 
   for (const btn of el.querySelectorAll(".resume-site")) {
     btn.addEventListener("click", () => resumeSite(btn.dataset.domain, btn));
+  }
+  wireHandOffButtons(el);
+}
+
+/**
+ * What the user should actually do about a stopped run.
+ *
+ * The reason above this says what happened; on its own that left people reading
+ * "cdp: CSS is not defined" under a heading saying "Needs you" with no idea
+ * what was being asked of them. This block answers the two questions that
+ * follow — what do I do, and does it carry on afterwards — and puts the button
+ * for it right there instead of in a column further down the page.
+ *
+ * The primary action differs by cause, and pretending otherwise would be worse
+ * than saying nothing: Retry is right when the obstacle is upstream of the form
+ * (a crash, a missing profile answer) and wrong when the form itself is filled
+ * in and waiting on a signature, where a fresh run would only fill it again.
+ */
+function handOff(run) {
+  const help = helpForPause(run.pause_reason);
+
+  // More than one cause gets more than one heading. Merging two different
+  // problems into one list of steps reads as a single procedure, and the user
+  // does the first two steps and stops.
+  const body = help.parts.length === 1
+    ? `<b>${esc(help.parts[0].headline)}</b>
+       <ol>${help.parts[0].todo.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>`
+    : `<b>Two things are in the way here:</b>` + help.parts.map((p) =>
+        `<div class="todo-part"><b>${esc(p.headline)}</b>
+           <ol>${p.todo.map((t) => `<li>${esc(t)}</li>`).join("")}</ol></div>`).join("");
+
+  // The run's own tab, which was left open precisely because it holds the
+  // half-filled form. Falling back to the job URL opens a fresh, empty copy —
+  // correct only when that tab is already gone.
+  const pauseStep = [...(run.steps || [])].reverse().find((s) => s?.kind === "pause");
+  const open = run.job_url || pauseStep?.tabId != null
+    ? `data-open-tab="${esc(pauseStep?.tabId ?? "")}" data-open-url="${esc(run.job_url || "")}"`
+    : null;
+
+  // Primary first: it is the one that gets clicked without reading. Which one
+  // that is depends on the cause — see `resume` in pause_help.js.
+  const retryFirst = help.resume === "retry";
+  const btn = (primary, attrs, text) =>
+    `<button ${primary ? 'class="primary" ' : ""}${attrs}>${text}</button>`;
+  const openBtn = open ? btn(!retryFirst, open, "Open the tab") : "";
+  const retryBtn = btn(retryFirst, `data-panel-retry="${esc(run.id)}"`,
+                       "Retry — start it again");
+
+  return `<div class="todo${help.mine ? " ours" : ""}">
+      ${body}
+      <div class="todo-actions">${retryFirst ? retryBtn + openBtn : openBtn + retryBtn}</div>
+    </div>`;
+}
+
+function wireHandOffButtons(root) {
+  for (const btn of root.querySelectorAll("[data-open-tab]")) {
+    btn.addEventListener("click", async () => {
+      const tabId = Number(btn.dataset.openTab);
+      // Foregrounded on purpose. Everywhere else this engine keeps its tabs in
+      // the background; here the user has just been asked to go and do
+      // something in that exact page.
+      if (Number.isFinite(tabId) && tabId > 0) {
+        try {
+          const tab = await chrome.tabs.update(tabId, { active: true });
+          if (tab?.windowId != null) {
+            await chrome.windows.update(tab.windowId, { focused: true }).catch(() => {});
+          }
+          return;
+        } catch { /* closed since the run paused — fall through */ }
+      }
+      if (btn.dataset.openUrl) {
+        showMessage("That tab is gone, so this is a fresh copy of the form — " +
+                    "what the run filled in isn't in it.");
+        chrome.tabs.create({ url: btn.dataset.openUrl, active: true });
+      }
+    });
+  }
+  for (const btn of root.querySelectorAll("[data-panel-retry]")) {
+    btn.addEventListener("click", async () => {
+      btn.disabled = true;
+      const original = btn.textContent;
+      btn.textContent = "Starting…";
+      try {
+        await send({ type: "APPLY_RETRY", runId: btn.dataset.panelRetry });
+        await send({ type: "APPLY_PUMP" }).catch(() => {});
+        showMessage("Back in the queue — it starts again from the top of the form.");
+        await pollApplyStatus();
+      } catch (e) {
+        showMessage(`Couldn't start that again: ${e.message}`, true);
+        btn.disabled = false;
+        btn.textContent = original;
+      }
+    });
   }
 }
 

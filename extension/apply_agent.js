@@ -29,6 +29,7 @@ import { hold } from "./keepalive.js";
 import { ensureDocuments } from "./docgen.js";
 import { attachDocument, planUploads } from "./upload.js";
 import { canSubmit, explain, isCommitmentQuestion } from "./confidence.js";
+import { pauseHeadline, pauseLabel } from "./pause_help.js";
 import {
   detectBlockSignal, recordBlock, recordSuccess, recordFailure,
 } from "./domain_health.js";
@@ -936,13 +937,21 @@ async function pauseRun(run, tabId, reason, blocking = []) {
     screenshot_path: screenshotPath,
     finished_at: new Date().toISOString(),
   });
-  await appendApplyStep(run.id, { kind: "pause", reason, blocking });
+  // `tabId` is recorded because the tab is deliberately left open — it holds
+  // the half-filled form the user is being asked to finish. Without it the
+  // dashboard can only offer the job's URL, which opens a second, blank copy
+  // of the form and throws away everything this run typed.
+  await appendApplyStep(run.id, { kind: "pause", reason, blocking, tabId });
 
+  // The notification is read on a phone or out of the corner of an eye, so it
+  // carries the action rather than the diagnosis — and it says whose problem
+  // this is. A crash of ours announcing itself as "Needs you" sends the user
+  // looking for something to fix that was never on their side.
   chrome.notifications?.create(`jca-${run.id}`, {
     type: "basic",
     iconUrl: chrome.runtime.getURL("icon128.png"),
-    title: `Needs you — ${run.job_company || "application"}`,
-    message: String(reason).slice(0, 240),
+    title: `${pauseLabel(reason)} — ${run.job_company || "application"}`,
+    message: pauseHeadline(reason).slice(0, 240),
   }, () => void chrome.runtime.lastError);
 }
 

@@ -272,6 +272,30 @@
     ul.queue .muted { margin-left: 6px; }
     .apply-panel p.muted { margin: 8px 0 0; }
 
+    /* The hand-off block: what to do about a run that stopped.
+       Set apart from the reason above it, because the reason is a record of
+       what happened and this is a set of instructions — reading as one
+       paragraph is how "cdp: CSS is not defined" ended up looking like a
+       question the user was supposed to answer. */
+    .todo {
+      margin: 8px 0 4px; padding: 10px 12px;
+      border-left: 2px solid var(--warn, #d97706);
+      background: rgba(217,119,6,.07);
+      border-radius: 0 6px 6px 0; font-size: 13px;
+    }
+    /* Our own fault, not theirs. Different colour so the distinction is
+       visible before a word is read. */
+    .todo.ours {
+      border-left-color: var(--text-3, #8b8b8b);
+      background: rgba(127,127,127,.08);
+    }
+    .todo b { display: block; margin-bottom: 6px; }
+    .todo ol { margin: 0; padding-left: 18px; color: var(--text-2); }
+    .todo ol li { padding: 2px 0; border: none; }
+    .todo-part { margin-top: 8px; }
+    .todo-part b { font-weight: 600; }
+    .todo-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
     /* The per-row state chip. Colour carries the same meaning as the status
        column, so a scan down the table reads consistently. */
     .apply-state {
