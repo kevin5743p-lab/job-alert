@@ -151,14 +151,50 @@ function quoteAttrValue(value) {
   return String(value).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 }
 
-/** Resolve a data-jca-id to a CDP nodeId. Returns null when not found. */
+/**
+ * Resolve a data-jca-id to a CDP nodeId. Returns null when not found.
+ *
+ * Two lookups, and the second is the one that matters on real sites.
+ *
+ * `DOM.querySelector` from the root searches the top document ONLY. It does not
+ * cross into an iframe, and an employer embedding Greenhouse or SmartRecruiters
+ * puts the entire form — the file input included — inside one. So the CV upload
+ * would find nothing, report "no element for u2", and the run would stop on a
+ * form that was sitting right there.
+ *
+ * `DOM.performSearch` searches every document in the tab, iframes included,
+ * which is what "find the element the content script tagged" actually means
+ * here. It is kept second because it allocates a search result set that has to
+ * be discarded, and the plain path covers the single-frame majority.
+ */
 export async function nodeForId(cdp, jcaId) {
+  const selector = `[data-jca-id="${quoteAttrValue(jcaId)}"]`;
+
+  // Populates the node map that both lookups below depend on.
   const { root } = await cdp("DOM.getDocument", { depth: 1 });
-  const { nodeId } = await cdp("DOM.querySelector", {
-    nodeId: root.nodeId,
-    selector: `[data-jca-id="${quoteAttrValue(jcaId)}"]`,
-  });
-  return nodeId || null;         // CDP returns 0 for "no match"
+
+  const { nodeId } = await cdp("DOM.querySelector", { nodeId: root.nodeId, selector });
+  if (nodeId) return nodeId;     // CDP returns 0 for "no match"
+
+  let searchId = null;
+  try {
+    const search = await cdp("DOM.performSearch", {
+      query: selector, includeUserAgentShadowDOM: true,
+    });
+    searchId = search?.searchId;
+    if (!searchId || !search.resultCount) return null;
+
+    const { nodeIds } = await cdp("DOM.getSearchResults", {
+      searchId, fromIndex: 0, toIndex: 1,
+    });
+    return nodeIds?.[0] || null;
+  } catch {
+    return null;                 // older protocol, or the node went away
+  } finally {
+    if (searchId) {
+      await cdp("DOM.discardSearchResults", { searchId }).catch(() => {});
+    }
+  }
 }
 
 /**

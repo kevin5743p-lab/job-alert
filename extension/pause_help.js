@@ -40,6 +40,21 @@
 // at once; without grouping, those two filled the list between them and the
 // consent boxes named in the very same message were never shown.
 const CASES = [
+  // First, and on its own: this is the single most common reason a run on a real
+  // employer's site stops, it is fixed by one click, and that click can be
+  // offered right here. Everything else in this list is advice; this one is a
+  // button.
+  {
+    kind: "needs_permission", group: "permission",
+    test: /access to sites outside the job boards|one extra permission|auto-apply on all sites|couldn't inject|cannot access contents|must request permission/i,
+    headline: "It needs your permission to work on this employer's own site.",
+    todo: [
+      "Press \"Enable it now\" below and accept Chrome's prompt — it asks once, for all sites.",
+      "The run then starts again on its own. Job boards already worked; this covers everyone else.",
+    ],
+    resume: "grant",
+  },
+
   // ── ours, not theirs ──────────────────────────────────────────────────────
   // Listed first: a technical failure often mentions a form control too, and
   // matching "required upload is empty" before "CSS is not defined" would file
@@ -181,9 +196,10 @@ const OURS = new Set(["fault", "upload_failed"]);
  *   parts    one { kind, headline, todo, mine } per distinct cause
  *   mine     true only when *every* cause is ours — a run that also needs the
  *            user's signature still needs the user, whatever else broke
- *   resume   "retry" only when every cause clears on its own once dealt with.
- *            One manual cause makes the whole run manual, because a fresh run
- *            would arrive back at that same stop.
+ *   resume   "grant" when a permission click fixes it and the run can then be
+ *            started again; "retry" when every cause clears on its own once
+ *            dealt with; "manual" otherwise. One manual cause makes the whole
+ *            run manual, because a fresh run would arrive back at that stop.
  */
 export function helpForPause(reason) {
   const text = String(reason || "");
@@ -197,7 +213,11 @@ export function helpForPause(reason) {
   if (!parts.length) parts.push(FALLBACK);
 
   const mine = parts.every((p) => OURS.has(p.kind));
-  const resume = parts.every((p) => p.resume === "retry") ? "retry" : "manual";
+  // A missing grant outranks everything: until it is given, nothing else about
+  // this run can even be attempted, so that is the button to put in front.
+  const resume = parts.some((p) => p.resume === "grant") ? "grant"
+    : parts.every((p) => p.resume === "retry") ? "retry"
+    : "manual";
   // The one the user acts on: whatever they have to do themselves outranks
   // anything they only have to press a button about.
   const lead = parts.find((p) => !OURS.has(p.kind)) || parts[0];
@@ -210,7 +230,7 @@ export function helpForPause(reason) {
       kind: p.kind, headline: p.headline, todo: p.todo, mine: OURS.has(p.kind),
     })),
     resume,
-    cta: resume === "retry" ? "Retry" : "Open the tab",
+    cta: { grant: "Enable it now", retry: "Retry", manual: "Open the tab" }[resume],
     mine,
   };
 }

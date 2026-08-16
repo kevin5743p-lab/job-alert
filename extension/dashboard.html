@@ -294,6 +294,21 @@
     .todo ol li { padding: 2px 0; border: none; }
     .todo-part { margin-top: 8px; }
     .todo-part b { font-weight: 600; }
+
+    /* The all-sites grant. Deliberately the loudest thing on the page while it
+       is missing — without it auto-apply only works on the job boards, which is
+       a fraction of what the user thinks they are getting. */
+    .grant-banner {
+      margin: 0 0 18px; padding: 14px 16px;
+      border: 1px solid var(--accent, #4f46e5);
+      background: rgba(79,70,229,.08);
+      border-radius: 10px; font-size: 13px;
+      display: flex; gap: 14px; align-items: center; justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .grant-banner b { display: block; margin-bottom: 3px; font-size: 14px; }
+    .grant-banner .muted { display: block; }
+    .grant-banner button { white-space: nowrap; }
     .todo-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
 
     /* The per-row state chip. Colour carries the same meaning as the status
@@ -337,6 +352,11 @@
         <button id="settings" title="CV, documents, keys and how applying behaves">⚙ Settings</button>
       </div>
     </header>
+    <!-- Standing offer of the one grant that decides whether auto-apply works
+         on anything except the job boards. Hidden the moment it is given, and
+         placed above everything because a user who grants it here never meets
+         the mid-run failure it prevents. -->
+    <div id="grantBanner" class="grant-banner" hidden></div>
     <div id="scan" class="scan hidden"></div>
     <div id="stale" class="scan hidden"></div>
 

@@ -5,6 +5,7 @@
 // in autofill's FIELD_SPECS, otherwise the answer is stored but never used.
 
 import * as sb from "./supabase.js";
+import { hasAllSites, requestAllSites } from "./host_access.js";
 
 // Field id === key in the saved application profile.
 const KEYS = [
@@ -151,4 +152,34 @@ $("save").addEventListener("click", async () => {
 
 $("skip").addEventListener("click", () => window.close());
 
+// ── the all-sites grant ─────────────────────────────────────────────────────
+
+async function refreshGrant() {
+  const granted = await hasAllSites();
+  $("grantHosts").textContent = granted
+    ? "Enabled ✓ — auto-apply works on any employer's site"
+    : "Enable auto-apply on all sites";
+  $("grantHosts").disabled = granted;
+  $("grantHint").textContent = granted
+    ? "Revoke any time from chrome://extensions → JobCopilot → Site access."
+    : "";
+}
+
+$("grantHosts").addEventListener("click", async () => {
+  // First statement: chrome.permissions.request has to see the user gesture,
+  // and anything awaited before it spends that gesture.
+  let granted = false;
+  try { granted = await requestAllSites(); }
+  catch (e) { $("grantHint").textContent = `Chrome wouldn't ask: ${e.message}`; return; }
+
+  await refreshGrant();
+  if (!granted) {
+    $("grantHint").textContent =
+      "Not granted. Auto-apply will still work on LinkedIn and the major job " +
+      "boards; anything on an employer's own site will be handed back to you " +
+      "to finish. You can turn this on later in Settings.";
+  }
+});
+
+refreshGrant();
 load();

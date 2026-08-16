@@ -30,8 +30,9 @@ import { ensureDocuments } from "./docgen.js";
 import { attachDocument, planUploads } from "./upload.js";
 import { canSubmit, explain, isCommitmentQuestion } from "./confidence.js";
 import { pauseHeadline, pauseLabel } from "./pause_help.js";
+import { canReach, NEEDS_GRANT } from "./host_access.js";
 import {
-  detectBlockSignal, recordBlock, recordSuccess, recordFailure,
+  detectBlockSignal, recordBlock, recordSuccess, recordFailure, domainOf,
 } from "./domain_health.js";
 import {
   updateApplyRun, appendApplyStep, uploadPauseScreenshot, tailoredForJob,
@@ -282,8 +283,74 @@ function buildSystem(profile, cvText, docKinds = []) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/**
+ * tabId -> frameId of the frame holding the application form.
+ *
+ * WHY THIS IS NOT ALWAYS 0
+ *
+ * Employers routinely embed the ATS in an iframe on their own careers page:
+ * Greenhouse, SmartRecruiters, Personio and Workday all ship an embed, and on
+ * those pages the top frame is marketing copy with no form in it whatsoever.
+ *
+ * `chrome.tabs.sendMessage(tabId, msg)` with no frame goes to EVERY frame that
+ * is listening, and the promise settles on whichever replies first. So with the
+ * engine in more than one frame, "what is on this page" was answered by an
+ * essentially arbitrary frame — usually the top one, which is exactly the frame
+ * without the form. The model then reasoned correctly over a page with no
+ * application on it and gave up.
+ *
+ * chooseFormFrame() decides once per injection, and everything after that is
+ * addressed to that frame explicitly.
+ */
+const formFrame = new Map();
+
 async function engine(tabId, message) {
-  return chrome.tabs.sendMessage(tabId, { target: "jca-engine", ...message });
+  const frameId = formFrame.get(tabId);
+  return chrome.tabs.sendMessage(
+    tabId, { target: "jca-engine", ...message },
+    frameId != null ? { frameId } : undefined);
+}
+
+/** Forget a tab's chosen frame — it navigated, or the run is done with it. */
+function forgetFrame(tabId) { formFrame.delete(tabId); }
+
+// A frame id is only meaningful for the document that was loaded when we chose
+// it. A navigation invalidates it, and a closed tab must not leave an entry
+// behind for a future tab to inherit — the worker outlives many runs.
+chrome.tabs.onRemoved.addListener((tabId) => forgetFrame(tabId));
+chrome.tabs.onUpdated.addListener((tabId, info) => {
+  if (info.status === "loading") forgetFrame(tabId);
+});
+
+/**
+ * Ask every frame how much of an application form it contains, and keep the
+ * winner.
+ *
+ * Ties and near-ties go to the top frame: a single-frame page is the common
+ * case, and preferring a child on a small margin would hand the run to a
+ * cookie-consent iframe, which is full of buttons and genuinely visible.
+ */
+async function chooseFormFrame(tabId, frameIds) {
+  const scored = [];
+  for (const frameId of frameIds) {
+    const r = await chrome.tabs.sendMessage(
+      tabId, { target: "jca-engine", type: "FRAME_SCORE" }, { frameId }
+    ).catch(() => null);
+    if (r?.ok) scored.push({ frameId, ...r });
+  }
+  if (!scored.length) { formFrame.delete(tabId); return null; }
+
+  const top = scored.find((s) => s.isTop) || scored[0];
+  const best = scored.reduce((a, b) => (b.score > a.score ? b : a));
+
+  // The margin is what stops a consent dialog or a chat widget stealing the
+  // run: a real embedded application form scores far above them, so requiring
+  // a clear win costs nothing and refuses the ambiguous cases.
+  const winner = (best.frameId !== top.frameId && best.score > top.score * 2 && best.score >= 12)
+    ? best : top;
+
+  formFrame.set(tabId, winner.frameId);
+  return winner;
 }
 
 /** The content scripts, in load order — same list as the manifest. */
@@ -308,6 +375,9 @@ async function ensureEngine(tabId, timeoutMs = 45000) {
   let injected = false;
 
   while (Date.now() < deadline) {
+    // PING goes to the chosen frame if there is one. If that frame has gone —
+    // the embed re-mounted, the page navigated — this fails and we re-inject
+    // and re-choose, which is the behaviour we want.
     const pong = await engine(tabId, { type: "PING" }).catch(() => null);
     if (pong?.ok) return true;
 
@@ -317,25 +387,44 @@ async function ensureEngine(tabId, timeoutMs = 45000) {
 
     if (tab.status === "complete" && !injected) {
       injected = true;
+      forgetFrame(tabId);
       try {
-        await chrome.scripting.executeScript({
-          target: { tabId, allFrames: false },
+        // allFrames, because the application is very often in an embed rather
+        // than the page the user navigated to. Injecting only the top frame
+        // meant the run drove a page that had no form in it.
+        //
+        // Frames we lack access to simply fail to inject; that is fine and
+        // expected, so a partial result is a success as long as SOMETHING took.
+        const results = await chrome.scripting.executeScript({
+          target: { tabId, allFrames: true },
           files: ENGINE_FILES,
         });
+
+        const frameIds = (results || [])
+          .filter((r) => !r.error)
+          .map((r) => r.frameId)
+          .filter((id) => id != null);
+
+        if (frameIds.length) await chooseFormFrame(tabId, frameIds);
         continue;                       // re-PING immediately
       } catch (e) {
-        // The common cause is not a broken page but a missing host permission:
-        // the manifest covers the job boards, and an employer's own careers
-        // site can be any domain at all. Chrome will not even reveal tab.url
-        // without permission, so the raw error names no host and reads like a
-        // mystery — ask Chrome directly instead of guessing.
-        const granted = await chrome.permissions
-          .contains({ origins: ["https://*/*"] }).catch(() => false);
-        if (!granted) {
-          throw new Error(
-            "This employer hosts its application on its own site, which needs " +
-            "one extra permission. Open Settings → Applying and click " +
-            "\"Enable auto-apply on all sites\", then retry this job.");
+        // Injecting into all frames can fail wholesale on a page whose top
+        // frame we may not touch. Before reporting that, find out whether the
+        // real answer is simply that we were never granted the site.
+        const reach = await canReach(tab.url);
+        if (!tab.url || (!reach.ok && reach.reason === "not_granted")) {
+          // Tagged, not just worded. runApply's catch branches on this flag and
+          // ends the run as a pause with a `pause_reason`, which is what puts
+          // the "Enable it now" button on the dashboard. Thrown as a plain
+          // Error it was recorded as `error` on a `failed` run — a red row with
+          // no button and nothing the user could do from where they were. That
+          // is the exact failure being reported.
+          //
+          // Tagging here rather than guarding each call site covers all four:
+          // the first load, the tab migration, the re-inject inside observe,
+          // and the in-tab navigation.
+          throw Object.assign(new Error(NEEDS_GRANT),
+                              { needsGrant: true, host: hostOf(tab.url) });
         }
         throw new Error(
           `couldn't inject into ${tab.url?.split("?")[0] || "this page"}: ${e.message}`);
@@ -403,11 +492,53 @@ async function followNewTab(tabId, before, known, timeoutMs = 5000) {
   return null;
 }
 
+/**
+ * Block until a tab has actually committed the document we sent it to.
+ *
+ * `chrome.tabs.update` resolves when the navigation *starts*, not when it
+ * lands. Until it lands the old document is still committed and its content
+ * script still answers PING — so `ensureEngine` returned true against the page
+ * we had just left, `waitForContent` read the stale DOM, and the model
+ * cheerfully clicked the same Apply button until the step budget ran out. That
+ * is the "it opens the site and nothing happens" symptom.
+ *
+ * Matching on host rather than the exact URL, because an ATS redirect chain
+ * rewrites the path and query on the way in and demanding an exact match would
+ * time out on every successful navigation.
+ */
+async function waitForNavigation(tabId, wantUrl, timeoutMs = 20000) {
+  const deadline = Date.now() + timeoutMs;
+  const want = hostOf(wantUrl);
+  while (Date.now() < deadline) {
+    const t = await chrome.tabs.get(tabId).catch(() => null);
+    if (!t) throw new Error("the tab was closed");
+    if (t.status === "complete" && (!want || hostOf(t.url) === want)) return t;
+    await sleep(250);
+  }
+  // Out of time is not fatal on its own — the caller still has ensureEngine and
+  // waitForContent behind this, and both have their own deadlines.
+  return chrome.tabs.get(tabId).catch(() => null);
+}
+
 /** All tab ids right now — the "before" half of new-tab detection. */
 async function tabIdsNow() {
   const all = await chrome.tabs.query({}).catch(() => []);
   return new Set(all.map((t) => t.id));
 }
+
+/**
+ * What a page says once an application has actually landed.
+ *
+ * Deliberately generous, and deliberately only ever used as *positive*
+ * evidence: a page that says none of this may still have submitted, so a miss
+ * pauses for the user rather than recording a failure.
+ */
+const CONFIRMATION_RE = new RegExp([
+  "thank you", "thanks for applying", "application (received|submitted|complete)",
+  "we('| ha)ve received", "successfully (applied|submitted)",
+  "vielen dank", "danke für", "bewerbung .*(eingegangen|erhalten|übermittelt)",
+  "erfolgreich (übermittelt|gesendet|versendet)",
+].join("|"), "i");
 
 /** A control that would open or advance an application. */
 const APPLY_CONTROL_RE =
@@ -425,17 +556,34 @@ const APPLY_CONTROL_RE =
  *
  * So: poll until there is something to act on, or until the DOM stops changing.
  */
-async function waitForContent(tabId, timeoutMs = 25000, { requireSignal = false } = {}) {
+/** A page's identity for "has this actually changed?" purposes. */
+const pageSigOf = (s) =>
+  `${s?.url || ""}|${s?.step || ""}|${(s?.fields || []).map((f) => f.id).join(",")}`;
+
+async function waitForContent(tabId, timeoutMs = 25000,
+                              { requireSignal = false, changedFrom = null } = {}) {
   const deadline = Date.now() + timeoutMs;
+  // `changedFrom` says "don't accept the page we just acted on". A grace window
+  // keeps that from costing anything when the click legitimately changed
+  // nothing — after it, the old page is accepted rather than waiting out the
+  // whole timeout.
+  const grace = Date.now() + 2000;
+  const was = changedFrom ? pageSigOf(changedFrom) : null;
   let lastSize = -1, stableFor = 0, latest = null;
 
   while (Date.now() < deadline) {
     latest = await observe(tabId).catch(() => null);
 
     if (latest) {
+      // "Ready" must mean "ready and different". Clicking Next on page 2 of a
+      // Workday wizard leaves a page that is still a form, so the first poll
+      // returned instantly with the page we had just left — and the model was
+      // shown stale fields and clicked Next again.
+      const fresh = !was || Date.now() > grace || pageSigOf(latest) !== was;
+
       // Unambiguously ready: a real form, or a control that starts one.
-      if (latest.isForm) return latest;
-      if ((latest.buttons || []).some((b) => APPLY_CONTROL_RE.test(b.text))) return latest;
+      if (fresh && latest.isForm) return latest;
+      if (fresh && (latest.buttons || []).some((b) => APPLY_CONTROL_RE.test(b.text))) return latest;
 
       // Otherwise settle for the DOM having stopped growing. Two consecutive
       // identical readings on a non-empty page is enough — anything more and
@@ -462,7 +610,9 @@ async function waitForContent(tabId, timeoutMs = 25000, { requireSignal = false 
     }
     await sleep(900);
   }
-  return latest || observe(tabId);
+  // A bare `observe()` here could throw straight out of waitForContent and into
+  // the run's catch, turning "the page was slow" into a failed application.
+  return latest || await observe(tabId).catch(() => null);
 }
 
 // ── the loop ────────────────────────────────────────────────────────────────
@@ -487,6 +637,15 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
   // opened. The run can migrate between them, so cleanup can't just close
   // "the" tab — it has to close all of them but the one being handed over.
   const openTabs = new Set();
+
+  // Which domain a failure actually belongs to. A run migrates: it starts on
+  // the board and can end on the employer's own site, and the circuit breaker
+  // is only meaningful if the strike lands where the trouble was.
+  // `contactedDomain` stays false until a tab is open, so everything that can
+  // go wrong before then — document rendering, storage, the tailored packet —
+  // cannot get a site quarantined.
+  let activeDomain = run.domain;
+  let contactedDomain = false;
   // The `finally` below reads this to decide whether to keep the tab. A `return`
   // can't be seen from there, so every exit has to record itself here first —
   // three of them didn't, and a run that paused on a timeout or on running out
@@ -495,12 +654,48 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
   // the record of it can't drift apart again.
   let status = "failed";
   const handOver = async (reason, blocking) => {
-    await pauseRun(run, tabId, reason, blocking);
+    // Assigned BEFORE the first await, and that ordering is the whole point.
+    //
+    // Callers write `return handOver(...)`. In an async function that evaluates
+    // the call, runs it only as far as its first await, and then runs the
+    // `finally` below — all before the returned promise settles. With the
+    // assignment after the await, `finally` still saw "failed", computed
+    // `keep = null`, and called chrome.tabs.remove() on the tab *while*
+    // pauseRun was still screenshotting it. Every "took too long" and "gave up
+    // after 25 steps" hand-off destroyed the half-filled application it had
+    // just asked the user to go and finish.
+    //
+    // Setting it first makes that unreachable even if a future caller forgets
+    // the await — which is why it is done this way round rather than by
+    // auditing the call sites.
     status = "paused_needs_human";
+    await pauseRun(run, tabId, reason, blocking);
     return status;
   };
 
   try {
+    // ── can we even touch this site? ────────────────────────────────────────
+    //
+    // Asked first, before a single PDF is rendered or a tab is opened. This
+    // used to be discovered at the far end of the run — after the documents
+    // were made, the posting was opened, and the Apply button had been clicked
+    // through to the employer's own domain — and the answer was always going to
+    // be the same one `permissions.contains` gives instantly. The user got a
+    // dead run and a instruction to go and find a setting.
+    //
+    // Note this is the *posting's* origin. The employer's site is a different
+    // origin we cannot know yet; that one is checked at the moment we follow a
+    // link to it, in followNewTab's caller.
+    const reach = await canReach(run.job_url);
+    if (!reach.ok && reach.reason === "not_granted") {
+      return await handOver(NEEDS_GRANT);
+    }
+    if (!reach.ok && reach.reason === "unsupported_scheme") {
+      return await handOver(
+        `This posting's address isn't a web page we can drive (${run.job_url}). ` +
+        `Open it yourself — your tailored CV and cover letter are ready.`);
+    }
+
     // ── context ─────────────────────────────────────────────────────────────
     // The whole tailored row, not just its packet: the id identifies which
     // tailoring this application is being made from, and docgen needs that to
@@ -574,6 +769,7 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     // ── open the posting ────────────────────────────────────────────────────
     say("Opening the job…");
     const tab = await chrome.tabs.create({ url: run.job_url, active: false });
+    contactedDomain = true;              // from here on, failures are the site's
     tabId = tab.id;
     openTabs.add(tabId);
     await appendApplyStep(run.id, { kind: "tab_opened", tabId });
@@ -609,11 +805,44 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     const messages = [];
     const answers = {};              // jcaId -> {label, text, evidence, profileKey}
     const autofilled = new Set();    // urls the rule pass has already run on
-    let unmetUploads = [];
+    // A Map keyed on jcaId, not a list. As a list nothing ever removed an
+    // entry, so a first attempt that failed because a React uploader had not
+    // yet mounted its change handler left a permanent record — and a later,
+    // successful attach of the very same input still blocked the submit with
+    // "required upload is empty".
+    const unmetUploads = new Map();
+
+    /**
+     * Attach whatever this page still wants, and keep the unmet set honest.
+     *
+     * Called both after a rule-based fill and on any later observation that
+     * shows an empty upload, because on a same-URL multi-page flow the CV slot
+     * frequently is not on the page we first filled.
+     */
+    const attachPending = async (fileInputs) => {
+      const { plan, unmet } = planUploads(fileInputs, docs);
+      for (const u of unmet) unmetUploads.set(u.jcaId, u);
+
+      for (const p of plan) {
+        try {
+          const res = await attachDocument(tabId, {
+            jcaId: p.jcaId, doc: p.doc, tier: run.tier, frameId: formFrame.get(tabId),
+          });
+          unmetUploads.delete(p.jcaId);
+          say(`Attached ${p.kind} (${res.path}${res.unverified ? ", taken by the page" : ""})`);
+          await appendApplyStep(run.id, {
+            kind: "upload", doc: p.kind, via: res.path, unverified: !!res.unverified,
+          });
+        } catch (e) {
+          unmetUploads.set(p.jcaId, { jcaId: p.jcaId, label: p.label, reason: e.message });
+          await appendApplyStep(run.id, { kind: "upload_failed", doc: p.kind, error: e.message });
+        }
+      }
+    };
 
     for (let step = 1; step <= MAX_STEPS; step++) {
       if (Date.now() - started > MAX_WALL_MS) {
-        return handOver("took too long — handing this one back to you");
+        return await handOver("took too long — handing this one back to you");
       }
 
       const state = await observe(tabId);
@@ -622,41 +851,56 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       const signal = detectBlockSignal(state);
       if (signal) {
         // Leave. No retry, no reload, and nothing goes near the challenge.
-        await recordBlock(run.domain, signal);
+        //
+        // Quarantine the site that put the challenge up, which after a follow
+        // is the employer's, not the board we came in through. Resting
+        // linkedin.com because a company's own careers page showed a captcha
+        // stops every other LinkedIn application for a day, for nothing.
+        const blocker = domainOf(state.url) || activeDomain;
+        await recordBlock(blocker, signal);
         await appendApplyStep(run.id, { kind: "blocked", signal, url: state.url });
         await updateApplyRun(run.id, {
           status: "blocked", error: `site returned a block signal (${signal})`,
           finished_at: new Date().toISOString(),
         });
-        say(`${run.domain} asked us to stop (${signal}). Quarantined for 24h; other sites keep running.`);
+        say(`${blocker} asked us to stop (${signal}). Quarantined for 24h; other sites keep running.`);
         return "blocked";
       }
 
       // ── free pass: rules, then uploads ────────────────────────────────────
-      if (state.isForm && !autofilled.has(state.url)) {
-        autofilled.add(state.url);
+      //
+      // Keyed on what the page IS, not on its address. Every multi-page flow
+      // that matters — LinkedIn Easy Apply's modal, Workday's wizard, iCIMS,
+      // SmartRecruiters, Ashby — advances through four or five pages of
+      // questions without the URL ever changing. Keyed on `state.url`, the free
+      // rule-based pass ran on page one and never again, so pages two onward
+      // were filled one field per model round-trip against a 25-step budget and
+      // simply ran out. This is the single change that makes those flows
+      // finishable.
+      //
+      // Re-running is safe: autofill never overwrites a field that already has
+      // a value, so a page it has seen costs one message and fills nothing.
+      const pageSig = `${state.url}|${state.step || ""}|` +
+                      (state.fields || []).map((f) => f.id).join(",");
+
+      if ((state.isFillable ?? state.isForm) && !autofilled.has(pageSig)) {
+        autofilled.add(pageSig);
         const { report } = await engine(tabId, { type: "AUTOFILL", profile, packet });
         say(`Filled ${report?.filled?.length || 0} fields from your saved answers`);
         await appendApplyStep(run.id, {
           kind: "autofill", url: state.url,
           filled: report?.filled?.length || 0, skipped: report?.skipped || [],
         });
-
-        const { plan, unmet } = planUploads(report?.files || [], docs);
-        unmetUploads = unmet;
-        for (const p of plan) {
-          try {
-            const res = await attachDocument(tabId, {
-              jcaId: p.jcaId, doc: p.doc, tier: run.tier,
-            });
-            say(`Attached ${p.kind} (${res.path})`);
-            await appendApplyStep(run.id, { kind: "upload", doc: p.kind, via: res.path });
-          } catch (e) {
-            unmetUploads.push({ jcaId: p.jcaId, label: p.label, reason: e.message });
-            await appendApplyStep(run.id, { kind: "upload_failed", doc: p.kind, error: e.message });
-          }
-        }
+        await attachPending(report?.files || []);
         continue;                    // re-observe with the form now populated
+      }
+
+      // Uploads are planned on every observation, not only on a page we have
+      // just autofilled. A CV slot that appears on step three of a same-URL
+      // flow was otherwise never attached, and the gate then refused to submit
+      // an otherwise finished application because "required upload is empty".
+      if ((state.files || []).some((f) => !f.attached)) {
+        await attachPending(state.files);
       }
 
       // ── ask the model ─────────────────────────────────────────────────────
@@ -670,20 +914,25 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       // next request that kills the run and quarantines the site.
       const calls = reply.content.filter((b) => b.type === "tool_use");
       const call = calls[0];
-      if (!call) return handOver("the model stopped without choosing an action");
+      if (!call) return await handOver("the model stopped without choosing an action");
 
       const outcome = await execute({
         call, state, tabId, run, docs, answers, profile, cvText,
-        unmetUploads, submitPolicy, say, openTabs,
+        unmetUploads, submitPolicy, say, openTabs, frameId: formFrame.get(tabId),
       });
 
       // The click opened the application elsewhere — that tab is the run now.
-      // The autofill pass is keyed by URL, so the new page gets its own free
-      // rule-based pass rather than being treated as already handled.
+      // The autofill pass is keyed by page signature, so the new page gets its
+      // own free rule-based pass rather than being treated as already handled.
       if (outcome.tabId && outcome.tabId !== tabId) {
         tabId = outcome.tabId;
+        activeDomain = domainOf(outcome.url) || activeDomain;
         await ensureEngine(tabId);
         await waitForContent(tabId, FIRST_LOAD_MS, { requireSignal: true });
+      } else if (outcome.url) {
+        // Same tab, new site — a plain <a href> Apply link, or a redirect chain
+        // from the board to the ATS. The breaker must follow the run.
+        activeDomain = domainOf(outcome.url) || activeDomain;
       }
 
       await appendApplyStep(run.id, {
@@ -692,8 +941,13 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       });
 
       if (outcome.terminal) {
+        // A terminal step may have paused on a DIFFERENT tab from the one the
+        // loop is holding — the employer's page we had just followed to. The
+        // `finally` keeps exactly one tab, and without this it kept the stale
+        // posting and closed the page the user was being sent to.
+        if (outcome.pausedTabId != null) tabId = outcome.pausedTabId;
         status = outcome.status;
-        if (status === "submitted") await recordSuccess(run.domain);
+        if (status === "submitted") await recordSuccess(activeDomain);
         return status;
       }
 
@@ -719,13 +973,33 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       // that renders asynchronously, and a Next click re-renders the whole
       // step. Returns as soon as there's something actionable, so the common
       // case costs one poll rather than a fixed delay.
-      await waitForContent(tabId, 12000);
+      //
+      // `changedFrom` is the page we just acted on. Without it the first poll
+      // matched immediately — the page after a "Next" click is still a form —
+      // and the model was handed the previous step's fields to act on again.
+      await waitForContent(tabId, 12000, { changedFrom: state });
     }
 
-    return handOver(`gave up after ${MAX_STEPS} steps`);
+    return await handOver(`gave up after ${MAX_STEPS} steps`);
 
   } catch (e) {
-    await recordFailure(run.domain, e.message).catch(() => {});
+    // A missing grant is not a failure, it is a question. Ending it as a pause
+    // is what gives the row a `pause_reason`, and therefore the one-click
+    // "Enable it now" button — instead of a red "Failed" carrying an
+    // instruction to go and find a setting.
+    if (e?.needsGrant) {
+      return await handOver(e.host ? `${NEEDS_GRANT} (This one is on ${e.host}.)` : NEEDS_GRANT);
+    }
+
+    // Strike the domain we were actually on, and only if we ever got there.
+    //
+    // ensureDocuments() runs before the tab is opened, so a read-only Downloads
+    // folder or a Storage 403 used to put three strikes on greenhouse.io and
+    // quarantine it for a day over a fault on this machine that the site had no
+    // part in. And once a run follows a posting to the employer's site, later
+    // failures belong to that domain, not to the board we came from.
+    if (contactedDomain) await recordFailure(activeDomain, e.message).catch(() => {});
+
     await updateApplyRun(run.id, {
       status: "failed", error: String(e?.message || e).slice(0, 500),
       finished_at: new Date().toISOString(),
@@ -811,11 +1085,13 @@ async function execute(ctx) {
       }
       try {
         const res = await attachDocument(tabId, {
-          jcaId: a.element_id, doc, tier: run.tier,
+          jcaId: a.element_id, doc, tier: run.tier, frameId: ctx.frameId,
         });
+        unmetUploads.delete(a.element_id);
         return { summary: `attached ${a.doc_kind} (${res.path})` };
       } catch (e) {
-        unmetUploads.push({ jcaId: a.element_id, label: a.doc_kind, reason: e.message });
+        unmetUploads.set(a.element_id,
+          { jcaId: a.element_id, label: a.doc_kind, reason: e.message });
         return { summary: `upload failed: ${e.message}`, isError: true };
       }
     }
@@ -825,7 +1101,9 @@ async function execute(ctx) {
 
       // ── THE GATE ──────────────────────────────────────────────────────────
       if (btn?.kind === "submit") {
-        const gate = canSubmit(state, { answers, profile, cvText, unmetUploads });
+        const gate = canSubmit(state, {
+          answers, profile, cvText, unmetUploads: [...unmetUploads.values()],
+        });
 
         if (!gate.ok) {
           await pauseRun(run, tabId, explain(gate), gate.blocking);
@@ -848,16 +1126,80 @@ async function execute(ctx) {
       if (!r?.ok) return { summary: `could not click: ${r?.error}`, isError: true };
 
       if (btn?.kind === "submit") {
-        await sleep(2500);                            // let the submit land
-        await updateApplyRun(run.id, {
-          status: "submitted", finished_at: new Date().toISOString(),
-        });
-        return { terminal: true, status: "submitted", summary: "submitted" };
+        // ── did it actually go? ──────────────────────────────────────────────
+        //
+        // This used to sleep 2.5s and write "submitted". Every client-side
+        // rejection — a required field the gate could not see, a server-side
+        // validation error, a session that expired — was therefore recorded as
+        // a sent application. That is the worst error this system can make:
+        // the user believes they have applied and never does.
+        //
+        // So: look at the page afterwards and require evidence.
+        await sleep(2500);
+        const after = await observe(tabId).catch(() => null);
+
+        const errors = after?.errors || [];
+        // A page we can no longer read is NOT evidence of success. It usually
+        // means the submit navigated somewhere — but it also covers a closed
+        // tab and an origin we have no access to, and of the two possible
+        // mistakes only one is recoverable: a run wrongly marked "unconfirmed"
+        // costs the user a look, while a run wrongly marked "Applied ✓" means
+        // they never apply and never find out.
+        const movedOn = !!after && after.url !== state.url;
+        const thanked = CONFIRMATION_RE.test(after?.text || "");
+
+        if (errors.length) {
+          // Recoverable, and the model gets to fix it: this is a form that is
+          // still on screen telling us what is wrong with it.
+          return { summary: `the form refused the submit: ${errors.join("; ")}`,
+                   isError: true };
+        }
+        if (movedOn || thanked) {
+          await updateApplyRun(run.id, {
+            status: "submitted", finished_at: new Date().toISOString(),
+          });
+          return { terminal: true, status: "submitted", summary: "submitted" };
+        }
+        // No navigation, no confirmation, no error. We genuinely do not know,
+        // and guessing either way is worse than saying so.
+        await pauseRun(run, tabId,
+          "Submit was clicked, but the page showed no confirmation and no error — " +
+          "please check whether the application actually went through.");
+        return { terminal: true, status: "paused_needs_human", pausedTabId: tabId,
+                 summary: "submitted but unconfirmed" };
       }
 
       // The application may have opened somewhere else entirely.
       const opened = await followNewTab(tabId, tabsBefore, ctx.openTabs);
       if (opened) {
+        // The moment we learn the employer's real domain is the moment to find
+        // out whether we may touch it — not four steps later, when injection
+        // fails with a message naming no host at all.
+        //
+        // A missing `url` is itself an answer. The tabs API only fills it in
+        // for tabs we are allowed to see, so an empty one on a tab that
+        // demonstrably exists means the grant is what's missing. (The manifest
+        // now takes "tabs" as well, so this is belt and braces — but the
+        // inference is sound either way and costs nothing.)
+        const reach = await canReach(opened.url);
+        if (!opened.url || (!reach.ok && reach.reason === "not_granted")) {
+          const site = hostOf(opened.url);
+          await pauseRun(run, opened.id,
+            site ? `${NEEDS_GRANT} (This one is on ${site}.)` : NEEDS_GRANT);
+          // `pausedTabId` is the employer's tab, not the posting we came from.
+          // That is the page with the application on it, and it is the one the
+          // cleanup must keep open.
+          return { terminal: true, status: "paused_needs_human", pausedTabId: opened.id,
+                   summary: `followed to ${site || "the employer's site"}; no access to that origin` };
+        }
+        if (!reach.ok) {
+          await pauseRun(run, opened.id,
+            `The application moved to ${opened.url}, which isn't a page we can drive. ` +
+            `Open it and finish there — your documents are ready.`);
+          return { terminal: true, status: "paused_needs_human", pausedTabId: opened.id,
+                   summary: `followed to an unsupported address` };
+        }
+
         // Keep the run in the background, the way it started. window.open and
         // target=_blank both foreground the new tab, and yanking the user's
         // focus away every time an Apply button is pressed is not what a queue
@@ -870,6 +1212,7 @@ async function execute(ctx) {
         });
         return {
           tabId: opened.id,
+          url: opened.url,
           summary: `clicked "${btn?.text || a.element_id}" — it opened the application ` +
                    `on ${where}, which is where we are now. The previous page is ` +
                    `irrelevant; work from the new page state.`,
@@ -879,37 +1222,100 @@ async function execute(ctx) {
       // No new tab, but the control was a link out of here. A blocked popup or
       // a swallowed click shouldn't cost the application when we know exactly
       // where the button pointed — go there in the tab we already have.
+      //
+      // This is the commonest shape of all on LinkedIn: "Apply on company
+      // website" is a target=_blank link, and Chrome suppresses the popup in a
+      // background tab — which is exactly how a queued run opens the posting.
       if (btn?.opensNewTab && btn.href && hostOf(btn.href) !== hostOf(state.url)) {
+        // The sibling path above gates on reach; this one did not, so the very
+        // most likely route to an employer's own site went straight into
+        // ensureEngine and died as a bare "failed".
+        const reach = await canReach(btn.href);
+        if (!reach.ok && reach.reason === "not_granted") {
+          await pauseRun(run, tabId,
+            `${NEEDS_GRANT} (This one is on ${hostOf(btn.href)}.)`);
+          return { terminal: true, status: "paused_needs_human", pausedTabId: tabId,
+                   summary: `would have followed to ${hostOf(btn.href)}; no access there` };
+        }
+
         await chrome.tabs.update(tabId, { url: btn.href });
+        // The pinned frame belonged to the document we are leaving.
+        forgetFrame(tabId);
+        // chrome.tabs.update resolves when the navigation STARTS. The old
+        // document is still committed and its engine still answers PING, so
+        // without this ensureEngine succeeded against the page we had just left,
+        // waitForContent read the old DOM, and the model clicked the same Apply
+        // button over and over until the step budget ran out.
+        await waitForNavigation(tabId, btn.href);
         await ensureEngine(tabId);
         say(`Following "${btn.text}" to ${hostOf(btn.href)}.`);
         await appendApplyStep(run.id, {
           kind: "followed_link", from: state.url, to: btn.href,
         });
-        return { summary: `clicked "${btn.text}"; it opened nothing, so this tab was ` +
+        return { url: btn.href,
+                 summary: `clicked "${btn.text}"; it opened nothing, so this tab was ` +
                           `navigated to ${hostOf(btn.href)} instead. Work from the new page.` };
       }
+
+      // Nothing opened and nothing was declared — but the click may still have
+      // navigated us. A plain <a href> Apply link with no target, or a board
+      // that 302s through to the employer's ATS, both land here, and both leave
+      // the run on a completely different site than the one it checked access
+      // for at the start.
+      const landed = await chrome.tabs.get(tabId).catch(() => null);
+      if (landed?.url && hostOf(landed.url) !== hostOf(state.url)) {
+        const reach = await canReach(landed.url);
+        if (!reach.ok && reach.reason === "not_granted") {
+          await pauseRun(run, tabId, `${NEEDS_GRANT} (This one is on ${hostOf(landed.url)}.)`);
+          return { terminal: true, status: "paused_needs_human", pausedTabId: tabId,
+                   summary: `the click landed on ${hostOf(landed.url)}; no access there` };
+        }
+        forgetFrame(tabId);
+        await waitForNavigation(tabId, landed.url, 15000);
+        await ensureEngine(tabId).catch(() => {});
+        return { url: landed.url,
+                 summary: `clicked "${btn?.text || a.element_id}" and it moved to ` +
+                          `${hostOf(landed.url)}. Work from the new page state.` };
+      }
+
       return { summary: `clicked "${btn?.text || a.element_id}" (${a.reason})` };
     }
 
     case "done": {
       if (a.outcome === "submitted") {
-        await updateApplyRun(run.id, {
-          status: "submitted", finished_at: new Date().toISOString(),
-        });
-        return { terminal: true, status: "submitted", summary: a.note };
+        // The model saying it submitted is a claim, not evidence — and it is
+        // the least impartial witness available, having just spent eight steps
+        // trying to. Held to the same standard as the submit click itself: the
+        // page must have moved on or said thank you.
+        const after = await observe(tabId).catch(() => null);
+        const confirmed = !!after &&
+          (after.url !== state.url || CONFIRMATION_RE.test(after.text || ""));
+
+        if (confirmed) {
+          await updateApplyRun(run.id, {
+            status: "submitted", finished_at: new Date().toISOString(),
+          });
+          return { terminal: true, status: "submitted", summary: a.note };
+        }
+        await pauseRun(run, tabId,
+          "The run believes it submitted, but the page showed no confirmation — " +
+          "please check whether the application actually went through.");
+        return { terminal: true, status: "paused_needs_human", pausedTabId: tabId,
+                 summary: `claimed submitted, unconfirmed: ${a.note}` };
       }
       // "ready_to_submit" without having clicked anything means the model
       // believes it is finished but did not press the button. Treat that as a
       // hand-off rather than assuming success.
       await pauseRun(run, tabId, `Form looks complete but was not submitted: ${a.note}`);
-      return { terminal: true, status: "paused_needs_human", summary: a.note };
+      return { terminal: true, status: "paused_needs_human", pausedTabId: tabId,
+               summary: a.note };
     }
 
     case "pause":
       await pauseRun(run, tabId, a.reason, a.blocking_element_id
         ? [{ reason: a.reason, jcaId: a.blocking_element_id }] : []);
-      return { terminal: true, status: "paused_needs_human", summary: a.reason };
+      return { terminal: true, status: "paused_needs_human", pausedTabId: tabId,
+               summary: a.reason };
 
     default:
       return { summary: `unknown tool ${call.name}`, isError: true };

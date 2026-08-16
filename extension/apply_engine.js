@@ -18,6 +18,22 @@
 // nothing anywhere has to re-derive a selector and hope it still matches.
 
 (function () {
+  // ── one engine per frame, no matter how we got here ───────────────────────
+  //
+  // This file arrives two ways: the manifest's content_scripts on a matched
+  // host, and chrome.scripting.executeScript from ensureEngine — which now
+  // injects into every frame, because the application is so often in an embed.
+  // Both land in the same isolated world, so on a matched host the second copy
+  // can see the first.
+  //
+  // Two live copies is not harmless duplication. Each registers its own
+  // onMessage listener and both call sendResponse for the same message, and
+  // `seq` below restarts at 0 while the data-jca-id attributes from the first
+  // copy are still on the elements — so a freshly stamped `f1` collides with an
+  // older, different `f1`. The model is then shown one element and acts on
+  // another.
+  if (window.JobCopilotApplyEngine) return;
+
   const A = window.JobCopilotAutofill;
   const MAX_LABEL = 160;
   const MAX_OPTIONS = 25;
@@ -31,7 +47,15 @@
     if (!el.dataset.jcaId) el.dataset.jcaId = `${prefix}${++seq}`;
     return el.dataset.jcaId;
   }
-  const byId = (jcaId) => document.querySelector(`[data-jca-id="${CSS.escape(jcaId)}"]`);
+  // Ambiguity is treated as "not found" on purpose. If two elements ever carry
+  // the same id — the double-injection case above, or a form that re-mounted
+  // while we were reading it — acting on `[0]` silently fills the wrong box,
+  // and the run looks like it worked. A visible "no element" error is the
+  // better failure: the model retries, and the step log records it.
+  const byId = (jcaId) => {
+    const all = document.querySelectorAll(`[data-jca-id="${CSS.escape(jcaId)}"]`);
+    return all.length === 1 ? all[0] : null;
+  };
 
   function visible(el) {
     if (!el || !el.isConnected) return false;
@@ -263,12 +287,18 @@
   /** The whole page as the model sees it. */
   function observe() {
     const { choices, consent } = collectChoices();
+    // `isForm` decides whether a control called "Apply" is understood to SEND
+    // an application, so it stays strict. `isFillable` decides whether the free
+    // rule-based pass is worth running, and is deliberately looser — a Lever
+    // quick-apply is three controls and a dropzone. See autofill.js.
     const isForm = !!A?.findForm?.();
+    const isFillable = A?.looksFillable ? !!A.looksFillable() : isForm;
     return {
       url: location.href,
       title: clip(document.title, 120),
       step: stepIndicator(),
       isForm,
+      isFillable,
       fields: collectFields(),
       choices,
       consent,
@@ -372,8 +402,14 @@
 
     if (el.tagName === "INPUT" && el.type === "file") {
       el.files = dt.files;
+      const took = !!el.files.length;
       fire(el, "input", "change");
-      return { ok: !!el.files.length };
+      // `accepted` records that the assignment landed BEFORE the change handler
+      // ran. A React uploader typically reads the file in that handler, posts
+      // it, and then clears `input.files` — so re-reading afterwards says
+      // "empty" for an upload that in fact succeeded. upload.js needs to tell
+      // that apart from an assignment the browser refused outright.
+      return { ok: took, accepted: took, cleared: took && !el.files.length };
     }
 
     // A drop zone with no reachable input. Sending the drop sequence the
@@ -393,12 +429,57 @@
     return { attached: !!f, name: f?.name || null };
   }
 
+  // ── which frame is the application in? ────────────────────────────────────
+  //
+  // A great many employers embed the ATS — Greenhouse, SmartRecruiters,
+  // Personio, Workday — in an iframe on their own careers page. The top frame
+  // is then marketing copy with no form in it at all, and the form lives in a
+  // child frame on a different origin.
+  //
+  // The engine runs in every frame, so "which frame do we drive" has to be
+  // decided rather than assumed. This scores the frame it runs in; the worker
+  // asks every frame and drives the winner. Cheap on purpose — it runs once per
+  // frame per navigation and must not walk the whole DOM.
+  function frameScore() {
+    const inputs = document.querySelectorAll(
+      "input:not([type=hidden]):not([type=submit]):not([type=button]), " +
+      "select, textarea, [contenteditable=true]");
+    const files = document.querySelectorAll("input[type=file]");
+    const forms = document.querySelectorAll("form");
+
+    const APPLY_RE =
+      /\b(apply|bewerben|bewerbung|submit|absenden|senden|continue|weiter|next)\b/i;
+    let controls = 0;
+    for (const b of document.querySelectorAll(
+      "button, input[type=submit], [role=button], a[href]")) {
+      const t = (b.innerText || b.value || b.getAttribute("aria-label") || "").trim();
+      if (t && t.length < 60 && APPLY_RE.test(t)) controls++;
+    }
+
+    // A frame nobody can see is never the right answer, however many inputs it
+    // has — tracking pixels and prefetch frames are 0x0 and full of them.
+    const visible = window.innerWidth > 40 && window.innerHeight > 40;
+
+    return {
+      score: visible
+        ? inputs.length * 3 + files.length * 6 + forms.length * 2 + controls * 4
+        : 0,
+      inputs: inputs.length,
+      files: files.length,
+      controls,
+      area: window.innerWidth * window.innerHeight,
+      url: location.href,
+      isTop: window.top === window,
+    };
+  }
+
   // ── message bridge ────────────────────────────────────────────────────────
 
   chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
     if (msg?.target !== "jca-engine") return;
     try {
       switch (msg.type) {
+        case "FRAME_SCORE": sendResponse({ ok: true, ...frameScore() }); break;
         case "OBSERVE":     sendResponse({ ok: true, state: observe() }); break;
         case "ACT":         sendResponse(act(msg.action)); break;
         case "ATTACH_FILE": sendResponse(attachFile(msg.jcaId, msg.name, msg.base64, msg.mime)); break;

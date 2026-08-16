@@ -245,6 +245,10 @@ export async function pump() {
     // None of that work was ever going to run. So don't claim it.
     if (!(await gateQueuedDomains(skip))) return;
 
+    // Every run this pass has already put back. See the guard below — without
+    // it the pass can claim the same row forever.
+    const requeued = new Set();
+
     for (;;) {
       if (stopRequested) { emit({ type: "stopped" }); break; }
 
@@ -256,9 +260,37 @@ export async function pump() {
       // so the per-run check stays. `attempts` is given back: a run that was
       // claimed and immediately requeued was never actually attempted.
       const reason = skip.get(run.domain) ||
-        await canRun(run.domain).then((g) => (g.ok ? null : g.reason));
+        await canRun(run.domain)
+          .then((g) => (g.ok ? null : g.reason))
+          // A Supabase blip here used to throw straight out of the pump, past a
+          // `finally` with no catch, leaving the row we had *already* flipped to
+          // `running` stuck there forever. Treat an unreadable health row as
+          // runnable: the run's own error handling is the backstop.
+          .catch(() => null);
 
       if (reason) {
+        // ── the livelock guard ────────────────────────────────────────────────
+        //
+        // Requeueing restores the row's original `created_at`, and
+        // `claim_apply_run` orders by (tier, created_at) and knows nothing about
+        // client-side pacing. So the very next claim handed back the SAME row.
+        // `skip` was set by then, making `reason` truthy without any await, and
+        // `anyRunnableOutside` stayed true because another domain had queued
+        // work — so the loop span thousands of claim/requeue cycles a minute,
+        // `pumping` never went false, and every later pump() returned at the
+        // top. The queue simply stopped, showing "Queued" forever, and pressing
+        // Apply did nothing at all.
+        //
+        // One requeue per run per pass. The second sighting means the queue has
+        // nothing else to give us.
+        if (requeued.has(run.id)) {
+          await updateApplyRun(run.id, {
+            status: "queued", attempts: Math.max(0, (run.attempts || 1) - 1),
+          }).catch(() => {});
+          break;
+        }
+        requeued.add(run.id);
+
         skip.set(run.domain, reason);
         await updateApplyRun(run.id, {
           status: "queued", attempts: Math.max(0, (run.attempts || 1) - 1),
@@ -290,7 +322,18 @@ export async function pump() {
       // its health row says — no point claiming its next job to find out again.
       if (status === "blocked") skip.set(run.domain, "blocked during this pass");
 
-      await sleep(nextGapMs(run.tier));
+      // Pace only after a run that actually sent something.
+      //
+      // This gap exists so we don't hammer a site with applications. A run that
+      // paused for a permission or a consent box in ten seconds sent nothing —
+      // and sleeping the full tier gap after it meant five Workday postings
+      // that each paused instantly took the best part of an hour to walk, with
+      // the user watching a queue that appeared to be doing nothing.
+      //
+      // `recordSuccess` is also the only writer of `last_applied_at`, so a
+      // non-submitted run leaves the domain's pacing clock untouched and the
+      // per-run `canRun` check below stays consistent with this.
+      await sleep(status === "submitted" ? nextGapMs(run.tier) : 1200);
     }
   } finally {
     pumping = false;
@@ -391,6 +434,38 @@ export async function retry(runId) {
   });
   emit({ type: "queued", runId });
   pump();
+}
+
+/**
+ * The all-sites permission has just been granted — release everything that was
+ * parked waiting for exactly that.
+ *
+ * Without this, granting fixed nothing that had already stopped. `pump()` gates
+ * on `gateQueuedDomains()`, which only looks at rows with status `queued`, so a
+ * shelf of `paused_needs_human` runs — every one of them stopped by the missing
+ * permission — stayed exactly where it was. The user granted the thing they
+ * were asked for and watched nothing happen.
+ *
+ * Matched on the recorded reason rather than a status code, because that is
+ * what there is; `pause_help.js` matches the same wording to decide when to
+ * show the button in the first place.
+ */
+const GRANT_PAUSE_RE =
+  /access to sites outside the job boards|one extra permission|auto-apply on all sites|couldn't inject|cannot access contents|must request permission/i;
+
+export async function resumeAfterGrant() {
+  const runs = (await activeApplyRuns()) || [];
+  const parked = runs.filter((r) =>
+    r.status === "paused_needs_human" && GRANT_PAUSE_RE.test(r.pause_reason || ""));
+
+  for (const r of parked) {
+    await updateApplyRun(r.id, {
+      status: "queued", pause_reason: null, error: null, finished_at: null,
+    }).catch(() => {});
+    emit({ type: "queued", runId: r.id });
+  }
+  if (parked.length) pump();
+  return { resumed: parked.length };
 }
 
 export async function status() {

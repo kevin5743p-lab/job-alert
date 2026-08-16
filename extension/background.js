@@ -1172,8 +1172,26 @@ async function ensureScanAlarm() {
   });
 }
 
-chrome.runtime.onInstalled.addListener(() => { ensureScanAlarm(); });
-chrome.runtime.onStartup.addListener(() => { ensureScanAlarm(); });
+// The queue is drained on wake as well as on demand. An MV3 worker is killed
+// freely, and a browser restart used to leave whatever was queued sitting there
+// until the user happened to open the dashboard and something else nudged the
+// pump.
+chrome.runtime.onInstalled.addListener(() => {
+  ensureScanAlarm();
+  router.pump().catch(console.warn);
+});
+chrome.runtime.onStartup.addListener(() => {
+  ensureScanAlarm();
+  router.pump().catch(console.warn);
+});
+
+// Granting the all-sites permission — from the dashboard banner, Settings, or
+// onboarding — releases every run that stopped for the want of it. Listening in
+// the worker rather than in the page that asked means it works whichever of the
+// three did the asking, and survives that page being closed straight after.
+chrome.permissions.onAdded.addListener(() => {
+  router.resumeAfterGrant().catch(console.warn);
+});
 
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name !== SCAN_ALARM) return;
@@ -1265,6 +1283,14 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
           router.pump();
           sendResponse({ ok: true });
           break;
+        case "APPLY_RESUME_AFTER_GRANT": {
+          // Everything that stopped for the missing permission goes back in the
+          // queue. Granting it and having nothing move is the whole reason this
+          // exists.
+          const r = await router.resumeAfterGrant();
+          sendResponse({ ok: true, ...r });
+          break;
+        }
         case "APPLY_RESUME_SITE":
           // Lift a quarantine the user knows is stale — they granted the
           // permission, or closed the tab themselves. Half throttle, so a site

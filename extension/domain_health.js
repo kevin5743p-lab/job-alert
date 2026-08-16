@@ -291,6 +291,11 @@ const OUR_FAULT = [
   // is the one users will hit most, so leaving it out would have left the
   // original bug in place behind a nicer error string.
   /one extra permission|auto-apply on all sites/i,
+  // host_access.js's current wording, which shares no phrase with the line
+  // above. A list of strings drifts every time a message is reworded, which is
+  // why runApply now also attributes failures structurally — see
+  // `contactedDomain` there. This stays as the second line of defence.
+  /access to sites outside the job boards/i,
   /the tab was closed/i,           // the user stopped the run, or closed the tab
   /hasn't been tailored yet/i,     // the packet is missing on our side
   /allowance|quota_exceeded/i,     // out of budget; nothing to do with the site

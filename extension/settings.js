@@ -12,6 +12,7 @@
 // account so a second laptop picks them up.
 
 import * as sb from "./supabase.js";
+import { hasAllSites, requestAllSites } from "./host_access.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) =>
@@ -194,11 +195,14 @@ async function refreshAllowance(signedIn) {
 // ── the all-sites permission ────────────────────────────────────────────────
 // chrome.permissions.request must be called from a user gesture, which is why
 // it lives on a button and can't be done from the worker mid-run.
-const ALL_SITES = { origins: ["https://*/*"] };
+//
+// The pattern set lives in host_access.js so this page, onboarding, the
+// dashboard banner and the worker's pre-flight all ask the same question. They
+// did not: this page asked about https only, while a run could be sent to an
+// http careers site, fail, and be told to enable something already enabled.
 
 async function refreshGrantUI() {
-  let granted = false;
-  try { granted = await chrome.permissions.contains(ALL_SITES); } catch { /* older Chrome */ }
+  const granted = await hasAllSites();
 
   els.grantHosts.textContent = granted
     ? "Enabled ✓ — auto-apply works on any employer site"
@@ -214,7 +218,7 @@ async function refreshGrantUI() {
 
 els.grantHosts.addEventListener("click", async () => {
   try {
-    const granted = await chrome.permissions.request(ALL_SITES);
+    const granted = await requestAllSites();
     await refreshGrantUI();
     if (!granted) {
       els.grantHint.textContent =

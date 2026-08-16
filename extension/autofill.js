@@ -19,6 +19,11 @@
 // name", "Vorname") are stable even when the markup is not.
 
 (function () {
+  // See the matching guard in apply_engine.js. This file is injected both by
+  // the manifest and by ensureEngine, and a second copy would reset the id
+  // counter this and apply_engine both stamp with.
+  if (window.JobCopilotAutofill) return;
+
   // Inputs we must never fill, matched against the same haystack. Ordered
   // first — a match here vetoes any other spec.
   const BLOCKED = [
@@ -1043,11 +1048,46 @@
   }
 
   // True when the page looks like an application form rather than a listing.
+  // ── two different questions, which used to be one ─────────────────────────
+  //
+  // "Is there a form here I should run the rule pass over?" and "is a button
+  // labelled Apply on this page SENDING an application rather than opening
+  // one?" are not the same question, and answering both with one ≥3-visible-
+  // inputs test was wrong in both directions.
+  //
+  // Too loose: a OneTrust/Cookiebot banner is four checkboxes — Necessary,
+  // Performance, Functional, Targeting — so a plain job advert with a cookie
+  // wall counted as a form. The run then treated the advert's "Apply" link as a
+  // submit button, ran the gate against a page with no fields and no answers,
+  // and stopped on step two of an application it had never opened.
+  //
+  // Too strict: a Lever quick-apply is name, email and a CV dropzone, and gets
+  // no rule pass at all.
+  //
+  // So: checkboxes and radios no longer make something submittable, and the
+  // fillable test is separately generous.
+
+  /** Controls a person actually types or chooses an answer into. */
+  function applicationControls() {
+    return Array.from(document.querySelectorAll(
+        "input, textarea, select, [contenteditable=true]"))
+      .filter((el) => !["hidden", "submit", "button", "checkbox", "radio", "search", "image", "reset"]
+        .includes((el.type || "").toLowerCase()))
+      .filter((el) => !el.closest("header, nav, footer, [role=search]"))
+      .filter(controlVisible);
+  }
+
+  /** Worth running the rule-based fill and planning uploads on? Deliberately loose. */
+  function looksFillable() {
+    const controls = applicationControls();
+    const files = document.querySelectorAll('input[type="file"]').length;
+    return controls.length >= 1 &&
+           (files > 0 || !!document.querySelector("form") || controls.length >= 3);
+  }
+
+  /** Is a control labelled "Apply"/"Submit" here SENDING an application? */
   function findForm() {
-    const inputs = Array.from(document.querySelectorAll("input, textarea, select"))
-      .filter((el) => !["hidden", "submit", "button"].includes((el.type || "").toLowerCase()))
-      .filter(visible);
-    return inputs.length >= 3;
+    return applicationControls().length >= 3;
   }
 
   // Keys the model is allowed to choose from — exactly the profile fields we
@@ -1062,7 +1102,7 @@
   const isBlockedField = (el) => isBlocked(haystack(el), el);
 
   window.JobCopilotAutofill = {
-    fill, findForm, FIELD_SPECS, PROFILE_KEYS,
+    fill, findForm, looksFillable, controlVisible, FIELD_SPECS, PROFILE_KEYS,
     collectOpenQuestions, applyAnswers,
     collectFileInputs, classifyFile, stampId,
     fieldLabel, groupQuestion, isBlockedField, haystack,

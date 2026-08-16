@@ -7,6 +7,7 @@
     "storage",
     "activeTab",
     "scripting",
+    "tabs",
     "alarms",
     "notifications",
     "downloads",
@@ -23,7 +24,7 @@
     "https://*.linkedin.com/*",
     "https://*.greenhouse.io/*",
     "https://*.ashbyhq.com/*",
-    "https://jobs.lever.co/*",
+    "https://*.lever.co/*",
     "https://*.jobs.personio.de/*",
     "https://*.recruitee.com/*",
     "https://*.smartrecruiters.com/*",
@@ -45,10 +46,12 @@
     "https://*.d-vinci.de/*",
     "https://*.rexx-systems.com/*",
     "https://*.concludis.de/*",
+    "https://*.join.com/*",
     "https://join.com/*"
   ],
   "optional_host_permissions": [
-    "https://*/*"
+    "https://*/*",
+    "http://*/*"
   ],
   "icons": {
     "16": "icon16.png",
@@ -83,7 +86,7 @@
         "https://*.greenhouse.io/*",
         "https://jobs.ashbyhq.com/*",
         "https://*.ashbyhq.com/*",
-        "https://jobs.lever.co/*",
+        "https://*.lever.co/*",
         "https://*.jobs.personio.de/*",
         "https://*.recruitee.com/*",
         "https://jobs.smartrecruiters.com/*",
@@ -92,6 +95,7 @@
         "https://*.successfactors.com/*",
         "https://*.softgarden.io/*",
         "https://*.softgarden.de/*",
+        "https://*.join.com/*",
         "https://join.com/*",
         "https://*.workable.com/*",
         "https://*.taleo.net/*",

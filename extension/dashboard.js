@@ -6,6 +6,7 @@
 
 import * as sb from "./supabase.js";
 import { helpForPause, pauseLabel } from "./pause_help.js";
+import { hasAllSites, requestAllSites } from "./host_access.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) =>
@@ -716,6 +717,54 @@ async function applyToAllStrong() {
   }
 }
 
+/**
+ * Show the all-sites grant until it is given, then never again.
+ *
+ * This is the difference between "auto-apply works on LinkedIn and Greenhouse"
+ * and "auto-apply works on the site this particular employer happens to use",
+ * and until now the only place to discover that was a run dying halfway.
+ */
+async function refreshGrantBanner() {
+  const el = $("grantBanner");
+  if (!el) return;
+
+  if (await hasAllSites()) { el.hidden = true; el.innerHTML = ""; return; }
+
+  el.hidden = false;
+  el.innerHTML =
+    `<div>
+       <b>Auto-apply is limited to the job boards right now</b>
+       <span class="muted">Most employers host the actual form on their own
+       website. Chrome needs one permission to let applying work there — it asks
+       once, and nothing is sent anywhere.</span>
+     </div>
+     <button class="primary" id="grantAll">Enable on all sites</button>`;
+
+  $("grantAll").addEventListener("click", async () => {
+    // First statement in the handler: see the note in wireHandOffButtons about
+    // spending the user gesture.
+    let granted = false;
+    try { granted = await requestAllSites(); }
+    catch (e) { showMessage(`Chrome wouldn't ask: ${e.message}`, true); return; }
+
+    if (granted) {
+      await refreshGrantBanner();
+      // Everything that stopped for want of this goes back in the queue. A plain
+      // APPLY_PUMP would not have touched them: the pump only looks at rows that
+      // are `queued`, and these are all `paused_needs_human`.
+      const r = await send({ type: "APPLY_RESUME_AFTER_GRANT" }).catch(() => null);
+      showMessage(r?.resumed
+        ? `Enabled — ${r.resumed} application${r.resumed === 1 ? "" : "s"} that were ` +
+          `waiting for this are running again.`
+        : "Enabled — auto-apply now works on any employer's site.");
+      await pollApplyStatus();
+    } else {
+      showMessage("Not granted. Applying will keep working on the job boards, " +
+                  "and anything on an employer's own site gets handed back to you.", true);
+    }
+  });
+}
+
 function renderApplyPanel(st) {
   const el = document.getElementById("applyPanel");
   if (!el) return;
@@ -729,9 +778,13 @@ function renderApplyPanel(st) {
 
   const queue = active.map((r) => {
     const [label] = APPLY_LABEL[r.status] || [r.status];
+    // `error` as well as `pause_reason`. A run that ended `failed` had neither a
+    // reason shown nor a button offered — a red row and nothing to do about it.
+    // No run should ever be able to stop without saying why.
+    const why = r.pause_reason || r.error;
     return `<li><b>${esc(r.job_company || "")}</b> — ${esc(r.job_title || "")}
-      <span class="muted">${esc(r.pause_reason ? pauseLabel(r.pause_reason) : label)}</span>
-      ${r.pause_reason ? `<div class="why">${esc(r.pause_reason)}</div>${handOff(r)}` : ""}</li>`;
+      <span class="muted">${esc(why ? pauseLabel(why) : label)}</span>
+      ${why ? `<div class="why">${esc(why)}</div>${handOff({ ...r, pause_reason: why })}` : ""}</li>`;
   }).join("");
 
   // The health strip exists to make the isolation visible: when a domain is
@@ -797,20 +850,63 @@ function handOff(run) {
 
   // Primary first: it is the one that gets clicked without reading. Which one
   // that is depends on the cause — see `resume` in pause_help.js.
-  const retryFirst = help.resume === "retry";
   const btn = (primary, attrs, text) =>
     `<button ${primary ? 'class="primary" ' : ""}${attrs}>${text}</button>`;
-  const openBtn = open ? btn(!retryFirst, open, "Open the tab") : "";
-  const retryBtn = btn(retryFirst, `data-panel-retry="${esc(run.id)}"`,
+  const openBtn = open ? btn(help.resume === "manual", open, "Open the tab") : "";
+  const retryBtn = btn(help.resume === "retry", `data-panel-retry="${esc(run.id)}"`,
                        "Retry — start it again");
+  // The grant carries the run id so the same click can hand the permission over
+  // and put the job back in the queue. Asking the user to press a second button
+  // for the retry would be asking them to finish our job.
+  const grantBtn = help.resume === "grant"
+    ? btn(true, `data-grant-retry="${esc(run.id)}"`, "Enable it now") : "";
+
+  const order = help.resume === "grant" ? grantBtn + retryBtn + openBtn
+    : help.resume === "retry" ? retryBtn + openBtn
+    : openBtn + retryBtn;
 
   return `<div class="todo${help.mine ? " ours" : ""}">
       ${body}
-      <div class="todo-actions">${retryFirst ? retryBtn + openBtn : openBtn + retryBtn}</div>
+      <div class="todo-actions">${order}</div>
     </div>`;
 }
 
 function wireHandOffButtons(root) {
+  for (const btn of root.querySelectorAll("[data-grant-retry]")) {
+    btn.addEventListener("click", async () => {
+      // `permissions.request` must see the user gesture, so it goes FIRST —
+      // before any await, before disabling the button. An await here spends the
+      // gesture and Chrome rejects the request with a message about it having
+      // to be called from a user action, which is maddening to debug because
+      // the code plainly is in a click handler.
+      let granted = false;
+      try { granted = await requestAllSites(); }
+      catch (e) { showMessage(`Chrome wouldn't ask: ${e.message}`, true); return; }
+
+      if (!granted) {
+        showMessage("Not granted — so jobs on employers' own sites will keep " +
+                    "being handed back to you. You can enable it later in Settings.", true);
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = "Enabled ✓ starting…";
+      await refreshGrantBanner();
+      try {
+        // Resume everything that was waiting on this, not just the row whose
+        // button was pressed — they were all stopped by the same thing, and
+        // making the user click through them one at a time would be busywork.
+        const r = await send({ type: "APPLY_RESUME_AFTER_GRANT" }).catch(() => null);
+        if (!r?.resumed) await send({ type: "APPLY_RETRY", runId: btn.dataset.grantRetry });
+        showMessage(r?.resumed > 1
+          ? `Enabled — this and ${r.resumed - 1} other application${r.resumed === 2 ? "" : "s"} ` +
+            `waiting on it are running again.`
+          : "Enabled, and this job is running again. It won't ask a second time.");
+        await pollApplyStatus();
+      } catch (e) {
+        showMessage(`Enabled, but couldn't start the job again: ${e.message}`, true);
+      }
+    });
+  }
   for (const btn of root.querySelectorAll("[data-open-tab]")) {
     btn.addEventListener("click", async () => {
       const tabId = Number(btn.dataset.openTab);
@@ -937,6 +1033,15 @@ async function openCover(resultId, btn) {
 }
 
 async function load() {
+  // Before the sign-in check: the grant is a browser-level thing and has
+  // nothing to do with having an account. Someone who signs in later should
+  // already have been offered it.
+  refreshGrantBanner().catch(() => {});
+  // Granting from Settings, or revoking from chrome://extensions, should be
+  // reflected here without a reload.
+  chrome.permissions?.onAdded?.addListener(() => refreshGrantBanner().catch(() => {}));
+  chrome.permissions?.onRemoved?.addListener(() => refreshGrantBanner().catch(() => {}));
+
   try {
     const session = await sb.getSession();
     if (!session?.access_token) {

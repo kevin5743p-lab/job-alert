@@ -33,11 +33,26 @@ async function docBytes(storagePath) {
 
 export function clearDocCache() { bytesCache.clear(); }
 
+/**
+ * Talk to the frame the run is actually driving.
+ *
+ * `frameId` is threaded in from apply_agent rather than imported, so this file
+ * does not have to import the module that imports it. Without it these two
+ * calls broadcast to every frame and the first to answer wins — which on an
+ * employer page with an embedded ATS is the marketing top frame, where the
+ * file input does not exist. The CV then "failed to attach" on a form that was
+ * sitting in the iframe below.
+ */
+function send(tabId, frameId, message) {
+  return chrome.tabs.sendMessage(
+    tabId, { target: "jca-engine", ...message },
+    frameId != null ? { frameId } : undefined);
+}
+
 /** Ask the page whether the input actually holds a file now. */
-async function verify(tabId, jcaId) {
-  const resp = await chrome.tabs.sendMessage(tabId, {
-    target: "jca-engine", type: "FILE_STATE", jcaId,
-  }).catch(() => null);
+async function verify(tabId, frameId, jcaId) {
+  const resp = await send(tabId, frameId, { type: "FILE_STATE", jcaId })
+    .catch(() => null);
   return { attached: !!resp?.attached, name: resp?.name || null };
 }
 
@@ -50,7 +65,7 @@ async function verify(tabId, jcaId) {
  *
  * Returns { path: "datatransfer" | "cdp", name } or throws.
  */
-export async function attachDocument(tabId, { jcaId, doc, tier = 0, filename }) {
+export async function attachDocument(tabId, { jcaId, doc, tier = 0, filename, frameId }) {
   if (!doc) throw new Error(`upload: no document to attach for ${jcaId}`);
 
   const name = filename || doc.filename ||
@@ -68,14 +83,21 @@ export async function attachDocument(tabId, { jcaId, doc, tier = 0, filename }) 
   // there is, whatever the tier.
   if (doc.storagePath && (tier === 0 || !doc.diskPath)) {
     try {
-      const resp = await chrome.tabs.sendMessage(tabId, {
-        target: "jca-engine", type: "ATTACH_FILE",
+      const resp = await send(tabId, frameId, {
+        type: "ATTACH_FILE",
         jcaId, name, mime: doc.mime || "application/pdf",
         base64: await docBytes(doc.storagePath),
       });
       if (resp?.ok) {
-        const state = await verify(tabId, jcaId);
+        const state = await verify(tabId, frameId, jcaId);
         if (state.attached) return { path: "datatransfer", name: state.name };
+        // A React uploader commonly reads the file, ships it to S3, and clears
+        // `input.files` — so an empty input is not proof of failure when the
+        // page told us it took it. Trust the page's own acknowledgement here;
+        // re-attaching on this evidence uploads the CV twice.
+        if (resp.viaDrop || resp.accepted) {
+          return { path: "datatransfer", name, unverified: true };
+        }
         errors.push("DataTransfer reported success but the input stayed empty");
       } else {
         errors.push(resp?.error || "content script declined");
@@ -89,9 +111,12 @@ export async function attachDocument(tabId, { jcaId, doc, tier = 0, filename }) 
   if (doc.diskPath) {
     try {
       await withDebugger(tabId, (cdp) => setFileInputFiles(cdp, jcaId, [doc.diskPath]));
-      const state = await verify(tabId, jcaId);
+      const state = await verify(tabId, frameId, jcaId);
       if (state.attached) return { path: "cdp", name: state.name };
-      errors.push("setFileInputFiles ran but the input stayed empty");
+      // Same reasoning as Path A, and stronger here: setFileInputFiles either
+      // throws or genuinely attached the file — the browser process did the
+      // work. An empty input afterwards means the page consumed it.
+      return { path: "cdp", name, unverified: true };
     } catch (e) {
       errors.push(`cdp: ${e.message}`);
     }

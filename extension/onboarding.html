@@ -218,6 +218,19 @@
     <input id="how_heard" placeholder="e.g. LinkedIn" />
   </fieldset>
 
+  <!-- Asked here because this is the one moment the user is already setting the
+       extension up. Every other place it can be asked is somewhere they arrived
+       because something had already failed. -->
+  <fieldset id="grantBox">
+    <legend>Applying on employers' own sites</legend>
+    <p class="why">Job boards work out of the box. Most employers put the real
+      application form on their own website, and Chrome needs one permission
+      before auto-apply can fill those in. It asks once, and nothing is sent
+      anywhere.</p>
+    <button id="grantHosts" type="button">Enable auto-apply on all sites</button>
+    <p class="why" id="grantHint"></p>
+  </fieldset>
+
   <fieldset>
     <legend>Cover letter style</legend>
     <p class="why">Pick the layout for your exported cover letters. You can change it any time.</p>
