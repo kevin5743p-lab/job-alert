@@ -211,7 +211,7 @@ function saveFile(base64, filename, mime) {
  * long. That report is the evidence the page-count guarantee held, so it is
  * logged rather than discarded.
  */
-async function tailorDocx(base64, edits) {
+async function tailorDocx(base64, edits, overrides, fingerprint) {
   const Z = window.JobCopilotZip, D = window.JobCopilotDocx;
   const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
   const entries = await Z.read(bytes.buffer);
@@ -221,8 +221,13 @@ async function tailorDocx(base64, edits) {
   // dates, and it costs a few milliseconds to ask it again. An allow-list that
   // arrived stale — from a CV the user has since replaced — would let an edit
   // through onto a block that is no longer what it was.
-  const { blocks } = D.readBlocks(entries);
-  const allowed = new Set(blocks.filter((b) => b.editable).map((b) => b.id));
+  const { blocks, fingerprint: actual } = D.readBlocks(entries);
+
+  // The user's own choices, but only if they were made against THIS document.
+  // Block ids are positional, so a stale set would unlock whichever paragraph
+  // now sits at that index — which could be anything.
+  const mine = fingerprint && fingerprint === actual ? overrides : null;
+  const allowed = D.allowedIds(blocks, mine);
 
   const { entries: out, report } = D.applyEdits(entries, edits, allowed);
   const written = await Z.write(out);
@@ -254,7 +259,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         sendResponse({ ok: true, blocks, fingerprint,
                        text: window.JobCopilotDocx.extractText(entries) });
       } else if (msg.type === "TAILOR_DOCX") {
-        sendResponse({ ok: true, ...(await tailorDocx(msg.base64, msg.edits)) });
+        sendResponse({ ok: true, ...(await tailorDocx(
+          msg.base64, msg.edits, msg.overrides, msg.fingerprint)) });
       } else if (msg.type === "SAVE_PDF") {
         sendResponse({ ok: true, ...(await savePdf(msg.base64, msg.filename)) });
       } else if (msg.type === "SAVE_FILE") {

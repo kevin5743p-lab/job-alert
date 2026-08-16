@@ -156,6 +156,7 @@ export async function readCvBlocks(base64) {
 async function tailorCvDocx(tabId, { job, source, edits, applicantName, tailoredId }) {
   const { base64, report } = await ask(tabId, {
     type: "TAILOR_DOCX", base64: source.base64, edits,
+    overrides: source.overrides || null, fingerprint: source.fingerprint || null,
   });
 
   // The report is the evidence the page-count guarantee held. A rejected edit

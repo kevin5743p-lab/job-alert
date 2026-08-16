@@ -270,7 +270,7 @@ Working method: one action per turn, then look at the new page state. Multi-page
  * Returns null rather than throwing when there is nothing suitable, because
  * "this user has no Word CV" is the ordinary case for most people, not an error.
  */
-async function sourceCvDocx() {
+async function sourceCvDocx(profile) {
   const library = await primaryDocuments().catch(() => ({}));
   const cv = library.cv;
   if (!cv?.storagePath) return null;
@@ -278,7 +278,15 @@ async function sourceCvDocx() {
                  /\.docx$/i.test(cv.filename || "");
   if (!isDocx) return null;
   const base64 = await downloadApplyDoc(cv.storagePath);
-  return { base64, filename: cv.filename };
+  // Whatever the user decided in the review panel travels with the file. The
+  // fingerprint travels too, so a set of choices made against a CV they have
+  // since replaced is ignored rather than applied to the wrong paragraphs.
+  const p = profile || {};
+  return {
+    base64, filename: cv.filename,
+    overrides: p.cv_block_overrides || null,
+    fingerprint: p.cv_blocks_fingerprint || null,
+  };
 }
 
 // Goes through ai-proxy, which holds the shared Anthropic key, picks the model
@@ -836,7 +844,7 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     // drawing a new CV from JSON — their fonts, their layout, their page count.
     // Best-effort: a missing or unreadable source falls back to the renderer
     // rather than failing the run.
-    const cvDocx = await sourceCvDocx().catch(() => null);
+    const cvDocx = await sourceCvDocx(profile).catch(() => null);
 
     say(cvDocx && packet.cv_edits
       ? "Tailoring your CV and writing the cover letter…"

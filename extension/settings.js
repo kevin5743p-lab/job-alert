@@ -36,6 +36,10 @@ const els = {
   drop: $("drop"), docPick: $("doc-pick"), docFile: $("doc-file"),
   docKind: $("doc-kind"), docLabel: $("doc-label"),
   docStatus: $("doc-status"), docList: $("doc-list"), docNote: $("doc-note"),
+  wcvDrop: $("wcv-drop"), wcvPick: $("wcv-pick"), wcvFile: $("wcv-file"),
+  wcvStatus: $("wcv-status"), wcvReview: $("wcv-review"),
+  wcvBlocks: $("wcv-blocks"), wcvSave: $("wcv-save"),
+  wcvSaveStatus: $("wcv-save-status"),
 };
 
 function setStatus(el, text, tone = "ok") {
@@ -390,6 +394,195 @@ async function uploadFiles(files) {
   }
   els.docLabel.value = "";
   await loadDocuments();
+}
+
+// ── Word CV ─────────────────────────────────────────────────────────────────
+//
+// The panel that shows the user, before anything is stored, exactly which lines
+// of their CV the tailoring is allowed to touch. Parsing happens here in the
+// page — the file is read locally and only uploaded once they've seen the
+// breakdown, because "we already sent your CV somewhere, here's what we plan to
+// do to it" is the wrong order to do this in.
+//
+// The classifier is deliberately conservative and locks anything ambiguous, so
+// the common correction is a user TICKING something it left alone, not
+// untricking something it grabbed.
+
+const DOCX_MIME =
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+
+// The parsed file, held between "choose" and "save" so the bytes are uploaded
+// only once the user has agreed to the plan.
+let wordCv = null;
+
+function blockRow(block, checked) {
+  const li = document.createElement("li");
+  if (!block.editable) li.className = "locked";
+
+  const bar = document.createElement("div");
+  bar.className = "bar";
+  li.appendChild(bar);
+
+  if (block.editable) {
+    const box = document.createElement("input");
+    box.type = "checkbox";
+    box.checked = checked;
+    box.dataset.id = block.id;
+    li.appendChild(box);
+  } else {
+    // A spacer rather than a disabled checkbox: a disabled box invites the user
+    // to try clicking it, and the answer is not "not right now", it is "this is
+    // your employer's name".
+    const gap = document.createElement("div");
+    gap.className = "spacer";
+    li.appendChild(gap);
+  }
+
+  const txt = document.createElement("div");
+  txt.className = "txt";
+  txt.textContent = block.text || "(empty line)";
+  if (!block.editable && block.why) {
+    const why = document.createElement("div");
+    why.className = "why";
+    why.textContent = block.why;
+    txt.appendChild(why);
+  }
+  li.appendChild(txt);
+  return li;
+}
+
+function renderBlocks(blocks, overrides) {
+  els.wcvBlocks.replaceChildren();
+  for (const b of blocks) {
+    // Blank paragraphs are spacing, not content — showing them makes the list
+    // twice as long and says nothing.
+    if (b.kind === "blank") continue;
+    const on = overrides && b.id in overrides ? !!overrides[b.id] : b.editable;
+    els.wcvBlocks.appendChild(blockRow(b, on));
+  }
+  els.wcvReview.classList.remove("hidden");
+}
+
+async function loadWordCv(file) {
+  if (!/\.docx$/i.test(file.name)) {
+    setStatus(els.wcvStatus,
+      `${file.name} isn't a .docx. A PDF can't be edited without rebuilding it ` +
+      `and losing your layout — export a Word copy instead.`, "bad");
+    return;
+  }
+  if (file.size > MAX_BYTES) {
+    setStatus(els.wcvStatus,
+      `${file.name} is ${fmtBytes(file.size)} — the limit is 10 MB.`, "bad");
+    return;
+  }
+
+  setStatus(els.wcvStatus, `Reading ${file.name}…`, "muted");
+  try {
+    const bytes = new Uint8Array(await file.arrayBuffer());
+    const entries = await window.JobCopilotZip.read(bytes.buffer);
+    const { blocks, fingerprint } = window.JobCopilotDocx.readBlocks(entries);
+    const text = window.JobCopilotDocx.extractText(entries);
+
+    const editable = blocks.filter((b) => b.editable).length;
+    if (!editable) {
+      setStatus(els.wcvStatus,
+        `Read ${file.name}, but nothing in it could be safely reworded — every ` +
+        `line looks like a heading, a date or contact details. Tailoring will ` +
+        `fall back to writing a CV in our own layout.`, "warn");
+    }
+
+    wordCv = { file, bytes, blocks, fingerprint, text };
+    // Existing choices, if this is the same file they reviewed before.
+    const saved = await savedOverrides(fingerprint);
+    renderBlocks(blocks, saved);
+
+    setStatus(els.wcvStatus,
+      `${file.name} — ${editable} line${editable === 1 ? "" : "s"} will be ` +
+      `reworded, ${blocks.filter((b) => b.kind !== "blank").length - editable} ` +
+      `locked. Check the list, then save.`);
+  } catch (e) {
+    wordCv = null;
+    els.wcvReview.classList.add("hidden");
+    setStatus(els.wcvStatus, `Couldn't read that file: ${e.message}`, "bad");
+  }
+}
+
+/** Choices this user already made, but only for the same document. */
+async function savedOverrides(fingerprint) {
+  try {
+    const row = await sb.getProfile();
+    const p = row?.application_profile || {};
+    // Block ids are positional, so a different CV's overrides would land on
+    // whatever paragraph happens to sit at that index. Fingerprint or nothing.
+    if (p.cv_blocks_fingerprint !== fingerprint) return null;
+    return p.cv_block_overrides || null;
+  } catch {
+    return null;
+  }
+}
+
+async function saveWordCv() {
+  if (!wordCv) return;
+  if (!(await sb.getSession())) {
+    setStatus(els.wcvSaveStatus,
+      "Sign in first — your CV is stored with your account.", "warn");
+    return;
+  }
+
+  els.wcvSave.disabled = true;
+  setStatus(els.wcvSaveStatus, "Saving…", "muted");
+  try {
+    const overrides = {};
+    for (const box of els.wcvBlocks.querySelectorAll("input[type=checkbox]")) {
+      overrides[box.dataset.id] = box.checked;
+    }
+
+    await sb.uploadUserDocument({
+      kind: "cv", label: "Word CV (tailored in place)",
+      filename: wordCv.file.name, mime: DOCX_MIME, bytes: wordCv.bytes,
+    });
+
+    // cv_text as well as the file. Every grounding check compares the model's
+    // claims against the CV as prose, and the search profile is built from it;
+    // both would otherwise still be reading whatever was pasted in months ago.
+    const row = await sb.getProfile();
+    await sb.saveProfile({
+      cv_text: wordCv.text,
+      application_profile: {
+        ...(row?.application_profile || {}),
+        cv_blocks_fingerprint: wordCv.fingerprint,
+        cv_block_overrides: overrides,
+      },
+    });
+
+    const on = Object.values(overrides).filter(Boolean).length;
+    setStatus(els.wcvSaveStatus,
+      `Saved ✓ — ${on} line${on === 1 ? "" : "s"} will be tailored for each job.`);
+    if (els.cv) { els.cv.value = wordCv.text; countCv(); }
+    await loadDocuments();
+  } catch (e) {
+    setStatus(els.wcvSaveStatus, `Couldn't save: ${e.message}`, "bad");
+  } finally {
+    els.wcvSave.disabled = false;
+  }
+}
+
+els.wcvPick.addEventListener("click", () => els.wcvFile.click());
+els.wcvFile.addEventListener("change", async () => {
+  const [file] = els.wcvFile.files;
+  els.wcvFile.value = "";                 // so picking the same file twice works
+  if (file) await loadWordCv(file);
+});
+els.wcvSave.addEventListener("click", saveWordCv);
+
+for (const event of ["dragover", "dragleave", "drop"]) {
+  els.wcvDrop.addEventListener(event, (e) => {
+    e.preventDefault();
+    els.wcvDrop.classList.toggle("over", event === "dragover");
+    if (event === "drop" && e.dataTransfer.files[0]) {
+      loadWordCv(e.dataTransfer.files[0]);
+    }
+  });
 }
 
 els.docPick.addEventListener("click", () => els.docFile.click());

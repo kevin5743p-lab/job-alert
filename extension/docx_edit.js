@@ -326,8 +326,35 @@
     return { entries: out, report };
   }
 
+  /**
+   * Apply the user's own decisions on top of the classifier's.
+   *
+   * The classifier is a set of heuristics and it is wrong at the margins in
+   * both directions — it locks a bullet whose formatting it can't merge, and it
+   * may offer up a line the user considers untouchable. The review panel in
+   * settings lets them say so once, and this is where that answer is honoured.
+   *
+   * Only valid for the document the overrides were recorded against: block ids
+   * are positional, so applying one CV's choices to another would unlock
+   * whichever paragraph happens to sit at that index. The caller checks the
+   * fingerprint; this function trusts that it did.
+   *
+   * A user may only ever RESTRICT what is editable, never widen it. Ticking a
+   * line the classifier locked as an employer name would hand the model the one
+   * thing the whole design exists to keep it away from.
+   */
+  function allowedIds(blocks, overrides) {
+    const allowed = new Set();
+    for (const b of blocks) {
+      if (!b.editable) continue;
+      if (overrides && b.id in overrides && !overrides[b.id]) continue;
+      allowed.add(b.id);
+    }
+    return allowed;
+  }
+
   window.JobCopilotDocx = {
-    readBlocks, extractText, applyEdits, fingerprintBlocks,
+    readBlocks, extractText, applyEdits, fingerprintBlocks, allowedIds,
     GROWTH, GROWTH_SLACK, MIN_EDITABLE,
   };
 })();

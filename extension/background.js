@@ -145,12 +145,24 @@ async function docxCvBlocks() {
   if (!isDocx) return null;
 
   const base64 = await sb.downloadApplyDoc(cv.storagePath);
-  const { blocks, text } = await readCvBlocks(base64);
+  const { blocks, fingerprint, text } = await readCvBlocks(base64);
+
+  // The user's review-panel choices, honoured only for the document they were
+  // made against. A block they unticked is not offered to the model at all —
+  // no point spending tokens on an edit the applier will refuse.
+  const p = (await sb.getProfile().catch(() => null))?.application_profile || {};
+  const overrides = p.cv_blocks_fingerprint === fingerprint
+    ? (p.cv_block_overrides || null) : null;
+  const offered = blocks.map((b) => (
+    b.editable && overrides && b.id in overrides && !overrides[b.id]
+      ? { ...b, editable: false, why: "you locked this one" }
+      : b));
+
   // A document with nothing safe to rewrite is not worth a different prompt:
   // the model would have no edits to make and we'd lose the JSON path's
   // tailored_cv for nothing.
-  if (!blocks.some((b) => b.editable)) return null;
-  return { blocks, text };
+  if (!offered.some((b) => b.editable)) return null;
+  return { blocks: offered, text };
 }
 
 /** Tailoring against the user's own Word CV. See buildDocxPrompt. */

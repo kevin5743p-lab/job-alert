@@ -128,6 +128,37 @@
     .drop.over { border-color: var(--accent); background: var(--accent-dim); }
     .drop p { margin: 0 0 12px; color: var(--text-2); font-size: 13px; }
 
+    /* Word-CV review. The point of this list is that a glance answers "what is
+       it allowed to touch?", so the swatch does the work and the text is
+       secondary — a locked line should read as locked before it is read. */
+    .wcv-legend { display: flex; gap: 18px; font-size: 12.5px;
+                  color: var(--text-3); margin: 10px 0 6px; }
+    .wcv-legend span { display: flex; align-items: center; gap: 6px; }
+    .sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+    .sw.edit { background: #16a34a; }
+    .sw.lock { background: var(--text-3); opacity: .45; }
+
+    /* No inner scroll. This is a review screen and the whole point is that the
+       user reads every line before agreeing to it; a nested scrollbar inside a
+       page that also scrolls is the reliable way to have half the list never
+       looked at. A long CV makes a long page, which is correct here. */
+    .wcv-blocks { list-style: none; margin: 10px 0 0; padding: 0;
+                  border: 1px solid var(--line); border-radius: 8px; }
+    .wcv-blocks li { display: flex; gap: 10px; align-items: flex-start;
+                     padding: 9px 12px; border-bottom: 1px solid var(--line);
+                     font-size: 13px; line-height: 1.45; }
+    .wcv-blocks li:last-child { border-bottom: none; }
+    .wcv-blocks li.locked { color: var(--text-3); background: rgba(0,0,0,.02); }
+    .wcv-blocks .bar { width: 3px; align-self: stretch; border-radius: 2px;
+                       background: #16a34a; flex-shrink: 0; }
+    .wcv-blocks li.locked .bar { background: var(--text-3); opacity: .35; }
+    .wcv-blocks .txt { flex: 1; min-width: 0; word-break: break-word; }
+    .wcv-blocks .why { font-size: 11.5px; color: var(--text-3);
+                       text-transform: uppercase; letter-spacing: .04em;
+                       margin-top: 2px; }
+    .wcv-blocks input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; }
+    .wcv-blocks .spacer { width: 13px; flex-shrink: 0; }
+
     .docs { list-style: none; margin: 18px 0 0; padding: 0; }
     .docs li {
       display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
@@ -207,6 +238,7 @@
     <div class="cols">
       <nav id="nav">
         <a href="#account">Account</a>
+        <a href="#word-cv">Your CV file</a>
         <a href="#documents">Documents</a>
         <a href="#applying">Applying</a>
         <a href="#search">Job search</a>
@@ -257,6 +289,48 @@
         </section>
 
         <!-- ── Documents ────────────────────────────────────────────────── -->
+        <!-- ── Word CV ──────────────────────────────────────────────────── -->
+        <section id="word-cv">
+          <h2>Your CV file</h2>
+          <p class="lede">Upload your CV as a Word file and it gets
+            <strong>edited</strong> for each job rather than rewritten. Your
+            layout, your fonts and your page count stay exactly as you made
+            them — only the wording of your bullet points changes.</p>
+
+          <div class="note">
+            <strong>Word (.docx) only.</strong> A PDF can't be edited without
+            rebuilding it and losing your design, so if you upload a PDF we fall
+            back to writing a CV in our own layout instead. Export from Google
+            Docs, Overleaf or Pages as .docx.
+          </div>
+
+          <div class="drop" id="wcv-drop">
+            <p>Drop your .docx here, or choose it.</p>
+            <div class="btnrow" style="justify-content:center;margin-top:14px">
+              <button id="wcv-pick" class="primary">Choose Word file</button>
+            </div>
+            <input id="wcv-file" type="file" class="hidden" accept=".docx" />
+          </div>
+          <div class="status" id="wcv-status"></div>
+
+          <!-- Filled in by settings.js once a .docx is loaded. -->
+          <div id="wcv-review" class="hidden">
+            <h3 style="margin:22px 0 4px;font-size:15px">What will change</h3>
+            <p class="lede" style="margin-top:0">Ticked lines get reworded for
+              each job. Everything else is locked and never touched. Untick
+              anything you'd rather keep exactly as written.</p>
+            <div class="wcv-legend">
+              <span><i class="sw edit"></i> will be reworded</span>
+              <span><i class="sw lock"></i> locked</span>
+            </div>
+            <ul class="wcv-blocks" id="wcv-blocks"></ul>
+            <div class="btnrow" style="margin-top:14px">
+              <button id="wcv-save" class="primary">Save these choices</button>
+              <span class="status" id="wcv-save-status"></span>
+            </div>
+          </div>
+        </section>
+
         <section id="documents">
           <h2>Documents</h2>
           <p class="lede">Your real files. The CV and cover letter for each job
@@ -472,6 +546,11 @@
     </div>
   </div>
 
+  <!-- Plain scripts, loaded before the module: the Word-CV panel parses the
+       .docx here in the page rather than sending it anywhere, so the user sees
+       what will change before anything is stored. -->
+  <script src="zip.js"></script>
+  <script src="docx_edit.js"></script>
   <script type="module" src="settings.js"></script>
 </body>
 </html>
