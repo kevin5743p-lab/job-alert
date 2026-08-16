@@ -440,7 +440,8 @@ function blockRow(block, checked) {
 
   const txt = document.createElement("div");
   txt.className = "txt";
-  txt.textContent = block.text || "(empty line)";
+  txt.textContent = block.image && !block.text
+    ? "📷 Photo" : (block.text || "(empty line)");
   if (!block.editable && block.why) {
     const why = document.createElement("div");
     why.className = "why";
@@ -455,8 +456,10 @@ function renderBlocks(blocks, overrides) {
   els.wcvBlocks.replaceChildren();
   for (const b of blocks) {
     // Blank paragraphs are spacing, not content — showing them makes the list
-    // twice as long and says nothing.
-    if (b.kind === "blank") continue;
+    // twice as long and says nothing. A photo is neither: it has no text, but
+    // it is the thing users most expect an automated tool to lose, so it is
+    // listed explicitly as kept.
+    if (b.kind === "blank" && !b.image) continue;
     const on = overrides && b.id in overrides ? !!overrides[b.id] : b.editable;
     els.wcvBlocks.appendChild(blockRow(b, on));
   }

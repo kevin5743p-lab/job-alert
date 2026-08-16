@@ -94,9 +94,32 @@
   }
 
   function paragraphRuns(p) {
-    // Only runs that actually carry text. A run holding just a <w:br> or a
-    // field code has no <w:t> and must be left exactly where it is.
+    // Only runs that actually carry text. A run holding just a <w:br>, a field
+    // code or a PICTURE has no <w:t> and must be left exactly where it is.
     return Array.from(tag(p, "r")).filter((r) => tag(r, "t").length > 0);
+  }
+
+  /**
+   * Does this paragraph carry a picture?
+   *
+   * German CVs put a Bewerbungsfoto in the document far more often than not,
+   * usually in a table cell in the header block. Rewriting such a paragraph is
+   * safe — the image lives in a run of its own with no <w:t>, so the text
+   * collapse never touches it, and word/media is copied through untouched.
+   *
+   * DELETING one is not safe, and that is the hole this closes. A photo
+   * paragraph that also carries a caption is long enough to be classified as
+   * editable, and "editable" includes the model returning null to drop it. That
+   * would remove the <w:drawing> along with the caption and silently strip the
+   * candidate's photo out of their CV — leaving an orphaned image in
+   * word/media that nothing references. Tested: a drop of an image paragraph is
+   * now refused and reported.
+   *
+   * Both element names, because <w:pict> is the older VML form and plenty of
+   * CVs are still built from templates that emit it.
+   */
+  function hasImage(p) {
+    return tag(p, "drawing").length > 0 || tag(p, "pict").length > 0;
   }
 
   /**
@@ -196,13 +219,17 @@
       const content = text(p).trim();
       const info = classify(p, hasHeadings && !sawHeading);
       if (info.kind === "heading") sawHeading = true;
+      const image = hasImage(p);
       blocks.push({
         id: `p${i}`,
         text: content,
         chars: content.length,
-        kind: info.kind,
+        kind: image && !content ? "photo" : info.kind,
         editable: info.editable,
-        why: info.why,
+        // Worth saying out loud in the review panel: a German CV's photo is the
+        // thing users most expect an automated tool to lose.
+        why: image && !content ? "your photo — kept as is" : info.why,
+        image,
       });
     });
 
@@ -303,6 +330,13 @@
       const original = text(p).trim();
 
       if (value === null || value === "") {
+        // Never delete a paragraph holding a picture — see hasImage(). The
+        // caption goes, the photo stays.
+        if (hasImage(p)) {
+          report.rejected.push(
+            `${id}: refused to delete a line containing a photo`);
+          continue;
+        }
         p.parentNode.removeChild(p);
         report.dropped++;
         continue;

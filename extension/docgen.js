@@ -14,6 +14,7 @@
 // a job, or resuming one that paused, re-uses the PDFs instead of re-rendering.
 
 import { withDebugger, printToPDF } from "./cdp.js";
+import { docxToPdf } from "./pdf_bridge.js";
 import {
   getApplyDocuments, recordApplyDocument, uploadApplyDoc,
 } from "./supabase.js";
@@ -30,6 +31,51 @@ function slug(s, max = 40) {
     .replace(/[^A-Za-z0-9]+/g, "_")
     .replace(/^_+|_+$/g, "")
     .slice(0, max) || "Unknown";
+}
+
+/**
+ * A readable folder name \u2014 spaces and normal capitals, not a slug.
+ *
+ * These become directories the user browses in Finder, so "prognum Automotive
+ * GmbH" beats "prognum_Automotive_GmbH". Only the characters that are genuinely
+ * unsafe in a path are replaced; Chrome sanitises whatever is left.
+ *
+ * Diacritics are KEPT here, unlike slug(). A German employer called Pr\u00e4zision
+ * should appear in Finder as Pr\u00e4zision.
+ */
+function folderName(s, max = 60) {
+  return String(s || "")
+    .replace(/[/\\:*?"<>|]+/g, "-")        // illegal in a path on some OS
+    .replace(/\.+$/, "")                   // Windows dislikes a trailing dot
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, max) || "Unknown";
+}
+
+/**
+ * Where this job's documents live on disk.
+ *
+ *   JobCopilot/<Company>/<YYYY-MM-DD> <Job title>/
+ *
+ * One folder per application, grouped by employer, so six months later the
+ * question "what exactly did I send this company, and when?" has an answer that
+ * doesn't involve reading filenames. Everything used to land in one flat
+ * directory named by company AND title, which worked but produced a folder of
+ * hundreds of long filenames.
+ *
+ * The date is part of the folder rather than the filename because it dates the
+ * APPLICATION, not the file: a re-tailored CV overwrites within the same day's
+ * folder, which is what you want, while applying to the same role again next
+ * month gets its own.
+ */
+function applicationDir(job, when = new Date()) {
+  const day = [
+    when.getFullYear(),
+    String(when.getMonth() + 1).padStart(2, "0"),
+    String(when.getDate()).padStart(2, "0"),
+  ].join("-");
+  return `${DOWNLOAD_DIR}/${folderName(job.company || "Unknown company")}/` +
+         `${day} ${folderName(job.title || "Untitled role", 70)}`;
 }
 
 /**
@@ -89,15 +135,18 @@ async function renderOne(tabId, { job, packet, kind, applicantName, tailoredId,
 
   const base64 = await withDebugger(tabId, (cdp) => printToPDF(cdp));
 
-  const label = kind === "cv" ? "CV" : "Cover_Letter";
-  // The role is part of the name because the document is written for that role,
-  // and because render.js downloads with conflictAction "overwrite": two
-  // openings at one company used to produce the same path, so applying to the
-  // second silently replaced the first one's PDF on disk. The earlier job's
-  // recorded disk_path then pointed at the other job's CV, and that is the file
-  // CDP attached. Naming by company alone was the whole bug.
-  const filename = `${DOWNLOAD_DIR}/${slug(applicantName, 30)}_${label}_` +
-    `${slug(job.company, 28)}_${slug(job.title, 44)}.pdf`;
+  // The folder carries the company and the role, so the filename no longer has
+  // to. It still carries the applicant's name, because this is the file an
+  // employer receives and downloads into a directory full of other people's:
+  // "Meet Dodiya - CV.pdf" is findable there, "CV.pdf" is not.
+  //
+  // Two openings at one company used to collide — downloads use
+  // conflictAction "overwrite", so applying to the second silently replaced the
+  // first one's PDF and the earlier job's recorded disk_path pointed at the
+  // wrong file. Distinct folders per role now keep them apart.
+  const label = kind === "cv" ? "CV" : "Cover letter";
+  const filename = `${applicationDir(job)}/` +
+    `${folderName(applicantName, 40)} - ${label}.pdf`;
 
   const { diskPath, bytes } = await ask(tabId, { type: "SAVE_PDF", base64, filename });
   const storagePath = await uploadApplyDoc(job.url, kind, base64, tailoredId);
@@ -154,7 +203,7 @@ export async function readCvBlocks(base64) {
  * library landed.
  */
 async function tailorCvDocx(tabId, { job, source, edits, applicantName, tailoredId }) {
-  const { base64, report } = await ask(tabId, {
+  const { base64: docx, report } = await ask(tabId, {
     type: "TAILOR_DOCX", base64: source.base64, edits,
     overrides: source.overrides || null, fingerprint: source.fingerprint || null,
   });
@@ -168,21 +217,28 @@ async function tailorCvDocx(tabId, { job, source, edits, applicantName, tailored
     console.warn("docx tailoring held some edits back", report);
   }
 
-  const filename = `${DOWNLOAD_DIR}/${slug(applicantName, 30)}_CV_` +
-    `${slug(job.company, 28)}_${slug(job.title, 44)}.docx`;
+  // A PDF if the local converter is running, the Word file if it isn't. The
+  // conversion is LibreOffice's, so the PDF is a faithful rendering of the
+  // user's own layout rather than an HTML redraw of it — see pdf_bridge.js.
+  const pdf = await docxToPdf(docx);
+  const base64 = pdf || docx;
+  const mime = pdf ? "application/pdf" : DOCX_MIME;
+  const ext = pdf ? "pdf" : "docx";
+
+  const filename = `${applicationDir(job)}/` +
+    `${folderName(applicantName, 40)} - CV.${ext}`;
 
   const { diskPath, bytes } = await ask(tabId, {
-    type: "SAVE_FILE", base64, filename, mime: DOCX_MIME,
+    type: "SAVE_FILE", base64, filename, mime,
   });
   const storagePath = await uploadApplyDoc(job.url, "cv", base64, tailoredId);
 
   await recordApplyDocument({
     job_url: job.url, kind: "cv", storage_path: storagePath,
-    disk_path: diskPath, filename: filename.split("/").pop(), bytes,
-    mime: DOCX_MIME,
+    disk_path: diskPath, filename: filename.split("/").pop(), bytes, mime,
   });
 
-  return { diskPath, storagePath, mime: DOCX_MIME, report };
+  return { diskPath, storagePath, mime, report, converted: !!pdf };
 }
 
 export async function ensureDocuments({ job, packet, applicantName, tailoredId,
