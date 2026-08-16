@@ -28,7 +28,22 @@ export const MAX_TOKENS = 2200;
  * being silently cut in half.
  */
 export const TAILOR_MAX_TOKENS = 8000;
-const CV_LIMIT = 4000;
+/**
+ * How much of the CV reaches the model.
+ *
+ * Was 4000, which was under the length of a real two-page CV — a live one
+ * measured 4233 characters, so the last 233 were dropped on every single call.
+ * A CV ends with languages, availability and "what I'm looking for", which is
+ * exactly the material the cover-letter prompt asks the model to quote in its
+ * closing paragraphs. So the truncation removed the facts the letter needed and
+ * the model filled the hole itself: one live letter claimed an availability
+ * date and a language level the model had never been shown.
+ *
+ * 12000 covers a long two-page CV whole. It costs about 3000 input tokens on
+ * Haiku — a third of a cent — and it is the cheapest fabrication fix available,
+ * because a fact the model can see is a fact it does not have to guess.
+ */
+const CV_LIMIT = 12000;
 const JD_LIMIT = 3000;
 // The ranking pass reads far less of each posting than the judging pass. It
 // only has to tell an engineering role from a marketing one, and the title plus
@@ -143,15 +158,38 @@ weak answer, it is a false document in the candidate's name.
 - You may REORDER entries, DROP irrelevant ones, and REPHRASE bullets to
   emphasise what this job asks for. You may not add an entry, a skill, a tool
   or a number that is not in the CV.
+- KEEP EVERY SECTION THE CV HAS. Dropping entries inside a section is editing;
+  dropping the section is deleting part of the candidate's record. Education in
+  particular must always appear, as must their most recent role and their
+  highest qualification, however little the posting asks for them. A CV that
+  arrives with no Education section reads as a gap, not as focus.
 - Every bullet must be traceable to the entry it sits under.
 - Keep every "Skills" item to words that appear in the CV.
 - Order sections the way this job would want them read, and put the entries
   that matter most to this posting first within each section.
 
-COVER LETTER — this is the part candidates are judged on, so make it specific:
+${COVER_LETTER_RULES}
+
+Aim for 4-7 items in "relevant_experience". Respond with ONLY the JSON object.`;
+}
+
+/**
+ * The cover-letter half of the prompt, shared by both CV paths.
+ *
+ * Extracted when the .docx path arrived and needed the identical rules. Two
+ * copies of a 40-line prompt is how the tailoring rules and tailor.py quietly
+ * drifted apart in the first place, and the anti-fabrication clauses in here
+ * are the ones it costs most to lose from one branch.
+ */
+const COVER_LETTER_RULES = `COVER LETTER — this is the part candidates are judged on, so make it specific:
 - Write the BODY ONLY: no letterhead, no date, no subject line, no "Dear ...",
   no sign-off and no name. Those are added around it automatically.
-- 4 to 6 paragraphs, 300-450 words, separated by blank lines.
+- 5 or 6 paragraphs separated by blank lines, and BETWEEN 340 AND 450 WORDS.
+  Count them before you answer. Letters written to this prompt come back at
+  260-320 words far more often than not, which is a page half-filled: it reads
+  as though the candidate had little to say. If your draft is under 340 words,
+  the fix is more specifics from the CV — a named tool, a number, an outcome —
+  not more adjectives.
 - Follow this arc:
   1. Who the candidate is right now (course/role and institution/employer) and
      what they are applying for.
@@ -167,9 +205,134 @@ COVER LETTER — this is the part candidates are judged on, so make it specific:
   credible; adjectives are not.
 - Never invent anything. No flattery ("your esteemed company"), no clichés
   ("I am a hard worker"), no repeating the job ad back.
-- First person, warm but professional, plain language.
+- NOTHING IN "missing_keywords" MAY BE CLAIMED HERE, in any tense. You have
+  just listed those as things the CV does not show, and the letter is the same
+  document set — writing that the candidate is doing, pursuing, studying for,
+  holding or about to obtain one of them contradicts your own analysis and puts
+  a false claim in their name. A live letter did exactly this: it listed a
+  licence under missing_keywords, then wrote "I am also pursuing" it. Saying
+  they are willing to learn something is fine. Saying they have started is not.
+- Do NOT turn "suggestions" into sentences. Those are advice for the candidate
+  about what they could do next; the letter reports only what is already true.
+- Availability, notice period and start date: state them ONLY if the CV states
+  them. If it does not, say nothing about when they can start — do not write
+  "available immediately", and do not infer a date from anything.
+- Language levels: exactly as the CV writes them. If the CV says B1, do not
+  write "working proficiency"; if the CV is silent on a language, omit it.
+- First person, warm but professional, plain language.`;
 
-Aim for 4-7 items in "relevant_experience". Respond with ONLY the JSON object.`;
+/**
+ * Tailoring for a candidate who uploaded their own Word CV.
+ *
+ * The other prompt asks the model to WRITE a CV, and the renderer then draws it
+ * in our layout. This one asks it to EDIT the user's, and nothing is drawn at
+ * all — their file comes back as their file, with different words in a handful
+ * of paragraphs. See docx_edit.js for why that is both better and, once you
+ * notice how small the edit surface is, easier.
+ *
+ * The model never sees XML and cannot create a paragraph. It is handed the
+ * blocks that were classified as safe to rewrite and may return, for each, new
+ * text or null. Everything else about the document is beyond its reach — which
+ * is a stronger anti-fabrication guarantee than any instruction, because there
+ * is physically nowhere to put an invented employer.
+ */
+export function buildDocxPrompt(job, blocks, cvText, language = "en") {
+  const langName = LANG_NAME[language] || "English";
+  const desc = (job.description || "").slice(0, JD_LIMIT);
+
+  const editable = blocks.filter((b) => b.editable);
+  const list = editable.map((b) =>
+    `  {"id": "${b.id}", "kind": "${b.kind}", "max_chars": ${budgetFor(b.chars)}, ` +
+    `"text": ${JSON.stringify(b.text)}}`).join(",\n");
+
+  // Locked blocks are shown, without ids, purely as context. The model writes
+  // better bullets when it can see which employer they sit under, and showing
+  // them with no id is the clearest possible way to say "read, do not touch".
+  const context = blocks.filter((b) => !b.editable && b.text)
+    .map((b) => `  [${b.kind}] ${b.text}`).join("\n");
+
+  return `You are an expert career coach editing a candidate's existing CV for \
+ONE specific job. Write in ${langName}.
+
+=== JOB POSTING ===
+Title: ${job.title || "N/A"}
+Company: ${job.company || "N/A"}
+Location: ${job.location || "N/A"}
+Description:
+${desc}
+
+=== THE CANDIDATE'S CV (the ONLY source of truth about them) ===
+${(cvText || "").slice(0, CV_LIMIT)}
+
+=== BLOCKS YOU MAY EDIT ===
+[
+${list}
+]
+
+=== BLOCKS YOU MAY NOT EDIT (context only — they have no id for a reason) ===
+${context}
+
+=== YOUR TASK ===
+Rewrite the editable blocks so this CV argues for THIS job, then write a cover
+letter.
+
+HOW EDITING WORKS:
+- Return new text for a block, or null to remove it. You cannot add a block,
+  and you cannot touch anything not in the editable list.
+- MAX_CHARS IS A HARD LIMIT, not a suggestion. This is the candidate's real
+  document with their real page breaks; a block that grows pushes their
+  one-page CV onto a second page, which is a worse outcome than not tailoring
+  at all. An edit over its limit is discarded and the original kept, so going
+  long does not get you a longer bullet — it gets you no edit.
+- Leave a block out of your answer entirely if it is already right for this
+  job. Rewriting for the sake of it makes a CV worse.
+- Drop a block (null) only when it is genuinely irrelevant here AND its entry
+  keeps at least one bullet. Never leave an employer or a degree with nothing
+  underneath it — that reads as a gap, not as focus.
+
+WHAT YOU MAY AND MAY NOT CHANGE:
+- You MAY re-emphasise, re-order the words within a bullet, lead with the part
+  this job cares about, and use the posting's vocabulary where the CV genuinely
+  supports it.
+- You MAY NOT introduce a tool, a technology, a number, a result, a client, a
+  responsibility or a qualification that is not already in this CV. Not one.
+  Every word of every rewrite must be traceable to the block you are rewriting
+  or to the entry it sits under.
+- Do not translate. Do not "standardise" job titles or company names. If the
+  block is in German, the rewrite is in German.
+- Keep the same grammatical shape: a bullet that starts with a past-tense verb
+  still starts with a past-tense verb.
+
+Return a JSON object in EXACTLY this shape:
+{
+  "fit_score": <int 0-100 — 85+ outstanding, 70-84 strong, 50-69 worth a look,
+                below 50 poor. Be strict, and score 0 if it is a different
+                profession, needs years of experience the CV lacks, or demands
+                fluent German the CV doesn't show>,
+  "fit_summary": "<one honest sentence on overall fit, strengths and gaps>",
+  "tailored_summary": "<3-4 sentence summary tuned to THIS role, from the CV>",
+  "cv_edits": {"<block id>": "<new text, within max_chars>", "<block id>": null},
+  "matched_keywords": ["<job requirement the CV genuinely supports>"],
+  "missing_keywords": ["<job requirement the CV does NOT support>"],
+  "suggestions": ["<honest positioning tip or gap-mitigation>"],
+  "cover_letter": "<the BODY of the cover letter — see rules below>"
+}
+
+${COVER_LETTER_RULES}
+
+Respond with ONLY the JSON object.`;
+}
+
+/**
+ * The character budget for one block.
+ *
+ * Mirrors docx_edit.js's GROWTH and GROWTH_SLACK, which is where the limit is
+ * actually enforced. Telling the model a number the validator disagrees with
+ * would produce edits that are silently discarded and a CV that came back
+ * untailored for no visible reason.
+ */
+function budgetFor(chars) {
+  return Math.floor(chars * 1.08) + 12;
 }
 
 /**
@@ -616,6 +779,33 @@ function normalizeCv(raw) {
   return { headline: str(raw.headline), summary: str(raw.summary), sections };
 }
 
+/**
+ * The .docx path's answer: a map of block id to replacement text, or null to
+ * drop the block.
+ *
+ * Shape-only, like normalizeCv. Whether an edit is ALLOWED (is that block
+ * editable? is it within its character budget?) is decided in docx_edit.js,
+ * against the document itself — this function has never seen the CV and is in
+ * no position to judge. All it does is throw away entries that aren't
+ * "id → string | null" so the applier can trust what it iterates.
+ *
+ * Returns null rather than {} when there is nothing usable, so callers can tell
+ * "this is a docx packet with no edits" from "this is not a docx packet".
+ */
+function normalizeEdits(raw) {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
+  const out = {};
+  for (const [id, value] of Object.entries(raw)) {
+    if (!/^p\d+$/.test(id)) continue;
+    if (value === null) { out[id] = null; continue; }
+    const text = typeof value === "string" ? value.trim() : "";
+    // An empty string means the same thing as null coming from a model that
+    // dislikes nulls, and the applier already treats the two alike.
+    out[id] = text || null;
+  }
+  return Object.keys(out).length ? out : null;
+}
+
 export function normalize(result) {
   const out = {};
   for (const key of ["fit_summary", "tailored_summary", "cover_letter"]) {
@@ -630,6 +820,7 @@ export function normalize(result) {
   const fit = parseInt(result.fit_score, 10);
   out.fit_score = Number.isFinite(fit) ? Math.max(0, Math.min(100, fit)) : null;
   out.tailored_cv = normalizeCv(result.tailored_cv);
+  out.cv_edits = normalizeEdits(result.cv_edits);
 
   const exp = [];
   for (const item of result.relevant_experience || []) {
@@ -719,4 +910,197 @@ export function cvGroundingWarnings(cv, cvText) {
 function wordSet(text) {
   const words = (text || "").toLowerCase().match(/[a-zäöüß0-9]+/g) || [];
   return new Set(words.filter((w) => w.length > 2));
+}
+
+/**
+ * The cover letter's own guardrail — the one that was missing.
+ *
+ * groundingWarnings checks relevant_experience and cvGroundingWarnings checks
+ * the CV, so between them every structured field was verified. The letter, the
+ * one part of the packet written as free prose and the part an employer
+ * actually reads, was checked by nothing at all. A live packet went out saying
+ * "I am also pursuing the Prototypenführerschein" — a licence the CV never
+ * mentions, which the model had itself listed under missing_keywords and
+ * recommended under suggestions one field earlier.
+ *
+ * That failure is what makes this checkable without a second model call. The
+ * model has already written down what the candidate lacks; we only have to
+ * notice when the letter contradicts it. Three checks, in falling order of
+ * confidence:
+ *
+ *   1. a gap named in missing_keywords turning up in the letter
+ *   2. an availability or start-date claim the CV does not support
+ *   3. a language level the CV does not state
+ *
+ * These are ADVISORY. A letter may legitimately mention a gap — "I am keen to
+ * learn Vector tools" is honest and good — so this cannot be an auto-reject
+ * without throwing away decent letters. It surfaces the sentence and lets a
+ * human decide, which is the same contract as every other warning here.
+ */
+
+// Words too common to identify anything. A missing keyword of "Experience in
+// automotive testing" must not match the letter on "experience" alone.
+const COMMON = new Set([
+  "experience", "knowledge", "skills", "years", "tools", "work", "working",
+  "professional", "technical", "systems", "system", "development", "engineering",
+  "management", "analysis", "design", "testing", "documented", "related",
+  "relevant", "strong", "good", "with", "and", "the", "for", "erfahrung",
+  "kenntnisse", "jahre", "gute", "sehr", "und", "oder", "mit",
+  // Added after the first run over live packets flagged all of these. They are
+  // the words a gap phrase and an honest sentence share by coincidence: the gap
+  // "delta testing workflows" matched a letter describing "repair workflows",
+  // which is a real thing the candidate did and no claim about the gap at all.
+  "workflow", "workflows", "process", "processes", "measurement", "driving",
+  "vehicle", "prozess", "prozesse", "erfahrungen",
+  // Advice vocabulary. suggestions are whole sentences of it, and every one of
+  // these words turns up in an ordinary cover letter without meaning anything.
+  "consider", "obtaining", "before", "after", "immediately", "concrete",
+  "achievable", "credential", "employers", "explicitly", "position",
+  "positioning", "mention", "clarify", "include", "including", "interview",
+  "interviews", "willingness", "express", "frame", "framing", "highlight",
+  "emphasise", "emphasize", "demonstrate", "consider", "should", "could",
+  "would", "which", "their", "there", "these", "those", "about", "candidate",
+]);
+
+/** The words in a phrase that actually identify it. */
+function distinctive(phrase) {
+  return (String(phrase || "").toLowerCase().match(/[a-zäöüß][a-zäöüß0-9-]{4,}/g) || [])
+    .filter((w) => !COMMON.has(w));
+}
+
+const escapeRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * Whole-word containment, not substring.
+ *
+ * Substring matching read "signal processing" as a claim about the gap
+ * "Automotive SPICE ... process experience", because "processing" contains
+ * "process". German compounds are the reason this still works for the case that
+ * matters: "Prototypenführerschein" appears in the letter as its own word, so a
+ * word-boundary test finds it without needing to match its parts.
+ */
+function mentions(haystack, term) {
+  return new RegExp(`\\b${escapeRe(term)}\\b`, "i").test(haystack);
+}
+
+/**
+ * The sentence a term appears in, windowed around the term itself.
+ *
+ * Truncating from the start of the sentence hid the very word being flagged —
+ * the letter joins clauses with semicolons, so the sentence carrying "Vector"
+ * ran past 120 characters before reaching it and the excerpt showed none of
+ * the relevant half.
+ */
+function sentenceWith(text, term, width = 130) {
+  for (const s of String(text).split(/(?<=[.!?])\s+|\n+/)) {
+    const at = s.toLowerCase().indexOf(term);
+    if (at === -1) continue;
+    const sentence = s.trim();
+    if (sentence.length <= width) return sentence;
+    const from = Math.max(0, at - Math.floor(width / 3));
+    return (from ? "…" : "") + sentence.slice(from, from + width).trim() +
+           (from + width < sentence.length ? "…" : "");
+  }
+  return "";
+}
+
+const AVAILABILITY = /\b(available|availability|start(ing)? (date|immediately|from)|immediate(ly)?|notice period|verf(ü|ue)gbar|ab sofort|kündigungsfrist|eintrittstermin)\b/i;
+const CV_STATES_AVAILABILITY = /\b(available|availability|start(ing)? date|notice period|from \d|verf(ü|ue)gbar|ab sofort|kündigungsfrist|eintrittstermin|immediately)\b/i;
+const LANG_CLAIM_G = /\b(fluent|native|mother ?tongue|business[- ]level|working proficiency|conversational|[ABC][12])\b/gi;
+
+export function coverLetterWarnings(result, cvText) {
+  const letter = String(result?.cover_letter || "");
+  if (!letter.trim()) return [];
+
+  const lower = letter.toLowerCase();
+  const cv = String(cvText || "").toLowerCase();
+
+  // Warnings carry the sentence they came from so duplicates can be collapsed
+  // at the end. One bad sentence can trip several checks at once — "available
+  // to start immediately" is both an availability claim and, if a suggestion
+  // used the word, a gap mention — and three warnings pointing at one sentence
+  // read as three problems.
+  const found = [];
+  const warn = (message, sentence) => found.push({ message, sentence });
+
+  // 1. Gaps the model named, then wrote about anyway.
+  //
+  // Both lists, not just missing_keywords. suggestions is the other half of the
+  // same leak and arguably the more dangerous one, because a suggestion is by
+  // definition something the candidate has NOT done yet — "consider obtaining
+  // the Prototypenführerschein" is advice, and the letter turned it into "I am
+  // also pursuing the Prototypenführerschein". Checking only missing_keywords
+  // caught the live case by luck, because that packet happened to list the
+  // licence in both; a packet that mentions it in one would have gone out clean.
+  //
+  // One warning per phrase, keyed on its longest matching term. Per-term would
+  // be noisier and mostly duplicated: German compounds contain their own parts,
+  // so "Prototypenführerschein" matches on "prototype", "prototypen" and the
+  // whole word, and three warnings about one sentence is a wall to scroll past.
+  const seen = new Set();
+  const claims = [...(result?.missing_keywords || []),
+                  ...(result?.suggestions || [])];
+  for (const gap of claims) {
+    // A term already in the CV is not a gap the letter invented, whatever the
+    // model put in missing_keywords — the CV is the source of truth.
+    const hits = distinctive(gap)
+      .filter((t) => !mentions(cv, t) && mentions(lower, t))
+      .sort((a, b) => b.length - a.length);
+    if (!hits.length || seen.has(hits[0])) continue;
+    seen.add(hits[0]);
+    const sentence = sentenceWith(letter, hits[0]);
+    warn(
+      `the letter mentions "${hits[0]}", which you listed as a gap — check it ` +
+      `reads as willingness, not as a claim` +
+      (sentence ? `: "${sentence}"` : ""), sentence);
+  }
+
+  // 2. An availability claim needs a CV that says something about availability.
+  if (AVAILABILITY.test(letter) && !CV_STATES_AVAILABILITY.test(cv)) {
+    const sentence = sentenceWith(letter, "available") ||
+                     sentenceWith(letter, "immediately");
+    warn(
+      `the letter states when you can start, but your CV doesn't say` +
+      (sentence ? `: "${sentence}"` : ""), sentence);
+  }
+
+  // 3. Language levels are checked verbatim, because "B1" and "working
+  //    proficiency" are different claims and only one of them may be yours.
+  const levels = new Set();
+  for (const m of letter.matchAll(LANG_CLAIM_G)) {
+    const level = m[0].toLowerCase();
+    if (levels.has(level) || cv.includes(level)) continue;
+    levels.add(level);
+    warn(`the letter describes a language level as "${m[0]}", which is not how ` +
+         `your CV words it`, sentenceWith(letter, level));
+  }
+
+  // Collapse to one warning per offending sentence, keeping the first — the
+  // checks run in falling order of confidence, so the first is the most useful
+  // description of what is wrong with it.
+  const bySentence = new Set();
+  return found.filter(({ sentence }) => {
+    if (!sentence) return true;
+    if (bySentence.has(sentence)) return false;
+    bySentence.add(sentence);
+    return true;
+  }).map((w) => w.message);
+}
+
+/**
+ * A letter far under the target length reads as a page half-filled.
+ *
+ * Separate from the fabrication checks because it is a quality signal rather
+ * than a correctness one, but it shares their delivery: the panel already shows
+ * a warnings list, and this belongs in it. The prompt asks for 340-450 words;
+ * live packets came back at 261, 270, 287, 296, 304, 309 and 318. 300 is the
+ * floor for complaining, so a letter that lands just under target doesn't nag.
+ */
+export function coverLetterLengthWarning(result) {
+  const letter = String(result?.cover_letter || "").trim();
+  if (!letter) return null;
+  const words = letter.split(/\s+/).filter(Boolean).length;
+  if (words >= 300) return null;
+  return `the cover letter is ${words} words — short for a full letter (aim ` +
+         `340-450); re-tailor if it reads thin`;
 }

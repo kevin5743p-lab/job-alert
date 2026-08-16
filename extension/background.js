@@ -8,10 +8,12 @@
 import { buildPrompt, buildAnswersPrompt, buildFieldMapPrompt, buildFieldFillPrompt,
          buildSearchProfilePrompt, buildRankPrompt, buildSingleScorePrompt, normalize,
          groundingWarnings, cvGroundingWarnings, cvFingerprint,
-         buildTailorMessages, extractJson,
+         coverLetterWarnings, coverLetterLengthWarning,
+         buildTailorMessages, buildDocxPrompt, extractJson,
          DEFAULT_MODEL, MAX_TOKENS, TAILOR_MAX_TOKENS }
          from "./tailor_core.js";
 import { callClaude } from "./ai_client.js";
+import { readCvBlocks } from "./docgen.js";
 import * as sb from "./supabase.js";
 import { fetchAll, prefilter, prioritise, locationRank, validateTargets,
          pickKnownBoards, enrichDescriptions } from "./finder.js";
@@ -120,6 +122,54 @@ async function callClaudeTailor(job, cvText, language) {
     // goes in the message because that is the number that identifies which.
     const used = reply?.usage?.output_tokens ?? "?";
     console.warn("Tailoring hit max_tokens", { used, cap: TAILOR_MAX_TOKENS });
+    throw new Error(
+      `The tailored packet was cut short at ${used} tokens. This is a bug — ` +
+      `please report it rather than retrying, since each attempt is charged.`);
+  }
+
+  return normalize(extractJson(text));
+}
+
+/**
+ * The user's Word CV, parsed into blocks — or null if they haven't got one.
+ *
+ * Parsing costs a background tab, so it is only done for users who actually
+ * have a .docx on file, and only on the path that can use the result.
+ */
+async function docxCvBlocks() {
+  const library = await sb.primaryDocuments().catch(() => ({}));
+  const cv = library.cv;
+  if (!cv?.storagePath) return null;
+  const isDocx = /officedocument\.wordprocessingml/.test(cv.mime || "") ||
+                 /\.docx$/i.test(cv.filename || "");
+  if (!isDocx) return null;
+
+  const base64 = await sb.downloadApplyDoc(cv.storagePath);
+  const { blocks, text } = await readCvBlocks(base64);
+  // A document with nothing safe to rewrite is not worth a different prompt:
+  // the model would have no edits to make and we'd lose the JSON path's
+  // tailored_cv for nothing.
+  if (!blocks.some((b) => b.editable)) return null;
+  return { blocks, text };
+}
+
+/** Tailoring against the user's own Word CV. See buildDocxPrompt. */
+async function callClaudeTailorDocx(job, docxCv, language) {
+  const reply = await callClaude({
+    task: "tailor",
+    system: "You are an expert career coach and CV writer. You answer with a " +
+            "single JSON object and nothing else — no prose, no code fences.",
+    messages: [{ role: "user",
+                 content: buildDocxPrompt(job, docxCv.blocks, docxCv.text, language) }],
+    max_tokens: TAILOR_MAX_TOKENS,
+    jobUrl: job?.url || null,
+  });
+
+  const text = (reply?.content || [])
+    .filter((b) => b.type === "text").map((b) => b.text).join("");
+
+  if (reply?.stop_reason === "max_tokens") {
+    const used = reply?.usage?.output_tokens ?? "?";
     throw new Error(
       `The tailored packet was cut short at ${used} tokens. This is a bug — ` +
       `please report it rather than retrying, since each attempt is charged.`);
@@ -1066,14 +1116,33 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         }
       }
 
-      const result = signedIn
-        ? await callClaudeTailor(msg.job, cv, lang || "en")
-        : await callGroq(msg.job, cv, groqApiKey, model, lang || "en");
+      // If this user keeps their CV as a Word file, tailor THAT rather than
+      // writing a new one from scratch. Their formatting, their layout, their
+      // page count — see docx_edit.js. Only on the signed-in path: it needs the
+      // document library, which lives behind the account.
+      const docxCv = signedIn ? await docxCvBlocks().catch((e) => {
+        // A CV we can't parse is a reason to fall back to the JSON path, not to
+        // fail the tailoring the user is waiting on.
+        console.warn("Couldn't read the Word CV, using the renderer path:", e);
+        return null;
+      }) : null;
+
+      const result = docxCv
+        ? await callClaudeTailorDocx(msg.job, docxCv, lang || "en")
+        : signedIn
+          ? await callClaudeTailor(msg.job, cv, lang || "en")
+          : await callGroq(msg.job, cv, groqApiKey, model, lang || "en");
       // The CV's facts are checked separately and more strictly than the
       // letter's claims: an employer verifies a CV, so a title or employer that
       // isn't in the source has to be surfaced, not smoothed over.
+      //
+      // The letter gets its own pass. It used to get none — the two checks
+      // above cover relevant_experience and tailored_cv, so the one part of
+      // the packet written as free prose was the one part nothing verified.
       const warnings = groundingWarnings(result, cv)
-        .concat(cvGroundingWarnings(result.tailored_cv, cv));
+        .concat(cvGroundingWarnings(result.tailored_cv, cv))
+        .concat(coverLetterWarnings(result, cv))
+        .concat(coverLetterLengthWarning(result) || []);
 
       // Persist the run + track the job. Best-effort: a save failure must not
       // lose the result the user is waiting for.

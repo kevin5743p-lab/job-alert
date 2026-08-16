@@ -11,8 +11,17 @@
     String(s || "").replace(/[&<>"]/g, (c) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  // Page 1: tailored highlights. Page 2: cover letter.
-  function build(job, r) {
+  // The CV, then tailored highlights, then the cover letter.
+  //
+  // `opts.appendix: false` drops the highlights section. That section is a
+  // working document — "Tailored highlights / For: <job title> — <company> ·
+  // <date>", then the summary, the matched bullets and the keyword list — and
+  // it was going out ATTACHED TO APPLICATIONS, stapled to the end of the CV,
+  // because the auto-apply renderer reused the dashboard's preview document
+  // whole. It tells an employer, in so many words, that the CV was generated
+  // against their advert. It belongs on screen and nowhere near a form.
+  function build(job, r, opts) {
+    const appendix = !opts || opts.appendix !== false;
     const exp = (r.relevant_experience || [])
       .map((e) => `<li>${esc(e.bullet)}</li>`).join("");
     const skills = (r.matched_keywords || []).map((k) => esc(k)).join(" · ");
@@ -79,7 +88,8 @@
     it: press Ctrl&nbsp;+&nbsp;P (⌘&nbsp;+&nbsp;P on a Mac) instead.</span>
   </div>
 
-  ${cvHtml(r.tailored_cv, job)}
+  ${cvHtml(r.tailored_cv, job, opts && opts.profile)}
+  ${appendix ? `
   <h1>Tailored highlights</h1>
   <div class="muted">For: ${esc(job.title || "")} — ${esc(job.company || "")} · ${esc(today)}</div>
 
@@ -89,6 +99,7 @@
   <h2>Most relevant experience</h2>
   <ul>${exp}</ul>
   ${skills ? `<h2>Key matching skills</h2><p>${skills}</p>` : ""}
+  ` : ""}
 
   <div class="page-break"></div>
   <h1>Cover letter</h1>
@@ -181,9 +192,36 @@
     </div>`;
   }
 
-  function cvHtml(cv, job) {
+  /**
+   * The name and contact line at the head of the CV.
+   *
+   * This was blank on every document the pipeline has ever produced. The old
+   * code read `cv.name || job.applicantName` and `job.applicantContact`, and
+   * NEITHER IS EVER SET: the tailoring normaliser emits no `name` field, and
+   * docgen.js passes a job object of {url, title, company}. So the <h1> was
+   * empty and the contact <div> was never rendered at all — every auto-applied
+   * CV went out with no name, no email and no phone number on it.
+   *
+   * Reading the profile directly is the fix. The profile is the one place that
+   * reliably holds these, it is already loaded before documents are rendered,
+   * and it cannot be quietly dropped by a normaliser that doesn't know about it.
+   */
+  function applicantHead(profile, job) {
+    const p = profile || {};
+    const name = [p.first_name, p.last_name].filter(Boolean).join(" ") ||
+                 p.full_name || job.applicantName || "";
+    const contact = [
+      p.email, p.phone,
+      [p.address, [p.postal_code, p.city].filter(Boolean).join(" "), p.country]
+        .filter(Boolean).join(", "),
+      p.linkedin_url, p.github_url, p.website_url,
+    ].filter(Boolean).join(" · ") || job.applicantContact || "";
+    return { name, contact };
+  }
+
+  function cvHtml(cv, job, profile) {
     if (!cv || !cv.sections || !cv.sections.length) return "";
-    const contact = [job.applicantContact || ""].filter(Boolean).join(" · ");
+    const { name, contact } = applicantHead(profile, job);
     const sections = cv.sections.map((sec) => {
       const body = sec.entries && sec.entries.length
         ? sec.entries.map(cvEntry).join("")
@@ -193,7 +231,7 @@
 
     return `
   <div class="cv-head">
-    <h1>${esc(cv.name || job.applicantName || "")}</h1>
+    <h1>${esc(name)}</h1>
     ${cv.headline ? `<div class="cv-headline">${esc(cv.headline)}</div>` : ""}
     ${contact ? `<div class="cv-contact">${esc(contact)}</div>` : ""}
   </div>
@@ -202,8 +240,8 @@
   <div class="page-break"></div>`;
   }
 
-  function open_(job, r) {
-    openHtml(build(job, r));
+  function open_(job, r, opts) {
+    openHtml(build(job, r, opts));
   }
 
   window.JobCopilotPrintDoc = { build, open: open_, openHtml };

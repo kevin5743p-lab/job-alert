@@ -463,8 +463,15 @@
 
   // The printable document builder lives in print_doc.js so the dashboard page
   // can reuse the exact same layout (loaded before this script in the manifest).
+  // The CV needs the profile for the same reason the cover letter does: the
+  // name and contact line at the head of the document come from there. Without
+  // it the <h1> renders empty and the contact <div> is skipped entirely, which
+  // is what every document this pipeline produced used to look like.
   function openPrintDoc(job, r) {
-    window.JobCopilotPrintDoc.open(job, r);
+    sendMessage({ type: "GET_FILL_DATA", url: job.url }, (resp) => {
+      const profile = (resp && resp.ok && resp.applicationProfile) || {};
+      window.JobCopilotPrintDoc.open(job, r, { profile });
+    });
   }
 
   function renderResult(job, r, warnings, meta = {}) {

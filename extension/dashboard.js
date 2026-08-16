@@ -999,10 +999,15 @@ async function openPacket(resultId, btn) {
   const original = btn.textContent;
   btn.textContent = "Loading…";
   try {
-    const row = await sb.getTailoredResult(resultId);
+    // The profile carries the name and contact line at the head of the CV —
+    // without it the document renders with an empty <h1>.
+    const [row, profile] = await Promise.all([
+      sb.getTailoredResult(resultId), sb.getProfile(),
+    ]);
     if (!row) { showMessage("That tailored result no longer exists.", true); return; }
     window.JobCopilotPrintDoc.open(
-      { title: row.job_title, company: row.job_company }, row.packet || {});
+      { title: row.job_title, company: row.job_company }, row.packet || {},
+      { profile: profile?.application_profile || {} });
     showMessage("");
   } catch (e) {
     showMessage(`Couldn't open the packet: ${e.message}`, true);

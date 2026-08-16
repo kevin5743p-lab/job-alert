@@ -29,8 +29,12 @@ const MODE_COVER = "cover_letter";
  * other. Walking backwards from `pre.letter` rather than matching on the "Cover
  * letter" heading text keeps this working if that wording is ever translated.
  */
-function paint(job, packet, mode) {
-  const html = window.JobCopilotPrintDoc.build(job, packet);
+function paint(job, packet, mode, profile) {
+  // appendix:false — the "Tailored highlights" section is a working document
+  // for the dashboard, not something to staple to an employer's copy of the CV.
+  // See print_doc.js's build().
+  const html = window.JobCopilotPrintDoc.build(job, packet,
+    { appendix: false, profile });
   const parsed = new DOMParser().parseFromString(html, "text/html");
 
   // ── clear the last pass ───────────────────────────────────────────────────
@@ -95,6 +99,39 @@ function paint(job, packet, mode) {
   document.title = mode === MODE_COVER ? "Cover letter" : "CV";
 }
 
+/**
+ * Paint the cover letter through the user's chosen template.
+ *
+ * The whole document — letterhead, date, subject line, salutation, sign-off —
+ * comes from cover_templates.js, which is what the dashboard's "open cover
+ * letter" button has always used. The auto-apply path did not: it took the
+ * combined print_doc.js document and cut the letter out of it, which meant the
+ * file attached to real applications was an <h1> reading "Cover letter", the
+ * company name, and the raw body in a <pre>. No name, no contact details, no
+ * greeting and nothing to sign off with.
+ *
+ * Falls back to the print_doc half if the template builder is unavailable, so
+ * a missing script degrades to the old behaviour rather than to a blank page.
+ */
+function paintCover(job, packet, profile, language) {
+  const T = window.JobCopilotCoverTemplates;
+  if (!T) { paint(job, packet, MODE_COVER); return; }
+
+  const html = T.buildCoverLetter(job, packet, profile || {}, language || "en");
+  const parsed = new DOMParser().parseFromString(html, "text/html");
+
+  document.querySelectorAll("style[data-jca-render]").forEach((el) => el.remove());
+  parsed.querySelectorAll("style").forEach((s) => {
+    const copy = s.cloneNode(true);
+    copy.setAttribute("data-jca-render", "doc");
+    document.head.appendChild(copy);
+  });
+  document.body.innerHTML = parsed.body.innerHTML;
+  // The template's own print toolbar is guidance for a human at a dialog.
+  document.querySelector(".bar")?.remove();
+  document.title = "Cover letter";
+}
+
 /** Resolve once the layout has settled, so printToPDF sees a finished page. */
 function settled() {
   return new Promise((resolve) => {
@@ -116,9 +153,22 @@ function settled() {
  * the completed state instead of assuming the name we asked for.
  */
 function savePdf(base64, filename) {
+  return saveFile(base64, filename, "application/pdf");
+}
+
+/**
+ * The same writer, for any file type.
+ *
+ * Split out when the .docx path arrived: a tailored Word CV is attached to the
+ * form directly rather than being converted, because nothing in a browser can
+ * turn a .docx into a PDF without re-rendering it through HTML and discarding
+ * the formatting the whole feature exists to preserve. Most ATS accept .docx,
+ * and parse it more reliably than PDF.
+ */
+function saveFile(base64, filename, mime) {
   return new Promise((resolve, reject) => {
     const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
-    const url = URL.createObjectURL(new Blob([bytes], { type: "application/pdf" }));
+    const url = URL.createObjectURL(new Blob([bytes], { type: mime || "application/pdf" }));
 
     chrome.downloads.download(
       { url, filename, saveAs: false, conflictAction: "overwrite" },
@@ -149,17 +199,66 @@ function savePdf(base64, filename) {
   });
 }
 
+/**
+ * Tailor the user's own .docx and hand back the edited file.
+ *
+ * The whole job is three calls into docx_edit.js; it lives here rather than in
+ * the service worker because parsing WordprocessingML needs DOMParser, which
+ * MV3 workers do not have. Same reason this tab exists for PDFs.
+ *
+ * Returns base64 so it can cross the message boundary, plus the applier's
+ * report — how many blocks were rewritten, dropped, or rejected for being too
+ * long. That report is the evidence the page-count guarantee held, so it is
+ * logged rather than discarded.
+ */
+async function tailorDocx(base64, edits) {
+  const Z = window.JobCopilotZip, D = window.JobCopilotDocx;
+  const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+  const entries = await Z.read(bytes.buffer);
+
+  // Re-classify rather than trusting an allow-list sent over the wire: the
+  // classifier is the thing that knows which paragraphs are employer names and
+  // dates, and it costs a few milliseconds to ask it again. An allow-list that
+  // arrived stale — from a CV the user has since replaced — would let an edit
+  // through onto a block that is no longer what it was.
+  const { blocks } = D.readBlocks(entries);
+  const allowed = new Set(blocks.filter((b) => b.editable).map((b) => b.id));
+
+  const { entries: out, report } = D.applyEdits(entries, edits, allowed);
+  const written = await Z.write(out);
+
+  let binary = "";
+  for (const b of written) binary += String.fromCharCode(b);
+  return { base64: btoa(binary), report };
+}
+
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg?.target !== "jca-render") return;
 
   (async () => {
     try {
       if (msg.type === "RENDER_DOC") {
-        paint(msg.job, msg.packet, msg.mode);
+        paint(msg.job, msg.packet, msg.mode, msg.profile);
         await settled();
         sendResponse({ ok: true });
+      } else if (msg.type === "RENDER_COVER") {
+        // The cover letter through the user's chosen template, not through
+        // print_doc.js's bare <pre>.
+        paintCover(msg.job, msg.packet, msg.profile, msg.language);
+        await settled();
+        sendResponse({ ok: true });
+      } else if (msg.type === "READ_DOCX_BLOCKS") {
+        const bytes = Uint8Array.from(atob(msg.base64), (c) => c.charCodeAt(0));
+        const entries = await window.JobCopilotZip.read(bytes.buffer);
+        const { blocks, fingerprint } = window.JobCopilotDocx.readBlocks(entries);
+        sendResponse({ ok: true, blocks, fingerprint,
+                       text: window.JobCopilotDocx.extractText(entries) });
+      } else if (msg.type === "TAILOR_DOCX") {
+        sendResponse({ ok: true, ...(await tailorDocx(msg.base64, msg.edits)) });
       } else if (msg.type === "SAVE_PDF") {
         sendResponse({ ok: true, ...(await savePdf(msg.base64, msg.filename)) });
+      } else if (msg.type === "SAVE_FILE") {
+        sendResponse({ ok: true, ...(await saveFile(msg.base64, msg.filename, msg.mime)) });
       } else {
         sendResponse({ ok: false, error: `unknown type ${msg.type}` });
       }

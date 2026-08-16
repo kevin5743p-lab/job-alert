@@ -36,7 +36,7 @@ import {
 } from "./domain_health.js";
 import {
   updateApplyRun, appendApplyStep, uploadPauseScreenshot, tailoredForJob,
-  getProfile, primaryDocuments,
+  getProfile, primaryDocuments, downloadApplyDoc,
 } from "./supabase.js";
 import { callClaude } from "./ai_client.js";
 
@@ -259,6 +259,28 @@ Working method: one action per turn, then look at the new page state. Multi-page
 
 // ── the model call ──────────────────────────────────────────────────────────
 //
+/**
+ * The user's own Word CV from their document library, as base64.
+ *
+ * Only a .docx qualifies. A PDF cannot be edited in place — its text is
+ * positioned glyphs with no paragraph structure, so anything claiming to edit
+ * one is really rebuilding it and discarding the layout — and a library CV in
+ * any other format is left to the renderer.
+ *
+ * Returns null rather than throwing when there is nothing suitable, because
+ * "this user has no Word CV" is the ordinary case for most people, not an error.
+ */
+async function sourceCvDocx() {
+  const library = await primaryDocuments().catch(() => ({}));
+  const cv = library.cv;
+  if (!cv?.storagePath) return null;
+  const isDocx = /officedocument\.wordprocessingml/.test(cv.mime || "") ||
+                 /\.docx$/i.test(cv.filename || "");
+  if (!isDocx) return null;
+  const base64 = await downloadApplyDoc(cv.storagePath);
+  return { base64, filename: cv.filename };
+}
+
 // Goes through ai-proxy, which holds the shared Anthropic key, picks the model
 // from the task name, and bills the call against this user's monthly allowance.
 // Nothing here knows the key, and `task` — not this file — is what decides how
@@ -809,9 +831,19 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     // between "somewhere in the first half" and knowing exactly where.
     await appendApplyStep(run.id, { kind: "start", url: run.job_url, tier: run.tier });
 
-    say("Rendering CV and cover letter…");
+    // The user's own Word CV, if they uploaded one. When it's there and the
+    // packet carries edits for it, docgen tailors that file in place instead of
+    // drawing a new CV from JSON — their fonts, their layout, their page count.
+    // Best-effort: a missing or unreadable source falls back to the renderer
+    // rather than failing the run.
+    const cvDocx = await sourceCvDocx().catch(() => null);
+
+    say(cvDocx && packet.cv_edits
+      ? "Tailoring your CV and writing the cover letter…"
+      : "Rendering CV and cover letter…");
     const docs = await ensureDocuments({
       job, packet, applicantName, tailoredId: tailored.id,
+      profile, language: profileRow?.language || "en", cvDocx,
     });
 
     // Then whatever the user has in their library, for the slots the renderer

@@ -7,7 +7,18 @@
          Page.printToPDF has a real document to render, and so we have a page
          context that can call URL.createObjectURL (an MV3 service worker
          cannot). Nothing here is ever meant to be looked at. -->
+    <!-- cover_templates.js is loaded here as well as in the dashboard: the
+         auto-apply path used to render its letter through print_doc.js, which
+         produces a bare <pre> with no letterhead, date, salutation or sign-off,
+         while the user's chosen template sat unused. Same builder both places
+         now, so what an employer receives is what the dashboard previews. -->
     <script src="print_doc.js"></script>
+    <script src="cover_templates.js"></script>
+    <!-- The .docx path: edit the user's own Word CV rather than drawing a new
+         one. Needs a page context for DOMParser, which an MV3 service worker
+         does not have — the same reason this tab exists at all. -->
+    <script src="zip.js"></script>
+    <script src="docx_edit.js"></script>
     <script src="render.js"></script>
   </head>
   <body></body>

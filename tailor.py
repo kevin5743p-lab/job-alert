@@ -54,7 +54,11 @@ DEFAULT_MODEL = "llama-3.3-70b-versatile"
 MAX_TOKENS = 2200
 
 # Cap inputs so a huge CV or JD can't blow the context / token budget.
-_CV_LIMIT = 4000
+# 4000 was under the length of a real two-page CV (a live one measured 4233),
+# so the tail — languages, availability, "what I'm looking for" — never reached
+# the model, and the closing paragraphs of the letter were written without the
+# facts they were asked to quote. Mirrors CV_LIMIT in tailor_core.js.
+_CV_LIMIT = 12000
 _JD_LIMIT = 3000
 
 _LANG_NAME = {"en": "English", "de": "German"}
@@ -126,7 +130,12 @@ Return a JSON object in EXACTLY this shape:
 COVER LETTER — this is the part candidates are judged on, so make it specific:
 - Write the BODY ONLY: no letterhead, no date, no subject line, no "Dear ...",
   no sign-off and no name. Those are added around it by the letter template.
-- 4 to 6 paragraphs, 300-450 words, separated by blank lines.
+- 5 or 6 paragraphs separated by blank lines, and BETWEEN 340 AND 450 WORDS.
+  Count them before you answer. Letters written to this prompt come back at
+  260-320 words far more often than not, which is a page half-filled: it reads
+  as though the candidate had little to say. If your draft is under 340 words,
+  the fix is more specifics from the CV — a named tool, a number, an outcome —
+  not more adjectives.
 - Follow this arc:
   1. Who the candidate is right now (course/role and institution/employer) and
      what they are applying for.
@@ -142,6 +151,20 @@ COVER LETTER — this is the part candidates are judged on, so make it specific:
   credible; adjectives are not.
 - Never invent anything. No flattery ("your esteemed company"), no clichés
   ("I am a hard worker"), no repeating the job ad back.
+- NOTHING IN "missing_keywords" MAY BE CLAIMED HERE, in any tense. You have
+  just listed those as things the CV does not show, and the letter is the same
+  document set — writing that the candidate is doing, pursuing, studying for,
+  holding or about to obtain one of them contradicts your own analysis and puts
+  a false claim in their name. A live letter did exactly this: it listed a
+  licence under missing_keywords, then wrote "I am also pursuing" it. Saying
+  they are willing to learn something is fine. Saying they have started is not.
+- Do NOT turn "suggestions" into sentences. Those are advice for the candidate
+  about what they could do next; the letter reports only what is already true.
+- Availability, notice period and start date: state them ONLY if the CV states
+  them. If it does not, say nothing about when they can start — do not write
+  "available immediately", and do not infer a date from anything.
+- Language levels: exactly as the CV writes them. If the CV says B1, do not
+  write "working proficiency"; if the CV is silent on a language, omit it.
 - First person, warm but professional, plain language.
 
 Aim for 4-7 items in "relevant_experience". Respond with ONLY the JSON object."""
