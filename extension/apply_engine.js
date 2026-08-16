@@ -184,6 +184,28 @@
         });
       }
     });
+    // Native constraint validation, which leaves no DOM behind at all.
+    //
+    // When a browser refuses a submit because `required` or `pattern` failed,
+    // it paints a bubble tooltip — not an element. So the observation after the
+    // click was byte-identical to the one before it, the model concluded its
+    // click had simply not registered, and clicked again. And again, until the
+    // step budget ran out on a form that had been telling us what was wrong the
+    // whole time.
+    //
+    // `validationMessage` is that text, and stamping the field's id onto it
+    // gives the model something to act on rather than a sentence to read.
+    document.querySelectorAll("input, select, textarea").forEach((el) => {
+      if (out.size >= 15) return;
+      if (el.disabled || typeof el.checkValidity !== "function") return;
+      if (el.checkValidity()) return;
+      if (!visible(el) && !(A?.controlVisible?.(el))) return;
+      const msg = clip(el.validationMessage, 140);
+      if (!msg) return;
+      const label = labelFor(el);
+      out.add(label ? `${msg} — "${label}" (${id(el, "f")})` : `${msg} (${id(el, "f")})`);
+    });
+
     return [...out].slice(0, 15);
   }
 
@@ -208,7 +230,14 @@
       const type = (el.type || "").toLowerCase();
       if (["hidden", "submit", "button", "image", "reset", "file",
            "checkbox", "radio"].includes(type)) return;
-      if (!visible(el) || el.disabled || el.readOnly) return;
+      // `readOnly` is no longer a reason to drop a field. Picker-backed inputs
+      // — "Earliest start date" on Personio, softgarden and rexx — are
+      // `<input readonly required>`, so the gate could not see them, the site
+      // refused the submit, and there was no element id for the model to act
+      // on. Serialised with the flag set, a direct FILL is still worth trying
+      // (jQuery-UI and flatpickr both accept it) and the model can otherwise
+      // click the calendar button next to it.
+      if (!visible(el) || el.disabled) return;
 
       const label = labelFor(el);
       // autofill's BLOCKED list — passwords, government IDs, financial details.
@@ -231,23 +260,157 @@
           .filter(Boolean).slice(0, MAX_OPTIONS);
       }
       if (el.maxLength > 0) f.maxLength = el.maxLength;
+      if (el.readOnly) {
+        f.readOnly = true;
+        f.note = "read-only — usually a picker. Try filling it; if the value " +
+                 "doesn't take, click the button next to it and choose.";
+      }
+      // The format the field will actually accept. `<input type=date>` silently
+      // refuses anything that is not yyyy-mm-dd, and without being told so the
+      // model retries the same rejected string until the budget is gone.
+      if (el.pattern) f.pattern = el.pattern;
+      if (el.placeholder) f.placeholder = clip(el.placeholder, 60);
       out.push(f);
     });
     return out;
   }
 
+  // ── ARIA widgets ──────────────────────────────────────────────────────────
+  //
+  // Half of every modern application form is not made of <select> and
+  // <input type=radio>. Workday, Ashby, Lever's newer forms and anything built
+  // on react-select or headless-ui render a `div[role=combobox]` with a popup
+  // `[role=listbox]`, and those were serialised as nothing at all — the model
+  // was shown a form with no way to answer half its questions, correctly
+  // concluded it could not finish, and paused.
+
+  /** The listbox a combobox trigger controls, open or not. */
+  function listboxFor(trigger) {
+    const ref = trigger.getAttribute("aria-controls") ||
+                trigger.getAttribute("aria-owns");
+    if (ref) {
+      const byRef = document.getElementById(ref);
+      if (byRef) return byRef;
+    }
+    // react-select mounts the menu as a sibling with no aria wiring at all.
+    const scope = trigger.closest("[class*=control], [class*=select], [class*=field]")
+                  ?.parentElement || trigger.parentElement;
+    return scope?.querySelector('[role="listbox"], [class*=menu][class*=list], [class*=options]') || null;
+  }
+
+  function optionsIn(container) {
+    if (!container) return [];
+    const nodes = container.querySelectorAll('[role="option"], li');
+    return [...nodes]
+      .filter((o) => visible(o))
+      .map((o) => ({ id: id(o, "o"), text: clip(o.innerText || o.textContent, 80),
+                     selected: o.getAttribute("aria-selected") === "true" }))
+      .filter((o) => o.text)
+      .slice(0, MAX_OPTIONS);
+  }
+
+  /** What a combobox currently reads as. */
+  function comboValue(trigger) {
+    const active = trigger.getAttribute("aria-activedescendant");
+    if (active) {
+      const node = document.getElementById(active);
+      if (node) return clip(node.innerText, 80);
+    }
+    const inner = trigger.querySelector("input")?.value;
+    return clip(inner || trigger.innerText || trigger.getAttribute("aria-label") || "", 80);
+  }
+
+  function collectAriaWidgets(claimed) {
+    const out = [];
+    const sel = '[role="combobox"], [aria-haspopup="listbox"], [role="listbox"][tabindex], ' +
+                '[role="radiogroup"]';
+
+    document.querySelectorAll(sel).forEach((el) => {
+      if (claimed.has(el) || !visible(el) || el.getAttribute("aria-disabled") === "true") return;
+      claimed.add(el);
+
+      if (el.getAttribute("role") === "radiogroup") {
+        const opts = [...el.querySelectorAll('[role="radio"]')].filter(visible);
+        if (!opts.length) return;
+        out.push({
+          id: id(el, "c"),
+          question: clip(A?.groupQuestion?.(el) || labelFor(el) ||
+                         el.getAttribute("aria-label") || ""),
+          type: "radio",
+          widget: "aria",
+          required: el.getAttribute("aria-required") === "true",
+          options: opts.map((o) => ({
+            id: id(o, "o"),
+            text: clip(o.innerText || o.getAttribute("aria-label"), 80),
+            selected: o.getAttribute("aria-checked") === "true",
+          })).slice(0, MAX_OPTIONS),
+          selected: opts.some((o) => o.getAttribute("aria-checked") === "true"),
+        });
+        return;
+      }
+
+      // A combobox's options usually do not exist in the DOM until it is
+      // opened, so an empty list here is normal and is not a reason to skip it.
+      // CHOOSE opens it, waits, and picks — see the ACT branch.
+      out.push({
+        id: id(el, "c"),
+        question: clip(labelFor(el) || el.getAttribute("aria-label") || ""),
+        type: "combobox",
+        widget: "aria",
+        required: el.getAttribute("aria-required") === "true",
+        value: comboValue(el),
+        options: optionsIn(listboxFor(el)),
+        note: "custom dropdown — CHOOSE opens it and picks the option by text",
+      });
+    });
+    return out;
+  }
+
   /** Radio groups and standalone checkboxes, split into answers vs consent. */
+  /**
+   * The radios that genuinely belong with this one.
+   *
+   * NOT `input[type=radio][name="..."]`. React forms routinely omit `name`
+   * entirely and drive the group from state, and the old query then became
+   * `[name=""]` — which matches EVERY unnamed radio on the page. Eight separate
+   * screening questions collapsed into one twenty-five-option blob, the group
+   * key became the first option's label ("Yes"), and the remaining seven
+   * questions were skipped as already-seen. The model was shown one nonsense
+   * question and never saw the rest of the form.
+   *
+   * So: trust `name` when there is one, and otherwise trust the container the
+   * markup actually groups them in.
+   */
+  function radioPeers(el) {
+    if (el.name) {
+      const named = [...document.querySelectorAll(
+        `input[type="radio"][name="${CSS.escape(el.name)}"]`)];
+      if (named.length > 1) return named;
+    }
+    const box = el.closest(
+      'fieldset, [role="radiogroup"], [class*="field"], [class*="question"], ' +
+      '[class*="option"], [data-question], li, tr');
+    const inBox = box ? [...box.querySelectorAll('input[type="radio"]')] : [];
+    return inBox.length > 1 ? inBox : [el];
+  }
+
   function collectChoices() {
     const choices = [];
     const consent = [];
-    const seenGroup = new Set();
+    // Inputs already accounted for by a group, tracked as elements rather than
+    // as label strings — two questions can legitimately share the label "Yes".
+    const claimed = new Set();
 
     document.querySelectorAll('input[type="radio"], input[type="checkbox"]')
       .forEach((el) => {
-        if (!visible(el) || el.disabled) return;
+        // controlVisible, not visible: a styled form hides the real input and
+        // paints the label, and those questions were being dropped entirely.
+        const isVisible = A?.controlVisible ? A.controlVisible(el) : visible(el);
+        if (!isVisible || el.disabled || claimed.has(el)) return;
         const label = labelFor(el) || clip(el.closest("label")?.innerText || "");
 
         if (el.type === "checkbox" && isConsent(el, label)) {
+          claimed.add(el);
           consent.push({
             id: id(el, "k"), text: label, checked: el.checked,
             required: el.required || el.getAttribute("aria-required") === "true",
@@ -256,31 +419,39 @@
         }
 
         if (el.type === "radio") {
-          const group = el.name || label;
-          if (seenGroup.has(group)) return;
-          seenGroup.add(group);
-          const peers = [...document.querySelectorAll(
-            `input[type="radio"][name="${CSS.escape(el.name || "")}"]`)];
-          const question = clip(A?.groupQuestion?.(el) || group);
+          const peers = radioPeers(el);
+          peers.forEach((p) => claimed.add(p));
+          const question = clip(A?.groupQuestion?.(el) || el.name || label);
           choices.push({
             id: id(el, "c"),
             question,
             type: "radio",
+            // Required is a property of the group, and sites mark it on the
+            // fieldset or on whichever peer they please.
+            required: peers.some((p) => p.required ||
+                        p.getAttribute("aria-required") === "true") ||
+                      !!el.closest('fieldset[aria-required="true"], [role="radiogroup"][aria-required="true"]'),
             options: peers.map((p) => ({
               id: id(p, "o"),
               text: clip(labelFor(p) || p.value, 80),
               selected: p.checked,
             })).slice(0, MAX_OPTIONS),
-            selected: peers.find((p) => p.checked) ? true : null,
+            // A plain boolean. `true | null` read as "unknown" to the gate.
+            selected: peers.some((p) => p.checked),
           });
         } else {
+          claimed.add(el);
           choices.push({
             id: id(el, "c"), question: label, type: "checkbox",
             selected: el.checked,
-            required: el.required,
+            required: el.required || el.getAttribute("aria-required") === "true",
           });
         }
       });
+
+    // Custom widgets last, so a native control is always preferred when a form
+    // has both (some render a real <select> alongside an ARIA facade).
+    choices.push(...collectAriaWidgets(claimed));
     return { choices, consent };
   }
 
@@ -318,6 +489,64 @@
     for (const t of types) el.dispatchEvent(new Event(t, { bubbles: true }));
   }
 
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  /**
+   * The thing a person would actually click for this control.
+   *
+   * Ashby, Greenhouse and every Tailwind-styled form hide the real
+   * `<input type=radio>` (`sr-only`, `opacity:0`, a zero-size box) and paint a
+   * styled label on top. `input.click()` still toggles it, but the *component*
+   * is listening on the label, so its own state never learns about the change —
+   * the box appears ticked and the site still says the question is unanswered.
+   */
+  function clickTarget(el) {
+    const r = el.getBoundingClientRect();
+    if (r.width > 1 && r.height > 1) return el;
+    return el.closest("label") ||
+           (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`)) ||
+           el.parentElement || el;
+  }
+
+  /**
+   * Click the way a mouse does, not the way `.click()` does.
+   *
+   * `HTMLElement.click()` dispatches a lone `click` event and nothing else.
+   * react-select — and most headless-UI menus, combobox and tag inputs — open
+   * on `mousedown` and never see it, so a CHOOSE on one of those did precisely
+   * nothing and the run spent its whole budget retrying an untouched dropdown.
+   *
+   * Real coordinates matter too: handlers routinely read `clientX/clientY`, and
+   * a synthetic event at 0,0 gets treated as an outside-click that closes the
+   * very menu we just opened.
+   */
+  function realClick(el) {
+    const target = clickTarget(el);
+    target.scrollIntoView({ block: "center", behavior: "instant" });
+    const r = target.getBoundingClientRect();
+    const x = r.left + r.width / 2;
+    const y = r.top + r.height / 2;
+    const base = {
+      bubbles: true, cancelable: true, composed: true, view: window,
+      clientX: x, clientY: y, button: 0, buttons: 1,
+    };
+
+    try {
+      target.dispatchEvent(new PointerEvent("pointerdown", { ...base, pointerType: "mouse", isPrimary: true }));
+    } catch { /* older engines: MouseEvent alone is enough */ }
+    target.dispatchEvent(new MouseEvent("mousedown", base));
+    try {
+      target.dispatchEvent(new PointerEvent("pointerup", { ...base, buttons: 0, pointerType: "mouse", isPrimary: true }));
+    } catch { /* as above */ }
+    target.dispatchEvent(new MouseEvent("mouseup", { ...base, buttons: 0 }));
+    target.dispatchEvent(new MouseEvent("click", { ...base, buttons: 0 }));
+
+    // Belt and braces for plain controls: if nothing above triggered the
+    // element's default behaviour (a checkbox that is still unchecked, a link
+    // that did not navigate), fall back to the native activation.
+    return target;
+  }
+
   /**
    * Set a value the way a framework will notice.
    *
@@ -336,19 +565,109 @@
     el.blur();
   }
 
-  function act(action) {
+  /** Text match used when picking from a custom dropdown. */
+  function optionMatches(text, want) {
+    const a = norm(text).toLowerCase();
+    const b = norm(want).toLowerCase();
+    return a === b || a.startsWith(b) || a.includes(b);
+  }
+
+  /**
+   * Open a custom dropdown, wait for its options, and pick one.
+   *
+   * A CHOOSE that only opened the menu left the run exactly as stuck as one
+   * that did nothing — the next observation showed an open listbox, the model
+   * clicked the trigger again, and it closed. The whole interaction has to
+   * happen inside one action.
+   */
+  async function chooseFromCombobox(el, want) {
+    realClick(el);
+
+    let box = null, opts = [];
+    for (let i = 0; i < 12; i++) {                 // ~1.8s, polled
+      await sleep(150);
+      box = listboxFor(el) ||
+            document.querySelector('[role="listbox"]:not([hidden])');
+      opts = box ? [...box.querySelectorAll('[role="option"], li')].filter(visible) : [];
+      if (opts.length) break;
+    }
+    if (!opts.length) {
+      return { ok: false, error: "the dropdown didn't open, or has no options" };
+    }
+
+    const hit = opts.find((o) => optionMatches(o.innerText || o.textContent, want));
+    if (!hit) {
+      return {
+        ok: false,
+        error: `no option matching "${want}". Available: ` +
+               opts.slice(0, 12).map((o) => `"${clip(o.innerText, 40)}"`).join(", "),
+      };
+    }
+    realClick(hit);
+    await sleep(150);
+    return { ok: true, value: clip(hit.innerText || hit.textContent, 80) };
+  }
+
+  async function act(action) {
     const el = byId(action.jcaId);
     if (!el) return { ok: false, error: `no element ${action.jcaId}` };
     el.scrollIntoView({ block: "center", behavior: "instant" });
 
     switch (action.type) {
-      case "CLICK":
-        el.click();
+      case "CLICK": {
+        const target = realClick(el);
+        // Plain controls whose default action the synthetic sequence did not
+        // trigger — some frameworks call preventDefault on mousedown.
+        if (target === el && el.tagName === "INPUT" &&
+            (el.type === "checkbox" || el.type === "radio") && !el.checked) {
+          el.click();
+        }
         return { ok: true };
+      }
 
-      case "FILL":
+      case "FILL": {
         setValue(el, action.value);
-        return { ok: true, value: clip(el.value, 120) };
+        // Report what the field actually holds now. `<input type=date>` and
+        // masked inputs silently discard a value they don't like, and without
+        // the read-back the run believed a field was filled that was empty —
+        // then failed the gate several steps later with no idea why.
+        const now = clip(el.value, 120);
+        const wanted = String(action.value || "");
+        const rejected = wanted && !now;
+        return {
+          ok: !rejected, value: now,
+          error: rejected
+            ? `the field discarded that value — it expects ${el.type || "text"}` +
+              `${el.pattern ? ` matching ${el.pattern}` : ""}` +
+              `${el.validationMessage ? ` (${el.validationMessage})` : ""}`
+            : undefined,
+          validationMessage: el.validationMessage || undefined,
+        };
+      }
+
+      case "TYPE": {
+        // For widgets that filter as you type — tag inputs, autocompletes —
+        // where assigning a value produces no keystrokes and no filtering.
+        const input = el.matches("input, textarea") ? el : el.querySelector("input, textarea");
+        if (!input) return { ok: false, error: "nothing typeable here" };
+        input.focus();
+        setValue(input, "");
+        for (const ch of String(action.text || "")) {
+          input.dispatchEvent(new KeyboardEvent("keydown", { key: ch, bubbles: true }));
+          setValue(input, input.value + ch);
+          input.dispatchEvent(new KeyboardEvent("keyup", { key: ch, bubbles: true }));
+          await sleep(25);
+        }
+        await sleep(400);                          // let the filter settle
+        if (action.thenEnter) {
+          for (const t of ["keydown", "keypress", "keyup"]) {
+            input.dispatchEvent(new KeyboardEvent(t, {
+              key: "Enter", code: "Enter", keyCode: 13, which: 13, bubbles: true,
+            }));
+          }
+        }
+        return { ok: true, value: clip(input.value, 120) };
+      }
 
       case "CHOOSE": {
         if (el.tagName === "SELECT") {
@@ -356,18 +675,46 @@
           const opt = [...el.options].find((o) =>
             o.text.toLowerCase().trim() === want || o.value.toLowerCase() === want) ||
             [...el.options].find((o) => o.text.toLowerCase().includes(want));
-          if (!opt) return { ok: false, error: `no option matching "${action.option}"` };
+          if (!opt) {
+            return { ok: false,
+              error: `no option matching "${action.option}". Available: ` +
+                     [...el.options].slice(0, 12).map((o) => `"${clip(o.text, 40)}"`).join(", ") };
+          }
           el.value = opt.value;
           fire(el, "input", "change");
           return { ok: true, value: opt.text };
         }
+
+        // A custom dropdown: no <option> anywhere, options usually not even in
+        // the DOM until it is opened.
+        if (el.getAttribute("role") === "combobox" ||
+            el.getAttribute("aria-haspopup") === "listbox") {
+          return await chooseFromCombobox(el, action.option);
+        }
+
         // Radio: the option carries its own id, so click that rather than
         // re-deriving which peer was meant.
         const target = action.optionId ? byId(action.optionId) : el;
         if (!target) return { ok: false, error: `no option ${action.optionId}` };
-        target.click();
-        fire(target, "input", "change");
-        return { ok: true, value: clip(labelFor(target), 80) };
+
+        // ARIA radio — a div, not an input. Clicking is the whole interaction.
+        if (!target.matches("input")) {
+          realClick(target);
+          await sleep(80);
+          return { ok: true, value: clip(target.innerText, 80) };
+        }
+
+        // A real radio. `.click()` runs the activation behaviour, which is what
+        // updates React's value tracker — assigning `.checked` does not, and
+        // the component then never sees the change.
+        realClick(target);
+        if (!target.checked) target.click();
+        if (!target.checked) {                     // last resort
+          target.checked = true;
+          fire(target, "input", "change");
+        }
+        return { ok: target.checked, value: clip(labelFor(target), 80),
+                 error: target.checked ? undefined : "the option would not take" };
       }
 
       case "RECT": {
@@ -481,7 +828,16 @@
       switch (msg.type) {
         case "FRAME_SCORE": sendResponse({ ok: true, ...frameScore() }); break;
         case "OBSERVE":     sendResponse({ ok: true, state: observe() }); break;
-        case "ACT":         sendResponse(act(msg.action)); break;
+        // `act` became async when CHOOSE had to open a custom dropdown, wait
+        // for its options to mount, and click one — an interaction that cannot
+        // be expressed synchronously. `return true` below already keeps the
+        // channel open; this makes sure a rejection answers rather than
+        // hanging the run for the full message timeout.
+        case "ACT":
+          Promise.resolve(act(msg.action))
+            .then(sendResponse)
+            .catch((e) => sendResponse({ ok: false, error: String(e?.message || e) }));
+          break;
         case "ATTACH_FILE": sendResponse(attachFile(msg.jcaId, msg.name, msg.base64, msg.mime)); break;
         case "FILE_STATE":  sendResponse(fileState(msg.jcaId)); break;
         case "AUTOFILL":    sendResponse({ ok: true, report: A.fill(msg.profile, msg.packet) }); break;

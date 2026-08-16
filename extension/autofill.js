@@ -587,9 +587,7 @@
         report.skipped.push({ label, reason: `no option matching "${value}"` });
         return;
       }
-      hit.checked = true;
-      hit.dispatchEvent(new Event("click", { bubbles: true }));
-      hit.dispatchEvent(new Event("change", { bubbles: true }));
+      tick(hit);
       highlight(hit.closest("label") || hit);
       report.filled.push({ label, key: spec.key });
     });
@@ -772,9 +770,7 @@
           if (isAria || !hit.type) {
             hit.click();          // a custom widget only updates via its handler
           } else {
-            hit.checked = true;
-            hit.dispatchEvent(new Event("click", { bubbles: true }));
-            hit.dispatchEvent(new Event("change", { bubbles: true }));
+            tick(hit);
           }
           highlight(hit.closest("label") || hit);
         }
@@ -881,6 +877,49 @@
   // does this — so the input itself has no size even though the control is
   // plainly on screen. Judge those by their visible label or wrapper instead,
   // otherwise every custom-styled choice question looks absent.
+  /**
+   * Tick a checkbox or radio so the framework behind it notices.
+   *
+   * `el.checked = true` is the obvious way and the wrong one. React installs a
+   * value tracker on the node; assigning the property updates that tracker, so
+   * when the `change` event arrives React compares old to new, sees no
+   * difference, and drops it. The box is visibly ticked and the component's
+   * state still says the question is unanswered — a discrepancy with no
+   * symptom until the site refuses the submit.
+   *
+   * `.click()` runs the element's activation behaviour, which sets the value
+   * through the path the tracker is watching. When the real input is hidden
+   * behind a styled label — Ashby, Greenhouse, anything Tailwind — the click
+   * has to land on that label instead, for the same reason.
+   *
+   * Note `new Event("click")` is NOT a substitute: it is not a MouseEvent, and
+   * React's synthetic handlers read properties off the native event that a
+   * plain Event does not carry.
+   */
+  function tick(el) {
+    if (el.checked) return true;
+
+    const box = el.getBoundingClientRect();
+    const hidden = box.width <= 1 || box.height <= 1;
+    const proxy = hidden
+      ? (el.closest("label") ||
+         (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`)))
+      : null;
+
+    (proxy || el).click();
+    if (el.checked) return true;
+
+    // Some components stop the label's click. Go through the native setter so
+    // the tracker is bypassed rather than merely updated, then say so.
+    const setter = Object.getOwnPropertyDescriptor(
+      HTMLInputElement.prototype, "checked")?.set;
+    setter ? setter.call(el, true) : (el.checked = true);
+    el.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+    el.dispatchEvent(new Event("change", { bubbles: true }));
+    return el.checked;
+  }
+
   function controlVisible(el) {
     if (el.disabled) return false;
     if (visible(el)) return true;

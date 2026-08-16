@@ -1,0 +1,204 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>apply_engine widget harness</title>
+<!--
+  A real DOM harness for the parts of apply_engine.js that cannot be unit
+  tested: everything here depends on layout, on real event dispatch, and on the
+  framework-shaped markup that broke it.
+
+  Each fixture is the *shape* of a real form, not a real one:
+
+    A. react-select style combobox — a div[role=combobox] whose options do not
+       exist until a mousedown opens it. `.click()` never opens it.
+    B. Ashby/Tailwind radios — the real <input> is visually hidden and a styled
+       label is painted over it, so `visible()` rejected the whole question.
+    C. React radios with NO `name` — the old peer query became [name=""], which
+       matched every unnamed radio on the page and collapsed three separate
+       questions into one.
+    D. A readonly date picker, which used to be dropped from the observation
+       entirely while the site required it.
+    E. A required-but-empty input, whose native validation message is the only
+       evidence a blocked submit ever produces.
+
+  Open in a browser; results render below and are also on window.__RESULTS__.
+-->
+<style>
+  body { font: 14px/1.5 system-ui, sans-serif; margin: 24px; max-width: 900px; }
+  fieldset { margin: 0 0 14px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .opt { display: inline-block; border: 1px solid #ccc; padding: 4px 10px; margin: 2px; border-radius: 6px; cursor: pointer; }
+  .combo { border: 1px solid #ccc; padding: 6px 10px; width: 240px; border-radius: 6px; cursor: pointer; }
+  .menu { border: 1px solid #ccc; margin-top: 2px; width: 240px; }
+  .menu [role=option] { padding: 4px 10px; cursor: pointer; }
+  #out { margin-top: 24px; border-top: 2px solid #ddd; padding-top: 16px; }
+  .pass { color: #0a7f3f; } .fail { color: #c0392b; font-weight: 600; }
+  h2 { font-size: 15px; margin: 18px 0 6px; }
+</style>
+
+<form id="app">
+  <!-- A. custom combobox: opens on mousedown only -->
+  <label id="lbl-country">Country of residence</label>
+  <div class="combo" role="combobox" aria-haspopup="listbox" aria-expanded="false"
+       aria-controls="country-menu" aria-labelledby="lbl-country" tabindex="0">Select…</div>
+  <div class="menu" id="country-menu" role="listbox" hidden></div>
+
+  <!-- B. visually hidden radios behind styled labels -->
+  <fieldset id="q-sponsor">
+    <legend>Do you require visa sponsorship?</legend>
+    <label class="opt"><input class="sr-only" type="radio" name="sponsor" value="yes">Yes</label>
+    <label class="opt"><input class="sr-only" type="radio" name="sponsor" value="no">No</label>
+  </fieldset>
+
+  <!-- C. three React-style groups, none with a name attribute -->
+  <fieldset id="q1"><legend>Are you legally authorised to work?</legend>
+    <label class="opt"><input type="radio" value="yes">Yes</label>
+    <label class="opt"><input type="radio" value="no">No</label>
+  </fieldset>
+  <fieldset id="q2"><legend>Will you relocate?</legend>
+    <label class="opt"><input type="radio" value="yes">Yes</label>
+    <label class="opt"><input type="radio" value="no">No</label>
+  </fieldset>
+  <fieldset id="q3"><legend>Have you worked here before?</legend>
+    <label class="opt"><input type="radio" value="yes">Yes</label>
+    <label class="opt"><input type="radio" value="no">No</label>
+  </fieldset>
+
+  <!-- D. readonly picker-backed date -->
+  <label for="start">Earliest start date</label>
+  <input id="start" name="start" readonly required placeholder="dd.mm.yyyy">
+
+  <!-- E. required and empty: native validation only -->
+  <label for="email">Email</label>
+  <input id="email" name="email" type="email" required>
+
+  <button type="submit">Submit application</button>
+</form>
+
+<div id="out"></div>
+
+<script>
+  // The content scripts talk to the extension; stub just enough of it.
+  window.chrome = { runtime: { onMessage: { addListener() {} } } };
+
+  // react-select's defining behaviour: the menu is built on MOUSEDOWN, and a
+  // bare .click() must not open it. This is the whole point of fixture A.
+  const combo = document.querySelector('[role=combobox]');
+  const menu = document.getElementById('country-menu');
+  const COUNTRIES = ['Germany', 'Austria', 'Switzerland', 'Netherlands'];
+  combo.addEventListener('mousedown', () => {
+    menu.hidden = false;
+    combo.setAttribute('aria-expanded', 'true');
+    menu.innerHTML = COUNTRIES.map((c) =>
+      `<div role="option" aria-selected="false">${c}</div>`).join('');
+    for (const o of menu.querySelectorAll('[role=option]')) {
+      o.addEventListener('click', () => {
+        combo.textContent = o.textContent;
+        combo.dataset.value = o.textContent;
+        menu.hidden = true;
+      });
+    }
+  });
+</script>
+
+<script src="../extension/autofill.js"></script>
+<script src="../extension/apply_engine.js"></script>
+
+<script>
+(async () => {
+  const E = window.JobCopilotApplyEngine;
+  const results = [];
+  const check = (name, got, want) => {
+    const ok = JSON.stringify(got) === JSON.stringify(want);
+    results.push({ name, ok, got, want });
+  };
+
+  // Each stage is guarded: an earlier failure must report itself rather than
+  // throwing and hiding every check after it. Running this against the
+  // pre-fix engine is how the fixtures were confirmed to be load-bearing, and
+  // there half of these are missing entirely.
+  const step = async (name, fn) => {
+    try { await fn(); }
+    catch (e) { results.push({ name: `${name} (threw)`, ok: false, got: String(e.message), want: "no throw" }); }
+  };
+
+  const state = E.observe();
+
+  // ── A. the combobox is visible to the model at all ───────────────────────
+  const combo = state.choices.find((c) => c.type === 'combobox');
+  check('A1 combobox is serialised', !!combo, true);
+  check('A2 combobox carries its question', combo?.question, 'Country of residence');
+
+  // ── B. hidden-input radios survive ───────────────────────────────────────
+  const sponsor = state.choices.find((c) => /sponsorship/i.test(c.question || ''));
+  check('B1 hidden-input question is serialised', !!sponsor, true);
+  check('B2 with both options', sponsor?.options?.length, 2);
+
+  // ── C. three unnamed groups stay three questions ─────────────────────────
+  const unnamed = state.choices.filter((c) =>
+    /authorised|relocate|worked here/i.test(c.question || ''));
+  check('C1 three separate questions', unnamed.length, 3);
+  check('C2 two options each, not one blob',
+    unnamed.map((c) => c.options.length), [2, 2, 2]);
+
+  // ── D. readonly field is reported, flagged ───────────────────────────────
+  const start = state.fields.find((f) => /start date/i.test(f.label || ''));
+  check('D1 readonly field is serialised', !!start, true);
+  check('D2 flagged readOnly', start?.readOnly, true);
+
+  // ── E. native validation surfaces as an error ────────────────────────────
+  const nativeErr = state.errors.some((e) => /fill|valid|email|blank/i.test(e));
+  check('E1 native validation reported', nativeErr, true);
+
+  // ── ACTUATION ────────────────────────────────────────────────────────────
+  // The combobox: one CHOOSE must open it AND pick. This is the case that
+  // .click() could never do at all.
+  await step('F combobox', async () => {
+    const chose = await E.act({ type: 'CHOOSE', jcaId: combo.id, option: 'Switzerland' });
+    check('F1 CHOOSE on a mousedown-only combobox succeeds', chose.ok, true);
+    check('F2 and actually selected it',
+      document.querySelector('[role=combobox]').dataset.value, 'Switzerland');
+
+    // A wrong option must report what was available rather than failing blankly.
+    const missed = await E.act({ type: 'CHOOSE', jcaId: combo.id, option: 'Narnia' });
+    check('F3 a bad option lists the real ones', /Germany/.test(missed.error || ''), true);
+  });
+
+  // The hidden radio: clicking must tick the real input.
+  await step('G hidden radio', async () => {
+    const yes = sponsor.options.find((o) => o.text === 'Yes');
+    const r = await E.act({ type: 'CHOOSE', jcaId: sponsor.id, optionId: yes.id });
+    check('G1 CHOOSE ticks a visually hidden radio', r.ok, true);
+    check('G2 the real input is checked',
+      document.querySelector('input[name=sponsor][value=yes]').checked, true);
+  });
+
+  // Each unnamed group is answered independently.
+  await step('H unnamed groups', async () => {
+    for (const q of unnamed) {
+      await E.act({ type: 'CHOOSE', jcaId: q.id, optionId: q.options[0].id });
+    }
+    check('H1 all three unnamed groups answered',
+      [...document.querySelectorAll('#q1 input:checked, #q2 input:checked, #q3 input:checked')].length, 3);
+  });
+
+  // FILL reports the read-back rather than assuming.
+  await step('I fill read-back', async () => {
+    const email = state.fields.find((f) => /email/i.test(f.label || ''));
+    const filled = await E.act({ type: 'FILL', jcaId: email.id, value: 'a@b.com' });
+    check('I1 FILL reports what the field holds', filled.value, 'a@b.com');
+    // After answering, the native error must clear — proving errors are live.
+    check('I2 native error clears once filled',
+      E.observe().errors.some((e) => /email/i.test(e)), false);
+  });
+
+  // ── report ───────────────────────────────────────────────────────────────
+  window.__RESULTS__ = results;
+  const failed = results.filter((r) => !r.ok);
+  document.getElementById('out').innerHTML =
+    `<h2>${results.length - failed.length}/${results.length} passed</h2>` +
+    results.map((r) => `<div class="${r.ok ? 'pass' : 'fail'}">${r.ok ? '✓' : '✗'} ${r.name}` +
+      (r.ok ? '' : ` — expected ${JSON.stringify(r.want)}, got ${JSON.stringify(r.got)}`) +
+      `</div>`).join('');
+  document.title = failed.length ? `FAIL ${failed.length}` : `PASS ${results.length}`;
+})();
+</script>

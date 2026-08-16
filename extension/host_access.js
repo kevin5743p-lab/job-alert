@@ -25,7 +25,13 @@
 // https alone meant those failed exactly like a missing grant, with a message
 // telling the user to enable something they had already enabled.
 
+// Requested together, but NOT required together — see hasAllSites().
 export const ALL_SITES = { origins: ["https://*/*", "http://*/*"] };
+
+// The one that decides whether auto-apply works in practice. Effectively every
+// careers site is https; http is asked for alongside so the rare plain-http
+// Bewerber portal works too, and it is a bonus rather than a condition.
+const HTTPS_ALL = { origins: ["https://*/*"] };
 
 /**
  * The origin pattern covering one URL, or null when the URL is not a page we
@@ -38,9 +44,20 @@ export function originPatternFor(url) {
   return `${u.protocol}//${u.hostname}/*`;
 }
 
-/** Have we been granted the run-anywhere permission? */
+/**
+ * Have we been granted the run-anywhere permission?
+ *
+ * Asks about https ONLY, and that is deliberate. Asking `contains(ALL_SITES)`
+ * requires https *and* http together, so a user who had granted all-sites
+ * before http was ever asked for — or whose Chrome granted only the https half
+ * — was told they had not enabled it, no matter how many times they clicked
+ * the button. The banner never went away and every run asked again.
+ *
+ * https is what makes the feature work; treat http as a bonus, not a
+ * condition.
+ */
 export async function hasAllSites() {
-  try { return await chrome.permissions.contains(ALL_SITES); }
+  try { return await chrome.permissions.contains(HTTPS_ALL); }
   catch { return false; }
 }
 
@@ -58,7 +75,17 @@ export async function canReach(url) {
   }
   try {
     const ok = await chrome.permissions.contains({ origins: [origin] });
-    return { ok, origin, reason: ok ? null : "not_granted" };
+    if (ok) return { ok: true, origin, reason: null };
+
+    // THE INVARIANT: if the run-anywhere grant is held, no https origin can be
+    // out of reach, and anything claiming otherwise is a bug here rather than a
+    // question for the user. Asking someone to grant a permission they have
+    // already granted is an unbreakable loop from their side — they cannot
+    // possibly satisfy it — so this refuses to produce that state at all.
+    if (origin.startsWith("https://") && await hasAllSites()) {
+      return { ok: true, origin, reason: null };
+    }
+    return { ok: false, origin, reason: "not_granted" };
   } catch (e) {
     // Older Chrome, or a malformed pattern. Assume reachable rather than
     // blocking a run on a permissions API quirk — the injection itself will

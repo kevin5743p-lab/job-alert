@@ -30,7 +30,7 @@ import { ensureDocuments } from "./docgen.js";
 import { attachDocument, planUploads } from "./upload.js";
 import { canSubmit, explain, isCommitmentQuestion } from "./confidence.js";
 import { pauseHeadline, pauseLabel } from "./pause_help.js";
-import { canReach, NEEDS_GRANT } from "./host_access.js";
+import { canReach, hasAllSites, NEEDS_GRANT } from "./host_access.js";
 import {
   detectBlockSignal, recordBlock, recordSuccess, recordFailure, domainOf,
 } from "./domain_health.js";
@@ -110,12 +110,44 @@ const TOOLS = [
     },
   },
   {
+    name: "type",
+    description:
+      "Type into a field one character at a time, as a person would. Use this " +
+      "ONLY for widgets that filter as you type — tag inputs, autocompletes, " +
+      "location and university pickers — where `fill` puts the text in but no " +
+      "suggestions appear. Set `then_enter` to accept the first suggestion. " +
+      "For an ordinary text box use `fill`; this is slower and unnecessary there.",
+    strict: true,
+    input_schema: {
+      type: "object",
+      properties: {
+        element_id: { type: "string" },
+        text: { type: "string" },
+        then_enter: {
+          type: "boolean",
+          description: "press Enter afterwards to accept the highlighted suggestion",
+        },
+        profile_key: {
+          type: "string",
+          description: "the profile key this value came from, verbatim",
+        },
+      },
+      required: ["element_id", "text", "then_enter", "profile_key"],
+      additionalProperties: false,
+    },
+  },
+  {
     name: "choose",
     description:
-      "Select a dropdown option or radio choice. `grounding` must name the " +
-      "profile key or CV fact behind the choice. For anything legal or " +
-      "contractual — visa status, notice period, salary — the answer must come " +
-      "from the saved profile; if it is not there, pause instead.",
+      "Select a dropdown option or radio choice. Works for a real <select>, a " +
+      "radio group, and custom dropdowns (`type: \"combobox\"` in the page " +
+      "state) — for those it opens the menu, waits for the options and picks " +
+      "one, so one call is the whole interaction. If the options list came " +
+      "back empty, choose anyway: they usually only exist once it is open, and " +
+      "a failed match replies with what was actually available. `grounding` " +
+      "must name the profile key or CV fact behind the choice. For anything " +
+      "legal or contractual — visa status, notice period, salary — the answer " +
+      "must come from the saved profile; if it is not there, pause instead.",
     strict: true,
     input_schema: {
       type: "object",
@@ -520,6 +552,27 @@ async function waitForNavigation(tabId, wantUrl, timeoutMs = 20000) {
   return chrome.tabs.get(tabId).catch(() => null);
 }
 
+/**
+ * Wait for a freshly opened tab to actually have a URL.
+ *
+ * `chrome.tabs` reports a brand-new tab with `url: ""` (or "about:blank") and
+ * the real destination in `pendingUrl` until the navigation commits. Anything
+ * that reads `tab.url` in that window sees nothing and, if it draws a
+ * conclusion from that, draws the wrong one.
+ */
+async function waitForTabUrl(tabId, timeoutMs = 8000) {
+  const deadline = Date.now() + timeoutMs;
+  let last = null;
+  while (Date.now() < deadline) {
+    last = await chrome.tabs.get(tabId).catch(() => null);
+    if (!last) return null;                       // closed under us
+    const url = last.url || "";
+    if (url && url !== "about:blank") return last;
+    await sleep(200);
+  }
+  return last;
+}
+
 /** All tab ids right now — the "before" half of new-tab detection. */
 async function tabIdsNow() {
   const all = await chrome.tabs.query({}).catch(() => []);
@@ -653,6 +706,29 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
   // being asked to finish the application in. `handOver()` exists so a pause and
   // the record of it can't drift apart again.
   let status = "failed";
+
+  /**
+   * Refuse to hand back a request the user has already satisfied.
+   *
+   * Asking for the all-sites permission when it is already held is not a
+   * recoverable state from the user's side: they press the button, the run
+   * restarts, and it stops in the same place with the same message. There is
+   * nothing they can do to break out of it, so the loop must be made
+   * impossible here rather than explained better in the UI.
+   *
+   * If we get here holding the grant, the pause is a bug in our reachability
+   * check and the honest thing is to say so and let the run be retried.
+   */
+  const grantPause = async (reason) => {
+    if (await hasAllSites()) {
+      return await handOver(
+        "The run stopped saying it needed site permission, but that permission " +
+        "is already granted — so this is a fault on our side, not something " +
+        "for you to fix. Press Retry; if it happens again it needs reporting.");
+    }
+    return await handOver(reason);
+  };
+
   const handOver = async (reason, blocking) => {
     // Assigned BEFORE the first await, and that ordering is the whole point.
     //
@@ -688,7 +764,7 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     // link to it, in followNewTab's caller.
     const reach = await canReach(run.job_url);
     if (!reach.ok && reach.reason === "not_granted") {
-      return await handOver(NEEDS_GRANT);
+      return await grantPause(NEEDS_GRANT);
     }
     if (!reach.ok && reach.reason === "unsupported_scheme") {
       return await handOver(
@@ -988,7 +1064,7 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     // "Enable it now" button — instead of a red "Failed" carrying an
     // instruction to go and find a setting.
     if (e?.needsGrant) {
-      return await handOver(e.host ? `${NEEDS_GRANT} (This one is on ${e.host}.)` : NEEDS_GRANT);
+      return await grantPause(e.host ? `${NEEDS_GRANT} (This one is on ${e.host}.)` : NEEDS_GRANT);
     }
 
     // Strike the domain we were actually on, and only if we ever got there.
@@ -1037,9 +1113,39 @@ async function execute(ctx) {
         type: "ACT", action: { type: "FILL", jcaId: a.element_id, value: a.value },
       });
       const label = labelOf(state, a.element_id);
-      answers[a.element_id] = { label, text: a.value, profileKey: a.profile_key, via: "fill" };
-      return { summary: r?.ok ? `filled "${label}"` : `could not fill: ${r?.error}`,
-               isError: !r?.ok };
+      // Record what the field ACTUALLY holds, not what we asked for. A date or
+      // masked input that discarded the value would otherwise be remembered as
+      // filled, pass through the run untouched, and fail the gate at the very
+      // end with nothing pointing at the cause.
+      const landed = r?.value ?? "";
+      answers[a.element_id] = { label, text: landed || a.value,
+                                profileKey: a.profile_key, via: "fill" };
+      if (!r?.ok) {
+        return { summary: `could not fill "${label}": ${r?.error}`, isError: true };
+      }
+      return {
+        summary: landed === a.value
+          ? `filled "${label}"`
+          : `filled "${label}" — it now reads "${landed}" ` +
+            `(the field reformatted or trimmed what was typed)`,
+      };
+    }
+
+    case "type": {
+      const r = await engine(tabId, {
+        type: "ACT",
+        action: { type: "TYPE", jcaId: a.element_id, text: a.text,
+                  thenEnter: !!a.then_enter },
+      });
+      const label = labelOf(state, a.element_id);
+      answers[a.element_id] = { label, text: a.text, profileKey: a.profile_key, via: "type" };
+      return {
+        summary: r?.ok
+          ? `typed "${a.text}" into "${label}"${a.then_enter ? " and pressed Enter" : ""}` +
+            ` (it now reads "${r.value ?? ""}")`
+          : `could not type: ${r?.error}`,
+        isError: !r?.ok,
+      };
     }
 
     case "choose": {
@@ -1176,14 +1282,23 @@ async function execute(ctx) {
         // out whether we may touch it — not four steps later, when injection
         // fails with a message naming no host at all.
         //
-        // A missing `url` is itself an answer. The tabs API only fills it in
-        // for tabs we are allowed to see, so an empty one on a tab that
-        // demonstrably exists means the grant is what's missing. (The manifest
-        // now takes "tabs" as well, so this is belt and braces — but the
-        // inference is sound either way and costs nothing.)
-        const reach = await canReach(opened.url);
-        if (!opened.url || (!reach.ok && reach.reason === "not_granted")) {
-          const site = hostOf(opened.url);
+        // A tab is caught within a few hundred milliseconds of the click, and
+        // at that point it usually has NO url yet — the destination is in
+        // `pendingUrl` until the navigation commits.
+        //
+        // Reading that empty url as "we lack permission for this origin" is
+        // what produced an unbreakable loop: every run paused asking for a
+        // permission the user had already granted, and granting it again
+        // restarted a run that paused in the same place. Since the manifest
+        // now takes "tabs", `url` is readable for every origin, so a blank one
+        // means "not navigated yet" and nothing else — wait for it.
+        const settled = await waitForTabUrl(opened.id);
+        const openedUrl = settled?.url || opened.pendingUrl || opened.url || "";
+        opened.url = openedUrl;
+
+        const reach = await canReach(openedUrl);
+        if (openedUrl && !reach.ok && reach.reason === "not_granted") {
+          const site = hostOf(openedUrl);
           await pauseRun(run, opened.id,
             site ? `${NEEDS_GRANT} (This one is on ${site}.)` : NEEDS_GRANT);
           // `pausedTabId` is the employer's tab, not the posting we came from.
@@ -1192,9 +1307,12 @@ async function execute(ctx) {
           return { terminal: true, status: "paused_needs_human", pausedTabId: opened.id,
                    summary: `followed to ${site || "the employer's site"}; no access to that origin` };
         }
-        if (!reach.ok) {
+        // Only judge a scheme we can actually see. A tab that still has no url
+        // after the wait is followed anyway — ensureEngine gives a truthful
+        // error about the page it finds, which beats guessing here.
+        if (openedUrl && !reach.ok) {
           await pauseRun(run, opened.id,
-            `The application moved to ${opened.url}, which isn't a page we can drive. ` +
+            `The application moved to ${openedUrl}, which isn't a page we can drive. ` +
             `Open it and finish there — your documents are ready.`);
           return { terminal: true, status: "paused_needs_human", pausedTabId: opened.id,
                    summary: `followed to an unsupported address` };
