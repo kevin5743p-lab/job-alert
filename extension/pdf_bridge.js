@@ -28,9 +28,16 @@
 // sends a .docx that day. An application must never fail because a convenience
 // was unavailable.
 
+// callFunction() is JSON-only and this sends raw bytes, so the URL and the
+// session are taken directly rather than reusing it.
+import { FUNCTIONS_URL, SUPABASE_ANON_KEY, getSession } from "./supabase.js";
+
 const BRIDGE = "http://127.0.0.1:8765";
 const CONVERT_TIMEOUT_MS = 25000;
 const PING_TIMEOUT_MS = 1200;
+// The hosted converter does the same work on a bigger machine, but a cold
+// container has to start LibreOffice first, so it gets longer.
+const HOSTED_TIMEOUT_MS = 60000;
 
 // Remembered for the life of the service worker. Probing costs a round trip and
 // the answer doesn't change mid-session; without this every document would pay
@@ -83,6 +90,18 @@ export async function bridgeAvailable() {
  * missing optional dependency abort a real application.
  */
 export async function docxToPdf(base64) {
+  // Local first. It is free, it is instant, and the document never leaves the
+  // machine — but almost nobody has it, so the probe has to be cheap. It is:
+  // nothing listening on a loopback port refuses the connection immediately
+  // rather than timing out, and the answer is cached for the life of the worker.
+  const local = await localConvert(base64);
+  if (local) return local;
+
+  // Then the hosted converter, which is the path every ordinary user takes.
+  return hostedConvert(base64);
+}
+
+async function localConvert(base64) {
   if (!(await bridgeAvailable())) return null;
 
   try {
@@ -100,24 +119,88 @@ export async function docxToPdf(base64) {
     }
 
     const bytes = new Uint8Array(await resp.arrayBuffer());
-    // A PDF starts with %PDF-. Checking costs nothing and catches the case
-    // where the helper returns an error page with a 200, which would otherwise
-    // be attached to an application as a "CV".
-    if (bytes.length < 5 || String.fromCharCode(...bytes.subarray(0, 5)) !== "%PDF-") {
-      console.warn("pdf_bridge: response was not a PDF, keeping the .docx");
+    // Checking costs nothing and catches the case where the helper returns an
+    // error page with a 200, which would otherwise be attached to an
+    // application as a "CV".
+    if (!looksLikePdf(bytes)) {
+      console.warn("pdf_bridge: local response was not a PDF, keeping the .docx");
       return null;
     }
-
-    let binary = "";
-    for (let i = 0; i < bytes.length; i += 0x8000) {
-      binary += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
-    }
-    return btoa(binary);
+    return toBase64(bytes);
   } catch (e) {
     // An abort lands here too, which is why this is a warning and not an error.
-    console.warn("pdf_bridge: conversion unavailable, keeping the .docx:",
-                 e?.message || e);
+    console.warn("pdf_bridge: local conversion unavailable:", e?.message || e);
     available = null;               // re-probe next time; it may have restarted
     return null;
   }
+}
+
+/**
+ * The hosted converter — the one that means users install nothing.
+ *
+ * Goes through the docx-to-pdf edge function rather than straight at the
+ * converter, for the same reason model calls go through ai-proxy: the endpoint
+ * we pay for is not something to leave open to the internet, and the request
+ * has to be attributable to a signed-in user before it costs us anything.
+ *
+ * Returns null on every failure. Not signed in, converter not deployed, daily
+ * cap reached, cold start too slow — all of them mean the same thing here, and
+ * it is never "abandon the application": the .docx is attached instead and the
+ * user is none the wiser.
+ */
+async function hostedConvert(base64) {
+  let session;
+  try {
+    session = await getSession();
+  } catch {
+    return null;
+  }
+  if (!session?.access_token) return null;      // signed out: nothing to bill
+
+  try {
+    const resp = await withTimeout((signal) => fetch(`${FUNCTIONS_URL}/docx-to-pdf`, {
+      method: "POST",
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${session.access_token}`,
+        "Content-Type": "application/octet-stream",
+      },
+      body: Uint8Array.from(atob(base64), (c) => c.charCodeAt(0)),
+      signal,
+    }), HOSTED_TIMEOUT_MS);
+
+    if (!resp.ok) {
+      // 503 not_configured is the ordinary state before the converter is
+      // deployed, so it is not worth shouting about on every document.
+      const detail = await resp.text().catch(() => "");
+      if (resp.status !== 503) {
+        console.warn(`pdf_bridge: hosted converter ${resp.status}`, detail.slice(0, 200));
+      }
+      return null;
+    }
+
+    const bytes = new Uint8Array(await resp.arrayBuffer());
+    if (!looksLikePdf(bytes)) {
+      console.warn("pdf_bridge: hosted response was not a PDF, keeping the .docx");
+      return null;
+    }
+    return toBase64(bytes);
+  } catch (e) {
+    console.warn("pdf_bridge: hosted conversion unavailable:", e?.message || e);
+    return null;
+  }
+}
+
+/** A PDF starts with %PDF-. Cheap, and it catches an error page returned as 200. */
+function looksLikePdf(bytes) {
+  return bytes.length >= 5 &&
+         String.fromCharCode(...bytes.subarray(0, 5)) === "%PDF-";
+}
+
+function toBase64(bytes) {
+  let binary = "";
+  for (let i = 0; i < bytes.length; i += 0x8000) {
+    binary += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  }
+  return btoa(binary);
 }

@@ -709,13 +709,50 @@ export async function getApplyDocuments(jobUrl) {
   return rest(`/apply_documents?job_url=eq.${encodeURIComponent(jobUrl)}&select=*`) || [];
 }
 
+/**
+ * Columns this row can do without.
+ *
+ * Everything here is metadata about a document that has already been rendered
+ * and uploaded — losing it costs a nicety, not the application.
+ */
+const OPTIONAL_DOC_COLUMNS = new Set(["mime", "bytes", "filename", "disk_path"]);
+
+/** PostgREST's "that column isn't in my schema cache", and the name it names. */
+function unknownColumn(message) {
+  if (!/PGRST204/.test(message)) return null;
+  const m = message.match(/Could not find the '([^']+)' column/);
+  return m ? m[1] : null;
+}
+
 export async function recordApplyDocument(row) {
-  const rows = await rest("/apply_documents?on_conflict=user_id,job_url,kind", {
-    method: "POST",
-    body: { user_id: await currentUserId(), ...row },
-    headers: { Prefer: "resolution=merge-duplicates,return=representation" },
-  });
-  return rows && rows[0] ? rows[0] : null;
+  const body = { user_id: await currentUserId(), ...row };
+
+  // Retry without whichever optional column the database has not been migrated
+  // for yet, rather than failing the run.
+  //
+  // This is bookkeeping that happens BEFORE the job tab is even opened, so a
+  // schema drift here killed the whole application at its first step — on a job
+  // the engine had already paid a model to tailor. A missing `mime` column did
+  // exactly that. The migration is the real fix (sql/005); this makes the class
+  // of mistake survivable, because the next column added will drift too.
+  for (let attempt = 0; attempt < 4; attempt++) {
+    try {
+      const rows = await rest("/apply_documents?on_conflict=user_id,job_url,kind", {
+        method: "POST",
+        body,
+        headers: { Prefer: "resolution=merge-duplicates,return=representation" },
+      });
+      return rows && rows[0] ? rows[0] : null;
+    } catch (e) {
+      const col = unknownColumn(String(e?.message || e));
+      if (!col || !OPTIONAL_DOC_COLUMNS.has(col) || !(col in body)) throw e;
+      console.warn(
+        `apply_documents has no '${col}' column — recording the document ` +
+        `without it. Run the migrations in sql/ to restore it.`);
+      delete body[col];
+    }
+  }
+  return null;
 }
 
 // ── the user's own document library ─────────────────────────────────────────
@@ -867,11 +904,30 @@ async function urlKey(url) {
  * migration to run — and after the fact any file in the bucket traces back to
  * the exact packet that produced it.
  */
-export async function uploadApplyDoc(jobUrl, kind, base64, tailoredId) {
+const DOCX_MIME =
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+
+/**
+ * Store a generated document.
+ *
+ * `mime` exists because a tailored CV is no longer always a PDF: when the user
+ * keeps their CV in Word we edit that file and, if no converter is available,
+ * send the .docx itself. This used to hardcode both the extension and the
+ * content type, so a Word file was stored as `…-cv.pdf` labelled
+ * `application/pdf`. On the machine that rendered it nothing noticed, because
+ * the local copy on disk was correct — but upload.js falls back to these stored
+ * bytes whenever the disk copy is gone (a second computer, a cleared Downloads
+ * folder), and it builds the File from this name and type. An upload widget
+ * that checks `file.type`, and many do, would have rejected a "PDF" that is
+ * really a zip.
+ */
+export async function uploadApplyDoc(jobUrl, kind, base64, tailoredId,
+                                     mime = "application/pdf") {
   const uid = await currentUserId();
+  const ext = mime === DOCX_MIME ? "docx" : "pdf";
   const path =
-    `${uid}/docs/${await urlKey(jobUrl)}/${tailoredId || "untracked"}-${kind}.pdf`;
-  return storagePut(path, b64ToBytes(base64), "application/pdf");
+    `${uid}/docs/${await urlKey(jobUrl)}/${tailoredId || "untracked"}-${kind}.${ext}`;
+  return storagePut(path, b64ToBytes(base64), mime);
 }
 
 /** Screenshot of the page a run paused on, so the dashboard can show it. */

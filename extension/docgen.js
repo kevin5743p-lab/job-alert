@@ -231,7 +231,7 @@ async function tailorCvDocx(tabId, { job, source, edits, applicantName, tailored
   const { diskPath, bytes } = await ask(tabId, {
     type: "SAVE_FILE", base64, filename, mime,
   });
-  const storagePath = await uploadApplyDoc(job.url, "cv", base64, tailoredId);
+  const storagePath = await uploadApplyDoc(job.url, "cv", base64, tailoredId, mime);
 
   await recordApplyDocument({
     job_url: job.url, kind: "cv", storage_path: storagePath,

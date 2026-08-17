@@ -795,17 +795,30 @@ function renderApplyPanel(st) {
   // fixed — a permission they have now granted, a tab they closed themselves.
   // Making them wait out a day they know is unnecessary is not caution, it is
   // just a dead end with a countdown on it.
-  const health = blocked.map((h) =>
+  // "Paused" and "degraded" are not the same thing, and calling both paused was
+  // simply untrue. A quarantined domain is not being applied to at all; a
+  // degraded one IS applying, at half the daily cap, on its way back to full
+  // speed. Listing the second under a heading that says paused had the user
+  // reading a working site as a broken one — and it is usually degraded
+  // *because* they already pressed Resume on it.
+  const stopped = blocked.filter((h) => h.state === "quarantined");
+  const slowed = blocked.filter((h) => h.state !== "quarantined");
+
+  const line = (h, withButton) =>
     `<li><b>${esc(h.domain)}</b> — ${esc(h.state)}${
        h.signal ? ` <span class="muted" title="${esc(h.signal)}">(${esc(shortSignal(h.signal))})</span>` : ""}
      ${h.retryAt ? `<span class="muted">back ${esc(fmtWhen(h.retryAt))}</span>` : ""}
-     <button class="resume-site" data-domain="${esc(h.domain)}">Resume now</button></li>`)
-    .join("");
+     ${withButton ? `<button class="resume-site" data-domain="${esc(h.domain)}">Resume now</button>` : ""}</li>`;
 
   el.innerHTML =
     `${active.length ? `<h3>Applying (${active.length})</h3><ul class="queue">${queue}</ul>` : ""}
-     ${blocked.length ? `<h3>Paused sites</h3><ul class="queue health">${health}</ul>
-        <p class="muted">Only these are paused — every other site keeps applying.</p>` : ""}`;
+     ${stopped.length ? `<h3>Paused sites</h3>
+        <ul class="queue health">${stopped.map((h) => line(h, true)).join("")}</ul>
+        <p class="muted">Only these are paused — every other site keeps applying.</p>` : ""}
+     ${slowed.length ? `<h3>Running at half speed</h3>
+        <ul class="queue health">${slowed.map((h) => line(h, false)).join("")}</ul>
+        <p class="muted">These are still applying — just fewer per day, until a clean
+        run earns full speed back. Nothing is waiting on you.</p>` : ""}`;
 
   for (const btn of el.querySelectorAll(".resume-site")) {
     btn.addEventListener("click", () => resumeSite(btn.dataset.domain, btn));
