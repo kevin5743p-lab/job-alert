@@ -134,8 +134,9 @@
     .wcv-legend { display: flex; gap: 18px; font-size: 12.5px;
                   color: var(--text-3); margin: 10px 0 6px; }
     .wcv-legend span { display: flex; align-items: center; gap: 6px; }
-    .sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
-    .sw.edit { background: #16a34a; }
+    .sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block;
+          flex-shrink: 0; }
+    .sw.edit { background: var(--good); }
     .sw.lock { background: var(--text-3); opacity: .45; }
 
     /* No inner scroll. This is a review screen and the whole point is that the
@@ -148,16 +149,33 @@
                      padding: 9px 12px; border-bottom: 1px solid var(--line);
                      font-size: 13px; line-height: 1.45; }
     .wcv-blocks li:last-child { border-bottom: none; }
-    .wcv-blocks li.locked { color: var(--text-3); background: rgba(0,0,0,.02); }
+    /* rgba(0,0,0,.02) was invisible on the dark theme — a tint only works in one
+       of the two. Surface tokens flip with the theme, so the locked rows read as
+       recessed in both. */
+    .wcv-blocks li.locked { color: var(--text-3); background: var(--surface-2); }
     .wcv-blocks .bar { width: 3px; align-self: stretch; border-radius: 2px;
-                       background: #16a34a; flex-shrink: 0; }
+                       background: var(--good); flex-shrink: 0; }
     .wcv-blocks li.locked .bar { background: var(--text-3); opacity: .35; }
-    .wcv-blocks .txt { flex: 1; min-width: 0; word-break: break-word; }
+    .wcv-blocks .txt { flex: 1 1 auto; min-width: 0; word-break: break-word; }
     .wcv-blocks .why { font-size: 11.5px; color: var(--text-3);
                        text-transform: uppercase; letter-spacing: .04em;
                        margin-top: 2px; }
-    .wcv-blocks input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; }
-    .wcv-blocks .spacer { width: 13px; flex-shrink: 0; }
+
+    /* THIS IS THE ONE THAT BROKE THE PAGE.
+       The global form rule above is `input, select, textarea { width: 100%;
+       padding: 9px 11px; ... }`, written for text fields and dropdowns. A
+       checkbox inside a flex row inherited it, stretched to the full width of
+       the row, and left the text column with nothing — so every ticked line
+       wrapped to one character per line and spilled down the side of the page.
+       `label.check input` already had to undo exactly this; the fix is the
+       same, and it is why a bare `flex-shrink: 0` was not enough. */
+    .wcv-blocks input[type="checkbox"] {
+      width: 14px; height: 14px; flex: 0 0 14px; padding: 0; margin: 2px 0 0;
+      accent-color: var(--accent); background: none; border: none;
+      border-radius: 0; cursor: pointer;
+    }
+    /* Matches the checkbox's footprint so locked and editable text line up. */
+    .wcv-blocks .spacer { flex: 0 0 14px; }
 
     .docs { list-style: none; margin: 18px 0 0; padding: 0; }
     .docs li {
