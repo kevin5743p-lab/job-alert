@@ -2,14 +2,17 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Complete your profile — JobCopilot</title>
+  <title>Your application answers — JobCopilot</title>
   <link rel="stylesheet" href="theme.css" />
   <style>
     /* Structure only; colour, radius and motion come from theme.css.
-       Ids and classes are untouched — onboarding.js queries them. */
+       The form itself is rendered by onboarding.js from profile_schema.js —
+       there is deliberately no hand-written field markup in this file any
+       more, because the old version had 250 lines of it that had to be kept
+       in step with a KEYS array in the JS and two more lists elsewhere. */
     * { box-sizing: border-box; }
     body {
-      margin: 0; padding: 36px 24px 120px;
+      margin: 0; padding: 32px 24px 104px;
       font: 14px/1.6 var(--font); color: var(--text); background: var(--bg);
       -webkit-font-smoothing: antialiased;
     }
@@ -19,42 +22,82 @@
                   color-mix(in srgb, var(--accent) 13%, transparent), transparent 70%);
       pointer-events: none;
     }
-    .wrap { max-width: 760px; margin: 0 auto; }
+    .wrap { max-width: 1060px; margin: 0 auto; }
 
-    h1 { font-size: 28px; line-height: 1.2; margin: 0 0 6px; letter-spacing: -.02em; }
-    .sub { color: var(--text-2); margin: 0 0 22px; font-size: 14px; }
-    .why { color: var(--text-2); font-size: 12.5px; margin: 0 0 14px; }
-    .hint { font-size: 11.5px; color: var(--text-3); margin-top: 5px; line-height: 1.5; }
-    .opt { color: var(--text-3); font-weight: 400; text-transform: none; letter-spacing: 0; }
+    h1 { font-size: 26px; line-height: 1.2; margin: 0 0 6px; letter-spacing: -.02em; }
+    .sub { color: var(--text-2); margin: 0 0 8px; font-size: 14px; }
 
+    /* ── Two columns: the rail says where you are, the panel is the work ─── */
+    .cols { display: flex; gap: 28px; align-items: flex-start; margin-top: 24px; }
+    .rail { flex: 0 0 232px; position: sticky; top: 24px; }
+    .panel { flex: 1 1 auto; min-width: 0; }
+
+    /* ── Step rail ─────────────────────────────────────────────────────────
+       Every step is reachable at any time. A wizard that locks you out of
+       step 6 until you finish step 2 is a wizard people abandon at step 2. */
+    ol.steps { list-style: none; margin: 0; padding: 0; }
+    ol.steps li { margin: 0 0 2px; }
+    ol.steps button {
+      display: flex; align-items: baseline; gap: 10px; width: 100%;
+      text-align: left; font: inherit; font-size: 13px; cursor: pointer;
+      padding: 9px 12px; border-radius: var(--r-sm);
+      border: 1px solid transparent; background: transparent; color: var(--text-2);
+      transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease),
+                  border-color var(--dur-1) var(--ease);
+    }
+    ol.steps button:hover { background: var(--surface-2); color: var(--text); }
+    ol.steps button:focus-visible { outline: none; box-shadow: var(--ring); }
+    ol.steps button[aria-current="step"] {
+      background: var(--accent-dim); border-color: var(--accent-line);
+      color: var(--text); font-weight: 600;
+    }
+    ol.steps .n {
+      flex: 0 0 20px; height: 20px; border-radius: 50%; font-size: 11px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--surface-3); color: var(--text-3); font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+    ol.steps button[aria-current="step"] .n { background: var(--accent); color: var(--on-accent); }
+    /* A step with every blocking question answered. Never a bare tick on its
+       own — the label beside it carries the meaning too. */
+    ol.steps .n.done { background: var(--good-dim); color: var(--good); }
+    ol.steps .grow { flex: 1 1 auto; }
+    ol.steps .tally {
+      flex: 0 0 auto; font-size: 11px; color: var(--text-3);
+      font-variant-numeric: tabular-nums;
+    }
+    ol.steps .tally.blocked { color: var(--warn); font-weight: 600; }
+
+    .rail-foot { margin-top: 16px; padding: 0 12px; font-size: 12px; color: var(--text-2); }
+    .rail-foot a { color: var(--accent); text-decoration: none; }
+    .rail-foot a:hover { text-decoration: underline; }
+
+    /* ── The note above the form ───────────────────────────────────────── */
     .note {
-      background: var(--warn-dim); border: 1px solid var(--warn-line); color: var(--warn);
-      border-radius: var(--r); padding: 12px 14px; font-size: 13px; margin-bottom: 22px;
-      animation: jc-rise var(--dur-2) var(--ease-out) both;
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--r); padding: 12px 15px; font-size: 13px;
+      color: var(--text-2); margin-bottom: 18px;
     }
+    .note b { color: var(--text); }
 
-    fieldset {
-      border: 1px solid var(--border); border-radius: var(--r-lg);
-      background: var(--surface); padding: 20px 22px 22px; margin: 0 0 18px;
-      box-shadow: var(--shadow-1);
-      animation: jc-rise var(--dur-3) var(--ease-out) both;
-    }
-    /* The sections arrive one after another rather than all at once. */
-    fieldset:nth-of-type(1) { animation-delay: 30ms; }
-    fieldset:nth-of-type(2) { animation-delay: 70ms; }
-    fieldset:nth-of-type(3) { animation-delay: 110ms; }
-    fieldset:nth-of-type(4) { animation-delay: 150ms; }
-    fieldset:nth-of-type(n+5) { animation-delay: 190ms; }
-    legend {
-      font-size: 11px; text-transform: uppercase; letter-spacing: .07em;
-      font-weight: 700; color: var(--accent); padding: 0 8px;
-    }
+    /* ── Field cards ───────────────────────────────────────────────────── */
+    section.step { animation: jc-rise var(--dur-2) var(--ease-out) both; }
+    section.step > h2 { font-size: 20px; margin: 0 0 4px; letter-spacing: -.015em; }
+    section.step > p.blurb { color: var(--text-2); margin: 0 0 20px; font-size: 13.5px; }
 
-    label {
-      display: block; font-weight: 600; margin: 16px 0 6px;
-      font-size: 11px; text-transform: uppercase; letter-spacing: .05em;
-      color: var(--text-3);
+    .field { margin: 0 0 20px; }
+    /* Sentence case at 13.5px in --text-2, not 11px uppercase in --text-3.
+       The old treatment put every question on this page at roughly 3:1
+       contrast in the smallest type on the surface — the labels are the
+       content here, not chrome. */
+    .field > label, .field > .qlabel {
+      display: block; font-size: 13.5px; font-weight: 600;
+      color: var(--text); margin: 0 0 7px; letter-spacing: 0; text-transform: none;
     }
+    .field .hint { font-size: 12.5px; color: var(--text-2); margin-top: 6px; line-height: 1.5; }
+    .field .hint code { font: 12px var(--mono); }
+
     input, select, textarea {
       width: 100%; padding: 9px 11px; font: inherit; color: var(--text);
       background: var(--surface-2); border: 1px solid var(--border-hi);
@@ -67,37 +110,55 @@
       outline: none; border-color: var(--accent); box-shadow: var(--ring);
       background: var(--surface-2);
     }
-    textarea { min-height: 88px; resize: vertical; line-height: 1.55; }
+    textarea { min-height: 76px; resize: vertical; line-height: 1.55; }
+    input[type="checkbox"] { width: auto; }
+
+    /* A field the submit gate blocks on, still empty. Warn-coloured border
+       plus the words "needed to auto-apply" — never colour alone. */
+    .field.blocking-empty input, .field.blocking-empty select,
+    .field.blocking-empty textarea { border-color: var(--warn-line); }
+    .tag {
+      display: inline-block; margin-left: 8px; padding: 1px 8px;
+      border-radius: var(--r-pill); font-size: 10.5px; font-weight: 600;
+      letter-spacing: .02em; vertical-align: middle; text-transform: none;
+    }
+    .tag.need { background: var(--warn-dim); color: var(--warn); border: 1px solid var(--warn-line); }
+    .tag.ok   { background: var(--good-dim); color: var(--good); border: 1px solid var(--good-line); }
+    .tag.opt  { background: var(--surface-2); color: var(--text-3); border: 1px solid var(--border); }
+    .tag.new  { background: var(--info-dim); color: var(--info); border: 1px solid var(--info-line); }
+
     .row { display: flex; gap: 14px; flex-wrap: wrap; }
-    .row > div { flex: 1 1 200px; min-width: 190px; }
+    .row > .field { flex: 1 1 210px; min-width: 190px; }
 
-    /* ── Sticky action bar ─────────────────────────────────────────────── */
-    .bar {
-      position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
-      display: flex; align-items: center; gap: 12px;
-      padding: 14px 24px;
-      background: color-mix(in srgb, var(--bg) 88%, transparent);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid var(--border);
-    }
-    .bar > * { flex: 0 0 auto; }
-    #status { font-size: 13px; color: var(--text-2); margin-left: auto; }
+    /* Inline checkbox: the box beside its own sentence, not under a heading. */
+    .field.check { display: flex; align-items: flex-start; gap: 10px; }
+    .field.check input { margin-top: 3px; flex: 0 0 auto; }
+    .field.check > div { flex: 1 1 auto; }
+    .field.check label { margin: 0; }
 
-    button {
-      font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
-      padding: 10px 20px; border-radius: var(--r-pill);
-      border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent);
-      transition: background var(--dur-1) var(--ease), transform var(--dur-1) var(--ease),
-                  box-shadow var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
-    }
-    button:hover { background: var(--accent-hi); border-color: var(--accent-hi); }
-    button:active { transform: translateY(1px); }
-    button:focus-visible { outline: none; box-shadow: var(--ring); }
-    button:disabled { opacity: .55; cursor: default; transform: none; }
-    button.secondary {
-      background: var(--surface-2); color: var(--text); border-color: var(--border-hi);
-    }
-    button.secondary:hover { background: var(--surface-3); border-color: var(--accent-line); }
+    /* ── Repeating groups ──────────────────────────────────────────────── */
+    .rep { border: 1px solid var(--border); border-radius: var(--r);
+           background: var(--surface); padding: 14px 15px; margin-bottom: 12px;
+           animation: jc-rise var(--dur-2) var(--ease-out) both; }
+    .rep-head { display: flex; align-items: center; justify-content: space-between;
+                gap: 10px; margin-bottom: 12px; }
+    .rep-head b { font-size: 12px; text-transform: uppercase; letter-spacing: .06em;
+                  color: var(--text-3); font-weight: 700; }
+    .rep-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .rep-grid .field { margin: 0; }
+    .rep-grid .field[data-w="1"] { grid-column: span 1; }
+    .rep-grid .field[data-w="2"] { grid-column: span 2; }
+    .rep-grid .field[data-w="3"] { grid-column: span 3; }
+    .rep-grid .field[data-w="4"] { grid-column: span 4; }
+    .rep-grid .field > label { font-size: 12px; font-weight: 500; color: var(--text-2); }
+    .rep-empty { color: var(--text-2); font-size: 13px; padding: 14px 0 4px; }
+
+    /* ── Consent gate on the voluntary step ────────────────────────────── */
+    .gated { opacity: .55; transition: opacity var(--dur-2) var(--ease); }
+    .gated-on { opacity: 1; }
+    .gate-note { font-size: 12.5px; color: var(--text-2); margin: 0 0 18px;
+                 padding: 10px 13px; border-radius: var(--r-sm);
+                 background: var(--surface-2); border: 1px solid var(--border); }
 
     /* ── Cover-letter templates ────────────────────────────────────────── */
     .tpl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -122,126 +183,124 @@
       width: 620px; height: 800px; border: 0; transform: scale(.29);
       transform-origin: top left; pointer-events: none; position: absolute; top: 0; left: 0;
     }
-    .tpl .preview-link { font-size: 11.5px; color: var(--accent); margin-top: 7px;
+    .tpl .preview-link { font-size: 12px; color: var(--accent); margin-top: 7px;
                          display: inline-block; }
 
-    @media (max-width: 640px) {
-      body { padding: 24px 14px 120px; }
-      .bar { padding: 12px 14px; }
+    /* ── Review ────────────────────────────────────────────────────────── */
+    .review-list { list-style: none; margin: 0 0 18px; padding: 0; }
+    .review-list li {
+      display: flex; align-items: baseline; gap: 10px; padding: 9px 0;
+      border-bottom: 1px solid var(--border); font-size: 13.5px;
+    }
+    .review-list li:last-child { border-bottom: none; }
+    .review-list .go {
+      margin-left: auto; flex: 0 0 auto; font: inherit; font-size: 12.5px;
+      background: none; border: none; color: var(--accent); cursor: pointer;
+      padding: 2px 4px; border-radius: var(--r-sm);
+    }
+    .review-list .go:hover { text-decoration: underline; }
+    .review-list .go:focus-visible { outline: none; box-shadow: var(--ring); }
+
+    /* ── Buttons ───────────────────────────────────────────────────────── */
+    button {
+      font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+      padding: 9px 18px; border-radius: var(--r-pill);
+      border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent);
+      transition: background var(--dur-1) var(--ease), transform var(--dur-1) var(--ease),
+                  box-shadow var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+    }
+    button:hover { background: var(--accent-hi); border-color: var(--accent-hi); }
+    button:active { transform: translateY(1px); }
+    button:focus-visible { outline: none; box-shadow: var(--ring); }
+    button:disabled { opacity: .5; cursor: default; transform: none; }
+    button.secondary {
+      background: var(--surface-2); color: var(--text); border-color: var(--border-hi);
+    }
+    button.secondary:hover { background: var(--surface-3); border-color: var(--accent-line); }
+    button.small { padding: 6px 13px; font-size: 12.5px; }
+
+    /* ── Sticky action bar ─────────────────────────────────────────────── */
+    .bar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+    }
+    .bar .meter {
+      flex: 0 1 200px; height: 5px; border-radius: 999px;
+      background: var(--surface-3); overflow: hidden;
+    }
+    .bar .meter i {
+      display: block; height: 100%; width: 0; background: var(--accent);
+      transition: width var(--dur-2) var(--ease);
+    }
+    .bar .count { font-size: 12.5px; color: var(--text-2); white-space: nowrap;
+                  font-variant-numeric: tabular-nums; }
+    .bar .spacer { flex: 1 1 auto; }
+    /* The autosave receipt. It is the reason the secondary button can say
+       "Finish later" honestly instead of "Close" and losing everything. */
+    #saved { font-size: 12.5px; color: var(--text-3); white-space: nowrap; }
+    #status { font-size: 12.5px; white-space: nowrap; }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 860px) {
+      .cols { flex-direction: column; gap: 18px; }
+      .rail { position: static; flex: 1 1 auto; width: 100%; }
+      ol.steps { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
+      ol.steps li { flex: 0 0 auto; }
+      ol.steps .tally, ol.steps .grow { display: none; }
+      ol.steps button { padding: 8px 12px; }
+      .rep-grid { grid-template-columns: repeat(2, 1fr); }
+      .rep-grid .field[data-w="3"], .rep-grid .field[data-w="4"] { grid-column: span 2; }
+    }
+    @media (max-width: 560px) {
+      body { padding: 22px 14px 104px; }
+      .bar { padding: 10px 14px; gap: 8px; }
+      .bar .meter { display: none; }
+      .rep-grid { grid-template-columns: 1fr; }
+      .rep-grid .field[data-w="2"], .rep-grid .field[data-w="3"],
+      .rep-grid .field[data-w="4"] { grid-column: span 1; }
     }
   </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Complete your profile</h1>
-  <p class="sub">These are the things your CV doesn't say, but every application form asks.
-    Answer once — JobCopilot fills them in from now on.</p>
+  <h1>Your application answers</h1>
+  <p class="sub">The things your CV doesn't say, but every application form asks.
+    Answer them once and JobCopilot fills them in from here on.</p>
 
-  <div class="note">
-    Only ordinary application-form answers belong here. Never enter ID numbers,
-    bank details or passwords — JobCopilot refuses to fill those fields anyway.
-  </div>
+  <div class="cols">
+    <nav class="rail" aria-label="Sections">
+      <ol class="steps" id="rail"></ol>
+      <p class="rail-foot">
+        Files — certificates, Zeugnisse, portfolio — live in
+        <a href="#" id="to-docs">Settings → Documents</a>.
+      </p>
+    </nav>
 
-  <fieldset>
-    <legend>Contact</legend>
-    <div class="row">
-      <div><label for="first_name">First name</label><input id="first_name" /></div>
-      <div><label for="last_name">Last name</label><input id="last_name" /></div>
+    <div class="panel">
+      <div class="note">
+        <b>Ordinary application answers only.</b> Never enter ID numbers, bank
+        details or passwords here — JobCopilot refuses to fill those fields on a
+        form anyway, so storing them would buy you nothing and cost you a secret.
+      </div>
+      <div id="step"></div>
     </div>
-    <label for="email">Email</label><input id="email" type="email" />
-    <label for="phone">Phone <span class="opt">— with country code</span></label>
-    <input id="phone" placeholder="+49 …" />
-    <div class="row">
-      <div><label for="city">City</label><input id="city" /></div>
-      <div><label for="country">Country</label><input id="country" /></div>
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Links</legend>
-    <label for="linkedin_url">LinkedIn</label><input id="linkedin_url" placeholder="https://linkedin.com/in/…" />
-    <label for="website_url">Website / portfolio <span class="opt">— optional</span></label><input id="website_url" />
-    <label for="github_url">GitHub <span class="opt">— optional</span></label><input id="github_url" />
-  </fieldset>
-
-  <fieldset>
-    <legend>Eligibility</legend>
-    <p class="why">The most-asked questions that never appear on a CV.</p>
-
-    <label for="work_authorization">Work authorisation</label>
-    <select id="work_authorization">
-      <option value="">Select…</option>
-      <option>EU/EEA citizen — no permit needed</option>
-      <option>Citizen of this country</option>
-      <option>Valid work permit / visa</option>
-      <option>Student visa (limited hours)</option>
-      <option>Blue Card holder</option>
-      <option>Will require sponsorship</option>
-    </select>
-
-    <label for="requires_sponsorship">Do you need visa sponsorship?</label>
-    <select id="requires_sponsorship">
-      <option value="">Select…</option><option>No</option><option>Yes</option>
-    </select>
-
-    <label for="notice_period">Availability / earliest start</label>
-    <input id="notice_period" placeholder="e.g. immediately, or from 1 October" />
-
-    <label for="languages">Languages &amp; levels</label>
-    <input id="languages" placeholder="e.g. English C1, German B1, Hindi native" />
-    <div class="hint">German level matters a lot for the German market — be specific.</div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Preferences</legend>
-    <label for="remote_preference">Work setup</label>
-    <select id="remote_preference">
-      <option value="">Select…</option>
-      <option>On-site</option><option>Hybrid</option><option>Remote</option><option>Flexible / any</option>
-    </select>
-
-    <label for="willing_to_relocate">Willing to relocate?</label>
-    <select id="willing_to_relocate">
-      <option value="">Select…</option><option>Yes</option><option>No</option><option>Within the country</option>
-    </select>
-
-    <label for="salary_expectation">Salary expectation <span class="opt">— optional</span></label>
-    <input id="salary_expectation" placeholder="e.g. €55,000 / year, or negotiable" />
-
-    <label for="hours_per_week">Hours per week <span class="opt">— for working-student roles</span></label>
-    <input id="hours_per_week" placeholder="e.g. 20" />
-
-    <label for="driving_licence">Driving licence <span class="opt">— optional</span></label>
-    <input id="driving_licence" placeholder="e.g. Class B" />
-
-    <label for="how_heard">"How did you hear about us?"</label>
-    <input id="how_heard" placeholder="e.g. LinkedIn" />
-  </fieldset>
-
-  <!-- Asked here because this is the one moment the user is already setting the
-       extension up. Every other place it can be asked is somewhere they arrived
-       because something had already failed. -->
-  <fieldset id="grantBox">
-    <legend>Applying on employers' own sites</legend>
-    <p class="why">Job boards work out of the box. Most employers put the real
-      application form on their own website, and Chrome needs one permission
-      before auto-apply can fill those in. It asks once, and nothing is sent
-      anywhere.</p>
-    <button id="grantHosts" type="button">Enable auto-apply on all sites</button>
-    <p class="why" id="grantHint"></p>
-  </fieldset>
-
-  <fieldset>
-    <legend>Cover letter style</legend>
-    <p class="why">Pick the layout for your exported cover letters. You can change it any time.</p>
-    <div id="templates" class="tpl-grid"></div>
-  </fieldset>
-
-  <div class="bar">
-    <button id="save">Save profile</button>
-    <button id="skip" class="secondary">Close</button>
-    <span id="status"></span>
   </div>
+</div>
+
+<div class="bar">
+  <button id="back" class="secondary">← Back</button>
+  <button id="next">Next →</button>
+  <div class="meter" aria-hidden="true"><i id="meter-fill"></i></div>
+  <span class="count" id="count"></span>
+  <span class="spacer"></span>
+  <span id="saved"></span>
+  <span id="status" role="status" aria-live="polite"></span>
+  <button id="done" class="secondary">Finish later</button>
 </div>
 
 <script src="cover_templates.js"></script>

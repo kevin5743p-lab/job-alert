@@ -10,6 +10,7 @@
 // anything missing, and the two doors out.
 
 import * as sb from "./supabase.js";
+import { answeredCount, missingBlocking, isEmptyProfile } from "./profile_schema.js";
 
 const $ = (id) => document.getElementById(id);
 const els = {
@@ -131,7 +132,9 @@ els.signin.addEventListener("click", async () => {
     const profile = await sb.getProfile();
     // A signed-in account with no answers yet can't autofill anything — take
     // them straight there rather than leaving a tick missing on a list.
-    if (!Object.keys(profile?.application_profile || {}).length) {
+    // isEmptyProfile ignores keys that are settings rather than answers, which
+    // is what stopped this firing once cover_template had been seeded.
+    if (isEmptyProfile(profile?.application_profile)) {
       openPage("onboarding.html");
     }
   } catch (e) {
@@ -181,8 +184,12 @@ async function refreshAuthUI() {
 // wasn't, nothing said so: you found out when a scan died with "NO_CV" in the
 // corner of another page, or when an application paused on an upload you had
 // no file for. Each row links to the exact section that fixes it.
-const KEY_ANSWERS = ["first_name", "last_name", "email", "phone",
-                     "work_authorization", "notice_period"];
+//
+// What counts as "answered" is no longer a hardcoded six keys here and a
+// different six in settings.js. It comes from profile_schema.js, derived from
+// what the submit gate actually blocks on — so this row goes amber for exactly
+// the questions that would stall a real application, rather than for a list
+// written by hand before half of them existed.
 
 function row({ ok, what, why, fix, page }) {
   const li = document.createElement("li");
@@ -220,7 +227,12 @@ async function refreshReady(signedIn) {
   els.readyBox.classList.toggle("hidden", !signedIn);
   if (!signedIn) return;
 
-  const local = await chrome.storage.local.get(["groqApiKey", "cvText"]);
+  // applicationProfile as well: the questionnaire autosaves there on every
+  // keystroke and syncs to the account a beat later, so reading only the server
+  // copy showed "unanswered" to someone who had just filled the whole thing in
+  // — and shows it permanently to anyone not signed in.
+  const local = await chrome.storage.local.get(
+    ["groqApiKey", "cvText", "applicationProfile"]);
 
   let profile = null;
   let docs = [];
@@ -230,8 +242,9 @@ async function refreshReady(signedIn) {
   try { docs = await sb.listUserDocuments(); } catch { /* offline */ }
 
   const cv = (profile?.cv_text || local.cvText || "").trim();
-  const answers = Object.keys(profile?.application_profile || {});
-  const missingAnswers = KEY_ANSWERS.filter((k) => !profile?.application_profile?.[k]);
+  const app = profile?.application_profile || local.applicationProfile || {};
+  const answered = answeredCount(app);
+  const missingAnswers = missingBlocking(app);
   const attachable = docs.filter((d) => d.kind !== "other" && d.is_primary);
 
   els.ready.replaceChildren(
@@ -242,12 +255,17 @@ async function refreshReady(signedIn) {
       fix: "Add", page: "settings.html#cv-section",
     }),
     row({
-      ok: answers.length > 0 && !missingAnswers.length,
-      what: !answers.length ? "Application questions unanswered"
-        : missingAnswers.length ? `${missingAnswers.length} key question${
-            missingAnswers.length === 1 ? "" : "s"} still open`
+      ok: answered > 0 && !missingAnswers.length,
+      what: !answered ? "Application questions unanswered"
+        : missingAnswers.length ? `${missingAnswers.length} answer${
+            missingAnswers.length === 1 ? "" : "s"} auto-apply will stall on`
         : "Application questions answered",
-      why: answers.length ? "" : "Autofill has nothing to work from.",
+      // Naming the first one turns a count into an errand. "2 answers auto-apply
+      // will stall on" is a number; "starting with: How much business travel…"
+      // is something you can go and do.
+      why: !answered ? "Autofill has nothing to work from."
+        : missingAnswers.length
+          ? `Starting with: ${missingAnswers[0].label}` : "",
       fix: "Answer", page: "onboarding.html",
     }),
     row({

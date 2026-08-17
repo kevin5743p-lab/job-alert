@@ -13,6 +13,7 @@
 
 import * as sb from "./supabase.js";
 import { hasAllSites, requestAllSites } from "./host_access.js";
+import { completenessLine, isEmptyProfile } from "./profile_schema.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) =>
@@ -118,7 +119,11 @@ els.signin.addEventListener("click", async () => {
     if (profile?.cv_text?.trim()) { els.cv.value = profile.cv_text; countCv(); }
     showProfileState(profile?.application_profile);
     loadDocuments();
-    if (!Object.keys(profile?.application_profile || {}).length) openOnboarding();
+    // isEmptyProfile, not Object.keys(...).length. The old test counted any key
+    // at all, and the questionnaire's save seeded cover_template
+    // unconditionally — so a profile with zero real answers had one key,
+    // counted as filled in, and this never fired again after the first visit.
+    if (isEmptyProfile(profile?.application_profile)) openOnboarding();
   } catch (e) {
     setStatus(els.authStatus, e.message, "bad");
   }
@@ -620,22 +625,14 @@ function countCv() {
 }
 els.cv.addEventListener("input", countCv);
 
-const KEY_ANSWERS = ["first_name", "last_name", "email", "phone",
-                     "work_authorization", "notice_period"];
-
+// The list of what counts as answered used to be six hardcoded keys here and
+// six more in popup.js, while the engine blocked on nine questions neither list
+// mentioned. It now comes from profile_schema.js, the same source the
+// questionnaire renders from, so the three can no longer disagree.
 function showProfileState(profile) {
-  const answered = Object.keys(profile || {}).length;
-  if (!answered) {
-    els.profileState.textContent =
-      "Not filled in yet — autofill has nothing to work from until this is done.";
-    els.profileState.style.color = "var(--warn)";
-    return;
-  }
-  const missing = KEY_ANSWERS.filter((k) => !profile[k]).length;
-  els.profileState.textContent = missing
-    ? `${answered} answers saved · ${missing} key question${missing === 1 ? "" : "s"} still open`
-    : `${answered} answers saved ✓`;
-  els.profileState.style.color = missing ? "var(--warn)" : "var(--good)";
+  const { text, tone } = completenessLine(profile);
+  els.profileState.textContent = text;
+  els.profileState.style.color = `var(--${tone})`;
 }
 
 // ── save ────────────────────────────────────────────────────────────────────

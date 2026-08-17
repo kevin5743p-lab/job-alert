@@ -127,6 +127,35 @@
       location: ["[class*='job-location']", "[class*='location']"],
       description: ["[class*='job-description']", "main", "article"],
     },
+    // SAP SuccessFactors, which is how a large share of German industry
+    // recruits — Volkswagen, BMW, Schaeffler all sit on one host. Without an
+    // entry here it fell to the generic reader, whose document.title backstop
+    // produced a title of "Career Opportunities: <job>" and an EMPTY company,
+    // because the tab title carries no employer at all. An empty company means
+    // job_key.js cannot build a key, so even the company+title fallback that
+    // rescues a URL mismatch had nothing to work with.
+    successfactors: {
+      match: (h) => h.includes("successfactors."),
+      title: ["[id*='jobTitle']", ".jobTitle", "h1", "h2"],
+      // The employer is in the query string, not the page: one host serves
+      // every company, keyed by ?company=.
+      company: ["[class*='companyName']", "[id*='companyName']"],
+      location: ["[id*='jobLocation']", "[class*='jobLocation']", "[class*='location']"],
+      description: ["[id*='jobDescription']", "[class*='jobDescription']",
+                    ".jobDescription", "#content", "main"],
+      // Keep only what names the posting. SuccessFactors appends session and
+      // navigation state (career_ns, sq, jobPipeline…) that varies per visit.
+      canonicalUrl: () => {
+        const q = new URLSearchParams(window.location.search);
+        const company = q.get("company");
+        const req = q.get("career_job_req_id");
+        if (!company || !req) return null;      // a search page, not a posting
+        return `${window.location.origin}${window.location.pathname}` +
+               `?company=${encodeURIComponent(company)}` +
+               `&career_job_req_id=${encodeURIComponent(req)}` +
+               `&career_ns=job_listing`;
+      },
+    },
     smartrecruiters: {
       match: (h) => h.includes("smartrecruiters.com"),
       title: ["h1", "[class*='job-title']"],
@@ -155,10 +184,29 @@
     const location = pickText(cfg.location || []);
     const description = readDescription(cfg.description || []);
     // Canonical URL is the dedup key for the applications table: the same
-    // posting must always produce the same URL. Sites without a rule fall back
-    // to the path (query strings are usually tracking noise).
+    // posting must always produce the same URL.
+    //
+    // The query string is KEPT. It used to be discarded here on the grounds
+    // that it is tracking noise, which is true of consumer job boards and
+    // exactly backwards for enterprise ATS software. SuccessFactors — which is
+    // Volkswagen, BMW, Schaeffler and most of the German industrial employers —
+    // names the posting entirely in the query and serves every one of them from
+    // the same `/career` path:
+    //
+    //   career5.successfactors.eu/career?company=VWAGLPPROD10&career_job_req_id=28826
+    //
+    // Stripping it collapsed every such job onto one URL. Tailoring one wrote
+    // over the last, and none of them matched the application row the scanner
+    // had saved under the real URL — so the dashboard showed a job it had just
+    // tailored with its Apply button greyed out, permanently.
+    //
+    // Tracking parameters are removed on the worker side by
+    // posting_url.canonicalPostingUrl, which is a module and can be tested.
+    // Content scripts cannot import, and a second copy of that list here would
+    // drift from it.
     const url = (cfg.canonicalUrl && cfg.canonicalUrl()) ||
-                (window.location.origin + window.location.pathname);
+                (window.location.origin + window.location.pathname +
+                 window.location.search);
     return { title, company, location, description, url, source: name };
   }
 

@@ -13,6 +13,7 @@
 //    user's own machine.
 
 import { jobKey } from "./job_key.js";
+import { canonicalPostingUrl } from "./posting_url.js";
 
 export const SUPABASE_URL = "https://jiryqdcmukmbflahtptv.supabase.co";
 export const SUPABASE_ANON_KEY = "sb_publishable_G1Mf9PySGYmp2YLqfj4FWg_BzdAnHJ_";
@@ -195,7 +196,7 @@ export async function saveTailoredResult(job, packet, warnings, cvFingerprint = 
       job_title: job.title || "",
       job_company: job.company || "",
       job_location: job.location || "",
-      job_url: job.url || "",
+      job_url: canonicalPostingUrl(job.url || ""),
       job_source: job.source || "",
       // Cross-site identity, so this packet is still findable after the user
       // follows an aggregator's "Apply on company site" link. Null for
@@ -249,14 +250,14 @@ export async function tailoredForJob(job = {}) {
   const { url, originalUrl = null } = job;
 
   if (url) {
-    const row = await latestTailoredForUrl(url);
+    const row = await latestTailoredForUrl(canonicalPostingUrl(url));
     if (row) return { ...row, matched_by: "url" };
   }
 
   // resolve_ats.js rewrites job_url to the employer's own ATS and keeps the
   // aggregator link in original_job_url. The user tailored against that one.
   if (originalUrl && originalUrl !== url) {
-    const row = await latestTailoredForUrl(originalUrl);
+    const row = await latestTailoredForUrl(canonicalPostingUrl(originalUrl));
     if (row) return { ...row, matched_by: "original_url" };
   }
 
@@ -286,14 +287,24 @@ export async function upsertApplication(job, tailoredResultId, packet) {
   // the same score as one a scan found instead of a blank in the tracker.
   const body = {
     user_id: await currentUserId(),
-    job_title: job.title || "",
-    job_company: job.company || "",
-    job_location: job.location || "",
-    job_url: job.url,
-    job_source: job.source || "",
+    job_url: canonicalPostingUrl(job.url),
     status: "tailored",
     tailored_result_id: tailoredResultId || null,
   };
+
+  // Only send what we actually read.
+  //
+  // This is a merge-duplicates upsert, so every key present overwrites the
+  // stored value — and sending `job_company: ""` for a page whose employer we
+  // could not find would erase the name the scanner had already put there. The
+  // scan reads a feed with clean metadata; a page reader is guessing from the
+  // DOM. Absent should mean "leave what you have", not "blank it".
+  for (const [column, value] of [
+    ["job_title", job.title], ["job_company", job.company],
+    ["job_location", job.location], ["job_source", job.source],
+  ]) {
+    if (value) body[column] = value;
+  }
   if (packet && typeof packet.fit_score === "number") {
     body.score = packet.fit_score;
     body.tier = packet.fit_score >= 75 ? "strong" : "worth_look";
@@ -498,7 +509,7 @@ export async function upsertFoundJobs(scored) {
       job_title: (s.job.title || "").slice(0, 300),
       job_company: (s.job.company || "").slice(0, 200),
       job_location: (s.job.location || "").slice(0, 200),
-      job_url: s.job.url,
+      job_url: canonicalPostingUrl(s.job.url),
       job_source: (s.job.source || "").slice(0, 100),
       description: (s.job.description || "").slice(0, 4000),
       posted_at: s.job.published || null,
@@ -584,7 +595,7 @@ export function domainOf(url) {
 export async function enqueueApply(job, { tier = 0, originalJobUrl = null } = {}) {
   const body = {
     user_id: await currentUserId(),
-    job_url: job.url,
+    job_url: canonicalPostingUrl(job.url),
     job_title: job.title || "",
     job_company: job.company || "",
     domain: domainOf(job.url),

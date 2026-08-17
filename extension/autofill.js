@@ -117,7 +117,89 @@
       patterns: [/how did you (hear|find|learn)/, /wie haben sie von uns erfahren/,
                  /referral source/, /\bsource\b/],
       loose: [/where did you (hear|find|see)/, /wie sind sie auf uns/] },
+
+    // ── Questions the submit gate blocks on ────────────────────────────────
+    //
+    // confidence.js COMMITMENT_RE refuses to let a run submit a legal or
+    // contractual answer it cannot quote verbatim from the saved profile. Its
+    // list has always included business travel, criminal record and the four
+    // EEO questions — and until the questionnaire grew fields for them, there
+    // was no answer to quote, so every form asking one ended the run in a
+    // pause. The gate was right; the profile was empty. These specs let the
+    // free rule pass answer them with no model turn at all.
+
+    // Distinct from willing_to_relocate on purpose. "Are you willing to travel
+    // up to 30%?" contains none of the relocation words, so it matched nothing
+    // while still firing the gate.
+    { key: "willing_to_travel",
+      patterns: [/willing to travel/, /business travel/, /travel requirement/,
+                 /reisebereitschaft|dienstreise/],
+      loose: [/(able|prepared) to travel/, /travel up to \d+ ?%/,
+              /how (much|often) .{0,20}travel/] },
+
+    { key: "criminal_record",
+      patterns: [/criminal (record|offence|offense|conviction|history)/,
+                 /ever been convicted/, /vorstrafe|vorbestraft/],
+      loose: [/have you .{0,30}(convicted|charged with)/,
+              /pleaded (guilty|no contest)/] },
+
+    // Voluntary self-identification. A spec here only says how to RECOGNISE the
+    // field; whether it is ever filled is decided by eeo_autofill_consent in
+    // fill() below, which is off unless the user turned it on.
+    { key: "eeo_gender",
+      patterns: [/^gender$/, /gender identity/, /geschlecht/],
+      loose: [/what is your gender/, /gender.{0,20}(voluntary|optional|self-?identif)/] },
+    { key: "eeo_race_ethnicity",
+      patterns: [/race|ethnicity|ethnic (group|origin)/, /\beeo-?1\b/],
+      loose: [/racial .{0,15}identif/, /hispanic or latino/] },
+    { key: "eeo_veteran_status",
+      patterns: [/veteran status/, /protected veteran/, /\bvevraa\b/],
+      loose: [/are you a .{0,20}veteran/] },
+    { key: "eeo_disability_status",
+      patterns: [/disability status/, /\bcc-?305\b/, /schwerbehind/,
+                 /voluntary self-?identification of disability/],
+      loose: [/do you have a disability/, /disabilit(y|ies).{0,25}(identify|status)/] },
+
+    // German forms ask this almost universally. It is gender data under AGG §1,
+    // so it is gated with the EEO answers rather than treated as a salutation.
+    { key: "de_anrede",
+      patterns: [/^anrede$/, /^salutation$/, /^title$/, /^titel$/],
+      loose: [/anrede/] },
+
+    // notice_period absorbs "start date" as free text, but an <input type=date>
+    // accepts nothing but yyyy-mm-dd — so a date-typed control gets the real
+    // date and everything else keeps the sentence.
+    { key: "earliest_start_date",
+      patterns: [/earliest start date/, /available start date/,
+                 /gewünschtes eintrittsdatum/],
+      loose: [/when .{0,20}start.{0,10}\(date\)/] },
+
+    { key: "date_of_birth",
+      // Deliberately NOT matched by pattern: BLOCKED above vetoes every
+      // date-of-birth field outright, and that veto stays. The key exists so
+      // the answer can be shown to the model for a German Lebenslauf, never so
+      // a form field gets filled with it.
+      patterns: [], loose: [] },
   ];
+
+  // Answers that are lawful to ask and voluntary to give. Filling one of these
+  // without being asked to is the single most consequential thing this file
+  // could get wrong, so it takes an explicit, separate opt-in rather than
+  // riding along with the rest of the profile.
+  const CONSENT_GATED = {
+    eeo_gender: "eeo_autofill_consent",
+    eeo_race_ethnicity: "eeo_autofill_consent",
+    eeo_veteran_status: "eeo_autofill_consent",
+    eeo_disability_status: "eeo_autofill_consent",
+    de_anrede: "eeo_autofill_consent",
+    date_of_birth: "eeo_autofill_consent",
+  };
+
+  /** May we fill this key at all, given what the user consented to? */
+  function consented(profile, key) {
+    const gate = CONSENT_GATED[key];
+    return !gate || profile[gate] === true;
+  }
 
   const norm = (s) => (s || "").toLowerCase().replace(/\s+/g, " ").trim();
 
@@ -365,6 +447,13 @@
   // silently filled nothing. The model had answered correctly and we discarded
   // it. Both paths now resolve values the same way.
   function resolveValue(profile, key) {
+    // The consent gate sits at the resolver rather than at each call site, so
+    // every path that can produce a value — rules, autocomplete token, input
+    // type, and the model's own field map — is covered by one check. A missing
+    // tick makes the answer simply unavailable, exactly as if it had never
+    // been saved.
+    if (!consented(profile, key)) return undefined;
+
     let value = profile[key];
     if (!value && key === "full_name" && (profile.first_name || profile.last_name)) {
       value = [profile.first_name, profile.last_name].filter(Boolean).join(" ");
@@ -579,7 +668,17 @@
         return;
       }
       const spec = specFor(question);
-      const value = spec && profile[spec.key];
+      // resolveValue, not profile[key] directly: this path was the one place
+      // that read the profile raw, so it saw neither the first/last-name
+      // reconciliation nor the consent gate. A radio group asking for gender
+      // would have been answered while the identical <select> was not.
+      const value = spec && resolveValue(profile, spec.key);
+      if (spec && !value && CONSENT_GATED[spec.key] && profile[spec.key]) {
+        report.skipped.push({
+          label, reason: "voluntary question — turn on \"let JobCopilot fill " +
+                         "these in\" in your answers if you want it answered" });
+        return;
+      }
       if (!value) return;
 
       const hit = inputs.find((el) => optionMatches(labelTextFor(el), value));
@@ -1058,6 +1157,15 @@
       // Same resolver the model-mapped path uses, so a form asking for one
       // "Name" is answered identically however the field was identified.
       const value = resolveValue(profile, spec.key);
+      // A stored answer withheld by the consent gate is reported rather than
+      // dropped. Silence here reads as "the form didn't ask", which is the
+      // opposite of what happened.
+      if (!value && CONSENT_GATED[spec.key] && profile[spec.key]) {
+        report.skipped.push({
+          label, reason: "voluntary question — turn on \"let JobCopilot fill " +
+                         "these in\" in your answers if you want it answered" });
+        return;
+      }
       if (!value) return;
 
       // Checked here too, though the rules path is the least likely to be
