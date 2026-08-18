@@ -297,7 +297,12 @@ const OUR_FAULT = [
   // `contactedDomain` there. This stays as the second line of defence.
   /access to sites outside the job boards/i,
   /the tab was closed/i,           // the user stopped the run, or closed the tab
-  /hasn't been tailored yet/i,     // the packet is missing on our side
+  // Writing the packet is a step of ours that happens before the site is ever
+  // touched — a run now tailors the job itself rather than requiring that
+  // someone did it first. These fail on our side of the wire every time.
+  /couldn't read enough of this posting/i,
+  /no CV on your account/i,
+  /writing the tailored CV and cover letter failed/i,
   /allowance|quota_exceeded/i,     // out of budget; nothing to do with the site
   /not_signed_in/i,
   /claude call failed|ai-proxy|upstream_unreachable/i,

@@ -267,7 +267,9 @@ function renderTable(rows) {
     $("content").innerHTML = `<div class="empty">
       No jobs yet.<br />
       They'll appear here automatically once the job-alert bot runs, or as soon
-      as you open a posting and click <b>✦ Tailor this job</b>.
+      as you open a posting and click <b>✦ Tailor this job</b>. Anything that
+      lands here can be applied to straight from the <b>Apply</b> button — the
+      CV and cover letter are written as part of the run.
     </div>`;
     $("stats").innerHTML = "";
     $("pager").classList.add("hidden");
@@ -471,20 +473,41 @@ const APPLY_LABEL = {
   aborted:            ["Stopped",  "muted"],
 };
 
+/** The newest breadcrumb a run has written, or "" before it writes any. */
+function lastStepKind(run) {
+  const steps = Array.isArray(run.steps) ? run.steps : [];
+  return steps.length ? String(steps[steps.length - 1].kind || "") : "";
+}
+
 function applyCell(r) {
   if (!r.job_url) return "";
   const st = applyState.get(r.job_url);
 
   if (!st) {
-    // Applying needs the tailored packet — that's where the CV, the cover
-    // letter, and the grounding all come from. Say so rather than offering a
-    // button that would fail.
-    return r.tailored_result_id
-      ? `<button class="primary" data-apply="${esc(r.job_url)}">Apply</button>`
-      : `<button disabled title="Tailor this job first — the engine applies with the tailored CV and cover letter">Apply</button>`;
+    // Always live, on every row.
+    //
+    // This button used to be disabled until someone had opened the posting and
+    // pressed "✦ Tailor this job", because the run needed a packet and could
+    // not make one. It can now — see tailorForRun() in apply_agent.js — so a
+    // job found five seconds ago can be applied to in one click, and the whole
+    // open-tailor-return-apply detour is gone.
+    //
+    // The tooltip changes rather than the button, because the two cases really
+    // do differ in what the click will cost and how long it will take.
+    const title = r.tailored_result_id
+      ? "Apply with the tailored CV and cover letter already written for this job"
+      : "Write the tailored CV and cover letter, then apply — no need to tailor first";
+    return `<button class="primary" data-apply="${esc(r.job_url)}" title="${title}">Apply</button>`;
   }
 
   let [label, cls] = APPLY_LABEL[st.status] || [st.status, "muted"];
+  // A run that hasn't got a packet writes one first, and that takes the better
+  // part of a minute. Showing "Applying…" over a posting it has not opened yet
+  // is the kind of small lie that has people checking the employer's site by
+  // hand to see whether anything actually happened.
+  if (st.status === "running" && lastStepKind(st) === "tailoring") {
+    label = "Tailoring…";
+  }
   // A run that stopped on our own crash is not waiting on the user, and saying
   // "Needs you" over it sends them hunting for a form problem that isn't there.
   if (st.status === "paused_needs_human" && st.pause_reason) {
@@ -590,6 +613,100 @@ async function pollApplyStatus() {
 
   renderApplyPanel(st);
   refreshApplyCells();
+
+  // A run leaving the queue is the only moment the memory can have changed, and
+  // it is the moment the user is most likely to be looking. Repainting then —
+  // rather than on every poll — keeps the panel current without making it the
+  // most-queried thing on the page.
+  const busy = (st.runs || []).filter((r) => ["queued", "running"].includes(r.status)).length;
+  if (wasBusy && !busy) renderMemory(true).catch(() => {});
+  wasBusy = busy;
+}
+
+let wasBusy = 0;
+
+// ── what it has learned ─────────────────────────────────────────────────────
+
+/**
+ * Repainted on demand, not on the status poll.
+ *
+ * The poll runs every few seconds and this changes once per finished
+ * application. Two extra requests on that cadence would be the most frequent
+ * queries the dashboard makes, for the least frequently changing panel on it.
+ */
+let memoryLoaded = false;
+
+async function renderMemory(force = false) {
+  const el = $("memoryPanel");
+  if (!el || (memoryLoaded && !force)) return;
+
+  let lessons, playbooks;
+  try {
+    [lessons, playbooks] = await Promise.all([sb.listLessons(60), sb.listPlaybooks(40)]);
+  } catch { return; }                  // not signed in, or the migration isn't run yet
+  memoryLoaded = true;
+
+  const active = lessons.filter((l) => l.status === "active");
+  if (!active.length && !playbooks.length) { el.innerHTML = ""; el.hidden = true; return; }
+  el.hidden = false;
+
+  // Employers first: "what does applying to BMW involve" is the question a user
+  // actually has. The lesson list below it is the engine's working notes.
+  const company = (p) => {
+    const bits = [];
+    if (p.submitted) bits.push(`${p.submitted} sent`);
+    if (p.paused) bits.push(`${p.paused} handed back`);
+    if (p.failed) bits.push(`${p.failed} failed`);
+    const needs = [];
+    if (p.account_required) needs.push("needs an account");
+    if (p.required_documents?.length) needs.push(`wants ${p.required_documents.join(", ")}`);
+    if (p.known_questions?.length) needs.push(`${p.known_questions.length} saved answer(s)`);
+    return `<li><b>${esc(p.company_name || p.company_key)}</b>
+      <span class="muted">${esc(p.ats || "")} · ${esc(bits.join(", ") || "no runs yet")}</span>
+      ${needs.length ? `<div class="why">${esc(needs.join(" · "))}</div>` : ""}</li>`;
+  };
+
+  // Scored the same way recall ranks them, so what the user reads at the top is
+  // what the next application will actually be told first.
+  const lesson = (l) => {
+    const worked = l.times_worked
+      ? `worked ${l.times_worked}×` : (l.times_failed ? `hasn't helped yet` : "new");
+    return `<li>
+      <b>${esc(l.scope === "global" ? "everywhere" : l.scope_key)}</b>
+      <span class="muted">${esc(l.problem_kind)} · seen ${l.times_seen}× · ${esc(worked)}${
+        l.pinned ? " · yours" : ""}</span>
+      <div class="why">${esc(l.remedy_note || JSON.stringify(l.remedy))}</div>
+      <button data-forget="${esc(l.id)}" title="Delete this — future runs stop being told it"
+        >Forget this</button>
+      ${l.pinned ? "" : `<button data-keep="${esc(l.id)}"
+        title="Keep it as it is — a later run can't overwrite or retire it">Always keep</button>`}
+    </li>`;
+  };
+
+  el.innerHTML =
+    `<h3>What it has learned</h3>
+     ${playbooks.length ? `<h4>Employers</h4>
+       <ul class="queue">${playbooks.map(company).join("")}</ul>` : ""}
+     ${active.length ? `<h4>Fixes it remembers</h4>
+       <ul class="queue">${active.map(lesson).join("")}</ul>
+       <p class="muted">These are fed to the next application at the same employer. A fix
+       that stops helping is dropped on its own — but if one is simply wrong, forget it
+       here, because every future run at that employer is being told it.</p>` : ""}`;
+
+  for (const b of el.querySelectorAll("[data-forget]")) {
+    b.addEventListener("click", async () => {
+      b.disabled = true;
+      try { await sb.deleteLesson(b.dataset.forget); await renderMemory(true); }
+      catch (e) { showMessage(`Couldn't forget that: ${e.message}`, true); b.disabled = false; }
+    });
+  }
+  for (const b of el.querySelectorAll("[data-keep]")) {
+    b.addEventListener("click", async () => {
+      b.disabled = true;
+      try { await sb.pinLesson(b.dataset.keep); await renderMemory(true); }
+      catch (e) { showMessage(`Couldn't pin that: ${e.message}`, true); b.disabled = false; }
+    });
+  }
 }
 
 /**
@@ -682,20 +799,30 @@ function renderActivity() {
   el.hidden = !lines;
 }
 
-/** Queue every strong match that's been tailored and not yet applied to. */
+/** Queue every strong match not already applied to. */
 async function applyToAllStrong() {
   const btn = $("applyAll");
+  // `tailored_result_id` used to be part of this filter, which meant the button
+  // silently skipped every strong match nobody had tailored by hand — usually
+  // all of them, right after a scan. Each run now writes its own packet, so the
+  // only question left is whether the job is still open business.
   const eligible = allRows.filter((r) =>
-    r.job_url && r.tailored_result_id && (r.score ?? 0) >= 75 &&
+    r.job_url && (r.score ?? 0) >= 75 &&
     !applyState.has(r.job_url) &&
     !["applied", "rejected", "dismissed"].includes(r.status));
 
   if (!eligible.length) {
-    showMessage("Nothing to queue — strong matches need to be tailored first.", true);
+    showMessage("Nothing to queue — no strong matches left that haven't been " +
+                "applied to or queued already.", true);
     return;
   }
+  const fresh = eligible.filter((r) => !r.tailored_result_id).length;
   if (!confirm(
     `Queue ${eligible.length} application${eligible.length === 1 ? "" : "s"}?\n\n` +
+    (fresh
+      ? `${fresh} of them ${fresh === 1 ? "has" : "have"} no tailored CV yet — one ` +
+        `gets written for each before it applies.\n\n`
+      : "") +
     `They'll be spaced out per site and each one stops for you if anything ` +
     `can't be answered from your profile and CV.`)) return;
 
@@ -1082,6 +1209,10 @@ async function load() {
                   `or narrow it down with Filters.`);
     }
     startApplyPolling();
+    // Not awaited: the memory panel is the least urgent thing on the page and
+    // must never delay the table. A user whose migration hasn't been run yet
+    // gets a silent no-op rather than an error over a panel they didn't ask for.
+    renderMemory().catch(() => {});
   } catch (e) {
     if (e.message === "NOT_SIGNED_IN") {
       $("who").textContent = "Session expired — sign in again from the toolbar icon.";

@@ -83,12 +83,47 @@ const CASES = [
     resume: "retry",
   },
   {
+    kind: "tailoring_failed", group: "ours",
+    test: /writing the tailored CV and cover letter failed/i,
+    headline: "Writing your CV and cover letter for this job didn't finish.",
+    todo: [
+      "Press Retry — the packet is written from scratch on the next run and most of these are a one-off.",
+      "If it stops here twice, open the job and press \"✦ Tailor this job\": the same step, with the error in front of you.",
+    ],
+    resume: "retry",
+  },
+  {
     kind: "site_blocked",
     test: /captcha|bot check|are you a (human|robot)|cloudflare|access denied|forbidden|rate ?limit|\b(401|403|429)\b/i,
     headline: "The site stopped the run, not the form.",
     todo: [
       "Open the tab and clear whatever it's showing — usually a bot check or a sign-in.",
       "Then press Retry. If the whole site is resting, use Resume now under Paused sites.",
+    ],
+    resume: "retry",
+  },
+
+  // ── the run couldn't write its own packet ─────────────────────────────────
+  // Applying no longer requires that someone tailored the job first — the run
+  // writes the CV and cover letter itself. These are the two ways that step
+  // fails, and both have a first move the user can make in under a minute.
+  {
+    kind: "no_posting_text",
+    test: /couldn't read enough of this posting|nothing to tailor a CV from/i,
+    headline: "It couldn't read this posting, so it had nothing to write from.",
+    todo: [
+      "Open the job and press \"✦ Tailor this job\" there — the page reader works from the tab you're looking at.",
+      "Then press Retry. The run picks the packet up and goes straight to the form.",
+    ],
+    resume: "retry",
+  },
+  {
+    kind: "no_cv",
+    test: /no CV on your account|nothing to tailor from/i,
+    headline: "There's no CV on your account to tailor from.",
+    todo: [
+      "Open Settings → Your CV and paste it in. Everything written for you is traced back to that text.",
+      "Then press Retry.",
     ],
     resume: "retry",
   },
@@ -179,7 +214,7 @@ const FALLBACK = {
   resume: "manual",
 };
 
-const OURS = new Set(["fault", "upload_failed"]);
+const OURS = new Set(["fault", "upload_failed", "tailoring_failed"]);
 
 /**
  * Explain a pause.

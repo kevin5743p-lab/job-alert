@@ -319,6 +319,38 @@ export async function upsertApplication(job, tailoredResultId, packet) {
   return rows && rows[0] ? rows[0] : null;
 }
 
+/**
+ * The tracked row for one posting, by whichever handle the caller holds.
+ *
+ * The apply engine wants it for `description`: the scan already stored the
+ * posting's text, so a job that was never tailored by hand can still be
+ * tailored without re-reading the page.
+ *
+ * `id` is tried first because a rerouted run carries the id of the row the user
+ * actually clicked, whose job_url is the aggregator's — not the employer URL
+ * the run is now against. Then the run's own URL, then the pre-reroute one.
+ */
+export async function trackedJobFor({ id = null, url = null, originalUrl = null } = {}) {
+  const first = async (query) => {
+    const rows = await rest(query);
+    return rows && rows[0] ? rows[0] : null;
+  };
+
+  if (id) {
+    const row = await first(
+      `/applications?id=eq.${encodeURIComponent(id)}&select=*&limit=1`);
+    if (row) return row;
+  }
+  for (const u of [url, originalUrl]) {
+    if (!u) continue;
+    const row = await first(
+      `/applications?job_url=eq.${encodeURIComponent(canonicalPostingUrl(u))}` +
+      `&select=*&limit=1`);
+    if (row) return row;
+  }
+  return null;
+}
+
 export async function listApplications(limit = 100) {
   return rest(`/applications?select=*&archived_at=is.null` +
               `&order=updated_at.desc&limit=${limit}`);
@@ -657,6 +689,11 @@ export async function appendApplyStep(id, step) {
   return updateApplyRun(id, { steps });
 }
 
+export async function getApplyRun(id) {
+  const rows = await rest(`/apply_runs?id=eq.${encodeURIComponent(id)}&select=*&limit=1`);
+  return rows && rows[0] ? rows[0] : null;
+}
+
 export async function listApplyRuns(limit = 100) {
   return rest(`/apply_runs?select=*&order=created_at.desc&limit=${limit}`);
 }
@@ -712,6 +749,198 @@ export async function upsertDomainHealth(domain, patch) {
     headers: { Prefer: "resolution=merge-duplicates,return=representation" },
   });
   return rows && rows[0] ? rows[0] : null;
+}
+
+// ── what the engine remembers between applications ──────────────────────────
+//
+// Backs learn.js. Three tables from sql/007_apply_memory.sql: lessons (a
+// problem and the fix that worked), playbooks (what applying to one employer
+// involves), outcomes (the ledger that decides whether a fix is earning its
+// place). See the header of learn.js for why they are separate.
+
+/**
+ * Every active lesson in scope for a job.
+ *
+ * One request, not one per scope. PostgREST `or=` with nested `and=` groups is
+ * awkward to read but the alternative is four round-trips before every
+ * application, on the critical path, to fetch a few rows.
+ */
+export async function activeLessons(scopes = []) {
+  if (!scopes.length) return [];
+  const clauses = scopes.map((s) =>
+    // The global scope matches on `scope` alone. Its key is always the empty
+    // string, and `scope_key.eq.` with nothing after it is not a reliable way
+    // to say that to PostgREST — it reads as a missing value, not an empty one.
+    s.scope === "global"
+      ? "scope.eq.global"
+      // Values are double-quoted because a normalised company key can contain
+      // spaces ("mercedes benz") and a domain contains dots, and inside an
+      // or=() expression PostgREST parses commas and parens structurally.
+      : `and(scope.eq.${s.scope},scope_key.eq."${String(s.scope_key).replace(/"/g, "")}")`
+  ).join(",");
+
+  return rest(`/apply_lessons?select=*&status=eq.active&or=(${encodeURI(clauses)})` +
+              `&order=times_worked.desc&limit=60`) || [];
+}
+
+/**
+ * Record a problem and its fix — or, if we have seen it before, count it again.
+ *
+ * Goes through the stored function rather than an upsert from here because the
+ * increment has to be atomic: two runs finishing together at the same employer
+ * would otherwise both read times_seen = 3 and both write 4. See
+ * record_apply_lesson() in 007.
+ */
+export async function recordLesson({ scope, scope_key, problem_kind, signature,
+                                     remedy, remedy_note, evidence }) {
+  return rest("/rpc/record_apply_lesson", {
+    method: "POST",
+    body: { p_scope: scope, p_scope_key: scope_key, p_problem_kind: problem_kind,
+            p_signature: signature, p_remedy: remedy, p_remedy_note: remedy_note,
+            p_evidence: evidence },
+  });
+}
+
+/**
+ * Credit or blame the lessons a finished run was carrying.
+ *
+ * The half of the loop that keeps the memory honest: a remedy nobody checks is
+ * a guess with a timestamp on it. Three failures without an intervening success
+ * retires it — server-side, in the same statement, so the decision cannot drift
+ * between callers.
+ */
+export async function settleLessons(ids, worked) {
+  if (!ids?.length) return null;
+  return rest("/rpc/settle_apply_lessons", {
+    method: "POST",
+    body: { p_ids: ids, p_worked: !!worked },
+  });
+}
+
+export async function listLessons(limit = 200) {
+  return rest(`/apply_lessons?select=*&order=last_seen_at.desc&limit=${limit}`) || [];
+}
+
+/**
+ * The user's own correction, which outranks anything a run inferred.
+ *
+ * `pinned` is what stops the next run at the same problem overwriting it —
+ * see the CASE expressions in record_apply_lesson().
+ */
+export async function pinLesson(id, patch = {}) {
+  const rows = await rest(`/apply_lessons?id=eq.${encodeURIComponent(id)}`, {
+    method: "PATCH",
+    body: { pinned: true, ...patch },
+    headers: { Prefer: "return=representation" },
+  });
+  return rows && rows[0] ? rows[0] : null;
+}
+
+export async function deleteLesson(id) {
+  return rest(`/apply_lessons?id=eq.${encodeURIComponent(id)}`, { method: "DELETE" });
+}
+
+export async function getPlaybook(companyKey) {
+  const rows = await rest(
+    `/company_playbooks?company_key=eq.${encodeURIComponent(companyKey)}&select=*&limit=1`);
+  return rows && rows[0] ? rows[0] : null;
+}
+
+export async function listPlaybooks(limit = 200) {
+  return rest(`/company_playbooks?select=*&order=last_run_at.desc&limit=${limit}`) || [];
+}
+
+/**
+ * Fold one run's outcome into an employer's playbook.
+ *
+ * Read-modify-write, for the same reason appendApplyStep is: the merge is a
+ * union of arrays and a set of counters, PostgREST cannot express that without
+ * another stored function, and there is exactly one writer per employer at a
+ * time — the router drains the queue serially per domain.
+ *
+ * Merging rather than replacing throughout. A run that saw two of the three
+ * documents an employer wants must not shorten the list to two.
+ */
+export async function upsertPlaybook(companyKey, {
+  company_name, ats, domain, status, reached, steps_used,
+  questions = [], documents = [], flow_notes = [], account_required = null,
+} = {}) {
+  const prev = await getPlaybook(companyKey).catch(() => null);
+
+  const domains = new Set(prev?.domains || []);
+  if (domain) domains.add(domain);
+
+  const docs = new Set(prev?.required_documents || []);
+  for (const d of documents) docs.add(d);
+
+  // Questions are keyed on the question text: asking the same one twice is the
+  // same question, and the newer answer is the one that was actually sent most
+  // recently. `worked` only ever goes false→true, never back: an answer that
+  // has been through once is proven, and a later run pausing for an unrelated
+  // reason is not evidence against it.
+  const byQuestion = new Map((prev?.known_questions || []).map((q) => [q.question, q]));
+  for (const q of questions) {
+    const old = byQuestion.get(q.question);
+    byQuestion.set(q.question, {
+      ...q,
+      worked: q.worked || old?.worked || false,
+      seen: (old?.seen || 0) + 1,
+      last_at: new Date().toISOString(),
+    });
+  }
+
+  const notes = [...(prev?.flow_notes || [])];
+  const haveNote = new Set(notes.map((n) => n.note));
+  for (const n of flow_notes) {
+    if (!haveNote.has(n)) notes.push({ note: n, at: new Date().toISOString() });
+  }
+
+  const runs = (prev?.runs || 0) + 1;
+  const body = {
+    user_id: await currentUserId(),
+    company_key: companyKey,
+    company_name: company_name || prev?.company_name || null,
+    ats: ats || prev?.ats || null,
+    domains: [...domains],
+    required_documents: [...docs],
+    // An employer never stops needing an account once they have asked for one,
+    // so this latches. A single run that failed to notice the wall — because it
+    // stopped earlier, for something else — must not clear a fact we have.
+    account_required: account_required === true ? true : (prev?.account_required || false),
+    known_questions: [...byQuestion.values()].slice(-40),
+    flow_notes: notes.slice(-20),
+    runs,
+    submitted: (prev?.submitted || 0) + (status === "submitted" ? 1 : 0),
+    paused: (prev?.paused || 0) + (status === "paused_needs_human" ? 1 : 0),
+    failed: (prev?.failed || 0) + (["failed", "blocked", "aborted"].includes(status) ? 1 : 0),
+    // A running mean, so one 25-step disaster doesn't set the expectation for
+    // an employer whose form usually takes six.
+    typical_steps: steps_used
+      ? Math.round((((prev?.typical_steps || steps_used) * (runs - 1)) + steps_used) / runs)
+      : (prev?.typical_steps ?? null),
+    last_outcome: status,
+    last_reached: Math.max(prev?.last_reached || 0, reached || 0),
+    last_run_at: new Date().toISOString(),
+  };
+
+  const rows = await rest("/company_playbooks?on_conflict=user_id,company_key", {
+    method: "POST",
+    body,
+    headers: { Prefer: "resolution=merge-duplicates,return=representation" },
+  });
+  return rows && rows[0] ? rows[0] : null;
+}
+
+export async function saveApplyOutcome(row) {
+  return rest("/apply_outcomes", {
+    method: "POST",
+    body: { user_id: await currentUserId(), ...row },
+    headers: { Prefer: "return=minimal" },
+  });
+}
+
+export async function listOutcomes(limit = 100) {
+  return rest(`/apply_outcomes?select=*&order=created_at.desc&limit=${limit}`) || [];
 }
 
 // ── documents ───────────────────────────────────────────────────────────────

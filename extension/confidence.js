@@ -94,7 +94,8 @@ function valuesAgree(entered, saved) {
  * Returns { ok: true } or { ok: false, reason, blocking }.
  */
 export function canSubmit(state, ctx = {}) {
-  const { answers = {}, profile = {}, cvText = "", unmetUploads = [] } = ctx;
+  const { answers = {}, profile = {}, cvText = "", unmetUploads = [],
+          requiredDocuments = [], attachedDocuments = [] } = ctx;
   const blocking = [];
   const say = (reason, id) => blocking.push({ reason, jcaId: id || null });
 
@@ -125,6 +126,21 @@ export function canSubmit(state, ctx = {}) {
     if (f.required && !f.attached) say(`required upload is empty: ${f.label}`, f.id);
   }
   for (const u of unmetUploads) say(`${u.reason}: ${u.label}`, u.jcaId);
+
+  // 4b. Documents this employer has wanted before, that nothing attached this
+  //     time. The form itself is not always the authority on this: plenty of
+  //     ATS forms accept a submission with an optional-looking upload empty and
+  //     the employer discards the application later for the missing transcript.
+  //
+  //     Only what a previous application here actually attached counts as
+  //     known-required, so this can never fire on a first application — it is
+  //     learned evidence, not a guess about what employers generally want.
+  for (const kind of requiredDocuments) {
+    if (!attachedDocuments.includes(kind)) {
+      say(`this employer wanted a ${kind.replace(/_/g, " ")} last time and nothing ` +
+          `attached one — check the form before it goes`);
+    }
+  }
 
   // 5. Consent. Never ticked automatically, so an unticked required box always
   //    stops here. This is a decision about what the user agrees to, and it is

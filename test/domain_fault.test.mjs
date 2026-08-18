@@ -27,7 +27,13 @@ for (const msg of [
   "couldn't inject into this page: Cannot access contents of the page. Extension manifest must request permission to access the respective host.",
   "This employer hosts its application on its own site, which needs one extra permission.",
   "the tab was closed",
-  "this job hasn't been tailored yet — tailor it first",
+  // Writing the packet is a step of ours, before the site is touched at all.
+  // The old "this job hasn't been tailored yet" was replaced by these when the
+  // run started tailoring for itself instead of refusing to run without one.
+  "We couldn't read enough of this posting to tailor a CV from it, and a CV " +
+    "written against a job title alone is worse than none.",
+  "There's no CV on your account to tailor from, so this run had nothing to work with.",
+  "Writing the tailored CV and cover letter failed: HTTP 500. Press Retry.",
   "You've used this month's AI allowance ($3.00).",
   "quota_exceeded",
   "NOT_SIGNED_IN",

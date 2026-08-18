@@ -67,10 +67,19 @@ const CACHE_READ_MULTIPLIER = 0.1; //  reading one costs a tenth
 // that reached for it was "this job already failed twice" — the jobs least
 // likely to be rescued by a bigger model and most likely to burn several
 // users' allowance trying. Add it back only with its own smaller sub-budget.
+//
+// `learn` is the post-mortem: one call after a run that did not finish, asking
+// what would make the next application to that employer go better. Haiku
+// because it is a reading task over a step log we already structured, not a
+// judgement call with an employer on the other end of it — and because it runs
+// once per stopped application, which is a per-run cost that has to stay small
+// enough to be obviously worth paying. Nothing it returns can reach a form
+// without passing the same confidence gate as everything else.
 const TASK_MODELS: Record<string, string> = {
   tailor: "claude-haiku-4-5",
   apply_simple: "claude-haiku-4-5",
   apply: "claude-sonnet-5",
+  learn: "claude-haiku-4-5",
 };
 
 // Ceilings, not targets — the model does not try to reach max_tokens, so a
@@ -84,6 +93,10 @@ const MAX_TOKENS_CAP: Record<string, number> = {
   tailor: 8192,
   apply_simple: 4096,
   apply: 4096,
+  // A handful of short lessons. The cap is low on purpose: a post-mortem that
+  // wants 4K tokens of output is writing an essay, and an essay is exactly the
+  // thing this memory must not fill up with.
+  learn: 1500,
 };
 
 // A tailoring prompt is ~10KB and an apply observation ~30KB. Anything an order

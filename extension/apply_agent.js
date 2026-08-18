@@ -36,9 +36,14 @@ import {
 } from "./domain_health.js";
 import {
   updateApplyRun, appendApplyStep, uploadPauseScreenshot, tailoredForJob,
-  getProfile, primaryDocuments, downloadApplyDoc,
+  getProfile, primaryDocuments, downloadApplyDoc, getApplyRun, trackedJobFor,
 } from "./supabase.js";
+import { recallFor, recordRun } from "./learn.js";
 import { callClaude } from "./ai_client.js";
+// Applying no longer waits on someone having pressed "✦ Tailor this job" — a
+// run that finds no packet writes one. See tailorForRun() below.
+import { tailorJob } from "./tailor_run.js";
+import { readPostingText } from "./job_text.js";
 
 // Which model runs a step is now the proxy's decision, keyed on the task name
 // sent with each call. Tier 0 is plain-DOM boards — Greenhouse, Lever, Ashby,
@@ -319,7 +324,7 @@ function askClaude({ task, system, messages }) {
  * token read from the second call onward — and the tools render before the
  * system block, so they land inside the same cached prefix for free.
  */
-function buildSystem(profile, cvText, docKinds = []) {
+function buildSystem(profile, cvText, docKinds = [], learnedBlock = "") {
   return [
     { type: "text", text: SYSTEM },
     { type: "text", text: `<saved_profile>\n${JSON.stringify(profile, null, 1)}\n</saved_profile>` },
@@ -338,6 +343,12 @@ function buildSystem(profile, cvText, docKinds = []) {
             `Anything not listed does not exist — pause and ask rather than ` +
             `substituting a different document.\n</documents>`,
     },
+    // Same side of the breakpoint, and for a stronger version of the same
+    // reason: what previous applications learned about *this employer* is
+    // different at every employer by definition. Inside the cached prefix it
+    // would invalidate the cache on every single application — paying full
+    // price for all 25 steps of every run to save one lookup. See learn.js.
+    ...(learnedBlock ? [{ type: "text", text: learnedBlock }] : []),
   ];
 }
 
@@ -698,6 +709,109 @@ async function waitForContent(tabId, timeoutMs = 25000,
   return latest || await observe(tabId).catch(() => null);
 }
 
+// ── tailoring on demand ─────────────────────────────────────────────────────
+//
+// A job used to have to be tailored by hand before it could be applied to. The
+// run looked for a packet, found none, and died with "tailor it first" — so
+// every application was really a four-step chore: open the posting, click
+// ✦ Tailor this job, come back to the dashboard, then press Apply. It is also
+// why the Apply button sat greyed out on every row a scan had just found.
+//
+// Now the run writes its own packet. The only thing it needs that it hasn't
+// already got is the posting's own text, and there are two places to find it.
+
+/** Below this many characters, a "description" is a job title and some chrome. */
+const MIN_DESCRIPTION = 200;
+
+/**
+ * Write the CV and cover letter for a run whose job was never tailored.
+ *
+ * Returns `{ tailored, from }` on success or `{ problem }` — one sentence
+ * addressed to the user — on failure. It deliberately never throws: whether a
+ * failure here should pause the run or fail it is the caller's decision, and
+ * the caller is the only place that can pause.
+ */
+async function tailorForRun(run, say) {
+  // The scan already stored the posting's text for everything it found, which
+  // is most of the queue, and reading it back costs nothing.
+  const tracked = await trackedJobFor({
+    id: run.application_id,
+    url: run.job_url,
+    originalUrl: run.original_job_url,
+  }).catch(() => null);
+
+  let description = String(tracked?.description || "").trim();
+  let from = "tracker";
+
+  // Otherwise go and read the page. One load in a background tab that is closed
+  // straight after — far cheaper than the alternative, which is a CV written
+  // against nothing but a job title. That would still look like a CV, which is
+  // exactly what makes it the worst thing this system could produce.
+  if (description.length < MIN_DESCRIPTION) {
+    say("Reading the posting…");
+    for (const url of [run.job_url, run.original_job_url]) {
+      if (!url) continue;
+      const read = await readPostingText(url);
+      const text = String(read?.description || "").trim();
+      if (text.length >= MIN_DESCRIPTION) { description = text; from = "page"; break; }
+    }
+  }
+
+  if (description.length < MIN_DESCRIPTION) {
+    return { problem:
+      "We couldn't read enough of this posting to tailor a CV from it, and a CV " +
+      "written against a job title alone is worse than none. Open the job, press " +
+      "\"✦ Tailor this job\" there, then press Retry." };
+  }
+
+  // Saved against the URL the tracker row already uses.
+  //
+  // A rerouted run applies on the employer's own ATS while the row the user
+  // sees — and clicked Apply on — is still the aggregator link the job was
+  // found under. Saving the packet under the new URL would upsert a SECOND
+  // tracker row for the same job, and the user would watch their list grow a
+  // duplicate every time they applied. tailoredForJob() searches
+  // original_job_url on the way back, so nothing is harder to find for it.
+  const job = {
+    url: run.original_job_url || run.job_url,
+    title: run.job_title || tracked?.job_title || "",
+    company: run.job_company || tracked?.job_company || "",
+    location: tracked?.job_location || "",
+    source: tracked?.job_source || "",
+    description,
+  };
+
+  try {
+    // reuse:false — runApply has already looked for a saved packet, by a wider
+    // set of identities than tailorJob checks. A second lookup finds the same
+    // nothing and costs another round-trip.
+    const out = await tailorJob(job, { reuse: false, onProgress: say });
+    return {
+      tailored: {
+        id: out.tailoredId,
+        packet: out.result,
+        warnings: out.warnings,
+        // Not one of tailoredForJob's identity rules — this packet was written
+        // for this run, so the audit trail should say so rather than claim a
+        // URL match that never happened.
+        matched_by: "written_for_this_run",
+      },
+      from,
+      saved: out.saved,
+    };
+  } catch (e) {
+    const msg = String(e?.message || e);
+    if (msg === "NO_CV") {
+      return { problem:
+        "There's no CV on your account to tailor from, so this run had nothing " +
+        "to work with. Open Settings → Your CV, paste it in, then press Retry." };
+    }
+    return { problem:
+      `Writing the tailored CV and cover letter failed: ${msg}. Press Retry — ` +
+      `most of these are a one-off.` };
+  }
+}
+
 // ── the loop ────────────────────────────────────────────────────────────────
 
 /**
@@ -736,6 +850,18 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
   // being asked to finish the application in. `handOver()` exists so a pause and
   // the record of it can't drift apart again.
   let status = "failed";
+
+  // ── the learning loop's two ends ──────────────────────────────────────────
+  //
+  // Declared out here, next to `status`, and for exactly the same reason: the
+  // `finally` is the one place every exit from this function passes through,
+  // and a run that taught us something must record it whether it submitted,
+  // paused, threw, or ran out of steps. Anything scoped inside the `try` is
+  // invisible from there, and the failure mode would be silent — the runs that
+  // teach the most are the ones that end in the paths easiest to forget.
+  let recall = null;              // what we knew going in
+  const answers = {};             // jcaId -> {label, text, evidence, profileKey}
+  const docsAttached = [];        // document kinds this employer actually took
 
   /**
    * Refuse to hand back a request the user has already satisfied.
@@ -810,9 +936,10 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     // Looked up by job identity, not by run.job_url alone. resolve_ats.js
     // reroutes an aggregator posting to the employer's own ATS and queues the
     // run under that new URL, keeping the original in original_job_url — but
-    // the user tailored against the original. A URL-only lookup missed, and the
-    // run died claiming the job had never been tailored.
-    const [profileRow, tailored] = await Promise.all([
+    // the user tailored against the original. A URL-only lookup missed it, and
+    // the run then paid to write a second packet for a job it already had one
+    // for. Back when tailoring was a prerequisite, it died there instead.
+    const [profileRow, existing] = await Promise.all([
       getProfile(),
       tailoredForJob({
         url: run.job_url,
@@ -821,8 +948,43 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
         title: run.job_title,
       }),
     ]);
+
+    // Log each stage as it completes, not just once the loop is under way.
+    // When this run died silently the step log was empty, which said nothing
+    // about how far it had got — a breadcrumb per stage is the difference
+    // between "somewhere in the first half" and knowing exactly where.
+    //
+    // Logged before the tailoring below rather than after it, because that step
+    // can take half a minute and a run whose trail starts after it looks, from
+    // the outside, like a run that did nothing for thirty seconds.
+    await appendApplyStep(run.id, { kind: "start", url: run.job_url, tier: run.tier });
+
+    // ── the packet ──────────────────────────────────────────────────────────
+    // Nobody has to have tailored this job first. If there is no packet the run
+    // writes one now, from the posting's own text, and carries on — which is
+    // what makes Apply a single button rather than the second half of a chore.
+    let tailored = existing;
     if (!tailored?.packet) {
-      throw new Error("this job hasn't been tailored yet — tailor it first");
+      say("No tailored CV for this job yet — writing one…");
+      await appendApplyStep(run.id, { kind: "tailoring", url: run.job_url });
+
+      const made = await tailorForRun(run, say);
+      // Paused rather than failed: every one of these has something the user
+      // can do about it, and a pause is the state that says so and offers the
+      // button. Nothing has been opened or typed at this point, so there is no
+      // half-filled form to protect.
+      if (made.problem) return await handOver(made.problem);
+
+      tailored = made.tailored;
+      await appendApplyStep(run.id, {
+        kind: "tailored",
+        tailoredId: tailored.id,
+        // Where the posting text came from, because a thin packet is nearly
+        // always a thin description and this is the field that says which.
+        descriptionFrom: made.from,
+        warnings: (tailored.warnings || []).length,
+        saved: made.saved,
+      });
     }
     const packet = tailored.packet;
 
@@ -832,12 +994,6 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       [profile.first_name, profile.last_name].filter(Boolean).join(" ") || "Applicant";
 
     const job = { url: run.job_url, title: run.job_title, company: run.job_company };
-
-    // Log each stage as it completes, not just once the loop is under way.
-    // When this run died silently the step log was empty, which said nothing
-    // about how far it had got — a breadcrumb per stage is the difference
-    // between "somewhere in the first half" and knowing exactly where.
-    await appendApplyStep(run.id, { kind: "start", url: run.job_url, tier: run.tier });
 
     // The user's own Word CV, if they uploaded one. When it's there and the
     // packet carries edits for it, docgen tailors that file in place instead of
@@ -917,9 +1073,35 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     // third failure now pauses for the human instead — see the attempts check
     // in the pause path.
     const task = taskFor(run.tier);
-    const system = buildSystem(profile, cvText, Object.keys(docs));
+
+    // ── what previous applications learned ──────────────────────────────────
+    //
+    // Best-effort, and deliberately so: recall is an improvement to a run, not
+    // a precondition for one. A user with no history, a first application to an
+    // employer, or an outright failure here all produce the same thing — an
+    // empty block and a run that behaves exactly as it did before this existed.
+    recall = await recallFor({
+      company: run.job_company, domain: activeDomain, url: run.job_url,
+    }).catch((e) => { console.warn("recall failed", e); return null; });
+
+    if (recall?.upfront?.length) {
+      // Said before the run starts rather than discovered four minutes in. An
+      // employer whose system needs an account is a foregone conclusion, and
+      // the user would rather have the sentence than the wait.
+      say(`Heads up from last time: ${recall.upfront.join("; ")}`);
+    }
+    if (recall?.lessons?.length) {
+      await appendApplyStep(run.id, {
+        kind: "recall", lessons: recall.lessons.length,
+        playbook_runs: recall.playbook?.runs || 0,
+        // Recorded by id so a submitted application can be audited against
+        // what it was told — the same reason every answer records its grounding.
+        applied: recall.lessonIds,
+      });
+    }
+
+    const system = buildSystem(profile, cvText, Object.keys(docs), recall?.promptBlock || "");
     const messages = [];
-    const answers = {};              // jcaId -> {label, text, evidence, profileKey}
     const autofilled = new Set();    // urls the rule pass has already run on
     // A Map keyed on jcaId, not a list. As a list nothing ever removed an
     // entry, so a first attempt that failed because a React uploader had not
@@ -945,6 +1127,11 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
             jcaId: p.jcaId, doc: p.doc, tier: run.tier, frameId: formFrame.get(tabId),
           });
           unmetUploads.delete(p.jcaId);
+          // The rule-based path attaches most documents on most runs — the
+          // model's `upload` tool is the exception, not the rule. Recording
+          // only there left the gate's learned-document check comparing an
+          // employer's known requirements against an almost always empty list.
+          if (!docsAttached.includes(p.kind)) docsAttached.push(p.kind);
           say(`Attached ${p.kind} (${res.path}${res.unverified ? ", taken by the page" : ""})`);
           await appendApplyStep(run.id, {
             kind: "upload", doc: p.kind, via: res.path, unverified: !!res.unverified,
@@ -956,8 +1143,24 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       }
     };
 
+    // The budget starts here, not when the run did.
+    //
+    // MAX_WALL_MS bounds how long we spend *driving a form* — that is the thing
+    // that can grind on forever and the thing the user is owed a hand-back
+    // from. Everything before this line is our own preparation: rendering the
+    // PDFs, and now writing the packet as well, which is another twenty to
+    // sixty seconds. Charging that to the same four minutes would have quietly
+    // taken a quarter of the loop away from every job nobody had tailored by
+    // hand, and the run would have stopped saying the site "took too long"
+    // about a delay the site had no part in.
+    //
+    // `started` stays the real start of the run: it is what recordRun stores,
+    // and how long an application actually took end to end is a fact about the
+    // run, not about the loop.
+    const loopStarted = Date.now();
+
     for (let step = 1; step <= MAX_STEPS; step++) {
-      if (Date.now() - started > MAX_WALL_MS) {
+      if (Date.now() - loopStarted > MAX_WALL_MS) {
         return await handOver("took too long — handing this one back to you");
       }
 
@@ -1035,6 +1238,12 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       const outcome = await execute({
         call, state, tabId, run, docs, answers, profile, cvText,
         unmetUploads, submitPolicy, say, openTabs, frameId: formFrame.get(tabId),
+        // What this employer has wanted attached before. The gate treats a
+        // known-required document that isn't on the page as a reason to stop:
+        // a form that quietly accepts a submission without the transcript this
+        // employer always asks for produces a rejection, not an application.
+        requiredDocuments: recall?.requiredDocuments || [],
+        docsAttached,
       });
 
       // The click opened the application elsewhere — that tab is the run now.
@@ -1136,6 +1345,33 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       await chrome.tabs.remove(id).catch(() => {});
     }
     if (keep != null) await chrome.tabs.update(keep, { active: true }).catch(() => {});
+
+    // ── close the loop ────────────────────────────────────────────────────
+    //
+    // Here, and not at each exit, because there are nine ways out of this
+    // function and the ones that teach the most are the easiest to forget.
+    //
+    // The step log is re-read rather than mirrored in memory: it is one GET at
+    // the end of a run that just made up to 25 model calls, and the stored
+    // trail is the one that is definitely complete — including the pause row
+    // written by pauseRun(), which this function never sees.
+    //
+    // Wrapped and awaited: a learning pass that throws must not turn a
+    // submitted application into a failed one, and one that is left dangling
+    // when the service worker sleeps records nothing at all.
+    try {
+      const finished = await getApplyRun(run.id);
+      await recordRun({
+        run, status,
+        steps: finished?.steps || [],
+        answers, docsAttached, recall, startedAt: started,
+        pauseReason: finished?.pause_reason || "",
+        error: finished?.error || "",
+      });
+    } catch (e) {
+      console.warn("learning pass failed", e);
+    }
+
     release();
   }
 }
@@ -1144,7 +1380,8 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
 
 async function execute(ctx) {
   const { call, state, tabId, run, docs, answers, profile, cvText,
-          unmetUploads, submitPolicy, say } = ctx;
+          unmetUploads, submitPolicy, say,
+          requiredDocuments = [], docsAttached = [] } = ctx;
   const a = call.input;
 
   switch (call.name) {
@@ -1234,6 +1471,7 @@ async function execute(ctx) {
           jcaId: a.element_id, doc, tier: run.tier, frameId: ctx.frameId,
         });
         unmetUploads.delete(a.element_id);
+        if (!docsAttached.includes(a.doc_kind)) docsAttached.push(a.doc_kind);
         return { summary: `attached ${a.doc_kind} (${res.path})` };
       } catch (e) {
         unmetUploads.set(a.element_id,
@@ -1249,6 +1487,7 @@ async function execute(ctx) {
       if (btn?.kind === "submit") {
         const gate = canSubmit(state, {
           answers, profile, cvText, unmetUploads: [...unmetUploads.values()],
+          requiredDocuments, attachedDocuments: docsAttached,
         });
 
         if (!gate.ok) {

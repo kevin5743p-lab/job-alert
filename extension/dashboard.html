@@ -346,7 +346,7 @@
       </div>
       <div class="toolbar">
         <button id="find" class="primary">Find jobs for me</button>
-        <button id="applyAll" title="Queue every strong match that's already tailored">Apply to all strong</button>
+        <button id="applyAll" title="Queue every strong match — each one gets its CV and cover letter written first if it needs them">Apply to all strong</button>
         <button id="filters-toggle">Filters</button>
         <button id="refresh">Refresh</button>
         <button id="settings" title="CV, documents, keys and how applying behaves">⚙ Settings</button>
@@ -367,6 +367,12 @@
          stops the engine before it starts (no API key, a quarantined domain)
          is completely invisible. -->
     <div id="applyActivity" class="apply-panel" hidden></div>
+
+    <!-- What previous applications taught the engine, and the one place it can
+         be corrected. A wrong lesson is followed by every future run at that
+         employer, so it has to be visible and it has to be deletable — a
+         memory the user cannot see is one they cannot disagree with. -->
+    <div id="memoryPanel" class="apply-panel" hidden></div>
 
     <div id="message" class="msg hidden"></div>
 

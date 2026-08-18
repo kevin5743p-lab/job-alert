@@ -94,8 +94,43 @@ check("grant wins over a co-occurring consent stop",
   helpForPause(`${NEEDS_GRANT} Also, consent required — you need to tick this yourself.`).resume,
   "grant");
 
+// ── the run tailors for itself now ──────────────────────────────────────────
+// Applying no longer requires that a human pressed "✦ Tailor this job" first,
+// so there are three new ways to stop before the site is ever opened. Each one
+// has to name a next move, and none of them may read as the employer's doing —
+// nothing has been sent to the employer at that point.
+console.log("\nthe run couldn't write its own packet");
+
+const NO_TEXT =
+  "We couldn't read enough of this posting to tailor a CV from it, and a CV " +
+  "written against a job title alone is worse than none. Open the job, press " +
+  "\"✦ Tailor this job\" there, then press Retry.";
+const NO_CV =
+  "There's no CV on your account to tailor from, so this run had nothing to " +
+  "work with. Open Settings → Your CV, paste it in, then press Retry.";
+const TAILOR_BROKE =
+  "Writing the tailored CV and cover letter failed: HTTP 500. Press Retry — " +
+  "most of these are a one-off.";
+
+check("unreadable posting is classified", helpForPause(NO_TEXT).kind, "no_posting_text");
+// Retry, not manual: the obstacle is upstream of the form, and there is no
+// half-filled form to protect — the run never opened a tab.
+check("unreadable posting → retry", helpForPause(NO_TEXT).resume, "retry");
+check("missing CV is classified", helpForPause(NO_CV).kind, "no_cv");
+check("missing CV → retry", helpForPause(NO_CV).resume, "retry");
+// A model or network failure while writing is ours. Labelling it "Needs you"
+// would send someone to the employer's form looking for a problem that is on
+// our side of the wire and invisible from there.
+check("a failed tailoring is ours", pauseLabel(TAILOR_BROKE), "Our fault");
+check("a failed tailoring → retry", helpForPause(TAILOR_BROKE).resume, "retry");
+// The two "no packet" stops are the user's to clear, so they must NOT be
+// filed under our faults however much they read like plumbing.
+check("an unreadable posting is not billed as our fault", pauseLabel(NO_TEXT), "Needs you");
+check("a missing CV is not billed as our fault", pauseLabel(NO_CV), "Needs you");
+
 console.log("\nevery reason produces a usable one-liner");
-for (const r of [PROGNUM, AVL, NEEDS_GRANT, "", null, "unrecognised"]) {
+for (const r of [PROGNUM, AVL, NEEDS_GRANT, NO_TEXT, NO_CV, TAILOR_BROKE,
+                "", null, "unrecognised"]) {
   const line = pauseHeadline(r);
   check(`non-empty for ${JSON.stringify(String(r).slice(0, 24))}`,
     typeof line === "string" && line.length > 20, true);

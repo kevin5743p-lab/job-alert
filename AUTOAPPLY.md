@@ -1,9 +1,13 @@
 # JobCopilot — Auto-Apply
 
-Click **Apply** in the dashboard and the system opens the job, walks the
-application flow, fills every page, attaches a tailored CV and cover letter as
-real PDFs, and submits — stopping and asking you whenever it hits something it
-cannot answer honestly.
+Click **Apply** in the dashboard and the system writes a CV and cover letter for
+that posting, opens the job, walks the application flow, fills every page,
+attaches the documents as real PDFs, and submits — stopping and asking you
+whenever it hits something it cannot answer honestly.
+
+Nothing has to be tailored by hand first. **Apply** is live on every row from
+the moment a job appears; pressing "✦ Tailor this job" yourself is now only for
+when you want to read the packet before it goes out, or write a fresh one.
 
 This is a **separate system**. `../extension/` is untouched and still works;
 it's the fallback if anything here misbehaves.
@@ -18,6 +22,7 @@ it's the fallback if anything here misbehaves.
 | "It NEVER submits", by design | `confidence.js` decides, `apply_agent.js` acts |
 | One DOM snapshot, then stop — Workday's 5 pages died on page 1 | the observe → act → verify loop |
 | Apply was a plain `<a href>` | a real button, a queue, and a live status panel |
+| Apply needed a job tailored by hand first, so the button was greyed out on everything a scan found | `tailor_run.js` — the run writes its own packet from the posting's text |
 
 Everything the old build did well is reused rather than rewritten:
 `tailor_core.js`, `print_doc.js`, `matcher.js`, `finder.js` and the field
@@ -27,9 +32,11 @@ matcher in `autofill.js` are the same code.
 
 ## Setup
 
-**1. Database.** Run `sql/001_apply_engine.sql` in the Supabase SQL editor. It
-is `CREATE TABLE` / `ADD COLUMN` only — the old extension and the Python bot
-keep working against the same project, unaffected.
+**1. Database.** Run `sql/001_apply_engine.sql`, then `sql/007_apply_memory.sql`,
+in the Supabase SQL editor. Both are `CREATE TABLE` / `ADD COLUMN` only — the
+old extension and the Python bot keep working against the same project,
+unaffected. Skipping 007 costs you the feedback loop and nothing else: every
+call into it is best-effort, so applications run exactly as they did before.
 
 **2. Load the extension.** `chrome://extensions` → Developer mode → Load
 unpacked → `AutoApply/extension`.
@@ -58,6 +65,9 @@ Apply clicked
   ▼
 router.js         claims the job, checks the domain is healthy and not capped
   ▼
+tailor_run.js     no packet for this job? write one — from the description the
+  │               scan stored, or (job_text.js) from the posting itself
+  ▼
 docgen.js         print_doc.js HTML → hidden tab → Page.printToPDF → disk + Storage
   ▼
 loop, ≤25 steps / 4 min
@@ -85,6 +95,69 @@ move left: `pause`.
 ```bash
 node test/confidence.test.mjs
 ```
+
+### What it remembers
+
+Every finished run is read back. `apply_runs.steps` was always a faithful audit
+trail and nothing ever looked at it, so the eleventh application to an
+employer's Workday tenant repeated the first one's mistakes exactly.
+
+Two kinds of memory, because they answer different questions:
+
+| | |
+|---|---|
+| **a lesson** | a problem and the fix that worked, scoped to where it holds. "Workday hides the CV upload behind Continue" is true of every tenant; "this employer wants a photograph" is true of one |
+| **a playbook** | what applying to *one employer* involves — the documents they want, whether their system needs an account, the screening questions they ask and the answers that went through |
+
+Scope is what makes a lesson worth more than a note. Learn something about
+Greenhouse once, at any employer, and every Greenhouse application benefits.
+Company keys come from `job_key.js`, so the playbook written by a Greenhouse
+application is found by a later Workday one at the same employer — "BMW AG" and
+"BMW Group" are the same company.
+
+```
+run finishes
+  │
+  ├─ settle      credit or blame the remedies this run was carrying
+  ├─ extract     deterministic, from the step log            (free)
+  ├─ distil      one Haiku call — only if the run stopped    (~0.1¢)
+  ▼
+apply_lessons · company_playbooks · apply_outcomes
+  │
+  ▼
+next run at the same employer
+  ├─ <learned> block in the prompt, after the cache breakpoint
+  ├─ label → profile-key mappings warmed into the local field cache
+  ├─ known-required documents enforced by confidence.js
+  └─ "needs an account" said upfront instead of four minutes in
+```
+
+**The loop closes on evidence, not on writing things down.** Every run records
+which remedies it carried and how far it got, on a coarse scale from "nothing"
+to "submitted". The next run at the same problem compares the two. A remedy that
+stops moving runs further along is retired after three failures — kept as a
+tombstone, not deleted, so the next run does not rediscover and rewrite it.
+
+Two rules keep the memory honest, and both are enforced rather than requested:
+
+- **A lesson must cite the step it came from.** Same contract the apply agent
+  lives under. One that cites a step index that does not exist was not read off
+  the trail, and is dropped.
+- **A remedy must be one of six shapes** the system can actually act on
+  (`REMEDY_KINDS` in `learn.js`). Prose advice with no reader is a diary entry.
+
+Nothing learned here can put a value into a form. The `<learned>` block is a
+hint about how a *form* behaves; every value still has to come from the profile
+or the CV, and still passes `confidence.js`.
+
+The dashboard shows all of it under **What it has learned**, with a Forget
+button — a wrong lesson is followed by every future run at that employer, so it
+has to be visible and removable. "Always keep" pins a lesson so no later run can
+overwrite or retire it.
+
+Cost: nothing on a clean submit — everything worth keeping from a successful
+application is already structured in the step log. The model is asked only about
+a run that stopped.
 
 ### What it will never do
 
@@ -137,6 +210,7 @@ The dashboard's "Paused sites" panel exists to make that visible.
 | Field → profile mapping | Groq | unchanged, with the learned-label cache |
 | Navigation + grounded answers | `claude-sonnet-5` | prompt-cached prefix |
 | Hard Workday flows | `claude-opus-5` | only after 2 failed attempts |
+| Post-mortem, on a stopped run | `claude-haiku-4-5` | capped at 1.5K out; never on a clean submit |
 
 The system prompt, tools, profile, and CV are identical on every step of every
 job, so a cache breakpoint after the CV turns a ~6K-token prefix into a ~600
@@ -159,6 +233,7 @@ token read. Roughly **2–8¢ per application**; ~£3–8 for 100.
 | `docgen.js` + `render.html/js` | the PDF pipeline |
 | `upload.js` | DataTransfer and CDP attachment paths |
 | `cdp.js` | `chrome.debugger` wrapper, scoped to Input/DOM/Page |
+| `learn.js` | the feedback loop: recall before a run, record after one |
 
 **Extended:** `manifest.json`, `autofill.js` (file inputs), `background.js`
 (message surface), `supabase.js` (queue + Storage), `dashboard.*`, `popup.*`
