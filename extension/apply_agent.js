@@ -60,6 +60,17 @@ const taskFor = (tier) => (tier === 0 ? "apply_simple" : "apply");
 
 const MAX_STEPS = 25;
 const MAX_WALL_MS = 4 * 60 * 1000;
+// How many times one action may be taken with nothing on the page changing
+// before we stop taking it, and how many dead actions the whole page gets
+// before the run is handed over. Two is generous: a click that does nothing
+// twice is not going to work the third time, and the second attempt is only
+// allowed because a slow page can look unchanged for a moment.
+const MAX_INERT_REPEATS = 2;
+// Six, not four. Two lookalike buttons cost four dead moves between them before
+// either is exhausted — and on the run this was built for, the fourth move was
+// the one that worked. A ceiling that cuts in before a page has been given a
+// fair try is a worse bug than the one it fixes.
+const MAX_INERT_TOTAL = 6;
 // How long the first page gets to actually render before we let the model look.
 // Longer than the in-loop wait: a throttled background SPA hydrating from cold
 // is the slow case, and it only happens once per run.
@@ -257,6 +268,7 @@ Rules, in order of precedence:
 1. Never state anything that is not supported by the profile or the CV. Not a year of experience, not a tool, not a degree, not a salary. If a field wants a fact you do not have, pause.
 2. Legal and contractual questions — visa or sponsorship, work authorisation, notice period, expected salary, relocation, criminal record, demographic questions — are answered ONLY from the saved profile. Never reason your way to one of these.
 3. Never tick a consent, terms, privacy, or marketing checkbox. Those are the applicant's decision and pausing on them is correct behaviour.
+3a. Sign-in pages. Password and ID fields are shown to you as \`blocked\`, never with their contents, and you must never type into one. But \`blocked\` fields carry \`prefilled\`: when the sign-in fields on a page are already \`prefilled: true\`, the browser's own password manager has filled them and there is nothing left to enter — click the sign-in button and carry on. Only pause on a sign-in when a required credential field is \`prefilled: false\`, or when the page is asking to CREATE an account rather than to sign in to one.
 4. Prefer pausing over guessing. A paused application costs the applicant one minute. A wrong one is sent under their name and cannot be recalled.
 5. Fields already filled by the rule-based pass are done. Do not redo them.
 
@@ -384,8 +396,33 @@ async function engine(tabId, message) {
     frameId != null ? { frameId } : undefined);
 }
 
+/** The last frame ranking per tab, kept for the record a pause writes. */
+const lastFrameChoice = new Map();
+
 /** Forget a tab's chosen frame — it navigated, or the run is done with it. */
-function forgetFrame(tabId) { formFrame.delete(tabId); }
+function forgetFrame(tabId) { formFrame.delete(tabId); lastFrameChoice.delete(tabId); }
+
+/**
+ * What every reachable frame in this tab actually contains.
+ *
+ * Asked when a run is stopping, because "the page was empty" is a claim nobody
+ * has been able to check. It answers three questions at once: how many frames
+ * there were, whether the one we drove was the one with the form in it, and
+ * whether the form was built out of web components — whose shadow roots are
+ * invisible to every selector in apply_engine.js, and which would therefore
+ * look exactly like an empty page.
+ */
+async function frameCensus(tabId) {
+  const frameIds = await reachableFrames(tabId).catch(() => []);
+  const out = [];
+  for (const frameId of frameIds.slice(0, 8)) {
+    const r = await chrome.tabs.sendMessage(
+      tabId, { target: "jca-engine", type: "CENSUS" }, { frameId }
+    ).catch(() => null);
+    if (r?.ok) out.push({ frameId, ...r, ok: undefined });
+  }
+  return { frames: out, reachable: frameIds.length };
+}
 
 // A frame id is only meaningful for the document that was loaded when we chose
 // it. A navigation invalidates it, and a closed tab must not leave an entry
@@ -423,7 +460,39 @@ async function chooseFormFrame(tabId, frameIds) {
     ? best : top;
 
   formFrame.set(tabId, winner.frameId);
+  lastFrameChoice.set(tabId, scored
+    .map((f) => ({ frameId: f.frameId, score: f.score, isTop: !!f.isTop,
+                   inputs: f.inputs, controls: f.controls }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 6));
+  // The scoreboard, not just the verdict. When a run pauses on an empty page
+  // the first question is always "which frame were you looking at, and what
+  // were the others?" — and until this was recorded there was no way to answer
+  // it except by reasoning about the code.
+  winner.scores = scored
+    .map((f) => ({ frameId: f.frameId, score: f.score, isTop: !!f.isTop }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 6);
   return winner;
+}
+
+/**
+ * Frame ids in this tab we are actually allowed to touch.
+ *
+ * A one-expression injection, purely to enumerate: chrome.scripting reports a
+ * result per frame it reached, and that list is what chooseFormFrame needs.
+ * (chrome.webNavigation.getAllFrames would be the direct way and costs a
+ * permission this extension does not ask for.)
+ */
+async function reachableFrames(tabId) {
+  const results = await chrome.scripting.executeScript({
+    target: { tabId, allFrames: true },
+    func: () => true,
+  }).catch(() => []);
+  return (results || [])
+    .filter((r) => !r.error)
+    .map((r) => r.frameId)
+    .filter((id) => id != null);
 }
 
 /** The content scripts, in load order — same list as the manifest. */
@@ -452,7 +521,28 @@ async function ensureEngine(tabId, timeoutMs = 45000) {
     // the embed re-mounted, the page navigated — this fails and we re-inject
     // and re-choose, which is the behaviour we want.
     const pong = await engine(tabId, { type: "PING" }).catch(() => null);
-    if (pong?.ok) return true;
+    if (pong?.ok) {
+      // An engine answered. That is NOT the same as knowing which frame to
+      // drive, and conflating the two is what broke every SuccessFactors
+      // application.
+      //
+      // chooseFormFrame used to be reachable only from the injection branch
+      // below. On a host the manifest already matches — successfactors.eu,
+      // workday, linkedin, most of the list — the engine is present in every
+      // frame the moment the document loads, so PING succeeded on the first
+      // pass and the injection branch never ran. No frame was ever chosen, and
+      // every later message went to ALL of them and settled on whichever
+      // replied first: the top frame, which on an embedded ATS is the
+      // employer's shell with no application in it.
+      //
+      // The model was then shown an empty page, on a form that was right there
+      // in the frame below, and reported exactly that — every single time.
+      if (formFrame.get(tabId) == null) {
+        const frameIds = await reachableFrames(tabId);
+        if (frameIds.length) await chooseFormFrame(tabId, frameIds);
+      }
+      return true;
+    }
 
     // Only worth injecting once the tab has actually committed a document.
     const tab = await chrome.tabs.get(tabId).catch(() => null);
@@ -635,8 +725,11 @@ const CONFIRMATION_RE = new RegExp([
 ].join("|"), "i");
 
 /** A control that would open or advance an application. */
+// "further" and "proceed" are here because AVL's English SuccessFactors labels
+// its wizard's Next button "Further" — a page whose only control is that button
+// read as "nothing actionable yet" and waited out the whole first-load timeout.
 const APPLY_CONTROL_RE =
-  /\b(easy apply|apply|bewerben|jetzt bewerben|bewerbung|submit|weiter|continue|next)\b/i;
+  /\b(easy apply|apply|bewerben|jetzt bewerben|bewerbung|submit|weiter|fortfahren|further|proceed|continue|next)\b/i;
 
 /**
  * Wait until the page has actually rendered before letting the model look.
@@ -664,6 +757,7 @@ async function waitForContent(tabId, timeoutMs = 25000,
   const grace = Date.now() + 2000;
   const was = changedFrom ? pageSigOf(changedFrom) : null;
   let lastSize = -1, stableFor = 0, latest = null;
+  let nextFrameCheck = 0;          // see the empty-page branch below
 
   while (Date.now() < deadline) {
     latest = await observe(tabId).catch(() => null);
@@ -695,6 +789,31 @@ async function waitForContent(tabId, timeoutMs = 25000,
       // truly has no application on it costs one slow run, which is a much
       // better trade than a false hand-off.
       const size = (latest.buttons?.length || 0) + (latest.fields?.length || 0);
+
+      // An empty page is a reason to doubt the frame, not only the page.
+      //
+      // The frame is chosen once, and on an embedded ATS the application iframe
+      // often mounts a second or two after the document that hosts it — so the
+      // choice can be made honestly and still be made too early, leaving the
+      // run watching a shell for the whole timeout. Nothing on screen is
+      // exactly the symptom, so it is exactly when re-asking is worth a
+      // round-trip. Rate-limited, because scoring every frame is not free and
+      // a genuinely empty page would otherwise do it on every poll.
+      if (size === 0 && Date.now() > nextFrameCheck) {
+        nextFrameCheck = Date.now() + 2500;
+        const frameIds = await reachableFrames(tabId);
+        if (frameIds.length > 1) {
+          const before = formFrame.get(tabId);
+          const winner = await chooseFormFrame(tabId, frameIds);
+          // A switch invalidates everything measured against the old frame.
+          if (winner && winner.frameId !== before) {
+            lastSize = -1;
+            stableFor = 0;
+            continue;                  // re-observe, now against the right one
+          }
+        }
+      }
+
       if (!requireSignal && size > 0 && size === lastSize) {
         if (++stableFor >= 2) return latest;
       } else if (size !== lastSize) {
@@ -812,6 +931,43 @@ async function tailorForRun(run, say) {
   }
 }
 
+// ── resuming where it stopped ───────────────────────────────────────────────
+//
+// A paused run leaves its tab open on purpose: it holds the half-filled form
+// the user is being asked to look at. Retry then threw that away — it opened a
+// second tab at the posting and started the whole application again from the
+// first page, so whatever the user had just done by hand (clicked the right
+// Apply button, signed in, ticked a consent box) was left behind in a tab
+// nothing was reading any more.
+//
+// Now the run adopts that tab. The model gets no conversation history back —
+// it does not need any, because it re-decides from the page in front of it
+// every turn anyway, and the page in front of it is the one the user just
+// fixed.
+
+/**
+ * The still-open tab a previous attempt at this run paused on, or null.
+ *
+ * Deliberately conservative. Anything unexpected — the tab was closed, it is
+ * showing something else now, we cannot reach it — returns null and the run
+ * starts cleanly rather than driving a page it does not understand.
+ */
+async function adoptPausedTab(run) {
+  const steps = Array.isArray(run.steps) ? run.steps : [];
+  const pause = [...steps].reverse().find((st) => st.kind === "pause" && st.tabId != null);
+  if (!pause) return null;
+
+  const tab = await chrome.tabs.get(pause.tabId).catch(() => null);
+  if (!tab || !tab.url) return null;
+
+  // A tab that has since been navigated somewhere unrelated — the user reused
+  // it for something else — is not this run's tab any more.
+  const reach = await canReach(tab.url).catch(() => ({ ok: false }));
+  if (!reach.ok) return null;
+
+  return { tabId: tab.id, url: tab.url };
+}
+
 // ── the loop ────────────────────────────────────────────────────────────────
 
 /**
@@ -850,6 +1006,10 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
   // being asked to finish the application in. `handOver()` exists so a pause and
   // the record of it can't drift apart again.
   let status = "failed";
+  // Declared out here for the same reason as `status`: the `finally` decides
+  // which tab survives, and whether this run adopted a tab from a previous
+  // attempt changes that answer. See the `keep` line down there.
+  let resumed = null;
 
   // ── the learning loop's two ends ──────────────────────────────────────────
   //
@@ -1038,13 +1198,27 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       matchedBy: tailored.matched_by || "url",
     });
 
-    // ── open the posting ────────────────────────────────────────────────────
-    say("Opening the job…");
-    const tab = await chrome.tabs.create({ url: run.job_url, active: false });
-    contactedDomain = true;              // from here on, failures are the site's
-    tabId = tab.id;
-    openTabs.add(tabId);
-    await appendApplyStep(run.id, { kind: "tab_opened", tabId });
+    // ── open the posting, or go back to where we stopped ────────────────────
+    resumed = await adoptPausedTab(run).catch(() => null);
+    if (resumed) {
+      say("Picking up where this one stopped — same tab, same page.");
+      tabId = resumed.tabId;
+      activeDomain = domainOf(resumed.url) || activeDomain;
+      contactedDomain = true;
+      openTabs.add(tabId);
+      // The engine was injected into this tab by the previous attempt, but that
+      // attempt's frame choice belongs to a document that may since have
+      // navigated — the user was asked to do something in here, after all.
+      forgetFrame(tabId);
+      await appendApplyStep(run.id, { kind: "resumed", tabId, url: resumed.url });
+    } else {
+      say("Opening the job…");
+      const tab = await chrome.tabs.create({ url: run.job_url, active: false });
+      contactedDomain = true;            // from here on, failures are the site's
+      tabId = tab.id;
+      openTabs.add(tabId);
+      await appendApplyStep(run.id, { kind: "tab_opened", tabId });
+    }
 
     await ensureEngine(tabId);
     await appendApplyStep(run.id, { kind: "engine_ready" });
@@ -1058,6 +1232,10 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       buttons: (firstView?.buttons || []).length,
       fields: (firstView?.fields || []).length,
       isForm: !!firstView?.isForm,
+      // Which frame the observation came from. `null` means no frame was
+      // chosen and the message went to whichever answered first — worth
+      // knowing, because that used to be the whole bug.
+      frameId: formFrame.get(tabId) ?? null,
       // Recorded so a future "there was no Apply button" pause can be checked
       // against what was actually on the page at the time.
       sawControls: (firstView?.buttons || [])
@@ -1102,6 +1280,23 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
 
     const system = buildSystem(profile, cvText, Object.keys(docs), recall?.promptBlock || "");
     const messages = [];
+
+    // Said once, on the first observation of a resumed run, and carried on the
+    // observation itself rather than as a message of its own — the API takes a
+    // strict alternation and a stray extra user turn is a 400 that ends the run.
+    //
+    // Two things the model cannot work out by looking: it did not start this
+    // application, and the page may already be past the point it stopped at —
+    // including a form the user finished and sent by hand while helping.
+    let resumeNote = resumed
+      ? "NOTE — this is a resumed application, not a new one. It stopped earlier " +
+        "for the user to help, and they have since acted on this page. Continue " +
+        "from what is on screen now: do not navigate back to the posting and do " +
+        "not re-do earlier pages. Check first whether the thing that stopped it " +
+        "is now done — if this is a confirmation or thank-you page, the " +
+        "application has already been sent, so call done with outcome " +
+        "\"submitted\". The page state follows."
+      : "";
     const autofilled = new Set();    // urls the rule pass has already run on
     // A Map keyed on jcaId, not a list. As a list nothing ever removed an
     // entry, so a first attempt that failed because a React uploader had not
@@ -1109,6 +1304,32 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     // successful attach of the very same input still blocked the submit with
     // "required upload is empty".
     const unmetUploads = new Map();
+
+    // ── the "clicking and nothing happens" guard ─────────────────────────────
+    //
+    // AVL's posting has two buttons both labelled "Apply now". Clicking either
+    // did nothing we could see, so the model looked at an unchanged page,
+    // reasonably concluded its click had missed, and tried the other one — then
+    // the first again, until the step budget was gone. Nothing in the loop
+    // noticed, because each individual decision was defensible.
+    //
+    // Two counters, because the two questions are different ones.
+    //
+    // WHAT MAY BE REPEATED is per ELEMENT. The obvious design — refuse anything
+    // whose label has already failed — is wrong, and the run that prompted all
+    // this proves it: the model clicked "Apply now" four times on that AVL page
+    // and the FOURTH one worked. Two buttons share that label, only one of them
+    // is wired up, and a label-level ban would have blocked the real one on its
+    // second try. Every distinct control gets its own two attempts.
+    //
+    // WHAT THE MODEL IS TOLD is per label, because that is the pattern worth
+    // knowing: "three things called 'Apply now' have done nothing" is the
+    // sentence that makes it look elsewhere.
+    const inertByElement = new Map();  // jcaId -> times it did nothing
+    const inertByLabel = new Map();    // "click:apply now" -> times
+    let inertTotal = 0;                // across the page, for the hand-over
+    let lastChangeSig = null;          // what the page looked like last turn
+    let lastAction = null;             // { id, sig } of what we did to it
 
     /**
      * Attach whatever this page still wants, and keep the unmet set honest.
@@ -1165,6 +1386,35 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       }
 
       const state = await observe(tabId);
+
+      // ── did the last thing we did do anything? ────────────────────────────
+      // Asked before anything else, because the answer decides whether the
+      // model is allowed to make the same move again.
+      const changeSig = pageChangeSignature(state);
+      if (lastAction && changeSig === lastChangeSig) {
+        const byEl = (inertByElement.get(lastAction.id) || 0) + 1;
+        inertByElement.set(lastAction.id, byEl);
+        inertByLabel.set(lastAction.sig, (inertByLabel.get(lastAction.sig) || 0) + 1);
+        inertTotal++;
+        await appendApplyStep(run.id, {
+          kind: "no_change", action: lastAction.sig, element: lastAction.id, times: byEl,
+        });
+        if (inertTotal >= MAX_INERT_TOTAL) {
+          return await handOver(
+            `The page stopped responding to us: ${inertTotal} actions changed ` +
+            `nothing on screen (last: ${lastAction.sig}). This usually means two ` +
+            `controls look identical and only one of them is real. The tab is ` +
+            `open where it stopped — click the right one yourself, then press ` +
+            `Retry and it carries on from there.`);
+        }
+      } else if (lastAction) {
+        // It moved. Whatever was stuck is unstuck, and a control that failed on
+        // a previous page should not be held against its namesake on this one.
+        inertByElement.clear();
+        inertByLabel.clear();
+      }
+      lastChangeSig = changeSig;
+      lastAction = null;
 
       // ── are we still welcome? ─────────────────────────────────────────────
       const signal = detectBlockSignal(state);
@@ -1223,7 +1473,20 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       }
 
       // ── ask the model ─────────────────────────────────────────────────────
-      messages.push({ role: "user", content: JSON.stringify(observationFor(state), null, 1) });
+      const observation = observationFor(state);
+      // Named in the observation rather than only enforced behind its back. The
+      // model re-decides from scratch every turn and has no memory of a click
+      // that went nowhere; told plainly, it stops proposing it.
+      if (inertByLabel.size) {
+        observation.already_tried_nothing_happened =
+          [...inertByLabel.entries()].map(([action, times]) => ({ action, times }));
+      }
+      messages.push({
+        role: "user",
+        content: (resumeNote ? `${resumeNote}\n\n` : "") +
+                 JSON.stringify(observation, null, 1),
+      });
+      resumeNote = "";
       const reply = await askClaude({ task, system, messages });
       messages.push({ role: "assistant", content: reply.content });
 
@@ -1234,6 +1497,47 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       const calls = reply.content.filter((b) => b.type === "tool_use");
       const call = calls[0];
       if (!call) return await handOver("the model stopped without choosing an action");
+
+      // Refused rather than performed. Telling the model and letting it decide
+      // again is the cheap half; the other half is that a third identical click
+      // must not actually happen, however confidently it is proposed.
+      const sig = actionSignature(call, state);
+      const targetId = call.input?.element_id || sig;
+      if ((inertByElement.get(targetId) || 0) >= MAX_INERT_REPEATS) {
+        // A refusal counts toward the hand-over budget too. Without that, a
+        // model convinced the button is the answer can spend all 25 steps being
+        // told no, and the run ends on "gave up after 25 steps" — which names
+        // the symptom and hides the cause.
+        inertTotal++;
+        inertByLabel.set(sig, (inertByLabel.get(sig) || 0) + 1);
+        if (inertTotal >= MAX_INERT_TOTAL) {
+          return await handOver(
+            `The page stopped responding to us: nothing we clicked changed ` +
+            `anything on screen (last: ${sig}). This usually means two controls ` +
+            `look identical and only one of them is real. The tab is open where ` +
+            `it stopped — click the right one yourself, then press Retry and it ` +
+            `carries on from there.`);
+        }
+        messages.push({
+          role: "user",
+          content: [
+            { type: "tool_result", tool_use_id: call.id, is_error: true,
+              content: `Not run. This exact element (${targetId}, "${sig}") has ` +
+                       `already been acted on ${inertByElement.get(targetId)} times ` +
+                       `and the page did not change either time. It will not be ` +
+                       `run again. A DIFFERENT element is still worth trying, ` +
+                       `including another one with the same text — pages often ` +
+                       `carry a decorative copy of the real button. If nothing ` +
+                       `else on the page looks plausible, pause.` },
+            ...calls.slice(1).map((extra) => ({
+              type: "tool_result", tool_use_id: extra.id, is_error: true,
+              content: "Not run — one action per turn." })),
+          ],
+        });
+        trim(messages);
+        continue;
+      }
+      lastAction = { id: targetId, sig };
 
       const outcome = await execute({
         call, state, tabId, run, docs, answers, profile, cvText,
@@ -1259,6 +1563,17 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
         // from the board to the ATS. The breaker must follow the run.
         activeDomain = domainOf(outcome.url) || activeDomain;
       }
+
+      // A same-tab navigation gets the first-load treatment too.
+      //
+      // The ordinary between-steps wait settles for "the DOM stopped growing",
+      // which is a fair rule for a modal opening on a page that is already
+      // there and the wrong one for an ATS that has just started rendering: a
+      // nav bar counts as growth having stopped, and the model is handed a page
+      // whose form is still seconds away. Following a click into a NEW tab
+      // already waits this way in the branch above — this is the same event
+      // arriving in the tab we are already holding.
+      const freshDocument = !!outcome.navigated;
 
       await appendApplyStep(run.id, {
         kind: "action", tool: call.name, input: redact(call.input),
@@ -1302,7 +1617,9 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
       // `changedFrom` is the page we just acted on. Without it the first poll
       // matched immediately — the page after a "Next" click is still a form —
       // and the model was handed the previous step's fields to act on again.
-      await waitForContent(tabId, 12000, { changedFrom: state });
+      await (freshDocument
+        ? waitForContent(tabId, FIRST_LOAD_MS, { requireSignal: true })
+        : waitForContent(tabId, 12000, { changedFrom: state }));
     }
 
     return await handOver(`gave up after ${MAX_STEPS} steps`);
@@ -1339,7 +1656,14 @@ export async function runApply(run, { submitPolicy = "confident", onProgress } =
     // "Its tab" is whichever one the run ended on: following an Apply button to
     // the employer's site means the tab worth keeping is the one with the form,
     // not the job posting we started from.
-    const keep = status === "paused_needs_human" ? tabId : null;
+    //
+    // An adopted tab is kept on an ordinary failure too. It is not only our
+    // tab: the user was asked to do something in it and did — signed in,
+    // clicked the real Apply button, ticked a consent box — and closing it over
+    // a failure throws that away with no way to get it back. A submitted run is
+    // the one case where it has served its purpose.
+    const keep = (status === "paused_needs_human" ||
+                  (resumed && status !== "submitted")) ? tabId : null;
     for (const id of openTabs) {
       if (id === keep) continue;
       await chrome.tabs.remove(id).catch(() => {});
@@ -1670,7 +1994,7 @@ async function execute(ctx) {
         forgetFrame(tabId);
         await waitForNavigation(tabId, landed.url, 15000);
         await ensureEngine(tabId).catch(() => {});
-        return { url: landed.url,
+        return { url: landed.url, navigated: true,
                  summary: `clicked "${btn?.text || a.element_id}" and it moved to ` +
                           `${hostOf(landed.url)}. Work from the new page state.` };
       }
@@ -1744,12 +2068,35 @@ async function pauseRun(run, tabId, reason, blocking = []) {
   // the half-filled form the user is being asked to finish. Without it the
   // dashboard can only offer the job's URL, which opens a second, blank copy
   // of the form and throws away everything this run typed.
-  await appendApplyStep(run.id, { kind: "pause", reason, blocking, tabId });
+  // Everything needed to explain this stop without re-running it. Best-effort
+  // and last, so a census that fails cannot cost us the pause record itself.
+  let diagnosis = null;
+  if (tabId != null) {
+    try {
+      diagnosis = {
+        frameId: formFrame.get(tabId) ?? null,
+        ranking: lastFrameChoice.get(tabId) || null,
+        allSites: await hasAllSites().catch(() => null),
+        ...(await frameCensus(tabId)),
+      };
+    } catch { /* never worth failing a pause over */ }
+  }
+  await appendApplyStep(run.id, {
+    kind: "pause", reason, blocking, tabId,
+    frameId: tabId != null ? (formFrame.get(tabId) ?? null) : null,
+    diagnosis,
+  });
 
   // The notification is read on a phone or out of the corner of an eye, so it
   // carries the action rather than the diagnosis — and it says whose problem
   // this is. A crash of ours announcing itself as "Needs you" sends the user
   // looking for something to fix that was never on their side.
+  // The tab this pause is about, so clicking the notification goes straight
+  // there. Remembered in memory for the common case and recoverable from the
+  // step log when the worker has slept since — a notification can sit on screen
+  // far longer than a service worker lives.
+  if (tabId != null) pausedTabs.set(run.id, tabId);
+
   chrome.notifications?.create(`jca-${run.id}`, {
     type: "basic",
     iconUrl: chrome.runtime.getURL("icon128.png"),
@@ -1757,6 +2104,37 @@ async function pauseRun(run, tabId, reason, blocking = []) {
     message: pauseHeadline(reason).slice(0, 240),
   }, () => void chrome.runtime.lastError);
 }
+
+/** runId -> the tab it paused on, for the notification click. */
+const pausedTabs = new Map();
+
+/**
+ * Clicking the notification opens the page that needs the help.
+ *
+ * Without this the notification was a statement, not a route: it named a
+ * company and an action, and left the user to find the right tab among however
+ * many a draining queue had opened. The whole point of pausing is that the
+ * work is one gesture away.
+ */
+chrome.notifications?.onClicked?.addListener(async (id) => {
+  const runId = String(id).startsWith("jca-") ? String(id).slice(4) : null;
+  if (!runId) return;
+  chrome.notifications.clear(id, () => void chrome.runtime.lastError);
+
+  let tabId = pausedTabs.get(runId);
+  if (tabId == null) {
+    // The worker restarted since the pause. The step log is the durable copy.
+    const row = await getApplyRun(runId).catch(() => null);
+    const steps = Array.isArray(row?.steps) ? row.steps : [];
+    tabId = [...steps].reverse().find((st) => st.kind === "pause" && st.tabId != null)?.tabId;
+  }
+  if (tabId == null) return;
+
+  const tab = await chrome.tabs.get(tabId).catch(() => null);
+  if (!tab) { pausedTabs.delete(runId); return; }
+  await chrome.tabs.update(tabId, { active: true }).catch(() => {});
+  await chrome.windows.update(tab.windowId, { focused: true }).catch(() => {});
+});
 
 // ── helpers ─────────────────────────────────────────────────────────────────
 
@@ -1769,6 +2147,41 @@ function observationFor(state) {
 /** Host of a URL, for saying where we ended up. Never throws on a blank tab. */
 function hostOf(url) {
   try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return null; }
+}
+
+/**
+ * What the model just asked for, as a key that survives re-rendering.
+ *
+ * The label rather than the element id, deliberately. Element ids are stable
+ * within a page but say nothing about sameness: a page with two "Apply now"
+ * buttons has two ids for one action, and the loop needs to understand that
+ * trying the second is trying the same thing again.
+ */
+function actionSignature(call, state) {
+  const targetId = call?.input?.element_id;
+  if (!targetId) return call?.name || "unknown";
+  const btn = (state.buttons || []).find((b) => b.id === targetId);
+  const text = btn?.text || labelOf(state, targetId) || targetId;
+  return `${call.name}:${String(text).toLowerCase().replace(/\s+/g, " ").trim()}`;
+}
+
+/**
+ * A fingerprint of everything the model can see and act on.
+ *
+ * Compared turn to turn to answer one question: did the last action change
+ * anything at all? Element ids are stamped once per element per document, so a
+ * modal opening, a step advancing, or a validation error appearing all move
+ * this; a click that was swallowed does not.
+ */
+function pageChangeSignature(state) {
+  return [
+    state.url,
+    state.step || "",
+    (state.fields || []).map((f) => f.id).join(","),
+    (state.choices || []).map((c) => c.id).join(","),
+    (state.buttons || []).map((b) => b.id).join(","),
+    (state.errors || []).length,
+  ].join("|");
 }
 
 function labelOf(state, jcaId) {

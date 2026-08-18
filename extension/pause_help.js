@@ -128,6 +128,18 @@ const CASES = [
     resume: "retry",
   },
 
+  // ── the page didn't move ──────────────────────────────────────────────────
+  {
+    kind: "page_inert",
+    test: /page stopped responding to us|changed nothing on screen|nothing we clicked changed/i,
+    headline: "Nothing it clicked on that page did anything.",
+    todo: [
+      "Open the tab and press the button yourself. Two controls with identical text and only one of them wired up is the usual cause.",
+      "Then press Retry — it carries on in that same tab, from wherever you left it.",
+    ],
+    resume: "retry",
+  },
+
   // ── genuinely theirs to decide ────────────────────────────────────────────
   {
     kind: "consent",
@@ -169,7 +181,7 @@ const CASES = [
     headline: "A question needs an answer you haven't saved yet.",
     todo: [
       "Open Settings → your application profile and fill in the answer named above.",
-      "Then press Retry — the run picks the new answer up from the start.",
+      "Then press Retry — the run picks the new answer up and carries on in the same tab.",
     ],
     resume: "retry",
   },
@@ -209,7 +221,7 @@ const FALLBACK = {
   headline: "It stopped here and handed the application back to you.",
   todo: [
     "Open the tab to see where it got to — the page is left exactly as it was.",
-    "Finish it yourself, or press Retry to run it again from the start.",
+    "Finish it yourself, or press Retry — it picks up in that same tab, from the page it stopped on.",
   ],
   resume: "manual",
 };

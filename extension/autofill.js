@@ -24,6 +24,57 @@
   // counter this and apply_engine both stamp with.
   if (window.JobCopilotAutofill) return;
 
+  // ── shadow DOM ────────────────────────────────────────────────────────────
+  //
+  // document.querySelectorAll does not cross a shadow boundary. On a form built
+  // out of web components that is not a partial answer, it is no answer at all.
+  //
+  // SAP's SuccessFactors application wizard — which is how a large share of
+  // German industry recruits — renders its form inside ~300 shadow roots. Every
+  // selector in this file and in apply_engine.js walked straight past it, so
+  // the run observed a completely empty page, waited out its thirty-second
+  // first-load budget, and handed the application back saying the form had not
+  // rendered. It had. We could not see it.
+  //
+  // So every page-wide scan goes through here. Open roots only: a closed root
+  // is genuinely unreachable from a content script and nothing here can change
+  // that. Depth is capped because a component library nesting a hundred levels
+  // deep is a runaway, not a form.
+  const MAX_SHADOW_DEPTH = 10;
+
+  /** Every element matching `selector`, shadow roots included. */
+  function deepQueryAll(selector, root = document, depth = 0, out = []) {
+    if (!root || depth > MAX_SHADOW_DEPTH) return out;
+    try {
+      for (const el of root.querySelectorAll(selector)) out.push(el);
+      for (const el of root.querySelectorAll("*")) {
+        if (el.shadowRoot) deepQueryAll(selector, el.shadowRoot, depth + 1, out);
+      }
+    } catch { /* a detached root or a selector this engine dislikes */ }
+    return out;
+  }
+
+  /** First match, shadow roots included, or null. */
+  function deepQueryOne(selector, root = document) {
+    const all = deepQueryAll(selector, root);
+    return all.length ? all[0] : null;
+  }
+
+  /**
+   * The root an element actually lives in.
+   *
+   * ids are scoped per shadow root, so `label[for=x]` and
+   * `document.getElementById(x)` have to be asked of the element's own root —
+   * asked of `document` they miss every label inside a component, which is how
+   * a field with a perfectly good visible label ends up with no label at all.
+   */
+  function rootOf(el) {
+    try {
+      const r = el.getRootNode?.();
+      return r && r.querySelector ? r : document;
+    } catch { return document; }
+  }
+
   // Inputs we must never fill, matched against the same haystack. Ordered
   // first — a match here vetoes any other spec.
   const BLOCKED = [
@@ -215,7 +266,8 @@
     if (!ref) return { text: "", token: "" };
     const text = ref.split(/\s+/)
       .map((id) => {
-        const n = id && document.getElementById(id);
+        const n = id && (rootOf(el).getElementById?.(id) ||
+                         rootOf(el).querySelector?.(`#${CSS.escape(id)}`));
         // Case preserved — this becomes the accessible name, which is shown.
         return n ? String(n.innerText || n.textContent || "").replace(/\s+/g, " ").trim() : "";
       })
@@ -339,7 +391,7 @@
       }
     }
     if (el.id) {
-      const forLabel = document.querySelector(`label[for="${CSS.escape(el.id)}"]`);
+      const forLabel = rootOf(el).querySelector(`label[for="${CSS.escape(el.id)}"]`);
       const t = forLabel && cleanName(forLabel.innerText || forLabel.textContent);
       if (t) return t.slice(0, NAME_MAX);
     }
@@ -610,7 +662,7 @@
     const bits = [];
     if (input.labels) for (const l of input.labels) bits.push(l.innerText || l.textContent);
     if (input.id) {
-      const lab = document.querySelector(`label[for="${CSS.escape(input.id)}"]`);
+      const lab = rootOf(input).querySelector(`label[for="${CSS.escape(input.id)}"]`);
       if (lab) bits.push(lab.innerText || lab.textContent);
     }
     const wrap = input.closest("label");
@@ -650,7 +702,7 @@
 
   function fillChoices(profile, report) {
     const groups = new Map();
-    document.querySelectorAll("input[type=radio]").forEach((el) => {
+    deepQueryAll("input[type=radio]").forEach((el) => {
       if (!controlVisible(el)) return;
       const key = el.name || el.closest("fieldset, [role='radiogroup']");
       if (!key) return;
@@ -692,7 +744,7 @@
     });
 
     // Standalone checkboxes are almost always consent/marketing — never auto-tick.
-    document.querySelectorAll("input[type=checkbox]").forEach((el) => {
+    deepQueryAll("input[type=checkbox]").forEach((el) => {
       if (!controlVisible(el) || el.checked) return;
       const q = labelTextFor(el) || groupQuestion(el);
       if (CONSENT.test(q)) {
@@ -714,7 +766,7 @@
     // answer ("English C1, German B1") interpreted, not copied — which is
     // reasoning, so the model gets them. Consent is never included.
     const groups = new Map();
-    document.querySelectorAll("input[type=radio]").forEach((el) => {
+    deepQueryAll("input[type=radio]").forEach((el) => {
       if (!controlVisible(el)) return;
       const key = el.name || "";
       if (!key) return;
@@ -739,7 +791,7 @@
     // rather than asking for consent. Grouped by name, and only when there is
     // more than one — a lone checkbox is a confirmation, not a choice.
     const boxes = new Map();
-    document.querySelectorAll("input[type=checkbox]").forEach((el) => {
+    deepQueryAll("input[type=checkbox]").forEach((el) => {
       if (!visible(el) || !el.name) return;
       if (!boxes.has(el.name)) boxes.set(el.name, []);
       boxes.get(el.name).push(el);
@@ -761,7 +813,7 @@
     // Choice widgets built out of divs and buttons rather than inputs — how
     // Ashby and Workday render most of theirs. They expose the same meaning
     // through ARIA, so that is what we read.
-    document.querySelectorAll("[role='radiogroup']").forEach((grp) => {
+    deepQueryAll("[role='radiogroup']").forEach((grp) => {
       const opts = Array.from(grp.querySelectorAll("[role='radio']"))
         .filter(visible);
       if (opts.length < 2) return;
@@ -779,7 +831,7 @@
       });
     });
 
-    document.querySelectorAll("input, select").forEach((el, i) => {
+    deepQueryAll("input, select").forEach((el, i) => {
       const type = (el.type || "").toLowerCase();
       if (["hidden", "submit", "button", "image", "reset", "file",
            "checkbox", "radio"].includes(type)) return;
@@ -831,7 +883,7 @@
     Object.entries(fills || {}).forEach(([id, raw]) => {
       const value = String(raw == null ? "" : raw).trim();
       if (!value) return;
-      const nodes = Array.from(document.querySelectorAll(`[data-jc-field-id="${id}"]`));
+      const nodes = deepQueryAll(`[data-jc-field-id="${id}"]`);
       const el = nodes[0];
       if (!el) return;
       const type = (el.type || "").toLowerCase();
@@ -910,7 +962,7 @@
     Object.entries(map || {}).forEach(([id, key]) => {
       const mapped = key && resolveValue(profile, key);
       if (!mapped) return;
-      const el = document.querySelector(`[data-jc-field-id="${id}"]`);
+      const el = deepQueryOne(`[data-jc-field-id="${id}"]`);
       if (!el || !visible(el) || (el.value && el.value.trim())) return;
       if (isBlocked(haystack(el), el)) return;
 
@@ -937,7 +989,7 @@
   // here?"). Collected so the model can draft them; nothing is filled here.
   function collectOpenQuestions() {
     const out = [];
-    document.querySelectorAll("textarea").forEach((el, i) => {
+    deepQueryAll("textarea").forEach((el, i) => {
       if (!visible(el) || (el.value && el.value.trim())) return;
       const hay = haystack(el);
       if (isBlocked(hay, el)) return;
@@ -957,7 +1009,7 @@
     let n = 0;
     Object.entries(answers || {}).forEach(([id, text]) => {
       if (!text) return;
-      const el = document.querySelector(`[data-jc-question-id="${id}"]`);
+      const el = deepQueryOne(`[data-jc-question-id="${id}"]`);
       if (!el || (el.value && el.value.trim())) return;
       setValue(el, text);
       highlight(el);
@@ -1002,7 +1054,7 @@
     const hidden = box.width <= 1 || box.height <= 1;
     const proxy = hidden
       ? (el.closest("label") ||
-         (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`)))
+         (el.id && rootOf(el).querySelector(`label[for="${CSS.escape(el.id)}"]`)))
       : null;
 
     (proxy || el).click();
@@ -1023,7 +1075,7 @@
     if (el.disabled) return false;
     if (visible(el)) return true;
     const proxy = el.closest("label") ||
-                  (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`)) ||
+                  (el.id && rootOf(el).querySelector(`label[for="${CSS.escape(el.id)}"]`)) ||
                   el.parentElement;
     if (!proxy) return false;
     const r = proxy.getBoundingClientRect();
@@ -1089,7 +1141,7 @@
    */
   function collectFileInputs() {
     const out = [];
-    document.querySelectorAll('input[type="file"]').forEach((el) => {
+    deepQueryAll('input[type="file"]').forEach((el) => {
       if (el.disabled) return;
       const label = fieldLabel(el) || accessibleName(el) ||
                     (haystack(el).split("|")[0] || "").slice(0, 60);
@@ -1121,7 +1173,7 @@
    */
   function fill(profile, packet) {
     const report = { filled: [], skipped: [], coverLetter: false };
-    const fields = document.querySelectorAll("input, textarea, select");
+    const fields = deepQueryAll("input, textarea, select");
 
     fields.forEach((el) => {
       const type = (el.type || "").toLowerCase();
@@ -1216,7 +1268,7 @@
 
   /** Controls a person actually types or chooses an answer into. */
   function applicationControls() {
-    return Array.from(document.querySelectorAll(
+    return Array.from(deepQueryAll(
         "input, textarea, select, [contenteditable=true]"))
       .filter((el) => !["hidden", "submit", "button", "checkbox", "radio", "search", "image", "reset"]
         .includes((el.type || "").toLowerCase()))
@@ -1227,9 +1279,9 @@
   /** Worth running the rule-based fill and planning uploads on? Deliberately loose. */
   function looksFillable() {
     const controls = applicationControls();
-    const files = document.querySelectorAll('input[type="file"]').length;
+    const files = deepQueryAll('input[type="file"]').length;
     return controls.length >= 1 &&
-           (files > 0 || !!document.querySelector("form") || controls.length >= 3);
+           (files > 0 || !!deepQueryOne("form") || controls.length >= 3);
   }
 
   /** Is a control labelled "Apply"/"Submit" here SENDING an application? */
@@ -1250,6 +1302,8 @@
 
   window.JobCopilotAutofill = {
     fill, findForm, looksFillable, controlVisible, FIELD_SPECS, PROFILE_KEYS,
+    // Shared with apply_engine.js so both halves see the same page.
+    deepQueryAll, deepQueryOne, rootOf,
     collectOpenQuestions, applyAnswers,
     collectFileInputs, classifyFile, stampId,
     fieldLabel, groupQuestion, isBlockedField, haystack,

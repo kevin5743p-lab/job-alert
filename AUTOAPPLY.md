@@ -132,6 +132,24 @@ next run at the same employer
   └─ "needs an account" said upfront instead of four minutes in
 ```
 
+### When it stops, and what picking it up again does
+
+A paused run leaves its tab open on the page it stopped on, and the desktop
+notification now opens that tab when you click it. Doing whatever it asked —
+signing in, clicking the real Apply button, ticking a box — and then pressing
+**Resume** on the row carries on *in that same tab*, from the page you left it
+on. It does not reopen the posting or re-do the pages already filled.
+
+The button says **Resume** when there is a tab to go back to and **Retry** when
+there is not.
+
+Two guards decide when to stop rather than keep going:
+
+| | |
+|---|---|
+| **the page didn't move** | Every action is fingerprinted by the *text* of what it acted on, not the element id — a page with two buttons both reading "Apply now" is one action, not two. A move that changes nothing on screen twice is refused a third time, and four dead moves hand the run back |
+| **the credential wall** | A required password or ID field stops the run — unless something is already in it, in which case the browser filled it and there is nothing to write |
+
 **The loop closes on evidence, not on writing things down.** Every run records
 which remedies it carried and how far it got, on a coarse scale from "nothing"
 to "submitted". The next run at the same problem compares the two. A remedy that
@@ -164,7 +182,10 @@ a run that stopped.
 - Tick a consent, terms, privacy, or marketing checkbox — always yours
 - Answer a visa, salary, notice-period, or demographic question from reasoning
   rather than from your saved profile
-- Fill a password, passport number, IBAN, or tax ID
+- Fill a password, passport number, IBAN, or tax ID. A sign-in page your own
+  password manager has already filled is the one thing it will click through:
+  the fields are reported as `blocked` with a `prefilled` flag and nothing
+  else — never their contents — so there is nothing left for the run to type
 - Attempt a CAPTCHA or bot check. If a site puts one up, that domain is
   quarantined for 24h and the run stops
 

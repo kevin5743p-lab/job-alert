@@ -39,8 +39,50 @@
   const MAX_OPTIONS = 25;
   const MAX_FIELDS = 120;
 
+  // Shadow-piercing scans, from autofill.js — see the long comment there. The
+  // fallbacks are for the case where this file is alive and that one is not;
+  // they behave exactly as every selector in here used to, which is to say
+  // they are blind to web components. Better degraded than broken.
+  const deepAll = (sel, root) => (A?.deepQueryAll
+    ? A.deepQueryAll(sel, root || document)
+    : [...(root || document).querySelectorAll(sel)]);
+  const deepOne = (sel, root) => (A?.deepQueryOne
+    ? A.deepQueryOne(sel, root || document)
+    : (root || document).querySelector(sel));
+  const rootOf = (el) => (A?.rootOf ? A.rootOf(el) : document);
+  /** getElementById, asked of the root the element actually lives in. */
+  const byDomId = (id, near) => {
+    if (!id) return null;
+    const r = near ? rootOf(near) : document;
+    try { return r.getElementById?.(id) || r.querySelector?.(`#${CSS.escape(id)}`) || null; }
+    catch { return null; }
+  };
+
   const norm = (s) => String(s || "").replace(/\s+/g, " ").trim();
   const clip = (s, n = MAX_LABEL) => norm(s).slice(0, n);
+
+  // ── our own furniture is not the page's ───────────────────────────────────
+  //
+  // content.js puts a floating "✦ Tailor this job" button, a "📝 Fill
+  // application" button and a slide-in result panel INTO the page, on every
+  // site the manifest matches — which is every site a run drives.
+  //
+  // Serialising those handed the model our own UI as if it were the
+  // employer's. On an AVL posting whose Apply button was slow to respond, it
+  // did the only reasonable thing with what it could see: clicked "✦ Tailor
+  // this job", got a panel over the form, clicked the panel's ✕, and then
+  // reported — correctly, for what it had been shown — that the page contained
+  // nothing but a Tailor button and a close button. The application was right
+  // there underneath.
+  //
+  // So: anything inside our own elements is invisible to the loop. Note this
+  // is about what we SHOW the model. content.js separately takes its buttons
+  // off a tab a run is driving, so they cannot be in the way of a click
+  // either — two halves of the same fix, and neither relies on the other.
+  const OUR_UI = "#jobcopilot-panel, #jobcopilot-fab, #jobcopilot-fill";
+  function isOurs(el) {
+    try { return !!(el.closest && el.closest(OUR_UI)); } catch { return false; }
+  }
 
   let seq = 0;
   function id(el, prefix) {
@@ -53,7 +95,7 @@
   // and the run looks like it worked. A visible "no element" error is the
   // better failure: the model retries, and the step log records it.
   const byId = (jcaId) => {
-    const all = document.querySelectorAll(`[data-jca-id="${CSS.escape(jcaId)}"]`);
+    const all = deepAll(`[data-jca-id="${CSS.escape(jcaId)}"]`);
     return all.length === 1 ? all[0] : null;
   };
 
@@ -128,8 +170,8 @@
     const sel = 'button, input[type="submit"], input[type="button"], [role="button"], ' +
                 'a.btn, a[href]';
     const out = [];
-    document.querySelectorAll(sel).forEach((el) => {
-      if (!visible(el) || el.disabled) return;
+    deepAll(sel).forEach((el) => {
+      if (!visible(el) || el.disabled || isOurs(el)) return;
       const text = clip(el.innerText || el.value || el.getAttribute("aria-label") || "", 60);
       if (!text) return;
 
@@ -167,11 +209,11 @@
   // ── validation errors ─────────────────────────────────────────────────────
   function collectErrors() {
     const out = new Set();
-    document.querySelectorAll(
+    deepAll(
       '[role="alert"], [aria-invalid="true"], .error, .is-invalid, .invalid-feedback, ' +
       '[class*="error-message"], [class*="errorMessage"], [class*="field-error"]'
     ).forEach((el) => {
-      if (!visible(el)) return;
+      if (!visible(el) || isOurs(el)) return;
       const t = clip(el.innerText || el.getAttribute("aria-label") || "", 140);
       // aria-invalid lands on the input itself, whose innerText is empty —
       // reach for the message the field points at instead.
@@ -179,7 +221,7 @@
       const described = el.getAttribute("aria-describedby");
       if (described) {
         described.split(/\s+/).forEach((refId) => {
-          const m = document.getElementById(refId);
+          const m = byDomId(refId, el);
           if (m && visible(m)) { const mt = clip(m.innerText, 140); if (mt) out.add(mt); }
         });
       }
@@ -195,7 +237,7 @@
     //
     // `validationMessage` is that text, and stamping the field's id onto it
     // gives the model something to act on rather than a sentence to read.
-    document.querySelectorAll("input, select, textarea").forEach((el) => {
+    deepAll("input, select, textarea").forEach((el) => {
       if (out.size >= 15) return;
       if (el.disabled || typeof el.checkValidity !== "function") return;
       if (el.checkValidity()) return;
@@ -217,7 +259,7 @@
     const m = document.body.innerText?.match(
       /\b(?:step|page|schritt|seite)\s+(\d+)\s*(?:of|von|\/)\s*(\d+)/i);
     if (m) return `Step ${m[1]} of ${m[2]}`;
-    const cur = document.querySelector('[aria-current="step"], [aria-current="page"]');
+    const cur = deepOne('[aria-current="step"], [aria-current="page"]');
     return cur ? clip(cur.innerText, 60) : null;
   }
 
@@ -225,7 +267,7 @@
 
   function collectFields() {
     const out = [];
-    document.querySelectorAll("input, textarea, select").forEach((el) => {
+    deepAll("input, textarea, select").forEach((el) => {
       if (out.length >= MAX_FIELDS) return;
       const type = (el.type || "").toLowerCase();
       if (["hidden", "submit", "button", "image", "reset", "file",
@@ -237,14 +279,33 @@
       // on. Serialised with the flag set, a direct FILL is still worth trying
       // (jQuery-UI and flatpickr both accept it) and the model can otherwise
       // click the calendar button next to it.
-      if (!visible(el) || el.disabled) return;
+      if (!visible(el) || el.disabled || isOurs(el)) return;
 
       const label = labelFor(el);
       // autofill's BLOCKED list — passwords, government IDs, financial details.
       // Not serialised at all: the model is never shown a field it must not
       // touch, rather than being told not to touch it.
       if (A?.isBlockedField?.(el)) {
-        out.push({ id: id(el, "f"), label, type, blocked: true, value: "" });
+        // Whether something is ALREADY in it — never what.
+        //
+        // A sign-in page the user has saved credentials for is filled by
+        // Chrome's own password manager before we ever look at it, and a run
+        // that stops there is stopping over work that is already done. The
+        // value is not read into a variable, not serialised, not logged: this
+        // is a boolean about emptiness and nothing else, and `value` below
+        // stays the empty string it has always been.
+        //
+        // `:autofill` is what catches it. Chrome fills the box on load but
+        // withholds the value from scripts until the page has been interacted
+        // with, so `el.value` alone reports empty on exactly the case this
+        // exists for. The pseudo-class is true either way.
+        let prefilled = false;
+        try {
+          prefilled = !!el.value || el.matches(":autofill") ||
+                      el.matches(":-webkit-autofill");
+        } catch { prefilled = !!el.value; }
+        out.push({ id: id(el, "f"), label, type, blocked: true, value: "",
+                   prefilled });
         return;
       }
 
@@ -289,7 +350,7 @@
     const ref = trigger.getAttribute("aria-controls") ||
                 trigger.getAttribute("aria-owns");
     if (ref) {
-      const byRef = document.getElementById(ref);
+      const byRef = byDomId(ref, el);
       if (byRef) return byRef;
     }
     // react-select mounts the menu as a sibling with no aria wiring at all.
@@ -313,7 +374,7 @@
   function comboValue(trigger) {
     const active = trigger.getAttribute("aria-activedescendant");
     if (active) {
-      const node = document.getElementById(active);
+      const node = byDomId(active, el);
       if (node) return clip(node.innerText, 80);
     }
     const inner = trigger.querySelector("input")?.value;
@@ -325,8 +386,9 @@
     const sel = '[role="combobox"], [aria-haspopup="listbox"], [role="listbox"][tabindex], ' +
                 '[role="radiogroup"]';
 
-    document.querySelectorAll(sel).forEach((el) => {
-      if (claimed.has(el) || !visible(el) || el.getAttribute("aria-disabled") === "true") return;
+    deepAll(sel).forEach((el) => {
+      if (claimed.has(el) || !visible(el) || isOurs(el) ||
+          el.getAttribute("aria-disabled") === "true") return;
       claimed.add(el);
 
       if (el.getAttribute("role") === "radiogroup") {
@@ -383,7 +445,7 @@
    */
   function radioPeers(el) {
     if (el.name) {
-      const named = [...document.querySelectorAll(
+      const named = [...deepAll(
         `input[type="radio"][name="${CSS.escape(el.name)}"]`)];
       if (named.length > 1) return named;
     }
@@ -401,12 +463,12 @@
     // as label strings — two questions can legitimately share the label "Yes".
     const claimed = new Set();
 
-    document.querySelectorAll('input[type="radio"], input[type="checkbox"]')
+    deepAll('input[type="radio"], input[type="checkbox"]')
       .forEach((el) => {
         // controlVisible, not visible: a styled form hides the real input and
         // paints the label, and those questions were being dropped entirely.
         const isVisible = A?.controlVisible ? A.controlVisible(el) : visible(el);
-        if (!isVisible || el.disabled || claimed.has(el)) return;
+        if (!isVisible || el.disabled || claimed.has(el) || isOurs(el)) return;
         const label = labelFor(el) || clip(el.closest("label")?.innerText || "");
 
         if (el.type === "checkbox" && isConsent(el, label)) {
@@ -504,7 +566,7 @@
     const r = el.getBoundingClientRect();
     if (r.width > 1 && r.height > 1) return el;
     return el.closest("label") ||
-           (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`)) ||
+           (el.id && rootOf(el).querySelector(`label[for="${CSS.escape(el.id)}"]`)) ||
            el.parentElement || el;
   }
 
@@ -587,7 +649,7 @@
     for (let i = 0; i < 12; i++) {                 // ~1.8s, polled
       await sleep(150);
       box = listboxFor(el) ||
-            document.querySelector('[role="listbox"]:not([hidden])');
+            deepOne('[role="listbox"]:not([hidden])');
       opts = box ? [...box.querySelectorAll('[role="option"], li')].filter(visible) : [];
       if (opts.length) break;
     }
@@ -787,17 +849,62 @@
   // decided rather than assumed. This scores the frame it runs in; the worker
   // asks every frame and drives the winner. Cheap on purpose — it runs once per
   // frame per navigation and must not walk the whole DOM.
+  /**
+   * A census of what is actually in this frame — for when a run stops saying
+   * the page was empty and nobody can tell whether that was true.
+   *
+   * Counts only; no page content leaves the frame. It deliberately looks in the
+   * places the collectors CANNOT: shadow roots are invisible to
+   * document.querySelectorAll, so a form built from web components reads as an
+   * empty document to everything else in this file. If that is what is
+   * happening, this is the number that says so.
+   */
+  function census() {
+    const n = (sel) => { try { return document.querySelectorAll(sel).length; } catch { return -1; } };
+
+    let shadowHosts = 0, shadowInputs = 0, shadowButtons = 0;
+    const walk = (root, depth) => {
+      if (depth > 4) return;
+      for (const el of root.querySelectorAll("*")) {
+        if (!el.shadowRoot) continue;
+        shadowHosts++;
+        shadowInputs += el.shadowRoot.querySelectorAll("input, select, textarea").length;
+        shadowButtons += el.shadowRoot.querySelectorAll("button, [role=button]").length;
+        walk(el.shadowRoot, depth + 1);
+      }
+    };
+    try { walk(document, 0); } catch { /* a census is never worth throwing over */ }
+
+    return {
+      url: (location.href || "").split("?")[0],
+      isTop: window.top === window,
+      ready: document.readyState,
+      w: window.innerWidth, h: window.innerHeight,
+      inputs: n("input, select, textarea"),
+      buttons: n("button, [role=button], input[type=submit]"),
+      forms: n("form"),
+      files: n("input[type=file]"),
+      iframes: n("iframe"),
+      shadowHosts, shadowInputs, shadowButtons,
+      textChars: (document.body?.innerText || "").length,
+    };
+  }
+
   function frameScore() {
-    const inputs = document.querySelectorAll(
+    const inputs = deepAll(
       "input:not([type=hidden]):not([type=submit]):not([type=button]), " +
       "select, textarea, [contenteditable=true]");
-    const files = document.querySelectorAll("input[type=file]");
-    const forms = document.querySelectorAll("form");
+    const files = deepAll("input[type=file]");
+    const forms = deepAll("form");
 
+    // Kept in step with APPLY_CONTROL_RE in apply_agent.js. A frame is scored
+    // partly on how many application-ish controls it holds, so a wizard whose
+    // only button says "Further" scored zero for it and could lose to the shell
+    // frame that hosts it.
     const APPLY_RE =
-      /\b(apply|bewerben|bewerbung|submit|absenden|senden|continue|weiter|next)\b/i;
+      /\b(apply|bewerben|bewerbung|submit|absenden|senden|continue|weiter|fortfahren|further|proceed|next)\b/i;
     let controls = 0;
-    for (const b of document.querySelectorAll(
+    for (const b of deepAll(
       "button, input[type=submit], [role=button], a[href]")) {
       const t = (b.innerText || b.value || b.getAttribute("aria-label") || "").trim();
       if (t && t.length < 60 && APPLY_RE.test(t)) controls++;
@@ -824,9 +931,18 @@
 
   chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
     if (msg?.target !== "jca-engine") return;
+    // This tab is being driven by a run, and only a run ever sends this.
+    //
+    // Marked on the document rather than announced, because the reader is
+    // content.js in the same frame, which polls anyway and cannot be messaged
+    // from here. It takes its floating buttons down while the flag is set —
+    // they are ours, they sit on top of the employer's form, and a CDP click
+    // lands on whatever is topmost at those coordinates.
+    try { document.documentElement.dataset.jcaDriving = "1"; } catch { /* not fatal */ }
     try {
       switch (msg.type) {
         case "FRAME_SCORE": sendResponse({ ok: true, ...frameScore() }); break;
+        case "CENSUS":      sendResponse({ ok: true, ...census() }); break;
         case "OBSERVE":     sendResponse({ ok: true, state: observe() }); break;
         // `act` became async when CHOOSE had to open a custom dropdown, wait
         // for its options to mount, and click one — an interaction that cannot

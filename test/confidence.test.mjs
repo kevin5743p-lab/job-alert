@@ -62,6 +62,32 @@ check("required sensitive field blocks (we never fill those)",
   canSubmit({ ...blank, fields: [{ id: "f9", label: "Passport number", required: true, blocked: true }] }).ok,
   false);
 
+// A sign-in the browser's own password manager has already filled.
+//
+// The rule is not "passwords are allowed now" — it is that a box with
+// something already in it has nothing left for us to write, and stopping there
+// stopped runs over work that was already done. `blocked` still means we never
+// type into it and never see what it holds; `prefilled` only says it is not
+// empty. Both directions are pinned here because getting the second one wrong
+// would send an application with an empty credential field.
+check("a PREFILLED sensitive field does not block — nothing left for us to enter",
+  canSubmit({ ...blank, fields: [
+    { id: "f9", label: "Password", required: true, blocked: true, prefilled: true }] }).ok,
+  true);
+check("an EMPTY sensitive field still blocks",
+  canSubmit({ ...blank, fields: [
+    { id: "f9", label: "Password", required: true, blocked: true, prefilled: false }] }).ok,
+  false);
+check("a sensitive field with no prefilled flag at all still blocks",
+  canSubmit({ ...blank, fields: [
+    { id: "f9", label: "Password", required: true, blocked: true }] }).ok,
+  false);
+check("a prefilled sensitive field raises nothing at all, not even a soft note",
+  (canSubmit({ ...blank, fields: [
+    { id: "f9", label: "Password", required: true, blocked: true, prefilled: true, value: "" }] })
+    .blocking || []).length,
+  0);
+
 console.log("\ngate: grounding");
 check("answer with a fabricated citation blocks",
   canSubmit(blank, { cvText: CV, profile: PROFILE, answers: {

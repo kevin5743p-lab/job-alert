@@ -108,7 +108,17 @@ export function canSubmit(state, ctx = {}) {
     if (f.blocked) {
       // A sensitive field we refuse to fill (password, ID number, IBAN). If the
       // form requires it, this application is the user's to finish.
-      if (f.required) say(`requires a sensitive value we won't fill: ${f.label}`, f.id);
+      //
+      // Unless it is already filled. `prefilled` means the box has something in
+      // it that we did not put there — the user's own password manager, or a
+      // value the site restored — and there is nothing left for us to write.
+      // Stopping there stopped runs over a field that was already correct,
+      // which is how a saved sign-in ended an application.
+      //
+      // We still never type into it, and we still never see what is in it.
+      if (f.required && !f.prefilled) {
+        say(`requires a sensitive value we won't fill: ${f.label}`, f.id);
+      }
       continue;
     }
     if (f.required && !String(f.value || "").trim()) {

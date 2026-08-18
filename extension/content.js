@@ -266,6 +266,25 @@
 
   function injectButton() {
     if (!document.body) return;
+
+    // Not while a run is driving this tab.
+    //
+    // apply_engine.js sets this the moment the apply loop speaks to the page.
+    // Our buttons float over the employer's form, and the loop clicks by
+    // coordinates — so a Tailor button parked over the real Apply button is a
+    // click the application never receives. The panel is worse: it covers the
+    // form outright. Both come off, and an open panel closes.
+    //
+    // The flag survives until the tab is reloaded, which is the behaviour we
+    // want on a paused run: the user is finishing that form by hand and does
+    // not need our furniture over it either.
+    if (document.documentElement?.dataset?.jcaDriving === "1") {
+      $("#jobcopilot-fab")?.remove();
+      $("#jobcopilot-fill")?.remove();
+      $("#jobcopilot-panel")?.remove();
+      return;
+    }
+
     if (isTopFrame && !$("#jobcopilot-fab")) {
       const btn = document.createElement("button");
       btn.id = "jobcopilot-fab";

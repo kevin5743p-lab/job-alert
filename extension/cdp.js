@@ -206,8 +206,50 @@ export async function nodeForId(cdp, jcaId) {
  */
 export async function setFileInputFiles(cdp, jcaId, paths) {
   const nodeId = await nodeForId(cdp, jcaId);
-  if (!nodeId) throw new Error(`setFileInputFiles: no element for ${jcaId}`);
-  await cdp("DOM.setFileInputFiles", { nodeId, files: paths });
+  if (nodeId) {
+    await cdp("DOM.setFileInputFiles", { nodeId, files: paths });
+    return;
+  }
+
+  // Shadow DOM, most likely.
+  //
+  // Both lookups above are CSS-selector searches over the DOM tree, and a file
+  // input that lives inside a web component's shadow root is not reliably in
+  // it. SAP's application wizard is built that way — several hundred shadow
+  // roots on one page — so on those forms the upload had no element to attach
+  // to at all.
+  //
+  // Runtime.evaluate has no such blind spot: the expression runs in the page
+  // and can walk the roots itself, and DOM.setFileInputFiles takes an objectId
+  // just as happily as a nodeId. Second rather than first only because it
+  // allocates a remote object that has to be released.
+  const selector = `[data-jca-id="${quoteAttrValue(jcaId)}"]`;
+  const expression = `(() => {
+    const find = (root, depth) => {
+      if (!root || depth > 10) return null;
+      const hit = root.querySelector(${JSON.stringify(selector)});
+      if (hit) return hit;
+      for (const el of root.querySelectorAll("*")) {
+        if (!el.shadowRoot) continue;
+        const deep = find(el.shadowRoot, depth + 1);
+        if (deep) return deep;
+      }
+      return null;
+    };
+    return find(document, 0);
+  })()`;
+
+  let objectId = null;
+  try {
+    const { result } = await cdp("Runtime.evaluate", { expression });
+    objectId = result?.objectId || null;
+    if (!objectId) throw new Error(`setFileInputFiles: no element for ${jcaId}`);
+    await cdp("DOM.setFileInputFiles", { objectId, files: paths });
+  } finally {
+    if (objectId) {
+      await cdp("Runtime.releaseObject", { objectId }).catch(() => {});
+    }
+  }
 }
 
 /** Render the current page to a PDF. Returns base64. */

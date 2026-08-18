@@ -473,6 +473,19 @@ const APPLY_LABEL = {
   aborted:            ["Stopped",  "muted"],
 };
 
+/**
+ * The tab a run paused on, if it recorded one.
+ *
+ * Only a hint for the button's wording — whether that tab is still open is the
+ * run's own question, asked at the moment it restarts, and it falls back to a
+ * fresh tab when the answer is no.
+ */
+function pauseTabOf(run) {
+  const steps = Array.isArray(run.steps) ? run.steps : [];
+  const pause = [...steps].reverse().find((st) => st.kind === "pause" && st.tabId != null);
+  return pause ? pause.tabId : null;
+}
+
 /** The newest breadcrumb a run has written, or "" before it writes any. */
 function lastStepKind(run) {
   const steps = Array.isArray(run.steps) ? run.steps : [];
@@ -519,11 +532,20 @@ function applyCell(r) {
   const detail = st.pause_reason
     ? ` title="${esc(`${helpForPause(st.pause_reason).headline}\n\n${st.pause_reason}`)}"`
     : "";
+  // "Retry" and "Resume" are different promises, and the run keeps whichever
+  // one it can: a pause leaves its tab open, and the next attempt carries on in
+  // that tab rather than reopening the posting and re-doing the earlier pages.
+  // Saying "Retry" over that had people expecting to lose the sign-in or the
+  // consent box they had just dealt with by hand.
+  const pausedTab = pauseTabOf(st);
+  const again = pausedTab != null
+    ? `<button data-retry="${esc(st.id)}" title="Carries on in the tab it stopped in, from the page you left it on">Resume</button>`
+    : `<button data-retry="${esc(st.id)}">Retry</button>`;
   const actions =
     st.status === "running"  ? `<button data-abort="${esc(st.id)}">Stop</button>` :
     st.status === "queued"   ? `<button data-abort="${esc(st.id)}">Cancel</button>` :
     ["paused_needs_human", "failed", "blocked", "aborted"].includes(st.status)
-      ? `<button data-retry="${esc(st.id)}">Retry</button>` : "";
+      ? again : "";
 
   return `<span class="apply-state ${cls}"${detail}>${label}</span> ${actions}`;
 }
@@ -993,8 +1015,14 @@ function handOff(run) {
   const btn = (primary, attrs, text) =>
     `<button ${primary ? 'class="primary" ' : ""}${attrs}>${text}</button>`;
   const openBtn = open ? btn(help.resume === "manual", open, "Open the tab") : "";
+  // "start it again" was true and is not any more: a run that paused with its
+  // tab still open picks up in that tab, on the page the user left it on. The
+  // label has to say which of the two will happen, because they are very
+  // different promises to someone who has just filled half a form by hand.
   const retryBtn = btn(help.resume === "retry", `data-panel-retry="${esc(run.id)}"`,
-                       "Retry — start it again");
+                       pauseStep?.tabId != null
+                         ? "Resume — carry on in that tab"
+                         : "Retry — start it again");
   // The grant carries the run id so the same click can hand the permission over
   // and put the job back in the queue. Asking the user to press a second button
   // for the retry would be asking them to finish our job.
