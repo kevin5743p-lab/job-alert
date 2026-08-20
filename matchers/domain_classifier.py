@@ -214,7 +214,7 @@ def classify_with_rules(job: Dict, domain: Optional[Dict] = None
 #  AI layer
 # ──────────────────────────────────────────────────────────────────────────────
 def classify_with_ai(job: Dict, api_key: str,
-                     model: str = "llama-3.3-70b-versatile",
+                     model: str = "openai/gpt-oss-120b",
                      domain: Optional[Dict] = None,
                      persona: str = "") -> Tuple[str, str]:
     """

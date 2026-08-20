@@ -168,7 +168,7 @@ def validate_targets(candidates: List[Dict], timeout: int = 10) -> List[Dict]:
 
 
 def generate(cv_text: str, api_key: str,
-             model: str = "llama-3.3-70b-versatile") -> Dict:
+             model: str = "openai/gpt-oss-120b") -> Dict:
     """Ask Groq for the personalization JSON and shape it into a profile dict."""
     result = groq_client.chat_json(PROMPT.format(cv=cv_text[:6000]), api_key,
                                    model=model, max_tokens=4000, temperature=0.3)

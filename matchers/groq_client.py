@@ -49,7 +49,7 @@ def _is_daily_quota_429(body_text: str) -> bool:
 
 
 def chat_json(prompt: str, api_key: str,
-              model: str = "llama-3.3-70b-versatile",
+              model: str = "openai/gpt-oss-120b",
               max_tokens: int = 300,
               temperature: float = 0.2) -> Optional[Dict]:
     """

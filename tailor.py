@@ -48,7 +48,7 @@ CV_PATH = ROOT / "cv.md"
 
 # Tailoring is low-volume and high-value, so it uses a stronger writing model
 # than the per-job scorer (which runs on the cheap 8B model for budget reasons).
-DEFAULT_MODEL = "llama-3.3-70b-versatile"
+DEFAULT_MODEL = "openai/gpt-oss-120b"
 
 # Enough room for the summary + several bullets + a full cover letter in one call.
 MAX_TOKENS = 2200

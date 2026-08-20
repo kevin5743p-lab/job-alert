@@ -30,7 +30,7 @@ def _persona(profile: Dict) -> str:
 
 def score(job: Dict, profile: Dict, domain_class: str, api_key: str,
           cv_text: str = "", recent_decisions=None,
-          model: str = "llama-3.3-70b-versatile") -> Tuple[Optional[int], str]:
+          model: str = "openai/gpt-oss-120b") -> Tuple[Optional[int], str]:
     """
     Score a job whose domain class is already known (1 AI call).
     Returns (score 0-100, reason), or (None, reason) if the AI call failed.
@@ -92,7 +92,7 @@ Respond with a JSON object in exactly this format:
 
 def classify_and_score(job: Dict, profile: Dict, cv_text: str, memory: Dict,
                        api_key: str,
-                       model: str = "llama-3.3-70b-versatile"
+                       model: str = "openai/gpt-oss-120b"
                        ) -> Optional[Tuple[str, str, int, str]]:
     """
     Single AI call that does BOTH classification AND scoring.

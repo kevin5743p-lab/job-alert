@@ -138,7 +138,7 @@ def run_check(dry_run: bool = False, no_ai: bool = False,
 
     api_key = os.environ.get("GROQ_API_KEY", "")
     ai_cfg = config.get("ai", {})
-    model = ai_cfg.get("model", "llama-3.3-70b-versatile")
+    model = ai_cfg.get("model", "openai/gpt-oss-120b")
     max_ai_calls = ai_cfg.get("max_ai_calls_per_run", 60)
 
     # One-file onboarding: while profile.yaml is still the factory template,
@@ -446,7 +446,7 @@ def main() -> int:
 
     if args.personalize:
         config = load_yaml(CONFIG_PATH)
-        model = config.get("ai", {}).get("model", "llama-3.3-70b-versatile")
+        model = config.get("ai", {}).get("model", "openai/gpt-oss-120b")
         personalize.ensure_profile(load_cv(), os.environ.get("GROQ_API_KEY", ""),
                                    model, PROFILE_PATH)
         return 0

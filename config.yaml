@@ -14,11 +14,16 @@
 
 # ── AI scoring (stage 2; stage-1 rule pre-filter is always free) ──
 ai:
-  # llama-3.1-8b-instant has a much larger free-tier daily token budget than
-  # llama-3.3-70b-versatile, so jobs rarely fall back to "unscored (AI quota)".
-  # Swap back to "llama-3.3-70b-versatile" for more nuanced scoring at the cost
-  # of hitting the daily quota sooner.
-  model: "llama-3.1-8b-instant"
+  # Groq retired both Llama models on 2026-08-16. gpt-oss-120b is their named
+  # replacement for llama-3.3-70b-versatile; gpt-oss-20b replaces the 8b.
+  #
+  # The old reason to prefer the small model was its bigger daily budget — 500k
+  # tokens/day against the 70b's 100k. That reason is gone: both gpt-oss models
+  # share identical free-tier limits (30 req/min, 1k req/day, 8k tokens/min,
+  # 200k tokens/day), so the larger one costs nothing extra in quota and judges
+  # better. Drop to "openai/gpt-oss-20b" only if you want the faster model
+  # (1000 vs 500 tokens/sec); it will not buy you more headroom.
+  model: "openai/gpt-oss-120b"
   # Cap of AI-scored jobs per run. Jobs beyond the cap are tiered by
   # their rule score instead (highest rule scores get the AI calls).
   max_ai_calls_per_run: 60

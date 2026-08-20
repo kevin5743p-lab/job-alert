@@ -236,33 +236,51 @@ function searchCountry(country) {
 // guessed. Getting them wrong doesn't fail loudly — it spends the user's whole
 // day in one scan, which is the bug this replaced.
 //
-//   llama-3.1-8b-instant   500k tokens/day,  6k tokens/min
-//   llama-3.3-70b-versatile 100k tokens/day, 12k tokens/min
+// Groq retired both Llama models on 2026-08-16 and the replacements share one
+// set of limits, which is the fact that reshapes this whole block:
 //
-// Stage 1 ranks on the small model: ~1,600 tokens a call against a 6k/min
-// ceiling. Sixteen seconds would sit exactly on that ceiling, so eighteen is
-// used instead — a posting slightly longer than average would otherwise trip a
-// 429 on a pass that has no headroom at all. 120 postings in batches of 5 is 24
-// calls, about 7 minutes and ~38k tokens, a fourteenth of that pool.
-const RANK_MODEL = "llama-3.1-8b-instant";
+//   openai/gpt-oss-120b   200k tokens/day, 8k tokens/min, 30 req/min
+//   openai/gpt-oss-20b    200k tokens/day, 8k tokens/min, 30 req/min   (identical)
+//
+// The two stages used to run on two models to spend two separate budgets — the
+// 8b had 500k tokens/day to itself and the 70b had 100k. With one shared pool
+// that arbitrage is gone, so both stages now run the larger model: it costs the
+// same quota, and the ranking pass stops being the weakest link. Requests per
+// minute is never the binding constraint here (30/min against a call every 14
+// seconds), so every number below is derived from tokens per minute.
+//
+// Stage 1 ranks in batches: ~1,600 tokens a call against 8k/min is twelve
+// seconds sitting exactly on the ceiling, so fourteen is used — a posting
+// slightly longer than average would otherwise trip a 429 on a pass with no
+// headroom at all. 120 postings in batches of 5 is 24 calls, about 6 minutes
+// and ~38k tokens.
+const RANK_MODEL = DEFAULT_MODEL;
 const RANK_BATCH = 5;
-const RANK_PACE_MS = 18000;
+const RANK_PACE_MS = 14000;
 
-// Stage 2 judges on the large model: ~1,900 tokens a call against a 12k/min
-// ceiling, so eleven seconds apart leaves the same kind of margin. 25 postings
-// is ~48k tokens — which is why this is 25 and not 120.
+// Stage 2 judges one posting at a time: ~1,900 tokens a call against the same
+// 8k/min ceiling is 14.2 seconds exactly, so sixteen leaves the same margin.
 //
-// Two full scans in a day come to ~95k of the 100k daily budget, which sounds
-// tighter than it is: scored_jobs remembers every posting already judged, so
-// only the first scan of a day faces 120 unseen postings. The second normally
-// judges a handful. A user who does manage to exhaust it loses scoring for the
-// rest of the day, not the extension.
+// This pass got SLOWER, not faster. The 70b allowed 12k tokens/min; gpt-oss
+// allows 8k. Judging 25 postings now takes about 6.5 minutes rather than 4.5.
+// That is the real cost of the migration and there is no way to pace around it.
+//
+// The daily arithmetic improved even so. A full scan is ~85k tokens across both
+// stages, against a 200k/day pool — 2.3 full scans, where the old split allowed
+// two. And only the first scan of a day faces 120 unseen postings: scored_jobs
+// remembers everything already judged, so later scans normally judge a handful.
+// A user who does exhaust the pool loses scoring for the rest of the day, not
+// the extension.
 const JUDGE_TOP = 25;
-const SINGLE_PACE_MS = 11000;
+const SINGLE_PACE_MS = 16000;
 
-// What a rank-only posting may score. The ranking model is explicitly not
-// trusted to judge — capping its score below the dashboard's strong-match band
-// keeps an unreviewed posting from presenting itself as a reviewed one.
+// What a rank-only posting may score. This used to be justified by the ranking
+// model being the weaker one; both stages now run the same model, so the reason
+// is the context each posting gets, not the model. Stage 1 puts five postings
+// in one call and gives each a fraction of the prompt; stage 2 gives one
+// posting the whole thing. Capping the batched score below the dashboard's
+// strong-match band keeps an unreviewed posting from presenting itself as a
+// reviewed one.
 const QUICK_SCORE_CAP = 60;
 // Scoring follows the user's chosen model.
 //
@@ -278,8 +296,20 @@ const QUICK_SCORE_CAP = 60;
 // wrong, always confidently phrased. A cheap wrong answer is not cheap: it
 // throws away a job the candidate would have wanted, silently.
 //
-// Anyone who does hit a quota can still pick the 8b model in the popup.
+// Models Groq has retired. A user who picked one before the shutdown still has
+// it sitting in chrome.storage.local, and it would win over DEFAULT_MODEL here
+// — so updating the default alone would have fixed nothing for them. Every call
+// would 404 on a model that no longer exists, and the only visible symptom is
+// that scoring silently stops working. Treat a retired id as if nothing was
+// chosen; the stored value is left alone so the popup can still show what
+// happened rather than silently rewriting the user's setting.
+const RETIRED_MODELS = new Set([
+  "llama-3.3-70b-versatile",   // shut down 2026-08-16
+  "llama-3.1-8b-instant",      // shut down 2026-08-16
+]);
+
 function scoringModel(userModel) {
+  if (userModel && RETIRED_MODELS.has(userModel)) return DEFAULT_MODEL;
   return userModel || DEFAULT_MODEL;
 }
 
