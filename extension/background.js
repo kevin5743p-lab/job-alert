@@ -37,6 +37,30 @@ function retryAfterMs(resp, body) {
   return 8000;
 }
 
+// Models Groq has retired. Someone who picked one in the popup before the
+// shutdown still has it in chrome.storage.local, and a stored value wins over
+// DEFAULT_MODEL — so changing the default alone fixes nothing for them. Every
+// call 404s on a model that no longer exists, and the only visible symptom is
+// that a feature quietly stops working.
+//
+// This lives here rather than at the call sites because the call sites are the
+// bug: scoring routes through scoringModel(), but tailoring, the search-profile
+// rebuild and the three autofill prompts all pass the stored id straight down.
+// Guarding one of them would have fixed scanning and left tailoring broken.
+// Every Groq request in this file goes through groqJson(), so this is the only
+// place the check cannot be forgotten.
+//
+// The stored value is left untouched, so the popup can still show what the user
+// picked rather than having their setting silently rewritten underneath them.
+const RETIRED_MODELS = new Set([
+  "llama-3.3-70b-versatile",   // shut down 2026-08-16
+  "llama-3.1-8b-instant",      // shut down 2026-08-16
+]);
+
+function liveModel(m) {
+  return (m && !RETIRED_MODELS.has(m)) ? m : DEFAULT_MODEL;
+}
+
 async function groqJson(prompt, apiKey, model, maxTokens, retries = 2) {
   // Groq rejects response_format:json_object unless the prompt itself contains
   // the word "json". A prompt that only shows the shape it wants gets a 400,
@@ -52,7 +76,7 @@ async function groqJson(prompt, apiKey, model, maxTokens, retries = 2) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: model || DEFAULT_MODEL,
+      model: liveModel(model),
       messages: [{ role: "user", content: prompt }],
       temperature: 0.4,
       max_tokens: maxTokens || MAX_TOKENS,
@@ -296,21 +320,10 @@ const QUICK_SCORE_CAP = 60;
 // wrong, always confidently phrased. A cheap wrong answer is not cheap: it
 // throws away a job the candidate would have wanted, silently.
 //
-// Models Groq has retired. A user who picked one before the shutdown still has
-// it sitting in chrome.storage.local, and it would win over DEFAULT_MODEL here
-// — so updating the default alone would have fixed nothing for them. Every call
-// would 404 on a model that no longer exists, and the only visible symptom is
-// that scoring silently stops working. Treat a retired id as if nothing was
-// chosen; the stored value is left alone so the popup can still show what
-// happened rather than silently rewriting the user's setting.
-const RETIRED_MODELS = new Set([
-  "llama-3.3-70b-versatile",   // shut down 2026-08-16
-  "llama-3.1-8b-instant",      // shut down 2026-08-16
-]);
-
+// Retired ids are filtered by liveModel() inside groqJson(), which every call
+// in this file goes through — see the note there.
 function scoringModel(userModel) {
-  if (userModel && RETIRED_MODELS.has(userModel)) return DEFAULT_MODEL;
-  return userModel || DEFAULT_MODEL;
+  return liveModel(userModel);
 }
 
 // An MV3 service worker is shut down after ~30 seconds without an extension
