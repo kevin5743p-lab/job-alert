@@ -61,6 +61,32 @@ function liveModel(m) {
   return (m && !RETIRED_MODELS.has(m)) ? m : DEFAULT_MODEL;
 }
 
+// gpt-oss models reason before they answer, and the reasoning comes out of the
+// same max_tokens budget as the answer. The judge pass asked for 300 tokens,
+// which was ample for the old Llama models and is not ample for a model that
+// thinks first: it spent the budget reasoning and never closed the JSON. Groq
+// reports that as "Failed to generate JSON. Please adjust your prompt", which
+// sends you looking at the prompt when the prompt was never the problem.
+//
+// max_tokens is a ceiling, not a spend — raising it costs nothing unless the
+// model actually uses it — so every JSON call gets a floor big enough to think
+// and still answer. Groq's own default is 1024 for the same reason.
+const REASONING_FLOOR_TOKENS = 1024;
+
+// Kept short deliberately: reasoning tokens are billed and counted against the
+// same 8k/min ceiling the pacing is built on, so "low" protects the budget as
+// well as the latency. "hidden" keeps the reasoning out of the content, so what
+// arrives is the JSON and nothing else.
+//
+// Gated on the model because the field is not portable. gpt-oss takes
+// low/medium/high; qwen3.6 takes none/default for the same parameter name, so
+// sending "low" to it would 400 — swapping one broken model for another.
+function reasoningParams(m) {
+  return String(m).startsWith("openai/gpt-oss")
+    ? { reasoning_effort: "low", reasoning_format: "hidden" }
+    : {};
+}
+
 async function groqJson(prompt, apiKey, model, maxTokens, retries = 2) {
   // Groq rejects response_format:json_object unless the prompt itself contains
   // the word "json". A prompt that only shows the shape it wants gets a 400,
@@ -69,6 +95,8 @@ async function groqJson(prompt, apiKey, model, maxTokens, retries = 2) {
     throw new Error("Prompt must mention JSON when requesting a JSON response.");
   }
 
+  const chosen = liveModel(model);
+
   const resp = await fetch(GROQ_URL, {
     method: "POST",
     headers: {
@@ -76,11 +104,12 @@ async function groqJson(prompt, apiKey, model, maxTokens, retries = 2) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: liveModel(model),
+      model: chosen,
       messages: [{ role: "user", content: prompt }],
       temperature: 0.4,
-      max_tokens: maxTokens || MAX_TOKENS,
+      max_tokens: Math.max(maxTokens || MAX_TOKENS, REASONING_FLOOR_TOKENS),
       response_format: { type: "json_object" },
+      ...reasoningParams(chosen),
     }),
   });
 
